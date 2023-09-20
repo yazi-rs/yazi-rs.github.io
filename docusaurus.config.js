@@ -6,22 +6,22 @@ const lightCodeTheme = require("prism-react-renderer/themes/github")
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: "Yazi",
+	title  : "Yazi",
 	tagline: "⚡️ Blazing fast terminal file manager written in Rust, based on async I/O.",
 	favicon: "img/favicon.ico",
 
-	url: "https://yazi-rs.github.io",
+	url    : "https://yazi-rs.github.io",
 	baseUrl: "/docs/",
 
 	organizationName: "yazi-rs",
-	projectName: "docs",
+	projectName     : "docs",
 
-	onBrokenLinks: "throw",
+	onBrokenLinks        : "throw",
 	onBrokenMarkdownLinks: "warn",
 
 	i18n: {
 		defaultLocale: "en",
-		locales: ["en"],
+		locales      : ["en"],
 	},
 
 	presets: [
@@ -30,18 +30,18 @@ const config = {
 			/** @type {import('@docusaurus/preset-classic').Options} */
 			{
 				docs: {
-					path: "usage",
+					path         : "usage",
 					routeBasePath: "usage",
-					sidebarPath: require.resolve("./sidebars.js"),
+					sidebarPath  : require.resolve("./sidebars.js"),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+					editUrl      : "https://github.com/yazi-rs/docs/tree/main/",
 				},
 				blog: {
 					showReadingTime: true,
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+					editUrl        : "https://github.com/yazi-rs/docs/tree/main/",
 				},
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),
@@ -54,25 +54,25 @@ const config = {
 		/** @type {import('@docusaurus/preset-classic').ThemeConfig} */
 		{
 			// Replace with your project's social card
-			image: "img/docusaurus-social-card.jpg",
+			image : "img/docusaurus-social-card.jpg",
 			navbar: {
 				title: "Yazi",
-				logo: {
+				logo : {
 					alt: "My Site Logo",
 					src: "img/logo.svg",
 				},
 				items: [
 					{
-						type: "docSidebar",
+						type     : "docSidebar",
 						sidebarId: "usageSidebar",
-						position: "left",
-						label: "Usage",
+						position : "left",
+						label    : "Usage",
 					},
 					// { to: "/showcase", label: "Showcase", position: "left" },
 					// { to: "/blog", label: "Blog", position: "left" },
 					{
-						href: "https://github.com/sxyazi/yazi",
-						label: "GitHub",
+						href    : "https://github.com/sxyazi/yazi",
+						label   : "GitHub",
 						position: "right",
 					},
 				],
@@ -85,7 +85,7 @@ const config = {
 						items: [
 							{
 								label: "Usage",
-								to: "/docs/usage/installation",
+								to   : "/docs/usage/installation",
 							},
 						],
 					},
@@ -94,11 +94,11 @@ const config = {
 						items: [
 							{
 								label: "Discord (English mainly)",
-								href: "https://discord.gg/qfADduSdJu",
+								href : "https://discord.gg/qfADduSdJu",
 							},
 							{
 								label: "Telegram (Chinese mainly)",
-								href: "https://t.me/yazi_rs",
+								href : "https://t.me/yazi_rs",
 							},
 						],
 					},
@@ -111,7 +111,7 @@ const config = {
 							// },
 							{
 								label: "GitHub",
-								href: "https://github.com/facebook/docusaurus",
+								href : "https://github.com/facebook/docusaurus",
 							},
 						],
 					},
@@ -119,7 +119,7 @@ const config = {
 				copyright: `Copyright © ${new Date().getFullYear()} Yazi. Built with ❤️️.`,
 			},
 			prism: {
-				theme: lightCodeTheme,
+				theme    : lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
 		},
