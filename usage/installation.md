@@ -81,6 +81,12 @@ environment.systemPackages = with pkgs; [
 You can also manage Yazi's configuration using the
 [home-manager](https://nix-community.github.io/home-manager/options.html#opt-programs.yazi.enable).
 
+## NetBSD
+
+```bash
+pkgin install yazi
+```
+
 ## Windows
 
 See [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide).
