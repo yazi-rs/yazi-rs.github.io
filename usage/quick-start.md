@@ -12,16 +12,22 @@ yazi
 
 Press `q` to quit and `~` to open the help menu.
 
-## Navigation
+## Keybindings
+
+:::tip
+To see all key bindings, check the [config/preset/keymap.toml](https://github.com/sxyazi/yazi/blob/main/config/preset/keymap.toml) file.
+:::
+
+### Navigation
 
 To navigate between files and directories you can use the arrow keys `←`, `↑`, `↓` and `→` or vi(m)-like commands such as `h`, `j`, `k`, `l`:
 
-| Key binding | Alternate key | Action                            |
-| ----------- | ------------- | --------------------------------- |
-| ↑           | j             | Move the cursor up                |
-| ↓           | k             | Move the cursor down              |
-| →           | l             | Change into highlighted directory |
-| ←           | h             | Change into parent directory      |
+| Key binding | Alternate key | Action                                          |
+| ----------- | ------------- | ----------------------------------------------- |
+| ↑           | j             | Move the cursor up                              |
+| ↓           | k             | Move the cursor down                            |
+| →           | l             | Enter highlighted directory                     |
+| ←           | h             | Leave the current directory and into its parent |
 
 Further navigation commands can be found in the table below.
 
@@ -32,7 +38,7 @@ Further navigation commands can be found in the table below.
 | g           | Move cursor to the top       |
 | G           | Move cursor to the bottom    |
 
-## Selection
+### Selection
 
 To select files and directories, the following commands are available.
 
@@ -45,36 +51,36 @@ To select files and directories, the following commands are available.
 | <Ctrl+r\>   | Inverse selection of all files                 |
 | <Esc\>      | Cancel selection                               |
 
-## File/directory operations
+### File/directory operations
 
 To interact with selected files/directories use any of the commands below.
 
-| Key binding   | Action                                                        |
-| ------------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
-| o             | Open the selected files                                       |
-| O             | Open the selected files interactively                         |
-| <Enter\>      | Open the selected files                                       |
-| <Ctrl+Enter\> | Open the selected files interactively                         | # It's cool if you're using a terminal that supports CSI u |
-| y             | Copy the selected files                                       |
-| x             | Cut the selected files                                        |
-| p             | Paste the files                                               |
-| P             | Paste the files (overwrite if the destination exists)         |
-| k             | Paste the files (follow the symlinks)                         |
-| K             | Paste the files (overwrite + follow)                          |
-| d             | Move the files to the trash                                   |
-| D             | Permanently delete the files                                  |
-| a             | Create a file or directory (end with "/" for directories)     |
-| r             | Rename a file or directory                                    |
-| ;             | Run a shell command                                           |
-| :             | Run a shell command (block the UI until the command finishes) |
-| .             | Toggle the visibility of hidden files                         |
-| s             | Search files by name using fd                                 |
-| S             | Search files by content using ripgrep                         |
-| <Ctrl+s\>     | Cancel the ongoing search                                     |
-| z             | Jump to a directory using zoxide                              |
-| Z             | Jump to a directory, or reveal a file using fzf               |
+| Key binding   | Action                                                                  |
+| ------------- | ----------------------------------------------------------------------- |
+| o             | Open the selected files                                                 |
+| O             | Open the selected files interactively                                   |
+| <Enter\>      | Open the selected files                                                 |
+| <Ctrl+Enter\> | Open the selected files interactively (Some terminals don't support it) |
+| y             | Copy the selected files                                                 |
+| x             | Cut the selected files                                                  |
+| p             | Paste the files                                                         |
+| P             | Paste the files (overwrite if the destination exists)                   |
+| k             | Paste the files (follow the symlinks)                                   |
+| K             | Paste the files (overwrite + follow)                                    |
+| d             | Move the files to the trash                                             |
+| D             | Permanently delete the files                                            |
+| a             | Create a file or directory (end with "/" for directories)               |
+| r             | Rename a file or directory                                              |
+| ;             | Run a shell command                                                     |
+| :             | Run a shell command (block the UI until the command finishes)           |
+| .             | Toggle the visibility of hidden files                                   |
+| s             | Search files by name using fd                                           |
+| S             | Search files by content using ripgrep                                   |
+| <Ctrl+s\>     | Cancel the ongoing search                                               |
+| z             | Jump to a directory using zoxide                                        |
+| Z             | Jump to a directory, or reveal a file using fzf                         |
 
-## Copying paths
+### Copying paths
 
 To copy paths, use any of the following commands below.
 
@@ -87,7 +93,7 @@ _Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the 
 | c ⇒ f       | Copy the name of the file                       |
 | c ⇒ n       | Copy the name of the file without the extension |
 
-## Finding files/directories
+### Finding files/directories
 
 | Key binding | Action                                       |
 | ----------- | -------------------------------------------- |
@@ -96,7 +102,7 @@ _Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the 
 | -           | Jump to next occurrence                      |
 | =           | Jump to previous occurrence                  |
 
-## Sorting
+### Sorting
 
 To sort files/directories use the following commands.
 
@@ -115,13 +121,9 @@ _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the 
 | , ⇒ s       | Sort by size, directories first                    |
 | , ⇒ S       | Sort by size, directories first (reverse)          |
 
-## Further usage
+## Changing working directory when exiting Yazi
 
-To see all key bindings, check the [config/preset/keymap.toml](https://github.com/sxyazi/yazi/blob/main/config/preset/keymap.toml) file.
-
-## Changing working directory when exiting yazi
-
-There is a wrapper of yazi, that provides the ability to change the current working directory when exiting yazi, feel free to use it:
+There is a wrapper of Yazi, that provides the ability to change the current working directory when exiting Yazi, feel free to use it:
 
 ```bash
 function ya() {
