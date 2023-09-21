@@ -24,8 +24,8 @@ To navigate between files and directories you can use the arrow keys `←`, `↑
 
 | Key binding | Alternate key | Action                                          |
 | ----------- | ------------- | ----------------------------------------------- |
-| j           | ↑             | Move the cursor up                              |
-| k           | ↓             | Move the cursor down                            |
+| k           | ↑             | Move the cursor up                              |
+| j           | ↓             | Move the cursor down                            |
 | l           | →             | Enter highlighted directory                     |
 | h           | ←             | Leave the current directory and into its parent |
 
@@ -35,7 +35,7 @@ Further navigation commands can be found in the table below.
 | ----------- | ---------------------------- |
 | K           | Move the cursor up 5 lines   |
 | J           | Move the cursor down 5 lines |
-| g           | Move cursor to the top       |
+| g ⇒ g       | Move cursor to the top       |
 | G           | Move cursor to the bottom    |
 
 ### Selection
@@ -108,18 +108,18 @@ To sort files/directories use the following commands.
 
 _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the `a` key._
 
-| Key binding | Action                                             |
-| ----------- | -------------------------------------------------- |
-| , ⇒ a       | Sort alphabetically, directories first             |
-| , ⇒ A       | Sort alphabetically, directories first (reverse)   |
-| , ⇒ c       | Sort by creation time, directories first           |
-| , ⇒ C       | Sort by creation time, directories first (reverse) |
-| , ⇒ m       | Sort by modified time, directories first           |
-| , ⇒ M       | Sort by modified time, directories first (reverse) |
-| , ⇒ n       | Sort naturally, directories first                  |
-| , ⇒ N       | Sort naturally, directories first (reverse)        |
-| , ⇒ s       | Sort by size, directories first                    |
-| , ⇒ S       | Sort by size, directories first (reverse)          |
+| Key binding | Action                          |
+| ----------- | ------------------------------- |
+| , ⇒ a       | Sort alphabetically             |
+| , ⇒ A       | Sort alphabetically (reverse)   |
+| , ⇒ c       | Sort by creation time           |
+| , ⇒ C       | Sort by creation time (reverse) |
+| , ⇒ m       | Sort by modified time           |
+| , ⇒ M       | Sort by modified time (reverse) |
+| , ⇒ n       | Sort naturally                  |
+| , ⇒ N       | Sort naturally (reverse)        |
+| , ⇒ s       | Sort by size                    |
+| , ⇒ S       | Sort by size (reverse)          |
 
 ## Changing working directory when exiting Yazi
 
