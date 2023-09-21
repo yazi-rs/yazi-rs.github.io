@@ -24,10 +24,10 @@ To navigate between files and directories you can use the arrow keys `←`, `↑
 
 | Key binding | Alternate key | Action                                          |
 | ----------- | ------------- | ----------------------------------------------- |
-| ↑           | j             | Move the cursor up                              |
-| ↓           | k             | Move the cursor down                            |
-| →           | l             | Enter highlighted directory                     |
-| ←           | h             | Leave the current directory and into its parent |
+| j           | ↑             | Move the cursor up                              |
+| k           | ↓             | Move the cursor down                            |
+| l           | →             | Enter highlighted directory                     |
+| h           | ←             | Leave the current directory and into its parent |
 
 Further navigation commands can be found in the table below.
 
@@ -47,8 +47,8 @@ To select files and directories, the following commands are available.
 | <Space\>    | Toggle selection of highlighted file/directory |
 | v           | Enter visual mode (selection mode)             |
 | V           | Enter visual mode (unset mode)                 |
-| <Ctrl+a\>   | Select all files                               |
-| <Ctrl+r\>   | Inverse selection of all files                 |
+| <Ctrl-a\>   | Select all files                               |
+| <Ctrl-r\>   | Inverse selection of all files                 |
 | <Esc\>      | Cancel selection                               |
 
 ### File/directory operations
@@ -60,7 +60,7 @@ To interact with selected files/directories use any of the commands below.
 | o             | Open the selected files                                                 |
 | O             | Open the selected files interactively                                   |
 | <Enter\>      | Open the selected files                                                 |
-| <Ctrl+Enter\> | Open the selected files interactively (Some terminals don't support it) |
+| <Ctrl-Enter\> | Open the selected files interactively (Some terminals don't support it) |
 | y             | Copy the selected files                                                 |
 | x             | Cut the selected files                                                  |
 | p             | Paste the files                                                         |
@@ -76,7 +76,7 @@ To interact with selected files/directories use any of the commands below.
 | .             | Toggle the visibility of hidden files                                   |
 | s             | Search files by name using fd                                           |
 | S             | Search files by content using ripgrep                                   |
-| <Ctrl+s\>     | Cancel the ongoing search                                               |
+| <Ctrl-s\>     | Cancel the ongoing search                                               |
 | z             | Jump to a directory using zoxide                                        |
 | Z             | Jump to a directory, or reveal a file using fzf                         |
 

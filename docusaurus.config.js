@@ -68,7 +68,7 @@ const config = {
 						position : "left",
 						label    : "Usage",
 					},
-					// { to: "/showcase", label: "Showcase", position: "left" },
+					{ to: "/showcase", label: "Showcase", position: "left" },
 					// { to: "/blog", label: "Blog", position: "left" },
 					{
 						href    : "https://github.com/sxyazi/yazi",
