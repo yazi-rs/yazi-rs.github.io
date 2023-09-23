@@ -68,10 +68,17 @@ If you haven't created and used your own configuration file yet, please see: [Co
 
 - remove: Move the files to the trash/recycle bin.
 
+  - `--force`: Don't show the confirmation dialog, and trash/delete files directly.
   - `--permanently`: Permanently delete the files.
 
 - create: Create a file or directory (ends with `/` for directories).
+
+- `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
+
 - rename: Rename a file or directory.
+
+  - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
+
 - copy: Copy the path of files or directories that are selected or hovered on.
 
   - `path`: Copy the absolute path.

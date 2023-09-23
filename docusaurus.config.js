@@ -87,6 +87,10 @@ const config = {
 								label: "Usage",
 								to   : "/docs/usage/installation",
 							},
+							{
+								label: "Showcase",
+								to   : "/docs/showcase",
+							},
 						],
 					},
 					{
@@ -119,7 +123,7 @@ const config = {
 				copyright: `Copyright © ${new Date().getFullYear()} Yazi. Built with ❤️️.`,
 			},
 			prism: {
-				theme    : lightCodeTheme,
+				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
 		},
