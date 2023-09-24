@@ -18,7 +18,7 @@ If you haven't created and used your own configuration file yet, please see: [Co
 
 - arrow
 
-  - `n`: Move the cursor up or down by n lines. Use negative values to move up and positive values to move down.
+  - `n` / `n%`: Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down.
 
 - leave: Go back to the parent directory.
 - enter: Enter the child directory.
