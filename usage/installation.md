@@ -18,19 +18,13 @@ Prerequisites:
 
 ## Arch Linux
 
-Install Yazi from [AUR](https://aur.archlinux.org/packages/yazi/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
+Install Yazi from the official repository:
 
 ```bash
-paru -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
+sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 ```
 
-You can install `yazi-bin` from [AUR](https://aur.archlinux.org/packages/yazi/) if you perfer pre-built binaries:
-
-```bash
-paru -S yazi-bin ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
-```
-
-If you want to use the latest git version, you can install with the following command:
+If you want to use the latest git version, you can install with the following command (from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/)):
 
 ```bash
 paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
