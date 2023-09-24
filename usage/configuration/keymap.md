@@ -154,7 +154,7 @@ If you haven't created and used your own configuration file yet, please see: [Co
 - arrow:
   - `-1`: Move the cursor up 1 line.
   - `1`: Move the cursor down 1 line.
-- inspect: Inspect the task.
+- inspect: Inspect the task (press `q` to exit the inspect view).
 - cancel: Cancel the task.
 - help: Open the help menu.
 

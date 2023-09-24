@@ -71,12 +71,12 @@ text = [
 
 Available parameters are as follows:
 
-- exec (str): The command to open the selected files, with the following variables available:
+- exec: The command to open the selected files, with the following variables available:
   - `$n`: The N-th selected file, starting from 1
   - `$@`: All selected files
   - `foo`: Literal string to be passed
-- block (bool): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
-- orphan (bool): Keep the process running even if Yazi has exited.
+- block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
+- orphan (Boolean): Keep the process running even if Yazi has exited.
 
 ## open
 
@@ -98,9 +98,9 @@ rules = [
 
 Available rule parameters are as follows:
 
-- name (str): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- mime (str): Glob expression for matching the MIME type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- use (str): Opener name corresponding to the names in the opener section.
+- name (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- mime (String): Glob expression for matching the MIME type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- use (String): Opener name corresponding to the names in the opener section.
 
 ## tasks
 
