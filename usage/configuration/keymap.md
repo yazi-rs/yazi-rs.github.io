@@ -64,7 +64,11 @@ If you haven't created and used your own configuration file yet, please see: [Co
 - paste: Paste the files.
 
   - `--force`: Overwrite the destination file if it exists.
-  - `--follow`: Copy the file pointed to by a symbolic link, rather than the link itself. Only valid during copying.
+
+- link: Create a symbolic link to the selected files. (This is a privileged action in Windows and must be run as an administrator.)
+
+  - `--relative`: Use a relative path for the symbolic link.
+  - `--force`: Overwrite the destination file if it exists.
 
 - remove: Move the files to the trash/recycle bin.
 
