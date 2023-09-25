@@ -57,15 +57,15 @@ If you haven't created and used your own configuration file yet, please see: [Co
 
   - `--interactive`: Open the selected files with an interactive UI to choose the opening method.
 
-- yank: Copy the selected files.
+- yank: Yank the selected files.
 
   - `--cut`: Cut the selected files.
 
-- paste: Paste the files.
+- paste: Paste the yanked files.
 
   - `--force`: Overwrite the destination file if it exists.
 
-- link: Create a symbolic link to the selected files. (This is a privileged action in Windows and must be run as an administrator.)
+- link: Create a symbolic link to the yanked files. (This is a privileged action in Windows and must be run as an administrator.)
 
   - `--relative`: Use a relative path for the symbolic link.
   - `--force`: Overwrite the destination file if it exists.
@@ -77,7 +77,7 @@ If you haven't created and used your own configuration file yet, please see: [Co
 
 - create: Create a file or directory (ends with `/` for directories).
 
-- `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
+  - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 
 - rename: Rename a file or directory.
 
