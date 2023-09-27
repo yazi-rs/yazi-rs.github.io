@@ -55,30 +55,30 @@ To select files and directories, the following commands are available.
 
 To interact with selected files/directories use any of the commands below.
 
-| Key binding   | Action                                                                  |
-| ------------- | ----------------------------------------------------------------------- |
-| o             | Open the selected files                                                 |
-| O             | Open the selected files interactively                                   |
-| <Enter\>      | Open the selected files                                                 |
-| <Ctrl-Enter\> | Open the selected files interactively (Some terminals don't support it) |
-| y             | Copy the selected files                                                 |
-| x             | Cut the selected files                                                  |
-| p             | Paste the files                                                         |
-| P             | Paste the files (overwrite if the destination exists)                   |
-| k             | Paste the files (follow the symlinks)                                   |
-| K             | Paste the files (overwrite + follow)                                    |
-| d             | Move the files to the trash                                             |
-| D             | Permanently delete the files                                            |
-| a             | Create a file or directory (end with "/" for directories)               |
-| r             | Rename a file or directory                                              |
-| ;             | Run a shell command                                                     |
-| :             | Run a shell command (block the UI until the command finishes)           |
-| .             | Toggle the visibility of hidden files                                   |
-| s             | Search files by name using fd                                           |
-| S             | Search files by content using ripgrep                                   |
-| <Ctrl-s\>     | Cancel the ongoing search                                               |
-| z             | Jump to a directory using zoxide                                        |
-| Z             | Jump to a directory, or reveal a file using fzf                         |
+| Key binding   | Action                                                                      |
+| ------------- | --------------------------------------------------------------------------- |
+| o             | Open the selected files                                                     |
+| O             | Open the selected files interactively                                       |
+| <Enter\>      | Open the selected files                                                     |
+| <Ctrl-Enter\> | Open the selected files interactively (some terminals don't support it yet) |
+| y             | Yank the selected files (copy)                                              |
+| x             | Yank the selected files (cut)                                               |
+| p             | Paste the yanked files                                                      |
+| P             | Paste the yanked files (overwrite if the destination exists)                |
+| n             | Create a symbolic link to the yanked files (absolute path)                  |
+| N             | Create a symbolic link to the yanked files (relative path)                  |
+| d             | Move the files to the trash                                                 |
+| D             | Permanently delete the files                                                |
+| a             | Create a file or directory (ends with "/" for directories)                  |
+| r             | Rename a file or directory                                                  |
+| ;             | Run a shell command                                                         |
+| :             | Run a shell command (block the UI until the command finishes)               |
+| .             | Toggle the visibility of hidden files                                       |
+| s             | Search files by name using fd                                               |
+| S             | Search files by content using ripgrep                                       |
+| <Ctrl-s\>     | Cancel the ongoing search                                                   |
+| z             | Jump to a directory using zoxide                                            |
+| Z             | Jump to a directory, or reveal a file using fzf                             |
 
 ### Copying paths
 
