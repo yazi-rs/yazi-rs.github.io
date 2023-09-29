@@ -50,8 +50,8 @@ If you haven't created and used your own configuration file yet, please see: [Co
 ## preview
 
 - tab_size: Tab width
-- max_width: Maximum preview width for images and videos
-- max_height: Maximum preview height for images and videos
+- max_width: Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
+- max_height: Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
 - cache_dir: The system cache directory is used by default, and the cached files will go away on a reboot automatically. If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
 
 ## opener
