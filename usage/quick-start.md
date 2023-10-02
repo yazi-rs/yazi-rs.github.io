@@ -65,8 +65,8 @@ To interact with selected files/directories use any of the commands below.
 | x             | Yank the selected files (cut)                                               |
 | p             | Paste the yanked files                                                      |
 | P             | Paste the yanked files (overwrite if the destination exists)                |
-| n             | Create a symbolic link to the yanked files (absolute path)                  |
-| N             | Create a symbolic link to the yanked files (relative path)                  |
+| -             | Create a symbolic link to the yanked files (absolute path)                  |
+| \_            | Create a symbolic link to the yanked files (relative path)                  |
 | d             | Move the files to the trash                                                 |
 | D             | Permanently delete the files                                                |
 | a             | Create a file or directory (ends with "/" for directories)                  |
@@ -99,8 +99,8 @@ _Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the 
 | ----------- | -------------------------------------------- |
 | /           | Forward search file/dir in current directory |
 | ?           | Backward search file/dir in current director |
-| -           | Jump to next occurrence                      |
-| =           | Jump to previous occurrence                  |
+| n           | Jump to next occurrence                      |
+| N           | Jump to previous occurrence                  |
 
 ### Sorting
 
