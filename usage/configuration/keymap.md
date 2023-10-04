@@ -113,6 +113,17 @@ If you haven't created and used your own configuration file yet, please see: [Co
   - `fzf`: Jump to a directory, or reveal a file using fzf.
   - `zoxide`: Jump to a directory using zoxide.
 
+- find
+
+  - `query`: Optional, the query to find for. If not provided, a interactive UI will be used to input with.
+  - `--previous`: Find for the previous occurrence.
+  - `--smart`: Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive.
+  - `--insensitive`: Use case-insensitive find.
+
+- find_arrow: Move the cursor to the next or previous occurrence.
+
+  - `--previous`: Move to the previous occurrence.
+
 - sort
 
   - `by`
