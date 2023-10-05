@@ -12,6 +12,9 @@ If you haven't created and used your own configuration file yet, please see: [Co
 
 - escape: Exit visual mode, clear selected, or cancel search.
 - quit: Exit the process.
+
+  - `--no-cwd-file`: Don't write the current directory to the `cwd-file`.
+
 - close: Close the current tab; if it is the last tab, then exit the process.
 
 ### Navigation
