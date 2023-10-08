@@ -72,8 +72,8 @@ text = [
 Available parameters are as follows:
 
 - exec: The command to open the selected files, with the following variables available:
-  - `$n`: The N-th selected file, starting from 1
-  - `$@`: All selected files
+  - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from 1
+  - `$@` (Unix) / `%*` (Windows): All selected files
   - `foo`: Literal string to be passed
 - block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - orphan (Boolean): Keep the process running even if Yazi has exited.
