@@ -95,12 +95,12 @@ _Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the 
 
 ### Finding files/directories
 
-| Key binding | Action                                       |
-| ----------- | -------------------------------------------- |
-| /           | Forward search file/dir in current directory |
-| ?           | Backward search file/dir in current director |
-| n           | Jump to next occurrence                      |
-| N           | Jump to previous occurrence                  |
+| Key binding | Action                              |
+| ----------- | ----------------------------------- |
+| /           | Forward find file/directory in CWD  |
+| ?           | Backward find file/directory in CWD |
+| n           | Jump to next occurrence             |
+| N           | Jump to previous occurrence         |
 
 ### Sorting
 
