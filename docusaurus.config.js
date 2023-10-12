@@ -8,7 +8,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github")
 const config = {
 	title  : "Yazi",
 	tagline: "⚡️ Blazing fast terminal file manager written in Rust, based on async I/O.",
-	favicon: "img/favicon.ico",
+	favicon: "img/logo.png",
 
 	url    : "https://yazi-rs.github.io",
 	baseUrl: "/docs/",
@@ -58,8 +58,8 @@ const config = {
 			navbar: {
 				title: "Yazi",
 				logo : {
-					alt: "My Site Logo",
-					src: "img/logo.svg",
+					alt: "Yazi file manager",
+					src: "img/logo.png",
 				},
 				items: [
 					{
