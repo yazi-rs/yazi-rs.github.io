@@ -123,7 +123,9 @@ _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the 
 
 ## Changing working directory when exiting Yazi
 
-There is a wrapper of Yazi, that provides the ability to change the current working directory when exiting Yazi, feel free to use it:
+You can also use this convenient wrapper that provides the ability to change the current working directory when exiting Yazi.
+
+### Bash/Zsh
 
 ```bash
 function ya() {
@@ -134,4 +136,17 @@ function ya() {
 	fi
 	rm -f -- "$tmp"
 }
+```
+
+### Fish
+
+```shell
+function ya
+    set tmp (mktemp -t "yazi-cwd.XXXXX")
+    yazi --cwd-file="$tmp"
+    if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end
 ```
