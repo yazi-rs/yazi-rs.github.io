@@ -4,13 +4,13 @@ sidebar_position: 4
 
 # Frequently Asked Questions
 
-## Why is Yazi Fast?
+## Why is Yazi fast?
 
-See https://github.com/sxyazi/yazi/issues/143
+See [sxyazi/yazi#143](https://github.com/sxyazi/yazi/issues/143).
 
 ## Why I can't open file / stuck at 99%?
 
-See https://github.com/sxyazi/yazi/issues/110#issuecomment-1706538851
+See [sxyazi/yazi#110 - comment](https://github.com/sxyazi/yazi/issues/110#issuecomment-1706538851).
 
 ## I don't like nerd‐fonts!
 
@@ -47,7 +47,7 @@ Most maintainers have their full-time jobs, so please understand if your request
 
 ## Why do I need to copy the entire keybindings?
 
-Quoted from https://github.com/sxyazi/yazi/issues/158#issuecomment-1722130381:
+Quoted from [sxyazi/yazi#158 - comment](https://github.com/sxyazi/yazi/issues/158#issuecomment-1722130381):
 
 > Since Yazi is still in the alpha stage and is not yet stable, default keybindings may undergo adjustments, potentially disrupting user expectations.
 >
