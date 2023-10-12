@@ -2,6 +2,9 @@
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Quick Start
 
 After [installation](./installation.md), use the following command to run it:
@@ -125,20 +128,22 @@ _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the 
 
 You can also use this convenient wrapper that provides the ability to change the current working directory when exiting Yazi.
 
-### Bash/Zsh
+<Tabs>
+  <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
 function ya() {
-	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
 }
 ```
 
-### Fish
+  </TabItem>
+  <TabItem value="fish" label="Fish">
 
 ```shell
 function ya
@@ -150,3 +155,6 @@ function ya
     rm -f -- "$tmp"
 end
 ```
+
+  </TabItem>
+</Tabs>
