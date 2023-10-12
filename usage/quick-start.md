@@ -2,6 +2,9 @@
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Quick Start
 
 After [installing](./installation.md), use the following command to run it:
@@ -123,7 +126,10 @@ _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the 
 
 ## Changing working directory when exiting Yazi
 
-There is a wrapper of Yazi, that provides the ability to change the current working directory when exiting Yazi, feel free to use it:
+You can also use this convenient wrapper that provides the ability to change the current working directory when exiting Yazi.
+
+<Tabs>
+  <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
 function ya() {
@@ -135,3 +141,35 @@ function ya() {
 	rm -f -- "$tmp"
 }
 ```
+
+  </TabItem>
+  <TabItem value="fish" label="Fish">
+
+```shell
+function ya
+	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	yazi --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
+```
+
+  </TabItem>
+  <TabItem value="nushell" label="Nushell">
+
+```shell
+def-env ya [] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXX")
+	yazi --cwd-file $tmp
+	let cwd = (cat -- $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -f $tmp
+}
+```
+
+  </TabItem>
+</Tabs>
