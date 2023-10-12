@@ -133,12 +133,12 @@ You can also use this convenient wrapper that provides the ability to change the
 
 ```bash
 function ya() {
-    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-    yazi --cwd-file="$tmp"
-    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-        cd -- "$cwd"
-    fi
-    rm -f -- "$tmp"
+	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 ```
 
@@ -147,12 +147,12 @@ function ya() {
 
 ```shell
 function ya
-    set tmp (mktemp -t "yazi-cwd.XXXXX")
-    yazi --cwd-file="$tmp"
-    if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        cd -- "$cwd"
-    end
-    rm -f -- "$tmp"
+	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	yazi --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
 end
 ```
 
@@ -161,13 +161,13 @@ end
 
 ```shell
 def-env ya [] {
-    let tmp = (mktemp -t "yazi-cwd.XXXXX")
-    yazi --cwd-file $tmp
-    let cwd = (cat -- $tmp)
-    if $cwd != "" and $cwd != $env.PWD {
-        cd $cwd
-    }
-    rm -f $tmp
+	let tmp = (mktemp -t "yazi-cwd.XXXXX")
+	yazi --cwd-file $tmp
+	let cwd = (cat -- $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -f $tmp
 }
 ```
 
