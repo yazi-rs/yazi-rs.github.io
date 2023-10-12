@@ -5,7 +5,7 @@ sidebar_position: 2
 # Keymap
 
 :::tip
-If you haven't created and used your own configuration file yet, please see: [Configuration](./overview.mdx).
+If you haven't created and used your own configuration file yet, please see [Configuration](./overview.mdx).
 :::
 
 ## manager

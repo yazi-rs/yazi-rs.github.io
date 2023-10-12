@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Quick Start
 
-After [installation](./installation.md), use the following command to run it:
+After [installing](./installation.md), use the following command to run it:
 
 ```bash
 yazi

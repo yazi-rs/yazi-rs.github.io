@@ -5,7 +5,7 @@ sidebar_position: 1
 # Yazi
 
 :::tip
-If you haven't created and used your own configuration file yet, please see: [Configuration](./overview.mdx).
+If you haven't created and used your own configuration file yet, please see [Configuration](./overview.mdx).
 :::
 
 ## manager
