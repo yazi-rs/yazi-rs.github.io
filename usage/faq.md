@@ -8,9 +8,27 @@ sidebar_position: 4
 
 See [sxyazi/yazi#143](https://github.com/sxyazi/yazi/issues/143).
 
+## Why can't I preview files on Windows?
+
+Have you added Git to the `PATH` according to the [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide#requirements)?
+
+Please make sure the `file` command is available in your terminal, you can do a `file -v` to verify it.
+
 ## Why I can't open file / stuck at 99%?
 
 See [sxyazi/yazi#110 - comment](https://github.com/sxyazi/yazi/issues/110#issuecomment-1706538851).
+
+## Why can't `Open` and `Enter` be a single command?
+
+The decision to separate `enter` and `open` commands was intentional.
+
+Yazi will be adding the ability to treat an archive as a directory in the future, allowing direct operations on the files inside.
+
+An archive is a file, so it's "openable", but it's also "enterable" as a directory; so the user can choose the action they want to perform.
+
+This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
+
+If you truly don't need to distinguish between them, the upcoming Yazi plugin system will also assist you. It will allow you to implement the behaviors you want through plugins.
 
 ## I don't like nerd‐fonts!
 
@@ -20,7 +38,8 @@ If you don't want to use it and want things to be calm, sure, you can modify the
 
 ```toml
 [status]
-separator = { opening = "", closing = "" }
+separator_open = ""
+separator_close = ""
 ```
 
 and
