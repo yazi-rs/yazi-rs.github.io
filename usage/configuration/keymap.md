@@ -10,7 +10,16 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 ## manager
 
-- escape: Exit visual mode, clear selected, or cancel search.
+- escape: Cancel find, exit visual mode, clear selected, or cancel search.
+
+  - `--all`: Do all of the above.
+  - `--find`: Cancel find.
+  - `--visual`: Exit visual mode.
+  - `--select`: Clear selected.
+  - `--search`: Cancel search.
+
+  Automatically determine the operation by default, and it will only execute the selected operation after specifying the option; multiple options can be stacked.
+
 - quit: Exit the process.
 
   - `--no-cwd-file`: Don't write the current directory to the `cwd-file`.
