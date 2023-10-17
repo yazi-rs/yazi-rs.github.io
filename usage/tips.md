@@ -38,13 +38,13 @@ Copy the preset [`manager` component](https://github.com/sxyazi/yazi/blob/main/p
 
  		-- Parent
 -		Folder:render(chunks[1]:padding(ui.Padding.x(1)), { kind = Folder.PARENT }),
-+		Folder:render(chunks[1]:padding(ui.Padding(1, 1, 1, 1)), { kind = Folder.PARENT }),
++		Folder:render(chunks[1]:padding(ui.Padding.xy(1)), { kind = Folder.PARENT }),
  		-- Current
 -		Folder:render(chunks[2], { kind = Folder.CURRENT }),
 +		Folder:render(chunks[2]:padding(ui.Padding.y(1)), { kind = Folder.CURRENT }),
  		-- Preview
 -		ui.Base(chunks[3]:padding(ui.Padding.x(1)), ui.Base.PREVIEW),
-+		ui.Base(chunks[3]:padding(ui.Padding(1, 1, 1, 1)), ui.Base.PREVIEW),
++		ui.Base(chunks[3]:padding(ui.Padding.xy(1)), ui.Base.PREVIEW),
  	}
  end
 ```
