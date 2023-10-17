@@ -60,6 +60,6 @@ preload = [
 
 # theme.toml
 [manager]
-folder_offset  = [ 1, 0, 1, 0 ]
+folder_offset  = [ 2, 0, 2, 0 ]
 preview_offset = [ 2, 1, 2, 1 ]
 ```
