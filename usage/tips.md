@@ -49,7 +49,7 @@ Copy the preset [`manager` component](https://github.com/sxyazi/yazi/blob/main/p
  end
 ```
 
-Then include it and adjust the manager layout offset:
+Finally include it and adjust the manager layout offset:
 
 ```toml
 # yazi.toml
@@ -62,4 +62,34 @@ preload = [
 [manager]
 folder_offset  = [ 2, 0, 2, 0 ]
 preview_offset = [ 2, 1, 2, 1 ]
+```
+
+## Show symlink in status bar
+
+<img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
+
+You only need to rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/plugin/preset/components/status.lua#L39-L46) to achieve this feature, save this function as a file, and apply the following patch to it:
+
+```diff
+@@ -42,7 +42,11 @@ function Status:name()
+ 		return ui.Span("")
+ 	end
+
+-	return ui.Span(" " .. h.name)
++	local linked = ""
++	if h.link_to ~= nil then
++		linked = " -> " .. tostring(h.link_to)
++	end
++	return ui.Span(" " .. h.name .. linked)
+ end
+```
+
+Finally just include it:
+
+```toml
+# yazi.toml
+[plugins]
+preload = [
+	"/path/to/your/status-name-function.lua"
+]
 ```
