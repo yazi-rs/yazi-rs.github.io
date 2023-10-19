@@ -25,9 +25,8 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-	const { siteConfig } = useDocusaurusContext()
 	return (
-		<Layout title={`Hello from ${siteConfig.title}`} description="Description will go into a meta tag in <head />">
+		<Layout description="Blazing fast terminal file manager written in Rust, based on async I/O.">
 			<HomepageHeader />
 			<main>
 				<HomepageFeatures />
