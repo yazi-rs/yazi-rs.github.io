@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: Learn how to configure Yazi's basic functionality.
 ---
 
 # Yazi

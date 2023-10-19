@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: How to install Yazi on various operating systems.
 ---
 
 # Installation

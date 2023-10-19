@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+description: Answers to some frequently asked questions about Yazi.
 ---
 
 # Frequently Asked Questions

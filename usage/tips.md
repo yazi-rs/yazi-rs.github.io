@@ -1,5 +1,6 @@
 ---
 sidebar_position: 5
+description: A few helpful tips for using Yazi.
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+description: A quick guide on the basic usage of Yazi.
 ---
 
 import Tabs from '@theme/Tabs';
