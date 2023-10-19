@@ -14,7 +14,7 @@ const config = {
 	baseUrl: "/",
 
 	organizationName: "yazi-rs",
-	projectName: "docs",
+	projectName: "yazi-rs.github.io",
 
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",
