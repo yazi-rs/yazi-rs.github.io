@@ -1,6 +1,6 @@
-# Website
+# yazi-rs.github.io
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Documentation site for [Yazi](https://github.com/sxyazi/yazi), built with [Docusaurus](https://docusaurus.io/).
 
 ## Development
 
