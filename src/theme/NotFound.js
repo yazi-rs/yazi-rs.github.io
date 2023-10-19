@@ -4,8 +4,8 @@ import { useEffect } from "react"
 
 export default function NotFoundWrapper(props) {
 	useEffect(() => {
-		if (location.href.includes("/docs/")) {
-			location.href = location.href.replace("/docs/", "/")
+		if (location.href.includes("/docs")) {
+			location.href = location.href.replace("/docs", "")
 		}
 	}, [])
 
