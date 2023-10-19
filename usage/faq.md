@@ -15,10 +15,6 @@ Have you added Git to the `PATH` according to the [Windows Installation Guide](h
 
 Please make sure the `file` command is available in your terminal, you can do a `file -v` to verify it.
 
-## Why I can't open file / stuck at 99%?
-
-See [sxyazi/yazi#110 - comment](https://github.com/sxyazi/yazi/issues/110#issuecomment-1706538851).
-
 ## Why can't "Open" and "Enter" be a single command?
 
 The decision to separate `enter` and `open` commands was intentional.
