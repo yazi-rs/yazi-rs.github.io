@@ -27,7 +27,7 @@ description: Learn how to configure your Yazi theme.
   - gray
   - darkgray
 
-- Style: Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supports the following options:
+- Style: Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supports the following properties:
   - fg (Color): Foreground color
   - bg (Color): Background color
   - bold (Boolean): Bold
@@ -82,32 +82,108 @@ Highlighting: The built-in syntax highlighting feature
 
 ## Status
 
-// TODO
+- separator_open (String): Opening separator symbol. e.g. `"["`.
+- separator_close (String): Closing separator symbol. e.g. `"]"`.
+- separator_style (Style): Separator style.
+
+Mode
+
+- mode_normal (Style): Normal mode style.
+- mode_select (Style): Select mode style.
+- mode_unset (Style): Unset mode style.
+
+Progress
+
+- progress_label (Style): Progress label style.
+- progress_normal (Style): Style of the progress bar when it is not in an error state.
+- progress_error (Style): Style of the progress bar when an error occurs.
+
+Permissions
+
+- permissions_t (Style): File type.
+- permissions_r (Style): Read permission.
+- permissions_w (Style): Write permission.
+- permissions_x (Style): Execute permission.
+- permissions_s (Style): `-` separator.
 
 ## Input
 
-// TODO
+- border (Style): Border style.
+- title (Style): Title style.
+- value (Style): Value style.
+- selected (Style): Selected value style.
 
 ## Select
 
-// TODO
+- border (Style): Border style.
+- active (Style): selected item style.
+- inactive (Style): unselected item style.
 
 ## Tasks
 
-// TODO
+- border (Style): Border style.
+- title (Style): Title style.
+- hovered (Style): Hovered item style.
 
 ## Which
 
-// TODO
+- mask (Style): Mask style.
+- cand (Style): Candidate key style.
+- rest (Style): Rest key style.
+- desc (Style): Description style.
+- separator (String): Separator symbol. e.g. `" -> "`.
+- separator_style (Style): Separator style.
 
 ## Help
 
-// TODO
+- on (Style): Key column style.
+- exec (Style): Command column style.
+- desc (Style): Description column style.
+- hovered (Style): Hovered item style.
+- footer (Style): Footer style.
 
 ## Filetype
 
-// TODO
+Set file list item display styles for specific file types, supporting matching by name and mime-type:
+
+```toml
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "cyan" },
+
+	# Videos
+	{ mime = "video/*", fg = "yellow" },
+	{ mime = "audio/*", fg = "yellow" },
+
+	# ...
+
+	# Fallback
+	# { name = "*", fg = "white" },
+	{ name = "*/", fg = "blue" }
+]
+```
+
+Each rule supports complete [Style properties](#Types). There are two special rule:
+
+- `name = "*"` matches all files.
+- `name = "*/"` matches all directories.
 
 ## Icons
 
-// TODO
+Display different icons based on file name rules, noting that the `/` after the name signifies that it must be a directory.
+
+```toml
+[icons]
+"Desktop/" = ""
+"*.rs"     = ""
+# ...
+
+# Default
+"*"  = ""
+"*/" = ""
+```
+
+Similarly, `*` and `*/` can be used for fallback matching all files and all directories.
+
+The above rules use icons from [Nerd Fonts](https://www.nerdfonts.com), and they will not display properly if you don't have a Nerd Font installed.
