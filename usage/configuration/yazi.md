@@ -61,7 +61,7 @@ Configure available openers, for example:
 ```toml
 [opener]
 archive = [
-	{ exec = 'unar "$1"' },
+	{ exec = 'unar "$1"', desc = "Extract here" },
 ]
 text = [
 	{ exec = 'nvim "$@"', block = true },
@@ -77,6 +77,12 @@ Available parameters are as follows:
   - `foo`: Literal string to be passed
 - block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - orphan (Boolean): Keep the process running even if Yazi has exited.
+- desc: Description of the opener, displayed in the selection menu.
+- for: Optional. This opener is only available on this system; when not specified, it's available on all systems. Available values:
+  - `unix`: Linux and macOS
+  - `windows`: Windows
+  - `linux`: Linux
+  - `macos`: macOS
 
 ## open
 
