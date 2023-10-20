@@ -5,6 +5,10 @@ description: Learn how to configure your Yazi theme.
 
 # Theme
 
+:::tip
+If you haven't created and used your own configuration file yet, please see [Configuration](./overview.mdx).
+:::
+
 ## Types
 
 - Color: A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be one of the following 17 values:

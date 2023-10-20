@@ -139,7 +139,8 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - sort
 
-  - `by`
+  - `by`: Optional, if not provided, the sort method will be kept unchanged.
+    - `"none"`: Don't sort.
     - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
     - `"created"`: Sort by creation time.
     - `"modified"`: Sort by last modified time.

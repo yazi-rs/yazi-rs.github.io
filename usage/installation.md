@@ -9,12 +9,12 @@ Prerequisites:
 
 - nerd-fonts ([_optional_](./faq.md#i-dont-like-nerdfonts))
 - ffmpegthumbnailer (_optional_, for video thumbnails)
-- unar (_optional_, for archive preview, tested on v1.10.7)
+- unar (_optional_, for archive preview)
 - jq (_optional_, for JSON preview)
 - poppler (_optional_, for PDF preview)
 - fd (_optional_, for file searching)
 - rg (_optional_, for file content searching)
-- fzf (_optional_, for directory jumping)
+- fzf (_optional_, for path jumping)
 - zoxide (_optional_, for directory jumping)
 
 ## Arch Linux
@@ -47,7 +47,7 @@ brew install yazi --HEAD
 Or you can install Yazi via cargo:
 
 ```bash
-cargo install --git https://github.com/sxyazi/yazi.git
+cargo install --locked --git https://github.com/sxyazi/yazi.git
 ```
 
 ## Nix

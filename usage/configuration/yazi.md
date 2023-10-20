@@ -17,6 +17,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - sort_by: File sorting method
 
+  - `"none"`: Don't sort
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"created"`: Sort by creation time
   - `"modified"`: Sort by last modified time
