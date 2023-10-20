@@ -39,6 +39,13 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `true`: Directories first
   - `false`: Respects `sort_by` and `sort_reverse` only
 
+- linemode: Line mode
+
+  - `none`: No line mode.
+  - `size`: Display the size of the file.
+  - `permissions`: Display the permissions of the file.
+  - `mtime`: Display the last modified time of the file.
+
 - show_hidden: Show hidden files
 
   - `true`: Show
