@@ -41,10 +41,10 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - linemode: Line mode
 
-  - `none`: No line mode.
-  - `size`: Display the size of the file.
-  - `permissions`: Display the permissions of the file.
-  - `mtime`: Display the last modified time of the file.
+  - `"none"`: No line mode.
+  - `"size"`: Display the size of the file.
+  - `"permissions"`: Display the permissions of the file.
+  - `"mtime"`: Display the last modified time of the file.
 
   In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
   Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/plugin/preset/components/folder.lua).
