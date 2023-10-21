@@ -6,7 +6,7 @@ description: Learn how to configure your Yazi theme.
 # Theme
 
 :::tip
-If you're looking for ready-made themes and don't want to create one yourself, check out [yazi-rs/theme](https://github.com/yazi-rs/theme) repo.
+If you're looking for ready-made themes and don't want to create one yourself, check out [yazi-rs/themes](https://github.com/yazi-rs/themes) repo.
 :::
 
 ## Types
