@@ -6,7 +6,7 @@ description: Learn how to configure your Yazi theme.
 # Theme
 
 :::tip
-If you haven't created and used your own configuration file yet, please see [Configuration](./overview.mdx).
+If you're looking for ready-made themes and don't want to create one yourself, check out [yazi-rs/theme](https://github.com/yazi-rs/theme) repo.
 :::
 
 ## Types

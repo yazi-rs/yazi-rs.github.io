@@ -16,6 +16,12 @@ yazi
 
 Press `q` to quit and `~` to open the help menu.
 
+## Themes
+
+We have created a repo to collect themes from the community. Pick a theme you like!
+
+https://github.com/yazi-rs/theme
+
 ## Keybindings
 
 :::tip
