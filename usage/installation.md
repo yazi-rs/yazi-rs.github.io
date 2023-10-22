@@ -84,9 +84,21 @@ pkgin install yazi
 
 See [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide).
 
+## Cargo
+
+```bash
+cargo install --locked yazi-fm
+```
+
 ## Build from source
 
-Execute the following commands to clone the project and build Yazi:
+Install the latest stable Rust toolchain:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Clone the repository and build Yazi:
 
 ```bash
 git clone https://github.com/sxyazi/yazi.git
