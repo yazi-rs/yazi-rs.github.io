@@ -25,7 +25,7 @@ https://github.com/yazi-rs/themes
 ## Keybindings
 
 :::tip
-To see all key bindings, check the [config/preset/keymap.toml](https://github.com/sxyazi/yazi/blob/main/config/preset/keymap.toml) file.
+To see all key bindings, check the [yazi-config/preset/keymap.toml](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml) file.
 :::
 
 ### Navigation
