@@ -9,6 +9,13 @@ description: Answers to some frequently asked questions about Yazi.
 
 See [sxyazi/yazi#143](https://github.com/sxyazi/yazi/issues/143).
 
+## Why am I getting a "Permission denied" when editing files in Linux/macOS?
+
+Yazi defaults to using `$EDITOR` as the default editor, which is suitable for most cases.
+
+When you encounter this error, it means that `$EDITOR` is not set properly. You can add something like `export EDITOR=vim` to your Bash/Zsh/Fish configuration.
+Alternatively, you can change Yazi's [default edit opener](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml) from `$EDITOR` to vim/nvim/nano.
+
 ## Why can't I preview files on Windows?
 
 Have you added Git to the `PATH` according to the [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide#requirements)?
@@ -26,6 +33,15 @@ An archive is a file, so it's "openable", but it's also "enterable" as a directo
 This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
 
 If you truly don't need to distinguish between them, the upcoming Yazi plugin system will also assist you. It will allow you to implement the behaviors you want through plugins.
+
+## Why is "orphan" set to false by default?
+
+`orphan=true` is an emergency exit; once specified, your task will not be managed by Yazi.
+
+For instance, if you realize that you've used `unzip` on the wrong files, and you need to cancel it, with `orphan=false`, you can easily do that by pressing `x` in Yazi's task manager.
+However, with `orphan=true`, you can only return to the shell to terminate it.
+
+On the other hand, tasks with `orphan=false` are scheduled through the Yazi task system. It can limit the number of concurrent tasks (configurable by the user), to prevent system resource depletion, such as when you're extracting 100 files.
 
 ## I don't like nerd‐fonts!
 
