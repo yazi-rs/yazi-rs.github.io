@@ -18,9 +18,43 @@ Alternatively, you can change Yazi's [default edit opener](https://github.com/sx
 
 ## Why can't I preview files on Windows?
 
+<details>
+  <summary>Yazi Windows Edition</summary>
+  <div>
+
 Have you added Git to the `PATH` according to the [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide#requirements)?
 
 Please make sure the `file` command is available in your terminal, you can do a `file -v` to verify it.
+
+  </div>
+</details>
+
+<details>
+  <summary>Yazi Linux Edition running on WSL</summary>
+  <div>
+
+Limited by ConPTY, the Windows version of Yazi has had to implement many workarounds, which are not perfect.
+
+However, if you run Yazi in WSL, you can experience perfect image previews using `wezterm ssh`.<br/>
+[WezTerm](https://wezfurlong.org/wezterm/) is an excellent terminal that can bypass the limitations of ConPTY through its SSH feature, and it's currently the only terminal that supports this approach.
+
+You need to install `sshd` in WSL and start it:
+
+```bash
+sudo apt install openssh-server
+sudo service ssh restart
+```
+
+Then, on the host machine, connect to WSL via SSH:
+
+```bash
+wezterm ssh 127.0.0.1
+```
+
+That's it! you can now get Yazi's image preview working properly.
+
+  </div>
+</details>
 
 ## Why can't "Open" and "Enter" be a single command?
 
