@@ -56,6 +56,10 @@ That's it! you can now get Yazi's image preview working properly.
   </div>
 </details>
 
+Before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it is not possible to obtain the actual width and height of the terminal.
+
+Therefore, the Windows version of Yazi currently uses `preview.max_width` and `preview.max_height` specified by the user in the `yazi.toml` as the image size.
+
 ## Why can't "Open" and "Enter" be a single command?
 
 The decision to separate `enter` and `open` commands was intentional.
