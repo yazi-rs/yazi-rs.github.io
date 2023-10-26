@@ -13,7 +13,7 @@ You can implement a full border for Yazi via the UI plugin.
 
 <img src={useBaseUrl("/img/full-border.png")} width="600" />
 
-Copy the preset [`manager` component](https://github.com/sxyazi/yazi/blob/main/plugin/preset/components/manager.lua) to any place, for example `~/.config/yazi/ui.lua`, then apply the following patch:
+Copy the preset [`manager` component](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/manager.lua) to any place, for example `~/.config/yazi/ui.lua`, then apply the following patch:
 
 ```diff
 @@ -10,16 +10,26 @@ function Manager:render(area)
