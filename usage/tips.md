@@ -69,7 +69,7 @@ preview_offset = [ 2, 1, 2, 1 ]
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
-You only need to rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/plugin/preset/components/status.lua#L39-L46) to achieve this feature, save this function as a file, and apply the following patch to it:
+You only need to rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua#L39-L46) to achieve this feature, save this function as a file, and apply the following patch to it:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()
