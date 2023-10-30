@@ -39,7 +39,6 @@ const config = {
 				},
 				blog: {
 					showReadingTime: true,
-					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
 					editUrl: "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
 				},
@@ -69,7 +68,7 @@ const config = {
 						label: "Usage",
 					},
 					{ to: "/showcase", label: "Showcase", position: "left" },
-					// { to: "/blog", label: "Blog", position: "left" },
+                    { to: "/blog", label: "Blog", position: "left"},
 					{
 						href: "https://github.com/sxyazi/yazi",
 						label: "GitHub",

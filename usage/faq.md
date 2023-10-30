@@ -7,7 +7,7 @@ description: Answers to some frequently asked questions about Yazi.
 
 ## Why is Yazi fast?
 
-See [sxyazi/yazi#143](https://github.com/sxyazi/yazi/issues/143).
+See [Why is Yazi fast?](/blog/why-is-yazi-fast).
 
 ## Why am I getting a "Permission denied" when editing files in Linux/macOS?
 
