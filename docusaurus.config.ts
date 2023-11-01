@@ -58,8 +58,9 @@ const config: Config = {
 					type: "docSidebar",
 					sidebarId: "docsSidebar",
 					position: "left",
-					label: "Docs",
+					label: "Documentation",
 				},
+				{ to: "/features", label: "Features", position: "left" },
 				{ to: "/showcase", label: "Showcase", position: "left" },
 				{ to: "/blog", label: "Blog", position: "left" },
 				{
@@ -73,15 +74,19 @@ const config: Config = {
 			style: "dark",
 			links: [
 				{
-					title: "Docs",
+					title: "Resources",
 					items: [
 						{
-							label: "Docs",
+							label: "Documentation",
 							to: "/docs/installation",
 						},
 						{
-							label: "Showcase",
-							to: "/showcase",
+							label: "Features",
+							to: "/features",
+						},
+						{
+							label: "Blog",
+							to: "/blog",
 						},
 					],
 				},
@@ -89,12 +94,16 @@ const config: Config = {
 					title: "Community",
 					items: [
 						{
-							label: "Discord (English mainly)",
+							label: "Discord (English)",
 							href: "https://discord.gg/qfADduSdJu",
 						},
 						{
-							label: "Telegram (Chinese mainly)",
+							label: "Telegram (Chinese)",
 							href: "https://t.me/yazi_rs",
+						},
+						{
+							label: "Showcase",
+							to: "/showcase",
 						},
 					],
 				},
