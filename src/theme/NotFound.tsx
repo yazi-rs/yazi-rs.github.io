@@ -1,4 +1,3 @@
-import React from "react"
 import NotFound from "@theme-original/NotFound"
 import { useLayoutEffect } from "react"
 
