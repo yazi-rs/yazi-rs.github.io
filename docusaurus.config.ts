@@ -116,6 +116,10 @@ const config: Config = {
 			additionalLanguages: ["lua", "toml"],
 		},
 	} satisfies Preset.ThemeConfig,
+
+	markdown: {
+		format: "mdx",
+	},
 }
 
 export default config
