@@ -1,8 +1,6 @@
+import { themes as prismThemes } from "prism-react-renderer"
 import type { Config } from "@docusaurus/types"
 import type * as Preset from "@docusaurus/preset-classic"
-
-const darkCodeTheme = require("prism-react-renderer/themes/dracula")
-const lightCodeTheme = require("prism-react-renderer/themes/github")
 
 const config: Config = {
 	title: "Yazi",
@@ -28,10 +26,9 @@ const config: Config = {
 			"classic",
 			{
 				docs: {
-					path: "usage",
-					routeBasePath: "usage",
-					sidebarPath: require.resolve("./sidebars.js"),
-					// Please change this to your repo.
+					path: "docs",
+					routeBasePath: "docs",
+					sidebarPath: "./sidebars.ts",
 					// Remove this to remove the "edit this page" links.
 					editUrl: "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
 				},
@@ -41,7 +38,7 @@ const config: Config = {
 					editUrl: "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
 				},
 				theme: {
-					customCss: require.resolve("./src/css/custom.css"),
+					customCss: "./src/css/custom.css",
 				},
 			} satisfies Preset.Options,
 		],
@@ -59,9 +56,9 @@ const config: Config = {
 			items: [
 				{
 					type: "docSidebar",
-					sidebarId: "usageSidebar",
+					sidebarId: "docsSidebar",
 					position: "left",
-					label: "Usage",
+					label: "Docs",
 				},
 				{ to: "/showcase", label: "Showcase", position: "left" },
 				{ to: "/blog", label: "Blog", position: "left" },
@@ -79,8 +76,8 @@ const config: Config = {
 					title: "Docs",
 					items: [
 						{
-							label: "Usage",
-							to: "/usage/installation",
+							label: "Docs",
+							to: "/docs/installation",
 						},
 						{
 							label: "Showcase",
@@ -104,10 +101,6 @@ const config: Config = {
 				{
 					title: "More",
 					items: [
-						// {
-						// 	label: "Blog",
-						// 	to: "/blog",
-						// },
 						{
 							label: "GitHub",
 							href: "https://github.com/sxyazi/yazi",
@@ -118,8 +111,8 @@ const config: Config = {
 			copyright: `Copyright © ${new Date().getFullYear()} Yazi. Built with ❤️️.`,
 		},
 		prism: {
-			theme: lightCodeTheme,
-			darkTheme: darkCodeTheme,
+			theme: prismThemes.github,
+			darkTheme: prismThemes.dracula,
 			additionalLanguages: ["lua", "toml"],
 		},
 	} satisfies Preset.ThemeConfig,
