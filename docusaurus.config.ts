@@ -94,11 +94,11 @@ const config: Config = {
 					title: "Community",
 					items: [
 						{
-							label: "Discord (English)",
+							label: "Discord (English mainly)",
 							href: "https://discord.gg/qfADduSdJu",
 						},
 						{
-							label: "Telegram (Chinese)",
+							label: "Telegram (Chinese mainly)",
 							href: "https://t.me/yazi_rs",
 						},
 						{
