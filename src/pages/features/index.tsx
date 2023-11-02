@@ -53,7 +53,7 @@ function FeaturesHeader() {
 			<Heading as="h1">Features</Heading>
 			<Link
 				className={clsx("button button--primary", styles.space)}
-				to="https://github.com/yazi-rs/yazi-rs.github.io/issues/new"
+				to="https://github.com/sxyazi/yazi/issues/new?template=feature.yml"
 			>
 				<span aria-hidden="true">✨</span>
 				<span>Suggest a feature!</span>
