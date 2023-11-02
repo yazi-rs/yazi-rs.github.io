@@ -13,7 +13,7 @@ function ShowcaseHeader() {
 	return (
 		<section className="margin-top--lg margin-bottom--lg text--center">
 			<Heading as="h1">Showcase</Heading>
-			<p>A showcase of community plugins for Yazi!</p>
+			<p>A showcase of community plugins for Yazi.</p>
 			<Link
 				className={clsx("button button--primary", styles.space)}
 				to="https://github.com/yazi-rs/yazi-rs.github.io/issues/new"
@@ -54,7 +54,7 @@ function ShowcaseCards() {
 
 export default function Showcase(): JSX.Element {
 	return (
-		<Layout title="Yazi Showcase" description="Community features and plugins for Yazi!<">
+		<Layout title="Yazi Showcase" description="A showcase of community plugins for Yazi.">
 			<main className="margin-vert--lg">
 				<ShowcaseHeader />
 				<ShowcaseCards />
