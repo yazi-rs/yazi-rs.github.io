@@ -1,13 +1,8 @@
 import Layout from "@theme/Layout"
-import Heading from "@theme/Heading"
 
-import React from "react"
-import Link from "@docusaurus/Link"
-import clsx from "clsx"
+import { DisplayItemsHeader, DisplayItemsList, Item } from "@site/src/components/DisplayItems"
 
-import styles from "./styles.module.css"
-
-const features = [
+const features: Item[] = [
 	{
 		title: "Scrollable Preview",
 		video: "/videos/scrollable-preview.mp4",
@@ -47,54 +42,19 @@ const features = [
 	},
 ]
 
-function FeaturesHeader() {
-	return (
-		<section className="margin-top--lg margin-bottom--lg text--center">
-			<Heading as="h1">Features</Heading>
-			<Link
-				className={clsx("button button--primary", styles.space)}
-				to="https://github.com/sxyazi/yazi/issues/new?template=feature.yml"
-			>
-				<span aria-hidden="true">✨</span>
-				<span>Suggest a feature!</span>
-			</Link>
-		</section>
-	)
-}
-
-function FeatureCard(feature) {
-	return (
-		<li key={feature.title} className="card shadow--md">
-			<div className={clsx("card__image")}>
-				<video src={feature.video} width="100%" autoPlay controls loop muted></video>
-			</div>
-			<div className="card__body">
-				<Heading as="h4">{feature.title}</Heading>
-				<p>{feature.description}</p>
-			</div>
-			<ul className={clsx("card__footer")}></ul>
-		</li>
-	)
-}
-
-function FeatureCards() {
-	return (
-		<section className="margin-top--lg margin-bottom--xl">
-			<div className="container">
-				<ul className={clsx("container", "clean-list", styles.cards)}>
-					{features.map(feature => FeatureCard(feature))}
-				</ul>
-			</div>
-		</section>
-	)
-}
-
 export default function Features(): JSX.Element {
 	return (
 		<Layout title="Features" description="List of Yazi's features.">
 			<main className="margin-vert--lg">
-				<FeaturesHeader />
-				<FeatureCards />
+				<DisplayItemsHeader
+					heading="Features"
+					cta={{
+						emoji: "✨",
+						text: "Suggest a feature!",
+						link: "https://github.com/sxyazi/yazi/issues/new?template=feature.yml",
+					}}
+				/>
+				<DisplayItemsList items={features} />
 			</main>
 		</Layout>
 	)
