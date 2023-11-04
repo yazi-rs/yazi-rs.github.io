@@ -14,8 +14,8 @@ Prerequisites:
 - poppler (_optional_, for PDF preview)
 - fd (_optional_, for file searching)
 - rg (_optional_, for file content searching)
-- fzf (_optional_, for path jumping)
-- zoxide (_optional_, for directory jumping)
+- fzf (_optional_, for quick file subtree navigation)
+- zoxide (_optional_, for historical directories navigation)
 
 ## Arch Linux
 
