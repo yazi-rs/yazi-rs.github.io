@@ -77,6 +77,16 @@ Add the keybindings to the `[manager]` of `keymap.toml`:
 
 Please make sure that `<C-s>` does not conflict with your other keys.
 
+## Close input by once `<Esc>` press
+
+You can change the `<Esc>` of input component from the default `escape` to `close` command:
+
+```toml
+{ on = [ "<Esc>" ], exec = "close", desc = "Cancel input" }
+```
+
+To exiting input directly, without entering Vi mode, making it behave like a regular input box.
+
 ## Show symlink in status bar
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
