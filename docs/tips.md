@@ -67,6 +67,16 @@ folder_offset  = [ 2, 0, 2, 0 ]
 preview_offset = [ 2, 1, 2, 1 ]
 ```
 
+## Dropping to the shell
+
+Add the keybindings to the `[manager]` of `keymap.toml`:
+
+```toml
+{ on = [ "<C-s>" ], exec = '''shell "$SHELL" --block --confirm''', desc = "Open shell here" }
+```
+
+Please make sure that `<C-s>` does not conflict with your other keys.
+
 ## Show symlink in status bar
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
