@@ -28,7 +28,7 @@ Copy the preset [`manager` component](https://github.com/sxyazi/yazi/blob/main/y
 -		-- Borders
 -		ui.Bar(chunks[1], ui.Position.RIGHT):symbol(THEME.manager.border_symbol):style(THEME.manager.border_style),
 -		ui.Bar(chunks[3], ui.Position.LEFT):symbol(THEME.manager.border_symbol):style(THEME.manager.border_style),
-+		ui.Border(area, ui.Position.ALL),
++		ui.Border(area, ui.Position.ALL):type(ui.Border.ROUNDED),
 +		ui.Bar(chunks[1], ui.Position.RIGHT),
 +		ui.Bar(chunks[3], ui.Position.LEFT),
 +
@@ -49,6 +49,8 @@ Copy the preset [`manager` component](https://github.com/sxyazi/yazi/blob/main/y
  	}
  end
 ```
+
+If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUNDED)`.
 
 Finally include it and adjust the manager layout offset:
 
