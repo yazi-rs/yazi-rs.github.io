@@ -1,25 +1,25 @@
 import Layout from "@theme/Layout"
 
-import { DisplayItemsHeader, DisplayItemsList } from "@site/src/components/DisplayItems"
+import { Header, Cards } from "@site/src/components/Highlights"
 
 const plugins = []
 
-export default function Showcas(): JSX.Element {
+export default function Showcase(): JSX.Element {
 	const title = "Showcase"
 	const description = "A showcase of community plugins for Yazi."
 	return (
 		<Layout title={title} description={description}>
 			<main className="margin-vert--lg">
-				<DisplayItemsHeader
+				<Header
 					heading={title}
 					description={description}
 					link={{
 						emoji: "🔌",
 						text: "Add your plugin!",
-						href: "https://github.com/yazi-rs/yazi-rs.github.io/issues/new",
+						to: "https://github.com/yazi-rs/yazi-rs.github.io/issues/new",
 					}}
 				/>
-				<DisplayItemsList items={plugins} />
+				<Cards from={plugins} />
 			</main>
 		</Layout>
 	)

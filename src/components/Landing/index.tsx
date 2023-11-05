@@ -2,13 +2,13 @@ import clsx from "clsx"
 import Heading from "@theme/Heading"
 import styles from "./styles.module.css"
 
-type FeatureItem = {
+type CardProps = {
 	title: string
 	Svg: React.ComponentType<React.ComponentProps<"svg">>
 	description: JSX.Element
 }
 
-const FeatureList: FeatureItem[] = [
+const cards: CardProps[] = [
 	{
 		title: "Full Asynchronous Support",
 		Svg: require("@site/static/img/async.svg").default,
@@ -36,7 +36,7 @@ const FeatureList: FeatureItem[] = [
 	},
 ]
 
-function Feature({ title, Svg, description }: FeatureItem) {
+function Card({ title, Svg, description }: CardProps) {
 	return (
 		<div className={clsx("col col--3")}>
 			<div className="text--center">
@@ -50,13 +50,13 @@ function Feature({ title, Svg, description }: FeatureItem) {
 	)
 }
 
-export default function HomepageFeatures(): JSX.Element {
+export default function Landing(): JSX.Element {
 	return (
 		<section className={styles.features}>
 			<div className="container">
 				<div className="row">
-					{FeatureList.map((props, idx) => (
-						<Feature key={idx} {...props} />
+					{cards.map((props, idx) => (
+						<Card key={idx} {...props} />
 					))}
 				</div>
 			</div>

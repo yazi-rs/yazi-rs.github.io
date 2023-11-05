@@ -1,8 +1,8 @@
 import Layout from "@theme/Layout"
 
-import { DisplayItemsHeader, DisplayItemsList, Item } from "@site/src/components/DisplayItems"
+import { Header, Cards, CardProps } from "@site/src/components/Highlights"
 
-const features: Item[] = [
+const features: CardProps[] = [
 	{
 		title: "Scrollable Preview",
 		video: "/videos/scrollable-preview.mp4",
@@ -46,16 +46,16 @@ export default function Features(): JSX.Element {
 	return (
 		<Layout title="Features" description="List of Yazi's features.">
 			<main className="margin-vert--lg">
-				<DisplayItemsHeader
+				<Header
 					heading="Features"
 					description="List of features shipped with Yazi."
 					link={{
 						emoji: "✨",
 						text: "Suggest a feature!",
-						href: "https://github.com/sxyazi/yazi/issues/new?template=feature.yml",
+						to: "https://github.com/sxyazi/yazi/issues/new?template=feature.yml",
 					}}
 				/>
-				<DisplayItemsList items={features} />
+				<Cards from={features} />
 			</main>
 		</Layout>
 	)

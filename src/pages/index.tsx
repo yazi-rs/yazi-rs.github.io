@@ -2,7 +2,7 @@ import clsx from "clsx"
 import Link from "@docusaurus/Link"
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
 import Layout from "@theme/Layout"
-import HomepageFeatures from "@site/src/components/HomepageFeatures"
+import Landing from "@site/src/components/Landing"
 import Heading from "@theme/Heading"
 
 import styles from "./index.module.css"
@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
 		<Layout description="Blazing fast terminal file manager written in Rust, based on async I/O.">
 			<HomepageHeader />
 			<main>
-				<HomepageFeatures />
+				<Landing />
 			</main>
 		</Layout>
 	)
