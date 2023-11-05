@@ -13,10 +13,10 @@ export default function Showcas(): JSX.Element {
 				<DisplayItemsHeader
 					heading={title}
 					description={description}
-					cta={{
+					link={{
 						emoji: "🔌",
 						text: "Add your plugin!",
-						link: "https://github.com/yazi-rs/yazi-rs.github.io/issues/new",
+						href: "https://github.com/yazi-rs/yazi-rs.github.io/issues/new",
 					}}
 				/>
 				<DisplayItemsList items={plugins} />

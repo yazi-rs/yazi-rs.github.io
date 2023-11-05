@@ -15,17 +15,17 @@ export type Item = {
 export function DisplayItemsHeader({
 	heading,
 	description,
-	cta,
+	link: cta,
 }: {
 	heading: string
 	description?: string
-	cta: { emoji: string; text: string; link: string }
+	link: { emoji: string; text: string; href: string }
 }) {
 	return (
 		<section className="margin-top--lg margin-bottom--lg text--center">
 			<Heading as="h1">{heading}</Heading>
 			{description && <p>{description}</p>}
-			<Link className={clsx("button button--primary", styles.space)} to={cta.link}>
+			<Link className={clsx("button button--primary", styles.space)} to={cta.href}>
 				<span aria-hidden="true">{cta.emoji}</span>
 				<span>{cta.text}</span>
 			</Link>

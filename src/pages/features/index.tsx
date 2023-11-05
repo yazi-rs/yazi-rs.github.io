@@ -48,10 +48,10 @@ export default function Features(): JSX.Element {
 			<main className="margin-vert--lg">
 				<DisplayItemsHeader
 					heading="Features"
-					cta={{
+					link={{
 						emoji: "✨",
 						text: "Suggest a feature!",
-						link: "https://github.com/sxyazi/yazi/issues/new?template=feature.yml",
+						href: "https://github.com/sxyazi/yazi/issues/new?template=feature.yml",
 					}}
 				/>
 				<DisplayItemsList items={features} />
