@@ -48,6 +48,7 @@ export default function Features(): JSX.Element {
 			<main className="margin-vert--lg">
 				<DisplayItemsHeader
 					heading="Features"
+					description="List of features shipped with Yazi."
 					link={{
 						emoji: "✨",
 						text: "Suggest a feature!",
