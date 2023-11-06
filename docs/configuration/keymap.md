@@ -41,10 +41,12 @@ If you haven't created and used your own configuration file yet, please see [Con
 
   - `n`: Peek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down.
 
-- cd: Change the current directory.
+- cd: Change the current directory and hover specified file.
 
-  - `path`: the path to change to.
+  - `path`: the path to apply.
   - `--interactive`: Use an interactive UI to input the path.
+
+  For instance `cd /foo/bar` will enter `/foo/` and make `bar` hovered; `cd /foo/bar/` will enter `/foo/bar/` and without hovering anything.
 
 ### Selection
 
@@ -88,7 +90,7 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `--force`: Don't show the confirmation dialog, and trash/delete files directly.
   - `--permanently`: Permanently delete the files.
 
-- create: Create a file or directory (ends with `/` for directories).
+- create: Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directories.
 
   - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 
