@@ -110,6 +110,12 @@ Permissions
 - permissions_x (Style): Execute permission.
 - permissions_s (Style): `-` separator.
 
+## Select
+
+- border (Style): Border style.
+- active (Style): Selected item style.
+- inactive (Style): Unselected item style.
+
 ## Input
 
 - border (Style): Border style.
@@ -117,11 +123,17 @@ Permissions
 - value (Style): Value style.
 - selected (Style): Selected value style.
 
-## Select
+## Completion
 
 - border (Style): Border style.
-- active (Style): selected item style.
-- inactive (Style): unselected item style.
+- active (Style): Selected item style.
+- inactive (Style): Unselected item style.
+
+Icons
+
+- icon_file (String): File icon.
+- icon_folder (String): Folder icon.
+- icon_command (String): Command icon.
 
 ## Tasks
 

@@ -261,3 +261,15 @@ If you haven't created and used your own configuration file yet, please see [Con
 - arrow
   - `n`: Move the cursor up or down n lines. Negative value for up, positive value for down.
 - filter: Apply a filter for the help items.
+
+## Completion
+
+- close: Hide the completion menu.
+
+  - `--submit`: Submit the completion.
+
+- arrow
+
+  - `n`: Move the cursor up or down n lines. Negative value for up, positive value for down.
+
+- help: Open the help menu.
