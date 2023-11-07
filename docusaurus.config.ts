@@ -60,7 +60,7 @@ const config: Config = {
 					position: "left",
 					label: "Docs",
 				},
-				{ to: "/showcase", label: "Showcase", position: "left" },
+				{ to: "/features", label: "Features", position: "left" },
 				{ to: "/blog", label: "Blog", position: "left" },
 				{
 					href: "https://github.com/sxyazi/yazi",
@@ -73,15 +73,19 @@ const config: Config = {
 			style: "dark",
 			links: [
 				{
-					title: "Docs",
+					title: "Resources",
 					items: [
 						{
 							label: "Docs",
 							to: "/docs/installation",
 						},
 						{
-							label: "Showcase",
-							to: "/showcase",
+							label: "Features",
+							to: "/features",
+						},
+						{
+							label: "Blog",
+							to: "/blog",
 						},
 					],
 				},
