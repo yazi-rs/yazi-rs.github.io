@@ -52,27 +52,7 @@ export function Cards({ from: cards }: { from: CardProps[] }) {
 	return (
 		<section className="margin-top--lg margin-bottom--xl">
 			<div className="container">
-				<div className={clsx("margin-bottom--md")}>
-					{ cards.length ? <Heading as="h2">Our favorites ✨</Heading> : <></> }
-
-					{ /* TODO: remove this once the plugin system is ready */ }
-					{ !cards.length && <>
-						<br/><br/>
-						<Heading as="h3" style={{ color: "blue" }}>
-							The plugin system is coming soon, stay tuned!
-						</Heading>
-
-						<br/>
-						<Heading as="h3" style={{ color: "red" }}>
-							The built-in feature showcase, has been moved to <a href="/features" style={{ textDecoration: "underline" }}>a separate "Features" page</a>.
-						</Heading>
-					</> }
-					{ /* TODO: remove this once the plugin system is ready */ }
-
-				</div>
-				<ul className={clsx("container", "clean-list", styles.cards)}>
-					{cards.map(card => Card(card))}
-				</ul>
+				<ul className={clsx("container", "clean-list", styles.cards)}>{cards.map(card => Card(card))}</ul>
 			</div>
 		</section>
 	)

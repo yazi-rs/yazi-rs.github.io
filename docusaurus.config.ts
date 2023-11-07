@@ -61,7 +61,6 @@ const config: Config = {
 					label: "Docs",
 				},
 				{ to: "/features", label: "Features", position: "left" },
-				{ to: "/showcase", label: "Showcase", position: "left" },
 				{ to: "/blog", label: "Blog", position: "left" },
 				{
 					href: "https://github.com/sxyazi/yazi",
@@ -100,10 +99,6 @@ const config: Config = {
 						{
 							label: "Telegram (Chinese mainly)",
 							href: "https://t.me/yazi_rs",
-						},
-						{
-							label: "Showcase",
-							to: "/showcase",
 						},
 					],
 				},
