@@ -87,6 +87,36 @@ You can change the `<Esc>` of input component from the default `escape` to `clos
 
 To exiting input directly, without entering Vi mode, making it behave like a regular input box.
 
+## No status bar
+
+<img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
+
+Save those lines as a file, for example `~/.config/yazi/ui.lua`:
+
+```lua
+function Status:render() return {} end
+
+local old_manager_render = Manager.render
+function Manager:render(area)
+	return old_manager_render(self, ui.Rect { x = area.x, y = area.y, w = area.w, h = area.h + 1 })
+end
+```
+
+Finally include it and adjust the manager layout offset:
+
+```toml
+# yazi.toml
+[plugins]
+preload = [
+	"~/.config/yazi/ui.lua"
+]
+
+# theme.toml
+[manager]
+folder_offset  = [ 1, 0, 0, 0 ]
+preview_offset = [ 1, 1, 0, 1 ]
+```
+
 ## Show symlink in status bar
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
