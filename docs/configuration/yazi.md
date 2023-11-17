@@ -137,5 +137,5 @@ Available rule parameters are as follows:
 
 Image decoding:
 
-- image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image
-- image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image
+- image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image, `0` for unlimited.
+- image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image, `0` for unlimited.
