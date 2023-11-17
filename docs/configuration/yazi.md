@@ -134,3 +134,8 @@ Available rule parameters are as follows:
 - micro_workers: Maximum number of concurrent micro-tasks
 - macro_workers: Maximum number of concurrent macro-tasks
 - bizarre_retry: Maximum number of retries when a bizarre failure occurs
+
+Image decoding:
+
+- image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image
+- image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image
