@@ -127,7 +127,7 @@ Available rule parameters are as follows:
 
 - name (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - mime (String): Glob expression for matching the MIME type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- use (String): Opener name corresponding to the names in the opener section.
+- use (String): Opener name corresponding to the names in the [`[opener]` section](#opener).
 
 ## tasks
 
