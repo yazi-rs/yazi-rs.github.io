@@ -139,3 +139,54 @@ Image decoding:
 
 - image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image, `0` for unlimited.
 - image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image, `0` for unlimited.
+
+## input
+
+You can customize the title and position of each `Input`. As for position, it consists of two parts: [Origin](#origin) and [Offset](#offset).
+
+The origin is the top-left corner of the `Input`, and the offset is the increment from this origin. Together, they determine the area of the `Input` on the screen.
+
+### Origin
+
+For the origin, the following values are available:
+
+- top-left
+- top-center
+- top-right
+- bottom-left
+- bottom-center
+- bottom-right
+- center
+- hovered (the cursor position of hovered file)
+
+### Offset
+
+As for the offset, it's a 4-element tuple: `(x, y, width, height)`.
+
+### Placeholder
+
+Some `Input`s have special placeholders that will be replaced with actual content upon display:
+
+- trash_title: String
+
+  - `{n}`: Number of files to be trashed
+  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+
+- delete_title: String
+
+  - `{n}`: Number of files to be trashed
+  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+
+- find_title: [String, String]
+  It's a tuple of 2-element: first for "Find next", second for "Find previous".
+
+- shell_title: [String, String]
+  It's a tuple of 2-element: first for "Non-blocking shell", second for "Blocking shell".
+
+- quit_title
+  - `{n}`: Number of files to be trashed
+  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+
+## select
+
+Same as [the input](#input).
