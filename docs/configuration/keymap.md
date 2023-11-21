@@ -25,7 +25,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
   - `--no-cwd-file`: Don't write the current directory to the `cwd-file`.
 
-- close: Close the current tab; if it is the last tab, then exit the process.
+- close: Close the current tab; if it's the last tab, exit the process instead.
 
 ### Navigation
 
@@ -127,7 +127,7 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `mtime`: Display the last modified time of the file.
 
   In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-  Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/plugin/preset/components/folder.lua).
+  Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/folder.lua).
 
 - search
 
@@ -204,9 +204,13 @@ If you haven't created and used your own configuration file yet, please see [Con
 ## select
 
 - close: Cancel selection.
+
   - `--submit`: Submit the selection.
+
 - arrow
+
   - `n`: Move the cursor up or down n lines. Negative value for up, positive value for down.
+
 - help: Open the help menu.
 
 ## input
@@ -221,6 +225,11 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `n`: Move the cursor n characters left or right. Negative value for left, positive value for right.
   - `--in-operating`: Move the cursor only if its currently waiting for an operation.
 
+- backward: Move back to the start of the current or previous word.
+
+- forward: Move forward to the start of the next word.
+  - `--end-of-word`: Move forward to the end of the current or next word.
+
 ### Normal mode
 
 - insert: Enter insert mode.
@@ -228,10 +237,6 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `--append`: Insert after the cursor.
 
 - visual: Enter visual mode.
-- backward: Move to the beginning of the previous word.
-- forward: Move to the beginning of the next word.
-
-  - `--end-of-word`: Move to the end of the next word.
 
 - delete: Delete the selected characters.
 
@@ -250,11 +255,16 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 ### Insert mode
 
-- close: Cancel input.
+- backspace: Delete the character before the cursor.
 
-  - `--submit`: Submit the input.
+  - `backspace --under`: Delete the character under the cursor.
 
-- escape: Cancel insert mode and enter normal mode.
+- kill: Kill the specified range of characters.
+
+  - `bol`: Kill backwards to the BOL.
+  - `eol`: Kill forwards to the EOL.
+  - `backward`: Kill backwards to the start of the current word.
+  - `forward`: Kill forwards to the end of the current word.
 
 ## Help
 
