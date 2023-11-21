@@ -257,7 +257,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - backspace: Delete the character before the cursor.
 
-  - `backspace --under`: Delete the character under the cursor.
+  - `--under`: Delete the character under the cursor.
 
 - kill: Kill the specified range of characters.
 
