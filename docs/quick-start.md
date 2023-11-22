@@ -167,7 +167,7 @@ end
   <TabItem value="nushell" label="Nushell">
 
 ```shell
-def-env ya [] {
+def --env ya [] {
 	let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
 	yazi --cwd-file $tmp
 	let cwd = (open $tmp)
