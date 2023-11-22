@@ -34,6 +34,7 @@ paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 Install Yazi and its dependencies with Homebrew:
 
 ```bash
+brew update
 brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
 ```
@@ -42,12 +43,6 @@ If you prefer to use the most recent code, use `--HEAD` flag:
 
 ```bash
 brew install yazi --HEAD
-```
-
-Or you can install Yazi via cargo:
-
-```bash
-cargo install --locked --git https://github.com/sxyazi/yazi.git
 ```
 
 ## Nix
@@ -86,13 +81,27 @@ See [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Ins
 
 ## Cargo
 
+Setup the latest stable Rust toolchain:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Now you can install `yazi-fm` from [crates.io](https://crates.io/crates/yazi-fm):
+
 ```bash
 cargo install --locked yazi-fm
 ```
 
+Or install the latest git version:
+
+```bash
+cargo install --locked --git https://github.com/sxyazi/yazi.git
+```
+
 ## Build from source
 
-Install the latest stable Rust toolchain:
+Setup the latest stable Rust toolchain:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
