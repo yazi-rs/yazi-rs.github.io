@@ -103,6 +103,8 @@ Or install the latest git version:
 cargo install --locked --git https://github.com/sxyazi/yazi.git
 ```
 
+If it fails to build, please check if `make` and `gcc` is installed on your system.
+
 ## Build from source
 
 Setup the latest stable Rust toolchain:
@@ -124,3 +126,5 @@ Then, you can run:
 ```bash
 ./target/release/yazi
 ```
+
+If it fails to build, please check if `make` and `gcc` is installed on your system.
