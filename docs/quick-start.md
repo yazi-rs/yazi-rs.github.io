@@ -179,4 +179,19 @@ def --env ya [] {
 ```
 
   </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+
+```powershell
+function ya {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    yazi --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -Path $cwd
+    }
+    Remove-Item -Path $tmp
+}
+```
+
+  </TabItem>
 </Tabs>
