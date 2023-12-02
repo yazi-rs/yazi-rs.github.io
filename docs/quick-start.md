@@ -179,10 +179,10 @@ def --env ya [] {
 ```
 
   </TabItem>
-  <TabItem value="nushell" label="Nushell">
+  <TabItem value="powershell" label="PowerShell">
 
 ```pwsh
-function yazicd {
+function ya {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
