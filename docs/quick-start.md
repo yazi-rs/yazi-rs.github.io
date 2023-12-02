@@ -181,7 +181,7 @@ def --env ya [] {
   </TabItem>
   <TabItem value="powershell" label="PowerShell">
 
-```pwsh
+```powershell
 function ya {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi --cwd-file="$tmp"
@@ -191,7 +191,7 @@ function ya {
     }
     Remove-Item -Path $tmp
 }
+```
 
   </TabItem>
 </Tabs>
-```
