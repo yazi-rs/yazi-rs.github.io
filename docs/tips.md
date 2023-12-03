@@ -90,6 +90,18 @@ You can change the `<Esc>` of input component from the default `escape` to `clos
 
 To exiting input directly, without entering Vi mode, making it behave like a regular input box.
 
+## Drag and drop via [`dragon`](https://github.com/mwh/dragon)
+
+Original post: https://github.com/sxyazi/yazi/discussions/327
+
+```toml
+{ on = [ "<C-n>" ], exec = '''
+    shell 'dragon -x -i -T "$1"' --confirm
+''' }
+```
+
+Please make sure that `<C-n>` does not conflict with your other keys.
+
 ## No status bar
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
