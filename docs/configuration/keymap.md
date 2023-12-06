@@ -5,7 +5,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 
 # keymap.toml
 
-:::tip
+:::note
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 

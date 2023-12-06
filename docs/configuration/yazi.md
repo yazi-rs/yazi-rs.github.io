@@ -5,7 +5,7 @@ description: Learn how to configure Yazi's basic functionality.
 
 # yazi.toml
 
-:::tip
+:::note
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
