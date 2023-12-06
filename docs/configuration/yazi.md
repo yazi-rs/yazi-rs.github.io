@@ -134,8 +134,9 @@ Available rule parameters are as follows:
 - micro_workers: Maximum number of concurrent micro-tasks
 - macro_workers: Maximum number of concurrent macro-tasks
 - bizarre_retry: Maximum number of retries when a bizarre failure occurs
+- suppress_preload: Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming.
 
-Image decoding:
+### Image decoding
 
 - image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image, `0` for unlimited.
 - image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image, `0` for unlimited.
@@ -174,7 +175,7 @@ Some `Input`s have special placeholders that will be replaced with actual conten
 
 - delete_title: String
 
-  - `{n}`: Number of files to be trashed
+  - `{n}`: Number of files to be deleted
   - `{s}`: `"s"` if `n > 1`, otherwise `""`
 
 - find_title: [String, String]
@@ -184,7 +185,7 @@ Some `Input`s have special placeholders that will be replaced with actual conten
   It's a tuple of 2-element: first for "Non-blocking shell", second for "Blocking shell".
 
 - quit_title
-  - `{n}`: Number of files to be trashed
+  - `{n}`: Number of tasks are running
   - `{s}`: `"s"` if `n > 1`, otherwise `""`
 
 ## select
