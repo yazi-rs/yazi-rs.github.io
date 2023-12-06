@@ -3,7 +3,7 @@ sidebar_position: 1
 description: Learn how to configure Yazi's basic functionality.
 ---
 
-# Yazi
+# yazi.toml
 
 :::tip
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).

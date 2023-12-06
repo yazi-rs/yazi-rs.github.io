@@ -3,7 +3,7 @@ sidebar_position: 2
 description: Learn how to configure keyboard shortcuts with Yazi.
 ---
 
-# Keymap
+# keymap.toml
 
 :::tip
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
