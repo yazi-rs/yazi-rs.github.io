@@ -141,7 +141,7 @@ You can also use this convenient wrapper that provides the ability to change the
 ```bash
 function ya() {
 	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi --cwd-file="$tmp"
+	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		cd -- "$cwd"
 	fi
@@ -155,7 +155,7 @@ function ya() {
 ```shell
 function ya
 	set tmp (mktemp -t "yazi-cwd.XXXXX")
-	yazi --cwd-file="$tmp"
+	yazi $argv --cwd-file="$tmp"
 	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		cd -- "$cwd"
 	end
@@ -167,9 +167,9 @@ end
   <TabItem value="nushell" label="Nushell">
 
 ```shell
-def --env ya [] {
+def --env ya [args?] {
 	let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
-	yazi --cwd-file $tmp
+	yazi $args --cwd-file $tmp
 	let cwd = (open $tmp)
 	if $cwd != "" and $cwd != $env.PWD {
 		cd $cwd
@@ -184,7 +184,7 @@ def --env ya [] {
 ```powershell
 function ya {
     $tmp = [System.IO.Path]::GetTempFileName()
-    yazi --cwd-file="$tmp"
+    yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
         Set-Location -Path $cwd
