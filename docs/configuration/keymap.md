@@ -9,7 +9,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
-## manager
+## [manager]
 
 - escape: Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
@@ -199,7 +199,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - help: Open the help menu.
 
-## tasks
+## [tasks]
 
 - close: Hide the task manager.
 - arrow:
@@ -209,7 +209,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 - cancel: Cancel the task.
 - help: Open the help menu.
 
-## select
+## [select]
 
 - close: Cancel selection.
 
@@ -221,7 +221,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - help: Open the help menu.
 
-## input
+## [input]
 
 - close: Cancel input.
 
@@ -274,15 +274,7 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `backward`: Kill backwards to the start of the current word.
   - `forward`: Kill forwards to the end of the current word.
 
-## Help
-
-- close: Hide the help menu.
-- escape: Clear the filter, or hide the help menu.
-- arrow
-  - `n`: Move the cursor up or down n lines. Negative value for up, positive value for down.
-- filter: Apply a filter for the help items.
-
-## Completion
+## [completion]
 
 - close: Hide the completion menu.
 
@@ -293,3 +285,11 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `n`: Move the cursor up or down n lines. Negative value for up, positive value for down.
 
 - help: Open the help menu.
+
+## [help]
+
+- close: Hide the help menu.
+- escape: Clear the filter, or hide the help menu.
+- arrow
+  - `n`: Move the cursor up or down n lines. Negative value for up, positive value for down.
+- filter: Apply a filter for the help items.

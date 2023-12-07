@@ -9,7 +9,7 @@ description: Learn how to configure Yazi's basic functionality.
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
-## manager
+## [manager]
 
 - layout: Manager layout by ratio, 3-element array
 
@@ -59,7 +59,7 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `true`: Show
   - `false`: Do not show
 
-## preview
+## [preview]
 
 - tab_size: Tab width
 - max_width: Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
@@ -75,7 +75,7 @@ This is useful for solving [the bug of Ueberzug image size calculation](https://
 
 If your monitor has a `2.0` scale factor, and is running on Wayland under Hyprland, you may need to set `ueberzug_scale: 0.5`, and adjust the value of `ueberzug_offset` according to your case, to offset this issue.
 
-## opener
+## [opener]
 
 Configure available openers, for example:
 
@@ -105,7 +105,7 @@ Available parameters are as follows:
   - `linux`: Linux
   - `macos`: macOS
 
-## open
+## [open]
 
 Set rules for opening specific files, for example:
 
@@ -129,7 +129,7 @@ Available rule parameters are as follows:
 - mime (String): Glob expression for matching the MIME type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - use (String): Opener name corresponding to the names in the [`[opener]` section](#opener).
 
-## tasks
+## [tasks]
 
 - micro_workers: Maximum number of concurrent micro-tasks
 - macro_workers: Maximum number of concurrent macro-tasks
@@ -141,7 +141,7 @@ Available rule parameters are as follows:
 - image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image, `0` for unlimited.
 - image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image, `0` for unlimited.
 
-## input
+## [input]
 
 You can customize the title and position of each `Input`. As for position, it consists of two parts: [Origin](#origin) and [Offset](#offset).
 
@@ -188,6 +188,6 @@ Some `Input`s have special placeholders that will be replaced with actual conten
   - `{n}`: Number of tasks are running
   - `{s}`: `"s"` if `n > 1`, otherwise `""`
 
-## select
+## [select]
 
 Same as [the input](#input).

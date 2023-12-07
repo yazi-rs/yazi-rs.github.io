@@ -44,7 +44,7 @@ If you're looking for ready-made themes and don't want to create one yourself, c
   - hidden (Boolean): Hidden
   - crossed (Boolean): Crossed out
 
-## Manager
+## [manager]
 
 - cwd (Style): CWD text style.
 
@@ -84,7 +84,7 @@ Highlighting: The built-in syntax highlighting feature
 
 - syntect_theme (String): Theme file path. Since Yazi and `bat` use the same highlighter, so you can directly use bat's theme files, such as `~/.config/bat/themes/Catppuccino-mocha.tmTheme`.
 
-## Status
+## [status]
 
 - separator_open (String): Opening separator symbol. e.g. `"["`.
 - separator_close (String): Closing separator symbol. e.g. `"]"`.
@@ -110,20 +110,20 @@ Permissions
 - permissions_x (Style): Execute permission.
 - permissions_s (Style): `-` separator.
 
-## Select
+## [select]
 
 - border (Style): Border style.
 - active (Style): Selected item style.
 - inactive (Style): Unselected item style.
 
-## Input
+## [input]
 
 - border (Style): Border style.
 - title (Style): Title style.
 - value (Style): Value style.
 - selected (Style): Selected value style.
 
-## Completion
+## [completion]
 
 - border (Style): Border style.
 - active (Style): Selected item style.
@@ -135,13 +135,13 @@ Icons
 - icon_folder (String): Folder icon.
 - icon_command (String): Command icon.
 
-## Tasks
+## [tasks]
 
 - border (Style): Border style.
 - title (Style): Title style.
 - hovered (Style): Hovered item style.
 
-## Which
+## [which]
 
 - mask (Style): Mask style.
 - cand (Style): Candidate key style.
@@ -150,7 +150,7 @@ Icons
 - separator (String): Separator symbol. e.g. `" -> "`.
 - separator_style (Style): Separator style.
 
-## Help
+## [help]
 
 - on (Style): Key column style.
 - exec (Style): Command column style.
@@ -158,7 +158,7 @@ Icons
 - hovered (Style): Hovered item style.
 - footer (Style): Footer style.
 
-## Filetype
+## [filetype]
 
 Set file list item display styles for specific file types, supporting matching by name and mime-type:
 
@@ -185,7 +185,7 @@ Each rule supports complete [Style properties](#Types). There are two special ru
 - `name = "*"` matches all files.
 - `name = "*/"` matches all directories.
 
-## Icons
+## [icons]
 
 Display different icons based on file name rules, noting that the `/` after the name signifies that it must be a directory.
 
