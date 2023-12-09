@@ -79,6 +79,12 @@ pkgin install yazi
 
 See [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide).
 
+## AOSC OS
+
+```bash
+sudo oma install yazi
+```
+
 ## Official binaries
 
 You can download the latest official binaries from [GitHub Releases](https://github.com/sxyazi/yazi/releases).
