@@ -7,6 +7,7 @@ description: How to install Yazi on various operating systems.
 
 Prerequisites:
 
+- file (required, for file type detection)
 - nerd-fonts ([_optional_](./faq.md#i-dont-like-nerdfonts))
 - ffmpegthumbnailer (_optional_, for video thumbnails)
 - unar (_optional_, for archive preview)
