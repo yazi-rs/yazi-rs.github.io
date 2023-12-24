@@ -142,7 +142,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - find
 
-  - `query`: Optional, the query to find for. If not provided, a interactive UI will be used to input with.
+  - `query`: Optional, the query to find for. If not provided, an interactive UI will be used to input with.
   - `--previous`: Find for the previous occurrence.
   - `--smart`: Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive.
   - `--insensitive`: Use case-insensitive find.
@@ -150,6 +150,10 @@ If you haven't created and used your own configuration file yet, please see [Con
 - find_arrow: Move the cursor to the next or previous occurrence.
 
   - `--previous`: Move to the previous occurrence.
+
+- filter
+
+  - `query`: Optional, the query to filter for. If not provided, an interactive UI will be used to input with.
 
 - sort
 
