@@ -11,13 +11,13 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 ## manager
 
-- escape: Cancel find, cancel filter, exit visual mode, clear selected, or cancel search.
+- escape: Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
   - `--all`: Do all of the above.
   - `--find`: Cancel find.
-  - `--filter`: Cancel filter.
   - `--visual`: Exit visual mode.
   - `--select`: Clear selected.
+  - `--filter`: Cancel filter.
   - `--search`: Cancel search.
 
   Automatically determine the operation by default, and it will only execute the selected operation after specifying the option; multiple options can be stacked.
