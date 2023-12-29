@@ -82,6 +82,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 - paste: Paste the yanked files.
 
   - `--force`: Overwrite the destination file if it exists.
+  - `--follow`: Copy the file pointed to by a symbolic link, rather than the link itself. Only can be used during copying.
 
 - link: Create a symbolic link to the yanked files. (This is a privileged action in Windows and must be run as an administrator.)
 
