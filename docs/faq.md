@@ -60,6 +60,14 @@ Before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crosste
 
 Therefore, the Windows version of Yazi currently uses `preview.max_width` and `preview.max_height` specified by the user in the `yazi.toml` as the image size.
 
+## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
+
+TL;DR: Use a theme for Yazi, https://github.com/yazi-rs/themes
+
+This might be a bug in kitty (or feature? I don't know). In kitty, you have to add a style to file list items (like foreground color) to make the icons match the text size. However, Yazi's default theme can't add that color, because it can't predict whether the user's terminal has a white background with black text, or a black background with white text.
+
+So it inherits the default terminal font color. This causes the icon size issue, and I've only found this problem in kitty - other terminals don't have it. Therefore, please use a Yazi theme for the kitty terminal.
+
 ## Why can't "Open" and "Enter" be a single command?
 
 The decision to separate `enter` and `open` commands was intentional.
