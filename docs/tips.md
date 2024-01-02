@@ -136,7 +136,8 @@ preview_offset = [ 1, 1, 0, 1 ]
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
-You only need to rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua#L39-L46) to achieve this feature, save this function as a file, and apply the following patch to it:
+You only need to rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua#L39-L46) to achieve this feature,
+save this method as a file, and apply the following patch to it:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()
@@ -160,4 +161,38 @@ Finally just include it:
 preload = [
 	"/path/to/your/status-name-function.lua"
 ]
+```
+
+## Show user/group of files in status bar
+
+<img src={useBaseUrl("/img/owner.png")} width="600" />
+
+You only need to rewrite the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua#L143-L154) to achieve this feature,
+copy this method to your `~/.config/yazi/init.lua`, and apply the following patch:
+
+```diff
+@@ -1,8 +1,22 @@
++function Status:owner()
++	local h = cx.active.current.hovered
++	if h == nil or ya.target_family() ~= "unix" then
++		return ui.Line {}
++	end
++
++	return ui.Line {
++		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
++		ui.Span("@"),
++		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
++		ui.Span(" "),
++	}
++end
++
+ function Status:render(area)
+ 	self.area = area
+
+ 	local left = ui.Line { self:mode(), self:size(), self:name() }
+-	local right = ui.Line { self:permissions(), self:percentage(), self:position() }
++	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
+ 	local progress = self:progress(area, right:width())
+ 	return {
+ 		ui.Paragraph(area, { left }),
 ```
