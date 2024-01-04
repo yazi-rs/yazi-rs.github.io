@@ -7,9 +7,15 @@ description: Learn how to configure Yazi.
 
 # Configuration
 
-You can find the preset configuration at: https://github.com/sxyazi/yazi/tree/main/yazi-config/preset.
+There are multiple configuration files. They configure core yazi behavior, keymaps, and the theme, accordingly.
 
-If you want to override the behavior as you like, please copy them to the following paths, to create and use your own configurations:
+You can find the default configurations at: https://github.com/sxyazi/yazi/tree/main/yazi-config/preset.
 
-- Unix: `~/.config/yazi/`
-- Windows: `C:\Users\YourName\AppData\Roaming\yazi\config\`
+To override any of the defaults, begin by copying the appropriate file to following location:
+
+- `~/.config/yazi/` for Linux and macOS users, or
+- `C:\Users\USERNAME\AppData\Roaming\yazi\config\` for Windows users.
+
+For example, to edit the keymaps, start by copying `keymap.toml` file (found [here](https://github.com/sxyazi/yazi/tree/main/yazi-config/preset)) to:
+- `~/.config/yazi/keymap.toml` for Linux and macOS users, or
+- `C:\Users\USERNAME\AppData\Roaming\yazi\config\keymap.toml` for Windows users.
