@@ -25,7 +25,7 @@ The second denotes the direction of the bar and accepts the following constants:
 - `ui.Bar.LEFT`
 - `ui.Bar.ALL`
 
-Methods:
+Methods (all methods return `self`):
 
 - `ui.Bar:symbol(symbol)` - accepts a string, specifying the symbol for the bar
 - `ui.Bar:style(style)` - accepts a [Style](#uistyle), specifying the style of the bar
@@ -57,7 +57,7 @@ You can also use `ui.Border:type(type)` to specify different types for the borde
 - `ui.Border.QUADRANT_INSIDE`
 - `ui.Border.QUADRANT_OUTSIDE`
 
-Methods:
+Methods (all methods return `self`):
 
 - `ui.Border:style(style)` - accepts a [Style](#uistyle), specifying the style of the border
 
@@ -77,6 +77,8 @@ ui.Constraint.Min(3)         -- Apply at least the given amount
 
 ### `ui.Gauge`
 
+Create a gauge:
+
 ```lua
 ui.Gauge(rect)
 ```
@@ -84,10 +86,16 @@ ui.Gauge(rect)
 - `ui.Gauge:percent(percent)` - Set the percentage of the gauge
 - `ui.Gauge:ratio(ratio)` - Set the ratio of the gauge
 - `ui.Gauge:label(label)` - Set the label of the gauge
-- `ui.Gauge:style(style)` - Set the style of everything except the bar itself
-- `ui.Gauge:gauge_style(style)` - Set the style of the bar
+- `ui.Gauge:style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#uistyle)
+- `ui.Gauge:gauge_style(style)` - Set the style of the bar, which accepts a [Style](#uistyle)
 
 ### `ui.Layout`
+
+Create a layout:
+
+```lua
+ui.Layout()
+```
 
 - `ui.Layout:direction(direction)` - Set the direction of the layout. It accepts the following constants:
   - `ui.Layout.HORIZONTAL`
@@ -100,31 +108,47 @@ ui.Gauge(rect)
 
 ### `ui.Line`
 
-TODO
+Create a line, which accepts a list of [Span](#uispan) and [Line](#uiline):
 
-// Alignment
+```lua
+ui.Line { span, line, span, ... }
+```
 
-- ("LEFT", LEFT.into_lua(lua)?),
-- ("CENTER", CENTER.into_lua(lua)?),
-- ("RIGHT", RIGHT.into_lua(lua)?),
-
-- width
-- style
-- align
+- `ui.Line:width()` - Get the width of the line
+- `ui.Line:style(style)` - Set the style of the line, which accepts a [Style](#uistyle)
+- `ui.Line:align(alignment)` - Set the alignment of the line. It accepts the following constants:
+  - `ui.Line.LEFT`
+  - `ui.Line.CENTER`
+  - `ui.Line.RIGHT`
 
 ### `ui.List`
 
-TODO
+Create a list:
+
+```lua
+ui.List(rect, items)
+```
+
+The first attribute is a [Rect](#uirect), representing the position of this list.
+The second denotes the items of the list and accepts a list of [ListItem](#uilistitem).
 
 ### `ui.ListItem`
 
-TODO
+Create a list item:
 
-- style
+```lua
+ui.ListItem(line)
+ui.ListItem(span)
+ui.ListItem("string")
+```
+
+Methods (all methods return `self`):
+
+- `ui.ListItem:style(style)` - Set the style of the list item, which accepts a [Style](#uistyle)
 
 ### `ui.Padding`
 
-All parameters for padding are integers, and you can create it by:
+All parameters for padding are integers:
 
 ```lua
 ui.Padding(left, right, top, bottom)
@@ -152,16 +176,24 @@ Properties:
 
 ### `ui.Paragraph`
 
-TODO
+Create a paragraph:
 
-- ("parse", parse.into_lua(lua)?),
-- // Alignment
-- ("LEFT", LEFT.into_lua(lua)?),
-- ("CENTER", CENTER.into_lua(lua)?),
-- ("RIGHT", RIGHT.into_lua(lua)?),
+```lua
+ui.Paragraph(rect, { line, line, ... })
+```
 
-- style
-- align
+The first attribute is a [Rect](#uirect), representing the position of this paragraph.
+The second denotes the lines of the paragraph and accepts a list of [Line](#uiline).
+
+You can also use `ui.Paragraph.parse(string)` to parse an [ANSI escape sequence](https://en.wikipedia.org/wiki/ANSI_escape_code) string into a paragraph.
+
+Methods (all methods return `self`):
+
+- `ui.Paragraph:style(style)` - Set the style of the paragraph, which accepts a [Style](#uistyle)
+- `ui.Paragraph:align(alignment)` - Set the alignment of the paragraph. It accepts the following constants:
+  - `ui.Paragraph.LEFT`
+  - `ui.Paragraph.CENTER`
+  - `ui.Paragraph.RIGHT`
 
 ### `ui.Rect`
 
@@ -171,14 +203,14 @@ A Rect is represented an area within the terminal by four attributes:
 ui.Rect {
 	x = 10, -- x position
 	y = 10, -- y position
-	w = 20,  -- width
+	w = 20, -- width
 	h = 30, -- height
 }
 
 ui.Rect.default  -- Equal to `ui.Rect { x = 0, y = 0, w = 0, h = 0 }`
 ```
 
-You can obtain a pre-computed `Rect` through Yazi's layout system.
+You can obtain a pre-computed `Rect` through [Yazi's layout system](#uilayout).
 
 Note that if you intend to create it yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
 
@@ -193,43 +225,57 @@ Properties:
 - `top` - top position
 - `bottom` - bottom position
 
-Methods:
+Methods (all methods return `self`):
 
-- `padding(padding)` - Set padding. It accepts a [Padding](#uipadding)
+- `ui.Rect:padding(padding)` - Set padding. It accepts a [Padding](#uipadding)
 
 ### `ui.Span`
 
-TODO
+Create a span:
 
-- fg
-- bg
-- bold
-- dim
-- italic
-- underline
-- blink
-- blink_rapid
-- hidden
-- crossed
-- reset
-- style
+```lua
+ui.Span("string")
+```
+
+Methods (all methods return `self`):
+
+- `ui.Span:fg(color)` - Set the foreground color of the span, which accepts a [Color](../configuration/theme.md#types)
+- `ui.Span:bg(color)` - Set the background color of the span, which accepts a [Color](../configuration/theme.md#types)
+- `ui.Span:bold()` - Set the span to bold
+- `ui.Span:dim()` - Set the span to dim
+- `ui.Span:italic()` - Set the span to italic
+- `ui.Span:underline()` - Set the span to underline
+- `ui.Span:blink()` - Set the span to blink
+- `ui.Span:blink_rapid()` - Set the span to blink rapidly
+- `ui.Span:hidden()` - Set the span to hidden
+- `ui.Span:crossed()` - Set the span to crossed
+- `ui.Span:reset()` - Reset the style of the span
+- `ui.Span:style(style)` - Set the style of the span, which accepts a [Style](#uistyle)
 
 ### `ui.Style`
 
-TODO
+Create a style:
 
-- fg
-- bg
-- bold
-- dim
-- italic
-- underline
-- blink
-- blink_rapid
-- hidden
-- crossed
-- reset
+```lua
+ui.Style()
+```
+
+- `ui.Style:fg(string)` - Set the foreground color of the style, which accepts a [Color](../configuration/theme.md#types)
+- `ui.Style:bg(string)` - Set the background color of the style, which accepts a [Color](../configuration/theme.md#types)
+- `ui.Style:bold()` - Set the style to bold
+- `ui.Style:dim()` - Set the style to dim
+- `ui.Style:italic()` - Set the style to italic
+- `ui.Style:underline()` - Set the style to underline
+- `ui.Style:blink()` - Set the style to blink
+- `ui.Style:blink_rapid()` - Set the style to blink rapidly
+- `ui.Style:hidden()` - Set the style to hidden
+- `ui.Style:crossed()` - Set the style to crossed
+- `ui.Style:reset()` - Reset the style
 
 ## Sync context
 
+TODO
+
 ## Isolate context
+
+TODO
