@@ -9,51 +9,57 @@ description: Learn how to use Yazi's Lua API.
 
 ### `ui.Bar`
 
-Create a bar.
+Create a bar:
 
 ```lua
 ui.Bar(rect, direction)
 ```
 
-The first attribute is a [Rect](#uirect) object representing the position of this bar.
-The second attribute denotes the direction of the bar and accepts the following constants:
+The first attribute is a [Rect](#uirect), representing the position of this bar.
+The second denotes the direction of the bar and accepts the following constants:
 
 - `ui.Bar.NONE`
 - `ui.Bar.TOP`
 - `ui.Bar.RIGHT`
 - `ui.Bar.BOTTOM`
+- `ui.Bar.LEFT`
 - `ui.Bar.ALL`
 
 Methods:
 
 - `ui.Bar:symbol(symbol)` - accepts a string, specifying the symbol for the bar
-- `ui.Bar:style(style)` - accepts a Style object, specifying the style of the bar
+- `ui.Bar:style(style)` - accepts a [Style](#uistyle), specifying the style of the bar
 
 ### `ui.Border`
 
-TODO
+Create a border:
 
 ```lua
 ui.Border(rect, position)
 ```
 
-Position
+The first attribute is a [Rect](#uirect), representing the position of this border.
+The second denotes the position of the border and accepts the following constants:
 
-- ("NONE", Borders::NONE.bits().into_lua(lua)?),
-- ("TOP", Borders::TOP.bits().into_lua(lua)?),
-- ("RIGHT", Borders::RIGHT.bits().into_lua(lua)?),
-- ("BOTTOM", Borders::BOTTOM.bits().into_lua(lua)?),
-- ("LEFT", Borders::LEFT.bits().into_lua(lua)?),
-- ("ALL", Borders::ALL.bits().into_lua(lua)?),
+- `ui.Border.NONE`
+- `ui.Border.TOP`
+- `ui.Border.RIGHT`
+- `ui.Border.BOTTOM`
+- `ui.Border.LEFT`
+- `ui.Border.ALL`
 
-Type
+You can also use `ui.Border:type(type)` to specify different types for the border. It accepts the following type constants:
 
-- ("PLAIN", PLAIN.into_lua(lua)?),
-- ("ROUNDED", ROUNDED.into_lua(lua)?),
-- ("DOUBLE", DOUBLE.into_lua(lua)?),
-- ("THICK", THICK.into_lua(lua)?),
-- ("QUADRANT_INSIDE", QUADRANT_INSIDE.into_lua(lua)?),
-- ("QUADRANT_OUTSIDE", QUADRANT_OUTSIDE.into_lua(lua)?),
+- `ui.Border.PLAIN`
+- `ui.Border.ROUNDED`
+- `ui.Border.DOUBLE`
+- `ui.Border.THICK`
+- `ui.Border.QUADRANT_INSIDE`
+- `ui.Border.QUADRANT_OUTSIDE`
+
+Methods:
+
+- `ui.Border:style(style)` - accepts a [Style](#uistyle), specifying the style of the border
 
 ### `ui.Constraint`
 
@@ -63,7 +69,7 @@ percentage of the available space, a ratio of the available space, or a minimum 
 ```lua
 ui.Constraint.Percentage(50) -- Apply a percentage to a given amount
 ui.Constraint.Ratio(1, 3)    -- Apply a ratio
-ui.Constraint.Length(10)     -- Apply no more than the given amount (currently roughly equal to `Constraint::Max`)
+ui.Constraint.Length(10)     -- Apply no more than the given amount (currently roughly equal to `ui.Constraint.Max`)
 ui.Constraint.Max(5)         -- Apply at most the given amount
 ui.Constraint.Min(3)         -- Apply at least the given amount
 ```
@@ -193,7 +199,7 @@ Properties:
 
 Methods:
 
-- `padding(padding)` - Set padding. It accepts a [Padding](#uipadding) object
+- `padding(padding)` - Set padding. It accepts a [Padding](#uipadding)
 
 ### `ui.Span`
 

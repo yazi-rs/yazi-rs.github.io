@@ -22,7 +22,7 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 ```
 
 Each plugin is a directory ending with `.yazi`, containing an `init.lua` file for the plugin's initialization.
-For instance, the directory structure of the `zoxide.yazi` plugin is as follows:
+For instance, the structure of the `zoxide.yazi` plugin is as:
 
 ```
 zoxide.yazi/
