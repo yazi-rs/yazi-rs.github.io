@@ -63,8 +63,9 @@ Methods:
 
 ### `ui.Constraint`
 
-Constraints are used to define the size of a layout. They can be used to define a fixed size, a
-percentage of the available space, a ratio of the available space, or a minimum or maximum size.
+Constraints are used to define the size of a layout.
+
+They can be used to define a fixed size, a percentage of the available space, a ratio of the available space, or a minimum or maximum size:
 
 ```lua
 ui.Constraint.Percentage(50) -- Apply a percentage to a given amount
@@ -76,31 +77,26 @@ ui.Constraint.Min(3)         -- Apply at least the given amount
 
 ### `ui.Gauge`
 
-TODO
-
 ```lua
-ui.Gauge()
+ui.Gauge(rect)
 ```
 
-- `ui.Constraint:percent(percent)`
-- `ui.Constraint:ratio(ratio)`
-- `ui.Constraint:label(label)`
-- `ui.Constraint:style(style)`
-- `ui.Constraint:gauge_style(style)`
+- `ui.Gauge:percent(percent)` - Set the percentage of the gauge
+- `ui.Gauge:ratio(ratio)` - Set the ratio of the gauge
+- `ui.Gauge:label(label)` - Set the label of the gauge
+- `ui.Gauge:style(style)` - Set the style of everything except the bar itself
+- `ui.Gauge:gauge_style(style)` - Set the style of the bar
 
 ### `ui.Layout`
 
-TODO
-
-- direction
-- margin
-- margin_h
-- margin_v
-- constraints
-- split
-
-- ("HORIZONTAL", HORIZONTAL.into_lua(lua)?),
-- ("VERTICAL", VERTICAL.into_lua(lua)?),
+- `ui.Layout:direction(direction)` - Set the direction of the layout. It accepts the following constants:
+  - `ui.Layout.HORIZONTAL`
+  - `ui.Layout.VERTICAL`
+- `ui.Layout:margin(margin)` - Set the margin of the layout
+- `ui.Layout:margin_h(margin)` - Set the horizontal margin of the layout
+- `ui.Layout:margin_v(margin)` - Set the vertical margin of the layout
+- `ui.Layout:constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#uiconstraint)
+- `ui.Layout:split(rect)` - Accepts a [Rect](#uirect) and split it into multiple [Rect](#uirect) according to the constraints
 
 ### `ui.Line`
 
