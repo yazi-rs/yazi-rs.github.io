@@ -272,10 +272,150 @@ ui.Style()
 - `ui.Style:crossed()` - Set the style to crossed
 - `ui.Style:reset()` - Reset the style
 
-## Sync context
+## Config
 
 TODO
 
+- BOOT
+- MANAGER
+- THEME
+- PREVIEW
+
+## Common
+
+TODO
+
+### Cha
+
+### File
+
+### Range
+
+### Url
+
+### Window
+
+### ya
+
+- cache_file
+- manager_emit
+- image_show
+- image_precache
+- dbg
+- err
+- plugin_retrieve
+- preview_code
+- preview_archive
+- preview_widgets
+- target_family
+- truncate
+- mime_valid
+- time
+- uid
+- gid
+- user_name
+- group_name
+
+## Sync context
+
+The sync context accompanies the entire app lifecycle, you can access all app data through the `cx` within it:
+
+- `cx.active`: The active tab, which is a [tab::Tab](#tabtab)
+- `cx.tabs`: All of tabs, which is a [manager::Tabs](#managertabs)
+- `cx.tasks`: All of tasks, which is a [tasks::Tasks](#taskstasks)
+
+which is active during UI rendering (UI plugins) and when executing sync functional plugins (`plugin --sync` command).
+
+For better performance, the sync context is created only at the app's start and remains singular throughout. Thus, plugins running within this context share states,
+prompting plugin developers to create separate namespaces for their plugins to prevent global space contamination.
+
+### `tab::Mode`
+
+Visual mode status of the current tab.
+
+Properties:
+
+- `is_select`: Whether the current tab is in select mode
+- `is_unset`: Whether the current tab is in unset mode
+- `is_visual`: Whether the current tab is in select or unset mode
+
+Methods:
+
+- `pending(idx, state)`: TODO
+
+Meta methods:
+
+- `__tostring()`
+
+### `tab::Config`
+
+TODO
+
+Properties:
+
+- sort_by
+- sort_sensitive
+- sort_reverse
+- sort_dir_first
+- linemode
+- show_hidden
+
+### `tab::Preview`
+
+Properties:
+
+- skip
+- folder
+
+### `manager::Tabs`
+
+TODO
+
+Properties:
+
+- idx
+
+Meta methods:
+
+- `__len()`
+- `__index(idx)`
+
+### `tab::Tab`
+
+TODO
+
+Properties:
+
+- mode
+- conf
+- parent
+- current
+- preview
+
+Methods:
+
+- name()
+
+### `tasks::Tasks`
+
+TODO
+
+Properties:
+
+- progress
+
 ## Isolate context
+
+TODO
+
+### fs
+
+### Child
+
+### Command
+
+### Output
+
+### Status
 
 TODO
