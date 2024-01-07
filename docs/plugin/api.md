@@ -331,13 +331,13 @@ prompting plugin developers to create separate namespaces for their plugins to p
 
 ### `tab::Mode`
 
-Visual mode status of the current tab.
+Visual mode status.
 
 Properties:
 
-- `is_select`: Whether the current tab is in select mode
-- `is_unset`: Whether the current tab is in unset mode
-- `is_visual`: Whether the current tab is in select or unset mode
+- `is_select`: Whether the mode is select
+- `is_unset`: Whether the mode is unset
+- `is_visual`: Whether the mode is select or unset
 
 Methods:
 
@@ -353,27 +353,31 @@ TODO
 
 Properties:
 
-- sort_by
-- sort_sensitive
-- sort_reverse
-- sort_dir_first
-- linemode
-- show_hidden
+- `sort_by`
+- `sort_sensitive`
+- `sort_reverse`
+- `sort_dir_first`
+- `linemode`
+- `show_hidden`
 
 ### `tab::Preview`
-
-Properties:
-
-- skip
-- folder
-
-### `manager::Tabs`
 
 TODO
 
 Properties:
 
-- idx
+- `skip`
+- `folder`
+
+### `folder::Folder`
+
+### `folder::Files`
+
+### `manager::Tabs`
+
+Properties:
+
+- `idx`: The index of the active tab
 
 Meta methods:
 
@@ -382,27 +386,36 @@ Meta methods:
 
 ### `tab::Tab`
 
-TODO
-
 Properties:
 
-- mode
-- conf
-- parent
-- current
-- preview
+- `mode`: The [tab::Mode](#tabmode) of this tab
+- `conf`: The [tab::Config](#tabconfig) of this tab
+- `parent`: The parent folder within this tab, which is a [folder::Folder](#folderfolder)
+- `current`: The current folder within this tab, which is a [folder::Folder](#folderfolder)
+- `preview`: The [tab::Preview](#tabpreview) within this tab
 
 Methods:
 
-- name()
+- `name()`: The name of this tab
 
 ### `tasks::Tasks`
 
-TODO
-
 Properties:
 
-- progress
+- `progress`: The progress of all tasks, which is a table:
+
+  ```lua
+  {
+  	-- Number of tasks
+  	total = 0,
+  	succ  = 0,
+  	fail  = 0,
+
+  	-- Workload of tasks
+  	found     = 0,
+  	processed = 0,
+  }
+  ```
 
 ## Isolate context
 
