@@ -371,7 +371,34 @@ Properties:
 
 ### `folder::Folder`
 
+- cwd
+- offset
+- cursor
+- window
+- files
+- hovered
+
 ### `folder::Files`
+
+Meta methods:
+
+- `__len()`
+- `__pairs()`
+
+### `folder:File`
+
+Based on [File](#file), with the following additional methods:
+
+- `size()` - The size of this file
+- `mime()` - The mime-type of this file
+- `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
+- `icon()` - The icon of this file, [`[icons]`](../configuration/theme.md#icons) rules is applied
+- `style()` - The style of this file, [`[filetype]`](../configuration/theme.md#filetype) rules is applied
+- `is_hovered()` - Whether this file is hovered
+- `is_yanked()` - Whether this file is yanked
+- `is_selected()` - Whether this file is selected
+- `found()` - When users find a file using the `find` command, the status of the file - returns `nil` if it doesn't match the user's find keyword; otherwise, returns `{idx, all}`, where `idx` is the position of matched file, and `all` represents the number of all matched files.
+- `highlights()` - TODO
 
 ### `manager::Tabs`
 
