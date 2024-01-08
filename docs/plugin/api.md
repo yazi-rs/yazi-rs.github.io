@@ -321,34 +321,52 @@ TODO
 
 ### Url
 
-TODO
+Properties:
+
+- `frag`: The fragment string of this url. Let's say the url is `archive:///root/my-archive.zip#1.jpg`, then the fragment is `1.jpg`
+- `is_regular`: Whether the file represented by this url is a regular file
+- `is_search`: Whether the file represented by this url from the search result
+- `is_archive`: Whether the file represented by this url from an archive
+
+Meta methods:
+
+- `__eq(another_url)`
+- `__tostring()`
+- `__concat(string)`
 
 ### Window
 
-TODO
+Properties:
+
+- `rows`: The number of rows of this window
+- `cols`: The number of columns of this window
+- `width`: The width of this window in pixels
+- `height`: The height of this window in pixels
 
 ### ya
 
 TODO
 
-- cache_file
-- manager_emit
-- image_show
-- image_precache
-- dbg
-- err
-- plugin_retrieve
-- preview_code
-- preview_archive
-- preview_widgets
-- target_family
-- truncate
-- mime_valid
-- time
-- uid
-- gid
-- user_name
-- group_name
+Functions:
+
+- `cache_file`
+- `manager_emit`
+- `image_show`
+- `image_precache`
+- `dbg`
+- `err`
+- `plugin_retrieve`
+- `preview_code`
+- `preview_archive`
+- `preview_widgets`
+- `target_family`
+- `truncate`
+- `mime_valid`
+- `time`
+- `uid`
+- `gid`
+- `user_name`
+- `group_name`
 
 ## Sync context
 
