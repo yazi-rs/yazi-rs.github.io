@@ -281,6 +281,109 @@ TODO
 - THEME
 - PREVIEW
 
+## ya
+
+TODO
+
+### `cache_file(path)`
+
+Calculate the cached [Url](#url) corresponding to the given path:
+
+- `path` - Required, the path of the file, which is a string
+
+If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
+
+### `manager_emit(cmd, args, data)`
+
+Send a command to the manager without waiting for the executor to execute:
+
+- `cmd` - Required, the command name, which is a string
+- `args` - Required, the arguments of the command, which is a table of strings
+- `data` - Optional, additional data passed to the command
+
+```lua
+ya.manager_emit("my-cmd", { "hello", foo = "", bar_baz = "world" })
+
+-- Equivalent to:
+-- my-cmd "hello" --foo --bar-baz="world"
+```
+
+### `image_show(url, rect)`
+
+Display the given image within the specified area, and the image will downscale to fit that area automatically:
+
+- `url` - Required, the [Url](#url) of the image
+- `rect` - Required, the [Rect](#uirect) of the area
+
+### `image_precache(src, dist)`
+
+Pre-cache the image to a specified path based on user-configured [`max_width` and `max_height`](../configuration/yazi#preview):
+
+- `src` - Required, the source path of the image
+- `dist` - Required, the destination path of the image
+
+### `dbg(msg)`
+
+Append messages to Yazi's log file at the debug level:
+
+- `msg` - Required, the message to be logged, which is a string
+
+Note that if you build in release mode, the log level for Yazi is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg).
+
+### `err(msg)`
+
+Append messages to Yazi's log file at the error level:
+
+- `msg` - Required, the message to be logged, which is a string
+
+### `plugin_retrieve`
+
+TODO
+
+### `preview_code(opts)`
+
+TODO
+
+### `preview_archive(opts)`
+
+TODO
+
+### `preview_widgets(widgets)`
+
+TODO
+
+### `target_family()`
+
+TODO
+
+### `truncate(text, max)`
+
+TODO
+
+### `mime_valid(string)`
+
+TODO
+
+### `time()`
+
+TODO
+
+### `uid()`
+
+TODO
+
+### `gid()`
+
+TODO
+
+### `user_name()`
+
+TODO
+
+### `group_name()`
+
+TODO
+
 ## Common
 
 ### Cha
@@ -342,31 +445,6 @@ Properties:
 - `cols`: The number of columns of this window
 - `width`: The width of this window in pixels
 - `height`: The height of this window in pixels
-
-### ya
-
-TODO
-
-Functions:
-
-- `cache_file`
-- `manager_emit`
-- `image_show`
-- `image_precache`
-- `dbg`
-- `err`
-- `plugin_retrieve`
-- `preview_code`
-- `preview_archive`
-- `preview_widgets`
-- `target_family`
-- `truncate`
-- `mime_valid`
-- `time`
-- `uid`
-- `gid`
-- `user_name`
-- `group_name`
 
 ## Sync context
 
