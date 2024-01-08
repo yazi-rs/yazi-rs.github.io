@@ -75,11 +75,6 @@ Border:
 - border_symbol (String): Border symbol. e.g. `"│"`.
 - border_style (Style): Border style.
 
-Offset:
-
-- folder_offset (`[top, right, bottom, left]`): Folder layout offset. e.g. `[ 1, 0, 1, 0 ]`.
-- preview_offset (`[top, right, bottom, left]`): Preview layout offset. e.g. `[ 1, 1, 1, 1 ]`.
-
 Highlighting: The built-in syntax highlighting feature
 
 - syntect_theme (String): Theme file path. Since Yazi and `bat` use the same highlighter, so you can directly use bat's theme files, such as `~/.config/bat/themes/Catppuccino-mocha.tmTheme`.

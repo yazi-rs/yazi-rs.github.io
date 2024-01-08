@@ -283,19 +283,53 @@ TODO
 
 ## Common
 
-TODO
-
 ### Cha
+
+Cha means one file's characteristics with the following properties:
+
+- `is_dir`: Whether this file is a directory
+- `is_hidden`: Whether this file is hidden (starts with a dot)
+- `is_link`: Whether this file is a symlink
+- `is_bad_link`: Whether this file is a bad symlink, which points to a non-existent file
+- `length`: The length of this file, returns a integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
+- `created`: The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `modified`: The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `accessed`: The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `permissions`: Unix permissions of this file in string, e.g. `drwxr-xr-x`. For Windows, it's always `nil`
+
+And the Unix only properties:
+
+- `is_block_device`: Whether this file is a block device
+- `is_char_device`: Whether this file is a character device
+- `is_fifo`: Whether this file is a fifo
+- `is_socket`: Whether this file is a socket
+- `uid`: The user id of this file
+- `gid`: The group id of this file
 
 ### File
 
+Properties:
+
+- `url`: The [Url](#url) of this file
+- `cha`: The [Cha](#cha) of this file
+- `link_to`: The [Url](#url) of this file pointing to, if it's a symlink; otherwise, `nil`
+- `name`: The name of this file
+
 ### Range
+
+TODO
 
 ### Url
 
+TODO
+
 ### Window
 
+TODO
+
 ### ya
+
+TODO
 
 - cache_file
 - manager_emit
@@ -389,11 +423,11 @@ Meta methods:
 
 Based on [File](#file), with the following additional methods:
 
-- `size()` - The size of this file
-- `mime()` - The mime-type of this file
+- `size()` - The size of this file, returns a integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
+- `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The icon of this file, [`[icons]`](../configuration/theme.md#icons) rules is applied
-- `style()` - The style of this file, [`[filetype]`](../configuration/theme.md#filetype) rules is applied
+- `icon()` - The icon string of this file, [`[icons]`](../configuration/theme.md#icons) rules are applied
+- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme.md#filetype) rules are applied
 - `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
 - `is_selected()` - Whether this file is selected
