@@ -7,6 +7,8 @@ description: Learn how to use Yazi's Lua API.
 
 ## Layout
 
+Paragraph, List, Bar, Border, and Gauge are renderable widgets; others need to be placed within any of them.
+
 ### `ui.Bar`
 
 Create a bar:
@@ -283,8 +285,6 @@ TODO
 
 ## ya
 
-TODO
-
 ### `cache_file(path)`
 
 Calculate the cached [Url](#url) corresponding to the given path:
@@ -342,47 +342,64 @@ TODO
 
 ### `preview_code(opts)`
 
-TODO
+Preview the file as code into the specified area:
+
+- `opts` - Required, the options of the preview, which is a table:
+  - `file` - The previewed [File](#file)
+  - `area` - The area of the preview, which is a [Rect](#uirect)
+  - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
+  - `window` - The [Window](#window) of the preview
 
 ### `preview_archive(opts)`
 
-TODO
+Preview the file as an archive into the specified area:
 
-### `preview_widgets(widgets)`
+- `opts` - Required, the options of the preview. It's the same as [`preview_code`](#previewcodeopts)
 
-TODO
+### `preview_widgets(opts, widgets)`
+
+- `opts` - Required, the options of the preview, which is a table:
+  - `file` - The previewed [File](#file)
+  - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
+  - `window` - The [Window](#window) of the preview
+- `widgets` - List of renderable widgets, such as `{ ui.Paragraph {...}, ui.List {...}, ... }`
 
 ### `target_family()`
 
-TODO
+Returns the target family of the current platform, `"windows"`, `"unix"`, or `"wasm"`.
 
 ### `truncate(text, max)`
 
-TODO
+Truncate the text to the specified length and return it:
 
-### `mime_valid(string)`
+- `text` - Required, the text to be truncated, which is a string
+- `max` - Required, the maximum length of the text, which is a integer
 
-TODO
+### `mime_valid(mime)`
+
+Check whether the mime-type is valid:
+
+- `mime` - Required, the mime-type to be checked, which is a string
 
 ### `time()`
 
-TODO
+Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
 
 ### `uid()`
 
-TODO
+Returns the user id of the current user, which is a integer.
 
 ### `gid()`
 
-TODO
+Returns the group id of the current user, which is a integer.
 
 ### `user_name()`
 
-TODO
+Returns the name of the current user, which is a string.
 
 ### `group_name()`
 
-TODO
+Returns the name of the current group, which is a string.
 
 ## Common
 
