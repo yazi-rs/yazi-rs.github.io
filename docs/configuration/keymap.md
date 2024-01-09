@@ -89,7 +89,7 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `--relative`: Use a relative path for the symbolic link.
   - `--force`: Overwrite the destination file if it exists.
 
-- remove: Move the files to the trash/recycle bin.
+- remove: Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html).
 
   - `--force`: Don't show the confirmation dialog, and trash/delete files directly.
   - `--permanently`: Permanently delete the files.

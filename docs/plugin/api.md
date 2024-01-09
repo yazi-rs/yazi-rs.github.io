@@ -532,7 +532,7 @@ Meta methods:
 - `__len()`
 - `__pairs()`
 
-### `folder:File`
+### `folder::File`
 
 Based on [File](#file), with the following additional methods:
 
@@ -593,16 +593,58 @@ Properties:
 
 ## Isolate context
 
+### fs
+
 TODO
 
-### fs
+Functions:
+
+- `write(url, data)`
+- `metadata(url)`
+- `symlink_metadata(url)`
 
 ### Child
 
+TODO
+
+Methods:
+
+- `read(len)`
+- `read_line()`
+- `read_line_with(opts)`
+- `wait()`
+- `start_kill()`
+
 ### Command
+
+TODO
+
+Methods:
+
+- `arg(arg)`
+- `args(args)`
+- `env(key, value)`
+- `stdin(cfg)`
+- `stdout(cfg)`
+- `stderr(cfg)`
+- `spawn()`
+- `output()`
 
 ### Output
 
+TODO
+
+Properties:
+
+- `status`
+- `stdout`
+- `stderr`
+
 ### Status
+
+Methods:
+
+- `success()`
+- `code()`
 
 TODO
