@@ -17,12 +17,13 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 - sort_by: File sorting method
 
-  - `"none"`: Don't sort
+  - `"none"`: Don't sort.
+  - `"modified"`: Sort by last modified time.
+  - `"created"`: Sort by creation time.
+  - `"extension"`: Sort by file extension.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
-  - `"created"`: Sort by creation time
-  - `"modified"`: Sort by last modified time
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
-  - `"size"`: Sort by file size
+  - `"size"`: Sort by file size.
 
 - sort_sensitive: Sort case-sensitively
 

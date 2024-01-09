@@ -103,6 +103,12 @@ _Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the 
 | c ⇒ f       | Copy the name of the file                       |
 | c ⇒ n       | Copy the name of the file without the extension |
 
+### Filtering files/directories
+
+| Key binding | Action                              |
+| ----------- | ----------------------------------- |
+| f           | Filter the files/directories in CWD |
+
 ### Finding files/directories
 
 | Key binding | Action                              |
@@ -118,18 +124,20 @@ To sort files/directories use the following commands.
 
 _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the `a` key._
 
-| Key binding | Action                          |
-| ----------- | ------------------------------- |
-| , ⇒ a       | Sort alphabetically             |
-| , ⇒ A       | Sort alphabetically (reverse)   |
-| , ⇒ c       | Sort by creation time           |
-| , ⇒ C       | Sort by creation time (reverse) |
-| , ⇒ m       | Sort by modified time           |
-| , ⇒ M       | Sort by modified time (reverse) |
-| , ⇒ n       | Sort naturally                  |
-| , ⇒ N       | Sort naturally (reverse)        |
-| , ⇒ s       | Sort by size                    |
-| , ⇒ S       | Sort by size (reverse)          |
+| Key binding | Action                           |
+| ----------- | -------------------------------- |
+| , ⇒ m       | Sort by modified time            |
+| , ⇒ M       | Sort by modified time (reverse)  |
+| , ⇒ c       | Sort by creation time            |
+| , ⇒ C       | Sort by creation time (reverse)  |
+| , ⇒ e       | Sort by file extension           |
+| , ⇒ E       | Sort by file extension (reverse) |
+| , ⇒ a       | Sort alphabetically              |
+| , ⇒ A       | Sort alphabetically (reverse)    |
+| , ⇒ n       | Sort naturally                   |
+| , ⇒ N       | Sort naturally (reverse)         |
+| , ⇒ s       | Sort by size                     |
+| , ⇒ S       | Sort by size (reverse)           |
 
 ## Changing working directory when exiting Yazi
 

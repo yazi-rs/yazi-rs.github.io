@@ -163,9 +163,10 @@ If you haven't created and used your own configuration file yet, please see [Con
 
   - `by`: Optional, if not provided, the sort method will be kept unchanged.
     - `"none"`: Don't sort.
-    - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
-    - `"created"`: Sort by creation time.
     - `"modified"`: Sort by last modified time.
+    - `"created"`: Sort by creation time.
+    - `"extension"`: Sort by file extension.
+    - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
     - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
     - `"size"`: Sort by file size.
   - `--reverse`: Display files in reverse order.
