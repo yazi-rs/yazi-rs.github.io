@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-plugin/api" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">API (Work in progress) | Yazi</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://yazi-rs.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://yazi-rs.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://yazi-rs.github.io/docs/plugin/api"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="API (Work in progress) | Yazi"><meta data-rh="true" name="description" content="Learn how to use Yazi&#x27;s Lua API."><meta data-rh="true" property="og:description" content="Learn how to use Yazi&#x27;s Lua API."><link data-rh="true" rel="icon" href="/img/logo.png"><link data-rh="true" rel="canonical" href="https://yazi-rs.github.io/docs/plugin/api"><link data-rh="true" rel="alternate" href="https://yazi-rs.github.io/docs/plugin/api" hreflang="en"><link data-rh="true" rel="alternate" href="https://yazi-rs.github.io/docs/plugin/api" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Yazi RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Yazi Atom Feed"><link rel="stylesheet" href="/assets/css/styles.7bda54a4.css">
+<script src="/assets/js/runtime~main.d95a5d79.js" defer="defer"></script>
+<script src="/assets/js/main.fbda64af.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_tLSW" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.png" alt="Yazi file manager" class="themedComponent_T9Uj themedComponent--light_LnQX"><img src="/img/logo.png" alt="Yazi file manager" class="themedComponent_T9Uj themedComponent--dark_LeW_"></div><b class="navbar__title text--truncate">Yazi</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/installation">Docs</a><a class="navbar__item navbar__link" href="/features">Features</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/sxyazi/yazi" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_FzVt"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_zKwc colorModeToggle_euGD"><button class="clean-btn toggleButton_Sh1C toggleButtonDisabled_SE6i" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_KeeV"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_saFG"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_tJmq"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_MTkO"><div class="docsWrapper_RBU1"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_gYZi" type="button"></button><div class="docRoot_iSU5"><aside class="theme-doc-sidebar-container docSidebarContainer_Xt9D"><div class="sidebarViewport_m5le"><div class="sidebar_NaZc"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_mIeD"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/installation">Installation</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/quick-start">Quick Start</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" aria-expanded="false" href="/docs/configuration/overview">Configuration</a><button aria-label="Expand sidebar category &#x27;Configuration&#x27;" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" aria-expanded="true" href="/docs/plugin/overview">Plugin (Work in progress)</a><button aria-label="Collapse sidebar category &#x27;Plugin (Work in progress)&#x27;" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/plugin/api">API (Work in progress)</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/tips">Tips</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/faq">Frequently Asked Questions</a></li></ul></nav></div></div></aside><main class="docMainContainer__6QZ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_biXE"><div class="docItemContainer_o1in"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_UEib" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon__OA5"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/docs/plugin/overview"><span itemprop="name">Plugin (Work in progress)</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">API (Work in progress)</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_eOKD theme-doc-toc-mobile tocMobile_st4G"><button type="button" class="clean-btn tocCollapsibleButton_JDLe">On this page</button></div><div class="theme-doc-markdown markdown"><h1>API (Work in progress)</h1>
+<h2 class="anchor anchorWithStickyNavbar_kntu" id="layout">Layout<a href="#layout" class="hash-link" aria-label="Direct link to Layout" title="Direct link to Layout">​</a></h2>
+<p>Paragraph, List, Bar, Border, and Gauge are renderable widgets; others need to be placed within any of them.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uibar"><code>ui.Bar</code><a href="#uibar" class="hash-link" aria-label="Direct link to uibar" title="Direct link to uibar">​</a></h3>
+<p>Create a bar:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Bar</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">rect</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> direction</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>The first attribute is a <a href="#uirect">Rect</a>, representing the position of this bar.
+The second denotes the direction of the bar and accepts the following constants:</p>
+<ul>
+<li><code>ui.Bar.NONE</code></li>
+<li><code>ui.Bar.TOP</code></li>
+<li><code>ui.Bar.RIGHT</code></li>
+<li><code>ui.Bar.BOTTOM</code></li>
+<li><code>ui.Bar.LEFT</code></li>
+<li><code>ui.Bar.ALL</code></li>
+</ul>
+<p>Methods (all methods return <code>self</code>):</p>
+<ul>
+<li><code>ui.Bar:symbol(symbol)</code> - accepts a string, specifying the symbol for the bar</li>
+<li><code>ui.Bar:style(style)</code> - accepts a <a href="#uistyle">Style</a>, specifying the style of the bar</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uiborder"><code>ui.Border</code><a href="#uiborder" class="hash-link" aria-label="Direct link to uiborder" title="Direct link to uiborder">​</a></h3>
+<p>Create a border:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Border</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">rect</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> position</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>The first attribute is a <a href="#uirect">Rect</a>, representing the position of this border.
+The second denotes the position of the border and accepts the following constants:</p>
+<ul>
+<li><code>ui.Border.NONE</code></li>
+<li><code>ui.Border.TOP</code></li>
+<li><code>ui.Border.RIGHT</code></li>
+<li><code>ui.Border.BOTTOM</code></li>
+<li><code>ui.Border.LEFT</code></li>
+<li><code>ui.Border.ALL</code></li>
+</ul>
+<p>You can also use <code>ui.Border:type(type)</code> to specify different types for the border. It accepts the following type constants:</p>
+<ul>
+<li><code>ui.Border.PLAIN</code></li>
+<li><code>ui.Border.ROUNDED</code></li>
+<li><code>ui.Border.DOUBLE</code></li>
+<li><code>ui.Border.THICK</code></li>
+<li><code>ui.Border.QUADRANT_INSIDE</code></li>
+<li><code>ui.Border.QUADRANT_OUTSIDE</code></li>
+</ul>
+<p>Methods (all methods return <code>self</code>):</p>
+<ul>
+<li><code>ui.Border:style(style)</code> - accepts a <a href="#uistyle">Style</a>, specifying the style of the border</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uiconstraint"><code>ui.Constraint</code><a href="#uiconstraint" class="hash-link" aria-label="Direct link to uiconstraint" title="Direct link to uiconstraint">​</a></h3>
+<p>Constraints are used to define the size of a layout.</p>
+<p>They can be used to define a fixed size, a percentage of the available space, a ratio of the available space, or a minimum or maximum size:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">Constraint</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Percentage</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">50</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">-- Apply a percentage to a given amount</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">Constraint</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Ratio</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic">-- Apply a ratio</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">Constraint</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Length</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">     </span><span class="token comment" style="color:#999988;font-style:italic">-- Apply no more than the given amount (currently roughly equal to `ui.Constraint.Max`)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">Constraint</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Max</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">5</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">         </span><span class="token comment" style="color:#999988;font-style:italic">-- Apply at most the given amount</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">Constraint</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Min</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">3</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">         </span><span class="token comment" style="color:#999988;font-style:italic">-- Apply at least the given amount</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uigauge"><code>ui.Gauge</code><a href="#uigauge" class="hash-link" aria-label="Direct link to uigauge" title="Direct link to uigauge">​</a></h3>
+<p>Create a gauge:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Gauge</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">rect</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li><code>ui.Gauge:percent(percent)</code> - Set the percentage of the gauge</li>
+<li><code>ui.Gauge:ratio(ratio)</code> - Set the ratio of the gauge</li>
+<li><code>ui.Gauge:label(label)</code> - Set the label of the gauge</li>
+<li><code>ui.Gauge:style(style)</code> - Set the style of everything except the bar itself, which accepts a <a href="#uistyle">Style</a></li>
+<li><code>ui.Gauge:gauge_style(style)</code> - Set the style of the bar, which accepts a <a href="#uistyle">Style</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uilayout"><code>ui.Layout</code><a href="#uilayout" class="hash-link" aria-label="Direct link to uilayout" title="Direct link to uilayout">​</a></h3>
+<p>Create a layout:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Layout</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li><code>ui.Layout:direction(direction)</code> - Set the direction of the layout. It accepts the following constants:<!-- -->
+<ul>
+<li><code>ui.Layout.HORIZONTAL</code></li>
+<li><code>ui.Layout.VERTICAL</code></li>
+</ul>
+</li>
+<li><code>ui.Layout:margin(margin)</code> - Set the margin of the layout</li>
+<li><code>ui.Layout:margin_h(margin)</code> - Set the horizontal margin of the layout</li>
+<li><code>ui.Layout:margin_v(margin)</code> - Set the vertical margin of the layout</li>
+<li><code>ui.Layout:constraints({ constraint, ... })</code> - Set the constraints of the layout, which accepts a list of <a href="#uiconstraint">Constraint</a></li>
+<li><code>ui.Layout:split(rect)</code> - Accepts a <a href="#uirect">Rect</a> and split it into multiple <a href="#uirect">Rect</a> according to the constraints</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uiline"><code>ui.Line</code><a href="#uiline" class="hash-link" aria-label="Direct link to uiline" title="Direct link to uiline">​</a></h3>
+<p>Create a line, which accepts a list of <a href="#uispan">Span</a> and <a href="#uiline">Line</a>:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Line</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> span</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> line</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> span</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">...</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li><code>ui.Line:width()</code> - Get the width of the line</li>
+<li><code>ui.Line:style(style)</code> - Set the style of the line, which accepts a <a href="#uistyle">Style</a></li>
+<li><code>ui.Line:align(alignment)</code> - Set the alignment of the line. It accepts the following constants:<!-- -->
+<ul>
+<li><code>ui.Line.LEFT</code></li>
+<li><code>ui.Line.CENTER</code></li>
+<li><code>ui.Line.RIGHT</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uilist"><code>ui.List</code><a href="#uilist" class="hash-link" aria-label="Direct link to uilist" title="Direct link to uilist">​</a></h3>
+<p>Create a list:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">List</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">rect</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> items</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>The first attribute is a <a href="#uirect">Rect</a>, representing the position of this list.
+The second denotes the items of the list and accepts a list of <a href="#uilistitem">ListItem</a>.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uilistitem"><code>ui.ListItem</code><a href="#uilistitem" class="hash-link" aria-label="Direct link to uilistitem" title="Direct link to uilistitem">​</a></h3>
+<p>Create a list item:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">ListItem</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">line</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">ListItem</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">span</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">ListItem</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;string&quot;</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Methods (all methods return <code>self</code>):</p>
+<ul>
+<li><code>ui.ListItem:style(style)</code> - Set the style of the list item, which accepts a <a href="#uistyle">Style</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uipadding"><code>ui.Padding</code><a href="#uipadding" class="hash-link" aria-label="Direct link to uipadding" title="Direct link to uipadding">​</a></h3>
+<p>All parameters for padding are integers:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Padding</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">left</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> right</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> top</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> bottom</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>If you want to specify only one of them, you can:</p>
+<ul>
+<li><code>ui.Padding.left(left)</code> equal to <code>ui.Padding(left, 0, 0, 0)</code></li>
+<li><code>ui.Padding.right(right)</code> equal to <code>ui.Padding(0, right, 0, 0)</code></li>
+<li><code>ui.Padding.top(top)</code> equal to <code>ui.Padding(0, 0, top, 0)</code></li>
+<li><code>ui.Padding.bottom(bottom)</code> equal to <code>ui.Padding(0, 0, 0, bottom)</code></li>
+</ul>
+<p>Or specify a particular direction for them:</p>
+<ul>
+<li><code>ui.Padding.x(x)</code> equal to <code>ui.Padding(x, x, 0, 0)</code></li>
+<li><code>ui.Padding.y(y)</code> equal to <code>ui.Padding(0, 0, y, y)</code></li>
+<li><code>ui.Padding.xy(x, y)</code> equal to <code>ui.Padding(x, x, y, y)</code></li>
+</ul>
+<p>Properties:</p>
+<ul>
+<li><code>left</code> - left padding</li>
+<li><code>right</code> - right padding</li>
+<li><code>top</code> - top padding</li>
+<li><code>bottom</code> - bottom padding</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uiparagraph"><code>ui.Paragraph</code><a href="#uiparagraph" class="hash-link" aria-label="Direct link to uiparagraph" title="Direct link to uiparagraph">​</a></h3>
+<p>Create a paragraph:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Paragraph</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">rect</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> line</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> line</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">...</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>The first attribute is a <a href="#uirect">Rect</a>, representing the position of this paragraph.
+The second denotes the lines of the paragraph and accepts a list of <a href="#uiline">Line</a>.</p>
+<p>You can also use <code>ui.Paragraph.parse(string)</code> to parse an <a href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="_blank" rel="noopener noreferrer">ANSI escape sequence</a> string into a paragraph.</p>
+<p>Methods (all methods return <code>self</code>):</p>
+<ul>
+<li><code>ui.Paragraph:style(style)</code> - Set the style of the paragraph, which accepts a <a href="#uistyle">Style</a></li>
+<li><code>ui.Paragraph:align(alignment)</code> - Set the alignment of the paragraph. It accepts the following constants:<!-- -->
+<ul>
+<li><code>ui.Paragraph.LEFT</code></li>
+<li><code>ui.Paragraph.CENTER</code></li>
+<li><code>ui.Paragraph.RIGHT</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uirect"><code>ui.Rect</code><a href="#uirect" class="hash-link" aria-label="Direct link to uirect" title="Direct link to uirect">​</a></h3>
+<p>A Rect is represented an area within the terminal by four attributes:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Rect</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">-- x position</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">-- y position</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	w </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">20</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">-- width</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	h </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">30</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">-- height</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">Rect</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">default  </span><span class="token comment" style="color:#999988;font-style:italic">-- Equal to `ui.Rect { x = 0, y = 0, w = 0, h = 0 }`</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>You can obtain a pre-computed <code>Rect</code> through <a href="#uilayout">Yazi&#x27;s layout system</a>.</p>
+<p>Note that if you intend to create it yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!</p>
+<p>Properties:</p>
+<ul>
+<li><code>x</code> - x position</li>
+<li><code>y</code> - y position</li>
+<li><code>w</code> - width</li>
+<li><code>h</code> - height</li>
+<li><code>left</code> - left position</li>
+<li><code>right</code> - right position</li>
+<li><code>top</code> - top position</li>
+<li><code>bottom</code> - bottom position</li>
+</ul>
+<p>Methods (all methods return <code>self</code>):</p>
+<ul>
+<li><code>ui.Rect:padding(padding)</code> - Set padding. It accepts a <a href="#uipadding">Padding</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uispan"><code>ui.Span</code><a href="#uispan" class="hash-link" aria-label="Direct link to uispan" title="Direct link to uispan">​</a></h3>
+<p>Create a span:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Span</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;string&quot;</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Methods (all methods return <code>self</code>):</p>
+<ul>
+<li><code>ui.Span:fg(color)</code> - Set the foreground color of the span, which accepts a <a href="/docs/configuration/theme#types">Color</a></li>
+<li><code>ui.Span:bg(color)</code> - Set the background color of the span, which accepts a <a href="/docs/configuration/theme#types">Color</a></li>
+<li><code>ui.Span:bold()</code> - Set the span to bold</li>
+<li><code>ui.Span:dim()</code> - Set the span to dim</li>
+<li><code>ui.Span:italic()</code> - Set the span to italic</li>
+<li><code>ui.Span:underline()</code> - Set the span to underline</li>
+<li><code>ui.Span:blink()</code> - Set the span to blink</li>
+<li><code>ui.Span:blink_rapid()</code> - Set the span to blink rapidly</li>
+<li><code>ui.Span:hidden()</code> - Set the span to hidden</li>
+<li><code>ui.Span:crossed()</code> - Set the span to crossed</li>
+<li><code>ui.Span:reset()</code> - Reset the style of the span</li>
+<li><code>ui.Span:style(style)</code> - Set the style of the span, which accepts a <a href="#uistyle">Style</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uistyle"><code>ui.Style</code><a href="#uistyle" class="hash-link" aria-label="Direct link to uistyle" title="Direct link to uistyle">​</a></h3>
+<p>Create a style:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ui</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Style</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<ul>
+<li><code>ui.Style:fg(string)</code> - Set the foreground color of the style, which accepts a <a href="/docs/configuration/theme#types">Color</a></li>
+<li><code>ui.Style:bg(string)</code> - Set the background color of the style, which accepts a <a href="/docs/configuration/theme#types">Color</a></li>
+<li><code>ui.Style:bold()</code> - Set the style to bold</li>
+<li><code>ui.Style:dim()</code> - Set the style to dim</li>
+<li><code>ui.Style:italic()</code> - Set the style to italic</li>
+<li><code>ui.Style:underline()</code> - Set the style to underline</li>
+<li><code>ui.Style:blink()</code> - Set the style to blink</li>
+<li><code>ui.Style:blink_rapid()</code> - Set the style to blink rapidly</li>
+<li><code>ui.Style:hidden()</code> - Set the style to hidden</li>
+<li><code>ui.Style:crossed()</code> - Set the style to crossed</li>
+<li><code>ui.Style:reset()</code> - Reset the style</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_kntu" id="config">Config<a href="#config" class="hash-link" aria-label="Direct link to Config" title="Direct link to Config">​</a></h2>
+<p>TODO</p>
+<ul>
+<li>BOOT</li>
+<li>MANAGER</li>
+<li>THEME</li>
+<li>PREVIEW</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_kntu" id="ya">ya<a href="#ya" class="hash-link" aria-label="Direct link to ya" title="Direct link to ya">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="cache_filepath"><code>cache_file(path)</code><a href="#cache_filepath" class="hash-link" aria-label="Direct link to cache_filepath" title="Direct link to cache_filepath">​</a></h3>
+<p>Calculate the cached <a href="#url">Url</a> corresponding to the given path:</p>
+<ul>
+<li><code>path</code> - Required, the path of the file, which is a string</li>
+</ul>
+<p>If the file is not allowed to be cached, such as it&#x27;s ignored in the user config, or the file itself is a cache, returns <code>nil</code>.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="manager_emitcmd-args-data"><code>manager_emit(cmd, args, data)</code><a href="#manager_emitcmd-args-data" class="hash-link" aria-label="Direct link to manager_emitcmd-args-data" title="Direct link to manager_emitcmd-args-data">​</a></h3>
+<p>Send a command to the manager without waiting for the executor to execute:</p>
+<ul>
+<li><code>cmd</code> - Required, the command name, which is a string</li>
+<li><code>args</code> - Required, the arguments of the command, which is a table of strings</li>
+<li><code>data</code> - Optional, additional data passed to the command</li>
+</ul>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token plain">ya</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">manager_emit</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;my-cmd&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;hello&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> foo </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> bar_baz </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;world&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">-- Equivalent to:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">-- my-cmd &quot;hello&quot; --foo --bar-baz=&quot;world&quot;</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="image_showurl-rect"><code>image_show(url, rect)</code><a href="#image_showurl-rect" class="hash-link" aria-label="Direct link to image_showurl-rect" title="Direct link to image_showurl-rect">​</a></h3>
+<p>Display the given image within the specified area, and the image will downscale to fit that area automatically:</p>
+<ul>
+<li><code>url</code> - Required, the <a href="#url">Url</a> of the image</li>
+<li><code>rect</code> - Required, the <a href="#uirect">Rect</a> of the area</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="image_precachesrc-dist"><code>image_precache(src, dist)</code><a href="#image_precachesrc-dist" class="hash-link" aria-label="Direct link to image_precachesrc-dist" title="Direct link to image_precachesrc-dist">​</a></h3>
+<p>Pre-cache the image to a specified path based on user-configured <a href="/docs/configuration/yazi#preview"><code>max_width</code> and <code>max_height</code></a>:</p>
+<ul>
+<li><code>src</code> - Required, the source path of the image</li>
+<li><code>dist</code> - Required, the destination path of the image</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="dbgmsg"><code>dbg(msg)</code><a href="#dbgmsg" class="hash-link" aria-label="Direct link to dbgmsg" title="Direct link to dbgmsg">​</a></h3>
+<p>Append messages to Yazi&#x27;s log file at the debug level:</p>
+<ul>
+<li><code>msg</code> - Required, the message to be logged, which is a string</li>
+</ul>
+<p>Note that if you build in release mode, the log level for Yazi is &quot;error&quot; instead of &quot;debug&quot;, so you&#x27;ll need to use <a href="#errmsg"><code>ya.err</code></a>.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="errmsg"><code>err(msg)</code><a href="#errmsg" class="hash-link" aria-label="Direct link to errmsg" title="Direct link to errmsg">​</a></h3>
+<p>Append messages to Yazi&#x27;s log file at the error level:</p>
+<ul>
+<li><code>msg</code> - Required, the message to be logged, which is a string</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="plugin_retrieve"><code>plugin_retrieve</code><a href="#plugin_retrieve" class="hash-link" aria-label="Direct link to plugin_retrieve" title="Direct link to plugin_retrieve">​</a></h3>
+<p>TODO</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="preview_codeopts"><code>preview_code(opts)</code><a href="#preview_codeopts" class="hash-link" aria-label="Direct link to preview_codeopts" title="Direct link to preview_codeopts">​</a></h3>
+<p>Preview the file as code into the specified area:</p>
+<ul>
+<li><code>opts</code> - Required, the options of the preview, which is a table:<!-- -->
+<ul>
+<li><code>file</code> - The previewed <a href="#file">File</a></li>
+<li><code>area</code> - The area of the preview, which is a <a href="#uirect">Rect</a></li>
+<li><code>skip</code> - The number of units to skip. It&#x27;s units largely depend on your previewer, such as lines for code, and percentages for videos</li>
+<li><code>window</code> - The <a href="#window">Window</a> of the preview</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="preview_archiveopts"><code>preview_archive(opts)</code><a href="#preview_archiveopts" class="hash-link" aria-label="Direct link to preview_archiveopts" title="Direct link to preview_archiveopts">​</a></h3>
+<p>Preview the file as an archive into the specified area:</p>
+<ul>
+<li><code>opts</code> - Required, the options of the preview. It&#x27;s the same as <a href="#previewcodeopts"><code>preview_code</code></a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="preview_widgetsopts-widgets"><code>preview_widgets(opts, widgets)</code><a href="#preview_widgetsopts-widgets" class="hash-link" aria-label="Direct link to preview_widgetsopts-widgets" title="Direct link to preview_widgetsopts-widgets">​</a></h3>
+<ul>
+<li><code>opts</code> - Required, the options of the preview, which is a table:<!-- -->
+<ul>
+<li><code>file</code> - The previewed <a href="#file">File</a></li>
+<li><code>skip</code> - The number of units to skip. It&#x27;s units largely depend on your previewer, such as lines for code, and percentages for videos</li>
+<li><code>window</code> - The <a href="#window">Window</a> of the preview</li>
+</ul>
+</li>
+<li><code>widgets</code> - List of renderable widgets, such as <code>{ ui.Paragraph {...}, ui.List {...}, ... }</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="target_family"><code>target_family()</code><a href="#target_family" class="hash-link" aria-label="Direct link to target_family" title="Direct link to target_family">​</a></h3>
+<p>Returns the target family of the current platform, <code>&quot;windows&quot;</code>, <code>&quot;unix&quot;</code>, or <code>&quot;wasm&quot;</code>.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="truncatetext-max"><code>truncate(text, max)</code><a href="#truncatetext-max" class="hash-link" aria-label="Direct link to truncatetext-max" title="Direct link to truncatetext-max">​</a></h3>
+<p>Truncate the text to the specified length and return it:</p>
+<ul>
+<li><code>text</code> - Required, the text to be truncated, which is a string</li>
+<li><code>max</code> - Required, the maximum length of the text, which is a integer</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="mime_validmime"><code>mime_valid(mime)</code><a href="#mime_validmime" class="hash-link" aria-label="Direct link to mime_validmime" title="Direct link to mime_validmime">​</a></h3>
+<p>Check whether the mime-type is valid:</p>
+<ul>
+<li><code>mime</code> - Required, the mime-type to be checked, which is a string</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="time"><code>time()</code><a href="#time" class="hash-link" aria-label="Direct link to time" title="Direct link to time">​</a></h3>
+<p>Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="uid"><code>uid()</code><a href="#uid" class="hash-link" aria-label="Direct link to uid" title="Direct link to uid">​</a></h3>
+<p>Returns the user id of the current user, which is a integer.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="gid"><code>gid()</code><a href="#gid" class="hash-link" aria-label="Direct link to gid" title="Direct link to gid">​</a></h3>
+<p>Returns the group id of the current user, which is a integer.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="user_name"><code>user_name()</code><a href="#user_name" class="hash-link" aria-label="Direct link to user_name" title="Direct link to user_name">​</a></h3>
+<p>Returns the name of the current user, which is a string.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="group_name"><code>group_name()</code><a href="#group_name" class="hash-link" aria-label="Direct link to group_name" title="Direct link to group_name">​</a></h3>
+<p>Returns the name of the current group, which is a string.</p>
+<h2 class="anchor anchorWithStickyNavbar_kntu" id="common">Common<a href="#common" class="hash-link" aria-label="Direct link to Common" title="Direct link to Common">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="cha">Cha<a href="#cha" class="hash-link" aria-label="Direct link to Cha" title="Direct link to Cha">​</a></h3>
+<p>Cha means one file&#x27;s characteristics with the following properties:</p>
+<ul>
+<li><code>is_dir</code>: Whether this file is a directory</li>
+<li><code>is_hidden</code>: Whether this file is hidden (starts with a dot)</li>
+<li><code>is_link</code>: Whether this file is a symlink</li>
+<li><code>is_bad_link</code>: Whether this file is a bad symlink, which points to a non-existent file</li>
+<li><code>length</code>: The length of this file, returns a integer representing the size in bytes. Note that it can&#x27;t reflect the size of a directory, use <a href="#folderfile"><code>size()</code></a> instead</li>
+<li><code>created</code>: The created time of this file in Unix timestamp, or <code>nil</code> if it doesn&#x27;t have a valid time</li>
+<li><code>modified</code>: The modified time of this file in Unix timestamp, or <code>nil</code> if it doesn&#x27;t have a valid time</li>
+<li><code>accessed</code>: The accessed time of this file in Unix timestamp, or <code>nil</code> if it doesn&#x27;t have a valid time</li>
+<li><code>permissions</code>: Unix permissions of this file in string, e.g. <code>drwxr-xr-x</code>. For Windows, it&#x27;s always <code>nil</code></li>
+</ul>
+<p>And the Unix only properties:</p>
+<ul>
+<li><code>is_block_device</code>: Whether this file is a block device</li>
+<li><code>is_char_device</code>: Whether this file is a character device</li>
+<li><code>is_fifo</code>: Whether this file is a fifo</li>
+<li><code>is_socket</code>: Whether this file is a socket</li>
+<li><code>uid</code>: The user id of this file</li>
+<li><code>gid</code>: The group id of this file</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="file">File<a href="#file" class="hash-link" aria-label="Direct link to File" title="Direct link to File">​</a></h3>
+<p>Properties:</p>
+<ul>
+<li><code>url</code>: The <a href="#url">Url</a> of this file</li>
+<li><code>cha</code>: The <a href="#cha">Cha</a> of this file</li>
+<li><code>link_to</code>: The <a href="#url">Url</a> of this file pointing to, if it&#x27;s a symlink; otherwise, <code>nil</code></li>
+<li><code>name</code>: The name of this file</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="range">Range<a href="#range" class="hash-link" aria-label="Direct link to Range" title="Direct link to Range">​</a></h3>
+<p>TODO</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="url">Url<a href="#url" class="hash-link" aria-label="Direct link to Url" title="Direct link to Url">​</a></h3>
+<p>Properties:</p>
+<ul>
+<li><code>frag</code>: The fragment string of this url. Let&#x27;s say the url is <code>archive:///root/my-archive.zip#1.jpg</code>, then the fragment is <code>1.jpg</code></li>
+<li><code>is_regular</code>: Whether the file represented by this url is a regular file</li>
+<li><code>is_search</code>: Whether the file represented by this url from the search result</li>
+<li><code>is_archive</code>: Whether the file represented by this url from an archive</li>
+</ul>
+<p>Meta methods:</p>
+<ul>
+<li><code>__eq(another_url)</code></li>
+<li><code>__tostring()</code></li>
+<li><code>__concat(string)</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="window">Window<a href="#window" class="hash-link" aria-label="Direct link to Window" title="Direct link to Window">​</a></h3>
+<p>Properties:</p>
+<ul>
+<li><code>rows</code>: The number of rows of this window</li>
+<li><code>cols</code>: The number of columns of this window</li>
+<li><code>width</code>: The width of this window in pixels</li>
+<li><code>height</code>: The height of this window in pixels</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_kntu" id="sync-context">Sync context<a href="#sync-context" class="hash-link" aria-label="Direct link to Sync context" title="Direct link to Sync context">​</a></h2>
+<p>The sync context accompanies the entire app lifecycle, you can access all app data through the <code>cx</code> within it:</p>
+<ul>
+<li><code>cx.active</code>: The active tab, which is a <a href="#tabtab">tab::Tab</a></li>
+<li><code>cx.tabs</code>: All of tabs, which is a <a href="#managertabs">manager::Tabs</a></li>
+<li><code>cx.tasks</code>: All of tasks, which is a <a href="#taskstasks">tasks::Tasks</a></li>
+</ul>
+<p>which is active during UI rendering (UI plugins) and when executing sync functional plugins (<code>plugin --sync</code> command).</p>
+<p>For better performance, the sync context is created only at the app&#x27;s start and remains singular throughout. Thus, plugins running within this context share states,
+prompting plugin developers to create separate namespaces for their plugins to prevent global space contamination.</p>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="tabmode"><code>tab::Mode</code><a href="#tabmode" class="hash-link" aria-label="Direct link to tabmode" title="Direct link to tabmode">​</a></h3>
+<p>Visual mode status.</p>
+<p>Properties:</p>
+<ul>
+<li><code>is_select</code>: Whether the mode is select</li>
+<li><code>is_unset</code>: Whether the mode is unset</li>
+<li><code>is_visual</code>: Whether the mode is select or unset</li>
+</ul>
+<p>Methods:</p>
+<ul>
+<li><code>pending(idx, state)</code>: TODO</li>
+</ul>
+<p>Meta methods:</p>
+<ul>
+<li><code>__tostring()</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="tabconfig"><code>tab::Config</code><a href="#tabconfig" class="hash-link" aria-label="Direct link to tabconfig" title="Direct link to tabconfig">​</a></h3>
+<p>TODO</p>
+<p>Properties:</p>
+<ul>
+<li><code>sort_by</code></li>
+<li><code>sort_sensitive</code></li>
+<li><code>sort_reverse</code></li>
+<li><code>sort_dir_first</code></li>
+<li><code>linemode</code></li>
+<li><code>show_hidden</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="tabpreview"><code>tab::Preview</code><a href="#tabpreview" class="hash-link" aria-label="Direct link to tabpreview" title="Direct link to tabpreview">​</a></h3>
+<p>TODO</p>
+<p>Properties:</p>
+<ul>
+<li><code>skip</code></li>
+<li><code>folder</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="folderfolder"><code>folder::Folder</code><a href="#folderfolder" class="hash-link" aria-label="Direct link to folderfolder" title="Direct link to folderfolder">​</a></h3>
+<ul>
+<li>cwd</li>
+<li>offset</li>
+<li>cursor</li>
+<li>window</li>
+<li>files</li>
+<li>hovered</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="folderfiles"><code>folder::Files</code><a href="#folderfiles" class="hash-link" aria-label="Direct link to folderfiles" title="Direct link to folderfiles">​</a></h3>
+<p>Meta methods:</p>
+<ul>
+<li><code>__len()</code></li>
+<li><code>__pairs()</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="folderfile"><code>folder::File</code><a href="#folderfile" class="hash-link" aria-label="Direct link to folderfile" title="Direct link to folderfile">​</a></h3>
+<p>Based on <a href="#file">File</a>, with the following additional methods:</p>
+<ul>
+<li><code>size()</code> - The size of this file, returns a integer representing the size in bytes, or <code>nil</code> if its a directory and it has not been scanned</li>
+<li><code>mime()</code> - The mime-type string of this file</li>
+<li><code>prefix()</code> - The prefix of this file relative to <code>CWD</code>, which used in the flat view during search. For instance, if <code>CWD</code> is <code>/foo</code>, and the file is <code>/foo/bar/baz</code>, then the prefix is <code>bar/</code></li>
+<li><code>icon()</code> - The icon string of this file, <a href="/docs/configuration/theme#icons"><code>[icons]</code></a> rules are applied</li>
+<li><code>style()</code> - The <a href="#uistyle">Style</a> of this file, <a href="/docs/configuration/theme#filetype"><code>[filetype]</code></a> rules are applied</li>
+<li><code>is_hovered()</code> - Whether this file is hovered</li>
+<li><code>is_yanked()</code> - Whether this file is yanked</li>
+<li><code>is_selected()</code> - Whether this file is selected</li>
+<li><code>found()</code> - When users find a file using the <code>find</code> command, the status of the file - returns <code>nil</code> if it doesn&#x27;t match the user&#x27;s find keyword; otherwise, returns <code>{idx, all}</code>, where <code>idx</code> is the position of matched file, and <code>all</code> represents the number of all matched files.</li>
+<li><code>highlights()</code> - TODO</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="managertabs"><code>manager::Tabs</code><a href="#managertabs" class="hash-link" aria-label="Direct link to managertabs" title="Direct link to managertabs">​</a></h3>
+<p>Properties:</p>
+<ul>
+<li><code>idx</code>: The index of the active tab</li>
+</ul>
+<p>Meta methods:</p>
+<ul>
+<li><code>__len()</code></li>
+<li><code>__index(idx)</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="tabtab"><code>tab::Tab</code><a href="#tabtab" class="hash-link" aria-label="Direct link to tabtab" title="Direct link to tabtab">​</a></h3>
+<p>Properties:</p>
+<ul>
+<li><code>mode</code>: The <a href="#tabmode">tab::Mode</a> of this tab</li>
+<li><code>conf</code>: The <a href="#tabconfig">tab::Config</a> of this tab</li>
+<li><code>parent</code>: The parent folder within this tab, which is a <a href="#folderfolder">folder::Folder</a></li>
+<li><code>current</code>: The current folder within this tab, which is a <a href="#folderfolder">folder::Folder</a></li>
+<li><code>preview</code>: The <a href="#tabpreview">tab::Preview</a> within this tab</li>
+</ul>
+<p>Methods:</p>
+<ul>
+<li><code>name()</code>: The name of this tab</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="taskstasks"><code>tasks::Tasks</code><a href="#taskstasks" class="hash-link" aria-label="Direct link to taskstasks" title="Direct link to taskstasks">​</a></h3>
+<p>Properties:</p>
+<ul>
+<li>
+<p><code>progress</code>: The progress of all tasks, which is a table:</p>
+<div class="language-lua codeBlockContainer_vocU theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_cjU_"><pre tabindex="0" class="prism-code language-lua codeBlock_sODX thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_noJQ"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token comment" style="color:#999988;font-style:italic">-- Number of tasks</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	total </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	succ  </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	fail  </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token comment" style="color:#999988;font-style:italic">-- Workload of tasks</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	found     </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	processed </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre><div class="buttonGroup_fIMt"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_s68s" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_OUTw"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_WF0B"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_kntu" id="isolate-context">Isolate context<a href="#isolate-context" class="hash-link" aria-label="Direct link to Isolate context" title="Direct link to Isolate context">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="fs">fs<a href="#fs" class="hash-link" aria-label="Direct link to fs" title="Direct link to fs">​</a></h3>
+<p>TODO</p>
+<p>Functions:</p>
+<ul>
+<li><code>write(url, data)</code></li>
+<li><code>metadata(url)</code></li>
+<li><code>symlink_metadata(url)</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="child">Child<a href="#child" class="hash-link" aria-label="Direct link to Child" title="Direct link to Child">​</a></h3>
+<p>TODO</p>
+<p>Methods:</p>
+<ul>
+<li><code>read(len)</code></li>
+<li><code>read_line()</code></li>
+<li><code>read_line_with(opts)</code></li>
+<li><code>wait()</code></li>
+<li><code>start_kill()</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="command">Command<a href="#command" class="hash-link" aria-label="Direct link to Command" title="Direct link to Command">​</a></h3>
+<p>TODO</p>
+<p>Methods:</p>
+<ul>
+<li><code>arg(arg)</code></li>
+<li><code>args(args)</code></li>
+<li><code>env(key, value)</code></li>
+<li><code>stdin(cfg)</code></li>
+<li><code>stdout(cfg)</code></li>
+<li><code>stderr(cfg)</code></li>
+<li><code>spawn()</code></li>
+<li><code>output()</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="output">Output<a href="#output" class="hash-link" aria-label="Direct link to Output" title="Direct link to Output">​</a></h3>
+<p>TODO</p>
+<p>Properties:</p>
+<ul>
+<li><code>status</code></li>
+<li><code>stdout</code></li>
+<li><code>stderr</code></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_kntu" id="status">Status<a href="#status" class="hash-link" aria-label="Direct link to Status" title="Direct link to Status">​</a></h3>
+<p>Methods:</p>
+<ul>
+<li><code>success()</code></li>
+<li><code>code()</code></li>
+</ul>
+<p>TODO</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/yazi-rs/yazi-rs.github.io/edit/main/docs/plugin/api.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_LzJe" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_kIP3"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/plugin/overview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Plugin</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/tips"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Tips</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_SjQa thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#layout" class="table-of-contents__link toc-highlight">Layout</a><ul><li><a href="#uibar" class="table-of-contents__link toc-highlight"><code>ui.Bar</code></a></li><li><a href="#uiborder" class="table-of-contents__link toc-highlight"><code>ui.Border</code></a></li><li><a href="#uiconstraint" class="table-of-contents__link toc-highlight"><code>ui.Constraint</code></a></li><li><a href="#uigauge" class="table-of-contents__link toc-highlight"><code>ui.Gauge</code></a></li><li><a href="#uilayout" class="table-of-contents__link toc-highlight"><code>ui.Layout</code></a></li><li><a href="#uiline" class="table-of-contents__link toc-highlight"><code>ui.Line</code></a></li><li><a href="#uilist" class="table-of-contents__link toc-highlight"><code>ui.List</code></a></li><li><a href="#uilistitem" class="table-of-contents__link toc-highlight"><code>ui.ListItem</code></a></li><li><a href="#uipadding" class="table-of-contents__link toc-highlight"><code>ui.Padding</code></a></li><li><a href="#uiparagraph" class="table-of-contents__link toc-highlight"><code>ui.Paragraph</code></a></li><li><a href="#uirect" class="table-of-contents__link toc-highlight"><code>ui.Rect</code></a></li><li><a href="#uispan" class="table-of-contents__link toc-highlight"><code>ui.Span</code></a></li><li><a href="#uistyle" class="table-of-contents__link toc-highlight"><code>ui.Style</code></a></li></ul></li><li><a href="#config" class="table-of-contents__link toc-highlight">Config</a></li><li><a href="#ya" class="table-of-contents__link toc-highlight">ya</a><ul><li><a href="#cache_filepath" class="table-of-contents__link toc-highlight"><code>cache_file(path)</code></a></li><li><a href="#manager_emitcmd-args-data" class="table-of-contents__link toc-highlight"><code>manager_emit(cmd, args, data)</code></a></li><li><a href="#image_showurl-rect" class="table-of-contents__link toc-highlight"><code>image_show(url, rect)</code></a></li><li><a href="#image_precachesrc-dist" class="table-of-contents__link toc-highlight"><code>image_precache(src, dist)</code></a></li><li><a href="#dbgmsg" class="table-of-contents__link toc-highlight"><code>dbg(msg)</code></a></li><li><a href="#errmsg" class="table-of-contents__link toc-highlight"><code>err(msg)</code></a></li><li><a href="#plugin_retrieve" class="table-of-contents__link toc-highlight"><code>plugin_retrieve</code></a></li><li><a href="#preview_codeopts" class="table-of-contents__link toc-highlight"><code>preview_code(opts)</code></a></li><li><a href="#preview_archiveopts" class="table-of-contents__link toc-highlight"><code>preview_archive(opts)</code></a></li><li><a href="#preview_widgetsopts-widgets" class="table-of-contents__link toc-highlight"><code>preview_widgets(opts, widgets)</code></a></li><li><a href="#target_family" class="table-of-contents__link toc-highlight"><code>target_family()</code></a></li><li><a href="#truncatetext-max" class="table-of-contents__link toc-highlight"><code>truncate(text, max)</code></a></li><li><a href="#mime_validmime" class="table-of-contents__link toc-highlight"><code>mime_valid(mime)</code></a></li><li><a href="#time" class="table-of-contents__link toc-highlight"><code>time()</code></a></li><li><a href="#uid" class="table-of-contents__link toc-highlight"><code>uid()</code></a></li><li><a href="#gid" class="table-of-contents__link toc-highlight"><code>gid()</code></a></li><li><a href="#user_name" class="table-of-contents__link toc-highlight"><code>user_name()</code></a></li><li><a href="#group_name" class="table-of-contents__link toc-highlight"><code>group_name()</code></a></li></ul></li><li><a href="#common" class="table-of-contents__link toc-highlight">Common</a><ul><li><a href="#cha" class="table-of-contents__link toc-highlight">Cha</a></li><li><a href="#file" class="table-of-contents__link toc-highlight">File</a></li><li><a href="#range" class="table-of-contents__link toc-highlight">Range</a></li><li><a href="#url" class="table-of-contents__link toc-highlight">Url</a></li><li><a href="#window" class="table-of-contents__link toc-highlight">Window</a></li></ul></li><li><a href="#sync-context" class="table-of-contents__link toc-highlight">Sync context</a><ul><li><a href="#tabmode" class="table-of-contents__link toc-highlight"><code>tab::Mode</code></a></li><li><a href="#tabconfig" class="table-of-contents__link toc-highlight"><code>tab::Config</code></a></li><li><a href="#tabpreview" class="table-of-contents__link toc-highlight"><code>tab::Preview</code></a></li><li><a href="#folderfolder" class="table-of-contents__link toc-highlight"><code>folder::Folder</code></a></li><li><a href="#folderfiles" class="table-of-contents__link toc-highlight"><code>folder::Files</code></a></li><li><a href="#folderfile" class="table-of-contents__link toc-highlight"><code>folder::File</code></a></li><li><a href="#managertabs" class="table-of-contents__link toc-highlight"><code>manager::Tabs</code></a></li><li><a href="#tabtab" class="table-of-contents__link toc-highlight"><code>tab::Tab</code></a></li><li><a href="#taskstasks" class="table-of-contents__link toc-highlight"><code>tasks::Tasks</code></a></li></ul></li><li><a href="#isolate-context" class="table-of-contents__link toc-highlight">Isolate context</a><ul><li><a href="#fs" class="table-of-contents__link toc-highlight">fs</a></li><li><a href="#child" class="table-of-contents__link toc-highlight">Child</a></li><li><a href="#command" class="table-of-contents__link toc-highlight">Command</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#status" class="table-of-contents__link toc-highlight">Status</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/installation">Docs</a></li><li class="footer__item"><a class="footer__link-item" href="/features">Features</a></li><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/qfADduSdJu" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord (English mainly)<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_FzVt"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://t.me/yazi_rs" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram (Chinese mainly)<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_FzVt"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/sxyazi/yazi" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_FzVt"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Yazi. Built with ❤️️.</div></div></div></footer></div>
+</body>
+</html>
