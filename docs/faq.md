@@ -74,11 +74,11 @@ The decision to separate `enter` and `open` commands was intentional.
 
 Yazi will be adding the ability to treat an archive as a directory in the future, allowing direct operations on the files inside.
 
-An archive is a file, so it's "openable", but it's also "enterable" as a directory; so the user can choose the action they want to perform.
+An archive is a file, so it's "openable", but it's also "enterable" as a directory; so the user can choose the action they want to do.
 
 This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
 
-If you truly don't need to distinguish between them, the upcoming Yazi plugin system will also assist you. It will allow you to implement the behaviors you want through plugins.
+If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips.md#smart-enter-enter-for-directory-open-for-file).
 
 ## Why is "orphan" set to false by default?
 

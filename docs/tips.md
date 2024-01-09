@@ -90,6 +90,25 @@ You can change the `<Esc>` of input component from the default `escape` to `clos
 
 To exiting input directly, without entering Vi mode, making it behave like a regular input box.
 
+## Smart enter: `enter` for directory, `open` for file
+
+Save those lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
+
+```lua
+return {
+	entry = function()
+		local h = cx.active.current.hovered
+		ya.manager_emit(h and h.cha.is_dir and "enter" or "open", {})
+	end,
+}
+```
+
+Then bind it for `l` key, in your `keymap.toml`:
+
+```toml
+{ on = [ "l" ], exec = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+```
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon)
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
