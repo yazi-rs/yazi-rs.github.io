@@ -58,7 +58,7 @@ brew install yazi --HEAD
 
 ## Nix
 
-A [Nix package of Yazi](https://search.nixos.org/packages?channel=unstable&show=yazi) is available. Nix users can install Yazi via:
+A [Nix package](https://search.nixos.org/packages?channel=unstable&show=yazi) for Yazi is available.
 
 ```bash
 # NixOS:
