@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Quick Start
 
-After [installing](./installation.md), use the following command to run it:
+Once you've [installed Yazi](./install.md), start the program with:
 
 ```bash
 yazi
@@ -16,16 +16,77 @@ yazi
 
 Press `q` to quit and `~` to open the help menu.
 
-## Themes
+## Shell function
 
-We have created a repo to collect themes from the community. Pick a theme you like!
+We suggest using this ya shell function that provides the ability to change the current working directory when exiting Yazi.
 
-https://github.com/yazi-rs/themes
+<Tabs>
+  <TabItem value="bash-zsh" label="Bash / Zsh" default>
+
+```bash
+function ya() {
+	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+```
+
+  </TabItem>
+  <TabItem value="fish" label="Fish">
+
+```shell
+function ya
+	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	yazi $argv --cwd-file="$tmp"
+	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+end
+```
+
+  </TabItem>
+  <TabItem value="nushell" label="Nushell">
+
+```shell
+def --env ya [args?] {
+	let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
+	yazi $args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -f $tmp
+}
+```
+
+  </TabItem>
+  <TabItem value="powershell" label="PowerShell">
+
+```powershell
+function ya {
+    $tmp = [System.IO.Path]::GetTempFileName()
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -Path $cwd
+    }
+    Remove-Item -Path $tmp
+}
+```
+
+  </TabItem>
+</Tabs>
+
+To use it, copy the function into the configuration file of your respective shell.
 
 ## Keybindings
 
 :::tip
-To see all key bindings, check the [yazi-config/preset/keymap.toml](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml) file.
+For all key bindings, see our [Keymap Reference](./configuration/keymap.md).
 :::
 
 ### Navigation
@@ -139,67 +200,6 @@ _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the 
 | , ⇒ s       | Sort by size                     |
 | , ⇒ S       | Sort by size (reverse)           |
 
-## Changing working directory when exiting Yazi
+## Themes
 
-You can also use this convenient wrapper that provides the ability to change the current working directory when exiting Yazi.
-
-<Tabs>
-  <TabItem value="bash-zsh" label="Bash / Zsh" default>
-
-```bash
-function ya() {
-	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-```
-
-  </TabItem>
-  <TabItem value="fish" label="Fish">
-
-```shell
-function ya
-	set tmp (mktemp -t "yazi-cwd.XXXXX")
-	yazi $argv --cwd-file="$tmp"
-	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		cd -- "$cwd"
-	end
-	rm -f -- "$tmp"
-end
-```
-
-  </TabItem>
-  <TabItem value="nushell" label="Nushell">
-
-```shell
-def --env ya [args?] {
-	let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
-	yazi $args --cwd-file $tmp
-	let cwd = (open $tmp)
-	if $cwd != "" and $cwd != $env.PWD {
-		cd $cwd
-	}
-	rm -f $tmp
-}
-```
-
-  </TabItem>
-  <TabItem value="powershell" label="PowerShell">
-
-```powershell
-function ya {
-    $tmp = [System.IO.Path]::GetTempFileName()
-    yazi $args --cwd-file="$tmp"
-    $cwd = Get-Content -Path $tmp
-    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        Set-Location -Path $cwd
-    }
-    Remove-Item -Path $tmp
-}
-```
-
-  </TabItem>
-</Tabs>
+Check out our [themes repository](https://github.com/yazi-rs/themes), [suggest a new one](https://github.com/yazi-rs/themes/issues/new), or [make your own](./configuration/theme.md)!

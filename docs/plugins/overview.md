@@ -5,7 +5,7 @@ sidebar_label: Plugin
 description: Learn how to extend Yazi with Lua plugins.
 ---
 
-# Plugin (Work in progress)
+# Plugins (BETA)
 
 You can extend Yazi's functionality through Lua plugins, which need to be placed in the `plugins` subdirectory within Yazi's configuration directory:
 
