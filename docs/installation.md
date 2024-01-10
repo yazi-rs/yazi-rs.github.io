@@ -5,18 +5,21 @@ description: How to install Yazi on various operating systems.
 
 # Installation
 
-Prerequisites:
+To use Yazi, you must have the following prerequisites installed:
 
-- file (required, for file type detection)
-- nerd-fonts ([_optional_](./faq.md#i-dont-like-nerdfonts))
-- ffmpegthumbnailer (_optional_, for video thumbnails)
-- unar (_optional_, for archive preview)
-- jq (_optional_, for JSON preview)
-- poppler (_optional_, for PDF preview)
-- fd (_optional_, for file searching)
-- rg (_optional_, for file content searching)
-- fzf (_optional_, for quick file subtree navigation)
-- zoxide (_optional_, for historical directories navigation)
+- file (for file type detection)
+
+Yazi can be _optionally_ extended with other command line tools to enable additional features.
+
+- [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](./faq.md#i-dont-like-nerdfonts))
+- [`ffmpegthumbnailer`](https://github.com/dirkvdb/ffmpegthumbnailer) (for video thumbnails)
+- [`unar`](https://theunarchiver.com/command-line) (for archive preview)
+- [`jq`](https://jqlang.github.io/jq/) (for JSON preview)
+- [`poppler`](https://poppler.freedesktop.org/) (for PDF preview)
+- [`fd`](https://github.com/sharkdp/fd) (for file searching)
+- [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
+- [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
+- [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
 
 ## Arch Linux
 
