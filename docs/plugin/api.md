@@ -435,6 +435,13 @@ Properties:
 - `link_to`: The [Url](#url) of this file pointing to, if it's a symlink; otherwise, `nil`
 - `name`: The name of this file
 
+### Icon
+
+Properties:
+
+- `text`: The text of this icon
+- `style`: The [Style](#uistyle) of this icon
+
 ### Range
 
 TODO
@@ -539,7 +546,7 @@ Based on [File](#file), with the following additional methods:
 - `size()` - The size of this file, returns a integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
 - `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The icon string of this file, [`[icons]`](../configuration/theme.md#icons) rules are applied
+- `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme.md#icons) rules are applied
 - `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme.md#filetype) rules are applied
 - `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
