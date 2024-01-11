@@ -156,7 +156,7 @@ Get the [Cha](./common.md#cha) of the specified file, which is faster than [`cha
 
 Returns `(cha, err)`:
 
-- `cha` - The [Cha](./common.md#cha) of the file, which is a table
+- `cha` - The [Cha](./common.md#cha) of the file if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is a integer if any
 
 ### `cha_follow(url)`
@@ -171,23 +171,113 @@ Get the [Cha](./common.md#cha) of the specified file, and follow the symbolic li
 
 Returns `(cha, err)`:
 
-- `cha` - The [Cha](./common.md#cha) of the file, which is a table
+- `cha` - The [Cha](./common.md#cha) of the file if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is a integer if any
 
 ## Command
 
+You can invoke external programs through:
+
+```lua
+local child = Command("ls")
+	:args({ "-a", "-l" })
+	:stdout(Command.PIPED)
+	:spawn()
+```
+
+Compared to Lua's `os.execute`, it provides many comprehensive and convenient methods, and the entire process is async.
+
+It takes better advantage of the benefits of concurrent scheduling. However, it can only be used in async contexts, such as preloaders, previewers, and async functional plugins.
+
+### `arg(arg)`
+
+```lua
+local cmd = Command("ls"):arg("-a"):arg("-l")
+```
+
+Append an argument to the command:
+
+- `arg` - Required, the argument to be appended, which is a string
+
+Returns `self`.
+
+### `args(args)`
+
+```lua
+local cmd = Command("ls"):args({ "-h" }):args({ "-a", "-l" })
+```
+
+Append multiple arguments to the command:
+
+- `args` - Required, the arguments to be appended, which is a table of strings
+
+Returns `self`.
+
+### `env(key, value)`
+
+```lua
+local cmd = Command("ls"):env("PATH", "/bin"):env("HOME", "/home")
+```
+
+Append an environment variable to the command:
+
+- `key` - Required, the key of the environment variable, which is a string
+- `value` - Required, the value of the environment variable, which is a string
+
+Returns `self`.
+
+### `stdin(cfg)`
+
+```lua
+local cmd = Command("ls"):stdin(Command.PIPED)
+```
+
+Set the stdin of the command:
+
+- `cfg` - Required, the configuration of the stdin, accepts the following values:
+  - `Command.PIPED` - Pipe the stdin
+  - `Command.NULL` - Discard the stdin
+  - `Command.INHERIT` - Inherit the stdin
+
+If not set, the stdin will be null. Returns `self`.
+
+### `stdout(cfg)`
+
+```lua
+local cmd = Command("ls"):stdout(Command.PIPED)
+```
+
+Set the stdout of the command:
+
+- `cfg` - Required, the configuration of the stdout, accepts the following values:
+  - `Command.PIPED` - Pipe the stdout
+  - `Command.NULL` - Discard the stdout
+  - `Command.INHERIT` - Inherit the stdout
+
+If not set, the stdout will be null. Returns `self`.
+
+### `stderr(cfg)`
+
+```lua
+local cmd = Command("ls"):stderr(Command.PIPED)
+```
+
+Set the stderr of the command:
+
+- `cfg` - Required, the configuration of the stderr, accepts the following values:
+  - `Command.PIPED` - Pipe the stderr
+  - `Command.NULL` - Discard the stderr
+  - `Command.INHERIT` - Inherit the stderr
+
+If not set, the stdout will be null. Returns `self`.
+
+### `spawn()`
+
 TODO
 
-Methods:
+### `output()`
 
-- `arg(arg)`
-- `args(args)`
-- `env(key, value)`
-- `stdin(cfg)`
-- `stdout(cfg)`
-- `stderr(cfg)`
-- `spawn()`
-- `output()`
+TODO
 
 ### Child
 
