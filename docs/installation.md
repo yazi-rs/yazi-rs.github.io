@@ -23,13 +23,13 @@ Yazi can be _optionally_ extended with other command line tools to enable additi
 
 ## Arch Linux
 
-```bash
+```shell
 sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
-```bash
+```shell
 paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 ```
 
@@ -39,20 +39,20 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 
 Then you can install Yazi by itself:
 
-```bash
+```shell
 brew install yazi
 ```
 
 Or along with the optional dependencies:
 
-```bash
+```shell
 brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
 
-```bash
+```shell
 brew install yazi --HEAD
 ```
 
@@ -60,7 +60,7 @@ brew install yazi --HEAD
 
 A [Nix package](https://search.nixos.org/packages?channel=unstable&show=yazi) for Yazi is available.
 
-```bash
+```shell
 # NixOS:
 nix-env -iA nixos.yazi
 
@@ -81,7 +81,7 @@ You can also manage Yazi's configuration using [home-manager](https://nix-commun
 
 ## NetBSD
 
-```bash
+```shell
 pkgin install yazi
 ```
 
@@ -134,7 +134,7 @@ Currently, only WezTerm and Mintty (i.e., Git Bash, which comes with Git for Win
 
 ## AOSC OS
 
-```bash
+```shell
 sudo oma install yazi
 ```
 
@@ -146,19 +146,19 @@ You can download the latest official binaries from [GitHub Releases](https://git
 
 Setup the latest stable Rust toolchain:
 
-```bash
+```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 Now you can install `yazi-fm` from [crates.io](https://crates.io/crates/yazi-fm):
 
-```bash
+```shell
 cargo install --locked yazi-fm
 ```
 
 Or install the latest git version:
 
-```bash
+```shell
 cargo install --locked --git https://github.com/sxyazi/yazi.git
 ```
 
@@ -168,13 +168,13 @@ If it fails to build, please check if `make` and `gcc` is installed on your syst
 
 Setup the latest stable Rust toolchain:
 
-```bash
+```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 Clone the repository and build Yazi:
 
-```bash
+```shell
 git clone https://github.com/sxyazi/yazi.git
 cd yazi
 cargo build --release
@@ -182,7 +182,7 @@ cargo build --release
 
 Then, you can run:
 
-```bash
+```shell
 ./target/release/yazi
 ```
 

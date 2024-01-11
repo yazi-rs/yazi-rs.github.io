@@ -40,14 +40,14 @@ However, if you run Yazi in WSL, you can experience perfect image previews using
 
 You need to install `sshd` in WSL and start it:
 
-```bash
+```shell
 sudo apt install openssh-server
 sudo service ssh restart
 ```
 
 Then, on the host machine, connect to WSL via SSH:
 
-```bash
+```shell
 wezterm ssh 127.0.0.1
 ```
 

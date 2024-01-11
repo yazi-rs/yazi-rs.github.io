@@ -15,10 +15,10 @@ There are three configuration files for Yazi:
 
 You can find the default configuration files at https://github.com/sxyazi/yazi/tree/main/yazi-config/preset.
 
-To override any of the defaults, begin by copying the appropriate file (from the directory linked above) to either:
+To override any of the defaults, begin by copying the appropriate file (from the directory linked above) to the Yazi configuration directory.
 
-- `~/.config/yazi/` on Unix/Unix-like systems.
-- `C:\Users\USERNAME\AppData\Roaming\yazi\config\` on Windows.
+- On Unix/Unix-like systems: `~/.config/yazi/`
+- Windows: `C:\Users\USERNAME\AppData\Roaming\yazi\config\`
 
 For example, to edit keybindings, start by copying the [`keymap.toml` file](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml) to `~/.config/yazi/keymap.toml` (Unix/Unix-like) or `C:\Users\USERNAME\AppData\Roaming\yazi\config\keymap.toml` (Windows).
 
