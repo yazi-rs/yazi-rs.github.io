@@ -9,21 +9,21 @@ description: Learn how to configure Yazi.
 
 There are three configuration files for Yazi:
 
-- [`yazi.toml`](./yazi.md) - General configuration
-- [`keymap.toml`](./keymap.md) - Keybinds configuration
-- [`theme.toml`](./theme.md) - Color scheme configuration
+- [`yazi.toml`](./yazi.md) - General configuration.
+- [`keymap.toml`](./keymap.md) - Keybinds configuration.
+- [`theme.toml`](./theme.md) - Color scheme configuration.
 
-You can find the default configurations at: https://github.com/sxyazi/yazi/tree/main/yazi-config/preset.
+You can find the default configuration files at https://github.com/sxyazi/yazi/tree/main/yazi-config/preset.
 
-To override any of the defaults, begin by copying the appropriate file to following location:
+To override any of the defaults, begin by copying the appropriate file (from the directory linked above) to:
 
-- Unix: `~/.config/yazi/`
-- Windows: `C:\Users\USERNAME\AppData\Roaming\yazi\config\`
+- `~/.config/yazi/` on Unix/Unix-like systems.
+- `C:\Users\USERNAME\AppData\Roaming\yazi\config\` on Windows.
 
-For example, to edit the keymaps, start by copying `keymap.toml` file (found [here](https://github.com/sxyazi/yazi/tree/main/yazi-config/preset)) to:
+For example, to edit your keybindings, start by copying the [`keymap.toml` file](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml) to:
 
-- Unix: `~/.config/yazi/keymap.toml`
-- Windows: `C:\Users\USERNAME\AppData\Roaming\yazi\config\keymap.toml`
+- `~/.config/yazi/keymap.toml` on Unix/Unix-like systems.
+- `C:\Users\USERNAME\AppData\Roaming\yazi\config\keymap.toml` on Windows.
 
 ## Custom config directory
 

@@ -1,0 +1,8 @@
+{
+	"label": "Plugins (BETA)",
+	"position": 4,
+	"link": {
+		"type": "doc",
+		"id": "plugins/overview"
+	}
+}

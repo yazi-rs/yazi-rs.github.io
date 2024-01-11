@@ -5,12 +5,12 @@ sidebar_label: Plugin
 description: Learn how to extend Yazi with Lua plugins.
 ---
 
-# Plugin (Work in progress)
+# Plugins (BETA)
 
-You can extend Yazi's functionality through Lua plugins, which need to be placed in the `plugins` subdirectory within Yazi's configuration directory:
+You can extend Yazi's functionality through Lua plugins, which need to be placed in the `plugins` subdirectory of Yazi's configuration directory, so either:
 
-- Unix: `~/.config/yazi/plugins/`
-- Windows: `C:\Users\USERNAME\AppData\Roaming\yazi\config\plugins\`
+- `~/.config/yazi/plugins/` on Unix/Unix-like systems.
+- `C:\Users\USERNAME\AppData\Roaming\yazi\config\plugins\` on Windows.
 
 ```
 .
