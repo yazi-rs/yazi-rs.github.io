@@ -33,17 +33,11 @@ If you want to use the latest Git version, you can install it from [AUR](https:/
 paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 ```
 
-## macOS / Homebrew
+## macOS
 
 First, make sure that Homebrew is fully up-to-date with `brew update`.
 
-Then you can install Yazi by itself:
-
-```sh
-brew install yazi
-```
-
-Or along with the optional dependencies:
+Then you can install Yazi (and the optional dependencies):
 
 ```sh
 brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide

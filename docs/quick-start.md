@@ -18,7 +18,7 @@ Press `q` to quit and `~` to open the help menu.
 
 ## Shell function
 
-We suggest using this ya shell function that provides the ability to change the current working directory when exiting Yazi.
+We suggest using this `ya` shell function that provides the ability to change the current working directory when exiting Yazi.
 
 <Tabs>
   <TabItem value="bash-zsh" label="Bash / Zsh" default>
