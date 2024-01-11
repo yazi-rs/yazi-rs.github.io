@@ -75,7 +75,3 @@ This is similar to having big and small cores in a CPU; when the big cores are i
 For complex tasks like file copying, a combination of micro and macro approaches is employed. Micro is used to recursively gather a list of all files to be copied, allowing users to see the number of tasks and their sizes in advance. Macro, on the other hand, handles the actual copying process.
 
 The advantage of task scheduling extends beyond providing ample concurrency for I/O and CPU resources; it also indirectly mitigates the depletion of system resources (such as file handles and CPU) due to sudden task surges.
-
-## TODO
-
-I'll find time to continue writing.
