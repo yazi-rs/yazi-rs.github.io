@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 Once you've [installed Yazi](./installation.md), start the program with:
 
-```shell
+```sh
 yazi
 ```
 
@@ -37,7 +37,7 @@ function ya() {
   </TabItem>
   <TabItem value="fish" label="Fish">
 
-```shell
+```sh
 function ya
 	set tmp (mktemp -t "yazi-cwd.XXXXX")
 	yazi $argv --cwd-file="$tmp"
@@ -51,7 +51,7 @@ end
   </TabItem>
   <TabItem value="nushell" label="Nushell">
 
-```shell
+```sh
 def --env ya [args?] {
 	let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
 	yazi $args --cwd-file $tmp
