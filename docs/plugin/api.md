@@ -285,11 +285,14 @@ TODO
 
 ## ya
 
-### `cache_file(path)`
+### `file_cache(opts)`
 
-Calculate the cached [Url](#url) corresponding to the given path:
+Calculate the cached [Url](#url) corresponding to the given file:
 
-- `path` - Required, the path of the file, which is a string
+- `opts` - Required, the options of the cache, which is a table:
+
+  - `file` - The [File](#file) to be cached
+  - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
 
