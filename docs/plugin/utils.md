@@ -204,7 +204,7 @@ Returns `self`.
 ### `args(args)`
 
 ```lua
-local cmd = Command("ls"):args({ "-h" }):args({ "-a", "-l" })
+local cmd = Command("ls"):args({ "-a", "-l" }):args({ "-h" })
 ```
 
 Append multiple arguments to the command:
@@ -269,15 +269,29 @@ Set the stderr of the command:
   - `Command.NULL` - Discard the stderr
   - `Command.INHERIT` - Inherit the stderr
 
-If not set, the stdout will be null. Returns `self`.
+If not set, the stderr will be null. Returns `self`.
 
 ### `spawn()`
 
-TODO
+```lua
+local child, err = Command("ls"):spawn()
+```
+
+Spawn the command, returns `(child, err)`:
+
+- `child` - The [Child](#child) of the command if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is a integer if any
 
 ### `output()`
 
-TODO
+```lua
+local output, err = Command("ls"):output()
+```
+
+Spawn the command and wait for it to finish, returns `(output, err)`:
+
+- `output` - The [Output](#output-1) of the command if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is a integer if any
 
 ### Child
 
