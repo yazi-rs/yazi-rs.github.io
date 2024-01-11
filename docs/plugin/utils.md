@@ -293,33 +293,94 @@ Spawn the command and wait for it to finish, returns `(output, err)`:
 - `output` - The [Output](#output-1) of the command if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is a integer if any
 
-### Child
+## Child
 
-TODO
+This object is created by [`Command:spawn`](#spawn) and represents a running child process.
 
-Methods:
+You can access the runtime data of this process through its proprietary methods.
 
-- `read(len)`
-- `read_line()`
-- `read_line_with(opts)`
-- `wait()`
-- `start_kill()`
+### `read(len)`
 
-### Output
+```lua
+local data, event = child:read(1024)
+```
 
-TODO
+Let's say "available data source" refers to `stdout` or `stderr` that has been set with `Command.PIPED`, or them both.
+
+`read()` reads data from the available data source alternately, and the `event` indicates the source of the data:
+
+- The data comes from stdout if event is 0
+- The data comes from stderr if event is 1
+- There's no data to read from both stdout and stderr, if event is 2
+
+### `read_line()`
+
+```lua
+local line, event = child:read_line()
+```
+
+Similar to [`read()`](#readlen), but it reads data line by line.
+
+### `read_line_with(opts)`
+
+```lua
+local line, event = child:wait_line_with { timeout = 500 }
+```
+
+Similar to [`read_line()`](#read_line), but it accepts a table of options:
+
+- `timeout` - Required, timeout in milliseconds, which is a integer
+
+And includes the following additional events:
+
+- Timeout if event is 3
+
+### `wait()`
+
+```lua
+local status, err = child:wait()
+```
+
+Wait for the child process to finish, returns `(status, err)`:
+
+- `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is a integer if any
+
+### `start_kill()`
+
+```lua
+local ok, err = child:start_kill()
+```
+
+Send a SIGTERM signal to the child process, returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is a integer if any
+
+## Output
 
 Properties:
 
-- `status`
-- `stdout`
-- `stderr`
+- `status`: The [Status](#status) of the child process
+- `stdout`: The stdout of the child process, which is a string
+- `stderr`: The stderr of the child process, which is a string
 
-### Status
+## Status
 
-Methods:
+This object represents the exit status of a child process, and it is created by [`wait()`](#wait), or [`output()`](#output-1).
 
-- `success()`
-- `code()`
+### `success()`
 
-TODO
+```lua
+local ok = status:success()
+```
+
+Returns whether the child process exited successfully, which is a boolean.
+
+### `code()`
+
+```lua
+local code = status:code()
+```
+
+Returns the exit code of the child process, which is a integer if any.
