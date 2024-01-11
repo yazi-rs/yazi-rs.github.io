@@ -128,13 +128,51 @@ Returns the name of the current group, which is a string.
 
 ## fs
 
-TODO
+### `write(url, data)`
 
-Functions:
+```lua
+local ok, err = fs.write(url, "hello world")
+```
 
-- `write(url, data)`
-- `metadata(url)`
-- `symlink_metadata(url)`
+Write data to the specified file:
+
+- `url` - Required, the [Url](./common.md#url) of the file
+- `data` - Required, the data to be written, which is a string
+
+Returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is a integer if any
+
+### `cha(url)`
+
+```lua
+local cha, err = fs.cha(url)
+```
+
+Get the [Cha](./common.md#cha) of the specified file, which is faster than [`cha_follow`](#chafollowurl) since it never follows the symbolic link:
+
+- `url` - Required, the [Url](./common.md#url) of the file
+
+Returns `(cha, err)`:
+
+- `cha` - The [Cha](./common.md#cha) of the file, which is a table
+- `err` - The error code if the operation is failed, which is a integer if any
+
+### `cha_follow(url)`
+
+```lua
+local cha, err = fs.cha_follow(url)
+```
+
+Get the [Cha](./common.md#cha) of the specified file, and follow the symbolic link:
+
+- `url` - Required, the [Url](./common.md#url) of the file
+
+Returns `(cha, err)`:
+
+- `cha` - The [Cha](./common.md#cha) of the file, which is a table
+- `err` - The error code if the operation is failed, which is a integer if any
 
 ## Command
 
