@@ -167,6 +167,9 @@ rules = [
 	{ mime = "video/*", fg = "yellow" },
 	{ mime = "audio/*", fg = "yellow" },
 
+	# Orphan symbolic links
+	{ name = "*", is = "orphan", fg = "red" },
+
 	# ...
 
 	# Fallback
@@ -179,6 +182,16 @@ Each rule supports complete [Style properties](#Types). There are two special ru
 
 - `name = "*"` matches all files.
 - `name = "*/"` matches all directories.
+
+You can restrict the specific type of files through `is`, noting that it must be used with either `name` or `mime`. It accepts the following values:
+
+- `block`: Block device
+- `exec`: Executable
+- `fifo`: FIFO
+- `link`: Symbolic link
+- `orphan`: Orphan symbolic link
+- `sock`: Socket
+- `sticky`: File with sticky bit set
 
 ## [icons]
 
