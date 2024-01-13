@@ -14,7 +14,11 @@ Cha means one file's characteristics with the following properties:
 - `is_dir`: Whether this file is a directory
 - `is_hidden`: Whether this file is hidden (starts with a dot)
 - `is_link`: Whether this file is a symlink
-- `is_bad_link`: Whether this file is a bad symlink, which points to a non-existent file
+- `is_orphan`: Whether this file is a bad symlink, which points to a non-existent file
+- `is_block_device`: Whether this file is a block device
+- `is_char_device`: Whether this file is a character device
+- `is_fifo`: Whether this file is a fifo
+- `is_socket`: Whether this file is a socket
 - `length`: The length of this file, returns a integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
 - `created`: The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `modified`: The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
@@ -23,10 +27,6 @@ Cha means one file's characteristics with the following properties:
 
 And the Unix only properties:
 
-- `is_block_device`: Whether this file is a block device
-- `is_char_device`: Whether this file is a character device
-- `is_fifo`: Whether this file is a fifo
-- `is_socket`: Whether this file is a socket
 - `uid`: The user id of this file
 - `gid`: The group id of this file
 
@@ -150,8 +150,8 @@ Based on [File](#file), with the following additional methods:
 - `size()` - The size of this file, returns a integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
 - `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme.md#icons) rules are applied
-- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme.md#filetype) rules are applied
+- `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme.md#icons) rules are applied; if no rule matches, returns `nil`
+- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme.md#filetype) rules are applied; if no rule matches, returns `nil`
 - `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
 - `is_selected()` - Whether this file is selected
