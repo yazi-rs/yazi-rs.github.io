@@ -98,7 +98,7 @@ Returns the target family of the current platform, `"windows"`, `"unix"`, or `"w
 Truncate the text to the specified length and return it:
 
 - `text` - Required, the text to be truncated, which is a string
-- `max` - Required, the maximum length of the text, which is a integer
+- `max` - Required, the maximum length of the text, which is an integer
 
 ### `mime_valid(mime)`
 
@@ -112,11 +112,11 @@ Returns the current timestamp, which is a float, the integer part represents the
 
 ### `uid()`
 
-Returns the user id of the current user, which is a integer.
+Returns the user id of the current user, which is an integer.
 
 ### `gid()`
 
-Returns the group id of the current user, which is a integer.
+Returns the group id of the current user, which is an integer.
 
 ### `user_name()`
 
@@ -142,7 +142,7 @@ Write data to the specified file:
 Returns `(ok, err)`:
 
 - `ok` - Whether the operation is successful, which is a boolean
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ### `cha(url)`
 
@@ -157,7 +157,7 @@ Get the [Cha](./common.md#cha) of the specified file, which is faster than [`cha
 Returns `(cha, err)`:
 
 - `cha` - The [Cha](./common.md#cha) of the file if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ### `cha_follow(url)`
 
@@ -172,7 +172,7 @@ Get the [Cha](./common.md#cha) of the specified file, and follow the symbolic li
 Returns `(cha, err)`:
 
 - `cha` - The [Cha](./common.md#cha) of the file if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ## Command
 
@@ -280,7 +280,7 @@ local child, err = Command("ls"):spawn()
 Spawn the command, returns `(child, err)`:
 
 - `child` - The [Child](#child) of the command if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ### `output()`
 
@@ -291,7 +291,7 @@ local output, err = Command("ls"):output()
 Spawn the command and wait for it to finish, returns `(output, err)`:
 
 - `output` - The [Output](#output-1) of the command if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ## Child
 
@@ -329,7 +329,7 @@ local line, event = child:wait_line_with { timeout = 500 }
 
 Similar to [`read_line()`](#read_line), but it accepts a table of options:
 
-- `timeout` - Required, timeout in milliseconds, which is a integer
+- `timeout` - Required, timeout in milliseconds, which is an integer
 
 And includes the following additional events:
 
@@ -344,7 +344,7 @@ local status, err = child:wait()
 Wait for the child process to finish, returns `(status, err)`:
 
 - `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ### `start_kill()`
 
@@ -355,7 +355,7 @@ local ok, err = child:start_kill()
 Send a SIGTERM signal to the child process, returns `(ok, err)`:
 
 - `ok` - Whether the operation is successful, which is a boolean
-- `err` - The error code if the operation is failed, which is a integer if any
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ## Output
 
@@ -383,4 +383,4 @@ Returns whether the child process exited successfully, which is a boolean.
 local code = status:code()
 ```
 
-Returns the exit code of the child process, which is a integer if any.
+Returns the exit code of the child process, which is an integer if any.

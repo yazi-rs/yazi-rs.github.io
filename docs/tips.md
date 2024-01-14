@@ -92,7 +92,7 @@ To exiting input directly, without entering Vi mode, making it behave like a reg
 
 ## Smart enter: `enter` for directory, `open` for file
 
-Save those lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
 
 ```lua
 return {
@@ -125,7 +125,7 @@ Please make sure that `<C-n>` does not conflict with your other keys.
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
 
-Save those lines as a file, for example `~/.config/yazi/ui.lua`:
+Save these lines as a file, for example `~/.config/yazi/ui.lua`:
 
 ```lua
 function Status:render() return {} end

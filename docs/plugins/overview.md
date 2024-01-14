@@ -77,7 +77,7 @@ You can also obtain a small amount of app data from the sync context by calling 
 
 local get_hovered_url = sync(function()
 	-- You can access all app data through the `cx`,
-	-- within the `sync()` block, in a async plugin
+	-- within the `sync()` block, in an async plugin
 	local h = cx.active.current.hovered
 	return h and tostring(h.url) or ""
 end)

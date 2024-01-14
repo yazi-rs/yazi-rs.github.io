@@ -162,7 +162,7 @@ prepend_previewers = [
 ]
 ```
 
-Yazi comes with the those previewer plugins:
+Yazi comes with the these previewer plugins:
 
 - folder: bridge between the Yazi file system and the preview
 - code: bridge between built-in code highlighting and the preview, providing async concurrent rendering
@@ -196,7 +196,7 @@ prepend_preloaders = [
 ]
 ```
 
-Yazi comes with the those preloader plugins:
+Yazi comes with the these preloader plugins:
 
 - mime: preloads mime-type of files in chunks
 - noop: no operation

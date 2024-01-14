@@ -19,7 +19,7 @@ Cha means one file's characteristics with the following properties:
 - `is_char_device`: Whether this file is a character device
 - `is_fifo`: Whether this file is a fifo
 - `is_socket`: Whether this file is a socket
-- `length`: The length of this file, returns a integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
+- `length`: The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
 - `created`: The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `modified`: The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `accessed`: The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
@@ -102,8 +102,6 @@ Meta methods:
 
 ### `tab::Config`
 
-TODO
-
 Properties:
 
 - `sort_by`
@@ -113,23 +111,23 @@ Properties:
 - `linemode`
 - `show_hidden`
 
-### `tab::Preview`
+These properties are consistent with those in [yazi.toml](../configuration/yazi.md), and will not be detailed here.
 
-TODO
+### `tab::Preview`
 
 Properties:
 
-- `skip`
-- `folder`
+- `skip` - The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
+- `folder` - The [folder::Folder](#folderfolder) being previewed, or `nil` if this preview is not for folders
 
 ### `folder::Folder`
 
-- cwd
-- offset
-- cursor
-- window
-- files
-- hovered
+- `cwd` - The current working directory of this folder, which is a [Url](#url)
+- `offset` - The offset of this folder, which is an integer
+- `cursor` - The cursor position of this folder, which is an integer
+- `window` - A table of [File](#file)s in the visible area of this folder
+- `files` - The [Files](#folderfiles) of this folder
+- `hovered` - The hovered [File](#file) of this folder, or `nil` if there is no hovered file
 
 ### `folder::Files`
 
@@ -142,7 +140,7 @@ Meta methods:
 
 Based on [File](#file), with the following additional methods:
 
-- `size()` - The size of this file, returns a integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
+- `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
 - `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
 - `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme.md#icons) rules are applied; if no rule matches, returns `nil`
