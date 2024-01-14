@@ -157,7 +157,7 @@ Here are the available options for a single rule:
 ```toml
 [plugin]
 prepend_previewers = [
-	# Heic previewer
+	# HEIC previewer
 	{ mime = "image/heic", exec = "heic" },
 ]
 ```
@@ -190,8 +190,8 @@ Here are the available options for a single rule:
 
 ```toml
 [plugin]
-prepend_previewers = [
-	# Heic preloader
+prepend_preloaders = [
+	# HEIC preloader
 	{ mime = "image/heic", exec = "heic" },
 ]
 ```
