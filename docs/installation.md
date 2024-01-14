@@ -7,7 +7,7 @@ description: How to install Yazi on various operating systems.
 
 To use Yazi, you must have the following prerequisites installed:
 
-- [file](https://github.com/file/file) (for file type detection)
+- [`file`](https://github.com/file/file) (for file type detection)
 
 Yazi can be _optionally_ extended with other command line tools to enable additional features.
 
