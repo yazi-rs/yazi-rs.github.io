@@ -156,7 +156,7 @@ Here are the available options for a single rule:
 
 ### Preloader
 
-You can prepend or append new preview rules to the default `previewers` under `[plugin]` using `prepend_previewers` and `append_previewers`.
+You can prepend or append new preview rules to the default `preloaders` under `[plugin]` using `prepend_preloaders` and `append_preloaders`.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
