@@ -154,6 +154,14 @@ Here are the available options for a single rule:
 - `exec` (String): The name of the Lua plugin to be executed
 - `sync` (Boolean): Whether to execute synchronously, the default is `false`
 
+```toml
+[plugin]
+prepend_previewers = [
+	# Heic previewer
+	{ mime = "image/heic", exec = "heic" },
+]
+```
+
 Yazi comes with the those previewer plugins:
 
 - folder: bridge between the Yazi file system and the preview
@@ -165,7 +173,7 @@ Yazi comes with the those previewer plugins:
 - pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
 - archive: bridge between `unar` and the preview, offering mixed preview and concurrent rendering capabilities
 
-If you want to create your own preloader, see [Previewer API](../plugins/overview.md#previewer).
+If you want to create your own previewer, see [Previewer API](../plugins/overview.md#previewer).
 
 ### preloaders
 
@@ -179,6 +187,14 @@ Here are the available options for a single rule:
 - `exec` (String): The name of the Lua plugin to be executed
 - `multi` (Boolean): Whether to preload multiple files at once
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
+
+```toml
+[plugin]
+prepend_previewers = [
+	# Heic preloader
+	{ mime = "image/heic", exec = "heic" },
+]
+```
 
 Yazi comes with the those preloader plugins:
 
