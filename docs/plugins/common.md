@@ -3,7 +3,7 @@ sidebar_position: 1
 description: Learn how to use Yazi's Lua API.
 ---
 
-# Common (Work in progress)
+# Common
 
 ## Shared
 
@@ -76,16 +76,11 @@ Properties:
 
 ## App data
 
-The sync context accompanies the entire app lifecycle, you can access all app data through the `cx` within it:
+You can access all app data through the `cx` within [Sync context](./overview.md#sync-context):
 
 - `cx.active`: The active tab, which is a [tab::Tab](#tabtab)
 - `cx.tabs`: All of tabs, which is a [manager::Tabs](#managertabs)
 - `cx.tasks`: All of tasks, which is a [tasks::Tasks](#taskstasks)
-
-which is active during UI rendering (UI plugins) and when executing sync functional plugins (`plugin --sync` command).
-
-For better performance, the sync context is created only at the app's start and remains singular throughout. Thus, plugins running within this context share states,
-prompting plugin developers to create separate namespaces for their plugins to prevent global space contamination.
 
 ### `tab::Mode`
 

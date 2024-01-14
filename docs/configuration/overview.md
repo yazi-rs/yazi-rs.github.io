@@ -17,12 +17,12 @@ You can find the default configuration files at https://github.com/sxyazi/yazi/t
 
 To override any of the defaults, begin by copying the appropriate file (from the directory linked above) to:
 
-- `~/.config/yazi/` on Unix/Unix-like systems.
+- `~/.config/yazi/` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\` on Windows.
 
 For example, to edit your keybindings, start by copying the [`keymap.toml` file](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml) to:
 
-- `~/.config/yazi/keymap.toml` on Unix/Unix-like systems.
+- `~/.config/yazi/keymap.toml` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\keymap.toml` on Windows.
 
 ## Custom config directory

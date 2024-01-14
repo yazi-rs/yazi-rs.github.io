@@ -3,7 +3,7 @@ sidebar_position: 4
 description: Learn how to use Yazi's Lua API.
 ---
 
-# Utils (Work in progress)
+# Utils
 
 ## ya
 

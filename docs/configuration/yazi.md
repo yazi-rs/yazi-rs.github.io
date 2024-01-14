@@ -127,7 +127,7 @@ rules = [
 Available rule parameters are as follows:
 
 - name (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- mime (String): Glob expression for matching the MIME type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- mime (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - use (String): Opener name corresponding to the names in the [`[opener]` section](#opener).
 
 ## [tasks]
@@ -141,6 +141,31 @@ Available rule parameters are as follows:
 
 - image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image, `0` for unlimited.
 - image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image, `0` for unlimited.
+
+## [plugin]
+
+### Previewer
+
+You can prepend or append new preview rules to the default `previewers` under `[plugin]` using `prepend_previewers` and `append_previewers`.
+Here are the available options for a single rule:
+
+- `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `exec` (String): The name of the Lua plugin to be executed
+- `sync` (Boolean): Whether to execute synchronously, the default is `false`
+
+### Preloader
+
+You can prepend or append new preview rules to the default `previewers` under `[plugin]` using `prepend_previewers` and `append_previewers`.
+Here are the available options for a single rule:
+
+- `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `name` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
+  - `mime`: This file has a mime-type
+- `exec` (String): The name of the Lua plugin to be executed
+- `multi` (Boolean): Whether to preload multiple files at once
+- `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
 
 ## [input]
 

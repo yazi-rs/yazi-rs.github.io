@@ -3,7 +3,7 @@ sidebar_position: 2
 description: Learn how to use Yazi's Lua API.
 ---
 
-# Layout (Work in progress)
+# Layout
 
 Paragraph, List, Bar, Border, and Gauge are renderable widgets; others need to be placed within any of them.
 
