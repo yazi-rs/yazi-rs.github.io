@@ -144,9 +144,9 @@ Available rule parameters are as follows:
 
 ## [plugin]
 
-### Previewer
+### previewers
 
-You can prepend or append new preview rules to the default `previewers` under `[plugin]` using `prepend_previewers` and `append_previewers`.
+You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
@@ -154,9 +154,22 @@ Here are the available options for a single rule:
 - `exec` (String): The name of the Lua plugin to be executed
 - `sync` (Boolean): Whether to execute synchronously, the default is `false`
 
-### Preloader
+Yazi comes with the those previewer plugins:
 
-You can prepend or append new preview rules to the default `preloaders` under `[plugin]` using `prepend_preloaders` and `append_preloaders`.
+- folder: bridge between the Yazi file system and the preview
+- code: bridge between built-in code highlighting and the preview, providing async concurrent rendering
+- json: bridge between `jq` and the preview, providing async concurrent rendering
+- noop: no operation
+- image: presentation layer of built-in image preview, offering mixed preview capabilities
+- video: bridge between `ffmpegthumbnailer` and the preview, offering mixed preview capabilities
+- pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
+- archive: bridge between `unar` and the preview, offering mixed preview and concurrent rendering capabilities
+
+If you want to create your own preloader, see [Previewer API](../plugins/overview.md#previewer).
+
+### preloaders
+
+You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
@@ -166,6 +179,16 @@ Here are the available options for a single rule:
 - `exec` (String): The name of the Lua plugin to be executed
 - `multi` (Boolean): Whether to preload multiple files at once
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
+
+Yazi comes with the those preloader plugins:
+
+- mime: preloads mime-type of files in chunks
+- noop: no operation
+- image: preloads and caches images
+- video: preloads and caches videos
+- pdf: preloads and caches PDFs.
+
+If you want to create your own preloader, see [Preloader API](../plugins/overview.md#preloader).
 
 ## [input]
 
