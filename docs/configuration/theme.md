@@ -193,21 +193,27 @@ You can restrict the specific type of files through `is`, noting that it must be
 - `sock`: Socket
 - `sticky`: File with sticky bit set
 
-## [icons]
+## [icon]
 
-Display different icons based on file name rules, noting that the `/` after the name signifies that it must be a directory.
+Display icon based on file name rules, noting that the `/` after the name signifies that it's a directory.
 
 ```toml
-[icons]
-"Desktop/" = ""
-"*.rs"     = ""
-# ...
+[icon]
 
-# Default
-"*"  = ""
-"*/" = ""
+rules = [
+	{ name = "*.rs"    , text = "" },
+	{ name = "Desktop/", text = "" },
+	# ...
+
+	# Icon with a color
+	{ name = "*.lua", text = "", fg = "#51a0cf" },
+
+	# Default
+	{ name = "*" , text = "" },
+	{ name = "*/", text = "" },
+]
 ```
 
-Similarly, `*` and `*/` can be used for fallback matching all files and all directories.
+Similarly, `*` and `*/` can be used for fallback matching all files and all directories. You can also use `fg` to set the icon color.
 
 The above rules use icons from [Nerd Fonts](https://www.nerdfonts.com), and they will not display properly if you don't have a Nerd Font installed.

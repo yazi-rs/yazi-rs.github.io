@@ -99,16 +99,9 @@ If you don't want to use it and want things to be calm, sure, you can modify the
 [status]
 separator_open = ""
 separator_close = ""
-```
 
-and
-
-```toml
-[icons]
-"Desktop/"   = ""
-"Documents/" = ""
-"Downloads/" = ""
-# ...
+[icon]
+rules = []
 ```
 
 The above code changed all icons to `""`, and the whole world went quiet, nice!
