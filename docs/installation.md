@@ -114,7 +114,6 @@ You can download the latest official binaries from [GitHub Releases](https://git
 
 ```sh
 scoop install yazi
-
 # Install the optional dependencies (recommended):
 scoop install unar jq poppler fd ripgrep fzf zoxide
 ```
@@ -123,7 +122,9 @@ Yazi on Scoop is maintained by community contributors, and may not always have t
 
 ### Image Previews
 
-Currently, only WezTerm and Mintty (i.e., Git Bash, which comes with Git for Windows) support images, and [Yazi has adapted them](https://github.com/sxyazi/yazi#image-preview) to work right out of the box! Windows Terminal does not yet support images though, see https://github.com/microsoft/terminal/issues/5746.
+Currently, only WezTerm and Mintty (i.e., Git Bash, which comes with Git for Windows) support images, and [Yazi has adapted them](https://github.com/sxyazi/yazi#image-preview) to work right out of the box!
+
+Windows Terminal does not yet support images though, see https://github.com/microsoft/terminal/issues/5746.
 
 ## AOSC OS
 
