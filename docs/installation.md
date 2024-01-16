@@ -85,15 +85,15 @@ Windows has been supported since Yazi v0.1.4, but it's still in the early stage,
 
 ### Requirements
 
-Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file(1)` that comes with it.
+Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows, and use the `file(1)` that comes with it.
 
 1. Install Git for Windows by running [the official installer](https://git-scm.com/download/win), or through your package manager of choice.
-2. To allow Yazi to find `file(1)`, add the Git for Windows `/usr/bin/` directory to the Windows path (not the `bash` path). Git for Windows' `/usr/bin/` directory differs depending on how you installed Git.
+2. To allow Yazi to find `file(1)`, add `C:\Git_Installed_Directory\usr\bin\` to your `%PATH%` environment variable, which differs depending on how you installed Git:
+   - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin`
+   - If you installed Git with scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current\usr\bin`
+3. Restart your terminal
 
-- If you installed Git with the installer, add `C:\Program Files\Git\usr\bin` to the Windows path. Again, note that this directory depends on where you installed Git.
-- If you installed Git with scoop, add `C:\Users\USERNAME\scoop\apps\git\current\usr\bin` to the Windows path.
-
-To check if you've done this properly, open a new `cmd` or `powershell` instance and enter `file`. You should see output similar to the following:
+To check if you've done this properly, enter `file`, you should see output similar to the following:
 
 ```
 C:\Users\USERNAME>file
@@ -106,21 +106,20 @@ Usage: file [-bcCdEhikLlNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
 
 ```
 
-This is currently the only method we recommend. **We do NOT recommend `scoop install file`**, since Scoop's `file` cannot handle Unicode file names properly (e.g. `pexels-oliver-sjöström-1433052.jpg`).
-
-\*\* See https://www.c-sharpcorner.com/article/add-a-directory-to-path-environment-variable-in-windows-10/ for help on adding a directory to the Windows path.
-
-\*\* Note that adding this directory to the Windows path will make other Linux programs (such as `cat`, `ls`, and `vim`) that come from `/usr/bin/` accessible to `cmd` and `powershell`.
+This is currently the only method we recommend. **We do NOT recommend `scoop install file`**, since Scoop's `file` cannot handle Unicode file names properly, e.g. `pexels-oliver-sjöström-1433052.jpg`.
 
 ### Installation
 
-First, install Scoop: https://scoop.sh/. Then, in a new `powershell` instance, enter:
+You can download the latest official binaries from [GitHub Releases](https://github.com/sxyazi/yazi/releases), or install Yazi with [Scoop](https://scoop.sh/):
 
 ```sh
-scoop install yazi unar jq poppler fd ripgrep fzf zoxide
+scoop install yazi
+
+# Install the optional dependencies (recommended):
+scoop install unar jq poppler fd ripgrep fzf zoxide
 ```
 
-Yazi on Scoop is maintained by community contributors and may not always have the latest version available. You may want to download the latest binary from [Yazi's GitHub Releases](https://github.com/sxyazi/yazi/releases) if that is the case.
+Yazi on Scoop is maintained by community contributors, and may not always have the latest version available. You may need to check our [GitHub Releases](https://github.com/sxyazi/yazi/releases) page for the latest version.
 
 ### Image Previews
 
