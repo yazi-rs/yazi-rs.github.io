@@ -38,9 +38,9 @@ If you haven't created and used your own configuration file yet, please see [Con
 - enter: Enter the child directory.
 - back: Go back to the previous directory.
 - forward: Go forward to the next directory.
-- peek
+- seek
 
-  - `n`: Peek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down.
+  - `n`: Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down.
 
 - cd: Change the current directory.
 
@@ -170,7 +170,7 @@ If you haven't created and used your own configuration file yet, please see [Con
     - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
     - `"size"`: Sort by file size.
   - `--reverse`: Display files in reverse order.
-  - `--dir_first`: Display directories first.
+  - `--dir-first`: Display directories first.
 
 ### Tabs
 
