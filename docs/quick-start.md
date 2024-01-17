@@ -52,7 +52,7 @@ end
   <TabItem value="nushell" label="Nushell">
 
 ```sh
-def --env ya [...args: string] {
+def --env ya [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXX")
 	yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
