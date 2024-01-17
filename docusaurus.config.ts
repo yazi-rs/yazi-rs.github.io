@@ -123,7 +123,7 @@ const config: Config = {
 			appId: "MS4XF9Z1OE",
 			apiKey: "d88c4dc9a8ebab02a753d7d950c61246",
 			indexName: "yazi-rsio",
-			contextualSearch: true,
+			contextualSearch: false,
 		},
 	} satisfies Preset.ThemeConfig,
 
