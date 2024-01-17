@@ -85,13 +85,13 @@ Windows has been supported since Yazi v0.1.4, but it's still in the early stage,
 
 ### Requirements
 
-Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows, and use the `file(1)` that comes with it.
+Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file(1)` that comes with it.
 
 1. Install Git for Windows by running [the official installer](https://git-scm.com/download/win), or through your package manager of choice.
 2. To allow Yazi to find `file(1)`, add `C:\Git_Installed_Directory\usr\bin\` to your `%PATH%` environment variable, which differs depending on how you installed Git:
-   - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin`
-   - If you installed Git with scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current\usr\bin`
-3. Restart your terminal
+   - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin`.
+   - If you installed Git with scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current\usr\bin`.
+3. Restart your terminal.
 
 To check if you've done this properly, enter `file`, you should see output similar to the following:
 
@@ -106,7 +106,7 @@ Usage: file [-bcCdEhikLlNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
 
 ```
 
-This is currently the only method we recommend. **We do NOT recommend `scoop install file`**, since Scoop's `file` cannot handle Unicode file names properly, e.g. `pexels-oliver-sjöström-1433052.jpg`.
+This is currently the only method we recommend. **We do NOT recommend `scoop install file`**, since Scoop's `file` cannot handle Unicode file names (such as `pexels-oliver-sjöström-1433052.jpg`) properly.
 
 ### Installation
 
@@ -120,7 +120,7 @@ scoop install unar jq poppler fd ripgrep fzf zoxide
 
 Yazi on Scoop is maintained by community contributors, and may not always have the latest version available. You may need to check our [GitHub Releases](https://github.com/sxyazi/yazi/releases) page for the latest version.
 
-### Image Previews
+### Image previews
 
 Currently, only WezTerm and Mintty (i.e., Git Bash, which comes with Git for Windows) support images, and [Yazi has adapted them](https://github.com/sxyazi/yazi#image-preview) to work right out of the box!
 
