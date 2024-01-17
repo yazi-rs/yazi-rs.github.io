@@ -44,23 +44,6 @@ const config: Config = {
 		],
 	],
 
-  themes: [
-    // ... Your other themes.
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      ({
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        language: ["en", "zh"],
-        // ```
-      }),
-    ],
-  ],
-
 	themeConfig: {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
@@ -135,6 +118,12 @@ const config: Config = {
 			theme: prismThemes.github,
 			darkTheme: prismThemes.dracula,
 			additionalLanguages: ["lua", "toml", "diff", "bash", "powershell"],
+		},
+		algolia: {
+			appId: "MS4XF9Z1OE",
+			apiKey: "d88c4dc9a8ebab02a753d7d950c61246",
+			indexName: "yazi-rsio",
+			contextualSearch: true,
 		},
 	} satisfies Preset.ThemeConfig,
 
