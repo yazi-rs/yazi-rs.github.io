@@ -16,16 +16,16 @@ yazi
 
 Press `q` to quit and `~` to open the help menu.
 
-## Shell function
+## Shell wrapper
 
-We suggest using this `ya` shell function that provides the ability to change the current working directory when exiting Yazi.
+We suggest using this `ya` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
 
 <Tabs>
   <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
 function ya() {
-	tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		cd -- "$cwd"

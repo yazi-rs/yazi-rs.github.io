@@ -11,7 +11,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 ## [manager]
 
-- layout: Manager layout by ratio, 3-element array
+- ratio: Manager layout by ratio, 3-element array
 
   - `[1, 4, 3]`: 1/8 width for parent, 4/8 width for current, 3/8 width for preview
 
