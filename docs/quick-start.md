@@ -91,13 +91,13 @@ For all key bindings, see the [default `keymap.toml` file](https://github.com/sx
 
 ### Navigation
 
-To navigate between files and directories you can use the arrow keys `←`, `↑`, `↓` and `→` or vi(m)-like commands such as `h`, `j`, `k`, `l`:
+To navigate between files and directories you can use the arrow keys `←`, `↑`, `↓` and `→` or Vim-like commands such as `h`, `j`, `k`, `l`:
 
 | Key binding | Alternate key | Action                                          |
 | ----------- | ------------- | ----------------------------------------------- |
 | k           | ↑             | Move the cursor up                              |
 | j           | ↓             | Move the cursor down                            |
-| l           | →             | Enter highlighted directory                     |
+| l           | →             | Enter hovered directory                         |
 | h           | ←             | Leave the current directory and into its parent |
 
 Further navigation commands can be found in the table below.
@@ -113,14 +113,14 @@ Further navigation commands can be found in the table below.
 
 To select files and directories, the following commands are available.
 
-| Key binding | Action                                         |
-| ----------- | ---------------------------------------------- |
-| \<Space>    | Toggle selection of highlighted file/directory |
-| v           | Enter visual mode (selection mode)             |
-| V           | Enter visual mode (unset mode)                 |
-| \<Ctrl-a>   | Select all files                               |
-| \<Ctrl-r>   | Inverse selection of all files                 |
-| \<Esc>      | Cancel selection                               |
+| Key binding | Action                                     |
+| ----------- | ------------------------------------------ |
+| \<Space>    | Toggle selection of hovered file/directory |
+| v           | Enter visual mode (selection mode)         |
+| V           | Enter visual mode (unset mode)             |
+| \<Ctrl-a>   | Select all files                           |
+| \<Ctrl-r>   | Inverse selection of all files             |
+| \<Esc>      | Cancel selection                           |
 
 ### File/directory operations
 
@@ -145,8 +145,6 @@ To interact with selected files/directories use any of the commands below.
 | ;             | Run a shell command                                                         |
 | :             | Run a shell command (block the UI until the command finishes)               |
 | .             | Toggle the visibility of hidden files                                       |
-| s             | Search files by name using fd                                               |
-| S             | Search files by content using ripgrep                                       |
 | \<Ctrl-s>     | Cancel the ongoing search                                                   |
 | z             | Jump to a directory using zoxide                                            |
 | Z             | Jump to a directory, or reveal a file using fzf                             |
@@ -178,6 +176,13 @@ _Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the 
 | ?           | Backward find file/directory in CWD |
 | n           | Jump to next occurrence             |
 | N           | Jump to previous occurrence         |
+
+### Searching files/directories
+
+| Key binding | Action                                                                         |
+| ----------- | ------------------------------------------------------------------------------ |
+| s           | Search files by name using [fd](https://github.com/sharkdp/fd)                 |
+| S           | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
 
 ### Sorting
 

@@ -125,8 +125,8 @@ Properties:
 - `cwd` - The current working directory of this folder, which is a [Url](#url)
 - `offset` - The offset of this folder, which is an integer
 - `cursor` - The cursor position of this folder, which is an integer
-- `window` - A table of [File](#file)s in the visible area of this folder
-- `files` - The [Files](#folderfiles) of this folder
+- `window` - A table of [File](#file) in the visible area of this folder
+- `files` - The [`folder::Files`](#folderfiles) of this folder
 - `hovered` - The hovered [File](#file) of this folder, or `nil` if there is no hovered file
 
 ### `folder::Files`

@@ -95,14 +95,14 @@ return {
 
 ### Previewer
 
+A previewer needs to return a table that implements the `peek` and `seek` functions. Both functions take a table parameter `self` and do not return any values:
+
 ```lua
 return {
 	peek = function(self) return end,
 	seek = function(self) return end,
 }
 ```
-
-A previewer needs to return an table that implements the `peek` and `seek` functions. Both functions take a table parameter `self` and do not return any values.
 
 When the user presses `j` or `k` to switch between hovering files, `peek` is called, with:
 
@@ -124,6 +124,8 @@ Here are some preset previewers and preloaders you can refer to: [Yazi Preset Pl
 
 ### Preloader
 
+You need to return a table that implements the `preload` function, it receives a `self` parameter, which is a table with the same fields as [`peek`](#previewer):
+
 ```lua
 return {
 	preload = function(self)
@@ -132,7 +134,7 @@ return {
 }
 ```
 
-You need to return an table that implements the `preload` function, it receives a `self` parameter, which is a table with the same fields as [`peek`](#previewer). It has the following return values:
+And has the following return values:
 
 | Binary | Decimal |                         |
 | ------ | ------- | ----------------------- |
