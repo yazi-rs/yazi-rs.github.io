@@ -190,6 +190,10 @@ You can also use `ui.Paragraph.parse(string)` to parse an [ANSI escape sequence]
 Methods (all methods return `self`):
 
 - `ui.Paragraph:style(style)` - Set the style of the paragraph, which accepts a [Style](#uistyle)
+- `ui.Paragraph.wrap(wrap)` - Set the wrap of the paragraph, which accepts the following constants:
+  - `ui.Paragraph.WRAP_NO` - No wrap
+  - `ui.Paragraph.WRAP` - Wrap at the end of the line
+  - `ui.Paragraph.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
 - `ui.Paragraph:align(alignment)` - Set the alignment of the paragraph. It accepts the following constants:
   - `ui.Paragraph.LEFT`
   - `ui.Paragraph.CENTER`
