@@ -112,19 +112,23 @@ Returns the current timestamp, which is a float, the integer part represents the
 
 ### `uid()`
 
-Returns the user id of the current user, which is an integer.
+Only available on Unix-like systems. Returns the user id of the current user, which is an integer.
 
 ### `gid()`
 
-Returns the group id of the current user, which is an integer.
+Only available on Unix-like systems. Returns the group id of the current user, which is an integer.
 
 ### `user_name()`
 
-Returns the name of the current user, which is a string.
+Only available on Unix-like systems. Returns the name of the current user, which is a string if successful; otherwise, `nil`.
 
 ### `group_name()`
 
-Returns the name of the current group, which is a string.
+Only available on Unix-like systems. Returns the name of the current group, which is a string if successful; otherwise, `nil`.
+
+### `host_name()`
+
+Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
 
 ## fs
 

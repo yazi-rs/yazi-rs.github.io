@@ -175,3 +175,33 @@ copy this method to your `~/.config/yazi/init.lua`, and apply the following patc
  	return {
  		ui.Paragraph(area, { left }),
 ```
+
+## Show username and hostname in header
+
+<img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
+
+You can rewrite the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/header.lua) to achieve this feature,
+copy this method to your `~/.config/yazi/init.lua`, and apply the following patch:
+
+```diff
+@@ -1,3 +1,10 @@
++function Header:host()
++	if ya.target_family() ~= "unix" then
++		return ui.Line {}
++	end
++	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
++end
++
+ function Header:render(area)
+ 	self.area = area
+
+@@ -6,7 +13,7 @@
+ 		:constraints({ ui.Constraint.Percentage(50), ui.Constraint.Percentage(50) })
+ 		:split(area)
+
+-	local left = ui.Line { self:cwd() }
++	local left = ui.Line { self:host(), self:cwd() }
+ 	local right = ui.Line { self:tabs() }
+ 	return {
+ 		ui.Paragraph(chunks[1], { left }),
+```
