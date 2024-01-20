@@ -43,7 +43,7 @@ Close the current tab; if it's the last tab, exit the process instead.
 
 | Options/Arguments | Description                                                                                                       |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `[n \| n%]`       | Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down. |
+| `[n]` / `[n%]`    | Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down. |
 
 ### `leave`
 
