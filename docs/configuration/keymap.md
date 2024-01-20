@@ -98,7 +98,7 @@ If you haven't created and used your own configuration file yet, please see [Con
 
   - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 
-- rename: Rename a file or directory.
+- rename: Rename a file or directory; Or batch rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
   - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
   - `--cursor`: Specify the cursor position of the renaming input box.
