@@ -21,6 +21,10 @@ Yazi can be _optionally_ extended with other command line tools to enable additi
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
 
+## Packaging status
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/yazi.svg)](https://repology.org/project/yazi/versions)
+
 ## Arch Linux
 
 ```sh
