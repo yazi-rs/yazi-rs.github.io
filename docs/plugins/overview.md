@@ -154,3 +154,19 @@ When the user specifies [`multi = true`](../configuration/yazi.md#preloaders) fo
 
 Typically, a preloader only needs to implement one of them - either single or multiple. This depends on the specific task and the magnitude of the workload.
 If it truly requires loading multiple files at once, the user needs to be prompted to enable the `multi` option for it.
+
+## Debugging
+
+Please ensure that your `~/.config/yazi/init.lua` includes valid Lua code with the correct syntax, otherwise will result in Yazi being unable to parse and execute your `init.lua` to initialize.
+
+We recommend installing a Lua plugin in your editor for syntax checking to avoid any syntax errors.
+For example, install the [Lua plugin](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) for VSCode, and for Neovim, use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) to configure your Lua LSP.
+
+If you have no experience with Lua, you can quickly get started through https://learnxinyminutes.com/docs/lua/
+
+### Logging
+
+Once you get started, if you want to debug some runtime data, use [`ya.dbg()`](./utils.md#dbgmsg) and [`ya.err()`](./utils.md#errmsg) to print what you want to debug to either:
+
+- `~/.local/state/yazi/yazi.log` on Unix-like systems.
+- `C:\Users\USERNAME\AppData\Roaming\yazi\state\yazi.log` on Windows.

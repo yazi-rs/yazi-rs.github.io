@@ -73,7 +73,7 @@ You can change the `<Esc>` of input component from the default `escape` to `clos
 { on = [ "<Esc>" ], exec = "close", desc = "Cancel input" }
 ```
 
-To exiting input directly, without entering Vi mode, making it behave like a regular input box.
+to exiting input directly, without entering Vi mode, making it behave like a regular input box.
 
 ## Smart enter: `enter` for directory, `open` for file
 

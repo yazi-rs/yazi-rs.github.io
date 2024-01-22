@@ -49,15 +49,15 @@ Pre-cache the image to a specified url based on user-configured [`max_width` and
 
 ### `dbg(msg)`
 
-Append messages to Yazi's log file at the debug level:
+Append messages to [the log file](./overview.md#logging) at the debug level:
 
 - `msg` - Required, the message to be logged, which is a string
 
-Note that if you build in release mode, the log level for Yazi is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg).
+Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg).
 
 ### `err(msg)`
 
-Append messages to Yazi's log file at the error level:
+Append messages to [the log file](./overview.md#logging) at the error level:
 
 - `msg` - Required, the message to be logged, which is a string
 
