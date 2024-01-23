@@ -97,7 +97,7 @@ Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest 
    - If you installed Git with scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current\usr\bin`.
 3. Restart your terminal.
 
-To check if you've done this properly, enter `file`, you should see output similar to the following:
+To check if you've done this properly, enter `file -v`, you should see output similar to the following:
 
 ```powershell
 C:\Users\yazi> file -v
@@ -120,9 +120,12 @@ Yazi on Scoop is maintained by community contributors, and may not always have t
 
 ### Image previews
 
-Currently, only WezTerm and Mintty (i.e., Git Bash, which comes with Git for Windows) support images, and [Yazi has adapted them](https://github.com/sxyazi/yazi#image-preview) to work right out of the box!
+Currently, only the following two terminals support displaying images on Windows:
 
-Windows Terminal does not yet support images though, see https://github.com/microsoft/terminal/issues/5746.
+- WezTerm
+- Mintty (Git Bash, which comes with Git for Windows)
+
+and [Yazi has adapted them](https://github.com/sxyazi/yazi#image-preview) to work right out of the box!
 
 ## AOSC OS
 
