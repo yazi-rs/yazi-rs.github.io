@@ -122,6 +122,8 @@ Properties:
 
 ### `folder::Folder`
 
+Properties:
+
 - `cwd` - The current working directory of this folder, which is a [Url](#url)
 - `offset` - The offset of this folder, which is an integer
 - `cursor` - The cursor position of this folder, which is an integer
