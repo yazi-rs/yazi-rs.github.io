@@ -99,15 +99,9 @@ Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest 
 
 To check if you've done this properly, enter `file`, you should see output similar to the following:
 
-```
-C:\Users\USERNAME>file
-Usage: file [-bcCdEhikLlNnprsSvzZ0] [--apple] [--extension] [--mime-encoding]
-            [--mime-type] [-e <testname>] [-F <separator>]  [-f <namefile>]
-            [-m <magicfiles>] [-P <parameter=value>] [--exclude-quiet]
-            <file> ...
-       file -C [-m <magicfiles>]
-       file [--help]
-
+```powershell
+C:\Users\yazi> file -v
+file-5.45
 ```
 
 This is currently the only method we recommend. **We do NOT recommend `scoop install file`**, since Scoop's `file` cannot handle Unicode file names (such as `pexels-oliver-sjöström-1433052.jpg`) properly.
