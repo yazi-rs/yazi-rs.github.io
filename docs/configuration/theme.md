@@ -68,7 +68,7 @@ Tab: Tab bar
 
 - tab_active (Style): Active tab style.
 - tab_inactive (Style): Inactive tab style.
-- tab_width (Style): Tab maximum width. When set to a value greater than 2, the remaining space will be filled with the tab name, which is current directory name.
+- tab_width (Number): Tab maximum width. When set to a value greater than 2, the remaining space will be filled with the tab name, which is current directory name.
 
 Border:
 
@@ -138,6 +138,7 @@ Icons
 
 ## [which]
 
+- cols (Number): Number of columns. The value can be `1`, `2`, `3`.
 - mask (Style): Mask style.
 - cand (Style): Candidate key style.
 - rest (Style): Rest key style.
@@ -178,7 +179,7 @@ rules = [
 ]
 ```
 
-Each rule supports complete [Style properties](#Types). There are two special rule:
+Each rule supports complete [Style properties](#types). There are two special rule:
 
 - `name = "*"` matches all files.
 - `name = "*/"` matches all directories.
