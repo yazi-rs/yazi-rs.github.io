@@ -66,6 +66,8 @@ If you haven't created and used your own configuration file yet, please see [Con
 - max_width: Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
 - max_height: Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
 - cache_dir: The system cache directory is used by default, and the cached files will go away on a reboot automatically. If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
+- image_quality: Quality on pre-caching images, range 50-90. The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
+- sixel_fraction: Sixel is a very old image format that only supports 256 colors. For better image preview, Yazi trains a neural network for each image to find the most representative colors. This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
 
 ### Ueberzug-specific
 
