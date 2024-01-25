@@ -6,7 +6,7 @@ const features: CardProps[] = [
 	{
 		title: "Scrollable Preview",
 		video: "/videos/scrollable-preview.mp4",
-		description: "Preview various types of files, and scroll while previewing.",
+		description: "Preview various types of files, and scroll the content of file while previewing.",
 	},
 	{
 		title: "Visual Mode & Batch Rename",
