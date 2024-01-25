@@ -103,7 +103,7 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
   - `--cursor`: Specify the cursor position of the renaming input box.
     - `"end"`: The end of the filename.
-    - `"start"`: The start of the filename.
+    - `"start"`: The start of the filename. (Due to [a bug](https://github.com/sxyazi/yazi/issues/573), this option only available in the latest main branch at the moment.)
     - `"before_ext"`: Before the extension of the filename.
   - `--empty`: Empty a part of the filename.
     - `"stem"`: Empty the stem. e.g. `"foo.jpg"` -> `".jpg"`.
