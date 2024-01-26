@@ -106,6 +106,19 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 
 Please make sure that `<C-n>` does not conflict with your other keys.
 
+## Copy selected files to the system clipboard while yanking
+
+Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also execute a shell script:
+
+```toml
+{
+	on = [ "y" ],
+	exec = [ "yank", '''
+shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
+''' ]
+}
+```
+
 ## No status bar
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
