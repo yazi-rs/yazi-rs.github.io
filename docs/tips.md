@@ -111,12 +111,17 @@ Please make sure that `<C-n>` does not conflict with your other keys.
 Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also execute a shell script:
 
 ```toml
-{
-	on = [ "y" ],
-	exec = [ "yank", '''
-shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
-''' ]
-}
+{ on = [ "y" ], exec = [ "yank", '''
+	shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
+''' ] }
+```
+
+The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
+
+```toml
+{ on = [ "y" ], exec = [ "yank", '''
+	shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
+''' ] }
 ```
 
 ## No status bar
