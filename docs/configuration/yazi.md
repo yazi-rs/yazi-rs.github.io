@@ -73,10 +73,8 @@ If you haven't created and used your own configuration file yet, please see [Con
   - `"catmull-rom"` - Catmull-Rom
   - `"lanczos3"` - Lanczos with window 3
 
-  They are arranged in order from fast to slow, and from poor to good quality.
-  Lanczos3 provides the highest quality but is also the slowest — it's 40 times slower than Nearest in some case.
-
-  This means it requires a significant amount of CPU computation, so make sure you know what you're doing!
+  They are arranged in order from fast to slow, and from poor to good quality - Lanczos3 provides the highest quality but is also the slowest.
+  See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples
 
 - image_quality: Quality on pre-caching images, range 50-90. The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
 - sixel_fraction: Sixel is a very old image format that only supports 256 colors. For better image preview, Yazi trains a neural network for each image to find the most representative colors. This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
