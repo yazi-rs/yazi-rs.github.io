@@ -77,7 +77,10 @@ Border:
 
 Highlighting: The built-in syntax highlighting feature
 
-- syntect_theme (String): Theme file path. Since Yazi and `bat` use the same highlighter, so you can directly use bat's theme files, such as `~/.config/bat/themes/Catppuccino-mocha.tmTheme`.
+- syntect_theme (String): Theme file path ending with ".tmTheme", used by syntect. e.g. `"~/my-themes/Dracula.tmTheme"`.
+
+  Yazi and `bat` use the same highlighter [syntect](https://crates.io/crates/syntect), so you can directly use [bat's theme files](https://github.com/sharkdp/bat/tree/master/assets/themes).
+  You can also find more available themes on GitHub by using the keyword "tmTheme".
 
 ## [status]
 
