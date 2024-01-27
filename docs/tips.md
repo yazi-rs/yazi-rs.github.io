@@ -16,15 +16,14 @@ You can implement a full border for Yazi via the UI plugin.
 Copy the preset [`Manager:render` function](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/manager.lua) to your `~/.config/yazi/init.lua`, then apply the following patch:
 
 ```diff
-@@ -10,16 +10,29 @@
+@@ -10,16 +10,28 @@
  		})
  		:split(area)
 
 +	local bar = function(c, x, y)
-+		return ui.Bar(
-+			ui.Rect { x = math.max(0, x), y = math.max(0, y), w = math.min(1, area.w), h = math.min(1, area.h) },
-+			ui.Bar.TOP
-+		):symbol(c)
++		x, y = math.max(0, x), math.max(0, y)
++		return ui.Bar(ui.Rect { x = x, y = y, w = ya.clamp(0, area.w - x, 1), h = math.min(1, area.h) }, ui.Bar.TOP)
++			:symbol(c)
 +	end
 +
  	return ya.flat {
