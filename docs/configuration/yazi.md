@@ -243,7 +243,7 @@ As for the offset, it's a 4-element tuple: `(x, y, width, height)`.
 
 ### Placeholder
 
-Some `Input`s have special placeholders that will be replaced with actual content upon display:
+Some `Input`s have special placeholders that will be replaced with actual content on display:
 
 - trash_title: String
 
@@ -257,6 +257,10 @@ Some `Input`s have special placeholders that will be replaced with actual conten
 
 - find_title: [String, String]
   It's a tuple of 2-element: first for "Find next", second for "Find previous".
+
+- search_title: String
+
+  - `{n}`: Name of the current search engine
 
 - shell_title: [String, String]
   It's a tuple of 2-element: first for "Non-blocking shell", second for "Blocking shell".
