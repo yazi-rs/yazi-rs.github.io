@@ -195,7 +195,7 @@ Run a shell command.
 
 | Options/Arguments | Description                                                                                                                                                                                                                              |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `exec`            | Optional, command template to be run.                                                                                                                                                                                                    |
+| `[exec]`            | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`         | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--confirm`       | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
 
