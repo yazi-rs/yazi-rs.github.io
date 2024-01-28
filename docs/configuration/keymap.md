@@ -161,7 +161,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 ### `rename`
 
-Rename a file or directory; Or batch rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
+Rename a file or directory, or batch rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
 - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 - `--cursor`: Specify the cursor position of the renaming input box.
