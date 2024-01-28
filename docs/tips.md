@@ -56,20 +56,26 @@ If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUN
 
 ## Dropping to the shell
 
-Add the keybindings to the `[manager]` of `keymap.toml`:
+Add the keybindings to your `keymap.toml`:
 
 ```toml
-{ on = [ "<C-s>" ], exec = '''shell "$SHELL" --block --confirm''', desc = "Open shell here" }
+[manager]
+prepend_keymap = [
+	{ on = [ "<C-s>" ], exec = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
+	# ...Your other keybindings if any
+]
 ```
-
-Please make sure that `<C-s>` does not conflict with your other keys.
 
 ## Close input by once `<Esc>` press
 
-You can change the `<Esc>` of input component from the default `escape` to `close` command:
+You can change the `<Esc>` of input component from the default `escape` to `close` command, in your `keymap.toml`:
 
 ```toml
-{ on = [ "<Esc>" ], exec = "close", desc = "Cancel input" }
+[input]
+prepend_keymap = [
+	{ on = [ "<Esc>" ], exec = "close", desc = "Cancel input" }
+	# ...Your other keybindings if any
+]
 ```
 
 to exiting input directly, without entering Vi mode, making it behave like a regular input box.
@@ -90,7 +96,11 @@ return {
 Then bind it for `l` key, in your `keymap.toml`:
 
 ```toml
-{ on = [ "l" ], exec = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+[manager]
+prepend_keymap = [
+	{ on = [ "l" ], exec = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+	# ...Your other keybindings if any
+]
 ```
 
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon)
@@ -98,29 +108,42 @@ Then bind it for `l` key, in your `keymap.toml`:
 Original post: https://github.com/sxyazi/yazi/discussions/327
 
 ```toml
-{ on = [ "<C-n>" ], exec = '''
-    shell 'dragon -x -i -T "$1"' --confirm
-''' }
-```
+[manager]
+prepend_keymap = [
+	{ on = [ "<C-n>" ], exec = '''
+		shell 'dragon -x -i -T "$1"' --confirm
+	''' },
 
-Please make sure that `<C-n>` does not conflict with your other keys.
+	# ...Your other keybindings if any
+]
+```
 
 ## Copy selected files to the system clipboard while yanking
 
 Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also execute a shell script:
 
 ```toml
-{ on = [ "y" ], exec = [ "yank", '''
-	shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
-''' ] }
+[manager]
+prepend_keymap = [
+	{ on = [ "y" ], exec = [ "yank", '''
+		shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
+	''' ] },
+
+	# ...Your other keybindings if any
+]
 ```
 
 The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
 
 ```toml
-{ on = [ "y" ], exec = [ "yank", '''
-	shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
-''' ] }
+[manager]
+prepend_keymap = [
+	{ on = [ "y" ], exec = [ "yank", '''
+		shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
+	''' ] }
+
+	# ...Your other keybindings if any
+]
 ```
 
 ## No status bar
@@ -143,7 +166,7 @@ end
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
 You can rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua) to achieve this feature,
-copy this method to your `~/.config/yazi/init.lua`, and apply the following patch:
+copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()
@@ -164,7 +187,7 @@ copy this method to your `~/.config/yazi/init.lua`, and apply the following patc
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
 You can rewrite the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua) to achieve this feature,
-copy this method to your `~/.config/yazi/init.lua`, and apply the following patch:
+copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -1,8 +1,22 @@
@@ -198,7 +221,7 @@ copy this method to your `~/.config/yazi/init.lua`, and apply the following patc
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
 You can rewrite the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/header.lua) to achieve this feature,
-copy this method to your `~/.config/yazi/init.lua`, and apply the following patch:
+copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -1,3 +1,10 @@
