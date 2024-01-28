@@ -73,7 +73,7 @@ You can change the `<Esc>` of input component from the default `escape` to `clos
 ```toml
 [input]
 prepend_keymap = [
-	{ on = [ "<Esc>" ], exec = "close", desc = "Cancel input" }
+	{ on = [ "<Esc>" ], exec = "close", desc = "Cancel input" },
 	# ...Your other keybindings if any
 ]
 ```
@@ -98,7 +98,12 @@ Then bind it for `l` key, in your `keymap.toml`:
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "l" ], exec = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+	{
+		on = [ "l" ],
+		exec = "plugin --sync smart-enter",
+		desc = "Enter the child directory, or open the file"
+	},
+
 	# ...Your other keybindings if any
 ]
 ```
@@ -140,7 +145,7 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 prepend_keymap = [
 	{ on = [ "y" ], exec = [ "yank", '''
 		shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
-	''' ] }
+	''' ] },
 
 	# ...Your other keybindings if any
 ]
