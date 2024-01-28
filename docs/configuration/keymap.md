@@ -73,7 +73,7 @@ Change the current directory.
 
 | Options/Arguments | Description                              |
 | ----------------- | ---------------------------------------- |
-| `path`            | The path to change to.                   |
+| `[path]`            | The path to change to.                   |
 | `--interactive`   | Use an interactive UI to input the path. |
 
 ### `reveal`
