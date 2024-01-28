@@ -280,7 +280,7 @@ Move the cursor to the next or previous occurrence.
 
 | Options/Arguments | Description                                |
 | ----------------- | ------------------------------------------ |
-| `path`            | Create a new tab using the specified path. |
+| `[path]`            | Create a new tab using the specified path. |
 | `--current`       | Create a new tab using the current path.   |
 
 ### `tab_close`
