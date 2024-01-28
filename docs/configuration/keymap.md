@@ -242,7 +242,7 @@ Which means you can implement your own linemode through the plugin by simply ove
 
 | Options/Arguments | Description                                                                                                              |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `query`           | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
+| `[query]`           | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
 | `--previous`      | Find for the previous occurrence.                                                                                        |
 | `--smart`         | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive`   | Use case-insensitive find.                                                                                               |
