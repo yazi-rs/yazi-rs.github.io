@@ -82,7 +82,7 @@ Change the current directory to the parent of specified file, and hover on it.
 
 | Options/Arguments | Description         |
 | ----------------- | ------------------- |
-| `path`            | the path to reveal. |
+| `[path]`            | The path to reveal. |
 
 ### `select`
 
