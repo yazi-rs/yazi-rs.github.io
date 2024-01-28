@@ -9,7 +9,39 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
-## `[manager]`
+You can change Yazi's key bindings in your `keymap.toml` file, which consists of the following 6 sections:
+
+- [manager](#manager) - File list.
+- [tasks](#tasks) - Task manager.
+- [select](#select) - Select component. e.g. "open with" for files.
+- [input](#input) - Input component. e.g. create, rename, etc.
+- [completion](#completion) - Completion component. e.g. "cd" path completion.
+- [help](#help) - Help menu.
+
+In each section, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default key bindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
+
+```toml
+[manager]
+prepend_keymap = [
+	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
+]
+append_keymap = [
+	{ on = [ "<C-b>" ], exec = 'my-fev-command2', desc = "Just for test!" },
+]
+```
+
+When you don't need any default and want to fully customize your key bindings, use `keymap`:
+
+```toml
+[manager]
+keymap = [
+	# This will override all default key bindings, and just keep the two below.
+	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "<C-b>" ], exec = 'my-fev-command2', desc = "Just for test!" },
+]
+```
+
+## [manager]
 
 ### `escape`
 
@@ -73,7 +105,7 @@ Change the current directory.
 
 | Options/Arguments | Description                              |
 | ----------------- | ---------------------------------------- |
-| `[path]`            | The path to change to.                   |
+| `[path]`          | The path to change to.                   |
 | `--interactive`   | Use an interactive UI to input the path. |
 
 ### `reveal`
@@ -82,7 +114,7 @@ Change the current directory to the parent of specified file, and hover on it.
 
 | Options/Arguments | Description         |
 | ----------------- | ------------------- |
-| `[path]`            | The path to reveal. |
+| `[path]`          | The path to reveal. |
 
 ### `select`
 
@@ -195,7 +227,7 @@ Run a shell command.
 
 | Options/Arguments | Description                                                                                                                                                                                                                              |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[exec]`            | Optional, command template to be run.                                                                                                                                                                                                    |
+| `[exec]`          | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`         | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--confirm`       | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
 
@@ -242,7 +274,7 @@ Which means you can implement your own linemode through the plugin by simply ove
 
 | Options/Arguments | Description                                                                                                              |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `[query]`           | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
+| `[query]`         | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
 | `--previous`      | Find for the previous occurrence.                                                                                        |
 | `--smart`         | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive`   | Use case-insensitive find.                                                                                               |
@@ -259,7 +291,7 @@ Move the cursor to the next or previous occurrence.
 
 | Options/Arguments | Description                                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `[query]`           | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
+| `[query]`         | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
 | `--smart`         | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive`   | Use case-insensitive filter.                                                                                               |
 
@@ -280,7 +312,7 @@ Move the cursor to the next or previous occurrence.
 
 | Options/Arguments | Description                                |
 | ----------------- | ------------------------------------------ |
-| `[path]`            | Create a new tab using the specified path. |
+| `[path]`          | Create a new tab using the specified path. |
 | `--current`       | Create a new tab using the current path.   |
 
 ### `tab_close`
@@ -310,7 +342,7 @@ Show the task manager.
 
 Open the help menu.
 
-## `[tasks]`
+## [tasks]
 
 ### `close`
 
@@ -335,7 +367,7 @@ Cancel the task.
 
 Open the help menu.
 
-## `[select]`
+## [select]
 
 ### `close`
 
@@ -355,7 +387,7 @@ Cancel selection.
 
 Open the help menu.
 
-## `[input]`
+## [input]
 
 ### `close`
 
@@ -392,7 +424,7 @@ Move forward to the start of the next word.
 
 ### `insert`
 
-Enter insert mode.
+Enter insert mode. This command is only available in normal mode.
 
 | Options/Arguments | Description              |
 | ----------------- | ------------------------ |
@@ -400,11 +432,11 @@ Enter insert mode.
 
 ### `visual`
 
-Enter visual mode.
+Enter visual mode. This command is only available in normal mode.
 
 ### `delete`
 
-Delete the selected characters.
+Delete the selected characters. This command is only available in normal mode.
 
 | Options/Arguments | Description                                                                |
 | ----------------- | -------------------------------------------------------------------------- |
@@ -413,11 +445,11 @@ Delete the selected characters.
 
 ### `yank`
 
-Copy the selected characters.
+Copy the selected characters. This command is only available in normal mode.
 
 ### `paste`
 
-Paste the copied characters after the cursor.
+Paste the copied characters after the cursor. This command is only available in normal mode.
 
 | Options/Arguments | Description                                    |
 | ----------------- | ---------------------------------------------- |
@@ -425,19 +457,19 @@ Paste the copied characters after the cursor.
 
 ### `undo`
 
-Undo the last operation.
+Undo the last operation. This command is only available in normal mode.
 
 ### `redo`
 
-Redo the last operation.
+Redo the last operation. This command is only available in normal mode.
 
 ### `help`
 
-Open the help menu.
+Open the help menu. This command is only available in normal mode.
 
 ### `backspace`
 
-Delete the character before the cursor.
+Delete the character before the cursor. This command is only available in insert mode.
 
 | Options/Arguments | Description                            |
 | ----------------- | -------------------------------------- |
@@ -445,7 +477,7 @@ Delete the character before the cursor.
 
 ### `kill`
 
-Kill the specified range of characters.
+Kill the specified range of characters. This command is only available in insert mode.
 
 | Options/Arguments | Description                                      |
 | ----------------- | ------------------------------------------------ |
@@ -454,7 +486,7 @@ Kill the specified range of characters.
 | `backward`        | Kill backwards to the start of the current word. |
 | `forward`         | Kill forwards to the end of the current word.    |
 
-## `[completion]`
+## [completion]
 
 ### `close`
 
@@ -474,7 +506,7 @@ Hide the completion menu.
 
 Open the help menu.
 
-## `[help]`
+## [help]
 
 ### `close`
 
