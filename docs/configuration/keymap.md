@@ -259,7 +259,7 @@ Move the cursor to the next or previous occurrence.
 
 | Options/Arguments | Description                                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `query`           | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
+| `[query]`           | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
 | `--smart`         | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive`   | Use case-insensitive filter.                                                                                               |
 
