@@ -11,12 +11,12 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 You can change Yazi's key bindings in your `keymap.toml` file, which consists of the following 6 sections:
 
-- [manager](#manager) - File list.
-- [tasks](#tasks) - Task manager.
-- [select](#select) - Select component. e.g. "open with" for files.
-- [input](#input) - Input component. e.g. create, rename, etc.
-- [completion](#completion) - Completion component. e.g. "cd" path completion.
-- [help](#help) - Help menu.
+- [\[manager\]](#manager) - File list.
+- [\[tasks\]](#tasks) - Task manager.
+- [\[select\]](#select) - Select component. e.g. "open with" for files.
+- [\[input\]](#input) - Input component. e.g. create, rename, etc.
+- [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
+- [\[help\]](#help) - Help menu.
 
 In each section, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default key bindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
 
@@ -30,7 +30,7 @@ append_keymap = [
 ]
 ```
 
-When you don't need any default and want to fully customize your key bindings, use `keymap`:
+When you don't need any default and want to fully customize your key bindings, use `keymap`, for example:
 
 ```toml
 [manager]

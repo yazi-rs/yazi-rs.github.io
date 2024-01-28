@@ -11,73 +11,115 @@ If you haven't created and used your own configuration file yet, please see [Con
 
 ## [manager]
 
-- ratio: Manager layout by ratio, 3-element array
+### `ratio`
 
-  - `[1, 4, 3]`: 1/8 width for parent, 4/8 width for current, 3/8 width for preview
+Manager layout by ratio, 3-element array.
 
-- sort_by: File sorting method
+- `[1, 4, 3]`: 1/8 width for parent, 4/8 width for current, 3/8 width for preview
 
-  - `"none"`: Don't sort.
-  - `"modified"`: Sort by last modified time.
-  - `"created"`: Sort by creation time.
-  - `"extension"`: Sort by file extension.
-  - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
-  - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
-  - `"size"`: Sort by file size.
+### `sort_by`
 
-- sort_sensitive: Sort case-sensitively
+File sorting method.
 
-  - `true`: Case-sensitive
-  - `false`: Case-insensitive
+- `"none"`: Don't sort.
+- `"modified"`: Sort by last modified time.
+- `"created"`: Sort by creation time.
+- `"extension"`: Sort by file extension.
+- `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
+- `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
+- `"size"`: Sort by file size.
 
-- sort_reverse: Display files in reverse order
+### `sort_sensitive`
 
-  - `true`: Reverse order
-  - `false`: Normal order
+Sort case-sensitively.
 
-- sort_dir_first: Display directories first
+- `true`: Case-sensitive
+- `false`: Case-insensitive
 
-  - `true`: Directories first
-  - `false`: Respects `sort_by` and `sort_reverse` only
+### `sort_reverse`
 
-- linemode: Line mode
+Display files in reverse order.
 
-  - `"none"`: No line mode.
-  - `"size"`: Display the size of the file.
-  - `"permissions"`: Display the permissions of the file.
-  - `"mtime"`: Display the last modified time of the file.
+- `true`: Reverse order
+- `false`: Normal order
 
-  In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-  Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/folder.lua).
+### `sort_dir_first`
 
-- show_hidden: Show hidden files
+Display directories first.
 
-  - `true`: Show
-  - `false`: Do not show
+- `true`: Directories first
+- `false`: Respects `sort_by` and `sort_reverse` only
 
-- show_symlink: Show the path of the symlink file point to, after the filename
+### `linemode`
 
-  - `true`: Show
-  - `false`: Do not show
+Line mode.
+
+- `"none"`: No line mode.
+- `"size"`: Display the size of the file.
+- `"permissions"`: Display the permissions of the file.
+- `"mtime"`: Display the last modified time of the file.
+
+In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
+Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/folder.lua).
+
+### `show_hidden`
+
+Show hidden files.
+
+- `true`: Show
+- `false`: Do not show
+
+### `show_symlink`
+
+Show the path of the symlink file point to, after the filename.
+
+- `true`: Show
+- `false`: Do not show
 
 ## [preview]
 
-- tab_size: Tab width
-- max_width: Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
-- max_height: Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
-- cache_dir: The system cache directory is used by default, and the cached files will go away on a reboot automatically. If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
-- image_filter: The filter used on image downscaling, available values:
+### `tab_size`
 
-  - `"nearest"` - Nearest Neighbor
-  - `"triangle"` - Linear Triangle
-  - `"catmull-rom"` - Catmull-Rom
-  - `"lanczos3"` - Lanczos with window 3
+Tab width.
 
-  They are arranged in order from fast to slow, and from poor to good quality - Lanczos3 provides the highest quality but is also the slowest.
-  See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples
+### `max_width`
 
-- image_quality: Quality on pre-caching images, range 50-90. The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
-- sixel_fraction: Sixel is a very old image format that only supports 256 colors. For better image preview, Yazi trains a neural network for each image to find the most representative colors. This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
+Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
+
+### `max_height`
+
+Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
+
+### `cache_dir`
+
+The system cache directory is used by default, and the cached files will go away on a reboot automatically.
+
+If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
+
+### `image_filter`
+
+The filter used on image downscaling, available values:
+
+- `"nearest"` - Nearest Neighbor
+- `"triangle"` - Linear Triangle
+- `"catmull-rom"` - Catmull-Rom
+- `"lanczos3"` - Lanczos with window 3
+
+They are arranged in order from fast to slow, and from poor to good quality - Lanczos3 provides the highest quality but is also the slowest.
+
+See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples
+
+### `image_quality`
+
+Quality on pre-caching images, range 50-90.
+
+The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
+
+### `sixel_fraction`
+
+Sixel is a very old image format that only supports 256 colors. For better image preview, Yazi trains a neural network for each image to find the most representative colors.
+
+This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
 
 ### Ueberzug-specific
 
@@ -144,10 +186,21 @@ Available rule parameters are as follows:
 
 ## [tasks]
 
-- micro_workers: Maximum number of concurrent micro-tasks
-- macro_workers: Maximum number of concurrent macro-tasks
-- bizarre_retry: Maximum number of retries when a bizarre failure occurs
-- suppress_preload: Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming.
+### `micro_workers`
+
+Maximum number of concurrent micro-tasks.
+
+### `macro_workers`
+
+Maximum number of concurrent macro-tasks.
+
+### `bizarre_retry`
+
+Maximum number of retries when a bizarre failure occurs.
+
+### `suppress_preload`
+
+Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming.
 
 ### Image decoding
 
