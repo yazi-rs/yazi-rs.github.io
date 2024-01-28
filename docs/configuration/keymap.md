@@ -161,11 +161,22 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 ### `rename`
 
-Rename a file or directory.
+Rename a file or directory; Or batch rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
-| Options/Arguments | Description                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------- |
-| `--force`         | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
+- `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
+- `--cursor`: Specify the cursor position of the renaming input box.
+  - `"end"`: The end of the filename.
+  - `"start"`: The start of the filename. (Due to [a bug](https://github.com/sxyazi/yazi/issues/573), this option only available in the latest main branch at the moment.)
+  - `"before_ext"`: Before the extension of the filename.
+- `--empty`: Empty a part of the filename.
+  - `"stem"`: Empty the stem. e.g. `"foo.jpg"` -> `".jpg"`.
+  - `"ext"`: Empty the extension. e.g. `"foo.jpg"` -> `"foo."`.
+  - `"dot_ext"`: Empty the dot and extension. e.g. `"foo.jpg"` -> `"foo"`.
+  - `"all"`: Empty the whole filename. e.g. `"foo.jpg"` -> `""`.
+
+You can also use `--cursor` with `--empty`, for example, `rename --empty=stem --cursor=start` will empty the file's stem, and move the cursor to the start.
+
+Which causes the input box content for the filename `foo.jpg` to be `|.jpg`, where "|" represents the cursor position.
 
 ### `copy`
 
