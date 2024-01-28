@@ -166,7 +166,7 @@ end
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
 You can rewrite the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua) to achieve this feature,
-copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+copy _*only this method*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()
@@ -187,7 +187,7 @@ copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the followi
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
 You can rewrite the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua) to achieve this feature,
-copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+copy _*only this method*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -1,8 +1,22 @@
@@ -221,7 +221,7 @@ copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the followi
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
 You can rewrite the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/header.lua) to achieve this feature,
-copy _only this method_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+copy _*only this method*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -1,3 +1,10 @@
