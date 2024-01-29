@@ -9,9 +9,9 @@ const features: CardProps[] = [
 		description: "Preview various types of files, and scroll the content of file while previewing.",
 	},
 	{
-		title: "Visual Mode & Batch Rename",
-		video: "/videos/visual-mode_batch-rename.mp4",
-		description: "Batch select files in visual mode, and rename them.",
+		title: "Visual Mode & Bulk Rename",
+		video: "/videos/visual-mode_bulk-rename.mp4",
+		description: "Bulk select files in visual mode, and rename them.",
 	},
 	{
 		title: "Vim-like Input & Select Component",
