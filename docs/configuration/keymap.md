@@ -300,7 +300,7 @@ Move the cursor to the next or previous occurrence.
 - `by`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
   - `"modified"`: Sort by last modified time.
-  - `"created"`: Sort by creation time.
+  - `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
   - `"extension"`: Sort by file extension.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
