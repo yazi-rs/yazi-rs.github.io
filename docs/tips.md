@@ -59,11 +59,10 @@ If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUN
 Add the keybindings to your `keymap.toml`:
 
 ```toml
-[manager]
-prepend_keymap = [
-	{ on = [ "<C-s>" ], exec = 'shell "$SHELL" --block --confirm', desc = "Open shell here" },
-	# ...Your other keybindings if any
-]
+[[manager.prepend_keymap]]
+on   = [ "<C-s>" ]
+exec = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
 ```
 
 ## Close input by once `<Esc>` press
@@ -71,11 +70,10 @@ prepend_keymap = [
 You can change the `<Esc>` of input component from the default `escape` to `close` command, in your `keymap.toml`:
 
 ```toml
-[input]
-prepend_keymap = [
-	{ on = [ "<Esc>" ], exec = "close", desc = "Cancel input" },
-	# ...Your other keybindings if any
-]
+[[manager.prepend_keymap]]
+on   = [ "<Esc>" ]
+exec = "close"
+desc = "Cancel input"
 ```
 
 to exiting input directly, without entering Vi mode, making it behave like a regular input box.
@@ -96,16 +94,10 @@ return {
 Then bind it for `l` key, in your `keymap.toml`:
 
 ```toml
-[manager]
-prepend_keymap = [
-	{
-		on = [ "l" ],
-		exec = "plugin --sync smart-enter",
-		desc = "Enter the child directory, or open the file"
-	},
-
-	# ...Your other keybindings if any
-]
+[[manager.prepend_keymap]]
+on   = [ "l" ]
+exec = "plugin --sync smart-enter"
+desc = "Enter the child directory, or open the file"
 ```
 
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon)
@@ -113,14 +105,11 @@ prepend_keymap = [
 Original post: https://github.com/sxyazi/yazi/discussions/327
 
 ```toml
-[manager]
-prepend_keymap = [
-	{ on = [ "<C-n>" ], exec = '''
-		shell 'dragon -x -i -T "$1"' --confirm
-	''' },
-
-	# ...Your other keybindings if any
-]
+[[manager.prepend_keymap]]
+on   = [ "<C-n>" ]
+exec = '''
+	shell 'dragon -x -i -T "$1"' --confirm
+'''
 ```
 
 ## Copy selected files to the system clipboard while yanking
@@ -128,27 +117,21 @@ prepend_keymap = [
 Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also execute a shell script:
 
 ```toml
-[manager]
-prepend_keymap = [
-	{ on = [ "y" ], exec = [ "yank", '''
-		shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
-	''' ] },
-
-	# ...Your other keybindings if any
-]
+[[manager.prepend_keymap]]
+on   = [ "y" ]
+exec = [ "yank", '''
+	shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
+''' ]
 ```
 
 The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
 
 ```toml
-[manager]
-prepend_keymap = [
-	{ on = [ "y" ], exec = [ "yank", '''
-		shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
-	''' ] },
-
-	# ...Your other keybindings if any
-]
+[[manager.prepend_keymap]]
+on   = [ "y" ]
+exec = [ "yank", '''
+	shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
+''' ]
 ```
 
 ## No status bar
