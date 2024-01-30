@@ -9,7 +9,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
-You can change Yazi's key bindings in your `keymap.toml` file, which consists of the following 6 sections:
+You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 6 sections:
 
 - [\[manager\]](#manager) - File list.
 - [\[tasks\]](#tasks) - Task manager.
@@ -18,7 +18,7 @@ You can change Yazi's key bindings in your `keymap.toml` file, which consists of
 - [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
 - [\[help\]](#help) - Help menu.
 
-In each section, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default key bindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
+In each section, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
 
 ```toml
 [manager]
@@ -30,12 +30,40 @@ append_keymap = [
 ]
 ```
 
-When you don't need any default and want to fully customize your key bindings, use `keymap`, for example:
+Or in another different style:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "<C-a>" ]
+exec = 'my-fev-command1'
+desc = "Just for test!"
+
+[[manager.append_keymap]]
+on   = [ "<C-b>" ]
+exec = 'my-fev-command2'
+desc = "Just for test!"
+```
+
+But keep in mind that you can only choose one of them, and it cannot be a combination of the two, as TOML language does NOT allow this:
+
+```toml
+[manager]
+prepend_keymap = [
+	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
+]
+
+[[manager.prepend_keymap]]
+on   = [ "<C-b>" ]
+exec = 'my-fev-command2'
+desc = "Just for test!"
+```
+
+When you don't need any default and want to fully customize your keybindings, use `keymap`, for example:
 
 ```toml
 [manager]
 keymap = [
-	# This will override all default key bindings, and just keep the two below.
+	# This will override all default keybindings, and just keep the two below.
 	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
 	{ on = [ "<C-b>" ], exec = 'my-fev-command2', desc = "Just for test!" },
 ]
