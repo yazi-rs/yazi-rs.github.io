@@ -81,7 +81,7 @@ function ya {
   </TabItem>
 </Tabs>
 
-To use it, copy the function into the configuration file of your respective shell.
+To use it, copy the function into the configuration file of your respective shell. Then use `ya` instead of `yazi` to start.
 
 ## Keybindings
 
