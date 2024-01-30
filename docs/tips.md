@@ -70,7 +70,7 @@ desc = "Open shell here"
 You can change the `<Esc>` of input component from the default `escape` to `close` command, in your `keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
+[[input.prepend_keymap]]
 on   = [ "<Esc>" ]
 exec = "close"
 desc = "Cancel input"

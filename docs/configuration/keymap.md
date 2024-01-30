@@ -38,13 +38,16 @@ on   = [ "<C-a>" ]
 exec = 'my-fev-command1'
 desc = "Just for test!"
 
-[[manager.append_keymap]]
+[[manager.prepend_keymap]]
 on   = [ "<C-b>" ]
 exec = 'my-fev-command2'
-desc = "Just for test!"
+
+[[manager.append_keymap]]
+on   = [ "<C-c>" ]
+exec = 'my-fev-command3'
 ```
 
-But keep in mind that you can only choose one of them, and it cannot be a combination of the two, as TOML language does NOT allow this:
+But keep in mind that you can only choose one of them, and it cannot be a combination of the two, as TOML language does not allow this:
 
 ```toml
 [manager]
