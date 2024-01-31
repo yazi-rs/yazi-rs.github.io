@@ -209,6 +209,8 @@ Create a symbolic link to the yanked files. (This is a privileged action in Wind
 
 Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html).
 
+In the Android platform, you can only use it with the `--permanently` option, since there lacks the concept of a trash bin.
+
 | Options/Arguments | Description                                                          |
 | ----------------- | -------------------------------------------------------------------- |
 | `--force`         | Don't show the confirmation dialog, and trash/delete files directly. |
