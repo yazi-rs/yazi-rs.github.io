@@ -17,7 +17,7 @@ Copy the [`Manager:render` method](https://github.com/sxyazi/yazi/blob/main/yazi
 
 ```diff
 @@ -18,16 +18,28 @@
-	function Manager:render(area)
+function Manager:render(area)
 	local chunks = self:layout(area)
 
 +	local bar = function(c, x, y)
