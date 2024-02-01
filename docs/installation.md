@@ -27,6 +27,10 @@ Yazi can be _optionally_ extended with other command line tools to enable additi
 
 ## Arch Linux
 
+:::note
+We recommend using `yazi-git` to install the latest main branch from AUR at the moment, since the official package of `yazi` is quite outdated.
+:::
+
 ```sh
 sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 ```
