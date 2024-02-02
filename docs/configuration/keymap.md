@@ -9,7 +9,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
-You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 6 sections:
+You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 6 layers:
 
 - [\[manager\]](#manager) - File list.
 - [\[tasks\]](#tasks) - Task manager.
@@ -18,7 +18,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
 - [\[help\]](#help) - Help menu.
 
-In each section, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
+In each layer, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
 
 ```toml
 [manager]
@@ -186,6 +186,10 @@ Yank the selected files.
 | Options/Arguments | Description             |
 | ----------------- | ----------------------- |
 | `--cut`           | Cut the selected files. |
+
+### `unyank`
+
+Cancel the yank status of files.
 
 ### `paste`
 
@@ -375,6 +379,10 @@ Show the task manager.
 
 Open the help menu.
 
+### `plugin`
+
+See [Functional plugin](../plugins/overview#functional-plugin).
+
 ## [tasks]
 
 ### `close`
@@ -400,6 +408,10 @@ Cancel the task.
 
 Open the help menu.
 
+### `plugin`
+
+See [Functional plugin](../plugins/overview#functional-plugin).
+
 ## [select]
 
 ### `close`
@@ -419,6 +431,10 @@ Cancel selection.
 ### `help`
 
 Open the help menu.
+
+### `plugin`
+
+See [Functional plugin](../plugins/overview#functional-plugin).
 
 ## [input]
 
@@ -519,6 +535,10 @@ Kill the specified range of characters. This command is only available in insert
 | `backward`        | Kill backwards to the start of the current word. |
 | `forward`         | Kill forwards to the end of the current word.    |
 
+### `plugin`
+
+See [Functional plugin](../plugins/overview#functional-plugin). This command is only available in insert mode.
+
 ## [completion]
 
 ### `close`
@@ -539,6 +559,10 @@ Hide the completion menu.
 
 Open the help menu.
 
+### `plugin`
+
+See [Functional plugin](../plugins/overview#functional-plugin).
+
 ## [help]
 
 ### `close`
@@ -558,3 +582,7 @@ Clear the filter, or hide the help menu.
 ### `filter`
 
 Apply a filter for the help items.
+
+### `plugin`
+
+See [Functional plugin](../plugins/overview#functional-plugin).

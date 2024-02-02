@@ -22,17 +22,31 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 ```
 
 Each plugin is a directory ending with `.yazi`, containing an `init.lua` file for the plugin's initialization.
-For instance, the structure of the `zoxide.yazi` plugin is as:
+For instance, the structure of the `zoxide` plugin is as:
 
 ```
 zoxide.yazi/
 └── init.lua
 ```
 
-You can use a plugin in two ways:
+## Usage
 
-- Functional plugin: Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
-- Custom previewers, preloaders: Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml`.
+A plugin has two usages:
+
+- [Functional plugin](#functional-plugin): Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
+- [Custom previewers, preloaders](../configuration/yazi.md#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
+
+### Functional plugin
+
+You can bind a `plugin` command to a specific key in your `keymap.toml` with:
+
+| Options/Arguments | Description                                 |
+| ----------------- | ------------------------------------------- |
+| `[name]`          | The name of the plugin to run.              |
+| `--sync`          | Run the plugin in a sync context.           |
+| `--args=[args]`   | Shell-style arguments passed to the plugin. |
+
+For example, `plugin test --sync --args="foo bar"` will run the `test` plugin with the arguments `foo` and `bar` in a sync context.
 
 ## Sync vs Async
 

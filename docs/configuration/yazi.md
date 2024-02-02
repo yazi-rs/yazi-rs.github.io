@@ -52,7 +52,7 @@ Display directories first.
 
 ### `linemode`
 
-Line mode.
+Line mode: display information associated with the file on the right side of the file list row.
 
 - `"none"`: No line mode.
 - `"size"`: Display the size of the file.
