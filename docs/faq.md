@@ -16,6 +16,26 @@ Yazi defaults to using `$EDITOR` as the default editor, which is suitable for mo
 When you encounter this error, it means that `$EDITOR` is not set properly. You can add something like `export EDITOR=vim` to your Bash/Zsh/Fish configuration.
 Alternatively, you can change Yazi's [default edit opener](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml) from `$EDITOR` to vim/nvim/nano.
 
+## Why is my text color not distinct?
+
+Yazi's default theme uses base16 colors to match the user's terminal theme as closely as possible.
+
+Unfortunately, this cannot cater to all users, and even the colors needed by the same user in light/dark mode can vary, not to mention that some terminals have poor default color schemes, like this [#149 (comment)](https://github.com/sxyazi/yazi/issues/149#issuecomment-1798349727).
+
+So, please [use a Yazi theme](https://github.com/yazi-rs/themes) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR.
+
+## Why can't "Open" and "Enter" be a single command?
+
+The decision to separate `enter` and `open` commands was intentional.
+
+Yazi will be adding the ability to treat an archive as a directory in the future, allowing direct operations on the files inside.
+
+An archive is a file, so it's "openable", but it's also "enterable" as a directory; so the user can choose the action they want to do.
+
+This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
+
+If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips.md#smart-enter-enter-for-directory-open-for-file).
+
 ## Why can't I preview files on Windows?
 
 <details>
@@ -60,6 +80,18 @@ Before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crosste
 
 Therefore, the Windows version of Yazi currently uses `preview.max_width` and `preview.max_height` specified by the user in the `yazi.toml` as the image size.
 
+## Why can't I preview images via Überzug++?
+
+This may be an issue with Überzug++, please try running `ueberzug layer` directly in the terminal without Yazi, and paste:
+
+```sh
+{"action":"add","identifier":"preview","max_height":0,"max_width":0,"path":"/your/image-path.jpg","x":0,"y":0}
+```
+
+into it, then press `Enter`, and to see if any image is shown, without exiting the Überzug++. Note that you need to replace `/your/image-path.jpg` with the actual path of an image.
+
+If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report.
+
 ## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
 
 TL;DR: Use a theme for Yazi, https://github.com/yazi-rs/themes
@@ -67,18 +99,6 @@ TL;DR: Use a theme for Yazi, https://github.com/yazi-rs/themes
 This might be a bug in kitty (or feature? I don't know). In kitty, you have to add a style to file list items (like foreground color) to make the icons match the text size. However, Yazi's default theme can't add that color, because it can't predict whether the user's terminal has a white background with black text, or a black background with white text.
 
 So it inherits the default terminal font color. This causes the icon size issue, and I've only found this problem in kitty - other terminals don't have it. Therefore, please use a Yazi theme for the kitty terminal.
-
-## Why can't "Open" and "Enter" be a single command?
-
-The decision to separate `enter` and `open` commands was intentional.
-
-Yazi will be adding the ability to treat an archive as a directory in the future, allowing direct operations on the files inside.
-
-An archive is a file, so it's "openable", but it's also "enterable" as a directory; so the user can choose the action they want to do.
-
-This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
-
-If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips.md#smart-enter-enter-for-directory-open-for-file).
 
 ## Why is "orphan" set to false by default?
 
