@@ -10,6 +10,8 @@ description: Some awesome plugins for Yazi.
 Markdown:
 
 - [glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files using [glow](https://github.com/charmbracelet/glow)
+- [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview csv files (and other supported formats) using [miller](https://github.com/johnkerl/miller)
+- [hexyl.yazi](https://github.com/Reledia/hexyl.yazi) - Preview every file by showing its hex value using [hexyl](https://github.com/sharkdp/hexyl)
 
 ## Neovim plugins
 
