@@ -40,12 +40,16 @@ Display the given image within the specified area, and the image will downscale 
 - `url` - Required, the [Url](#url) of the image
 - `rect` - Required, the [Rect](#uirect) of the area
 
+This function is only available in the async context.
+
 ### `image_precache(src, dist)`
 
 Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](../configuration/yazi#preview):
 
 - `src` - Required, the source [Url](#url) of the image
 - `dist` - Required, the destination [Url](#url) of the image
+
+This function is only available in the async context.
 
 ### `dbg(msg)`
 
@@ -75,11 +79,15 @@ Preview the file as code into the specified area:
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](#window) of the preview
 
+This function is only available in the async context.
+
 ### `preview_archive(opts)`
 
 Preview the file as an archive into the specified area:
 
 - `opts` - Required, the options of the preview. It's the same as [`preview_code`](#previewcodeopts)
+
+This function is only available in the async context.
 
 ### `preview_widgets(opts, widgets)`
 
@@ -88,6 +96,8 @@ Preview the file as an archive into the specified area:
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](#window) of the preview
 - `widgets` - List of renderable widgets, such as `{ ui.Paragraph {...}, ui.List {...}, ... }`
+
+This function is only available in the async context.
 
 ### `target_family()`
 
@@ -131,6 +141,8 @@ Only available on Unix-like systems. Returns the name of the current group, whic
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
 
 ## fs
+
+The following functions can only be used within an async context.
 
 ### `write(url, data)`
 

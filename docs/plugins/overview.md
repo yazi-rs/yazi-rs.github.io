@@ -90,7 +90,28 @@ require("zoxide").setup {
 The sync context accompanies the entire app lifecycle, which is active during UI rendering (UI plugins), and on executing sync functional plugins (`plugin` command with `--sync`).
 
 For better performance, the sync context is created only at the app's start and remains singular throughout. Thus, plugins running within this context share states,
-prompting plugin developers to create separate namespaces for their plugins to prevent global space contamination.
+prompting plugin developers to use plugin-specific state persistence for their plugins to prevent global space contamination:
+
+```lua
+-- ~/.config/yazi/test.yazi/init.lua
+return {
+  entry = function()
+    state.i = state.i or 0
+    ya.err("i = " .. state.i)
+
+    state.i = state.i + 1
+  end,
+}
+```
+
+Yazi initializes the `state` for each _sync_ plugin before running, and it exists independently for them throughout the entire lifecycle.
+Do the `plugin --sync test` three times, and you will see the log output:
+
+```sh
+i = 0
+i = 1
+i = 2
+```
 
 ### Async context
 

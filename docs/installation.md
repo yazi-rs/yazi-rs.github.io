@@ -28,7 +28,8 @@ Yazi can be _optionally_ extended with other command line tools to enable additi
 ## Arch Linux
 
 :::note
-We recommend using `yazi-git` to install the latest main branch from AUR at the moment, since the official package of `yazi` is quite outdated.
+We recommend using [`yazi-git`](https://aur.archlinux.org/packages/yazi-git) to install the latest main branch from AUR at the moment,
+since the official package of [`yazi`](https://archlinux.org/packages/extra/x86_64/yazi/) is quite outdated.
 :::
 
 ```sh

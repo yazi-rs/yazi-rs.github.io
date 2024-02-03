@@ -22,7 +22,7 @@ Yazi's default theme uses base16 colors to match the user's terminal theme as cl
 
 Unfortunately, this cannot cater to all users, and even the colors needed by the same user in light/dark mode can vary, not to mention that some terminals have poor default color schemes, like this [#149 (comment)](https://github.com/sxyazi/yazi/issues/149#issuecomment-1798349727).
 
-So, please [use a Yazi theme](https://github.com/yazi-rs/themes) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR.
+So, please [use a Yazi theme](https://github.com/yazi-rs/themes) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR!
 
 ## Why can't "Open" and "Enter" be a single command?
 
