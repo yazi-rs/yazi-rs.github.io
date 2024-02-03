@@ -19,6 +19,10 @@ Binary:
 
 - [hexyl.yazi](https://github.com/Reledia/hexyl.yazi) - Preview every file by showing its hex value using [hexyl](https://github.com/sharkdp/hexyl)
 
+Audio:
+
+- [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata using [exiftool](https://exiftool.org/)
+
 ## Neovim plugins
 
 - [tfm.nvim](https://github.com/Rolv-Apneseth/tfm.nvim) - Neovim plugin for terminal file manager integration
