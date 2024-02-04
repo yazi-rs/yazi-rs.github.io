@@ -190,6 +190,7 @@ Each rule supports complete [Style properties](#types). There are two special ru
 You can restrict the specific type of files through `is`, noting that it must be used with either `name` or `mime`. It accepts the following values:
 
 - `block`: Block device
+- `char`: Char device
 - `exec`: Executable
 - `fifo`: FIFO
 - `link`: Symbolic link
