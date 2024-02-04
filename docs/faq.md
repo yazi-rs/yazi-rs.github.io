@@ -53,7 +53,7 @@ Please make sure the `file` command is available in your terminal, you can do a 
   <summary>Yazi Linux Edition running on WSL</summary>
   <div>
 
-Limited by ConPTY, the Windows version of Yazi has had to implement many workarounds, which are not perfect.
+Limited by ConPTY, the Windows edition has had to implement many workarounds, which are not perfect.
 
 However, if you run Yazi in WSL, you can experience perfect image previews using `wezterm ssh`.<br/>
 [WezTerm](https://wezfurlong.org/wezterm/) is an excellent terminal that can bypass the limitations of ConPTY through its SSH feature, and it's currently the only terminal that supports this approach.
@@ -78,7 +78,7 @@ That's it! you can now get Yazi's image preview working properly.
 
 Before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it is not possible to obtain the actual width and height of the terminal.
 
-Therefore, the Windows version of Yazi currently uses `preview.max_width` and `preview.max_height` specified by the user in the `yazi.toml` as the image size.
+Therefore, the Windows edition currently uses `preview.max_width` and `preview.max_height` as the image size, which is specified by the user in the `yazi.toml` .
 
 ## Why can't I preview images via Überzug++?
 
