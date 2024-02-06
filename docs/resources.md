@@ -10,8 +10,8 @@ description: Some awesome plugins for Yazi.
 Markdown:
 
 - [glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files using [glow](https://github.com/charmbracelet/glow)
-  
-Csv:
+
+CSV:
 
 - [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview csv files (and other supported formats) using [miller](https://github.com/johnkerl/miller)
 
@@ -22,6 +22,10 @@ Binary:
 Audio:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata using [exiftool](https://exiftool.org/)
+
+## Functional plugins
+
+- [keyjump.yazi](https://github.com/DreamMaoMao/keyjump.yazi) - A yazi plugin like flash.nvim, allows precise navigation using single (or double) characters.
 
 ## Neovim plugins
 

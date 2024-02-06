@@ -54,7 +54,7 @@ TODO
 
 Properties:
 
-- `frag`: The fragment string of this url. Let's say the url is `archive:///root/my-archive.zip#1.jpg`, then the fragment is `1.jpg`
+- `frag`: The fragment string of this url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
 - `is_regular`: Whether the file represented by this url is a regular file
 - `is_search`: Whether the file represented by this url from the search result
 - `is_archive`: Whether the file represented by this url from an archive
