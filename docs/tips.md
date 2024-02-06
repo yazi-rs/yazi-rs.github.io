@@ -230,3 +230,41 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/main/yaz
  	return {
  		ui.Paragraph(chunks[1], { left }),
 ```
+
+
+## Compress files with apack (atool software) 
+
+You can compress selected files in visible area (to improve) or, if there isn't any seleted file, the hovered file, in files.zip. If file.zip exists, the new ones will be added. 
+
+Save these lines as `~/.config/yazi/plugins/archiver/init.lua`:
+
+```lua
+return {
+	entry = function()
+		local out = "files.zip" -- parameter output file name, if the file exists, the new ones will be added.
+
+		local files = ""
+		for i, f in ipairs(Folder:by_kind(Folder.CURRENT).window) do -- List of files, only in visible area, to improve
+			if f:is_selected() then
+				files = files .. " " .. f.name -- Add selected file to list, to improve unselect it
+			end
+		end
+
+		if files == "" then -- If there isn't selected files, then compress the hovered file only
+			local h = cx.active.current.hovered
+			files = tostring(h.name)
+		end
+		local cmd = "apack " .. out .. " " .. files .. "  1>&2 > /dev/null" -- Command to compress with apack, it depends on output file extension, rar, zip, ...
+		local child = os.execute(cmd) -- exec command, to improve with Command function of Yazi
+	end,
+}
+```
+
+Then bind it for `l` key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "<C-c>" ]
+exec = "plugin --sync archiver"
+desc = "Compress files with apack"
+```
