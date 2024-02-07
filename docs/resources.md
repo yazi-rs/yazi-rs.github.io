@@ -5,6 +5,10 @@ description: Some awesome plugins for Yazi.
 
 # Resources
 
+:::note
+Yazi's plugin system is in the early stage, and most of the plugins below only guarantee compatibility with the latest main branch!
+:::
+
 ## Previewers
 
 Markdown:
