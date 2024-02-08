@@ -18,7 +18,10 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
 - [\[help\]](#help) - Help menu.
 
-In each layer, there are two attributes: `prepend_keymap` and `append_keymap`. You can use them to prepend or append to [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), for example:
+In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
+Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), while append inserts after them.
+
+Since Yazi selects the first matching key to execute, prepend always has a higher priority than default, and append always has a lower priority than default:
 
 ```toml
 [manager]
