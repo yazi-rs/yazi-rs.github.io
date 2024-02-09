@@ -260,7 +260,7 @@ return {
 }
 ```
 
-Then bind it for `l` key, in your `keymap.toml`:
+Then bind it for `ctrl+c` keys, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
