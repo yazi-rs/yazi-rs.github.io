@@ -7,6 +7,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Tips
 
+These tips require prior knowledge of the Yazi configuration file.
+
+If you are using Yazi for the first time, please read our [configuration](./configuration/overview) and [plugins](./plugins/overview) documentation first.
+
 ## Full border
 
 You can implement a full border for Yazi via the UI plugin.
