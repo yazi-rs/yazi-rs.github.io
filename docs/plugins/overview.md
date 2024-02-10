@@ -117,7 +117,7 @@ When a plugin is executed asynchronously, an isolated async context is created f
 
 In this context, you can use all the async functions supported by Yazi, and it operates concurrently with the main thread, ensuring that the main thread is not blocked.
 
-You can also obtain a small amount of app data from the sync context by calling a "sync function":
+You can also obtain a small amount of app data from the sync context by calling a "sync function" (Needs the latest main branch at the moment):
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/init.lua
