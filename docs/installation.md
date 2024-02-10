@@ -20,6 +20,7 @@ Yazi can be _optionally_ extended with other command line tools to enable additi
 - [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
+- [`exiftool`](https://exiftool.org/) (for file metadata)
 
 ## Packaging status
 
@@ -49,7 +50,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide exiftool
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
 ```
 
