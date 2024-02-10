@@ -30,6 +30,7 @@ Audio:
 ## Functional plugins
 
 - [keyjump.yazi](https://github.com/DreamMaoMao/keyjump.yazi) - A yazi plugin like flash.nvim, allows precise navigation using single (or double) characters.
+- [bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi) - A Yazi plugin that adds the basic functionality of Vi-like marks.
 
 ## Neovim plugins
 

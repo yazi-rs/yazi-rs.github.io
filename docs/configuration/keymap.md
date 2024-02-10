@@ -83,8 +83,7 @@ Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
 | Options/Arguments | Description          |
 | ----------------- | -------------------- |
-| `--all`           | Do all of the above. |
-| `--all`           | Do all of the above. |
+| `--all`           | Do all of the below. |
 | `--find`          | Cancel find.         |
 | `--visual`        | Exit visual mode.    |
 | `--select`        | Clear selected.      |
