@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 These tips require prior knowledge of the Yazi configuration file.
 
-If you are using Yazi for the first time, please read our [configuration](./configuration/overview) and [plugins](./plugins/overview) documentation first.
+If you are using Yazi for the first time, please read our [configuration](/docs/configuration/overview) and [plugins](/docs/plugins/overview) documentation first.
 
 ## Full border
 
