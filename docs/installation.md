@@ -148,6 +148,7 @@ Setup the latest stable Rust toolchain:
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
 ```
 
 Now you can install `yazi-fm` from [crates.io](https://crates.io/crates/yazi-fm):
@@ -170,6 +171,7 @@ Setup the latest stable Rust toolchain:
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
 ```
 
 Clone the repository and build Yazi:
