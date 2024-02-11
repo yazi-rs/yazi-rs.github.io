@@ -201,7 +201,6 @@ Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/main/yaz
  	local left = ui.Line { self:mode(), self:size(), self:name() }
 -	local right = ui.Line { self:permissions(), self:percentage(), self:position() }
 +	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
- 	local progress = self:progress(area, right:width())
  	return {
  		ui.Paragraph(area, { left }),
 ```
