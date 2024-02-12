@@ -42,7 +42,7 @@ If you truly don't need to distinguish between them, use this [smart-enter tip](
   <summary>Yazi Windows Edition</summary>
   <div>
 
-Have you added Git to the `PATH` according to the [Windows Installation Guide](https://github.com/sxyazi/yazi/wiki/Windows-Installation-Guide#requirements)?
+Have you added Git to the `PATH` according to the [Windows Installation Guide](/docs/installation#windows)?
 
 Please make sure the `file` command is available in your terminal, you can do a `file -v` to verify it.
 
