@@ -76,6 +76,12 @@ Show the path of the symlink file point to, after the filename.
 - `true`: Show
 - `false`: Do not show
 
+### `scrolloff`
+
+The number of files to keep above and below the cursor when moving through the file list.
+
+If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
+
 ## [preview]
 
 ### `tab_size`
