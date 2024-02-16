@@ -180,6 +180,7 @@ Open the selected files.
 | Options/Arguments | Description                                                                  |
 | ----------------- | ---------------------------------------------------------------------------- |
 | `--interactive`   | Open the selected files with an interactive UI to choose the opening method. |
+| `--hovered`       | Open the hovered file regardless of the selection state.                     |
 
 ### `yank`
 
