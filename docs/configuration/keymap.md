@@ -179,7 +179,8 @@ Open the selected files.
 
 | Options/Arguments | Description                                                                  |
 | ----------------- | ---------------------------------------------------------------------------- |
-| `--interactive`   | Open the selected files with an interactive UI to choose the opening method. |
+| `--interactive`   | Open the hovered/selected file(s) with an interactive UI to choose the opening method. |
+| `--hovered`       | Always open the hovered file regardless of the selection state.                     |
 
 ### `yank`
 
