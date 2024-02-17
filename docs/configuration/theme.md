@@ -200,25 +200,37 @@ You can restrict the specific type of files through `is`, noting that it must be
 
 ## [icon]
 
-Display icon based on file name rules, noting that the `/` after the name signifies that it's a directory.
+Display icon based on the first matched rule, noting that end with `/` for directories.
+
+You can prepend or append rules to the default through `prepend_rules` and `append_rules`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
 
 ```toml
 [icon]
-
-rules = [
+prepend_rules = [
 	{ name = "*.rs"    , text = "" },
 	{ name = "Desktop/", text = "" },
 	# ...
 
 	# Icon with a color
 	{ name = "*.lua", text = "", fg = "#51a0cf" },
+]
 
+append_rules = [
 	# Default
 	{ name = "*" , text = "" },
 	{ name = "*/", text = "" },
 ]
 ```
 
+Or, use `rules` to rewrite the entire default rules:
+
+```toml
+[icon]
+rules = [
+	# ...Some rules
+]
+```
+
 Similarly, `*` and `*/` can be used for fallback matching all files and all directories. You can also use `fg` to set the icon color.
 
-The above rules use icons from [Nerd Fonts](https://www.nerdfonts.com), and they will not display properly if you don't have a Nerd Font installed.
+The example above use icons from [Nerd Fonts](https://www.nerdfonts.com), and they will not display properly if you don't have a Nerd Font installed.

@@ -299,9 +299,17 @@ Which means you can implement your own linemode through the plugin by simply ove
 
 | Options/Arguments | Description                            |
 | ----------------- | -------------------------------------- |
-| `rg`              | Search files by content using ripgrep. |
 | `fd`              | Search files by name using fd.         |
+| `rg`              | Search files by content using ripgrep. |
 | `none`            | Default, cancel the ongoing search.    |
+
+You can search with an empty keyword (`""`) via `fd` to achieve flat view.
+
+<details>
+  <summary>Demonstrate flat view</summary>
+	<p>Original post: https://github.com/sxyazi/yazi/issues/676#issuecomment-1943494129</p>
+	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
+</details>
 
 ### `jump`
 
