@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 description: Answers to some frequently asked questions about Yazi.
 ---
 
@@ -79,18 +79,6 @@ That's it! you can now get Yazi's image preview working properly.
 Before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it is not possible to obtain the actual width and height of the terminal.
 
 Therefore, the Windows edition currently uses `preview.max_width` and `preview.max_height` as the image size, which is specified by the user in the `yazi.toml` .
-
-## Why can't I preview images via Überzug++?
-
-This may be an issue with Überzug++, please try running `ueberzug layer` directly in the terminal without Yazi, and paste:
-
-```sh
-{"action":"add","identifier":"preview","max_height":0,"max_width":0,"path":"/your/image-path.jpg","x":0,"y":0}
-```
-
-into it, then press `Enter`, and to see if any image is shown, without exiting the Überzug++. Note that you need to replace `/your/image-path.jpg` with the actual path of an image.
-
-If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report.
 
 ## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
 

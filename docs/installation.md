@@ -100,7 +100,7 @@ Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest 
 1. Install Git for Windows by running [the official installer](https://git-scm.com/download/win), or through your package manager of choice.
 2. To allow Yazi to find `file(1)`, add `C:\Git_Installed_Directory\usr\bin\` to your `%PATH%` environment variable, which differs depending on how you installed Git:
    - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin`.
-   - If you installed Git with scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current\usr\bin`.
+   - If you installed Git with Scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current\usr\bin`.
 3. Restart your terminal.
 
 To check if you've done this properly, enter `file -v`, you should see output similar to the following:
@@ -110,7 +110,7 @@ C:\Users\yazi> file -v
 file-5.45
 ```
 
-This is currently the only method we recommend. **We do NOT recommend `scoop install file`**, since Scoop's `file` cannot handle Unicode file names (such as `pexels-oliver-sjöström-1433052.jpg`) properly.
+This is **the ONLY way we recommend**. We do not recommend install it via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
 
 ### Installation
 
@@ -123,15 +123,6 @@ scoop install unar jq poppler fd ripgrep fzf zoxide
 ```
 
 Yazi on Scoop is maintained by community contributors, and may not always have the latest version available. You may need to check our [GitHub Releases](https://github.com/sxyazi/yazi/releases) page for the latest version.
-
-### Image previews
-
-Currently, only the following two terminals support displaying images on Windows:
-
-- WezTerm
-- Mintty (Git Bash, which comes with Git for Windows)
-
-and [Yazi has adapted them](https://github.com/sxyazi/yazi#image-preview) to work right out of the box!
 
 ## AOSC OS
 
