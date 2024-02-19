@@ -130,6 +130,16 @@ This function is only available in the async context.
 
 Returns the target family of the current platform, `"windows"`, `"unix"`, or `"wasm"`.
 
+### `quote(str)`
+
+Quote characters that may have special meaning in a shell:
+
+- `str`: Required, the string to be quoted, which is a string
+
+```lua
+local handle = io.popen("ls " .. ya.quote(filename))
+```
+
 ### `truncate(text, max)`
 
 Truncate the text to the specified length and return it:
@@ -146,6 +156,18 @@ Check whether the mime-type is valid:
 ### `time()`
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
+
+### `sleep(secs)`
+
+Waits until `secs` has elapsed:
+
+- `secs`: Required, the number of seconds to sleep, which is a positive float
+
+```lua
+ya.sleep(0.5)  -- Sleep for 500 milliseconds
+```
+
+This function is only available in the async context.
 
 ### `uid()`
 
