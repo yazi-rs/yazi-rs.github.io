@@ -121,7 +121,6 @@ You can also obtain a small amount of app data from the sync context by calling 
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/init.lua
-
 local get_hovered_url = ya.sync(function(a, b)
 	-- You can access all app data through the `cx`,
 	-- within the `sync()` block, in an async plugin
@@ -136,6 +135,18 @@ return {
 		-- It will execute concurrently with the main thread
 	end,
 }
+```
+
+Note that `ya.sync()` call must be at the top level, and do not use it in sync plugins, as these are undefined behaviors that may lead to unexpected results:
+
+```lua
+-- Wrong !!!
+local get_hovered_url
+if some_condition then
+	get_hovered_url = ya.sync(function(a, b)
+		-- ...
+	end)
+end
 ```
 
 ## Interface

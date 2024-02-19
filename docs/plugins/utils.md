@@ -94,7 +94,7 @@ Append messages to [the log file](./overview.md#logging) at the error level:
 
 ### `sync(fn)`
 
-TODO
+See [Async context](/docs/plugins/overview.md#async-context).
 
 ### `preview_code(opts)`
 
