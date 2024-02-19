@@ -46,7 +46,7 @@ You can bind a `plugin` command to a specific key in your `keymap.toml` with:
 | `--sync`          | Run the plugin in a sync context.           |
 | `--args=[args]`   | Shell-style arguments passed to the plugin. |
 
-For example, `plugin test --sync --args='foo bar'` will run the `test` plugin with the arguments `foo` and `bar` in a sync context.
+For example, `plugin test --sync --args='hello world'` will run the `test` plugin with the arguments `hello` and `world` in a sync context.
 
 To receive the arguments in the plugin, use `args`:
 
@@ -54,8 +54,8 @@ To receive the arguments in the plugin, use `args`:
 -- ~/.config/yazi/plugins/test.yazi/init.lua
 return {
 	entry = function(self, args)
-		ya.err(args[1]) -- "foo"
-		ya.err(args[2]) -- "bar"
+		ya.err(args[1]) -- "hello"
+		ya.err(args[2]) -- "world"
 	end,
 }
 ```
@@ -77,8 +77,8 @@ This is because `init.lua` is commonly used to initialize plugin configurations,
 -- Initialize the bar plugin
 -- Which needs `~/.config/yazi/plugins/bar.yazi/init.lua` to export a `setup` function
 require("bar").setup {
-	key1 = "hello",
-	key2 = "world",
+	key1 = "value1",
+	key2 = "value2",
 	-- ...
 }
 ```
