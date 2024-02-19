@@ -77,6 +77,12 @@ environment.systemPackages = with pkgs; [
 
 You can also manage Yazi's configuration using [home-manager](https://nix-community.github.io/home-manager/options.html#opt-programs.yazi.enable).
 
+## MacPorts
+
+```bash
+sudo port install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+```
+
 ## NetBSD
 
 ```sh

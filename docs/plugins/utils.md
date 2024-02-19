@@ -51,6 +51,33 @@ Pre-cache the image to a specified url based on user-configured [`max_width` and
 
 This function is only available in the async context.
 
+### `which(opts)`
+
+Prompt users with a set of available keys:
+
+- `opts`: Required, the options of the prompt, which is a table:
+  - `cands`: Required, the key candidates, which is a table of tables that contains the following fields:
+    - `on`: Required, the key to be prompted, which is a string or a table of strings if multiple keys
+    - `desc`: Optional, the description of the key, which is a string
+  - `silent`: Optional, whether to show the UI of key indicator, which is a boolean
+
+```lua
+local key = ya.which {
+	cands = {
+		{ on = "a" },
+		{ on = "b", desc = "optional description" },
+		{ on = "<C-c>", desc = "key combination" },
+		{ on = { "d", "e" }, desc = "multiple keys" },
+	},
+	-- silent = true, -- If you don't want to show the UI of key indicator
+}
+```
+
+When the user clicks a valid candidate, `ya.which` returns the 1-based index of that "cand";
+otherwise, it returns nil, indicating that the user has canceled the key operation.
+
+This function is only available in the async context.
+
 ### `dbg(msg)`
 
 Append messages to [the log file](./overview.md#logging) at the debug level:
@@ -65,7 +92,7 @@ Append messages to [the log file](./overview.md#logging) at the error level:
 
 - `msg` - Required, the message to be logged, which is a string
 
-### `plugin_retrieve`
+### `sync(fn)`
 
 TODO
 
