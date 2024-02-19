@@ -147,12 +147,6 @@ Truncate the text to the specified length and return it:
 - `text` - Required, the text to be truncated, which is a string
 - `max` - Required, the maximum length of the text, which is an integer
 
-### `mime_valid(mime)`
-
-Check whether the mime-type is valid:
-
-- `mime` - Required, the mime-type to be checked, which is a string
-
 ### `time()`
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.

@@ -16,16 +16,16 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 ~/.config/yazi/
 ├── init.lua
 ├── plugins/
-│   ├── fzf.yazi/
-│   └── zoxide.yazi/
+│   ├── foo.yazi/
+│   └── bar.yazi/
 └── yazi.toml
 ```
 
 Each plugin is a directory ending with `.yazi`, containing an `init.lua` file for the plugin's initialization.
-For instance, the structure of the `zoxide` plugin is as:
+For instance, the structure of the `bar` plugin is as:
 
 ```
-zoxide.yazi/
+bar.yazi/
 └── init.lua
 ```
 
@@ -67,18 +67,18 @@ The plugin system is designed with an async-first philosophy. Therefore, unless 
 There is one exception - all `init.lua` are synchronous, which includes:
 
 - The `init.lua` for Yazi itself, i.e. `~/.config/yazi/init.lua`.
-- The `init.lua` for each plugin, e.g. `~/.config/yazi/plugins/zoxide.yazi/init.lua`.
+- The `init.lua` for each plugin, e.g. `~/.config/yazi/plugins/bar.yazi/init.lua`.
 
 This is because `init.lua` is commonly used to initialize plugin configurations, and this process is synchronous:
 
 ```lua
 -- ~/.config/yazi/init.lua
 
--- Initialize the zoxide plugin
--- Which needs `~/.config/yazi/plugins/zoxide.yazi/init.lua` to export a `setup` function
-require("zoxide").setup {
-	foo = "hello",
-	bar = "world",
+-- Initialize the bar plugin
+-- Which needs `~/.config/yazi/plugins/bar.yazi/init.lua` to export a `setup` function
+require("bar").setup {
+	key1 = "hello",
+	key2 = "world",
 	-- ...
 }
 ```

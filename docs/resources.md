@@ -17,15 +17,19 @@ Markdown:
 
 CSV:
 
-- [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview csv files (and other supported formats) using [miller](https://github.com/johnkerl/miller)
+- [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview CSV files (and other supported formats) using [miller](https://github.com/johnkerl/miller)
 
 Binary:
 
-- [hexyl.yazi](https://github.com/Reledia/hexyl.yazi) - Preview every file by showing its hex value using [hexyl](https://github.com/sharkdp/hexyl)
+- [hexyl.yazi](https://github.com/Reledia/hexyl.yazi) - Using [hexyl](https://github.com/sharkdp/hexyl) as the fallback previewer for files
 
 Audio:
 
-- [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata using [exiftool](https://exiftool.org/)
+- [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/)
+
+## Preloaders
+
+- [mime.yazi](https://github.com/DreamMaoMao/mime.yazi) - Replace the builtin `mime` plugin to speed up the identification of large files by using file extensions instead of file content to obtain the mime-types.
 
 ## Functional plugins
 
