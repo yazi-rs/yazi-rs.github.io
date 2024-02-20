@@ -222,8 +222,8 @@ Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- `exec` (String): The name of the Lua plugin to be executed
-- `sync` (Boolean): Whether to execute synchronously, the default is `false`
+- `exec` (String): The name of the Lua plugin to be executed.
+- `sync` (Boolean): Whether to execute in the sync context, default is `false`.
 
 ```toml
 [plugin]
@@ -231,7 +231,14 @@ prepend_previewers = [
 	# HEIC previewer
 	{ mime = "image/heic", exec = "heic" },
 ]
+
+append_previewers = [
+	# My fallback previewer
+	{ name = "*" , exec = "binary" },
+]
 ```
+
+If your `append_rules` contains wildcard `name` rules (`"*"` or `"*/"`), they will always take precedence over the default wildcard rules as the fallback.
 
 Yazi comes with the these previewer plugins:
 

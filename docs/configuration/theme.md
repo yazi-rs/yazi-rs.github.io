@@ -11,38 +11,43 @@ If you're looking for ready-made themes and don't want to create one yourself, c
 
 ## Types
 
-- Color: A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be one of the following 17 values:
+### Color
 
-  - reset
-  - black
-  - white
-  - red
-  - lightred
-  - green
-  - lightgreen
-  - yellow
-  - lightyellow
-  - blue
-  - lightblue
-  - magenta
-  - lightmagenta
-  - cyan
-  - lightcyan
-  - gray
-  - darkgray
+A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be one of the following 17 values:
 
-- Style: Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supports the following properties:
-  - fg (Color): Foreground color
-  - bg (Color): Background color
-  - bold (Boolean): Bold
-  - dim (Boolean): Dim (not supported by all terminals)
-  - italic (Boolean): Italic
-  - underline (Boolean): Underline
-  - blink (Boolean): Blink
-  - blink_rapid (Boolean): Rapid blink
-  - reversed (Boolean): Reversed foreground and background colors
-  - hidden (Boolean): Hidden
-  - crossed (Boolean): Crossed out
+- reset
+- black
+- white
+- red
+- lightred
+- green
+- lightgreen
+- yellow
+- lightyellow
+- blue
+- lightblue
+- magenta
+- lightmagenta
+- cyan
+- lightcyan
+- gray
+- darkgray
+
+### Style
+
+Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supports the following properties:
+
+- fg (Color): Foreground color
+- bg (Color): Background color
+- bold (Boolean): Bold
+- dim (Boolean): Dim (not supported by all terminals)
+- italic (Boolean): Italic
+- underline (Boolean): Underline
+- blink (Boolean): Blink
+- blink_rapid (Boolean): Rapid blink
+- reversed (Boolean): Reversed foreground and background colors
+- hidden (Boolean): Hidden
+- crossed (Boolean): Crossed out
 
 ## [manager]
 
@@ -182,7 +187,7 @@ rules = [
 ]
 ```
 
-Each rule supports complete [Style properties](#types). There are two special rule:
+Each rule supports complete [Style properties](#style). There are two special rule:
 
 - `name = "*"` matches all files.
 - `name = "*/"` matches all directories.
@@ -200,7 +205,7 @@ You can restrict the specific type of files through `is`, noting that it must be
 
 ## [icon]
 
-Display icon based on the first matched rule, noting that end with `/` for directories.
+Display icon based on the first matched rule.
 
 You can prepend or append rules to the default through `prepend_rules` and `append_rules`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
 
@@ -216,7 +221,7 @@ prepend_rules = [
 ]
 
 append_rules = [
-	# Default
+	# My fallback icons
 	{ name = "*" , text = "" },
 	{ name = "*/", text = "" },
 ]
@@ -231,6 +236,6 @@ rules = [
 ]
 ```
 
-Similarly, `*` and `*/` can be used for fallback matching all files and all directories. You can also use `fg` to set the icon color.
+End with `/` for directories, so wildcard rule (`*` or `*/`) can be used for fallback matching all files or directories.
 
-The example above use icons from [Nerd Fonts](https://www.nerdfonts.com), and they will not display properly if you don't have a Nerd Font installed.
+If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback.
