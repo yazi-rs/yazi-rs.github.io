@@ -9,12 +9,18 @@ description: Answers to some frequently asked questions about Yazi.
 
 See [Why is Yazi fast?](/blog/why-is-yazi-fast).
 
-## Why am I getting a "Permission denied" when editing files in Linux/macOS?
+## Why can't I edit text files?
 
-Yazi defaults to using `$EDITOR` as the default editor, which is suitable for most cases.
+Yazi defaults to using `$EDITOR` as the text editor for Linux/macOS.
+If you are unable to edit files, please check your Bash/Zsh/Fish configuration file for settings like `export EDITOR=vim`. You can also [change Yazi's text opener](/docs/configuration/yazi#opener) from `$EDITOR` to vim/nvim/nano.
 
-When you encounter this error, it means that `$EDITOR` is not set properly. You can add something like `export EDITOR=vim` to your Bash/Zsh/Fish configuration.
-Alternatively, you can change Yazi's [default edit opener](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml) from `$EDITOR` to vim/nvim/nano.
+For Windows, there is no concept of `$EDITOR`, so users need to modify the text opener as needed.
+
+## Why can't I open/edit/preview files on Windows?
+
+Have you added Git to the `PATH` as per the [Windows Requirements](/docs/installation#requirements)?
+
+Please make sure the `file` command is available in your terminal, you can do a `file -v` to check it.
 
 ## Why is my text color not distinct?
 
@@ -35,50 +41,6 @@ An archive is a file, so it's "openable", but it's also "enterable" as a directo
 This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
 
 If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips.md#smart-enter-enter-for-directory-open-for-file).
-
-## Why can't I preview files on Windows?
-
-<details>
-  <summary>Yazi Windows Edition</summary>
-  <div>
-
-Have you added Git to the `PATH` according to the [Windows Installation Guide](/docs/installation#windows)?
-
-Please make sure the `file` command is available in your terminal, you can do a `file -v` to verify it.
-
-  </div>
-</details>
-
-<details>
-  <summary>Yazi Linux Edition running on WSL</summary>
-  <div>
-
-Limited by ConPTY, the Windows edition has had to implement many workarounds, which are not perfect.
-
-However, if you run Yazi in WSL, you can experience perfect image previews using `wezterm ssh`.<br/>
-[WezTerm](https://wezfurlong.org/wezterm/) is an excellent terminal that can bypass the limitations of ConPTY through its SSH feature, and it's currently the only terminal that supports this approach.
-
-You need to install `sshd` in WSL and start it:
-
-```sh
-sudo apt install openssh-server
-sudo service ssh restart
-```
-
-Then, on the host machine, connect to WSL via SSH:
-
-```sh
-wezterm ssh 127.0.0.1
-```
-
-That's it! you can now get Yazi's image preview working properly.
-
-  </div>
-</details>
-
-Before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it is not possible to obtain the actual width and height of the terminal.
-
-Therefore, the Windows edition currently uses `preview.max_width` and `preview.max_height` as the image size, which is specified by the user in the `yazi.toml` .
 
 ## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
 

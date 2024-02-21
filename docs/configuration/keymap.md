@@ -177,10 +177,10 @@ Enter visual mode (selection mode).
 
 Open the selected files.
 
-| Options/Arguments | Description                                                                  |
-| ----------------- | ---------------------------------------------------------------------------- |
+| Options/Arguments | Description                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------- |
 | `--interactive`   | Open the hovered/selected file(s) with an interactive UI to choose the opening method. |
-| `--hovered`       | Always open the hovered file regardless of the selection state.                     |
+| `--hovered`       | Always open the hovered file regardless of the selection state.                        |
 
 ### `yank`
 
@@ -270,6 +270,11 @@ Run a shell command.
 | `[exec]`          | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`         | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--confirm`       | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
+
+You can use the following shell variables in `[exec]`:
+
+- `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
+- `$@` (Unix) / `%*` (Windows): All selected files.
 
 ### `hidden`
 

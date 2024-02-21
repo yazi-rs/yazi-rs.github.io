@@ -154,9 +154,8 @@ text = [
 Available parameters are as follows:
 
 - exec: The command to open the selected files, with the following variables available:
-  - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from 1
-  - `$@` (Unix) / `%*` (Windows): All selected files
-  - `foo`: Literal string to be passed
+  - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
+  - `$@` (Unix) / `%*` (Windows): All selected files.
 - block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - orphan (Boolean): Keep the process running even if Yazi has exited.
 - desc: Description of the opener, displayed in the selection menu.
@@ -208,10 +207,13 @@ Maximum number of retries when a bizarre failure occurs.
 
 Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming.
 
-### Image decoding
+### `image_alloc`
 
-- image_alloc: Maximum memory allocation limit (in bytes) for decoding a single image, `0` for unlimited.
-- image_bound(`[width, height]`): Maximum image size (in pixels) for decoding a single image, `0` for unlimited.
+Maximum memory allocation limit in bytes for decoding a single image, `0` for unlimited.
+
+### `image_bound`
+
+An array of `[width, height]`, maximum image size (in pixels) for decoding a single image, and `0` for unlimited.
 
 ## [plugin]
 
@@ -286,9 +288,9 @@ If you want to create your own preloader, see [Preloader API](../plugins/overvie
 
 ## [input]
 
-You can customize the title and position of each `Input`. As for position, it consists of two parts: [Origin](#origin) and [Offset](#offset).
+You can customize the title and position of each input. As for position, it consists of two parts: [Origin](#origin) and [Offset](#offset).
 
-The origin is the top-left corner of the `Input`, and the offset is the increment from this origin. Together, they determine the area of the `Input` on the screen.
+The origin is the top-left corner of the input, and the offset is the increment from this origin. Together, they determine the area of the input on the screen.
 
 ### Origin
 
@@ -309,7 +311,7 @@ As for the offset, it's a 4-element tuple: `(x, y, width, height)`.
 
 ### Placeholder
 
-Some `Input`s have special placeholders that will be replaced with actual content on display:
+Some inputs have special placeholders that will be replaced with actual content on display:
 
 - trash_title: String
 
@@ -322,6 +324,7 @@ Some `Input`s have special placeholders that will be replaced with actual conten
   - `{s}`: `"s"` if `n > 1`, otherwise `""`
 
 - find_title: [String, String]
+
   It's a tuple of 2-element: first for "Find next", second for "Find previous".
 
 - search_title: String
@@ -329,12 +332,37 @@ Some `Input`s have special placeholders that will be replaced with actual conten
   - `{n}`: Name of the current search engine
 
 - shell_title: [String, String]
+
   It's a tuple of 2-element: first for "Non-blocking shell", second for "Blocking shell".
 
-- quit_title
+- quit_title: String
   - `{n}`: Number of tasks are running
   - `{s}`: `"s"` if `n > 1`, otherwise `""`
 
 ## [select]
 
 Same as [the input](#input).
+
+## [which]
+
+### `sort_by`
+
+Candidate sorting method.
+
+- `"none"`: Don't sort.
+- `"key"`: Sort by key.
+- `"desc`: Sort by description.
+
+### `sort_sensitive`
+
+Sort case-sensitively.
+
+- `true`: Case-sensitive
+- `false`: Case-insensitive
+
+### `sort_reverse`
+
+Display candidates in reverse order.
+
+- `true`: Reverse order
+- `false`: Normal order

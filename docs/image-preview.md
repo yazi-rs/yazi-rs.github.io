@@ -60,6 +60,28 @@ Currently, only the following two terminals support displaying images on Windows
 - WezTerm
 - Mintty (Git Bash, which comes with Git for Windows)
 
+## Windows with WSL users
+
+Limited by ConPTY, the Windows edition has had to implement many workarounds, which are not perfect.
+
+However, if you run Yazi in WSL, you can experience perfect image previews using `wezterm ssh`.<br/>
+[WezTerm](https://wezfurlong.org/wezterm/) is an excellent terminal that can bypass the limitations of ConPTY through its SSH feature, and it's currently the only terminal that allows this approach.
+
+You need to install `sshd` in WSL and start it:
+
+```sh
+sudo apt install openssh-server
+sudo service ssh restart
+```
+
+Then, on the host machine, connect to WSL over SSH:
+
+```sh
+wezterm ssh 127.0.0.1
+```
+
+That's it! you can now get Yazi's image preview working properly.
+
 ## Why can't I preview images via Überzug++?
 
 This may be an issue with Überzug++, please try running `ueberzug layer` directly in the terminal without Yazi, and paste:
@@ -71,3 +93,9 @@ This may be an issue with Überzug++, please try running `ueberzug layer` direct
 into it, then press `Enter`, and to see if any image is shown, without exiting the Überzug++. Note that you need to replace `/your/image-path.jpg` with the actual path of an image.
 
 If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report.
+
+## Why won't my images adapt to terminal size?
+
+Some terminals (such as VSCode, Tabby, and all Windows terminals) do not implement the `ioctl` system call, before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it is not possible to obtain the actual pixel width and height of the terminal.
+
+Therefore, Yazi uses `preview.max_width` and `preview.max_height` as the image size, which is specified by the user in `yazi.toml`.
