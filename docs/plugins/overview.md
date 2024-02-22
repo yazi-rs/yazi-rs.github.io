@@ -93,7 +93,7 @@ prompting plugin developers to use plugin-specific state persistence for their p
 ```lua
 -- ~/.config/yazi/test.yazi/init.lua
 return {
-  entry = function()
+  entry = function(state)
     state.i = state.i or 0
     ya.err("i = " .. state.i)
 
@@ -121,23 +121,30 @@ You can also obtain a small amount of app data from the sync context by calling 
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/init.lua
-local get_hovered_url = ya.sync(function(a, b)
+local set_state = ya.sync(function(state, a)
+	-- You can get/set the state of the plugin through `state` argument
+	-- in the `sync()` block
+	state.a = a
+end)
+
+local get_state = ya.sync(function(state, b)
 	-- You can access all app data through the `cx`,
 	-- within the `sync()` block, in an async plugin
 	local h = cx.active.current.hovered
-	return h and a..tostring(h.url) or b
+	return h and state.a .. tostring(h.url) or b
 end)
 
 return {
 	entry = function()
-		local h = get_hovered_url("this is a", "this is b")
+		set_state("this is a")
+		local h = get_state("this is b")
 		-- Do some time-consuming work, such as reading file, network request, etc.
 		-- It will execute concurrently with the main thread
 	end,
 }
 ```
 
-Note that `ya.sync()` call must be at the top level, and do not use it in sync plugins, as these are undefined behaviors that may lead to unexpected results:
+Note that `ya.sync()` call must be at the top level:
 
 ```lua
 -- Wrong !!!
