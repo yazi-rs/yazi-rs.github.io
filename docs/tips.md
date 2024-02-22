@@ -138,6 +138,32 @@ exec = [ "yank", '''
 ''' ]
 ```
 
+## File navigation wraparound
+
+Save these lines as `~/.config/yazi/plugins/arrow.yazi/init.lua`:
+
+```lua
+return {
+	entry = function(_, args)
+		local step, current = tonumber(args[1]), cx.active.current
+		local new = (current.cursor + step) % #current.files
+		ya.manager_emit("arrow", { new - current.cursor })
+	end,
+}
+```
+
+Then bind it for `k` and `j` key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "k" ]
+exec = "plugin --sync arrow --args=-1"
+
+[[manager.prepend_keymap]]
+on   = [ "j" ]
+exec = "plugin --sync arrow --args=1"
+```
+
 ## No status bar
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
