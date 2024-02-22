@@ -75,7 +75,7 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
-You can also manage Yazi's configuration using [home-manager](https://nix-community.github.io/home-manager/options.html#opt-programs.yazi.enable).
+You can also manage Yazi's configuration using [home-manager](https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yazi.enable).
 
 ## MacPorts
 
