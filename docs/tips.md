@@ -145,8 +145,8 @@ Save these lines as `~/.config/yazi/plugins/arrow.yazi/init.lua`:
 ```lua
 return {
 	entry = function(_, args)
-		local step, current = tonumber(args[1]), cx.active.current
-		local new = (current.cursor + step) % #current.files
+		local current = cx.active.current
+		local new = (current.cursor + args[1]) % #current.files
 		ya.manager_emit("arrow", { new - current.cursor })
 	end,
 }
