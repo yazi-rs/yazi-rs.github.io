@@ -23,14 +23,14 @@ If the file is not allowed to be cached, such as it's ignored in the user config
 Send a command to the manager without waiting for the executor to execute:
 
 - `cmd` - Required, the command name, which is a string
-- `args` - Required, the arguments of the command, which is a table of strings
+- `args` - Required, the arguments of the command, which is a table with a number key and string/number value, or a string key and string/number/boolean value
 - `data` - Optional, additional data passed to the command
 
 ```lua
-ya.manager_emit("my-cmd", { "hello", foo = "", bar_baz = "world" })
+ya.manager_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 
 -- Equivalent to:
--- my-cmd "hello" --foo --bar-baz="world"
+-- my-cmd "hello" "123" --foo --bar-baz="world"
 ```
 
 ### `image_show(url, rect)`
@@ -106,6 +106,11 @@ Preview the file as code into the specified area:
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](#window) of the preview
 
+Returns `(ok, upper_bound)`:
+
+- `ok` - Whether the preview is successful, which is a boolean.
+- `upper_bound` - If the preview fails (`ok = false`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
+
 This function is only available in the async context.
 
 ### `preview_archive(opts)`
@@ -113,6 +118,11 @@ This function is only available in the async context.
 Preview the file as an archive into the specified area:
 
 - `opts` - Required, the options of the preview. It's the same as [`preview_code`](#previewcodeopts)
+
+Returns `(ok, upper_bound)`:
+
+- `ok` - Whether the preview is successful, which is a boolean.
+- `upper_bound` - If the preview fails (`ok = false`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
 This function is only available in the async context.
 
