@@ -21,6 +21,8 @@ CSV:
 
 - [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview CSV files (and other supported formats) using [miller](https://github.com/johnkerl/miller).
 
+- [bat.yazi](https://github.com/mgumz/yazi-plugin-bat) - Preview all kind of files using [bat](https://github.com/sharkdp/bat).
+
 Binary:
 
 - [hexyl.yazi](https://github.com/Reledia/hexyl.yazi) - Using [hexyl](https://github.com/sharkdp/hexyl) as the fallback previewer for files.
@@ -37,7 +39,13 @@ Archives:
 
 - [ouch.yazi](https://github.com/ndtoan96/ouch.yazi) - An archive previewer plugin for Yazi, using [ouch](https://github.com/ouch-org/ouch).
 
-## 🚀 Preloaders
+PCAP:
+
+- [pcap.yazi](https://github.com/mgumz/yazi-plugin-pcap) - Preview .pcap files using [tshark](https://www.wireshark.org).
+
+## Preloaders
+
+Mime:
 
 - [mime.yazi](https://github.com/DreamMaoMao/mime.yazi) - Replace the builtin `mime` plugin to speed up the identification of large files by using file extensions instead of file content to obtain the mime-types.
 
