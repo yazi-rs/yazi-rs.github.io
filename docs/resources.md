@@ -19,6 +19,8 @@ CSV:
 
 - [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview CSV files (and other supported formats) using [miller](https://github.com/johnkerl/miller).
 
+- [bat.yazi](https://github.com/mgumz/yazi-plugin-bat) - Preview all kind of files using [bat](https://github.com/sharkdp/bat).
+
 Binary:
 
 - [hexyl.yazi](https://github.com/Reledia/hexyl.yazi) - Using [hexyl](https://github.com/sharkdp/hexyl) as the fallback previewer for files.
@@ -26,6 +28,10 @@ Binary:
 Audio:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
+
+PCAP:
+
+- [pcap.yazi](https://github.com/mgumz/yazi-plugin-pcap) - Preview .pcap files using [tshark](https://www.wireshark.org).
 
 ## Preloaders
 
