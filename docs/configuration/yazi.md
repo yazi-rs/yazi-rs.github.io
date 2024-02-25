@@ -253,7 +253,7 @@ Yazi comes with the these previewer plugins:
 - pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
 - archive: bridge between `unar` and the preview, offering mixed preview and concurrent rendering capabilities
 
-If you want to create your own previewer, see [Previewer API](../plugins/overview.md#previewer).
+If you want to create your own previewer, see [Previewer API](../plugins/overview#previewer).
 
 ### preloaders
 
@@ -284,7 +284,7 @@ Yazi comes with the these preloader plugins:
 - video: preloads and caches videos
 - pdf: preloads and caches PDFs.
 
-If you want to create your own preloader, see [Preloader API](../plugins/overview.md#preloader).
+If you want to create your own preloader, see [Preloader API](../plugins/overview#preloader).
 
 ## [input]
 

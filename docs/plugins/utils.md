@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 description: Learn how to use Yazi's Lua API.
 ---
 
@@ -80,7 +80,7 @@ This function is only available in the async context.
 
 ### `dbg(msg)`
 
-Append messages to [the log file](./overview.md#logging) at the debug level:
+Append messages to [the log file](./overview#logging) at the debug level:
 
 - `msg` - Required, the message to be logged, which is a string
 
@@ -88,13 +88,13 @@ Note that if you use a release build of Yazi, the log level is "error" instead o
 
 ### `err(msg)`
 
-Append messages to [the log file](./overview.md#logging) at the error level:
+Append messages to [the log file](./overview#logging) at the error level:
 
 - `msg` - Required, the message to be logged, which is a string
 
 ### `sync(fn)`
 
-See [Async context](/docs/plugins/overview.md#async-context).
+See [Async context](/docs/plugins/overview#async-context).
 
 ### `preview_code(opts)`
 
@@ -205,7 +205,7 @@ local ok, err = fs.write(url, "hello world")
 
 Write data to the specified file:
 
-- `url` - Required, the [Url](./common.md#url) of the file
+- `url` - Required, the [Url](./types#url) of the file
 - `data` - Required, the data to be written, which is a string
 
 Returns `(ok, err)`:
@@ -219,13 +219,13 @@ Returns `(ok, err)`:
 local cha, err = fs.cha(url)
 ```
 
-Get the [Cha](./common.md#cha) of the specified file, which is faster than [`cha_follow`](#chafollowurl) since it never follows the symbolic link:
+Get the [Cha](./types#cha) of the specified file, which is faster than [`cha_follow`](#chafollowurl) since it never follows the symbolic link:
 
-- `url` - Required, the [Url](./common.md#url) of the file
+- `url` - Required, the [Url](./types#url) of the file
 
 Returns `(cha, err)`:
 
-- `cha` - The [Cha](./common.md#cha) of the file if successful; otherwise, `nil`
+- `cha` - The [Cha](./types#cha) of the file if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
 ### `cha_follow(url)`
@@ -234,13 +234,13 @@ Returns `(cha, err)`:
 local cha, err = fs.cha_follow(url)
 ```
 
-Get the [Cha](./common.md#cha) of the specified file, and follow the symbolic link:
+Get the [Cha](./types#cha) of the specified file, and follow the symbolic link:
 
-- `url` - Required, the [Url](./common.md#url) of the file
+- `url` - Required, the [Url](./types#url) of the file
 
 Returns `(cha, err)`:
 
-- `cha` - The [Cha](./common.md#cha) of the file if successful; otherwise, `nil`
+- `cha` - The [Cha](./types#cha) of the file if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
 ## Command

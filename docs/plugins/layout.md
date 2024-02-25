@@ -243,8 +243,8 @@ ui.Span("string")
 
 Methods (all methods return `self`):
 
-- `ui.Span:fg(color)` - Set the foreground color of the span, which accepts a [Color](../configuration/theme.md#color)
-- `ui.Span:bg(color)` - Set the background color of the span, which accepts a [Color](../configuration/theme.md#color)
+- `ui.Span:fg(color)` - Set the foreground color of the span, which accepts a [Color](../configuration/theme#color)
+- `ui.Span:bg(color)` - Set the background color of the span, which accepts a [Color](../configuration/theme#color)
 - `ui.Span:bold()` - Set the span to bold
 - `ui.Span:dim()` - Set the span to dim
 - `ui.Span:italic()` - Set the span to italic
@@ -264,8 +264,8 @@ Create a style:
 ui.Style()
 ```
 
-- `ui.Style:fg(string)` - Set the foreground color of the style, which accepts a [Color](../configuration/theme.md#color)
-- `ui.Style:bg(string)` - Set the background color of the style, which accepts a [Color](../configuration/theme.md#color)
+- `ui.Style:fg(string)` - Set the foreground color of the style, which accepts a [Color](../configuration/theme#color)
+- `ui.Style:bg(string)` - Set the background color of the style, which accepts a [Color](../configuration/theme#color)
 - `ui.Style:bold()` - Set the style to bold
 - `ui.Style:dim()` - Set the style to dim
 - `ui.Style:italic()` - Set the style to italic

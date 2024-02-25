@@ -34,7 +34,7 @@ bar.yazi/
 A plugin has two usages:
 
 - [Functional plugin](#functional-plugin): Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
-- [Custom previewers, preloaders](../configuration/yazi.md#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
+- [Custom previewers, preloaders](../configuration/yazi#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
 
 ### Functional plugin
 
@@ -171,19 +171,19 @@ return {
 
 When the user presses `j` or `k` to switch between hovering files, `peek` is called, with:
 
-- `file`: The [File](./common.md#file) to be previewed.
+- `file`: The [File](./types#file) to be previewed.
 - `skip`: The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
-- `area`: The [Rect](./layout.md#rect) of the available preview area.
-- `window`: The [Rect](./layout.md#rect) of the entire terminal window.
+- `area`: The [Rect](./layout#rect) of the available preview area.
+- `window`: The [Rect](./layout#rect) of the entire terminal window.
 
 When the user presses `Alt-j` or `Alt-k` to scroll the preview of this file, `seek` is called, with:
 
-- `file`: The [File](./common.md#file) being scrolled.
-- `area`: The [Rect](./layout.md#rect) of the available preview area.
+- `file`: The [File](./types#file) being scrolled.
+- `area`: The [Rect](./layout#rect) of the available preview area.
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
-The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](./common.md#app-data) through `cx`.
+The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](./types#app-data) through `cx`.
 
 Here are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/main/yazi-plugin/preset/plugins)
 
@@ -215,7 +215,7 @@ When "continue" is set, the preloader can reload the files that have already bee
 
 Yazi will automatically invoke the `preload` concurrently for each file that matches the preload rules on the page.
 
-When the user specifies [`multi = true`](../configuration/yazi.md#preloaders) for it, the plugin allows preloading multiple files at once. In this case, `self.file` will be replaced by `self.files`.
+When the user specifies [`multi = true`](../configuration/yazi#preloaders) for it, the plugin allows preloading multiple files at once. In this case, `self.file` will be replaced by `self.files`.
 
 Typically, a preloader only needs to implement one of them - either single or multiple. This depends on the specific task and the magnitude of the workload.
 If it truly requires loading multiple files at once, the user needs to be prompted to enable the `multi` option for it.
@@ -231,7 +231,7 @@ If you have no experience with Lua, you can quickly get started through https://
 
 ### Logging
 
-Once you get started, if you want to debug some runtime data, use [`ya.dbg()`](./utils.md#dbgmsg) and [`ya.err()`](./utils.md#errmsg) to print what you want to debug to either:
+Once you get started, if you want to debug some runtime data, use [`ya.dbg()`](./utils#dbgmsg) and [`ya.err()`](./utils#errmsg) to print what you want to debug to either:
 
 - `~/.local/state/yazi/yazi.log` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\state\yazi.log` on Windows.

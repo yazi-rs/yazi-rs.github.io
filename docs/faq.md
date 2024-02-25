@@ -40,7 +40,7 @@ An archive is a file, so it's "openable", but it's also "enterable" as a directo
 
 This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
 
-If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips.md#smart-enter-enter-for-directory-open-for-file).
+If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips#smart-enter-enter-for-directory-open-for-file).
 
 ## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
 

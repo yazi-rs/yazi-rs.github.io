@@ -3,7 +3,7 @@ sidebar_position: 1
 description: Learn how to use Yazi's Lua API.
 ---
 
-# Common
+# Types
 
 ## Shared
 
@@ -76,7 +76,7 @@ Properties:
 
 ## App data
 
-You can access all app data through the `cx` within [Sync context](./overview.md#sync-context):
+You can access all app data through the `cx` within [Sync context](./overview#sync-context):
 
 - `cx.active`: The active tab, which is a [tab::Tab](#tabtab)
 - `cx.tabs`: All of tabs, which is a [manager::Tabs](#managertabs)
@@ -145,8 +145,8 @@ Based on [File](#file), with the following additional methods:
 - `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
 - `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme.md#icons) rules are applied; if no rule matches, returns `nil`
-- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme.md#filetype) rules are applied; if no rule matches, returns `nil`
+- `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme#icons) rules are applied; if no rule matches, returns `nil`
+- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
 - `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
 - `is_selected()` - Whether this file is selected
