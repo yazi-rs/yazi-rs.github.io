@@ -57,3 +57,5 @@ If your plugin/flavor meets the following requirements, please click `Edit this 
 
 - **Functional** - we will install and test it, since we want all links included on this page to be valid. If it's available only on a specific platform, a note should be added in the README.
 - **Follow conventions** - it should be a directory/repository ending with `.yazi`, and include the files listed in the [plugin documentation](/docs/plugins/overview) or [flavor documentation](/docs/flavors/overview).
+
+If it's a Neovim or Shell plugin, please follow their respective conventions - ending with `.nvim` or `.sh`.
