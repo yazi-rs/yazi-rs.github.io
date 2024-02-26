@@ -29,7 +29,7 @@ These flavors are placed in the `flavors` subdirectory of the Yazi configuration
 └── theme.toml
 ```
 
-Each flavor is a directory ending with `.yazi`, containing `theme.toml` and `tmtheme.xml` files. For instance, the structure of the `bar` flavor is as:
+Each flavor is a directory ending with `.yazi`, for instance, the structure of the `bar` flavor is as:
 
 ```
 bar.yazi/
