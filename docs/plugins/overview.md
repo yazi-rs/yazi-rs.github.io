@@ -1,7 +1,7 @@
 ---
 id: overview
 sidebar_position: 0
-sidebar_label: Plugin
+sidebar_label: Plugins (BETA)
 description: Learn how to extend Yazi with Lua plugins.
 ---
 

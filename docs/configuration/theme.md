@@ -218,6 +218,10 @@ prepend_rules = [
 
 	# Icon with a color
 	{ name = "*.lua", text = "", fg = "#51a0cf" },
+
+	# You can also use `is` rule, just like `[filetype]` section
+	# Orphan symbolic links
+	{ name = "*", is = "orphan", text = "" },
 ]
 
 append_rules = [
