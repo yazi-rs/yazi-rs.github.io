@@ -21,13 +21,20 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 └── yazi.toml
 ```
 
-Each plugin is a directory ending with `.yazi`, containing an `init.lua` file for the plugin's initialization.
-For instance, the structure of the `bar` plugin is as:
+Each plugin is a directory ending with `.yazi`, containing at least the following files:
 
 ```
 bar.yazi/
-└── init.lua
+├── init.lua
+├── LICENSE
+└── README.md
 ```
+
+Where:
+
+- `init.lua` is the entry point of this plugin.
+- `LICENSE` is the license file for this plugin.
+- `README.md` is the documentation of this plugin.
 
 ## Usage
 

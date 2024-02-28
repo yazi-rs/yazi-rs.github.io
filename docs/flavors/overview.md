@@ -29,24 +29,24 @@ These flavors are placed in the `flavors` subdirectory of the Yazi configuration
 └── theme.toml
 ```
 
-Each flavor is a directory ending with `.yazi`, for instance, the structure of the `bar` flavor is as:
+Each flavor is a directory ending with `.yazi`, containing at least the following files:
 
 ```
 bar.yazi/
-├── LICENSE
-├── LICENSE-tmtheme
-├── README.md
-├── screenshot.png
 ├── theme.toml
-└── tmtheme.xml
+├── tmtheme.xml
+├── screenshot.png
+├── README.md
+├── LICENSE
+└── LICENSE-tmtheme
 ```
 
 Where:
 
-- `LICENSE` and `LICENSE-tmtheme` are the licenses of the flavor and the `tmtheme.xml` file, respectively.
-- `README.md` and `screenshot.png` are the description and the screenshot of the flavor, respectively.
-- `theme.toml` is the flavor's configuration file in the format consistent with the [user's `theme.toml`](/docs/configuration/theme).
+- `theme.toml` is this flavor's configuration file, in the format consistent with the [user's `theme.toml`](/docs/configuration/theme).
 - `tmtheme.xml` is a thTheme file that matches the colors of this flavor for code highlighting.
+- `screenshot.png` and `README.md` are the screenshot and the description of this flavor, respectively.
+- `LICENSE` and `LICENSE-tmtheme` are the licenses for the flavor and the `tmtheme.xml` file, respectively.
 
 ## Cooking a flavor
 
