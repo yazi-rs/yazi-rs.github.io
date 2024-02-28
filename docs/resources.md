@@ -31,7 +31,7 @@ Audio:
 
 Images:
 
-- [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi.git) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
+- [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
 
 ## 🚀 Preloaders
 
