@@ -29,6 +29,10 @@ Audio:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
 
+Images:
+
+- [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi.git) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
+
 ## 🚀 Preloaders
 
 - [mime.yazi](https://github.com/DreamMaoMao/mime.yazi) - Replace the builtin `mime` plugin to speed up the identification of large files by using file extensions instead of file content to obtain the mime-types.
