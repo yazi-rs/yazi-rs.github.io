@@ -44,7 +44,7 @@ bar.yazi/
 Where:
 
 - `theme.toml` is this flavor's configuration file, in the format consistent with the [user's `theme.toml`](/docs/configuration/theme).
-- `tmtheme.xml` is a thTheme file that matches the colors of this flavor for code highlighting.
+- `tmtheme.xml` is a [tmTheme file](https://www.sublimetext.com/docs/color_schemes_tmtheme.html) that matches the colors of this flavor for code highlighting.
 - `screenshot.png` and `README.md` are the screenshot and the description of this flavor, respectively.
 - `LICENSE` and `LICENSE-tmtheme` are the licenses for the flavor and the `tmtheme.xml` file, respectively.
 
