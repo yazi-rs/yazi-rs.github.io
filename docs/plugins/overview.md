@@ -90,7 +90,7 @@ require("bar"):setup {
 ```lua
 -- ~/.config/yazi/plugins/bar.yazi/init.lua
 return {
-	setup(state, opts)
+	setup = function(state, opts)
 		-- Save the user configuration to the plugin's state
 		state.key1 = opts.key1
 		state.key2 = opts.key2
