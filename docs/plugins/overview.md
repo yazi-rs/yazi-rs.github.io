@@ -21,20 +21,20 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 └── yazi.toml
 ```
 
-Each plugin is a directory ending with `.yazi`, containing at least the following files:
+Each plugin is a directory with a hyphen-separated name, ending in `.yazi`, and containing at least the following files:
 
 ```
 bar.yazi/
 ├── init.lua
-├── LICENSE
-└── README.md
+├── README.md
+└── LICENSE
 ```
 
 Where:
 
 - `init.lua` is the entry point of this plugin.
-- `LICENSE` is the license file for this plugin.
 - `README.md` is the documentation of this plugin.
+- `LICENSE` is the license file for this plugin.
 
 ## Usage
 
@@ -80,13 +80,19 @@ This is because `init.lua` is commonly used to initialize plugin configurations,
 
 ```lua
 -- ~/.config/yazi/init.lua
-
--- Initialize the bar plugin
--- Which needs `~/.config/yazi/plugins/bar.yazi/init.lua` to export a `setup` function
-require("bar").setup {
+require("bar"):setup {
 	key1 = "value1",
 	key2 = "value2",
 	-- ...
+}
+
+-- ~/.config/yazi/plugins/bar.yazi/init.lua
+return {
+	setup(state, opts)
+		-- Save the user configuration to the plugin state
+		state.key1 = opts.key1
+		state.key2 = opts.key2
+	end,
 }
 ```
 

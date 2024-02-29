@@ -8,7 +8,7 @@ description: Some awesome plugins for Yazi.
 :::warning
 The plugin system is still in the early stage, and most of the plugins below only guarantee compatibility with the latest main branch of Yazi!
 
-Please make sure that both your Yazi and plugins are on the latest main branch to ensure proper functionality!
+Please make sure that both your Yazi and plugins are on the `HEAD` to ensure proper functionality!
 :::
 
 ## 🖼️ Previewers
