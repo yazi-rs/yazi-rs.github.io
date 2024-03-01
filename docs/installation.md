@@ -103,7 +103,7 @@ Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest 
    - If you installed Git with Scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current`.
 3. Restart your terminal.
 
-This is **the ONLY way we recommend**. We do not recommend install it via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
+This is **the ONLY way we recommend**. We do not recommend install `file` via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
 
 ### Installation
 
