@@ -60,7 +60,7 @@ If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUN
 
 ## Dropping to the shell
 
-Add the keybindings to your `keymap.toml`:
+Add this keybinding to your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
