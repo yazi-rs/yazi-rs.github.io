@@ -97,12 +97,12 @@ Create a layout:
 ui.Layout()
 ```
 
-- `ui.Layout:direction(direction)` - Set the direction of the layout. It accepts the following constants:
+- `ui.Layout:direction(direction)` - Set the direction of the layout, which accepts the following constants:
   - `ui.Layout.HORIZONTAL`
   - `ui.Layout.VERTICAL`
-- `ui.Layout:margin(margin)` - Set the margin of the layout
-- `ui.Layout:margin_h(margin)` - Set the horizontal margin of the layout
-- `ui.Layout:margin_v(margin)` - Set the vertical margin of the layout
+- `ui.Layout:margin(margin)` - Set the margin of the layout, which accepts an positive integer.
+- `ui.Layout:margin_h(margin)` - Set the horizontal margin of the layout, which accepts an positive integer.
+- `ui.Layout:margin_v(margin)` - Set the vertical margin of the layout, which accepts an positive integer.
 - `ui.Layout:constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#uiconstraint)
 - `ui.Layout:split(rect)` - Accepts a [Rect](#uirect) and split it into multiple [Rect](#uirect) according to the constraints
 
