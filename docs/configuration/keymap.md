@@ -275,6 +275,7 @@ You can use the following shell variables in `[exec]`:
 
 - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
 - `$@` (Unix) / `%*` (Windows): All selected files.
+- `$0` (Unix) / `%0` (Windows): The hovered file.
 
 ### `hidden`
 
