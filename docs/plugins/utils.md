@@ -78,6 +78,56 @@ otherwise, it returns nil, indicating that the user has canceled the key operati
 
 This function is only available in the async context.
 
+### `input(opts)`
+
+Request user input:
+
+- `opts`: Required, the options of the input, which is a table:
+  - `title`: Required, the title of the input, which is a string.
+  - `value`: Optional, the default value of the input, which is a string.
+  - `position`: Required, the position of the input, which is a table:
+    - `1`: Required, the origin position of the input, which is a string accepts `"top-left"`, `"top-center"`, `"top-right"`, `"bottom-left"`, `"bottom-center"`, `"bottom-right"`, `"center"`, and `"hovered"`.
+    - `x`: Optional, the X offset from the origin position, which is an positive or negative integer.
+    - `y`: Optional, the Y offset from the origin position, which is an positive or negative integer.
+    - `w`: Optional, the width of the input, which is an positive integer.
+    - `h`: Optional, the height of the input, which is an positive integer.
+  - `realtime`: Optional, whether to report user input in real time, which is a boolean.
+
+```lua
+local value, event = ya.input {
+	title = "Archive name:",
+	position = { "top-center", y = 3, w = 40 },
+}
+```
+
+Returns `(value, event)`:
+
+- `value` - The user input value carried by this event, which is a string if the event is non-zero; otherwise, `nil`.
+- `event` - The event type, which is an integer:
+  - 0: Unknown error.
+  - 1: The user has confirmed the input.
+  - 2: The user has canceled the input.
+  - 3: The user has changed the input (only if `realtime` is true).
+
+When `realtime = true` set, `ya.input()` returns a receiver, which has a `recv()` method that can be called multiple times to receive events.
+
+```lua
+local input = ya.input {
+	title = "Input in realtime:",
+	position = { "center", w = 50 },
+	realtime = true,
+}
+
+while true do
+	local value, event = input:recv()
+	if not value then
+		break
+	end
+
+	ya.err(value)
+end
+```
+
 ### `dbg(msg)`
 
 Append messages to [the log file](./overview#logging) at the debug level:
