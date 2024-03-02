@@ -132,7 +132,7 @@ This function is only available in the async context.
 
 ### `dbg(msg)`
 
-Append messages to [the log file](./overview#logging) at the debug level:
+Append messages to [the log file](/docs/plugins/overview#logging) at the debug level:
 
 - `msg` - Required, the message to be logged, which is a string
 
@@ -140,7 +140,7 @@ Note that if you use a release build of Yazi, the log level is "error" instead o
 
 ### `err(msg)`
 
-Append messages to [the log file](./overview#logging) at the error level:
+Append messages to [the log file](/docs/plugins/overview#logging) at the error level:
 
 - `msg` - Required, the message to be logged, which is a string
 
@@ -169,7 +169,7 @@ This function is only available in the async context.
 
 Preview the file as an archive into the specified area:
 
-- `opts` - Required, the options of the preview. It's the same as [`preview_code`](#previewcodeopts)
+- `opts` - Required, the options of the preview. It's the same as [`preview_code`](#preview_codeopts)
 
 Returns `(ok, upper_bound)`:
 
