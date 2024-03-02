@@ -9,11 +9,11 @@ description: Learn how to use Yazi's Lua API.
 
 ### `file_cache(opts)`
 
-Calculate the cached [Url](#url) corresponding to the given file:
+Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given file:
 
 - `opts` - Required, the options of the cache, which is a table:
 
-  - `file` - The [File](#file) to be cached
+  - `file` - The [File](/docs/plugins/types#file) to be cached
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
@@ -37,8 +37,8 @@ ya.manager_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 
 Display the given image within the specified area, and the image will downscale to fit that area automatically:
 
-- `url` - Required, the [Url](#url) of the image
-- `rect` - Required, the [Rect](#uirect) of the area
+- `url` - Required, the [Url](/docs/plugins/types#url) of the image
+- `rect` - Required, the [Rect](/docs/plugins/layout#rect) of the area
 
 This function is only available in the async context.
 
@@ -46,8 +46,8 @@ This function is only available in the async context.
 
 Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](../configuration/yazi#preview):
 
-- `src` - Required, the source [Url](#url) of the image
-- `dist` - Required, the destination [Url](#url) of the image
+- `src` - Required, the source [Url](/docs/plugins/types#url) of the image
+- `dist` - Required, the destination [Url](/docs/plugins/types#url) of the image
 
 This function is only available in the async context.
 
@@ -153,10 +153,10 @@ See [Async context](/docs/plugins/overview#async-context).
 Preview the file as code into the specified area:
 
 - `opts` - Required, the options of the preview, which is a table:
-  - `file` - The previewed [File](#file)
-  - `area` - The area of the preview, which is a [Rect](#uirect)
+  - `file` - The previewed [File](/docs/plugins/types#file)
+  - `area` - The area of the preview, which is a [Rect](/docs/plugins/layout#rect)
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
-  - `window` - The [Window](#window) of the preview
+  - `window` - The [Window](/docs/plugins/types#window) of the preview
 
 Returns `(ok, upper_bound)`:
 
@@ -181,9 +181,9 @@ This function is only available in the async context.
 ### `preview_widgets(opts, widgets)`
 
 - `opts` - Required, the options of the preview, which is a table:
-  - `file` - The previewed [File](#file)
+  - `file` - The previewed [File](/docs/plugins/types#file)
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
-  - `window` - The [Window](#window) of the preview
+  - `window` - The [Window](/docs/plugins/types#window) of the preview
 - `widgets` - List of renderable widgets, such as `{ ui.Paragraph {...}, ui.List {...}, ... }`
 
 This function is only available in the async context.
