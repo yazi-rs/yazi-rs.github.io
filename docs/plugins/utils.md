@@ -128,6 +128,8 @@ while true do
 end
 ```
 
+This function is only available in the async context.
+
 ### `dbg(msg)`
 
 Append messages to [the log file](./overview#logging) at the debug level:
