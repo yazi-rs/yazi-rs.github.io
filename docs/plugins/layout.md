@@ -15,7 +15,7 @@ Create a bar:
 ui.Bar(rect, direction)
 ```
 
-The first attribute is a [Rect](#uirect), representing the position of this bar.
+The first attribute is a [Rect](#rect), representing the position of this bar.
 The second denotes the direction of the bar and accepts the following constants:
 
 - `ui.Bar.NONE`
@@ -28,7 +28,7 @@ The second denotes the direction of the bar and accepts the following constants:
 Methods (all methods return `self`):
 
 - `ui.Bar:symbol(symbol)` - accepts a string, specifying the symbol for the bar
-- `ui.Bar:style(style)` - accepts a [Style](#uistyle), specifying the style of the bar
+- `ui.Bar:style(style)` - accepts a [Style](#style), specifying the style of the bar
 
 ## Border
 
@@ -38,7 +38,7 @@ Create a border:
 ui.Border(rect, position)
 ```
 
-The first attribute is a [Rect](#uirect), representing the position of this border.
+The first attribute is a [Rect](#rect), representing the position of this border.
 The second denotes the position of the border and accepts the following constants:
 
 - `ui.Border.NONE`
@@ -59,7 +59,7 @@ You can also use `ui.Border:type(type)` to specify different types for the borde
 
 Methods (all methods return `self`):
 
-- `ui.Border:style(style)` - accepts a [Style](#uistyle), specifying the style of the border
+- `ui.Border:style(style)` - accepts a [Style](#style), specifying the style of the border
 
 ## Constraint
 
@@ -86,8 +86,8 @@ ui.Gauge(rect)
 - `ui.Gauge:percent(percent)` - Set the percentage of the gauge
 - `ui.Gauge:ratio(ratio)` - Set the ratio of the gauge
 - `ui.Gauge:label(label)` - Set the label of the gauge
-- `ui.Gauge:style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#uistyle)
-- `ui.Gauge:gauge_style(style)` - Set the style of the bar, which accepts a [Style](#uistyle)
+- `ui.Gauge:style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#style)
+- `ui.Gauge:gauge_style(style)` - Set the style of the bar, which accepts a [Style](#style)
 
 ## Layout
 
@@ -103,19 +103,19 @@ ui.Layout()
 - `ui.Layout:margin(margin)` - Set the margin of the layout, which accepts an positive integer.
 - `ui.Layout:margin_h(margin)` - Set the horizontal margin of the layout, which accepts an positive integer.
 - `ui.Layout:margin_v(margin)` - Set the vertical margin of the layout, which accepts an positive integer.
-- `ui.Layout:constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#uiconstraint)
-- `ui.Layout:split(rect)` - Accepts a [Rect](#uirect) and split it into multiple [Rect](#uirect) according to the constraints
+- `ui.Layout:constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint)
+- `ui.Layout:split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints
 
 ## Line
 
-Create a line, which accepts a list of [Span](#uispan) and [Line](#uiline):
+Create a line, which accepts a list of [Span](#span) and [Line](#line):
 
 ```lua
 ui.Line { span, line, span, ... }
 ```
 
 - `ui.Line:width()` - Get the width of the line
-- `ui.Line:style(style)` - Set the style of the line, which accepts a [Style](#uistyle)
+- `ui.Line:style(style)` - Set the style of the line, which accepts a [Style](#style)
 - `ui.Line:align(alignment)` - Set the alignment of the line. It accepts the following constants:
   - `ui.Line.LEFT`
   - `ui.Line.CENTER`
@@ -129,8 +129,8 @@ Create a list:
 ui.List(rect, items)
 ```
 
-The first attribute is a [Rect](#uirect), representing the position of this list.
-The second denotes the items of the list and accepts a list of [ListItem](#uilistitem).
+The first attribute is a [Rect](#rect), representing the position of this list.
+The second denotes the items of the list and accepts a list of [ListItem](#listitem).
 
 ## ListItem
 
@@ -144,7 +144,7 @@ ui.ListItem("string")
 
 Methods (all methods return `self`):
 
-- `ui.ListItem:style(style)` - Set the style of the list item, which accepts a [Style](#uistyle)
+- `ui.ListItem:style(style)` - Set the style of the list item, which accepts a [Style](#style)
 
 ## Padding
 
@@ -182,14 +182,14 @@ Create a paragraph:
 ui.Paragraph(rect, { line, line, ... })
 ```
 
-The first attribute is a [Rect](#uirect), representing the position of this paragraph.
-The second denotes the lines of the paragraph and accepts a list of [Line](#uiline).
+The first attribute is a [Rect](#rect), representing the position of this paragraph.
+The second denotes the lines of the paragraph and accepts a list of [Line](#line).
 
 You can also use `ui.Paragraph.parse(string)` to parse an [ANSI escape sequence](https://en.wikipedia.org/wiki/ANSI_escape_code) string into a paragraph.
 
 Methods (all methods return `self`):
 
-- `ui.Paragraph:style(style)` - Set the style of the paragraph, which accepts a [Style](#uistyle)
+- `ui.Paragraph:style(style)` - Set the style of the paragraph, which accepts a [Style](#style)
 - `ui.Paragraph.wrap(wrap)` - Set the wrap of the paragraph, which accepts the following constants:
   - `ui.Paragraph.WRAP_NO` - No wrap
   - `ui.Paragraph.WRAP` - Wrap at the end of the line
@@ -214,7 +214,7 @@ ui.Rect {
 ui.Rect.default  -- Equal to `ui.Rect { x = 0, y = 0, w = 0, h = 0 }`
 ```
 
-You can obtain a pre-computed `Rect` through [Yazi's layout system](#uilayout).
+You can obtain a pre-computed `Rect` through [Yazi's layout system](#layout-1).
 
 Note that if you intend to create it yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
 
@@ -231,7 +231,7 @@ Properties:
 
 Methods (all methods return `self`):
 
-- `ui.Rect:padding(padding)` - Set padding. It accepts a [Padding](#uipadding)
+- `ui.Rect:padding(padding)` - Set padding. It accepts a [Padding](#padding)
 
 ## Span
 
@@ -243,8 +243,8 @@ ui.Span("string")
 
 Methods (all methods return `self`):
 
-- `ui.Span:fg(color)` - Set the foreground color of the span, which accepts a [Color](../configuration/theme#color)
-- `ui.Span:bg(color)` - Set the background color of the span, which accepts a [Color](../configuration/theme#color)
+- `ui.Span:fg(color)` - Set the foreground color of the span, which accepts a [Color](/docs/configuration/theme#color)
+- `ui.Span:bg(color)` - Set the background color of the span, which accepts a [Color](/docs/configuration/theme#color)
 - `ui.Span:bold()` - Set the span to bold
 - `ui.Span:dim()` - Set the span to dim
 - `ui.Span:italic()` - Set the span to italic
@@ -254,7 +254,7 @@ Methods (all methods return `self`):
 - `ui.Span:hidden()` - Set the span to hidden
 - `ui.Span:crossed()` - Set the span to crossed
 - `ui.Span:reset()` - Reset the style of the span
-- `ui.Span:style(style)` - Set the style of the span, which accepts a [Style](#uistyle)
+- `ui.Span:style(style)` - Set the style of the span, which accepts a [Style](#style)
 
 ## Style
 
@@ -264,8 +264,8 @@ Create a style:
 ui.Style()
 ```
 
-- `ui.Style:fg(string)` - Set the foreground color of the style, which accepts a [Color](../configuration/theme#color)
-- `ui.Style:bg(string)` - Set the background color of the style, which accepts a [Color](../configuration/theme#color)
+- `ui.Style:fg(string)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#color)
+- `ui.Style:bg(string)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#color)
 - `ui.Style:bold()` - Set the style to bold
 - `ui.Style:dim()` - Set the style to dim
 - `ui.Style:italic()` - Set the style to italic
