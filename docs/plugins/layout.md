@@ -110,6 +110,8 @@ Create a layout:
 
 ```lua
 ui.Layout()
+  :constraints({ constraint, ... }) -- Required
+  :split(rect) -- Required
 ```
 
 Methods (all methods return `self`):
