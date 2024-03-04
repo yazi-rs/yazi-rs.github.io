@@ -89,7 +89,7 @@ Request user input:
     - `1`: Required, the origin position of the input, which is a string accepts `"top-left"`, `"top-center"`, `"top-right"`, `"bottom-left"`, `"bottom-center"`, `"bottom-right"`, `"center"`, and `"hovered"`.
     - `x`: Optional, the X offset from the origin position, which is an positive or negative integer.
     - `y`: Optional, the Y offset from the origin position, which is an positive or negative integer.
-    - `w`: Optional, the width of the input, which is an positive integer.
+    - `w`: Required, the width of the input, which is an positive integer.
     - `h`: Optional, the height of the input, which is an positive integer.
   - `realtime`: Optional, whether to report user input in real time, which is a boolean.
 
@@ -102,14 +102,14 @@ local value, event = ya.input {
 
 Returns `(value, event)`:
 
-- `value` - The user input value carried by this event, which is a string if the event is non-zero; otherwise, `nil`.
+- `value` - The user input value carried by this event, which is a string if the `event` is non-zero; otherwise, `nil`.
 - `event` - The event type, which is an integer:
   - 0: Unknown error.
   - 1: The user has confirmed the input.
   - 2: The user has canceled the input.
   - 3: The user has changed the input (only if `realtime` is true).
 
-When `realtime = true` set, `ya.input()` returns a receiver, which has a `recv()` method that can be called multiple times to receive events.
+When `realtime = true` specified, `ya.input()` returns a receiver, which has a `recv()` method that can be called multiple times to receive events.
 
 ```lua
 local input = ya.input {
