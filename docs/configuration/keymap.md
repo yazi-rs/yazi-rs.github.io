@@ -21,15 +21,15 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
 Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), while append inserts after them.
 
-Since Yazi selects the first matching key to execute, prepend always has a higher priority than default, and append always has a lower priority than default:
+Since Yazi selects the first matching key to run, prepend always has a higher priority than default, and append always has a lower priority than default:
 
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
 ]
 append_keymap = [
-	{ on = [ "<C-b>" ], exec = 'my-fev-command2', desc = "Just for test!" },
+	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -38,16 +38,16 @@ Or in another different style:
 ```toml
 [[manager.prepend_keymap]]
 on   = [ "<C-a>" ]
-exec = 'my-fev-command1'
+run  = 'my-fev-command1'
 desc = "Just for test!"
 
 [[manager.prepend_keymap]]
-on   = [ "<C-b>" ]
-exec = 'my-fev-command2'
+on  = [ "<C-b>" ]
+run = 'my-fev-command2'
 
 [[manager.append_keymap]]
-on   = [ "<C-c>" ]
-exec = 'my-fev-command3'
+on  = [ "<C-c>" ]
+run = 'my-fev-command3'
 ```
 
 But keep in mind that you can only choose one of them, and it cannot be a combination of the two, as TOML language does not allow this:
@@ -55,12 +55,12 @@ But keep in mind that you can only choose one of them, and it cannot be a combin
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
 ]
 
 [[manager.prepend_keymap]]
 on   = [ "<C-b>" ]
-exec = 'my-fev-command2'
+run  = 'my-fev-command2'
 desc = "Just for test!"
 ```
 
@@ -70,8 +70,8 @@ When you don't need any default and want to fully customize your keybindings, us
 [manager]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
-	{ on = [ "<C-a>" ], exec = 'my-fev-command1', desc = "Just for test!" },
-	{ on = [ "<C-b>" ], exec = 'my-fev-command2', desc = "Just for test!" },
+	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -267,11 +267,11 @@ Run a shell command.
 
 | Options/Arguments | Description                                                                                                                                                                                                                              |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[exec]`          | Optional, command template to be run.                                                                                                                                                                                                    |
+| `[run]`           | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`         | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--confirm`       | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
 
-You can use the following shell variables in `[exec]`:
+You can use the following shell variables in `[run]`:
 
 - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
 - `$@` (Unix) / `%*` (Windows): All selected files.

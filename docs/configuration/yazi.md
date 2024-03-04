@@ -143,17 +143,17 @@ Configure available openers, for example:
 ```toml
 [opener]
 archive = [
-	{ exec = 'unar "$1"', desc = "Extract here" },
+	{ run = 'unar "$1"', desc = "Extract here" },
 ]
 text = [
-	{ exec = 'nvim "$@"', block = true },
+	{ run = 'nvim "$@"', block = true },
 ]
 # ...
 ```
 
 Available parameters are as follows:
 
-- exec: The command to open the selected files, with the following variables available:
+- run: The command to open the selected files, with the following variables available:
   - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
   - `$@` (Unix) / `%*` (Windows): All selected files.
 - block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
@@ -224,19 +224,19 @@ Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- `exec` (String): The name of the Lua plugin to be executed.
-- `sync` (Boolean): Whether to execute in the sync context, default is `false`.
+- `run` (String): The name of the Lua plugin to be ran.
+- `sync` (Boolean): Whether to run in the sync context, default is `false`.
 
 ```toml
 [plugin]
 prepend_previewers = [
 	# HEIC previewer
-	{ mime = "image/heic", exec = "heic" },
+	{ mime = "image/heic", run = "heic" },
 ]
 
 append_previewers = [
 	# My fallback previewer
-	{ name = "*" , exec = "binary" },
+	{ name = "*" , run = "binary" },
 ]
 ```
 
@@ -263,16 +263,16 @@ Here are the available options for a single rule:
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `name` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
-  - `mime`: This file has a mime-type
-- `exec` (String): The name of the Lua plugin to be executed
-- `multi` (Boolean): Whether to preload multiple files at once
+  - `mime`: This file has a mime-type.
+- `run` (String): The name of the Lua plugin to be ran.
+- `multi` (Boolean): Whether to preload multiple files at once.
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
 
 ```toml
 [plugin]
 prepend_preloaders = [
 	# HEIC preloader
-	{ mime = "image/heic", exec = "heic" },
+	{ mime = "image/heic", run = "heic" },
 ]
 ```
 

@@ -157,7 +157,7 @@ Icons
 ## [help]
 
 - on (Style): Key column style.
-- exec (Style): Command column style.
+- run (Style): Command column style.
 - desc (Style): Description column style.
 - hovered (Style): Hovered item style.
 - footer (Style): Footer style.

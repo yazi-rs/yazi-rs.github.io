@@ -65,7 +65,7 @@ Add this keybinding to your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = [ "<C-s>" ]
-exec = 'shell "$SHELL" --block --confirm'
+run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
 
@@ -76,7 +76,7 @@ You can change the `<Esc>` of input component from the default `escape` to `clos
 ```toml
 [[input.prepend_keymap]]
 on   = [ "<Esc>" ]
-exec = "close"
+run  = "close"
 desc = "Cancel input"
 ```
 
@@ -100,7 +100,7 @@ Then bind it for `l` key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = [ "l" ]
-exec = "plugin --sync smart-enter"
+run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
 
@@ -110,20 +110,20 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-n>" ]
-exec = '''
+on  = [ "<C-n>" ]
+run = '''
 	shell 'dragon -x -i -T "$1"' --confirm
 '''
 ```
 
 ## Copy selected files to the system clipboard while yanking
 
-Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also execute a shell script:
+Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also run a shell script:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "y" ]
-exec = [ "yank", '''
+on  = [ "y" ]
+run = [ "yank", '''
 	shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
 ''' ]
 ```
@@ -132,8 +132,8 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "y" ]
-exec = [ "yank", '''
+on  = [ "y" ]
+run = [ "yank", '''
 	shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
 ''' ]
 ```
@@ -156,12 +156,12 @@ Then bind it for `k` and `j` key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "k" ]
-exec = "plugin --sync arrow --args=-1"
+on  = [ "k" ]
+run = "plugin --sync arrow --args=-1"
 
 [[manager.prepend_keymap]]
-on   = [ "j" ]
-exec = "plugin --sync arrow --args=1"
+on  = [ "j" ]
+run = "plugin --sync arrow --args=1"
 ```
 
 ## No status bar
