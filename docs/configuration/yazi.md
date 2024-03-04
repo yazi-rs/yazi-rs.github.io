@@ -219,7 +219,7 @@ An array of `[width, height]`, maximum image size (in pixels) for decoding a sin
 
 ### previewers
 
-You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`.
+You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
@@ -257,7 +257,7 @@ If you want to create your own previewer, see [Previewer API](../plugins/overvie
 
 ### preloaders
 
-You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`.
+You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
