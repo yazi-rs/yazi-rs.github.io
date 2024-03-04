@@ -13,7 +13,7 @@ There are three configuration files for Yazi:
 - [`keymap.toml`](./keymap.md) - Keybindings configuration.
 - [`theme.toml`](./theme.md) - Color scheme configuration.
 
-You can find the default configuration files at https://github.com/sxyazi/yazi/tree/main/yazi-config/preset.
+You can find the default configuration files at https://github.com/sxyazi/yazi/tree/latest/yazi-config/preset.
 
 To override any of the defaults, begin by creating the corresponding file (from the directory linked above) to:
 
@@ -25,7 +25,7 @@ For example, to change the sorting method, start by creating a `yazi.toml` file 
 - `~/.config/yazi/yazi.toml` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\yazi.toml` on Windows.
 
-Then [copy the required part](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi.toml) into it; here is `sort_by`:
+Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/yazi.toml) into it; here is `sort_by`:
 
 ```toml
 # yazi.toml

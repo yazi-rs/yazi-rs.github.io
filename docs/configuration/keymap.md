@@ -19,7 +19,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[help\]](#help) - Help menu.
 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
-Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml), while append inserts after them.
+Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml), while append inserts after them.
 
 Since Yazi selects the first matching key to execute, prepend always has a higher priority than default, and append always has a lower priority than default:
 
@@ -299,7 +299,7 @@ Set the line mode.
 | `mtime`           | Display the last modified time of the file. |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/folder.lua).
+Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
 
 ### `search`
 

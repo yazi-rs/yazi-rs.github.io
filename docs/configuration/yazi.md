@@ -60,7 +60,7 @@ Line mode: display information associated with the file on the right side of the
 - `"mtime"`: Display the last modified time of the file.
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/folder.lua).
+Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
 
 ### `show_hidden`
 

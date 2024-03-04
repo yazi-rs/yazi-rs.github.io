@@ -17,7 +17,7 @@ You can implement a full border for Yazi via the UI plugin.
 
 <img src={useBaseUrl("/img/full-border.png")} width="600" />
 
-Copy the [`Manager:render` method](https://github.com/sxyazi/yazi/blob/v0.2.3/yazi-plugin/preset/components/manager.lua) _*only*_ to your `~/.config/yazi/init.lua`, then apply the following patch:
+Copy the [`Manager:render` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/manager.lua) _*only*_ to your `~/.config/yazi/init.lua`, then apply the following patch:
 
 ```diff
 @@ -18,16 +18,28 @@
@@ -183,7 +183,7 @@ end
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
-Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()
@@ -203,7 +203,7 @@ Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/main/yazi-
 
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
-Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -1,8 +1,22 @@
@@ -235,7 +235,7 @@ Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/main/yaz
 
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
-Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/components/header.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/header.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -1,3 +1,10 @@

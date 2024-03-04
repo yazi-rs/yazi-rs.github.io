@@ -86,7 +86,7 @@ To use it, copy the function into the configuration file of your respective shel
 ## Keybindings
 
 :::tip
-For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap.toml).
+For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml).
 :::
 
 ### Navigation
