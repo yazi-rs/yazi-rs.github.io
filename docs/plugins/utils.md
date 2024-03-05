@@ -130,6 +130,25 @@ end
 
 This function is only available in the async context.
 
+### `notify(opts)`
+
+Send a foreground notification to the user:
+
+- `opts`: Required, the options of the notification, which is a table:
+  - `title`: Required, the title of the notification, which is a string.
+  - `content`: Required, the content of the notification, which is a string.
+  - `timeout`: Required, the timeout of the notification, which is an non-negative float in seconds.
+  - `level`: Optional, the level of the notification, which is a string accepts `"info"`, `"warn"`, and `"error"`. Default is `"info"`.
+
+```lua
+ya.notify {
+	title = "Hello, World!",
+	content = "This is a notification from Lua!",
+	timeout = 6.5,
+	-- level = "info",
+}
+```
+
 ### `dbg(msg)`
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the debug level:
