@@ -252,13 +252,25 @@ Only available on Unix-like systems. Returns the user id of the current user, wh
 
 Only available on Unix-like systems. Returns the group id of the current user, which is an integer.
 
-### `user_name()`
+### `user_name(uid)`
 
-Only available on Unix-like systems. Returns the name of the current user, which is a string if successful; otherwise, `nil`.
+Get the name of the user:
 
-### `group_name()`
+- `uid` - Optional, the user id of the user, which is an integer. If not set, it will use the current user's id.
 
-Only available on Unix-like systems. Returns the name of the current group, which is a string if successful; otherwise, `nil`.
+Returns the name of the current user, which is a string if successful; otherwise, `nil`.
+
+This function is only available on Unix-like systems.
+
+### `group_name(gid)`
+
+Get the name of the user group:
+
+- `gid` - Optional, the group id of the user, which is an integer. If not set, it will use the current user's group id.
+
+Returns the name of the current group, which is a string if successful; otherwise, `nil`.
+
+This function is only available on Unix-like systems.
 
 ### `host_name()`
 
