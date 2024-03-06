@@ -27,8 +27,8 @@ The second denotes the direction of the bar and accepts the following constants:
 
 Methods (all methods return `self`):
 
-- `ui.Bar:symbol(symbol)` - accepts a string, specifying the symbol for the bar
-- `ui.Bar:style(style)` - accepts a [Style](#style), specifying the style of the bar
+- `symbol(symbol)` - accepts a string, specifying the symbol for the bar
+- `style(style)` - accepts a [Style](#style), specifying the style of the bar
 
 ## Border
 
@@ -59,7 +59,20 @@ You can also use `ui.Border:type(type)` to specify different types for the borde
 
 Methods (all methods return `self`):
 
-- `ui.Border:style(style)` - accepts a [Style](#style), specifying the style of the border
+- `style(style)` - accepts a [Style](#style), specifying the style of the border
+
+## Clear
+
+Clear the content of a specific area. Place it followed by the component that you want to clear:
+
+```lua
+local components = {
+	ui.Paragraph(rect, {}),
+	-- ...
+
+	ui.Clear(rect),
+}
+```
 
 ## Constraint
 
@@ -83,11 +96,13 @@ Create a gauge:
 ui.Gauge(rect)
 ```
 
-- `ui.Gauge:percent(percent)` - Set the percentage of the gauge
-- `ui.Gauge:ratio(ratio)` - Set the ratio of the gauge
-- `ui.Gauge:label(label)` - Set the label of the gauge
-- `ui.Gauge:style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#style)
-- `ui.Gauge:gauge_style(style)` - Set the style of the bar, which accepts a [Style](#style)
+Methods (all methods return `self`):
+
+- `percent(percent)` - Set the percentage of the gauge
+- `ratio(ratio)` - Set the ratio of the gauge
+- `label(label)` - Set the label of the gauge
+- `style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#style)
+- `gauge_style(style)` - Set the style of the bar, which accepts a [Style](#style)
 
 ## Layout
 
@@ -97,14 +112,16 @@ Create a layout:
 ui.Layout()
 ```
 
-- `ui.Layout:direction(direction)` - Set the direction of the layout, which accepts the following constants:
+Methods (all methods return `self`):
+
+- `direction(direction)` - Set the direction of the layout, which accepts the following constants:
   - `ui.Layout.HORIZONTAL`
   - `ui.Layout.VERTICAL`
-- `ui.Layout:margin(margin)` - Set the margin of the layout, which accepts an positive integer.
-- `ui.Layout:margin_h(margin)` - Set the horizontal margin of the layout, which accepts an positive integer.
-- `ui.Layout:margin_v(margin)` - Set the vertical margin of the layout, which accepts an positive integer.
-- `ui.Layout:constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint)
-- `ui.Layout:split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints
+- `margin(margin)` - Set the margin of the layout, which accepts an positive integer.
+- `margin_h(margin)` - Set the horizontal margin of the layout, which accepts an positive integer.
+- `margin_v(margin)` - Set the vertical margin of the layout, which accepts an positive integer.
+- `constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint)
+- `split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints
 
 ## Line
 
@@ -114,9 +131,11 @@ Create a line, which accepts a list of [Span](#span) and [Line](#line):
 ui.Line { span, line, span, ... }
 ```
 
-- `ui.Line:width()` - Get the width of the line
-- `ui.Line:style(style)` - Set the style of the line, which accepts a [Style](#style)
-- `ui.Line:align(alignment)` - Set the alignment of the line. It accepts the following constants:
+Methods (all methods return `self`):
+
+- `width()` - Get the width of the line, which returns an integer.
+- `style(style)` - Set the style of the line, which accepts a [Style](#style).
+- `align(alignment)` - Set the alignment of the line. It accepts the following constants:
   - `ui.Line.LEFT`
   - `ui.Line.CENTER`
   - `ui.Line.RIGHT`
@@ -144,7 +163,7 @@ ui.ListItem("string")
 
 Methods (all methods return `self`):
 
-- `ui.ListItem:style(style)` - Set the style of the list item, which accepts a [Style](#style)
+- `style(style)` - Set the style of the list item, which accepts a [Style](#style)
 
 ## Padding
 
@@ -189,12 +208,12 @@ You can also use `ui.Paragraph.parse(string)` to parse an [ANSI escape sequence]
 
 Methods (all methods return `self`):
 
-- `ui.Paragraph:style(style)` - Set the style of the paragraph, which accepts a [Style](#style)
-- `ui.Paragraph.wrap(wrap)` - Set the wrap of the paragraph, which accepts the following constants:
+- `style(style)` - Set the style of the paragraph, which accepts a [Style](#style)
+- `wrap(wrap)` - Set the wrap of the paragraph, which accepts the following constants:
   - `ui.Paragraph.WRAP_NO` - No wrap
   - `ui.Paragraph.WRAP` - Wrap at the end of the line
   - `ui.Paragraph.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
-- `ui.Paragraph:align(alignment)` - Set the alignment of the paragraph. It accepts the following constants:
+- `align(alignment)` - Set the alignment of the paragraph. It accepts the following constants:
   - `ui.Paragraph.LEFT`
   - `ui.Paragraph.CENTER`
   - `ui.Paragraph.RIGHT`
@@ -231,7 +250,7 @@ Properties:
 
 Methods (all methods return `self`):
 
-- `ui.Rect:padding(padding)` - Set padding. It accepts a [Padding](#padding)
+- `padding(padding)` - Set padding. It accepts a [Padding](#padding)
 
 ## Span
 
@@ -243,18 +262,18 @@ ui.Span("string")
 
 Methods (all methods return `self`):
 
-- `ui.Span:fg(color)` - Set the foreground color of the span, which accepts a [Color](/docs/configuration/theme#color)
-- `ui.Span:bg(color)` - Set the background color of the span, which accepts a [Color](/docs/configuration/theme#color)
-- `ui.Span:bold()` - Set the span to bold
-- `ui.Span:dim()` - Set the span to dim
-- `ui.Span:italic()` - Set the span to italic
-- `ui.Span:underline()` - Set the span to underline
-- `ui.Span:blink()` - Set the span to blink
-- `ui.Span:blink_rapid()` - Set the span to blink rapidly
-- `ui.Span:hidden()` - Set the span to hidden
-- `ui.Span:crossed()` - Set the span to crossed
-- `ui.Span:reset()` - Reset the style of the span
-- `ui.Span:style(style)` - Set the style of the span, which accepts a [Style](#style)
+- `fg(color)` - Set the foreground color of the span, which accepts a [Color](/docs/configuration/theme#color)
+- `bg(color)` - Set the background color of the span, which accepts a [Color](/docs/configuration/theme#color)
+- `bold()` - Set the span to bold
+- `dim()` - Set the span to dim
+- `italic()` - Set the span to italic
+- `underline()` - Set the span to underline
+- `blink()` - Set the span to blink
+- `blink_rapid()` - Set the span to blink rapidly
+- `hidden()` - Set the span to hidden
+- `crossed()` - Set the span to crossed
+- `reset()` - Reset the style of the span
+- `style(style)` - Set the style of the span, which accepts a [Style](#style)
 
 ## Style
 
@@ -264,14 +283,16 @@ Create a style:
 ui.Style()
 ```
 
-- `ui.Style:fg(string)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#color)
-- `ui.Style:bg(string)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#color)
-- `ui.Style:bold()` - Set the style to bold
-- `ui.Style:dim()` - Set the style to dim
-- `ui.Style:italic()` - Set the style to italic
-- `ui.Style:underline()` - Set the style to underline
-- `ui.Style:blink()` - Set the style to blink
-- `ui.Style:blink_rapid()` - Set the style to blink rapidly
-- `ui.Style:hidden()` - Set the style to hidden
-- `ui.Style:crossed()` - Set the style to crossed
-- `ui.Style:reset()` - Reset the style
+Methods (all methods return `self`):
+
+- `fg(string)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#color)
+- `bg(string)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#color)
+- `bold()` - Set the style to bold
+- `dim()` - Set the style to dim
+- `italic()` - Set the style to italic
+- `underline()` - Set the style to underline
+- `blink()` - Set the style to blink
+- `blink_rapid()` - Set the style to blink rapidly
+- `hidden()` - Set the style to hidden
+- `crossed()` - Set the style to crossed
+- `reset()` - Reset the style
