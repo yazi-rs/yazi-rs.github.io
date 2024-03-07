@@ -81,6 +81,7 @@ You can access all app data through the `cx` within [Sync context](./overview#sy
 - `cx.active`: The active tab, which is a [tab::Tab](#tabtab)
 - `cx.tabs`: All of tabs, which is a [manager::Tabs](#managertabs)
 - `cx.tasks`: All of tasks, which is a [tasks::Tasks](#taskstasks)
+- `cx.yanked`: The yanked urls, which is a [manager::Yanked](#manageryanked)
 
 ### `tab::Mode`
 
@@ -91,10 +92,6 @@ Properties:
 - `is_select`: Whether the mode is select
 - `is_unset`: Whether the mode is unset
 - `is_visual`: Whether the mode is select or unset
-
-Methods:
-
-- `pending(idx, state)`: TODO
 
 Meta methods:
 
@@ -196,3 +193,14 @@ Properties:
   	processed = 0,
   }
   ```
+
+### `manager::Yanked`
+
+Meta methods:
+
+- `__len()`
+- `__pairs()`: Iterate over the yanked [Url](#url)s
+
+Methods:
+
+- `is_cut()`: Whether the yanked urls are cut.
