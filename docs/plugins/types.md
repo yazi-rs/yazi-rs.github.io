@@ -196,6 +196,12 @@ Properties:
 
 ### `manager::Yanked`
 
+```lua
+for idx, url in pairs(cx.yanked) do
+	-- ...
+end
+```
+
 Meta methods:
 
 - `__len()`
