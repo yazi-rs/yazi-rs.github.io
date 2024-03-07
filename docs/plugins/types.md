@@ -207,6 +207,6 @@ Meta methods:
 - `__len()`
 - `__pairs()`: Iterate over the yanked [Url](#url)s
 
-Methods:
+Properties:
 
-- `is_cut()`: Whether the yanked urls are cut.
+- `is_cut`: Whether the yanked urls are cut.
