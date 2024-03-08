@@ -7,6 +7,24 @@ description: Learn how to use Yazi's Lua API.
 
 ## ya
 
+### `hide()`
+
+Hide Yazi to the secondary screen by returning to the terminal, completely controlled by the requested plugin.
+
+```lua
+local permit = ya.hide()
+```
+
+This method returns a `permit` for this resource. When it's necessary to restore the TUI display, call its `drop()` method:
+
+```lua
+permit:drop()
+```
+
+Note that since there's always only one available terminal control resource, `ya.hide()` cannot be called again before the previous `permit` is dropped, otherwise an error will be thrown, effectively avoiding deadlocks.
+
+This function is only available in the async context.
+
 ### `file_cache(opts)`
 
 Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given file:
@@ -62,7 +80,7 @@ Prompt users with a set of available keys:
   - `silent`: Optional, whether to show the UI of key indicator, which is a boolean
 
 ```lua
-local key = ya.which {
+local cand = ya.which {
 	cands = {
 		{ on = "a" },
 		{ on = "b", desc = "optional description" },
@@ -73,7 +91,7 @@ local key = ya.which {
 }
 ```
 
-When the user clicks a valid candidate, `ya.which` returns the 1-based index of that "cand";
+When the user clicks a valid candidate, `ya.which` returns the 1-based index of that `cand`;
 otherwise, it returns nil, indicating that the user has canceled the key operation.
 
 This function is only available in the async context.
