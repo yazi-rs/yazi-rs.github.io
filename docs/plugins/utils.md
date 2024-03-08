@@ -221,12 +221,14 @@ Quote characters that may have special meaning in a shell:
 local handle = io.popen("ls " .. ya.quote(filename))
 ```
 
-### `truncate(text, max)`
+### `truncate(text, opts)`
 
 Truncate the text to the specified length and return it:
 
-- `text` - Required, the text to be truncated, which is a string
-- `max` - Required, the maximum length of the text, which is an integer
+- `text` - Required, the text to be truncated, which is a string.
+- `opts` - Required, the options of the truncation, which is a table:
+  - `max` - Required, the maximum length of the text, which is an integer.
+  - `rtl` - Optional, whether the text is right-to-left, which is a boolean.
 
 ### `time()`
 
