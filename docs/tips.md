@@ -238,7 +238,10 @@ Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
 Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/header.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
-@@ -1,3 +1,10 @@
+@@ -76,11 +76,18 @@
+ 		:split(area)
+ end
+
 +function Header:host()
 +	if ya.target_family() ~= "unix" then
 +		return ui.Line {}
@@ -249,15 +252,12 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
  function Header:render(area)
  	self.area = area
 
-@@ -6,7 +13,7 @@
- 		:constraints({ ui.Constraint.Percentage(50), ui.Constraint.Percentage(50) })
- 		:split(area)
-
--	local left = ui.Line { self:cwd() }
-+	local left = ui.Line { self:host(), self:cwd() }
- 	local right = ui.Line { self:tabs() }
+ 	local right = ui.Line { self:count(), self:tabs() }
+-	local left = ui.Line { self:cwd(math.max(0, area.w - right:width())) }
++	local left = ui.Line { self:host(), self:cwd(math.max(0, area.w - right:width())) }
  	return {
- 		ui.Paragraph(chunks[1], { left }),
+ 		ui.Paragraph(area, { left }),
+ 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
 ```
 
 ## Make Yazi even faster than fast
