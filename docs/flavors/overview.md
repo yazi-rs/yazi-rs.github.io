@@ -52,6 +52,15 @@ Where:
 - `README.md` and `screenshot.png` are the screenshot and the description of this flavor, respectively.
 - `LICENSE` and `LICENSE-tmtheme` are the licenses for the flavor and the `tmtheme.xml` file, respectively.
 
+## Usage
+
+For example, if you want to use the `bar.yazi` flavor, add the these line to your `theme.toml`:
+
+```toml
+[flavor]
+use = "bar"
+```
+
 ## Cooking a flavor
 
 Please use our [flavor-template](https://github.com/yazi-rs/flavor-template) repository as a starting point to create your own flavor.
