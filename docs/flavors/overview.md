@@ -50,7 +50,7 @@ Where:
 
 ## Usage
 
-For example, if you want to use the `bar.yazi` flavor, add the these line to your `theme.toml`:
+For example, if you want to use the `bar.yazi` flavor, add these lines to your `theme.toml`:
 
 ```toml
 [flavor]
