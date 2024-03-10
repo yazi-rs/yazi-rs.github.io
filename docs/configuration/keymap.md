@@ -165,6 +165,8 @@ Change the current directory to the parent of specified file, and hover on it.
 | `--state=false`   | Deselect all files                               |
 | `--state=none`    | Default, toggle the selection state of all files |
 
+Note: The commands listed pertain exclusively to the current directory’s scope. To universally clear selections across all directories, the `escape --select` command should be executed.
+
 ### `visual_mode`
 
 Enter visual mode (selection mode).
