@@ -7,10 +7,6 @@ description: Learn how to use Yazi flavors.
 
 # Flavors (BETA)
 
-:::note
-The flavors is still in early stages, and currently only available in the latest main branch.
-:::
-
 The "flavor" is a pre-made Yazi theme, while what we typically refer to as a "theme" is the user's own theme, i.e. `~/.config/yazi/theme.toml` file.
 
 The purpose of separating them is to allow users to customize their preferences more conveniently on top of an existing flavor, without having to modify those flavor files.
