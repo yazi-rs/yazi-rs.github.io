@@ -566,6 +566,10 @@ Hide the completion menu.
 | ----------------- | ---------------------- |
 | `--submit`        | Submit the completion. |
 
+### `close_input`
+
+Close the input box. Arguments are the same as [`[input] close`](/docs/configuration/keymap/#close-3).
+
 ### `arrow`
 
 | Options/Arguments | Description                                                                           |
