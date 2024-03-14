@@ -25,12 +25,12 @@ For example, to change the sorting method, start by creating a `yazi.toml` file 
 - `~/.config/yazi/yazi.toml` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\yazi.toml` on Windows.
 
-Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/yazi.toml) into it; here is `sort_by`:
+Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/yazi.toml) into it; here is `sort_dir_first`:
 
 ```toml
 # yazi.toml
 [manager]
-sort_by = "natural"
+sort_dir_first = true
 ```
 
 ## Configuration mixing
