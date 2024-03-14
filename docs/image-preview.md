@@ -85,7 +85,7 @@ That's it! you can now get Yazi's image preview working properly.
 
 ## Why can't I preview images via Überzug++?
 
-This may be an issue with Überzug++, please try running `ueberzug layer` directly in the terminal without Yazi, and paste:
+This may be an issue with Überzug++, please try running `ueberzugpp layer` directly in the terminal without Yazi, and paste:
 
 ```sh
 {"action":"add","identifier":"preview","max_height":0,"max_width":0,"path":"/your/image-path.jpg","x":0,"y":0}

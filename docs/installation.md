@@ -20,6 +20,9 @@ Yazi can be _optionally_ extended with other command line tools to enable additi
 - [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
+- [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
+
+If the functions are not working properly, please try upgrading them to the latest version.
 
 ## Packaging status
 
