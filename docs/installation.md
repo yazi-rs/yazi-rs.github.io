@@ -95,12 +95,12 @@ Windows has been supported since Yazi v0.1.4, but it's still in the early stage,
 
 ### Requirements
 
-Yazi relies on `file(1)` to detect the `mime-type` of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file(1)` that comes with it.
+Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file(1)` that comes with it.
 
 1. Install Git for Windows by running [the official installer](https://git-scm.com/download/win), or through your package manager of choice.
-2. To allow Yazi to find `file(1)`, you can either set `YAZI_FILE_ONE` environment variable to `<Git_Installed_Directory>\usr\bin\file.exe` (recommended) or add `<Git_Installed_Directory>\usr\bin\` to your `%PATH%` environment variable. The `<Git_Installed_Directory>` part differs depending on how you installed Git:
-   - If you installed Git with the installer, it would be `C:\Program Files\Git`.
-   - If you installed Git with Scoop, it would be `C:\Users\USERNAME\scoop\apps\git\current`.
+2. To allow Yazi to find `file(1)`, add `<Git_Installed_Directory>\usr\bin\` to your `%YAZI_FILE_ONE%` environment variable, which differs depending on how you installed Git:
+   - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin`.
+   - If you installed Git with Scoop, it would be `C:\Users\<Username>\scoop\apps\git\current\usr\bin`.
 3. Restart your terminal.
 
 This is **the ONLY way we recommend**. We do not recommend install `file` via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
