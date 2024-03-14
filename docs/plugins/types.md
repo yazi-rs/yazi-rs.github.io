@@ -52,6 +52,16 @@ TODO
 
 ### Url
 
+Create a Url:
+
+```lua
+-- regular file
+local url = Url("/root/Downloads/logo.png")
+
+-- `bgm.mp3` from the archive `ost.zip`
+local url = Url("archive:///root/ost.zip#bgm.mp3")
+```
+
 Properties:
 
 - `frag`: The fragment string of this url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
