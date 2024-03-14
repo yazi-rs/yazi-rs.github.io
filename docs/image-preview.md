@@ -97,6 +97,13 @@ If the image shows properly when using Überzug++ independently, but not when us
 
 ## Why won't my images adapt to terminal size?
 
-Some terminals (such as VSCode, Tabby, and all Windows terminals) do not implement the `ioctl` system call, before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it is not possible to obtain the actual pixel width and height of the terminal.
+The size of the image depends on two factors:
 
-Therefore, Yazi uses `preview.max_width` and `preview.max_height` as the image size, which is specified by the user in `yazi.toml`.
+1. the user's settings for [max_width](/docs/configuration/yazi#max_width) and [max_height](/docs/configuration/yazi#max_height);
+2. the pixel size of the terminal.
+
+Yazi will use the smaller of these two values as the image preview size.
+
+However, some terminals (such as VSCode, Tabby, and all Windows terminals) don't implement the `ioctl` system call, before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it's not possible to obtain the actual pixel width and height of the terminal.
+
+Hence, only `max_width` and `max_height` will be used in this case.

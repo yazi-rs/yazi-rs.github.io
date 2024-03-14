@@ -92,9 +92,13 @@ Tab width.
 
 Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
 
+This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
+
 ### `max_height`
 
 Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
+
+This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
 ### `cache_dir`
 
