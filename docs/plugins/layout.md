@@ -109,9 +109,13 @@ Methods (all methods return `self`):
 Create a layout:
 
 ```lua
-ui.Layout()
-  :constraints({ constraint, ... }) -- Required
-  :split(rect) -- Required
+local areas = ui.Layout()
+		:direction(ui.Layout.HORIZONTAL)
+		:constraints({ ui.Constraint.Percentage(50), ui.Constraint.Percentage(50) })
+		:split(area)
+
+local left = areas[1] -- The first rect
+local right = areas[2] -- The second rect
 ```
 
 Methods (all methods return `self`):
@@ -122,8 +126,8 @@ Methods (all methods return `self`):
 - `margin(margin)` - Set the margin of the layout, which accepts an positive integer.
 - `margin_h(margin)` - Set the horizontal margin of the layout, which accepts an positive integer.
 - `margin_v(margin)` - Set the vertical margin of the layout, which accepts an positive integer.
-- `constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint)
-- `split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints
+- `constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint).
+- `split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints.
 
 ## Line
 
