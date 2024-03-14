@@ -110,9 +110,9 @@ Create a layout:
 
 ```lua
 local areas = ui.Layout()
-		:direction(ui.Layout.HORIZONTAL)
-		:constraints({ ui.Constraint.Percentage(50), ui.Constraint.Percentage(50) })
-		:split(area)
+	:direction(ui.Layout.HORIZONTAL)
+	:constraints({ ui.Constraint.Percentage(50), ui.Constraint.Percentage(50) })
+	:split(area)
 
 local left = areas[1] -- The first rect
 local right = areas[2] -- The second rect
