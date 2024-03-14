@@ -159,11 +159,17 @@ Change the current directory to the parent of specified file, and hover on it.
 
 ### `select_all`
 
+Select all files in the current working directory.
+
 | Options/Arguments | Description                                      |
 | ----------------- | ------------------------------------------------ |
 | `--state=true`    | Select all files                                 |
 | `--state=false`   | Deselect all files                               |
 | `--state=none`    | Default, toggle the selection state of all files |
+
+Note that `--state=false` will deselect all files in the current working directory.
+
+If you have selected files across directories and want to deselect all of them, use [`escape --select`](#escape) instead.
 
 ### `visual_mode`
 
