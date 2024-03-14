@@ -385,6 +385,18 @@ Append multiple arguments to the command:
 
 Returns `self`.
 
+### `cwd(dir)`
+
+```lua
+local cmd = Command("ls"):cwd("/root")
+```
+
+Set the current working directory of the command:
+
+- `dir` - Required, the directory of the command, which is a string
+
+Returns `self`.
+
 ### `env(key, value)`
 
 ```lua
