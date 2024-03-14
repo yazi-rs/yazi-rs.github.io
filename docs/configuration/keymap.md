@@ -112,7 +112,7 @@ Close the current tab; if it's the last tab, exit the process instead.
 
 ### `leave`
 
-Go back to the parent directory.
+Go back to the parent directory of the hovered file, or the parent of the current working directory if no file is hovered on.
 
 ### `enter`
 
