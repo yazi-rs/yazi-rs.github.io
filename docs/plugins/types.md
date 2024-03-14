@@ -11,40 +11,40 @@ description: Learn how to use Yazi's Lua API.
 
 Cha means one file's characteristics with the following properties:
 
-- `is_dir`: Whether this file is a directory
-- `is_hidden`: Whether this file is hidden (starts with a dot)
-- `is_link`: Whether this file is a symlink
-- `is_orphan`: Whether this file is a bad symlink, which points to a non-existent file
-- `is_block_device`: Whether this file is a block device
-- `is_char_device`: Whether this file is a character device
-- `is_fifo`: Whether this file is a fifo
-- `is_socket`: Whether this file is a socket
-- `length`: The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
-- `created`: The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `modified`: The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `accessed`: The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `permissions`: Unix permissions of this file in string, e.g. `drwxr-xr-x`. For Windows, it's always `nil`
+- `is_dir` - Whether this file is a directory
+- `is_hidden` - Whether this file is hidden (starts with a dot)
+- `is_link` - Whether this file is a symlink
+- `is_orphan` - Whether this file is a bad symlink, which points to a non-existent file
+- `is_block_device` - Whether this file is a block device
+- `is_char_device` - Whether this file is a character device
+- `is_fifo` - Whether this file is a fifo
+- `is_socket` - Whether this file is a socket
+- `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
+- `created` - The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `modified` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `accessed` - The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `permissions` - Unix permissions of this file in string, e.g. `drwxr-xr-x`. For Windows, it's always `nil`
 
 And the Unix only properties:
 
-- `uid`: The user id of this file
-- `gid`: The group id of this file
+- `uid` - The user id of this file
+- `gid` - The group id of this file
 
 ### File
 
 Properties:
 
-- `url`: The [Url](#url) of this file
-- `cha`: The [Cha](#cha) of this file
-- `link_to`: The [Url](#url) of this file pointing to, if it's a symlink; otherwise, `nil`
-- `name`: The name of this file
+- `url` - The [Url](#url) of this file
+- `cha` - The [Cha](#cha) of this file
+- `link_to` - The [Url](#url) of this file pointing to, if it's a symlink; otherwise, `nil`
+- `name` - The name of this file
 
 ### Icon
 
 Properties:
 
-- `text`: The text of this icon
-- `style`: The [Style](#uistyle) of this icon
+- `text` - The text of this icon
+- `style` - The [Style](#uistyle) of this icon
 
 ### Range
 
@@ -64,10 +64,10 @@ local url = Url("archive:///root/ost.zip#bgm.mp3")
 
 Properties:
 
-- `frag`: The fragment string of this url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
-- `is_regular`: Whether the file represented by this url is a regular file
-- `is_search`: Whether the file represented by this url from the search result
-- `is_archive`: Whether the file represented by this url from an archive
+- `frag` - The fragment string of this url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
+- `is_regular` - Whether the file represented by this url is a regular file
+- `is_search` - Whether the file represented by this url from the search result
+- `is_archive` - Whether the file represented by this url from an archive
 
 Meta methods:
 
@@ -79,19 +79,19 @@ Meta methods:
 
 Properties:
 
-- `rows`: The number of rows of this window
-- `cols`: The number of columns of this window
-- `width`: The width of this window in pixels
-- `height`: The height of this window in pixels
+- `rows` - The number of rows of this window
+- `cols` - The number of columns of this window
+- `width` - The width of this window in pixels
+- `height` - The height of this window in pixels
 
 ## App data
 
 You can access all app data through the `cx` within [Sync context](./overview#sync-context):
 
-- `cx.active`: The active tab, which is a [tab::Tab](#tabtab)
-- `cx.tabs`: All of tabs, which is a [manager::Tabs](#managertabs)
-- `cx.tasks`: All of tasks, which is a [tasks::Tasks](#taskstasks)
-- `cx.yanked`: The yanked urls, which is a [manager::Yanked](#manageryanked)
+- `cx.active` - The active tab, which is a [tab::Tab](#tabtab)
+- `cx.tabs` - All of tabs, which is a [manager::Tabs](#managertabs)
+- `cx.tasks` - All of tasks, which is a [tasks::Tasks](#taskstasks)
+- `cx.yanked` - The yanked urls, which is a [manager::Yanked](#manageryanked)
 
 ### `tab::Mode`
 
@@ -99,9 +99,9 @@ Visual mode status.
 
 Properties:
 
-- `is_select`: Whether the mode is select
-- `is_unset`: Whether the mode is unset
-- `is_visual`: Whether the mode is select or unset
+- `is_select` - Whether the mode is select
+- `is_unset` - Whether the mode is unset
+- `is_visual` - Whether the mode is select or unset
 
 Meta methods:
 
@@ -119,6 +119,13 @@ Properties:
 - `show_hidden`
 
 These properties are consistent with those in [yazi.toml](../configuration/yazi.md), and will not be detailed here.
+
+### `tab::Selected`
+
+Meta methods:
+
+- `__len()`
+- `__pairs()` - Iterate over the selected [Url](#url)s.
 
 ### `tab::Preview`
 
@@ -143,7 +150,7 @@ Properties:
 Meta methods:
 
 - `__len()`
-- `__pairs()`
+- `__pairs()` - Iterate over the [File](#file)s.
 
 ### `folder::File`
 
@@ -164,7 +171,7 @@ Based on [File](#file), with the following additional methods:
 
 Properties:
 
-- `idx`: The index of the active tab
+- `idx` - The index of the active tab
 
 Meta methods:
 
@@ -175,21 +182,22 @@ Meta methods:
 
 Properties:
 
-- `mode`: The [tab::Mode](#tabmode) of this tab
-- `conf`: The [tab::Config](#tabconfig) of this tab
-- `parent`: The parent folder within this tab, which is a [folder::Folder](#folderfolder)
-- `current`: The current folder within this tab, which is a [folder::Folder](#folderfolder)
-- `preview`: The [tab::Preview](#tabpreview) within this tab
+- `mode` - The [tab::Mode](#tabmode) of this tab.
+- `conf` - The [tab::Config](#tabconfig) of this tab.
+- `current` - The current folder within this tab, which is a [folder::Folder](#folderfolder).
+- `parent` - The parent folder within this tab, which is a [folder::Folder](#folderfolder).
+- `selected` - The selected files within this tab, which is a [tab::Selected](#tabselected).
+- `preview` - The [tab::Preview](#tabpreview) within this tab.
 
 Methods:
 
-- `name()`: The name of this tab
+- `name()` - The name of this tab
 
 ### `tasks::Tasks`
 
 Properties:
 
-- `progress`: The progress of all tasks, which is a table:
+- `progress` - The progress of all tasks, which is a table:
 
   ```lua
   {
@@ -215,8 +223,8 @@ end
 Meta methods:
 
 - `__len()`
-- `__pairs()`: Iterate over the yanked [Url](#url)s
+- `__pairs()` - Iterate over the yanked [Url](#url)s.
 
 Properties:
 
-- `is_cut`: Whether the yanked urls are cut.
+- `is_cut` - Whether the yanked urls are cut.

@@ -58,7 +58,7 @@ append_keymap = [
 ]
 ```
 
-They are also available for previewers, preloaders, and icons. See [keymap.toml](/docs/configuration/keymap) for more details.
+They are also available for open, icon, previewer, and preloader rules. See [keymap.toml](/docs/configuration/keymap) for more details.
 
 ## Custom config directory
 
