@@ -18,13 +18,13 @@ Press `q` to quit and `~` to open the help menu.
 
 ## Shell wrapper
 
-We suggest using this `ya` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
+We suggest using this `yy` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
 
 <Tabs>
   <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
-function ya() {
+function yy() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -38,7 +38,7 @@ function ya() {
   <TabItem value="fish" label="Fish">
 
 ```sh
-function ya
+function yy
 	set tmp (mktemp -t "yazi-cwd.XXXXX")
 	yazi $argv --cwd-file="$tmp"
 	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
@@ -52,7 +52,7 @@ end
   <TabItem value="nushell" label="Nushell">
 
 ```sh
-def --env ya [...args] {
+def --env yy [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXX")
 	yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
@@ -67,7 +67,7 @@ def --env ya [...args] {
   <TabItem value="powershell" label="PowerShell">
 
 ```powershell
-function ya {
+function yy {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
@@ -81,7 +81,7 @@ function ya {
   </TabItem>
 </Tabs>
 
-To use it, copy the function into the configuration file of your respective shell. Then use `ya` instead of `yazi` to start.
+To use it, copy the function into the configuration file of your respective shell. Then use `yy` instead of `yazi` to start.
 
 ## Keybindings
 
