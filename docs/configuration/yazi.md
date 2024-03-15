@@ -131,7 +131,7 @@ Sixel is a very old image format that only supports 256 colors. For better image
 
 This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
 
-### Ueberzug-specific
+### `ueberzug_scale` / `ueberzug_offset`
 
 - ueberzug_scale (Float): Ueberzug image scaling ratio, `scale>1` for enlargement, `scale<1` for reduction. For example, `0.5` indicates a reduction to half.
 - ueberzug_offset (`[x, y, width, height]`): Ueberzug image offset, in cell units. For example, `[0.5, 0.5, -0.5, -0.5]` indicates that the image is offset by half a cell in both directions, and the width and height are reduced by half a cell.
@@ -160,6 +160,7 @@ Available parameters are as follows:
 - run: The command to open the selected files, with the following variables available:
   - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
   - `$@` (Unix) / `%*` (Windows): All selected files.
+  - `$0` (Unix) / `%0` (Windows): The hovered file.
 - block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - orphan (Boolean): Keep the process running even if Yazi has exited.
 - desc: Description of the opener, displayed in the selection menu.
