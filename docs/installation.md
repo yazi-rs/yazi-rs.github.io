@@ -80,6 +80,90 @@ environment.systemPackages = with pkgs; [
 
 You can also manage Yazi's configuration using [home-manager](https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yazi.enable).
 
+### Flake
+
+The upstream repository provides a flake so that Nix users can easily keep up with the bleeding edge. A basic `flake.nix` setup to get you started:
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    yazi.url = "github:sxyazi/yazi";
+  };
+
+  outputs = { nixpkgs, home-manager, yazi, ... }: {
+    # To install yazi system-wide:
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        modules = [
+          ({ pkgs, ... }: {
+            environment.systemPackages =
+              [ yazi.packages.${pkgs.system}.default ];
+          })
+        ];
+      };
+    };
+
+    # To install it for a specific user:
+    homeConfigurations = {
+      "alice@nixos" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [
+          ({ pkgs, ... }: {
+            home.packages = [ yazi.packages.${pkgs.system}.default ];
+          })
+        ];
+      };
+    };
+  };
+}
+```
+
+If you want to override the package inside nixpkgs with the one from the flake, you can use overlays:
+
+```nix
+nixpkgs.overlays = [ yazi.overlays.default ];
+```
+
+A module is also available for both NixOS and home-manager:
+
+```nix
+programs.yazi = {
+  enable = true;
+  package = yazi.packages.${pkgs.system}.default; # if you use overlays, you can omit this
+};
+```
+
+#### Cache
+
+Pre-built artifacts are served at <https://yazi.cachix.org>, so that Nix users don't have to build yazi on their machine. To add it to your Nix configuration:
+
+```nix
+nix.settings = {
+  substituters = [ "https://yazi.cachix.org" ];
+  trusted-public-keys =
+    [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
+};
+```
+
+Note that the cache will only be applied _after_ you rebuild your Nix config. If you want to ensure that the cache gets applied right away, add the following to your `flake.nix`:
+
+```nix
+nixConfig = {
+  extra-substituters = [ "https://yazi.cachix.org" ];
+  extra-trusted-public-keys =
+    [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
+};
+```
+
+If you're having any problems, refer to this [entry](https://docs.cachix.org/faq#why-is-nix-not-picking-up-on-any-of-the-pre-built-artifacts) from Cachix's FAQ.
+
 ## MacPorts
 
 ```bash
