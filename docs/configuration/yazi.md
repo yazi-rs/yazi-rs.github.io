@@ -159,7 +159,7 @@ Available parameters are as follows:
 
 - run: The command to open the selected files, with the following variables available:
   - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
-  - `$@` (Unix) / `%*` (Windows): All selected files.
+  - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
   - `$0` (Unix) / `%0` (Windows): The hovered file.
 - block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - orphan (Boolean): Keep the process running even if Yazi has exited.

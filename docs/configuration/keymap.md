@@ -280,7 +280,7 @@ Run a shell command.
 You can use the following shell variables in `[run]`:
 
 - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
-- `$@` (Unix) / `%*` (Windows): All selected files.
+- `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
 - `$0` (Unix) / `%0` (Windows): The hovered file.
 
 ### `hidden`
