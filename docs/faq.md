@@ -44,11 +44,11 @@ If you truly don't need to distinguish between them, use this [smart-enter tip](
 
 ## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
 
-TL;DR: Use a theme for Yazi, https://github.com/yazi-rs/flavors
+TL;DR: Use a flavor for Yazi, https://github.com/yazi-rs/flavors
 
 This might be a bug in kitty (or feature? I don't know). In kitty, you have to add a style to file list items (like foreground color) to make the icons match the text size. However, Yazi's default theme can't add that color, because it can't predict whether the user's terminal has a white background with black text, or a black background with white text.
 
-So it inherits the default terminal font color. This causes the icon size issue, and I've only found this problem in kitty - other terminals don't have it. Therefore, please use a Yazi theme for the kitty terminal.
+So it inherits the default terminal font color. This causes the icon size issue, and I've only found this problem in kitty - other terminals don't have it. Therefore, please use a Yazi flavor for the kitty terminal.
 
 ## Why is "orphan" set to false by default?
 
