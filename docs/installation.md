@@ -142,25 +142,16 @@ programs.yazi = {
 
 #### Cache
 
-Pre-built artifacts are served at <https://yazi.cachix.org>, so that Nix users don't have to build yazi on their machine. To add it to your Nix configuration:
+Pre-built artifacts are served at <https://yazi.cachix.org>, so that Nix users don't have to build yazi on their machine.
+You can make use of it by adding the following options to `nix.settings`, either in your NixOS or home-manager configuration:
 
 ```nix
-nix.settings = {
-  substituters = [ "https://yazi.cachix.org" ];
-  trusted-public-keys =
-    [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
-};
+extra-substituters = [ "https://yazi.cachix.org" ];
+extra-trusted-public-keys =
+  [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
 ```
 
-Note that the cache will only be applied _after_ you rebuild your Nix config. If you want to ensure that the cache gets applied right away, add the following to your `flake.nix`:
-
-```nix
-nixConfig = {
-  extra-substituters = [ "https://yazi.cachix.org" ];
-  extra-trusted-public-keys =
-    [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
-};
-```
+Note that the cache will only be applied _after_ you rebuild your Nix config. If you want to ensure that the cache gets applied right away, add the options above to your flake's `nixConfig` attribute.
 
 If you're having any problems, refer to this [entry](https://docs.cachix.org/faq#why-is-nix-not-picking-up-on-any-of-the-pre-built-artifacts) from Cachix's FAQ.
 
