@@ -6,7 +6,7 @@ description: Learn how to configure your Yazi theme.
 # theme.toml
 
 :::tip
-If you're looking for ready-made themes and don't want to create one yourself, check out the [yazi-rs/themes](https://github.com/yazi-rs/themes) repository.
+If you're looking for ready-made themes and don't want to create one yourself, check out the [yazi-rs/flavors](https://github.com/yazi-rs/flavors) repository.
 :::
 
 ## Types
@@ -82,10 +82,9 @@ Border:
 
 Highlighting: The built-in syntax highlighting feature
 
-- syntect_theme (String): Theme file path ending with ".tmTheme", used by syntect. e.g. `"~/my-themes/Dracula.tmTheme"`.
+- syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`. Only available in the user's `theme.toml` and cannot be used in [`flavor.toml`](/docs/flavors/overview).
 
-  Yazi and `bat` use the same highlighter [syntect](https://crates.io/crates/syntect), so you can directly use [bat's theme files](https://github.com/sharkdp/bat/tree/master/assets/themes).
-  You can also find more available themes on GitHub by using the keyword "tmTheme".
+  Yazi's builtin code highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
 
 ## [status]
 

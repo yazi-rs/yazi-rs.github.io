@@ -205,6 +205,6 @@ _Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the 
 | , ⇒ s       | Sort by size                     |
 | , ⇒ S       | Sort by size (reverse)           |
 
-## Themes
+## Flavors
 
-Check out our [themes repository](https://github.com/yazi-rs/themes), [suggest a new one](https://github.com/yazi-rs/themes/issues/new), or [make your own](./configuration/theme.md)!
+Check out our [flavors repository](https://github.com/yazi-rs/flavors), or [cooking a flavor](/docs/flavors/overview#cooking-a-flavor)!

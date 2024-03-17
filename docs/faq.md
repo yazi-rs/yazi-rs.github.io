@@ -28,7 +28,7 @@ Yazi's default theme uses base16 colors to match the user's terminal theme as cl
 
 Unfortunately, this cannot cater to all users, and even the colors needed by the same user in light/dark mode can vary, not to mention that some terminals have poor default color schemes, like this [#149 (comment)](https://github.com/sxyazi/yazi/issues/149#issuecomment-1798349727).
 
-So, please [use a Yazi theme](https://github.com/yazi-rs/themes) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR!
+So, please [use a Yazi flavor](https://github.com/yazi-rs/flavors) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR!
 
 ## Why can't "Open" and "Enter" be a single command?
 
@@ -44,7 +44,7 @@ If you truly don't need to distinguish between them, use this [smart-enter tip](
 
 ## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
 
-TL;DR: Use a theme for Yazi, https://github.com/yazi-rs/themes
+TL;DR: Use a theme for Yazi, https://github.com/yazi-rs/flavors
 
 This might be a bug in kitty (or feature? I don't know). In kitty, you have to add a style to file list items (like foreground color) to make the icons match the text size. However, Yazi's default theme can't add that color, because it can't predict whether the user's terminal has a white background with black text, or a black background with white text.
 
