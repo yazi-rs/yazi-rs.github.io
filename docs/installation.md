@@ -80,48 +80,47 @@ environment.systemPackages = with pkgs; [
 
 You can also manage Yazi's configuration using [home-manager](https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yazi.enable).
 
-## Flake
+## Nix flakes
 
 The upstream repository provides a flake so that Nix users can easily keep up with the bleeding edge. A basic `flake.nix` setup to get you started:
 
 ```nix
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+	inputs = {
+		nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+		home-manager = {
+			url = "github:nix-community/home-manager/release-23.11";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
-    yazi.url = "github:sxyazi/yazi";
-  };
+		yazi.url = "github:sxyazi/yazi";
+	};
 
-  outputs = { nixpkgs, home-manager, yazi, ... }: {
-    # To install yazi system-wide:
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        modules = [
-          ({ pkgs, ... }: {
-            environment.systemPackages =
-              [ yazi.packages.${pkgs.system}.default ];
-          })
-        ];
-      };
-    };
+	outputs = { nixpkgs, home-manager, yazi, ... }: {
+		# To install Yazi system-wide:
+		nixosConfigurations = {
+			nixos = nixpkgs.lib.nixosSystem {
+				modules = [
+					({ pkgs, ... }: {
+						environment.systemPackages = [ yazi.packages.${pkgs.system}.default ];
+					})
+				];
+			};
+		};
 
-    # To install it for a specific user:
-    homeConfigurations = {
-      "alice@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        modules = [
-          ({ pkgs, ... }: {
-            home.packages = [ yazi.packages.${pkgs.system}.default ];
-          })
-        ];
-      };
-    };
-  };
+		# To install it for a specific user:
+		homeConfigurations = {
+			"alice@nixos" = home-manager.lib.homeManagerConfiguration {
+				pkgs = nixpkgs.legacyPackages.x86_64-linux;
+				modules = [
+					({ pkgs, ... }: {
+						home.packages = [ yazi.packages.${pkgs.system}.default ];
+					})
+				];
+			};
+		};
+	};
 }
 ```
 
@@ -135,8 +134,8 @@ A module is also available for both NixOS and home-manager:
 
 ```nix
 programs.yazi = {
-  enable = true;
-  package = yazi.packages.${pkgs.system}.default; # if you use overlays, you can omit this
+	enable = true;
+	package = yazi.packages.${pkgs.system}.default; # if you use overlays, you can omit this
 };
 ```
 
@@ -147,8 +146,7 @@ You can make use of it by adding the following options to `nix.settings`, either
 
 ```nix
 extra-substituters = [ "https://yazi.cachix.org" ];
-extra-trusted-public-keys =
-  [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
+extra-trusted-public-keys = [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k=" ];
 ```
 
 Note that the cache will only be applied _after_ you rebuild your Nix config. If you want to ensure that the cache gets applied right away, add the options above to your flake's `nixConfig` attribute.
