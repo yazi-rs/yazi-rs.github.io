@@ -404,7 +404,7 @@ Open the help menu.
 
 ### `plugin`
 
-See [Functional plugin](../plugins/overview#functional-plugin).
+See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ## [tasks]
 
@@ -433,7 +433,7 @@ Open the help menu.
 
 ### `plugin`
 
-See [Functional plugin](../plugins/overview#functional-plugin).
+See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ## [select]
 
@@ -457,7 +457,7 @@ Open the help menu.
 
 ### `plugin`
 
-See [Functional plugin](../plugins/overview#functional-plugin).
+See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ## [input]
 
@@ -560,7 +560,7 @@ Kill the specified range of characters. This command is only available in insert
 
 ### `plugin`
 
-See [Functional plugin](../plugins/overview#functional-plugin). This command is only available in insert mode.
+See [Functional plugin](/docs/plugins/overview#functional-plugin). This command is only available in insert mode.
 
 ## [completion]
 
@@ -588,7 +588,7 @@ Open the help menu.
 
 ### `plugin`
 
-See [Functional plugin](../plugins/overview#functional-plugin).
+See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ## [help]
 
@@ -612,4 +612,4 @@ Apply a filter for the help items.
 
 ### `plugin`
 
-See [Functional plugin](../plugins/overview#functional-plugin).
+See [Functional plugin](/docs/plugins/overview#functional-plugin).

@@ -289,7 +289,7 @@ Yazi comes with the these preloader plugins:
 - video: preloads and caches videos
 - pdf: preloads and caches PDFs.
 
-If you want to create your own preloader, see [Preloader API](../plugins/overview#preloader).
+If you want to create your own preloader, see [Preloader API](/docs/plugins/overview#preloader).
 
 ## [input]
 

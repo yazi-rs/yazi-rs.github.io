@@ -62,7 +62,7 @@ This function is only available in the async context.
 
 ### `image_precache(src, dist)`
 
-Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](../configuration/yazi#preview):
+Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](/docs/configuration/yazi#preview):
 
 - `src` - Required, the source [Url](/docs/plugins/types#url) of the image
 - `dist` - Required, the destination [Url](/docs/plugins/types#url) of the image

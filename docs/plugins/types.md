@@ -118,7 +118,7 @@ Properties:
 - `linemode`
 - `show_hidden`
 
-These properties are consistent with those in [yazi.toml](../configuration/yazi.md), and will not be detailed here.
+These properties are consistent with those in [yazi.toml](/docs/configuration/yazi.md), and will not be detailed here.
 
 ### `tab::Selected`
 
@@ -159,8 +159,8 @@ Based on [File](#file), with the following additional methods:
 - `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
 - `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The [Icon](#icon) of this file, [`[icon]`](../configuration/theme#icons) rules are applied; if no rule matches, returns `nil`
-- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](../configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
+- `icon()` - The [Icon](#icon) of this file, [`[icon]`](/docs/configuration/theme#icons) rules are applied; if no rule matches, returns `nil`
+- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](/docs/configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
 - `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
 - `is_selected()` - Whether this file is selected

@@ -41,7 +41,7 @@ Where:
 A plugin has two usages:
 
 - [Functional plugin](#functional-plugin): Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
-- [Custom previewers, preloaders](../configuration/yazi#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
+- [Custom previewers, preloaders](/docs/configuration/yazi#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
 
 ### Functional plugin
 
@@ -230,7 +230,7 @@ When "continue" is set, the preloader can reload the files that have already bee
 
 Yazi will automatically invoke the `preload` concurrently for each file that matches the preload rules on the page.
 
-When the user specifies [`multi = true`](../configuration/yazi#preloaders) for it, the plugin allows preloading multiple files at once. In this case, `self.file` will be replaced by `self.files`.
+When the user specifies [`multi = true`](/docs/configuration/yazi#preloaders) for it, the plugin allows preloading multiple files at once. In this case, `self.file` will be replaced by `self.files`.
 
 Typically, a preloader only needs to implement one of them - either single or multiple. This depends on the specific task and the magnitude of the workload.
 If it truly requires loading multiple files at once, the user needs to be prompted to enable the `multi` option for it.
