@@ -80,7 +80,7 @@ environment.systemPackages = with pkgs; [
 
 You can also manage Yazi's configuration using [home-manager](https://nix-community.github.io/home-manager/options.xhtml#opt-programs.yazi.enable).
 
-### Flake
+## Flake
 
 The upstream repository provides a flake so that Nix users can easily keep up with the bleeding edge. A basic `flake.nix` setup to get you started:
 
@@ -140,9 +140,9 @@ programs.yazi = {
 };
 ```
 
-#### Cache
+### Cache
 
-Pre-built artifacts are served at <https://yazi.cachix.org>, so that Nix users don't have to build yazi on their machine.
+Pre-built artifacts are served at https://yazi.cachix.org, so that Nix users don't have to build Yazi on their machine.
 You can make use of it by adding the following options to `nix.settings`, either in your NixOS or home-manager configuration:
 
 ```nix
