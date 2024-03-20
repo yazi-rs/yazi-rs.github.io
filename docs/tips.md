@@ -176,7 +176,7 @@ local function entry(_, args)
 	end
 
 	local target = parent.files[parent.cursor + 1 + args[1]]
-	if target then
+	if target and target.cha.is_dir then
 		ya.manager_emit("cd", { tostring(target.url) })
 	end
 end
