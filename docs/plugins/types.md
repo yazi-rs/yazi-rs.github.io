@@ -185,7 +185,7 @@ Properties:
 - `mode` - The [tab::Mode](#tabmode) of this tab.
 - `conf` - The [tab::Config](#tabconfig) of this tab.
 - `current` - The current folder within this tab, which is a [folder::Folder](#folderfolder).
-- `parent` - The parent folder within this tab, which is a [folder::Folder](#folderfolder).
+- `parent` - The parent folder within this tab, which is a [folder::Folder](#folderfolder) if `current` has a parent; otherwise, `nil`.
 - `selected` - The selected files within this tab, which is a [tab::Selected](#tabselected).
 - `preview` - The [tab::Preview](#tabpreview) within this tab.
 

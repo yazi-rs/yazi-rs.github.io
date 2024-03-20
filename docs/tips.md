@@ -164,6 +164,38 @@ on  = [ "j" ]
 run = "plugin --sync arrow --args=1"
 ```
 
+## Navigation in the parent directory without leaving the CWD
+
+Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/init.lua`:
+
+```lua
+local function entry(_, args)
+	local parent = cx.active.parent
+	if not parent then
+		return
+	end
+
+	local target = parent.files[parent.cursor + 1 + args[1]]
+	if target then
+		ya.manager_emit("cd", { tostring(target.url) })
+	end
+end
+
+return { entry = entry }
+```
+
+Then bind it for `K` and `J` key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on  = [ "K" ]
+run = "plugin --sync parent-arrow --args=-1"
+
+[[manager.prepend_keymap]]
+on  = [ "J" ]
+run = "plugin --sync parent-arrow --args=1"
+```
+
 ## No status bar
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
