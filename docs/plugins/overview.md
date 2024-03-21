@@ -132,12 +132,12 @@ When a plugin is executed asynchronously, an isolated async context is created f
 
 In this context, you can use all the async functions supported by Yazi, and it operates concurrently with the main thread, ensuring that the main thread is not blocked.
 
-You can also obtain a small amount of app data from the sync context by calling a "sync function" (Needs the latest main branch at the moment):
+You can also obtain a small amount of app data from the sync context by calling a "sync function":
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/init.lua
 local set_state = ya.sync(function(state, a)
-	-- You can get/set the state of the plugin through `state` argument
+	-- You can get/set the state of the plugin through `state` parameter
 	-- in the `sync()` block
 	state.a = a
 end)
@@ -163,9 +163,9 @@ Note that `ya.sync()` call must be at the top level:
 
 ```lua
 -- Wrong !!!
-local get_hovered_url
+local get_state
 if some_condition then
-	get_hovered_url = ya.sync(function(a, b)
+	get_state = ya.sync(function(state)
 		-- ...
 	end)
 end
