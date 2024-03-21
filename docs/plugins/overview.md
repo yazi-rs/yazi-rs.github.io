@@ -184,7 +184,7 @@ return {
 }
 ```
 
-When the user presses `j` or `k` to switch between hovering files, `peek` is called, with:
+When the user presses <kbd>j</kbd> or <kbd>k</kbd> to switch between hovering files, `peek` is called, with:
 
 | Key      | Description                                                                                                                 |
 | -------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -193,7 +193,7 @@ When the user presses `j` or `k` to switch between hovering files, `peek` is cal
 | `area`   | The [Rect](./layout#rect) of the available preview area.                                                                    |
 | `window` | The [Rect](./layout#rect) of the entire terminal window.                                                                    |
 
-When the user presses `Alt-j` or `Alt-k` to scroll the preview of this file, `seek` is called, with:
+When the user presses <kbd>Alt-j</kbd> or <kbd>Alt-k</kbd> to scroll the preview of this file, `seek` is called, with:
 
 | Key    | Description                                              |
 | ------ | -------------------------------------------------------- |

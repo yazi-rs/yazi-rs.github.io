@@ -93,117 +93,117 @@ For all keybindings, see the [default `keymap.toml` file](https://github.com/sxy
 
 To navigate between files and directories you can use the arrow keys `←`, `↑`, `↓` and `→` or Vim-like commands such as `h`, `j`, `k`, `l`:
 
-| Key binding | Alternate key | Action                                          |
-| ----------- | ------------- | ----------------------------------------------- |
-| k           | ↑             | Move the cursor up                              |
-| j           | ↓             | Move the cursor down                            |
-| l           | →             | Enter hovered directory                         |
-| h           | ←             | Leave the current directory and into its parent |
+| Key binding  | Alternate key | Action                                          |
+| ------------ | ------------- | ----------------------------------------------- |
+| <kbd>k</kbd> | <kbd>↑</kbd>  | Move the cursor up                              |
+| <kbd>j</kbd> | <kbd>↓</kbd>  | Move the cursor down                            |
+| <kbd>l</kbd> | <kbd>→</kbd>  | Enter hovered directory                         |
+| <kbd>h</kbd> | <kbd>←</kbd>  | Leave the current directory and into its parent |
 
 Further navigation commands can be found in the table below.
 
-| Key binding | Action                       |
-| ----------- | ---------------------------- |
-| K           | Move the cursor up 5 lines   |
-| J           | Move the cursor down 5 lines |
-| g ⇒ g       | Move cursor to the top       |
-| G           | Move cursor to the bottom    |
+| Key binding                 | Action                       |
+| --------------------------- | ---------------------------- |
+| <kbd>K</kbd>                | Move the cursor up 5 lines   |
+| <kbd>J</kbd>                | Move the cursor down 5 lines |
+| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top       |
+| <kbd>G</kbd>                | Move cursor to the bottom    |
 
 ### Selection
 
 To select files and directories, the following commands are available.
 
-| Key binding | Action                                     |
-| ----------- | ------------------------------------------ |
-| \<Space>    | Toggle selection of hovered file/directory |
-| v           | Enter visual mode (selection mode)         |
-| V           | Enter visual mode (unset mode)             |
-| \<Ctrl-a>   | Select all files                           |
-| \<Ctrl-r>   | Inverse selection of all files             |
-| \<Esc>      | Cancel selection                           |
+| Key binding                    | Action                                     |
+| ------------------------------ | ------------------------------------------ |
+| <kbd>Space</kbd>               | Toggle selection of hovered file/directory |
+| <kbd>v</kbd>                   | Enter visual mode (selection mode)         |
+| <kbd>V</kbd>                   | Enter visual mode (unset mode)             |
+| <kbd>Ctrl</kbd> + <kbd>a</kbd> | Select all files                           |
+| <kbd>Ctrl</kbd> + <kbd>r</kbd> | Inverse selection of all files             |
+| <kbd>Esc</kbd>                 | Cancel selection                           |
 
 ### File/directory operations
 
 To interact with selected files/directories use any of the commands below.
 
-| Key binding   | Action                                                                      |
-| ------------- | --------------------------------------------------------------------------- |
-| o             | Open the selected files                                                     |
-| O             | Open the selected files interactively                                       |
-| \<Enter>      | Open the selected files                                                     |
-| \<Ctrl-Enter> | Open the selected files interactively (some terminals don't support it yet) |
-| y             | Yank the selected files (copy)                                              |
-| x             | Yank the selected files (cut)                                               |
-| p             | Paste the yanked files                                                      |
-| P             | Paste the yanked files (overwrite if the destination exists)                |
-| -             | Create a symbolic link to the yanked files (absolute path)                  |
-| \_            | Create a symbolic link to the yanked files (relative path)                  |
-| d             | Move the files to the trash                                                 |
-| D             | Permanently delete the files                                                |
-| a             | Create a file or directory (ends with "/" for directories)                  |
-| r             | Rename a file or directory                                                  |
-| ;             | Run a shell command                                                         |
-| :             | Run a shell command (block the UI until the command finishes)               |
-| .             | Toggle the visibility of hidden files                                       |
-| \<Ctrl-s>     | Cancel the ongoing search                                                   |
-| z             | Jump to a directory using zoxide                                            |
-| Z             | Jump to a directory, or reveal a file using fzf                             |
+| Key binding                        | Action                                                                      |
+| ---------------------------------- | --------------------------------------------------------------------------- |
+| <kbd>o</kbd>                       | Open the selected files                                                     |
+| <kbd>O</kbd>                       | Open the selected files interactively                                       |
+| <kbd>Enter</kbd>                   | Open the selected files                                                     |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open the selected files interactively (some terminals don't support it yet) |
+| <kbd>y</kbd>                       | Yank the selected files (copy)                                              |
+| <kbd>x</kbd>                       | Yank the selected files (cut)                                               |
+| <kbd>p</kbd>                       | Paste the yanked files                                                      |
+| <kbd>P</kbd>                       | Paste the yanked files (overwrite if the destination exists)                |
+| <kbd>-</kbd>                       | Create a symbolic link to the yanked files (absolute path)                  |
+| <kbd>\_</kbd>                      | Create a symbolic link to the yanked files (relative path)                  |
+| <kbd>d</kbd>                       | Move the files to the trash                                                 |
+| <kbd>D</kbd>                       | Permanently delete the files                                                |
+| <kbd>a</kbd>                       | Create a file or directory (ends with "/" for directories)                  |
+| <kbd>r</kbd>                       | Rename a file or directory                                                  |
+| <kbd>;</kbd>                       | Run a shell command                                                         |
+| <kbd>:</kbd>                       | Run a shell command (block the UI until the command finishes)               |
+| <kbd>.</kbd>                       | Toggle the visibility of hidden files                                       |
+| <kbd>Ctrl</kbd> + <kbd>s</kbd>     | Cancel the ongoing search                                                   |
+| <kbd>z</kbd>                       | Jump to a directory using zoxide                                            |
+| <kbd>Z</kbd>                       | Jump to a directory, or reveal a file using fzf                             |
 
 ### Copying paths
 
 To copy paths, use any of the following commands below.
 
-_Observation: `c ⇒ d` indicates pressing the `c` key followed by pressing the `d` key._
+_Observation: <kbd>c</kbd> ⇒ <kbd>d</kbd> indicates pressing the <kbd>c</kbd> key followed by pressing the <kbd>d</kbd> key._
 
-| Key binding | Action                                          |
-| ----------- | ----------------------------------------------- |
-| c ⇒ c       | Copy absolute path                              |
-| c ⇒ d       | Copy the path of the parent directory           |
-| c ⇒ f       | Copy the name of the file                       |
-| c ⇒ n       | Copy the name of the file without the extension |
+| Key binding                 | Action                                          |
+| --------------------------- | ----------------------------------------------- |
+| <kbd>c</kbd> ⇒ <kbd>c</kbd> | Copy absolute path                              |
+| <kbd>c</kbd> ⇒ <kbd>d</kbd> | Copy the path of the parent directory           |
+| <kbd>c</kbd> ⇒ <kbd>f</kbd> | Copy the name of the file                       |
+| <kbd>c</kbd> ⇒ <kbd>n</kbd> | Copy the name of the file without the extension |
 
 ### Filtering files/directories
 
-| Key binding | Action                              |
-| ----------- | ----------------------------------- |
-| f           | Filter the files/directories in CWD |
+| Key binding  | Action                              |
+| ------------ | ----------------------------------- |
+| <kbd>f</kbd> | Filter the files/directories in CWD |
 
 ### Finding files/directories
 
-| Key binding | Action                              |
-| ----------- | ----------------------------------- |
-| /           | Forward find file/directory in CWD  |
-| ?           | Backward find file/directory in CWD |
-| n           | Jump to next occurrence             |
-| N           | Jump to previous occurrence         |
+| Key binding  | Action                              |
+| ------------ | ----------------------------------- |
+| <kbd>/</kbd> | Forward find file/directory in CWD  |
+| <kbd>?</kbd> | Backward find file/directory in CWD |
+| <kbd>n</kbd> | Jump to next occurrence             |
+| <kbd>N</kbd> | Jump to previous occurrence         |
 
 ### Searching files/directories
 
-| Key binding | Action                                                                         |
-| ----------- | ------------------------------------------------------------------------------ |
-| s           | Search files by name using [fd](https://github.com/sharkdp/fd)                 |
-| S           | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
+| Key binding  | Action                                                                         |
+| ------------ | ------------------------------------------------------------------------------ |
+| <kbd>s</kbd> | Search files by name using [fd](https://github.com/sharkdp/fd)                 |
+| <kbd>S</kbd> | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
 
 ### Sorting
 
 To sort files/directories use the following commands.
 
-_Observation: `, ⇒ a` indicates pressing the `,` key followed by pressing the `a` key._
+_Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> key followed by pressing the <kbd>a</kbd> key._
 
-| Key binding | Action                           |
-| ----------- | -------------------------------- |
-| , ⇒ m       | Sort by modified time            |
-| , ⇒ M       | Sort by modified time (reverse)  |
-| , ⇒ c       | Sort by creation time            |
-| , ⇒ C       | Sort by creation time (reverse)  |
-| , ⇒ e       | Sort by file extension           |
-| , ⇒ E       | Sort by file extension (reverse) |
-| , ⇒ a       | Sort alphabetically              |
-| , ⇒ A       | Sort alphabetically (reverse)    |
-| , ⇒ n       | Sort naturally                   |
-| , ⇒ N       | Sort naturally (reverse)         |
-| , ⇒ s       | Sort by size                     |
-| , ⇒ S       | Sort by size (reverse)           |
+| Key binding                 | Action                           |
+| --------------------------- | -------------------------------- |
+| <kbd>,</kbd> ⇒ <kbd>m</kbd> | Sort by modified time            |
+| <kbd>,</kbd> ⇒ <kbd>M</kbd> | Sort by modified time (reverse)  |
+| <kbd>,</kbd> ⇒ <kbd>c</kbd> | Sort by creation time            |
+| <kbd>,</kbd> ⇒ <kbd>C</kbd> | Sort by creation time (reverse)  |
+| <kbd>,</kbd> ⇒ <kbd>e</kbd> | Sort by file extension           |
+| <kbd>,</kbd> ⇒ <kbd>E</kbd> | Sort by file extension (reverse) |
+| <kbd>,</kbd> ⇒ <kbd>a</kbd> | Sort alphabetically              |
+| <kbd>,</kbd> ⇒ <kbd>A</kbd> | Sort alphabetically (reverse)    |
+| <kbd>,</kbd> ⇒ <kbd>n</kbd> | Sort naturally                   |
+| <kbd>,</kbd> ⇒ <kbd>N</kbd> | Sort naturally (reverse)         |
+| <kbd>,</kbd> ⇒ <kbd>s</kbd> | Sort by size                     |
+| <kbd>,</kbd> ⇒ <kbd>S</kbd> | Sort by size (reverse)           |
 
 ## Flavors
 
