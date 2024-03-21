@@ -81,14 +81,14 @@ keymap = [
 
 Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
-| Options/Arguments | Description          |
-| ----------------- | -------------------- |
-| `--all`           | Do all of the below. |
-| `--find`          | Cancel find.         |
-| `--visual`        | Exit visual mode.    |
-| `--select`        | Clear selected.      |
-| `--filter`        | Cancel filter.       |
-| `--search`        | Cancel search.       |
+| Argument/Option | Description          |
+| --------------- | -------------------- |
+| `--all`         | Do all of the below. |
+| `--find`        | Cancel find.         |
+| `--visual`      | Exit visual mode.    |
+| `--select`      | Clear selected.      |
+| `--filter`      | Cancel filter.       |
+| `--search`      | Cancel search.       |
 
 Automatically determine the operation by default, and it will only execute the selected operation after specifying the option; multiple options can be stacked.
 
@@ -96,9 +96,9 @@ Automatically determine the operation by default, and it will only execute the s
 
 Exit the process.
 
-| Options/Arguments | Description                                          |
-| ----------------- | ---------------------------------------------------- |
-| `--no-cwd-file`   | Don't write the current directory to the `cwd-file`. |
+| Argument/Option | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `--no-cwd-file` | Don't write the current directory to the `cwd-file`. |
 
 ### `close`
 
@@ -106,9 +106,9 @@ Close the current tab; if it's the last tab, exit the process instead.
 
 ### `arrow`
 
-| Options/Arguments | Description                                                                                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `[n]` / `[n%]`    | Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down. |
+| Argument/Option | Description                                                                                                       |
+| --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `[n]` / `[n%]`  | Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down. |
 
 ### `leave`
 
@@ -128,44 +128,44 @@ Go forward to the next directory.
 
 ### `seek`
 
-| Options/Arguments | Description                                                                                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `[n]`             | Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down. |
+| Argument/Option | Description                                                                                                       |
+| --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `[n]`           | Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down. |
 
 ### `cd`
 
 Change the current directory.
 
-| Options/Arguments | Description                              |
-| ----------------- | ---------------------------------------- |
-| `[path]`          | The path to change to.                   |
-| `--interactive`   | Use an interactive UI to input the path. |
+| Argument/Option | Description                              |
+| --------------- | ---------------------------------------- |
+| `[path]`        | The path to change to.                   |
+| `--interactive` | Use an interactive UI to input the path. |
 
 ### `reveal`
 
 Change the current directory to the parent of specified file, and hover on it.
 
-| Options/Arguments | Description         |
-| ----------------- | ------------------- |
-| `[path]`          | The path to reveal. |
+| Argument/Option | Description         |
+| --------------- | ------------------- |
+| `[path]`        | The path to reveal. |
 
 ### `select`
 
-| Options/Arguments | Description                                              |
-| ----------------- | -------------------------------------------------------- |
-| `--state=true`    | Select the current file.                                 |
-| `--state=false`   | Deselect the current file.                               |
-| `--state=none`    | Default, toggle the selection state of the current file. |
+| Argument/Option | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `--state=true`  | Select the current file.                                 |
+| `--state=false` | Deselect the current file.                               |
+| `--state=none`  | Default, toggle the selection state of the current file. |
 
 ### `select_all`
 
 Select all files in the current working directory.
 
-| Options/Arguments | Description                                      |
-| ----------------- | ------------------------------------------------ |
-| `--state=true`    | Select all files                                 |
-| `--state=false`   | Deselect all files                               |
-| `--state=none`    | Default, toggle the selection state of all files |
+| Argument/Option | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `--state=true`  | Select all files                                 |
+| `--state=false` | Deselect all files                               |
+| `--state=none`  | Default, toggle the selection state of all files |
 
 Note that `--state=false` will deselect all files in the current working directory.
 
@@ -175,26 +175,26 @@ If you have selected files across directories and want to deselect all of them, 
 
 Enter visual mode (selection mode).
 
-| Options/Arguments | Description                     |
-| ----------------- | ------------------------------- |
-| `--unset`         | Enter visual mode (unset mode). |
+| Argument/Option | Description                     |
+| --------------- | ------------------------------- |
+| `--unset`       | Enter visual mode (unset mode). |
 
 ### `open`
 
 Open the selected files.
 
-| Options/Arguments | Description                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------- |
-| `--interactive`   | Open the hovered/selected file(s) with an interactive UI to choose the opening method. |
-| `--hovered`       | Always open the hovered file regardless of the selection state.                        |
+| Argument/Option | Description                                                                            |
+| --------------- | -------------------------------------------------------------------------------------- |
+| `--interactive` | Open the hovered/selected file(s) with an interactive UI to choose the opening method. |
+| `--hovered`     | Always open the hovered file regardless of the selection state.                        |
 
 ### `yank`
 
 Yank the selected files.
 
-| Options/Arguments | Description             |
-| ----------------- | ----------------------- |
-| `--cut`           | Cut the selected files. |
+| Argument/Option | Description             |
+| --------------- | ----------------------- |
+| `--cut`         | Cut the selected files. |
 
 ### `unyank`
 
@@ -204,19 +204,19 @@ Cancel the yank status of files.
 
 Paste the yanked files.
 
-| Options/Arguments | Description                                                                                                |
-| ----------------- | ---------------------------------------------------------------------------------------------------------- |
-| `--force`         | Overwrite the destination file if it exists.                                                               |
-| `--follow`        | Copy the file pointed to by a symbolic link, rather than the link itself. Only can be used during copying. |
+| Argument/Option | Description                                                                                                |
+| --------------- | ---------------------------------------------------------------------------------------------------------- |
+| `--force`       | Overwrite the destination file if it exists.                                                               |
+| `--follow`      | Copy the file pointed to by a symbolic link, rather than the link itself. Only can be used during copying. |
 
 ### `link`
 
 Create a symbolic link to the yanked files. (This is a privileged action in Windows and must be run as an administrator.)
 
-| Options/Arguments | Description                                  |
-| ----------------- | -------------------------------------------- |
-| `--relative`      | Use a relative path for the symbolic link.   |
-| `--force`         | Overwrite the destination file if it exists. |
+| Argument/Option | Description                                  |
+| --------------- | -------------------------------------------- |
+| `--relative`    | Use a relative path for the symbolic link.   |
+| `--force`       | Overwrite the destination file if it exists. |
 
 ### `remove`
 
@@ -224,18 +224,18 @@ Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will fol
 
 In the Android platform, you can only use it with the `--permanently` option, since there lacks the concept of a trash bin.
 
-| Options/Arguments | Description                                                          |
-| ----------------- | -------------------------------------------------------------------- |
-| `--force`         | Don't show the confirmation dialog, and trash/delete files directly. |
-| `--permanently`   | Permanently delete the files.                                        |
+| Argument/Option | Description                                                          |
+| --------------- | -------------------------------------------------------------------- |
+| `--force`       | Don't show the confirmation dialog, and trash/delete files directly. |
+| `--permanently` | Permanently delete the files.                                        |
 
 ### `create`
 
 Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directories.
 
-| Options/Arguments | Description                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------- |
-| `--force`         | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
+| Argument/Option | Description                                                                                    |
+| --------------- | ---------------------------------------------------------------------------------------------- |
+| `--force`       | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
 
 ### `rename`
 
@@ -260,7 +260,7 @@ Which causes the input box content for the filename `foo.jpg` to be `|.jpg`, whe
 
 Copy the path of files or directories that are selected or hovered on.
 
-| Options/Arguments  | Description                                      |
+| Argument/Option    | Description                                      |
 | ------------------ | ------------------------------------------------ |
 | `path`             | Copy the absolute path.                          |
 | `dirname`          | Copy the path of the parent directory.           |
@@ -271,11 +271,11 @@ Copy the path of files or directories that are selected or hovered on.
 
 Run a shell command.
 
-| Options/Arguments | Description                                                                                                                                                                                                                              |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[run]`           | Optional, command template to be run.                                                                                                                                                                                                    |
-| `--block`         | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
-| `--confirm`       | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
+| Argument/Option | Description                                                                                                                                                                                                                              |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[run]`         | Optional, command template to be run.                                                                                                                                                                                                    |
+| `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
+| `--confirm`     | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
 
 You can use the following shell variables in `[run]`:
 
@@ -287,33 +287,33 @@ You can use the following shell variables in `[run]`:
 
 Set the visibility of hidden files.
 
-| Options/Arguments | Description                       |
-| ----------------- | --------------------------------- |
-| `show`            | Show hidden files.                |
-| `hide`            | Hide hidden files.                |
-| `toggle`          | Default, toggle the hidden state. |
+| Argument/Option | Description                       |
+| --------------- | --------------------------------- |
+| `show`          | Show hidden files.                |
+| `hide`          | Hide hidden files.                |
+| `toggle`        | Default, toggle the hidden state. |
 
 ### `linemode`
 
 Set the line mode.
 
-| Options/Arguments | Description                                 |
-| ----------------- | ------------------------------------------- |
-| `none`            | No line mode.                               |
-| `size`            | Display the size of the file.               |
-| `permissions`     | Display the permissions of the file.        |
-| `mtime`           | Display the last modified time of the file. |
+| Argument/Option | Description                                 |
+| --------------- | ------------------------------------------- |
+| `none`          | No line mode.                               |
+| `size`          | Display the size of the file.               |
+| `permissions`   | Display the permissions of the file.        |
+| `mtime`         | Display the last modified time of the file. |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
 
 ### `search`
 
-| Options/Arguments | Description                            |
-| ----------------- | -------------------------------------- |
-| `fd`              | Search files by name using fd.         |
-| `rg`              | Search files by content using ripgrep. |
-| `none`            | Default, cancel the ongoing search.    |
+| Argument/Option | Description                            |
+| --------------- | -------------------------------------- |
+| `fd`            | Search files by name using fd.         |
+| `rg`            | Search files by content using ripgrep. |
+| `none`          | Default, cancel the ongoing search.    |
 
 You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 
@@ -325,35 +325,35 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 
 ### `jump`
 
-| Options/Arguments | Description                                      |
-| ----------------- | ------------------------------------------------ |
-| `fzf`             | Jump to a directory, or reveal a file using fzf. |
-| `zoxide`          | Jump to a directory using zoxide.                |
+| Argument/Option | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `fzf`           | Jump to a directory, or reveal a file using fzf. |
+| `zoxide`        | Jump to a directory using zoxide.                |
 
 ### `find`
 
-| Options/Arguments | Description                                                                                                              |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `[query]`         | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
-| `--previous`      | Find for the previous occurrence.                                                                                        |
-| `--smart`         | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
-| `--insensitive`   | Use case-insensitive find.                                                                                               |
+| Argument/Option | Description                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `[query]`       | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
+| `--previous`    | Find for the previous occurrence.                                                                                        |
+| `--smart`       | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
+| `--insensitive` | Use case-insensitive find.                                                                                               |
 
 ### `find_arrow`
 
 Move the cursor to the next or previous occurrence.
 
-| Options/Arguments | Description                      |
-| ----------------- | -------------------------------- |
-| `--previous`      | Move to the previous occurrence. |
+| Argument/Option | Description                      |
+| --------------- | -------------------------------- |
+| `--previous`    | Move to the previous occurrence. |
 
 ### `filter`
 
-| Options/Arguments | Description                                                                                                                |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `[query]`         | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
-| `--smart`         | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
-| `--insensitive`   | Use case-insensitive filter.                                                                                               |
+| Argument/Option | Description                                                                                                                |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `[query]`       | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
+| `--smart`       | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
+| `--insensitive` | Use case-insensitive filter.                                                                                               |
 
 ### `sort`
 
@@ -370,29 +370,29 @@ Move the cursor to the next or previous occurrence.
 
 ### `tab_create`
 
-| Options/Arguments | Description                                |
-| ----------------- | ------------------------------------------ |
-| `[path]`          | Create a new tab using the specified path. |
-| `--current`       | Create a new tab using the current path.   |
+| Argument/Option | Description                                |
+| --------------- | ------------------------------------------ |
+| `[path]`        | Create a new tab using the specified path. |
+| `--current`     | Create a new tab using the current path.   |
 
 ### `tab_close`
 
-| Options/Arguments | Description                                     |
-| ----------------- | ----------------------------------------------- |
-| `[n]`             | Close the tab at position `n`, starting from 0. |
+| Argument/Option | Description                                     |
+| --------------- | ----------------------------------------------- |
+| `[n]`           | Close the tab at position `n`, starting from 0. |
 
 ### `tab_switch`
 
-| Options/Arguments | Description                                                                                                              |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `[n]`             | Switch to the tab at position `n`, starting from 0.                                                                      |
-| `--relative`      | Switch to the tab at a position relative to the current tab. The value of `n` can be negative when using this parameter. |
+| Argument/Option | Description                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `[n]`           | Switch to the tab at position `n`, starting from 0.                                                                      |
+| `--relative`    | Switch to the tab at a position relative to the current tab. The value of `n` can be negative when using this parameter. |
 
 ### `tab_swap`
 
-| Options/Arguments | Description                                                                                                                          |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `[n]`             | Swap the current tab with the tab at position `n`, where negative values move the tab forward, and positive values move it backward. |
+| Argument/Option | Description                                                                                                                          |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `[n]`           | Swap the current tab with the tab at position `n`, where negative values move the tab forward, and positive values move it backward. |
 
 ### `tasks_show`
 
@@ -414,10 +414,10 @@ Hide the task manager.
 
 ### `arrow`
 
-| Options/Arguments | Description                  |
-| ----------------- | ---------------------------- |
-| `-1`              | Move the cursor up 1 line.   |
-| `1`               | Move the cursor down 1 line. |
+| Argument/Option | Description                  |
+| --------------- | ---------------------------- |
+| `-1`            | Move the cursor up 1 line.   |
+| `1`             | Move the cursor down 1 line. |
 
 ### `inspect`
 
@@ -441,15 +441,15 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 Cancel selection.
 
-| Options/Arguments | Description           |
-| ----------------- | --------------------- |
-| `--submit`        | Submit the selection. |
+| Argument/Option | Description           |
+| --------------- | --------------------- |
+| `--submit`      | Submit the selection. |
 
 ### `arrow`
 
-| Options/Arguments | Description                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| `[n]`             | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+| Argument/Option | Description                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
 ### `help`
 
@@ -465,9 +465,9 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 Cancel input.
 
-| Options/Arguments | Description       |
-| ----------------- | ----------------- |
-| `--submit`        | Submit the input. |
+| Argument/Option | Description       |
+| --------------- | ----------------- |
+| `--submit`      | Submit the input. |
 
 ### `escape`
 
@@ -477,10 +477,10 @@ Go back the normal mode, or cancel input.
 
 Move the cursor left or right.
 
-| Options/Arguments | Description                                                                                      |
-| ----------------- | ------------------------------------------------------------------------------------------------ |
-| `[n]`             | Move the cursor `n` characters left or right. Negative value for left, positive value for right. |
-| `--in-operating`  | Move the cursor only if its currently waiting for an operation.                                  |
+| Argument/Option  | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `[n]`            | Move the cursor `n` characters left or right. Negative value for left, positive value for right. |
+| `--in-operating` | Move the cursor only if its currently waiting for an operation.                                  |
 
 ### `backward`
 
@@ -490,17 +490,17 @@ Move back to the start of the current or previous word.
 
 Move forward to the start of the next word.
 
-| Options/Arguments | Description                                          |
-| ----------------- | ---------------------------------------------------- |
-| `--end-of-word`   | Move forward to the end of the current or next word. |
+| Argument/Option | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `--end-of-word` | Move forward to the end of the current or next word. |
 
 ### `insert`
 
 Enter insert mode. This command is only available in normal mode.
 
-| Options/Arguments | Description              |
-| ----------------- | ------------------------ |
-| `--append`        | Insert after the cursor. |
+| Argument/Option | Description              |
+| --------------- | ------------------------ |
+| `--append`      | Insert after the cursor. |
 
 ### `visual`
 
@@ -510,10 +510,10 @@ Enter visual mode. This command is only available in normal mode.
 
 Delete the selected characters. This command is only available in normal mode.
 
-| Options/Arguments | Description                                                                |
-| ----------------- | -------------------------------------------------------------------------- |
-| `--cut`           | Cut the selected characters into clipboard, instead of only deleting them. |
-| `--insert`        | Delete and enter insert mode.                                              |
+| Argument/Option | Description                                                                |
+| --------------- | -------------------------------------------------------------------------- |
+| `--cut`         | Cut the selected characters into clipboard, instead of only deleting them. |
+| `--insert`      | Delete and enter insert mode.                                              |
 
 ### `yank`
 
@@ -523,9 +523,9 @@ Copy the selected characters. This command is only available in normal mode.
 
 Paste the copied characters after the cursor. This command is only available in normal mode.
 
-| Options/Arguments | Description                                    |
-| ----------------- | ---------------------------------------------- |
-| `--before`        | Paste the copied characters before the cursor. |
+| Argument/Option | Description                                    |
+| --------------- | ---------------------------------------------- |
+| `--before`      | Paste the copied characters before the cursor. |
 
 ### `undo`
 
@@ -543,20 +543,20 @@ Open the help menu. This command is only available in normal mode.
 
 Delete the character before the cursor. This command is only available in insert mode.
 
-| Options/Arguments | Description                            |
-| ----------------- | -------------------------------------- |
-| `--under`         | Delete the character under the cursor. |
+| Argument/Option | Description                            |
+| --------------- | -------------------------------------- |
+| `--under`       | Delete the character under the cursor. |
 
 ### `kill`
 
 Kill the specified range of characters. This command is only available in insert mode.
 
-| Options/Arguments | Description                                      |
-| ----------------- | ------------------------------------------------ |
-| `bol`             | Kill backwards to the BOL.                       |
-| `eol`             | Kill forwards to the EOL.                        |
-| `backward`        | Kill backwards to the start of the current word. |
-| `forward`         | Kill forwards to the end of the current word.    |
+| Argument/Option | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `bol`           | Kill backwards to the BOL.                       |
+| `eol`           | Kill forwards to the EOL.                        |
+| `backward`      | Kill backwards to the start of the current word. |
+| `forward`       | Kill forwards to the end of the current word.    |
 
 ### `plugin`
 
@@ -568,9 +568,9 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin). This command 
 
 Hide the completion menu.
 
-| Options/Arguments | Description            |
-| ----------------- | ---------------------- |
-| `--submit`        | Submit the completion. |
+| Argument/Option | Description            |
+| --------------- | ---------------------- |
+| `--submit`      | Submit the completion. |
 
 ### `close_input`
 
@@ -578,9 +578,9 @@ Close the input box. Arguments are the same as [`[input] close`](/docs/configura
 
 ### `arrow`
 
-| Options/Arguments | Description                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| `[n]`             | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+| Argument/Option | Description                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
 ### `help`
 
@@ -602,9 +602,9 @@ Clear the filter, or hide the help menu.
 
 ### `arrow`
 
-| Options/Arguments | Description                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------- |
-| `[n]`             | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+| Argument/Option | Description                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
 ### `filter`
 

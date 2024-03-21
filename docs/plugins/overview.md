@@ -47,11 +47,11 @@ A plugin has two usages:
 
 You can bind a `plugin` command to a specific key in your `keymap.toml` with:
 
-| Options/Arguments | Description                                 |
-| ----------------- | ------------------------------------------- |
-| `[name]`          | The name of the plugin to run.              |
-| `--sync`          | Run the plugin in a sync context.           |
-| `--args=[args]`   | Shell-style arguments passed to the plugin. |
+| Argument/Option | Description                                 |
+| --------------- | ------------------------------------------- |
+| `[name]`        | The name of the plugin to run.              |
+| `--sync`        | Run the plugin in a sync context.           |
+| `--args=[args]` | Shell-style arguments passed to the plugin. |
 
 For example, `plugin test --sync --args='hello world'` will run the `test` plugin with the arguments `hello` and `world` in a sync context.
 
@@ -186,15 +186,19 @@ return {
 
 When the user presses `j` or `k` to switch between hovering files, `peek` is called, with:
 
-- `file`: The [File](./types#file) to be previewed.
-- `skip`: The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
-- `area`: The [Rect](./layout#rect) of the available preview area.
-- `window`: The [Rect](./layout#rect) of the entire terminal window.
+| Key      | Description                                                                                                                 |
+| -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `file`   | The [File](./types#file) to be previewed.                                                                                   |
+| `skip`   | The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos. |
+| `area`   | The [Rect](./layout#rect) of the available preview area.                                                                    |
+| `window` | The [Rect](./layout#rect) of the entire terminal window.                                                                    |
 
 When the user presses `Alt-j` or `Alt-k` to scroll the preview of this file, `seek` is called, with:
 
-- `file`: The [File](./types#file) being scrolled.
-- `area`: The [Rect](./layout#rect) of the available preview area.
+| Key    | Description                                              |
+| ------ | -------------------------------------------------------- |
+| `file` | The [File](./types#file) being scrolled.                 |
+| `area` | The [Rect](./layout#rect) of the available preview area. |
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
