@@ -14,7 +14,7 @@ Once you've [installed Yazi](./installation.md), start the program with:
 yazi
 ```
 
-Press `q` to quit and `~` to open the help menu.
+Press <kbd>q</kbd> to quit and <kbd>~</kbd> to open the help menu.
 
 ## Shell wrapper
 
@@ -91,7 +91,8 @@ For all keybindings, see the [default `keymap.toml` file](https://github.com/sxy
 
 ### Navigation
 
-To navigate between files and directories you can use the arrow keys `←`, `↑`, `↓` and `→` or Vim-like commands such as `h`, `j`, `k`, `l`:
+To navigate between files and directories you can use the arrow keys <kbd>←</kbd>, <kbd>↓</kbd>, <kbd>↑</kbd> and <kbd>→</kbd>
+or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 
 | Key binding  | Alternate key | Action                                          |
 | ------------ | ------------- | ----------------------------------------------- |
