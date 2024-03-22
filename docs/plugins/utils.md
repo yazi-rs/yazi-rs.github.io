@@ -167,19 +167,29 @@ ya.notify {
 }
 ```
 
-### `dbg(msg)`
+### `dbg(msg, ...)`
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the debug level:
 
-- `msg` - Required, the message to be logged, which is a string
+- `msg` - Required, the message to be logged.
+
+```lua
+ya.dbg("Hello", "World!")                       -- Multiple arguments are supported
+ya.dbg({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
+```
 
 Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg).
 
-### `err(msg)`
+### `err(msg, ...)`
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the error level:
 
-- `msg` - Required, the message to be logged, which is a string
+- `msg` - Required, the message to be logged.
+
+```lua
+ya.err("Hello", "World!")                       -- Multiple arguments are supported
+ya.err({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
+```
 
 ### `sync(fn)`
 
