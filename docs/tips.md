@@ -69,9 +69,9 @@ run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
 
-## Close input by once `<Esc>` press
+## Close input by once <kbd>Esc</kbd> press
 
-You can change the `<Esc>` of input component from the default `escape` to `close` command, in your `keymap.toml`:
+You can change the <kbd>Esc</kbd> of input component from the default `escape` to `close` command, in your `keymap.toml`:
 
 ```toml
 [[input.prepend_keymap]]
@@ -95,7 +95,7 @@ return {
 }
 ```
 
-Then bind it for `l` key, in your `keymap.toml`:
+Then bind it for <kbd>l</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
@@ -118,7 +118,7 @@ run = '''
 
 ## Copy selected files to the system clipboard while yanking
 
-Yazi allows multiple commands to be bound to a single key, so you can set `y` to not only do the `yank` but also run a shell script:
+Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
 
 ```toml
 [[manager.prepend_keymap]]
@@ -152,7 +152,7 @@ return {
 }
 ```
 
-Then bind it for `k` and `j` key, in your `keymap.toml`:
+Then bind it for <kbd>k</kbd> and <kbd>j</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
@@ -184,7 +184,7 @@ end
 return { entry = entry }
 ```
 
-Then bind it for `K` and `J` key, in your `keymap.toml`:
+Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
