@@ -178,7 +178,7 @@ ya.dbg("Hello", "World!")                       -- Multiple arguments are suppor
 ya.dbg({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg).
+Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg-).
 
 ### `err(msg, ...)`
 

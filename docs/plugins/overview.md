@@ -250,7 +250,7 @@ If you have no experience with Lua, you can quickly get started through https://
 
 ### Logging
 
-If you want to debug some runtime data, use [`ya.dbg()`](./utils#dbgmsg) and [`ya.err()`](./utils#errmsg) to print what you want to debug to either:
+If you want to debug some runtime data, use [`ya.dbg()`](./utils#dbgmsg-) and [`ya.err()`](./utils#errmsg-) to print what you want to debug to either:
 
 - `~/.local/state/yazi/yazi.log` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\state\yazi.log` on Windows.
