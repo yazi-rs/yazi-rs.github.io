@@ -7,7 +7,7 @@ description: Learn how to use Yazi's Lua API.
 
 ## ya
 
-### `hide()`
+### `hide()` {#ya.hide}
 
 Hide Yazi to the secondary screen by returning to the terminal, completely controlled by the requested plugin.
 
@@ -25,18 +25,18 @@ Note that since there's always only one available terminal control resource, `ya
 
 This function is only available in the async context.
 
-### `file_cache(opts)`
+### `file_cache(opts)` {#ya.file_cache}
 
-Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given file:
+Calculate the cached [Url](/docs/plugins/types#shared.url) corresponding to the given file:
 
 - `opts` - Required, the options of the cache, which is a table:
 
-  - `file` - The [File](/docs/plugins/types#file) to be cached
+  - `file` - The [File](/docs/plugins/types#shared.file) to be cached
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
 
-### `manager_emit(cmd, args, data)`
+### `manager_emit(cmd, args, data)` {#ya.manager_emit}
 
 Send a command to the manager without waiting for the executor to execute:
 
@@ -51,25 +51,25 @@ ya.manager_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 -- my-cmd "hello" "123" --foo --bar-baz="world"
 ```
 
-### `image_show(url, rect)`
+### `image_show(url, rect)` {#ya.image_show}
 
 Display the given image within the specified area, and the image will downscale to fit that area automatically:
 
-- `url` - Required, the [Url](/docs/plugins/types#url) of the image
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the image
 - `rect` - Required, the [Rect](/docs/plugins/layout#rect) of the area
 
 This function is only available in the async context.
 
-### `image_precache(src, dist)`
+### `image_precache(src, dist)` {#ya.image_precache}
 
 Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](/docs/configuration/yazi#preview):
 
-- `src` - Required, the source [Url](/docs/plugins/types#url) of the image
-- `dist` - Required, the destination [Url](/docs/plugins/types#url) of the image
+- `src` - Required, the source [Url](/docs/plugins/types#shared.url) of the image
+- `dist` - Required, the destination [Url](/docs/plugins/types#shared.url) of the image
 
 This function is only available in the async context.
 
-### `which(opts)`
+### `which(opts)` {#ya.which}
 
 Prompt users with a set of available keys:
 
@@ -96,7 +96,7 @@ otherwise, it returns nil, indicating that the user has canceled the key operati
 
 This function is only available in the async context.
 
-### `input(opts)`
+### `input(opts)` {#ya.input}
 
 Request user input:
 
@@ -148,7 +148,7 @@ end
 
 This function is only available in the async context.
 
-### `notify(opts)`
+### `notify(opts)` {#ya.notify}
 
 Send a foreground notification to the user:
 
@@ -167,7 +167,7 @@ ya.notify {
 }
 ```
 
-### `dbg(msg, ...)`
+### `dbg(msg, ...)` {#ya.dbg}
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the debug level:
 
@@ -178,9 +178,9 @@ ya.dbg("Hello", "World!")                       -- Multiple arguments are suppor
 ya.dbg({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#errmsg-).
+Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#ya.err).
 
-### `err(msg, ...)`
+### `err(msg, ...)` {#ya.err}
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the error level:
 
@@ -191,19 +191,19 @@ ya.err("Hello", "World!")                       -- Multiple arguments are suppor
 ya.err({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-### `sync(fn)`
+### `sync(fn)` {#ya.sync}
 
 See [Async context](/docs/plugins/overview#async-context).
 
-### `preview_code(opts)`
+### `preview_code(opts)` {#ya.preview_code}
 
 Preview the file as code into the specified area:
 
 - `opts` - Required, the options of the preview, which is a table:
-  - `file` - The previewed [File](/docs/plugins/types#file)
+  - `file` - The previewed [File](/docs/plugins/types#shared.file)
   - `area` - The area of the preview, which is a [Rect](/docs/plugins/layout#rect)
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
-  - `window` - The [Window](/docs/plugins/types#window) of the preview
+  - `window` - The [Window](/docs/plugins/types#shared.window) of the preview
 
 Returns `(ok, upper_bound)`:
 
@@ -212,11 +212,11 @@ Returns `(ok, upper_bound)`:
 
 This function is only available in the async context.
 
-### `preview_archive(opts)`
+### `preview_archive(opts)` {#ya.preview_archive}
 
 Preview the file as an archive into the specified area:
 
-- `opts` - Required, the options of the preview. It's the same as [`preview_code`](#preview_codeopts)
+- `opts` - Required, the options of the preview. It's the same as [`preview_code()`](#ya.preview_code)
 
 Returns `(ok, upper_bound)`:
 
@@ -225,21 +225,21 @@ Returns `(ok, upper_bound)`:
 
 This function is only available in the async context.
 
-### `preview_widgets(opts, widgets)`
+### `preview_widgets(opts, widgets)` {#ya.preview_widgets}
 
 - `opts` - Required, the options of the preview, which is a table:
-  - `file` - The previewed [File](/docs/plugins/types#file)
+  - `file` - The previewed [File](/docs/plugins/types#shared.file)
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
-  - `window` - The [Window](/docs/plugins/types#window) of the preview
+  - `window` - The [Window](/docs/plugins/types#shared.window) of the preview
 - `widgets` - List of renderable widgets, such as `{ ui.Paragraph {...}, ui.List {...}, ... }`
 
 This function is only available in the async context.
 
-### `target_family()`
+### `target_family()` {#ya.target_family}
 
 Returns the target family of the current platform, `"windows"`, `"unix"`, or `"wasm"`.
 
-### `quote(str)`
+### `quote(str)` {#ya.quote}
 
 Quote characters that may have special meaning in a shell:
 
@@ -249,7 +249,7 @@ Quote characters that may have special meaning in a shell:
 local handle = io.popen("ls " .. ya.quote(filename))
 ```
 
-### `truncate(text, opts)`
+### `truncate(text, opts)` {#ya.truncate}
 
 Truncate the text to the specified length and return it:
 
@@ -258,11 +258,11 @@ Truncate the text to the specified length and return it:
   - `max` - Required, the maximum length of the text, which is an integer.
   - `rtl` - Optional, whether the text is right-to-left, which is a boolean.
 
-### `time()`
+### `time()` {#ya.time}
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
 
-### `sleep(secs)`
+### `sleep(secs)` {#ya.sleep}
 
 Waits until `secs` has elapsed:
 
@@ -274,15 +274,15 @@ ya.sleep(0.5)  -- Sleep for 500 milliseconds
 
 This function is only available in the async context.
 
-### `uid()`
+### `uid()` {#ya.uid}
 
 Only available on Unix-like systems. Returns the user id of the current user, which is an integer.
 
-### `gid()`
+### `gid()` {#ya.gid}
 
 Only available on Unix-like systems. Returns the group id of the current user, which is an integer.
 
-### `user_name(uid)`
+### `user_name(uid)` {#ya.user_name}
 
 Get the name of the user:
 
@@ -292,7 +292,7 @@ Returns the name of the current user, which is a string if successful; otherwise
 
 This function is only available on Unix-like systems.
 
-### `group_name(gid)`
+### `group_name(gid)` {#ya.group_name}
 
 Get the name of the user group:
 
@@ -302,7 +302,7 @@ Returns the name of the current group, which is a string if successful; otherwis
 
 This function is only available on Unix-like systems.
 
-### `host_name()`
+### `host_name()` {#ya.host_name}
 
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
 
@@ -310,7 +310,7 @@ Only available on Unix-like systems. Returns the hostname of the current machine
 
 The following functions can only be used within an async context.
 
-### `write(url, data)`
+### `write(url, data)` {#fs.write}
 
 ```lua
 local ok, err = fs.write(url, "hello world")
@@ -318,7 +318,7 @@ local ok, err = fs.write(url, "hello world")
 
 Write data to the specified file:
 
-- `url` - Required, the [Url](./types#url) of the file
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
 - `data` - Required, the data to be written, which is a string
 
 Returns `(ok, err)`:
@@ -326,34 +326,34 @@ Returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
-### `cha(url)`
+### `cha(url)` {#fs.cha}
 
 ```lua
 local cha, err = fs.cha(url)
 ```
 
-Get the [Cha](./types#cha) of the specified file, which is faster than [`cha_follow`](#chafollowurl) since it never follows the symbolic link:
+Get the [Cha](/docs/plugins/types#shared.cha) of the specified file, which is faster than [`cha_follow()`](#fs.cha_follow) since it never follows the symbolic link:
 
-- `url` - Required, the [Url](./types#url) of the file
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
 
 Returns `(cha, err)`:
 
-- `cha` - The [Cha](./types#cha) of the file if successful; otherwise, `nil`
+- `cha` - The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
-### `cha_follow(url)`
+### `cha_follow(url)` {#fs.cha_follow}
 
 ```lua
 local cha, err = fs.cha_follow(url)
 ```
 
-Get the [Cha](./types#cha) of the specified file, and follow the symbolic link:
+Get the [Cha](/docs/plugins/types#shared.cha) of the specified file, and follow the symbolic link:
 
-- `url` - Required, the [Url](./types#url) of the file
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
 
 Returns `(cha, err)`:
 
-- `cha` - The [Cha](./types#cha) of the file if successful; otherwise, `nil`
+- `cha` - The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
 ## Command
@@ -371,7 +371,7 @@ Compared to Lua's `os.execute`, it provides many comprehensive and convenient me
 
 It takes better advantage of the benefits of concurrent scheduling. However, it can only be used in async contexts, such as preloaders, previewers, and async functional plugins.
 
-### `arg(arg)`
+### `arg(arg)` {#Command.arg}
 
 ```lua
 local cmd = Command("ls"):arg("-a"):arg("-l")
@@ -383,7 +383,7 @@ Append an argument to the command:
 
 Returns `self`.
 
-### `args(args)`
+### `args(args)` {#Command.args}
 
 ```lua
 local cmd = Command("ls"):args({ "-a", "-l" }):args({ "-h" })
@@ -395,7 +395,7 @@ Append multiple arguments to the command:
 
 Returns `self`.
 
-### `cwd(dir)`
+### `cwd(dir)` {#Command.cwd}
 
 ```lua
 local cmd = Command("ls"):cwd("/root")
@@ -407,7 +407,7 @@ Set the current working directory of the command:
 
 Returns `self`.
 
-### `env(key, value)`
+### `env(key, value)` {#Command.env}
 
 ```lua
 local cmd = Command("ls"):env("PATH", "/bin"):env("HOME", "/home")
@@ -420,7 +420,7 @@ Append an environment variable to the command:
 
 Returns `self`.
 
-### `stdin(cfg)`
+### `stdin(cfg)` {#Command.stdin}
 
 ```lua
 local cmd = Command("ls"):stdin(Command.PIPED)
@@ -435,7 +435,7 @@ Set the stdin of the command:
 
 If not set, the stdin will be null. Returns `self`.
 
-### `stdout(cfg)`
+### `stdout(cfg)` {#Command.stdout}
 
 ```lua
 local cmd = Command("ls"):stdout(Command.PIPED)
@@ -450,7 +450,7 @@ Set the stdout of the command:
 
 If not set, the stdout will be null. Returns `self`.
 
-### `stderr(cfg)`
+### `stderr(cfg)` {#Command.stderr}
 
 ```lua
 local cmd = Command("ls"):stderr(Command.PIPED)
@@ -465,7 +465,7 @@ Set the stderr of the command:
 
 If not set, the stderr will be null. Returns `self`.
 
-### `spawn()`
+### `spawn()` {#Command.spawn}
 
 ```lua
 local child, err = Command("ls"):spawn()
@@ -476,7 +476,7 @@ Spawn the command, returns `(child, err)`:
 - `child` - The [Child](#child) of the command if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
-### `output()`
+### `output()` {#Command.output}
 
 ```lua
 local output, err = Command("ls"):output()
@@ -484,16 +484,16 @@ local output, err = Command("ls"):output()
 
 Spawn the command and wait for it to finish, returns `(output, err)`:
 
-- `output` - The [Output](#output-1) of the command if successful; otherwise, `nil`
+- `output` - The [Output](#output) of the command if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
 ## Child
 
-This object is created by [`Command:spawn`](#spawn) and represents a running child process.
+This object is created by [`Command:spawn()`](#Command.spawn) and represents a running child process.
 
 You can access the runtime data of this process through its proprietary methods.
 
-### `read(len)`
+### `read(len)` {#Child.read}
 
 ```lua
 local data, event = child:read(1024)
@@ -507,21 +507,21 @@ Let's say "available data source" refers to `stdout` or `stderr` that has been s
 - The data comes from stderr if event is 1
 - There's no data to read from both stdout and stderr, if event is 2
 
-### `read_line()`
+### `read_line()` {#Child.read_line}
 
 ```lua
 local line, event = child:read_line()
 ```
 
-Similar to [`read()`](#readlen), but it reads data line by line.
+Similar to [`read()`](#Child.read), but it reads data line by line.
 
-### `read_line_with(opts)`
+### `read_line_with(opts)` {#Child.read_line_with}
 
 ```lua
 local line, event = child:wait_line_with { timeout = 500 }
 ```
 
-Similar to [`read_line()`](#read_line), but it accepts a table of options:
+Similar to [`read_line()`](#Child.read_line), but it accepts a table of options:
 
 - `timeout` - Required, timeout in milliseconds, which is an integer
 
@@ -529,7 +529,7 @@ And includes the following additional events:
 
 - Timeout if event is 3
 
-### `wait()`
+### `wait()` {#Child.wait}
 
 ```lua
 local status, err = child:wait()
@@ -540,7 +540,7 @@ Wait for the child process to finish, returns `(status, err)`:
 - `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
-### `start_kill()`
+### `start_kill()` {#Child.start_kill}
 
 ```lua
 local ok, err = child:start_kill()
@@ -561,9 +561,9 @@ Properties:
 
 ## Status
 
-This object represents the exit status of a child process, and it is created by [`wait()`](#wait), or [`output()`](#output-1).
+This object represents the exit status of a child process, and it is created by [`wait()`](#Child.wait), or [`output()`](#Command.output).
 
-### `success()`
+### `success()` {#Status.success}
 
 ```lua
 local ok = status:success()
@@ -571,7 +571,7 @@ local ok = status:success()
 
 Returns whether the child process exited successfully, which is a boolean.
 
-### `code()`
+### `code()` {#Status.code}
 
 ```lua
 local code = status:code()

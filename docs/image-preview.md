@@ -99,7 +99,7 @@ If the image shows properly when using Überzug++ independently, but not when us
 
 The size of the image depends on two factors:
 
-1. The [max_width](/docs/configuration/yazi#max_width) and [max_height](/docs/configuration/yazi#max_height) config options, which need to be adjusted by the user as needed.
+1. The [max_width](/docs/configuration/yazi#preview.max_width) and [max_height](/docs/configuration/yazi#preview.max_height) config options, which need to be adjusted by the user as needed.
 2. The pixel size of the terminal.
 
 Yazi will use the smaller of these two factors as the image preview size.

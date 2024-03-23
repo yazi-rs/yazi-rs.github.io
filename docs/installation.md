@@ -11,7 +11,7 @@ To use Yazi, you must have the following prerequisites installed:
 
 Yazi can be _optionally_ extended with other command line tools to enable additional features.
 
-- [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](./faq#i-dont-like-nerdfonts))
+- [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](./faq#dont-like-nerd-fonts))
 - [`ffmpegthumbnailer`](https://github.com/dirkvdb/ffmpegthumbnailer) (for video thumbnails)
 - [`unar`](https://theunarchiver.com/command-line) (for archive preview)
 - [`jq`](https://jqlang.github.io/jq/) (for JSON preview)

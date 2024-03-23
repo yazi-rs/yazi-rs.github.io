@@ -14,7 +14,7 @@ This makes it easier to update, as there won't be conflicts when pulling from Gi
 
 Behind the scenes, Yazi merges the user's `theme.toml` with the flavor's `flavor.toml` automatically, and the user's always takes precedence over the flavor.
 
-## Directory structure
+## Directory structure {#structure}
 
 These flavors are placed in the `flavors` subdirectory of the Yazi configuration directory, so either:
 
@@ -48,7 +48,7 @@ Where:
 - `README.md` and `screenshot.png` are the screenshot and the description of this flavor, respectively.
 - `LICENSE` and `LICENSE-tmtheme` are the licenses for the flavor and the `tmtheme.xml` file, respectively.
 
-## Usage
+## Usage {#usage}
 
 For example, if you want to use the `bar.yazi` flavor, add these lines to your `theme.toml`:
 
@@ -57,6 +57,6 @@ For example, if you want to use the `bar.yazi` flavor, add these lines to your `
 use = "bar"
 ```
 
-## Cooking a flavor
+## Cooking a flavor {#cooking}
 
 Please use our [flavor-template](https://github.com/yazi-rs/flavor-template) repository as a starting point to create your own flavor.

@@ -5,24 +5,24 @@ description: Answers to some frequently asked questions about Yazi.
 
 # Frequently Asked Questions
 
-## Why is Yazi fast?
+## Why is Yazi fast? {#why-yazi-fast}
 
 See [Why is Yazi fast?](/blog/why-is-yazi-fast).
 
-## Why can't I edit text files?
+## Why can't I edit text files? {#why-cant-edit}
 
 Yazi defaults to using `$EDITOR` as the text editor for Linux/macOS.
 If you are unable to edit files, please check your Bash/Zsh/Fish configuration file for settings like `export EDITOR=vim`. You can also [change Yazi's text opener](/docs/configuration/yazi#opener) from `$EDITOR` to vim/nvim/nano.
 
 For Windows, there is no concept of `$EDITOR`, so users need to modify the text opener as needed.
 
-## Why can't I open/edit/preview files on Windows?
+## Why can't I open/edit/preview files on Windows? {#why-cant-preview}
 
 Have you added Git to the `PATH` as per the [Windows Requirements](/docs/installation#requirements)?
 
 Please make sure the `file` command is available in your terminal, you can do a `file -v` to check it.
 
-## Why is my text color not distinct?
+## Why is my text color not distinct? {#why-text-indistinct}
 
 Yazi's default theme uses base16 colors to match the user's terminal theme as closely as possible.
 
@@ -30,7 +30,7 @@ Unfortunately, this cannot cater to all users, and even the colors needed by the
 
 So, please [use a Yazi flavor](https://github.com/yazi-rs/flavors) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR!
 
-## Why can't "Open" and "Enter" be a single command?
+## Why can't "Open" and "Enter" be a single command? {#why-separate-open-enter}
 
 The decision to separate `enter` and `open` commands was intentional.
 
@@ -40,9 +40,9 @@ An archive is a file, so it's "openable", but it's also "enterable" as a directo
 
 This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
 
-If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips#smart-enter-enter-for-directory-open-for-file).
+If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips#smart-enter).
 
-## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling?
+## Why do my icons shrink in [kitty](https://sw.kovidgoyal.net/kitty/), and enlarge when scrolling? {#why-icons-shrink}
 
 TL;DR: Use a flavor for Yazi, https://github.com/yazi-rs/flavors
 
@@ -50,7 +50,7 @@ This might be a bug in kitty (or feature? I don't know). In kitty, you have to a
 
 So it inherits the default terminal font color. This causes the icon size issue, and I've only found this problem in kitty - other terminals don't have it. Therefore, please use a Yazi flavor for the kitty terminal.
 
-## Why is "orphan" set to false by default?
+## Why is "orphan" set to false by default? {#why-orphan-false}
 
 `orphan=true` is an emergency exit; once specified, your task will not be managed by Yazi.
 
@@ -59,7 +59,7 @@ However, with `orphan=true`, you can only return to the shell to terminate it.
 
 On the other hand, tasks with `orphan=false` are scheduled through the Yazi task system. It can limit the number of concurrent tasks (configurable by the user), to prevent system resource depletion, such as when you're extracting 100 files.
 
-## I don't like nerd‐fonts!
+## I don't like nerd‐fonts! {#dont-like-nerd-fonts}
 
 Yazi has `nerd-fonts` enabled by default, it looks really cool!
 
@@ -76,7 +76,7 @@ rules = []
 
 The above code changed all icons to `""`, and the whole world went quiet, nice!
 
-## Why doesn't the XXX feature exist?
+## Why doesn't the XXX feature exist? {#why-no-xxx}
 
 Yazi is a new project, with less than 3 months (as of Sep 20, 2023) since its first commit, and some features are still heavily being developed.
 

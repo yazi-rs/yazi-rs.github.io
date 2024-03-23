@@ -75,9 +75,9 @@ keymap = [
 ]
 ```
 
-## [manager]
+## [manager] {#manager}
 
-### `escape`
+### `escape` {#manager.escape}
 
 Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
@@ -92,7 +92,7 @@ Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
 Automatically determine the operation by default, and it will only execute the selected operation after specifying the option; multiple options can be stacked.
 
-### `quit`
+### `quit` {#manager.quit}
 
 Exit the process.
 
@@ -100,39 +100,39 @@ Exit the process.
 | --------------- | ---------------------------------------------------- |
 | `--no-cwd-file` | Don't write the current directory to the `cwd-file`. |
 
-### `close`
+### `close` {#manager.close}
 
 Close the current tab; if it's the last tab, exit the process instead.
 
-### `arrow`
+### `arrow` {#manager.arrow}
 
 | Argument/Option | Description                                                                                                       |
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `[n]` / `[n%]`  | Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down. |
 
-### `leave`
+### `leave` {#manager.leave}
 
 Go back to the parent directory of the hovered file, or the parent of the current working directory if no file is hovered on.
 
-### `enter`
+### `enter` {#manager.enter}
 
 Enter the child directory.
 
-### `back`
+### `back` {#manager.back}
 
 Go back to the previous directory.
 
-### `forward`
+### `forward` {#manager.forward}
 
 Go forward to the next directory.
 
-### `seek`
+### `seek` {#manager.seek}
 
 | Argument/Option | Description                                                                                                       |
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `[n]`           | Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down. |
 
-### `cd`
+### `cd` {#manager.cd}
 
 Change the current directory.
 
@@ -141,7 +141,7 @@ Change the current directory.
 | `[path]`        | The path to change to.                   |
 | `--interactive` | Use an interactive UI to input the path. |
 
-### `reveal`
+### `reveal` {#manager.reveal}
 
 Change the current directory to the parent of specified file, and hover on it.
 
@@ -149,7 +149,7 @@ Change the current directory to the parent of specified file, and hover on it.
 | --------------- | ------------------- |
 | `[path]`        | The path to reveal. |
 
-### `select`
+### `select` {#manager.select}
 
 | Argument/Option | Description                                              |
 | --------------- | -------------------------------------------------------- |
@@ -157,7 +157,7 @@ Change the current directory to the parent of specified file, and hover on it.
 | `--state=false` | Deselect the current file.                               |
 | `--state=none`  | Default, toggle the selection state of the current file. |
 
-### `select_all`
+### `select_all` {#manager.select_all}
 
 Select all files in the current working directory.
 
@@ -169,9 +169,9 @@ Select all files in the current working directory.
 
 Note that `--state=false` will deselect all files in the current working directory.
 
-If you have selected files across directories and want to deselect all of them, use [`escape --select`](#escape) instead.
+If you have selected files across directories and want to deselect all of them, use [`escape --select`](#manager.escape) instead.
 
-### `visual_mode`
+### `visual_mode` {#manager.visual_mode}
 
 Enter visual mode (selection mode).
 
@@ -179,7 +179,7 @@ Enter visual mode (selection mode).
 | --------------- | ------------------------------- |
 | `--unset`       | Enter visual mode (unset mode). |
 
-### `open`
+### `open` {#manager.open}
 
 Open the selected files.
 
@@ -188,7 +188,7 @@ Open the selected files.
 | `--interactive` | Open the hovered/selected file(s) with an interactive UI to choose the opening method. |
 | `--hovered`     | Always open the hovered file regardless of the selection state.                        |
 
-### `yank`
+### `yank` {#manager.yank}
 
 Yank the selected files.
 
@@ -196,11 +196,11 @@ Yank the selected files.
 | --------------- | ----------------------- |
 | `--cut`         | Cut the selected files. |
 
-### `unyank`
+### `unyank` {#manager.unyank}
 
 Cancel the yank status of files.
 
-### `paste`
+### `paste` {#manager.paste}
 
 Paste the yanked files.
 
@@ -209,7 +209,7 @@ Paste the yanked files.
 | `--force`       | Overwrite the destination file if it exists.                                                               |
 | `--follow`      | Copy the file pointed to by a symbolic link, rather than the link itself. Only can be used during copying. |
 
-### `link`
+### `link` {#manager.link}
 
 Create a symbolic link to the yanked files. (This is a privileged action in Windows and must be run as an administrator.)
 
@@ -218,7 +218,7 @@ Create a symbolic link to the yanked files. (This is a privileged action in Wind
 | `--relative`    | Use a relative path for the symbolic link.   |
 | `--force`       | Overwrite the destination file if it exists. |
 
-### `remove`
+### `remove` {#manager.remove}
 
 Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html).
 
@@ -229,7 +229,7 @@ In the Android platform, you can only use it with the `--permanently` option, si
 | `--force`       | Don't show the confirmation dialog, and trash/delete files directly. |
 | `--permanently` | Permanently delete the files.                                        |
 
-### `create`
+### `create` {#manager.create}
 
 Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directories.
 
@@ -237,7 +237,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 | --------------- | ---------------------------------------------------------------------------------------------- |
 | `--force`       | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
 
-### `rename`
+### `rename` {#manager.rename}
 
 Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
@@ -256,7 +256,7 @@ You can also use `--cursor` with `--empty`, for example, `rename --empty=stem --
 
 Which causes the input box content for the filename `foo.jpg` to be `|.jpg`, where "|" represents the cursor position.
 
-### `copy`
+### `copy` {#manager.copy}
 
 Copy the path of files or directories that are selected or hovered on.
 
@@ -267,7 +267,7 @@ Copy the path of files or directories that are selected or hovered on.
 | `filename`         | Copy the name of the file.                       |
 | `name_without_ext` | Copy the name of the file without the extension. |
 
-### `shell`
+### `shell` {#manager.shell}
 
 Run a shell command.
 
@@ -283,7 +283,7 @@ You can use the following shell variables in `[run]`:
 - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
 - `$0` (Unix) / `%0` (Windows): The hovered file.
 
-### `hidden`
+### `hidden` {#manager.hidden}
 
 Set the visibility of hidden files.
 
@@ -293,7 +293,7 @@ Set the visibility of hidden files.
 | `hide`          | Hide hidden files.                |
 | `toggle`        | Default, toggle the hidden state. |
 
-### `linemode`
+### `linemode` {#manager.linemode}
 
 Set the line mode.
 
@@ -307,7 +307,7 @@ Set the line mode.
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
 
-### `search`
+### `search` {#manager.search}
 
 | Argument/Option | Description                            |
 | --------------- | -------------------------------------- |
@@ -323,14 +323,14 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
 </details>
 
-### `jump`
+### `jump` {#manager.jump}
 
 | Argument/Option | Description                                      |
 | --------------- | ------------------------------------------------ |
 | `fzf`           | Jump to a directory, or reveal a file using fzf. |
 | `zoxide`        | Jump to a directory using zoxide.                |
 
-### `find`
+### `find` {#manager.find}
 
 | Argument/Option | Description                                                                                                              |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -339,7 +339,7 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 | `--smart`       | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive` | Use case-insensitive find.                                                                                               |
 
-### `find_arrow`
+### `find_arrow` {#manager.find_arrow}
 
 Move the cursor to the next or previous occurrence.
 
@@ -347,7 +347,7 @@ Move the cursor to the next or previous occurrence.
 | --------------- | -------------------------------- |
 | `--previous`    | Move to the previous occurrence. |
 
-### `filter`
+### `filter` {#manager.filter}
 
 | Argument/Option | Description                                                                                                                |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -355,7 +355,7 @@ Move the cursor to the next or previous occurrence.
 | `--smart`       | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive` | Use case-insensitive filter.                                                                                               |
 
-### `sort`
+### `sort` {#manager.sort}
 
 - `by`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
@@ -368,76 +368,76 @@ Move the cursor to the next or previous occurrence.
 - `--reverse`: Display files in reverse order.
 - `--dir-first`: Display directories first.
 
-### `tab_create`
+### `tab_create` {#manager.tab_create}
 
 | Argument/Option | Description                                |
 | --------------- | ------------------------------------------ |
 | `[path]`        | Create a new tab using the specified path. |
 | `--current`     | Create a new tab using the current path.   |
 
-### `tab_close`
+### `tab_close` {#manager.tab_close}
 
 | Argument/Option | Description                                     |
 | --------------- | ----------------------------------------------- |
 | `[n]`           | Close the tab at position `n`, starting from 0. |
 
-### `tab_switch`
+### `tab_switch` {#manager.tab_switch}
 
 | Argument/Option | Description                                                                                                              |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `[n]`           | Switch to the tab at position `n`, starting from 0.                                                                      |
 | `--relative`    | Switch to the tab at a position relative to the current tab. The value of `n` can be negative when using this parameter. |
 
-### `tab_swap`
+### `tab_swap` {#manager.tab_swap}
 
 | Argument/Option | Description                                                                                                                          |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `[n]`           | Swap the current tab with the tab at position `n`, where negative values move the tab forward, and positive values move it backward. |
 
-### `tasks_show`
+### `tasks_show` {#manager.tasks_show}
 
 Show the task manager.
 
-### `help`
+### `help` {#manager.help}
 
 Open the help menu.
 
-### `plugin`
+### `plugin` {#manager.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-## [tasks]
+## [tasks] {#tasks}
 
-### `close`
+### `close` {#tasks.close}
 
 Hide the task manager.
 
-### `arrow`
+### `arrow` {#tasks.arrow}
 
 | Argument/Option | Description                  |
 | --------------- | ---------------------------- |
 | `-1`            | Move the cursor up 1 line.   |
 | `1`             | Move the cursor down 1 line. |
 
-### `inspect`
+### `inspect` {#tasks.inspect}
 
 Inspect the task (press `q` to exit the inspect view).
 
-### `cancel`
+### `cancel` {#tasks.cancel}
 
 Cancel the task.
 
-### `help`
+### `help` {#tasks.help}
 
 Open the help menu.
 
-### `plugin`
+### `plugin` {#tasks.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-## [select]
+## [select] {#select}
 
-### `close`
+### `close` {#select.close}
 
 Cancel selection.
 
@@ -445,23 +445,23 @@ Cancel selection.
 | --------------- | --------------------- |
 | `--submit`      | Submit the selection. |
 
-### `arrow`
+### `arrow` {#select.arrow}
 
 | Argument/Option | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
 | `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
-### `help`
+### `help` {#select.help}
 
 Open the help menu.
 
-### `plugin`
+### `plugin` {#select.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-## [input]
+## [input] {#input}
 
-### `close`
+### `close` {#input.close}
 
 Cancel input.
 
@@ -469,11 +469,11 @@ Cancel input.
 | --------------- | ----------------- |
 | `--submit`      | Submit the input. |
 
-### `escape`
+### `escape` {#input.escape}
 
 Go back the normal mode, or cancel input.
 
-### `move`
+### `move` {#input.move}
 
 Move the cursor left or right.
 
@@ -482,11 +482,11 @@ Move the cursor left or right.
 | `[n]`            | Move the cursor `n` characters left or right. Negative value for left, positive value for right. |
 | `--in-operating` | Move the cursor only if its currently waiting for an operation.                                  |
 
-### `backward`
+### `backward` {#input.backward}
 
 Move back to the start of the current or previous word.
 
-### `forward`
+### `forward` {#input.forward}
 
 Move forward to the start of the next word.
 
@@ -494,7 +494,7 @@ Move forward to the start of the next word.
 | --------------- | ---------------------------------------------------- |
 | `--end-of-word` | Move forward to the end of the current or next word. |
 
-### `insert`
+### `insert` {#input.insert}
 
 Enter insert mode. This command is only available in normal mode.
 
@@ -502,11 +502,11 @@ Enter insert mode. This command is only available in normal mode.
 | --------------- | ------------------------ |
 | `--append`      | Insert after the cursor. |
 
-### `visual`
+### `visual` {#input.visual}
 
 Enter visual mode. This command is only available in normal mode.
 
-### `delete`
+### `delete` {#input.delete}
 
 Delete the selected characters. This command is only available in normal mode.
 
@@ -515,11 +515,11 @@ Delete the selected characters. This command is only available in normal mode.
 | `--cut`         | Cut the selected characters into clipboard, instead of only deleting them. |
 | `--insert`      | Delete and enter insert mode.                                              |
 
-### `yank`
+### `yank` {#input.yank}
 
 Copy the selected characters. This command is only available in normal mode.
 
-### `paste`
+### `paste` {#input.paste}
 
 Paste the copied characters after the cursor. This command is only available in normal mode.
 
@@ -527,19 +527,19 @@ Paste the copied characters after the cursor. This command is only available in 
 | --------------- | ---------------------------------------------- |
 | `--before`      | Paste the copied characters before the cursor. |
 
-### `undo`
+### `undo` {#input.undo}
 
 Undo the last operation. This command is only available in normal mode.
 
-### `redo`
+### `redo` {#input.redo}
 
 Redo the last operation. This command is only available in normal mode.
 
-### `help`
+### `help` {#input.help}
 
 Open the help menu. This command is only available in normal mode.
 
-### `backspace`
+### `backspace` {#input.backspace}
 
 Delete the character before the cursor. This command is only available in insert mode.
 
@@ -547,7 +547,7 @@ Delete the character before the cursor. This command is only available in insert
 | --------------- | -------------------------------------- |
 | `--under`       | Delete the character under the cursor. |
 
-### `kill`
+### `kill` {#input.kill}
 
 Kill the specified range of characters. This command is only available in insert mode.
 
@@ -558,13 +558,13 @@ Kill the specified range of characters. This command is only available in insert
 | `backward`      | Kill backwards to the start of the current word. |
 | `forward`       | Kill forwards to the end of the current word.    |
 
-### `plugin`
+### `plugin` {#input.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin). This command is only available in insert mode.
 
-## [completion]
+## [completion] {#completion}
 
-### `close`
+### `close` {#completion.close}
 
 Hide the completion menu.
 
@@ -572,44 +572,44 @@ Hide the completion menu.
 | --------------- | ---------------------- |
 | `--submit`      | Submit the completion. |
 
-### `close_input`
+### `close_input` {#completion.close_input}
 
-Close the input box. Arguments are the same as [`[input] close`](/docs/configuration/keymap/#close-3).
+Close the input box. Arguments are the same as [`[input] close`](#input.close).
 
-### `arrow`
+### `arrow` {#completion.arrow}
 
 | Argument/Option | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
 | `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
-### `help`
+### `help` {#completion.help}
 
 Open the help menu.
 
-### `plugin`
+### `plugin` {#completion.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-## [help]
+## [help] {#help}
 
-### `close`
+### `close` {#help.close}
 
 Hide the help menu.
 
-### `escape`
+### `escape` {#help.escape}
 
 Clear the filter, or hide the help menu.
 
-### `arrow`
+### `arrow` {#help.arrow}
 
 | Argument/Option | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
 | `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
-### `filter`
+### `filter` {#help.filter}
 
 Apply a filter for the help items.
 
-### `plugin`
+### `plugin` {#help.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).

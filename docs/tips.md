@@ -11,7 +11,7 @@ These tips require prior knowledge of the Yazi configuration file.
 
 If you are using Yazi for the first time, please read our [configuration](/docs/configuration/overview) and [plugins](/docs/plugins/overview) documentation first.
 
-## Full border
+## Full border {#full-border}
 
 You can implement a full border for Yazi via the UI plugin.
 
@@ -58,7 +58,7 @@ function Manager:render(area)
 
 If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUNDED)`.
 
-## Dropping to the shell
+## Dropping to the shell {#dropping-to-shell}
 
 Add this keybinding to your `keymap.toml`:
 
@@ -69,7 +69,7 @@ run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
 
-## Close input by once <kbd>Esc</kbd> press
+## Close input by once <kbd>Esc</kbd> press {#close-input-by-esc}
 
 You can change the <kbd>Esc</kbd> of input component from the default `escape` to `close` command, in your `keymap.toml`:
 
@@ -82,7 +82,7 @@ desc = "Cancel input"
 
 to exiting input directly, without entering Vi mode, making it behave like a regular input box.
 
-## Smart enter: `enter` for directory, `open` for file
+## Smart enter: `enter` for directory, `open` for file {#smart-enter}
 
 Save these lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
 
@@ -104,7 +104,7 @@ run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
 
-## Drag and drop via [`dragon`](https://github.com/mwh/dragon)
+## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
 
@@ -116,7 +116,7 @@ run = '''
 '''
 ```
 
-## Copy selected files to the system clipboard while yanking
+## Copy selected files to the system clipboard while yanking {#selected-files-to-clipboard}
 
 Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
 
@@ -138,7 +138,7 @@ run = [ "yank", '''
 ''' ]
 ```
 
-## File navigation wraparound
+## File navigation wraparound {#navigation-wraparound}
 
 Save these lines as `~/.config/yazi/plugins/arrow.yazi/init.lua`:
 
@@ -164,7 +164,7 @@ on  = [ "j" ]
 run = "plugin --sync arrow --args=1"
 ```
 
-## Navigation in the parent directory without leaving the CWD
+## Navigation in the parent directory without leaving the CWD {#parent-arrow}
 
 Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/init.lua`:
 
@@ -196,7 +196,7 @@ on  = [ "J" ]
 run = "plugin --sync parent-arrow --args=1"
 ```
 
-## No status bar
+## No status bar {#no-status-bar}
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
 
@@ -211,7 +211,7 @@ function Manager:render(area)
 end
 ```
 
-## Show symlink in status bar
+## Show symlink in status bar {#symlink-in-status}
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
@@ -231,7 +231,7 @@ Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yaz
  end
 ```
 
-## Show user/group of files in status bar
+## Show user/group of files in status bar {#user-group-in-status}
 
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
@@ -263,7 +263,7 @@ Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
  		ui.Paragraph(area, { left }),
 ```
 
-## Show username and hostname in header
+## Show username and hostname in header {#username-hostname-in-header}
 
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
@@ -292,7 +292,7 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
  		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
 ```
 
-## Make Yazi even faster than fast
+## Make Yazi even faster than fast {#make-yazi-even-faster}
 
 While Yazi is already fast, there is still plenty of room for optimization for specific users or under certain conditions:
 

@@ -9,15 +9,15 @@ description: Learn how to configure Yazi's basic functionality.
 If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
 :::
 
-## [manager]
+## [manager] {#manager}
 
-### `ratio`
+### `ratio` {#manager.ratio}
 
 Manager layout by ratio, 3-element array.
 
 - `[1, 4, 3]`: 1/8 width for parent, 4/8 width for current, 3/8 width for preview
 
-### `sort_by`
+### `sort_by` {#manager.sort_by}
 
 File sorting method.
 
@@ -29,28 +29,28 @@ File sorting method.
 - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
 - `"size"`: Sort by file size.
 
-### `sort_sensitive`
+### `sort_sensitive` {#manager.sort_sensitive}
 
 Sort case-sensitively.
 
 - `true`: Case-sensitive
 - `false`: Case-insensitive
 
-### `sort_reverse`
+### `sort_reverse` {#manager.sort_reverse}
 
 Display files in reverse order.
 
 - `true`: Reverse order
 - `false`: Normal order
 
-### `sort_dir_first`
+### `sort_dir_first` {#manager.sort_dir_first}
 
 Display directories first.
 
 - `true`: Directories first
 - `false`: Respects `sort_by` and `sort_reverse` only
 
-### `linemode`
+### `linemode` {#manager.linemode}
 
 Line mode: display information associated with the file on the right side of the file list row.
 
@@ -62,51 +62,51 @@ Line mode: display information associated with the file on the right side of the
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
 
-### `show_hidden`
+### `show_hidden` {#manager.show_hidden}
 
 Show hidden files.
 
 - `true`: Show
 - `false`: Do not show
 
-### `show_symlink`
+### `show_symlink` {#manager.show_symlink}
 
 Show the path of the symlink file point to, after the filename.
 
 - `true`: Show
 - `false`: Do not show
 
-### `scrolloff`
+### `scrolloff` {#manager.scrolloff}
 
 The number of files to keep above and below the cursor when moving through the file list.
 
 If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
 
-## [preview]
+## [preview] {#preview}
 
-### `tab_size`
+### `tab_size` {#preview.tab_size}
 
 Tab width.
 
-### `max_width`
+### `max_width` {#preview.max_width}
 
 Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
-### `max_height`
+### `max_height` {#preview.max_height}
 
 Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
-### `cache_dir`
+### `cache_dir` {#preview.cache_dir}
 
 The system cache directory is used by default, and the cached files will go away on a reboot automatically.
 
 If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
 
-### `image_filter`
+### `image_filter` {#preview.image_filter}
 
 The filter used on image downscaling, available values:
 
@@ -119,19 +119,19 @@ They are arranged in order from fast to slow, and from poor to good quality - La
 
 See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples
 
-### `image_quality`
+### `image_quality` {#preview.image_quality}
 
 Quality on pre-caching images, range 50-90.
 
 The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
 
-### `sixel_fraction`
+### `sixel_fraction` {#preview.sixel_fraction}
 
 Sixel is a very old image format that only supports 256 colors. For better image preview, Yazi trains a neural network for each image to find the most representative colors.
 
 This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
 
-### `ueberzug_scale` / `ueberzug_offset`
+### `ueberzug_scale` / `ueberzug_offset` {#preview.ueberzug_scale}
 
 - ueberzug_scale (Float): Ueberzug image scaling ratio, `scale>1` for enlargement, `scale<1` for reduction. For example, `0.5` indicates a reduction to half.
 - ueberzug_offset (`[x, y, width, height]`): Ueberzug image offset, in cell units. For example, `[0.5, 0.5, -0.5, -0.5]` indicates that the image is offset by half a cell in both directions, and the width and height are reduced by half a cell.
@@ -140,7 +140,7 @@ This is useful for solving [a bug of Überzug++ image size calculation](https://
 
 If your monitor has a `2.0` scale factor, and is running on Wayland under Hyprland, you may need to set `ueberzug_scale: 0.5`, and adjust the value of `ueberzug_offset` according to your case, to offset this issue.
 
-## [opener]
+## [opener] {#opener}
 
 Configure available openers, for example:
 
@@ -170,7 +170,7 @@ Available parameters are as follows:
   - `linux`: Linux
   - `macos`: macOS
 
-## [open]
+## [open] {#open}
 
 Set rules for opening specific files, for example:
 
@@ -194,37 +194,37 @@ Available rule parameters are as follows:
 - mime (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
 - use (String): Opener name corresponding to the names in the [`[opener]` section](#opener).
 
-## [tasks]
+## [tasks] {#tasks}
 
-### `micro_workers`
+### `micro_workers` {#tasks.micro_workers}
 
 Maximum number of concurrent micro-tasks.
 
-### `macro_workers`
+### `macro_workers` {#tasks.macro_workers}
 
 Maximum number of concurrent macro-tasks.
 
-### `bizarre_retry`
+### `bizarre_retry` {#tasks.bizarre_retry}
 
 Maximum number of retries when a bizarre failure occurs.
 
-### `suppress_preload`
+### `suppress_preload` {#tasks.suppress_preload}
 
 Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming.
 
-### `image_alloc`
+### `image_alloc` {#tasks.image_alloc}
 
 Maximum memory allocation limit in bytes for decoding a single image, `0` for unlimited.
 
-### `image_bound`
+### `image_bound` {#tasks.image_bound}
 
 An array of `[width, height]`, maximum image size (in pixels) for decoding a single image, and `0` for unlimited.
 
-## [plugin]
+## [plugin] {#plugin}
 
-### previewers
+### previewers {#plugin.previewers}
 
-You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
+You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
@@ -260,9 +260,9 @@ Yazi comes with the these previewer plugins:
 
 If you want to create your own previewer, see [Previewer API](/docs/plugins/overview#previewer).
 
-### preloaders
+### preloaders {#plugin.preloaders}
 
-You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
+You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
 - `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
@@ -291,13 +291,13 @@ Yazi comes with the these preloader plugins:
 
 If you want to create your own preloader, see [Preloader API](/docs/plugins/overview#preloader).
 
-## [input]
+## [input] {#input}
 
-You can customize the title and position of each input. As for position, it consists of two parts: [Origin](#origin) and [Offset](#offset).
+You can customize the title and position of each input. As for position, it consists of two parts: [Origin](#input.origin) and [Offset](#input.offset).
 
 The origin is the top-left corner of the input, and the offset is the increment from this origin. Together, they determine the area of the input on the screen.
 
-### Origin
+### Origin {#input.origin}
 
 For the origin, the following values are available:
 
@@ -310,11 +310,11 @@ For the origin, the following values are available:
 - center
 - hovered (the cursor position of hovered file)
 
-### Offset
+### Offset {#input.offset}
 
 As for the offset, it's a 4-element tuple: `(x, y, width, height)`.
 
-### Placeholder
+### Placeholder {#input.placeholder}
 
 Some inputs have special placeholders that will be replaced with actual content on display:
 
@@ -344,13 +344,13 @@ Some inputs have special placeholders that will be replaced with actual content 
   - `{n}`: Number of tasks are running
   - `{s}`: `"s"` if `n > 1`, otherwise `""`
 
-## [select]
+## [select] {#select}
 
-Same as [the input](#input).
+As same as the [`[input]`](#input) section.
 
-## [which]
+## [which] {#which}
 
-### `sort_by`
+### `sort_by` {#which.sort_by}
 
 Candidate sorting method.
 
@@ -358,14 +358,14 @@ Candidate sorting method.
 - `"key"`: Sort by key.
 - `"desc`: Sort by description.
 
-### `sort_sensitive`
+### `sort_sensitive` {#which.sort_sensitive}
 
 Sort case-sensitively.
 
 - `true`: Case-sensitive
 - `false`: Case-insensitive
 
-### `sort_reverse`
+### `sort_reverse` {#which.sort_reverse}
 
 Display candidates in reverse order.
 

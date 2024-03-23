@@ -9,9 +9,9 @@ description: Learn how to configure your Yazi theme.
 If you're looking for ready-made themes and don't want to create one yourself, check out the [yazi-rs/flavors](https://github.com/yazi-rs/flavors) repository.
 :::
 
-## Types
+## Types {#types}
 
-### Color
+### Color {#types.color}
 
 A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be one of the following 17 values:
 
@@ -33,7 +33,7 @@ A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be o
 - gray
 - darkgray
 
-### Style
+### Style {#types.style}
 
 Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supports the following properties:
 
@@ -49,7 +49,7 @@ Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supp
 - hidden (Boolean): Hidden
 - crossed (Boolean): Crossed out
 
-## [manager]
+## [manager] {#manager}
 
 - cwd (Style): CWD text style.
 
@@ -86,7 +86,7 @@ Highlighting: The built-in syntax highlighting feature
 
   Yazi's builtin code highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
 
-## [status]
+## [status] {#status}
 
 - separator_open (String): Opening separator symbol. e.g. `"["`.
 - separator_close (String): Closing separator symbol. e.g. `"]"`.
@@ -112,20 +112,20 @@ Permissions
 - permissions_x (Style): Execute permission.
 - permissions_s (Style): `-` separator.
 
-## [select]
+## [select] {#select}
 
 - border (Style): Border style.
 - active (Style): Selected item style.
 - inactive (Style): Unselected item style.
 
-## [input]
+## [input] {#input}
 
 - border (Style): Border style.
 - title (Style): Title style.
 - value (Style): Value style.
 - selected (Style): Selected value style.
 
-## [completion]
+## [completion] {#completion}
 
 - border (Style): Border style.
 - active (Style): Selected item style.
@@ -137,13 +137,13 @@ Icons
 - icon_folder (String): Folder icon.
 - icon_command (String): Command icon.
 
-## [tasks]
+## [tasks] {#tasks}
 
 - border (Style): Border style.
 - title (Style): Title style.
 - hovered (Style): Hovered item style.
 
-## [which]
+## [which] {#which}
 
 - cols (Number): Number of columns. The value can be `1`, `2`, `3`.
 - mask (Style): Mask style.
@@ -153,7 +153,7 @@ Icons
 - separator (String): Separator symbol. e.g. `" -> "`.
 - separator_style (Style): Separator style.
 
-## [help]
+## [help] {#help}
 
 - on (Style): Key column style.
 - run (Style): Command column style.
@@ -161,7 +161,7 @@ Icons
 - hovered (Style): Hovered item style.
 - footer (Style): Footer style.
 
-## [filetype]
+## [filetype] {#filetype}
 
 Set file list item display styles for specific file types, supporting matching by name and mime-type:
 
@@ -186,7 +186,7 @@ rules = [
 ]
 ```
 
-Each rule supports complete [Style properties](#style). There are two special rule:
+Each rule supports complete [Style properties](#types.style). There are two special rule:
 
 - `name = "*"` matches all files.
 - `name = "*/"` matches all directories.
@@ -202,11 +202,11 @@ You can restrict the specific type of files through `is`, noting that it must be
 - `sock`: Socket
 - `sticky`: File with sticky bit set
 
-## [icon]
+## [icon] {#icon}
 
 Display icon based on the first matched rule.
 
-You can prepend or append rules to the default through `prepend_rules` and `append_rules`, see [Configuration mixing](/docs/configuration/overview#configuration-mixing) for details.
+You can prepend or append rules to the default through `prepend_rules` and `append_rules`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 
 ```toml
 [icon]

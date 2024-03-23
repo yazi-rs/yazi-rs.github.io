@@ -5,9 +5,9 @@ description: Learn how to use Yazi's Lua API.
 
 # Types
 
-## Shared
+## Shared {#shared}
 
-### Cha
+### Cha {#shared.cha}
 
 Cha means one file's characteristics with the following properties:
 
@@ -19,7 +19,7 @@ Cha means one file's characteristics with the following properties:
 - `is_char_device` - Whether this file is a character device
 - `is_fifo` - Whether this file is a fifo
 - `is_socket` - Whether this file is a socket
-- `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#folderfile) instead
+- `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
 - `created` - The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `modified` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `accessed` - The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
@@ -30,27 +30,27 @@ And the Unix only properties:
 - `uid` - The user id of this file
 - `gid` - The group id of this file
 
-### File
+### File {#shared.file}
 
 Properties:
 
-- `url` - The [Url](#url) of this file
-- `cha` - The [Cha](#cha) of this file
-- `link_to` - The [Url](#url) of this file pointing to, if it's a symlink; otherwise, `nil`
+- `url` - The [Url](#shared.url) of this file
+- `cha` - The [Cha](#shared.cha) of this file
+- `link_to` - The [Url](#shared.url) of this file pointing to, if it's a symlink; otherwise, `nil`
 - `name` - The name of this file
 
-### Icon
+### Icon {#shared.icon}
 
 Properties:
 
 - `text` - The text of this icon
-- `style` - The [Style](#uistyle) of this icon
+- `style` - The [Style](/docs/plugins/layout#style) of this icon
 
-### Range
+### Range {#shared.range}
 
 TODO
 
-### Url
+### Url {#shared.url}
 
 Create a Url:
 
@@ -75,7 +75,7 @@ Meta methods:
 - `__tostring()`
 - `__concat(string)`
 
-### Window
+### Window {#shared.window}
 
 Properties:
 
@@ -84,16 +84,16 @@ Properties:
 - `width` - The width of this window in pixels
 - `height` - The height of this window in pixels
 
-## App data
+## App data {#app-data}
 
 You can access all app data through the `cx` within [Sync context](./overview#sync-context):
 
-- `cx.active` - The active tab, which is a [tab::Tab](#tabtab)
-- `cx.tabs` - All of tabs, which is a [manager::Tabs](#managertabs)
-- `cx.tasks` - All of tasks, which is a [tasks::Tasks](#taskstasks)
-- `cx.yanked` - The yanked urls, which is a [manager::Yanked](#manageryanked)
+- `cx.active` - The active tab, which is a [tab::Tab](#app-data.tab-tab)
+- `cx.tabs` - All of tabs, which is a [manager::Tabs](#app-data.manager-tabs)
+- `cx.tasks` - All of tasks, which is a [tasks::Tasks](#app-data.tasks-tasks)
+- `cx.yanked` - The yanked urls, which is a [manager::Yanked](#app-data.manager-yanked)
 
-### `tab::Mode`
+### `tab::Mode` {#app-data.tab-mode}
 
 Visual mode status.
 
@@ -107,7 +107,7 @@ Meta methods:
 
 - `__tostring()`
 
-### `tab::Config`
+### `tab::Config` {#app-data.tab-config}
 
 Properties:
 
@@ -120,54 +120,54 @@ Properties:
 
 These properties are consistent with those in [yazi.toml](/docs/configuration/yazi.md), and will not be detailed here.
 
-### `tab::Selected`
+### `tab::Selected` {#app-data.tab-selected}
 
 Meta methods:
 
 - `__len()`
-- `__pairs()` - Iterate over the selected [Url](#url)s.
+- `__pairs()` - Iterate over the selected [Url](#shared.url)s.
 
-### `tab::Preview`
+### `tab::Preview` {#app-data.tab-preview}
 
 Properties:
 
 - `skip` - The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
-- `folder` - The [folder::Folder](#folderfolder) being previewed, or `nil` if this preview is not for folders
+- `folder` - The [folder::Folder](#app-data.folder-folder) being previewed, or `nil` if this preview is not for folders
 
-### `folder::Folder`
+### `folder::Folder` {#app-data.folder-folder}
 
 Properties:
 
-- `cwd` - The current working directory of this folder, which is a [Url](#url)
+- `cwd` - The current working directory of this folder, which is a [Url](#shared.url)
 - `offset` - The offset of this folder, which is an integer
 - `cursor` - The cursor position of this folder, which is an integer
-- `window` - A table of [File](#file) in the visible area of this folder
-- `files` - The [`folder::Files`](#folderfiles) of this folder
-- `hovered` - The hovered [File](#file) of this folder, or `nil` if there is no hovered file
+- `window` - A table of [File](#shared.file) in the visible area of this folder
+- `files` - The [`folder::Files`](#app-data.folder-files) of this folder
+- `hovered` - The hovered [File](#shared.file) of this folder, or `nil` if there is no hovered file
 
-### `folder::Files`
+### `folder::Files` {#app-data.folder-files}
 
 Meta methods:
 
 - `__len()`
-- `__pairs()` - Iterate over the [File](#file)s.
+- `__pairs()` - Iterate over the [File](#shared.file)s.
 
-### `folder::File`
+### `folder::File` {#app-data.folder-file}
 
-Based on [File](#file), with the following additional methods:
+Based on [File](#shared.file), with the following additional methods:
 
 - `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
 - `mime()` - The mime-type string of this file
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The [Icon](#icon) of this file, [`[icon]`](/docs/configuration/theme#icons) rules are applied; if no rule matches, returns `nil`
-- `style()` - The [Style](#uistyle) of this file, [`[filetype]`](/docs/configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
+- `icon()` - The [Icon](#shared.icon) of this file, [`[icon]`](/docs/configuration/theme#icon) rules are applied; if no rule matches, returns `nil`
+- `style()` - The [Style](/docs/plugins/layout#style) of this file, [`[filetype]`](/docs/configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
 - `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
 - `is_selected()` - Whether this file is selected
 - `found()` - When users find a file using the `find` command, the status of the file - returns `nil` if it doesn't match the user's find keyword; otherwise, returns `{idx, all}`, where `idx` is the position of matched file, and `all` represents the number of all matched files.
 - `highlights()` - TODO
 
-### `manager::Tabs`
+### `manager::Tabs` {#app-data.manager-tabs}
 
 Properties:
 
@@ -178,22 +178,22 @@ Meta methods:
 - `__len()`
 - `__index(idx)`
 
-### `tab::Tab`
+### `tab::Tab` {#app-data.tab-tab}
 
 Properties:
 
-- `mode` - The [tab::Mode](#tabmode) of this tab.
-- `conf` - The [tab::Config](#tabconfig) of this tab.
-- `current` - The current folder within this tab, which is a [folder::Folder](#folderfolder).
-- `parent` - The parent folder within this tab, which is a [folder::Folder](#folderfolder) if `current` has a parent; otherwise, `nil`.
-- `selected` - The selected files within this tab, which is a [tab::Selected](#tabselected).
-- `preview` - The [tab::Preview](#tabpreview) within this tab.
+- `mode` - The [tab::Mode](#app-data.tab-mode) of this tab.
+- `conf` - The [tab::Config](#app-data.tab-config) of this tab.
+- `current` - The current folder within this tab, which is a [folder::Folder](#app-data.folder-folder).
+- `parent` - The parent folder within this tab, which is a [folder::Folder](#app-data.folder-folder) if `current` has a parent; otherwise, `nil`.
+- `selected` - The selected files within this tab, which is a [tab::Selected](#app-data.tab-selected).
+- `preview` - The [tab::Preview](#app-data.tab-preview) within this tab.
 
 Methods:
 
 - `name()` - The name of this tab
 
-### `tasks::Tasks`
+### `tasks::Tasks` {#app-data.tasks-tasks}
 
 Properties:
 
@@ -212,7 +212,7 @@ Properties:
   }
   ```
 
-### `manager::Yanked`
+### `manager::Yanked` {#app-data.manager-yanked}
 
 ```lua
 for idx, url in pairs(cx.yanked) do
@@ -223,7 +223,7 @@ end
 Meta methods:
 
 - `__len()`
-- `__pairs()` - Iterate over the yanked [Url](#url)s.
+- `__pairs()` - Iterate over the yanked [Url](#shared.url)s.
 
 Properties:
 

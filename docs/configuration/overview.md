@@ -33,7 +33,7 @@ Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-co
 sort_by = "natural"
 ```
 
-## Configuration mixing
+## Configuration mixing {#mixing}
 
 The options from your configuration file will be used to override the default. However, for key bindings, if you don't want to override the default directly:
 
@@ -60,6 +60,6 @@ append_keymap = [
 
 They are also available for open, icon, previewer, and preloader rules. See [keymap.toml](/docs/configuration/keymap) for more details.
 
-## Custom config directory
+## Custom config directory {#custom-directory}
 
 You can change the Yazi configuration directory by exporting the `YAZI_CONFIG_HOME` environment variable.

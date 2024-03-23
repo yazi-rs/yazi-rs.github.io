@@ -7,7 +7,7 @@ description: Learn how to use Yazi's Lua API.
 
 Paragraph, List, Bar, Border, and Gauge are renderable widgets; others need to be placed within any of them.
 
-## Bar
+## Bar {#bar}
 
 Create a bar:
 
@@ -30,7 +30,7 @@ Methods (all methods return `self`):
 - `symbol(symbol)` - accepts a string, specifying the symbol for the bar
 - `style(style)` - accepts a [Style](#style), specifying the style of the bar
 
-## Border
+## Border {#border}
 
 Create a border:
 
@@ -61,7 +61,7 @@ Methods (all methods return `self`):
 
 - `style(style)` - accepts a [Style](#style), specifying the style of the border
 
-## Clear
+## Clear {#clear}
 
 Clear the content of a specific area. Place it followed by the component that you want to clear:
 
@@ -74,7 +74,7 @@ local components = {
 }
 ```
 
-## Constraint
+## Constraint {#constraint}
 
 Constraints are used to define the size of a layout.
 
@@ -88,7 +88,7 @@ ui.Constraint.Max(5)         -- Apply at most the given amount
 ui.Constraint.Min(3)         -- Apply at least the given amount
 ```
 
-## Gauge
+## Gauge {#gauge}
 
 Create a gauge:
 
@@ -104,7 +104,7 @@ Methods (all methods return `self`):
 - `style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#style)
 - `gauge_style(style)` - Set the style of the bar, which accepts a [Style](#style)
 
-## Layout
+## Layout {#layout}
 
 Create a layout:
 
@@ -129,7 +129,7 @@ Methods (all methods return `self`):
 - `constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint).
 - `split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints.
 
-## Line
+## Line {#line}
 
 Create a line, which accepts a list of [Span](#span) and [Line](#line):
 
@@ -146,7 +146,7 @@ Methods (all methods return `self`):
   - `ui.Line.CENTER`
   - `ui.Line.RIGHT`
 
-## List
+## List {#list}
 
 Create a list:
 
@@ -155,9 +155,9 @@ ui.List(rect, items)
 ```
 
 The first attribute is a [Rect](#rect), representing the position of this list.
-The second denotes the items of the list and accepts a list of [ListItem](#listitem).
+The second denotes the items of the list and accepts a list of [ListItem](#list-item).
 
-## ListItem
+## ListItem {#list-item}
 
 Create a list item:
 
@@ -171,7 +171,7 @@ Methods (all methods return `self`):
 
 - `style(style)` - Set the style of the list item, which accepts a [Style](#style)
 
-## Padding
+## Padding {#padding}
 
 All parameters for padding are integers:
 
@@ -199,7 +199,7 @@ Properties:
 - `top` - top padding
 - `bottom` - bottom padding
 
-## Paragraph
+## Paragraph {#paragraph}
 
 Create a paragraph:
 
@@ -224,7 +224,7 @@ Methods (all methods return `self`):
   - `ui.Paragraph.CENTER`
   - `ui.Paragraph.RIGHT`
 
-## Rect
+## Rect {#rect}
 
 A Rect is represented an area within the terminal by four attributes:
 
@@ -239,7 +239,7 @@ ui.Rect {
 ui.Rect.default  -- Equal to `ui.Rect { x = 0, y = 0, w = 0, h = 0 }`
 ```
 
-You can obtain a pre-computed `Rect` through [Yazi's layout system](#layout-1).
+You can obtain a pre-computed `Rect` through [Yazi's layout system](#layout).
 
 Note that if you intend to create it yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
 
@@ -258,7 +258,7 @@ Methods (all methods return `self`):
 
 - `padding(padding)` - Set padding. It accepts a [Padding](#padding)
 
-## Span
+## Span {#span}
 
 Create a span:
 
@@ -268,8 +268,8 @@ ui.Span("string")
 
 Methods (all methods return `self`):
 
-- `fg(color)` - Set the foreground color of the span, which accepts a [Color](/docs/configuration/theme#color)
-- `bg(color)` - Set the background color of the span, which accepts a [Color](/docs/configuration/theme#color)
+- `fg(color)` - Set the foreground color of the span, which accepts a [Color](/docs/configuration/theme#types.color)
+- `bg(color)` - Set the background color of the span, which accepts a [Color](/docs/configuration/theme#types.color)
 - `bold()` - Set the span to bold
 - `dim()` - Set the span to dim
 - `italic()` - Set the span to italic
@@ -281,7 +281,7 @@ Methods (all methods return `self`):
 - `reset()` - Reset the style of the span
 - `style(style)` - Set the style of the span, which accepts a [Style](#style)
 
-## Style
+## Style {#style}
 
 Create a style:
 
@@ -291,8 +291,8 @@ ui.Style()
 
 Methods (all methods return `self`):
 
-- `fg(string)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#color)
-- `bg(string)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#color)
+- `fg(string)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
+- `bg(string)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
 - `bold()` - Set the style to bold
 - `dim()` - Set the style to dim
 - `italic()` - Set the style to italic
