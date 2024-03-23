@@ -199,7 +199,9 @@ sudo oma install yazi
 
 ## Official binaries
 
-You can download the latest official binaries from [GitHub Releases](https://github.com/sxyazi/yazi/releases).
+You can download the latest official binaries from GitHub Releases: https://github.com/sxyazi/yazi/releases
+
+On this page, we offer GNU/Musl builds to meet the needs of different users; we also provide a Snapcraft package, which Ubuntu/Debian users can use.
 
 ## Cargo
 
