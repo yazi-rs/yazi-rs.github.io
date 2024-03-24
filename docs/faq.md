@@ -18,9 +18,7 @@ For Windows, there is no concept of `$EDITOR`, so users need to modify the text 
 
 ## Why can't I open/edit/preview files on Windows? {#why-cant-preview}
 
-Have you added Git to the `PATH` as per the [Windows Requirements](/docs/installation#requirements)?
-
-Please make sure the `file` command is available in your terminal, you can do a `file -v` to check it.
+Please make sure you have set the `YAZI_FILE_ONE` environment variable as per the [Windows Requirements](/docs/installation#requirements).
 
 ## Why is my text color not distinct? {#why-text-indistinct}
 
