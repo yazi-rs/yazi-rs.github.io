@@ -361,7 +361,7 @@ Returns `(cha, err)`:
 You can invoke external programs through:
 
 ```lua
-local child = Command("ls")
+local child, err = Command("ls")
 	:args({ "-a", "-l" })
 	:stdout(Command.PIPED)
 	:spawn()
