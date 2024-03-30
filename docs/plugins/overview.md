@@ -132,7 +132,7 @@ When a plugin is executed asynchronously, an isolated async context is created f
 
 In this context, you can use all the async functions supported by Yazi, and it operates concurrently with the main thread, ensuring that the main thread is not blocked.
 
-You can also obtain a small amount of app data from the sync context by calling a "sync function":
+You can also obtain [a small amount](#sendable) of app data from the sync context by calling a "sync function":
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/init.lua
@@ -238,6 +238,16 @@ When the user specifies [`multi = true`](/docs/configuration/yazi#plugin.preload
 
 Typically, a preloader only needs to implement one of them - either single or multiple. This depends on the specific task and the magnitude of the workload.
 If it truly requires loading multiple files at once, the user needs to be prompted to enable the `multi` option for it.
+
+## Sendable value {#sendable}
+
+Yazi's plugin can run concurrently on multiple threads. For better performance, only the following types of combinations can be used for inter-thread data exchange:
+
+- nil
+- boolean
+- number
+- string
+- table and nested tables, with the above types as values
 
 ## Debugging {#debugging}
 
