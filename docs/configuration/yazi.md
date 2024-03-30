@@ -245,7 +245,7 @@ append_previewers = [
 ]
 ```
 
-If your `append_rules` contains wildcard `name` rules (`"*"` or `"*/"`), they will always take precedence over the default wildcard rules as the fallback.
+If your `append_previewers` contains wildcard `name` rules (`"*"` or `"*/"`), they will always take precedence over the default wildcard rules as the fallback.
 
 Yazi comes with the these previewer plugins:
 

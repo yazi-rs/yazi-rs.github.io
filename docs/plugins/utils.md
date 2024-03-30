@@ -38,7 +38,7 @@ If the file is not allowed to be cached, such as it's ignored in the user config
 
 ### `manager_emit(cmd, args, data)` {#ya.manager_emit}
 
-Send a command to the manager without waiting for the executor to execute:
+Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without waiting for the executor to execute:
 
 - `cmd` - Required, the command name, which is a string
 - `args` - Required, the arguments of the command, which is a table with a number key and string/number value, or a string key and string/number/boolean value
