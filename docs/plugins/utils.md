@@ -310,6 +310,8 @@ Only available on Unix-like systems. Returns the hostname of the current machine
 
 Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API.
 
+The following functions can only be used within a sync context.
+
 ### `pub(kind, value)` {#ps.pub}
 
 ```lua
@@ -367,7 +369,7 @@ Subscribe to local messages of `kind` and call the `callback` handler for it:
 - `kind` - Required, the kind of the message, which is a string
 - `callback` - Required, the callback function, with a single parameter `body` containing the content of the message
 
-which runs in a synchronous context, so you can access app data via `cx` for the content of interest.
+which runs in a sync context, so you can access app data via `cx` for the content of interest.
 
 Note: No time-consuming operations should be done in the callback, and the same `kind` from the same plugin can only be subscribed once, re-subscribing (`sub()`) before unsubscribing (`unsub()`) will throw an error.
 
