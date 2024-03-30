@@ -331,14 +331,14 @@ ps.pub_to("c3RpbjQ4", "greeting", "Hello, World!")
 
 Publish a message to a specific instance with `receiver` as the identifier:
 
+- If the receiver is the current instance (local), and is subscribed to this `kind` through `sub()`, it will receive this message.
+- If the receiver is not the current instance (remote), and is subscribed to this `kind` through `sub_remote()`, it will receive this message.
+
+With:
+
 - `receiver` - Required, the identifier of the receiver, which is a string
 - `kind` - The same as `pub()`
 - `value` - The same as `pub()`
-
-Where:
-
-- If the receiver is the current instance (local), and is subscribed to this `kind` through `sub()`, it will receive this message.
-- If the receiver is not the current instance (remote), and is subscribed to this `kind` through `sub_remote()`, it will receive this message.
 
 ### `pub_static(severity, kind, value)` {#ps.pub_static}
 
@@ -352,7 +352,7 @@ Broadcast a message to all instances subscribed to this `kind` through `sub_remo
 - `kind` - The same as `pub()`
 - `value` - The same as `pub()`
 
-The message will be stored as static data to achieve state persistence, and when a new instance is created, it will receive all static messages broadcasted by `sub_remote()` in descending order of `severity` to restore its state from the data.
+The message will be stored as static data to achieve state persistence, and when a new instance is created, it will receive all static messages broadcasted by `sub_remote()` before in descending order of `severity` to restore its state from the data.
 
 ### `sub(kind, callback)` {#ps.sub}
 
@@ -365,11 +365,11 @@ end)
 Subscribe to local messages of `kind` and call the `callback` handler for it:
 
 - `kind` - Required, the kind of the message, which is a string
-- `callback` - Required, the callback function
+- `callback` - Required, the callback function, with a single parameter `body` containing the content of the message
 
 which runs in a synchronous context, so you can access app data via `cx` for the content of interest.
 
-Note: No time-consuming operations should be done in this callback, and the same `kind` from the same plugin can only be subscribed once, re-subscribing (`sub()`) before unsubscribing (`unsub()`) will throw an error.
+Note: No time-consuming operations should be done in the callback, and the same `kind` from the same plugin can only be subscribed once, re-subscribing (`sub()`) before unsubscribing (`unsub()`) will throw an error.
 
 ### `sub_remote(kind, callback)` {#ps.sub_remote}
 
