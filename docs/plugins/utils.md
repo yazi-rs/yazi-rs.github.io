@@ -308,7 +308,7 @@ Only available on Unix-like systems. Returns the hostname of the current machine
 
 ## ps {#ps}
 
-Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API.
+Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API. See [DDS](/docs/dds) for more details.
 
 The following functions can only be used within a sync context.
 

@@ -15,6 +15,11 @@ DDS (Data Distribution Service) is designed to achieve communication and state s
 
 It deeply integrates with a publish-subscribe model based on the Lua API.
 
+## Concept
+
+- Local: the current instance, that is, the current Yazi process.
+- Remote: instances other than the current instance.
+
 ## Usage
 
 The DDS has two usage:
@@ -37,7 +42,7 @@ yazi --local-events=kind1,kind2 --remote-events=kind1,kind2
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
-## Builtin messages
+## Builtin kinds
 
 ### `tabs`
 
@@ -156,8 +161,8 @@ TODO
 `sub_remote()` callback body:
 
 ```lua
--- Since `Iterator` implementing `__index()`, you can access the yanked URLs by index, such as `body[1]`,
--- or iterate over all URLs using `ipairs(body)`
+-- Since `Iterator` implementing `__index()`, you can access the yanked URLs by index,
+-- such as `body[1]`, or iterate over all URLs using `ipairs(body)`
 Iterator {
 	cut = false,
 	__len = function(self)
