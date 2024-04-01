@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 description: Some awesome plugins for Yazi.
 ---
 
