@@ -61,10 +61,6 @@ This provides the ability to report Yazi's internal events in real-time, which i
 
 ## Builtin kinds
 
-### `tabs`
-
-TODO
-
 ### `cd`
 
 `sub()` callback body:
