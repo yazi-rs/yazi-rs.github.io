@@ -29,7 +29,7 @@ The DDS has two usage:
 
 ### Real-time `stdout` reporting {#stdout-reporting}
 
-You can specify the `--local-events` and `--remote-events` options when starting Yazi. When an event of the specified kind is triggered, it will be output to `stdout`:
+You can specify the `--local-events` and `--remote-events` options when starting Yazi:
 
 ```sh
 # Local events
@@ -39,6 +39,23 @@ yazi --remote-events=kind1,kind2
 # Both local and remote events
 yazi --local-events=kind1,kind2 --remote-events=kind1,kind2
 ```
+
+When an event of the specified kind is triggered, it will be output to `stdout`:
+
+```sh
+hover,0,30,1711957283332834,{"tab":0,"url":"/root/Downloads"}
+cd,0,20,1711957542289249,{"tab":0,"url":"/root/Downloads"}
+```
+
+One payload per line, each payload contains the following fields separated by commas:
+
+| Field    | Description                                                                                                       |
+| -------- | ----------------------------------------------------------------------------------------------------------------- |
+| kind     | The kind of this message                                                                                          |
+| receiver | The instance ID that receives this message, if it is `0`, it means broadcasting to all instances (static message) |
+| severity | The severity of this message, see [`pub_static()`](/docs/plugins/utils#ps.pub_static) for more details            |
+| sender   | The sender ID of this message                                                                                     |
+| body     | The body of this message, which is a JSON string                                                                  |
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
@@ -194,4 +211,4 @@ System reserves kind.
 
 System reserves kind.
 
-## Custom messages
+## Custom kinds
