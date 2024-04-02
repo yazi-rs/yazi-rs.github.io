@@ -49,13 +49,13 @@ cd,0,20,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 
 One payload per line, each payload contains the following fields separated by commas:
 
-| Field    | Description                                                                                                       |
-| -------- | ----------------------------------------------------------------------------------------------------------------- |
-| kind     | The kind of this message                                                                                          |
-| receiver | The instance ID that receives this message, if it is `0`, it means broadcasting to all instances (static message) |
-| severity | The severity of this message, see [`pub_static()`](/docs/plugins/utils#ps.pub_static) for more details            |
-| sender   | The sender ID of this message                                                                                     |
-| body     | The body of this message, which is a JSON string                                                                  |
+| Field    | Description                                                                                                     |
+| -------- | --------------------------------------------------------------------------------------------------------------- |
+| kind     | The kind of this message                                                                                        |
+| receiver | The instance ID that receives this message, if it's `0`, means broadcasting to all instances                    |
+| severity | The severity of this message; if it's non-zero, indicates a [static message](/docs/plugins/utils#ps.pub_static) |
+| sender   | The sender ID of this message                                                                                   |
+| body     | The body of this message, which is a JSON string                                                                |
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
@@ -83,13 +83,13 @@ This provides the ability to report Yazi's internal events in real-time, which i
 `--local-events` stdout payload:
 
 ```sh
-cd,1711957542289249,20,1711957542289249,{"tab":0,"url":"/root/Downloads"}
+cd,1711957542289249,0,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-cd,0,20,1711957542289249,{"tab":0,"url":"/root/Downloads"}
+cd,0,10,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 ```
 
 ### `hover`
@@ -114,13 +114,13 @@ cd,0,20,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 `--local-events` stdout payload:
 
 ```sh
-hover,1711957283332834,30,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
+hover,1711957283332834,0,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-hover,0,30,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
+hover,0,20,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
 ```
 
 ### `rename`
@@ -190,13 +190,13 @@ Iterator {
 `--local-events` stdout payload:
 
 ```sh
-yank,1711960311454247,40,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
+yank,1711960311454247,0,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-yank,0,40,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
+yank,0,30,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
 ### `hi`

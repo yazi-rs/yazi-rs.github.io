@@ -308,7 +308,7 @@ Only available on Unix-like systems. Returns the hostname of the current machine
 
 ## ps {#ps}
 
-Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API. See [DDS](/docs/dds) for more details.
+Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API. See [DDS](/docs/dds) for details.
 
 The following functions can only be used within a sync context.
 
@@ -328,7 +328,7 @@ Since the `kind` is used globally, to add the plugin name as the prefix is a bes
 ### `pub_to(receiver, kind, value)` {#ps.pub_to}
 
 ```lua
-ps.pub_to("c3RpbjQ4", "greeting", "Hello, World!")
+ps.pub_to(1711957283332834, "greeting", "Hello, World!")
 ```
 
 Publish a message to a specific instance with `receiver` as the identifier:
@@ -338,7 +338,7 @@ Publish a message to a specific instance with `receiver` as the identifier:
 
 With:
 
-- `receiver` - Required, the identifier of the receiver, which is a string
+- `receiver` - Required, the identifier of the receiver, which is a integer; if it's `0` then broadcasting to all instances
 - `kind` - The same as `pub()`
 - `value` - The same as `pub()`
 
@@ -348,13 +348,15 @@ With:
 ps.pub_static(10, "greeting", "Hello, World!")
 ```
 
-Broadcast a message to all instances subscribed to this `kind` through `sub_remote()`:
+Broadcast a static message to all instances subscribed to this `kind` through `sub_remote()`:
 
 - `severity` - Required, the severity of the message, which is an integer with a range of 1 to 255
 - `kind` - The same as `pub()`
 - `value` - The same as `pub()`
 
 The message will be stored as static data to achieve state persistence, and when a new instance is created, it will receive all static messages broadcasted by `sub_remote()` before in descending order of `severity` to restore its state from the data.
+
+If you simply want to broadcast a message to all instances without the need for the message to be persisted, use `ps.pub_to()` with receiver `0` instead.
 
 ### `sub(kind, callback)` {#ps.sub}
 
