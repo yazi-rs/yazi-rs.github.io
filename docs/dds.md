@@ -52,7 +52,7 @@ One payload per line, each payload contains the following fields separated by co
 | Field    | Description                                                                                                     |
 | -------- | --------------------------------------------------------------------------------------------------------------- |
 | kind     | The kind of this message                                                                                        |
-| receiver | The instance ID that receives this message; if it's `0`, broadcasts to all instances                            |
+| receiver | The remote instance ID that receives this message; if it's `0`, broadcasts to all remote instances              |
 | severity | The severity of this message; if it's non-zero, indicates a [static message](/docs/plugins/utils#ps.pub_static) |
 | sender   | The sender ID of this message                                                                                   |
 | body     | The body of this message, which is a JSON string                                                                |

@@ -331,14 +331,14 @@ Since the `kind` is used globally, to add the plugin name as the prefix is a bes
 ps.pub_to(1711957283332834, "greeting", "Hello, World!")
 ```
 
-Publish a message to a specific instance with `receiver` as the identifier:
+Publish a message to a specific instance with `receiver` as the ID:
 
 - If the receiver is the current instance (local), and is subscribed to this `kind` through `sub()`, it will receive this message.
 - If the receiver is not the current instance (remote), and is subscribed to this `kind` through `sub_remote()`, it will receive this message.
 
 With:
 
-- `receiver` - Required, the identifier of the receiver, which is a integer; if it's `0` then broadcasting to all instances
+- `receiver` - Required, ID of the remote instance, which is a integer; if it's `0` then broadcasting to all remote instances
 - `kind` - The same as `pub()`
 - `value` - The same as `pub()`
 
@@ -348,7 +348,7 @@ With:
 ps.pub_static(10, "greeting", "Hello, World!")
 ```
 
-Broadcast a static message to all instances subscribed to this `kind` through `sub_remote()`:
+Broadcast a static message to all remote instances subscribed to this `kind` through `sub_remote()`:
 
 - `severity` - Required, the severity of the message, which is an integer with a range of 1 to 255
 - `kind` - The same as `pub()`
@@ -356,7 +356,7 @@ Broadcast a static message to all instances subscribed to this `kind` through `s
 
 The message will be stored as static data to achieve state persistence, and when a new instance is created, it will receive all static messages broadcasted by `sub_remote()` before in descending order of `severity` to restore its state from the data.
 
-If you simply want to broadcast a message to all instances without the need for the message to be persisted, use `ps.pub_to()` with receiver `0` instead.
+If you simply want to broadcast a message to all remote instances, without the need for the message to be persisted, use `ps.pub_to()` with receiver `0` instead.
 
 ### `sub(kind, callback)` {#ps.sub}
 
