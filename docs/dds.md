@@ -15,12 +15,12 @@ DDS (Data Distribution Service) is designed to achieve communication and state s
 
 It deeply integrates with a publish-subscribe model based on the Lua API.
 
-## Concept
+## Concept {#concept}
 
 - Local: the current instance, that is, the current Yazi process.
 - Remote: instances other than the current instance.
 
-## Usage
+## Usage {#usage}
 
 The DDS has two usage:
 
@@ -58,7 +58,7 @@ One payload per line, each payload contains the following fields separated by co
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
-## Builtin kinds
+## Builtin kinds {#builtin}
 
 ### `cd`
 
@@ -203,5 +203,3 @@ System reserves kind.
 ### `hey`
 
 System reserves kind.
-
-## Custom kinds
