@@ -32,7 +32,7 @@ These flavors are placed in the `flavors` subdirectory of the Yazi configuration
 Each flavor is a directory with a hyphen-separated name, ending in `.yazi`, and containing at least the following files:
 
 ```
-bar.yazi/
+~/.config/yazi/flavors/bar.yazi/
 ├── flavor.toml
 ├── tmtheme.xml
 ├── README.md

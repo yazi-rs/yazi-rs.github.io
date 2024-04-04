@@ -24,7 +24,7 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 Each plugin is a directory with a hyphen-separated name, ending in `.yazi`, and containing at least the following files:
 
 ```
-bar.yazi/
+~/.config/yazi/plugins/bar.yazi/
 ├── init.lua
 ├── README.md
 └── LICENSE

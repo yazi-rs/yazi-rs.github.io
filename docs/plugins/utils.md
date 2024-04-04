@@ -345,14 +345,17 @@ With:
 ### `pub_static(severity, kind, value)` {#ps.pub_static}
 
 ```lua
+-- Broadcast and store a static message
 ps.pub_static(10, "greeting", "Hello, World!")
+-- Broadcast and remove a static message
+ps.pub_static(10, "greeting", nil)
 ```
 
 Broadcast a static message to all remote instances subscribed to this `kind` through `sub_remote()`:
 
-- `severity` - Required, the severity of the message, which is an integer with a range of 1 to 255
+- `severity` - Required, the severity of the message, which is an integer with a range of 0 to 65535
 - `kind` - The same as `pub()`
-- `value` - The same as `pub()`
+- `value` - The same as `pub()`. If the value is `nil`, the static message will be unpersisted.
 
 The message will be stored as static data to achieve state persistence, and when a new instance is created, it will receive all static messages broadcasted by `sub_remote()` before in descending order of `severity` to restore its state from the data.
 

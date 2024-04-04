@@ -43,19 +43,18 @@ yazi --local-events=kind1,kind2 --remote-events=kind1,kind2
 When an event of the specified kind is triggered, it will be output to `stdout`:
 
 ```sh
-hover,0,30,1711957283332834,{"tab":0,"url":"/root/Downloads"}
-cd,0,20,1711957542289249,{"tab":0,"url":"/root/Downloads"}
+hover,0,200,{"tab":0,"url":"/root/Downloads"}
+cd,0,100,{"tab":0,"url":"/root/Downloads"}
 ```
 
 One payload per line, each payload contains the following fields separated by commas:
 
-| Field    | Description                                                                                                     |
-| -------- | --------------------------------------------------------------------------------------------------------------- |
-| kind     | The kind of this message                                                                                        |
-| receiver | The remote instance ID that receives this message; if it's `0`, broadcasts to all remote instances              |
-| severity | The severity of this message; if it's non-zero, indicates a [static message](/docs/plugins/utils#ps.pub_static) |
-| sender   | The sender ID of this message                                                                                   |
-| body     | The body of this message, which is a JSON string                                                                |
+| Field             | Description                                                                                                                             |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| kind              | The kind of this message                                                                                                                |
+| receiver          | The remote instance ID that receives this message; if it's `0`, broadcasts to all remote instances                                      |
+| sender / severity | The sender of this message if greater than `65535`; otherwise, the severity of this [static message](/docs/plugins/utils#ps.pub_static) |
+| body              | The body of this message, which is a JSON string                                                                                        |
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
@@ -83,13 +82,13 @@ This provides the ability to report Yazi's internal events in real-time, which i
 `--local-events` stdout payload:
 
 ```sh
-cd,1711957542289249,0,1711957542289249,{"tab":0,"url":"/root/Downloads"}
+cd,1711957542289249,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-cd,0,10,1711957542289249,{"tab":0,"url":"/root/Downloads"}
+cd,0,100,{"tab":0,"url":"/root/Downloads"}
 ```
 
 ### `hover`
@@ -114,13 +113,13 @@ cd,0,10,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 `--local-events` stdout payload:
 
 ```sh
-hover,1711957283332834,0,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
+hover,1711957283332834,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-hover,0,20,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
+hover,0,200,{"tab":0,"url":"/root/foo.txt"}
 ```
 
 ### `rename`
@@ -148,13 +147,13 @@ hover,0,20,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
 `--local-events` stdout payload:
 
 ```sh
-rename,1711957878076791,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
+rename,1711957878076791,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-rename,0,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
+rename,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 ```
 
 ### `bulk`
@@ -188,13 +187,13 @@ Iterator {
 `--local-events` stdout payload:
 
 ```sh
-yank,1711960311454247,0,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
+yank,1711960311454247,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-yank,0,30,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
+yank,0,300,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
 ### `hi`
