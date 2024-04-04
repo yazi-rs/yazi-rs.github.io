@@ -42,23 +42,6 @@ If you want to use the latest Git version, you can install it from [AUR](https:/
 paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
 ```
 
-## macOS
-
-First, make sure that Homebrew is fully up-to-date with `brew update`.
-
-Then you can install Yazi (and the optional dependencies):
-
-```sh
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
-brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
-```
-
-If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
-
-```sh
-brew install yazi --HEAD
-```
-
 ## Nix
 
 A [Nix package](https://search.nixos.org/packages?channel=unstable&show=yazi) for Yazi is available.
@@ -154,6 +137,23 @@ extra-trusted-public-keys = [ "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrF
 Note that the cache will only be applied _after_ you rebuild your Nix config. If you want to ensure that the cache gets applied right away, add the options above to your flake's `nixConfig` attribute.
 
 If you're having any problems, refer to this [entry](https://docs.cachix.org/faq#why-is-nix-not-picking-up-on-any-of-the-pre-built-artifacts) from Cachix's FAQ.
+
+## Homebrew
+
+First, make sure that Homebrew is fully up-to-date with `brew update`.
+
+Then you can install Yazi (and the optional dependencies):
+
+```sh
+brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
+```
+
+If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
+
+```sh
+brew install yazi --HEAD
+```
 
 ## MacPorts
 
