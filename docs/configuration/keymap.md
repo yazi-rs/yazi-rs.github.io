@@ -181,7 +181,7 @@ Enter visual mode (selection mode).
 
 ### `open` {#manager.open}
 
-Open the selected files.
+Open the selected files using [the rules in `[open]`](/docs/configuration/yazi#open).
 
 | Argument/Option | Description                                                                            |
 | --------------- | -------------------------------------------------------------------------------------- |

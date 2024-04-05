@@ -142,29 +142,32 @@ If your monitor has a `2.0` scale factor, and is running on Wayland under Hyprla
 
 ## [opener] {#opener}
 
-Configure available openers, for example:
+Configure available openers that can be used in [`[open]`](#open), for example:
 
 ```toml
 [opener]
-archive = [
-	{ run = 'unar "$1"', desc = "Extract here" },
-]
-text = [
+edit = [
 	{ run = 'nvim "$@"', block = true },
+]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
 ]
 # ...
 ```
 
-Available parameters are as follows:
+Available options are as follows:
 
-- run: The command to open the selected files, with the following variables available:
+- `run`: The command to open the selected files, with the following variables available:
   - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
   - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
   - `$0` (Unix) / `%0` (Windows): The hovered file.
-- block (Boolean): Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
-- orphan (Boolean): Keep the process running even if Yazi has exited.
-- desc: Description of the opener, displayed in the selection menu.
-- for: Optional. This opener is only available on this system; when not specified, it's available on all systems. Available values:
+- `block`: Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
+- `orphan`: Keep the process running even if Yazi has exited.
+- `desc`: Description of the opener, displayed in the selection menu.
+- `for`: Optional. This opener is only available on this system; when not specified, it's available on all systems. Available values:
   - `unix`: Linux and macOS
   - `windows`: Windows
   - `linux`: Linux
@@ -177,22 +180,27 @@ Set rules for opening specific files, for example:
 ```toml
 [open]
 rules = [
-	{ mime = "text/*", use = "text" },
-	{ mime = "image/*", use = "image" },
+	{ mime = "text/*", use = "edit" },
+	{ mime = "video/*", use = "play" },
 
-	# { mime = "application/json", use = "text" },
-	{ name = "*.json", use = "text" },
+	# { mime = "application/json", use = "edit" },
+	{ name = "*.json", use = "edit" },
 
 	# Multiple openers for a single rule
-	{ name = "*.html", use = [ "browser", "text" ] },
+	{ name = "*.html", use = [ "open", "edit" ] },
 ]
 ```
 
-Available rule parameters are as follows:
+Available rule options are as follows:
 
-- name (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- mime (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- use (String): Opener name corresponding to the names in the [`[opener]` section](#opener).
+- `name`: Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `mime`: Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `use`: Opener name corresponding to the names in the [`[opener]` section](#opener).
+
+With that:
+
+- If you're using the default mime-type preloader, it retrieves the mime-type of a file through `file -bL --mime-type /path/to/file` command.
+- If `use` is an array containing multiple openers, all commands in these openers will be merged. [`open`](/docs/configuration/keymap#manager.open) will run the first of these commands; [`open --interactive`](/docs/configuration/keymap#manager.open) will list all of these commands in the "open with" menu.
 
 ## [tasks] {#tasks}
 
