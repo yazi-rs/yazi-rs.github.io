@@ -25,7 +25,7 @@ We suggest using this `yy` shell wrapper that provides the ability to change the
 
 ```bash
 function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 		cd -- "$cwd"
@@ -39,7 +39,7 @@ function yy() {
 
 ```sh
 function yy
-	set tmp (mktemp -t "yazi-cwd.XXXXX")
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	yazi $argv --cwd-file="$tmp"
 	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		cd -- "$cwd"
@@ -53,7 +53,7 @@ end
 
 ```sh
 def --env yy [...args] {
-	let tmp = (mktemp -t "yazi-cwd.XXXXX")
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
 	if $cwd != "" and $cwd != $env.PWD {
