@@ -137,6 +137,7 @@ To interact with selected files/directories use any of the commands below.
 | <kbd>x</kbd>                       | Yank the selected files (cut)                                               |
 | <kbd>p</kbd>                       | Paste the yanked files                                                      |
 | <kbd>P</kbd>                       | Paste the yanked files (overwrite if the destination exists)                |
+| <kbd>Y</kbd> or <kbd>X</kbd>       | Cancel the yank state (unyank)                                              |
 | <kbd>-</kbd>                       | Create a symbolic link to the yanked files (absolute path)                  |
 | <kbd>\_</kbd>                      | Create a symbolic link to the yanked files (relative path)                  |
 | <kbd>d</kbd>                       | Move the files to the trash                                                 |
