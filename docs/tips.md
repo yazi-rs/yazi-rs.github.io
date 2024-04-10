@@ -175,9 +175,16 @@ local function entry(_, args)
 		return
 	end
 
-	local target = parent.files[parent.cursor + 1 + args[1]]
-	if target and target.cha.is_dir then
-		ya.manager_emit("cd", { tostring(target.url) })
+	local offset = tonumber(args[1])
+	local start = parent.cursor + 1 + offset
+	local _end = offset < 0 and 1 or #parent.files
+	local step = offset < 0 and -1 or 1
+	for i = start, _end, step do
+		local target = parent.files[i]
+		if target and target.cha.is_dir then
+			ya.manager_emit('cd', { tostring(target.url) })
+			break
+		end
 	end
 end
 
