@@ -181,9 +181,9 @@ local function entry(_, args)
 		return
 	end
 	local start = parent.cursor + 1 + offset
-	local _end = offset < 0 and 1 or #parent.files
+	local end_ = offset < 0 and 1 or #parent.files
 	local step = offset < 0 and -1 or 1
-	for i = start, _end, step do
+	for i = start, end_, step do
 		local target = parent.files[i]
 		if target and target.cha.is_dir then
 			ya.manager_emit('cd', { tostring(target.url) })
