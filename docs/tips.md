@@ -176,6 +176,10 @@ local function entry(_, args)
 	end
 
 	local offset = tonumber(args[1])
+	if type(offset) ~= 'number' then
+		ya.err(args[1], 'is not a number')
+		return
+	end
 	local start = parent.cursor + 1 + offset
 	local _end = offset < 0 and 1 or #parent.files
 	local step = offset < 0 and -1 or 1
