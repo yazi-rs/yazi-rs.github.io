@@ -20,17 +20,17 @@ To override any of the defaults, begin by creating the corresponding file (from 
 - `~/.config/yazi/` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\` on Windows.
 
-For example, to change the sorting method, start by creating a `yazi.toml` file to:
+For example, to change the visible status of hidden files, start by creating a `yazi.toml` file to:
 
 - `~/.config/yazi/yazi.toml` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\yazi.toml` on Windows.
 
-Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/yazi.toml) into it, here is `sort_by`:
+Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/yazi.toml) into it, here is `show_hidden`:
 
 ```toml
 # yazi.toml
 [manager]
-sort_by = "natural"
+show_hidden = true
 ```
 
 ## Configuration mixing {#mixing}
