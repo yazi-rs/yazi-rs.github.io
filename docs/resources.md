@@ -6,7 +6,7 @@ description: Some awesome plugins for Yazi.
 # Resources
 
 :::warning
-The plugin system is still in the early stage, and most of the plugins below only guarantee compatibility with the latest main branch of Yazi!
+The plugin system is still in the early stage, and most of the plugins below only guarantee compatibility with the latest code of Yazi!
 
 Please make sure that both your Yazi and plugins are on the `HEAD` to ensure proper functionality!
 :::
