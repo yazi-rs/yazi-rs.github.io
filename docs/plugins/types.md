@@ -156,7 +156,7 @@ Meta methods:
 
 Based on [File](#shared.file), with the following additional methods:
 
-- `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been scanned
+- `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been evaluated
 - `mime()` - The mime-type of this file, which is a string, or `nil` if it's a directory or hasn't been lazily calculated at all
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
 - `icon()` - The [Icon](#shared.icon) of this file, [`[icon]`](/docs/configuration/theme#icon) rules are applied; if no rule matches, returns `nil`
