@@ -128,7 +128,7 @@ Go forward to the next directory.
 
 ### `seek` {#manager.seek}
 
-| Argument/Option | Description                                                                                                       |
+| Argument/Option | Description                                                      |
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `[n]`           | Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down. |
 
@@ -295,14 +295,14 @@ Set the visibility of hidden files.
 
 ### `linemode` {#manager.linemode}
 
-Set the line mode.
+Set the [line mode](./yazi#manager.linemode).
 
-| Argument/Option | Description                                 |
-| --------------- | ------------------------------------------- |
-| `none`          | No line mode.                               |
-| `size`          | Display the size of the file.               |
-| `permissions`   | Display the permissions of the file.        |
-| `mtime`         | Display the last modified time of the file. |
+| Argument/Option | Description                                                                                                                                                                                                          |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`          | No line mode.                                                                                                                                                                                                        |
+| `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](./yazi#manager.sort_by) set, and this behavior might change in the future. |
+| `permissions`   | Display the permissions of the file.                                                                                                                                                                                 |
+| `mtime`         | Display the last modified time of the file.                                                                                                                                                                          |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
