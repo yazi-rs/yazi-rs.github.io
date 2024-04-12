@@ -128,9 +128,13 @@ Go forward to the next directory.
 
 ### `seek` {#manager.seek}
 
+Scroll the contents in the preview panel.
+
 | Argument/Option | Description                                                      |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `[n]`           | Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down. |
+| --------------- | ---------------------------------------------------------------- |
+| `[n]`           | Use negative values to seek up and positive values to seek down. |
+
+Note that the default scroll keys are <kbd>Alt</kbd> + <kbd>j</kbd> and <kbd>Alt</kbd> + <kbd>k</kbd>, make sure your terminal supports <kbd>Alt</kbd> key combinations, or you can change them in your `keymap.toml`.
 
 ### `cd` {#manager.cd}
 
