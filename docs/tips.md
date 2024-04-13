@@ -3,6 +3,8 @@ sidebar_position: 8
 description: A few helpful tips for using Yazi.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Tips
@@ -168,12 +170,13 @@ run = "plugin --sync arrow --args=1"
 
 Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/init.lua`:
 
+<Tabs>
+  <TabItem value="classic" label="Classic" default>
+
 ```lua
 local function entry(_, args)
 	local parent = cx.active.parent
-	if not parent then
-		return
-	end
+	if not parent then return end
 
 	local target = parent.files[parent.cursor + 1 + args[1]]
 	if target and target.cha.is_dir then
@@ -183,6 +186,34 @@ end
 
 return { entry = entry }
 ```
+
+  </TabItem>
+  <TabItem value="skip-files" label="Skip files">
+
+```lua
+local function entry(_, args)
+	local parent = cx.active.parent
+	if not parent then return end
+
+	local offset = tonumber(args[1])
+	if not offset then return ya.err(args[1], 'is not a number') end
+
+	local start = parent.cursor + 1 + offset
+	local end_ = offset < 0 and 1 or #parent.files
+	local step = offset < 0 and -1 or 1
+	for i = start, end_, step do
+		local target = parent.files[i]
+		if target and target.cha.is_dir then
+			return ya.manager_emit("cd", { tostring(target.url) })
+		end
+	end
+end
+
+return { entry = entry }
+```
+
+  </TabItem>
+</Tabs>
 
 Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 
