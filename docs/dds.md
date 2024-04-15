@@ -311,3 +311,7 @@ System reserves kind.
 ### `hey` - server handshake {#hey}
 
 System reserves kind.
+
+### `bye`
+
+System reserves kind.

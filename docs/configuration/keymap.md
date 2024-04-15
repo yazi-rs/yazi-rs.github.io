@@ -374,10 +374,12 @@ Move the cursor to the next or previous occurrence.
 
 ### `tab_create` {#manager.tab_create}
 
-| Argument/Option | Description                                |
-| --------------- | ------------------------------------------ |
-| `[path]`        | Create a new tab using the specified path. |
-| `--current`     | Create a new tab using the current path.   |
+| Argument/Option | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `[path]`        | Optional, create a new tab using the specified path. |
+| `--current`     | Optional, create a new tab using the current path.   |
+
+If neither `[path]` nor `--current` is specified, will use the startup directory to create the tab.
 
 ### `tab_close` {#manager.tab_close}
 
