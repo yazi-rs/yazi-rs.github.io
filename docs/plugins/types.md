@@ -86,7 +86,7 @@ Properties:
 
 ## App data {#app-data}
 
-You can access all app data through the `cx` within [Sync context](./overview#sync-context):
+You can access all app data through the `cx` within [Sync context](/docs/plugins/overview#sync-context):
 
 - `cx.active` - The active tab, which is a [tab::Tab](#app-data.tab-tab)
 - `cx.tabs` - All of tabs, which is a [manager::Tabs](#app-data.manager-tabs)
@@ -118,7 +118,7 @@ Properties:
 - `linemode`
 - `show_hidden`
 
-These properties are consistent with those in [yazi.toml](/docs/configuration/yazi.md), and will not be detailed here.
+These properties are consistent with those in [yazi.toml](/docs/configuration/yazi), and will not be detailed here.
 
 ### `tab::Selected` {#app-data.tab-selected}
 

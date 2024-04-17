@@ -61,7 +61,7 @@ On the other hand, tasks with `orphan=false` are scheduled through the Yazi task
 
 Yazi has `nerd-fonts` enabled by default, it looks really cool!
 
-If you don't want to use it and want things to be calm, sure, you can modify these icons as much as you want in [`theme.toml`](./configuration/theme.md):
+If you don't want to use it and want things to be calm, sure, you can modify these icons as much as you want in [`theme.toml`](/docs/configuration/theme):
 
 ```toml
 [status]

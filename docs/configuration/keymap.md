@@ -6,7 +6,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 # keymap.toml
 
 :::note
-If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
+If you haven't created and used your own configuration file yet, please see [Configuration](/docs/configuration/overview).
 :::
 
 You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 6 layers:
@@ -299,14 +299,14 @@ Set the visibility of hidden files.
 
 ### `linemode` {#manager.linemode}
 
-Set the [line mode](./yazi#manager.linemode).
+Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
-| Argument/Option | Description                                                                                                                                                                                                          |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `none`          | No line mode.                                                                                                                                                                                                        |
-| `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](./yazi#manager.sort_by) set, and this behavior might change in the future. |
-| `permissions`   | Display the permissions of the file.                                                                                                                                                                                 |
-| `mtime`         | Display the last modified time of the file.                                                                                                                                                                          |
+| Argument/Option | Description                                                                                                                                                                                                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`          | No line mode.                                                                                                                                                                                                                          |
+| `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future. |
+| `permissions`   | Display the permissions of the file.                                                                                                                                                                                                   |
+| `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).

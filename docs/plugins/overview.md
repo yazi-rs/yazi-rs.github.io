@@ -188,21 +188,21 @@ When the user presses <kbd>j</kbd> or <kbd>k</kbd> to switch between hovering fi
 
 | Key      | Description                                                                                                                 |
 | -------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `file`   | The [File](./types#app-data.folder-file) to be previewed.                                                                   |
+| `file`   | The [File](/docs/plugins/types#app-data.folder-file) to be previewed.                                                       |
 | `skip`   | The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos. |
-| `area`   | The [Rect](./layout#rect) of the available preview area.                                                                    |
-| `window` | The [Rect](./layout#rect) of the entire terminal window.                                                                    |
+| `area`   | The [Rect](/docs/plugins/layout#rect) of the available preview area.                                                        |
+| `window` | The [Rect](/docs/plugins/layout#rect) of the entire terminal window.                                                        |
 
 When the user presses <kbd>Alt-j</kbd> or <kbd>Alt-k</kbd> to scroll the preview of this file, `seek` is called, with:
 
-| Key    | Description                                              |
-| ------ | -------------------------------------------------------- |
-| `file` | The [File](./types#app-data.folder-file) being scrolled. |
-| `area` | The [Rect](./layout#rect) of the available preview area. |
+| Key    | Description                                                          |
+| ------ | -------------------------------------------------------------------- |
+| `file` | The [File](/docs/plugins/types#app-data.folder-file) being scrolled. |
+| `area` | The [Rect](/docs/plugins/layout#rect) of the available preview area. |
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
-The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](./types#app-data) through `cx`.
+The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/types#app-data) through `cx`.
 
 Here are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/latest/yazi-plugin/preset/plugins)
 
@@ -260,7 +260,7 @@ If you have no experience with Lua, you can quickly get started through https://
 
 ### Logging {#logging}
 
-If you want to debug some runtime data, use [`ya.dbg()`](./utils#ya.dbg) and [`ya.err()`](./utils#ya.err) to print what you want to debug to either:
+If you want to debug some runtime data, use [`ya.dbg()`](/docs/plugins/utils#ya.dbg) and [`ya.err()`](/docs/plugins/utils#ya.err) to print what you want to debug to either:
 
 - `~/.local/state/yazi/yazi.log` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\state\yazi.log` on Windows.
