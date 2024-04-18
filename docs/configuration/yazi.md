@@ -6,7 +6,7 @@ description: Learn how to configure Yazi's basic functionality.
 # yazi.toml
 
 :::note
-If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
+If you haven't created and used your own configuration file yet, please see [Configuration](/docs/configuration/overview).
 :::
 
 ## [manager] {#manager}
@@ -55,7 +55,7 @@ Display directories first.
 Line mode: display information associated with the file on the right side of the file list row.
 
 - `"none"`: No line mode.
-- `"size"`: Display the size of the file.
+- `"size"`: Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future.
 - `"permissions"`: Display the permissions of the file.
 - `"mtime"`: Display the last modified time of the file.
 

@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Quick Start
 
-Once you've [installed Yazi](./installation.md), start the program with:
+Once you've [installed Yazi](/docs/installation), start the program with:
 
 ```sh
 yazi

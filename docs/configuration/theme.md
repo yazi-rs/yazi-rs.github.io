@@ -49,6 +49,10 @@ Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supp
 - hidden (Boolean): Hidden
 - crossed (Boolean): Crossed out
 
+## [flavor] {#flavor}
+
+- use (String): Flavor name, e.g. `"Dracula"`. See [flavor documentation](/docs/flavors/overview) for more details.
+
 ## [manager] {#manager}
 
 - cwd (Style): CWD text style.

@@ -31,7 +31,7 @@ That's relying on the `$TERM`, `$TERM_PROGRAM`, and `$XDG_SESSION_TYPE` variable
 For instance, if your terminal is Alacritty, which doesn't support displaying images itself, but you are running on an X11/Wayland environment,
 it will automatically use the "Window system protocol" to display images - this requires you to have [Überzug++](https://github.com/jstkdng/ueberzugpp) installed.
 
-## tmux users
+## tmux users {#tmux}
 
 To enable Yazi's image preview to work correctly in tmux, add the following 3 options to your `tmux.conf`:
 
@@ -50,18 +50,18 @@ tmux kill-server && tmux || tmux
 
 Now you should be able to enjoy with the image preview.
 
-## Zellij users
+## Zellij users {#zellij}
 
 Zellij currently only supports the Sixel graphics format, so you will need a terminal that also supports Sixel.
 
-## Windows users
+## Windows users {#windows}
 
 Currently, only the following two terminals support displaying images on Windows:
 
 - WezTerm
 - Mintty (Git Bash, which comes with Git for Windows)
 
-## Windows with WSL users
+## Windows with WSL users {#wsl}
 
 Limited by ConPTY, the Windows edition has had to implement many workarounds, which are not perfect.
 
@@ -83,7 +83,7 @@ wezterm ssh 127.0.0.1
 
 That's it! you can now get Yazi's image preview working properly.
 
-## Why can't I preview images via Überzug++?
+## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
 This may be an issue with Überzug++, please try running `ueberzugpp layer` directly in the terminal without Yazi, and paste:
 
@@ -95,7 +95,7 @@ into it, then press `Enter`, and to see if any image is shown, without exiting t
 
 If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report.
 
-## Why won't my images adapt to terminal size?
+## Why won't my images adapt to terminal size? {#size}
 
 The size of the image depends on two factors:
 

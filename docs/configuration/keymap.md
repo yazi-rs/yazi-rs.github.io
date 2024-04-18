@@ -6,7 +6,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 # keymap.toml
 
 :::note
-If you haven't created and used your own configuration file yet, please see [Configuration](./overview.md).
+If you haven't created and used your own configuration file yet, please see [Configuration](/docs/configuration/overview).
 :::
 
 You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 6 layers:
@@ -128,9 +128,13 @@ Go forward to the next directory.
 
 ### `seek` {#manager.seek}
 
-| Argument/Option | Description                                                                                                       |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `[n]`           | Seek up or down at file contents in the preview. Use negative values to peek up and positive values to peek down. |
+Scroll the contents in the preview panel.
+
+| Argument/Option | Description                                                      |
+| --------------- | ---------------------------------------------------------------- |
+| `[n]`           | Use negative values to seek up and positive values to seek down. |
+
+Note that the default scroll keys are <kbd>Alt</kbd> + <kbd>j</kbd> and <kbd>Alt</kbd> + <kbd>k</kbd>, make sure your terminal supports <kbd>Alt</kbd> key combinations, or you can change them in your `keymap.toml`.
 
 ### `cd` {#manager.cd}
 
@@ -295,14 +299,14 @@ Set the visibility of hidden files.
 
 ### `linemode` {#manager.linemode}
 
-Set the line mode.
+Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
-| Argument/Option | Description                                 |
-| --------------- | ------------------------------------------- |
-| `none`          | No line mode.                               |
-| `size`          | Display the size of the file.               |
-| `permissions`   | Display the permissions of the file.        |
-| `mtime`         | Display the last modified time of the file. |
+| Argument/Option | Description                                                                                                                                                                                                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`          | No line mode.                                                                                                                                                                                                                          |
+| `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future. |
+| `permissions`   | Display the permissions of the file.                                                                                                                                                                                                   |
+| `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
@@ -370,10 +374,12 @@ Move the cursor to the next or previous occurrence.
 
 ### `tab_create` {#manager.tab_create}
 
-| Argument/Option | Description                                |
-| --------------- | ------------------------------------------ |
-| `[path]`        | Create a new tab using the specified path. |
-| `--current`     | Create a new tab using the current path.   |
+| Argument/Option | Description                                          |
+| --------------- | ---------------------------------------------------- |
+| `[path]`        | Optional, create a new tab using the specified path. |
+| `--current`     | Optional, create a new tab using the current path.   |
+
+If neither `[path]` nor `--current` is specified, will use the startup directory to create the tab.
 
 ### `tab_close` {#manager.tab_close}
 

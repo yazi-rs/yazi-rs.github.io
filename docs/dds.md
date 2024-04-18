@@ -6,7 +6,7 @@ description: Data Distribution Service
 # DDS
 
 :::warning
-This is a new feature that will be released in Yazi 0.2.5 and currently requires the latest main branch.
+This is a new feature that will be released in Yazi 0.2.5 and currently requires the latest code.
 
 Document is still being written...
 :::
@@ -60,7 +60,7 @@ This provides the ability to report Yazi's internal events in real-time, which i
 
 ## Builtin kinds {#builtin}
 
-### `cd`
+### `cd` - change directory {#cd}
 
 `sub()` callback body:
 
@@ -91,7 +91,7 @@ cd,1711957542289249,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 cd,0,100,{"tab":0,"url":"/root/Downloads"}
 ```
 
-### `hover`
+### `hover` - hover on a file {#hover}
 
 `sub()` callback body:
 
@@ -122,7 +122,7 @@ hover,1711957283332834,1711957283332834,{"tab":0,"url":"/root/foo.txt"}
 hover,0,200,{"tab":0,"url":"/root/foo.txt"}
 ```
 
-### `rename`
+### `rename` - rename a file {#rename}
 
 `sub()` callback body:
 
@@ -156,11 +156,11 @@ rename,1711957878076791,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/
 rename,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 ```
 
-### `bulk`
+### `bulk` - bulk rename files {#bulk}
 
 TODO
 
-### `yank`
+### `yank` - yank files {#yank}
 
 `sub()` callback body:
 
@@ -196,10 +196,122 @@ yank,1711960311454247,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/ro
 yank,0,300,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
-### `hi`
+### `move` - move files {#move}
+
+`sub()` callback body:
+
+```lua
+{
+	items = {
+		{ from = Url("/root/foo.txt"), to = Url("/root/bar.txt") },
+		-- ...
+	}
+}
+```
+
+`sub_remote()` callback body:
+
+```lua
+{
+	items = {
+		{ from = Url("/root/foo.txt"), to = Url("/root/bar.txt") },
+		-- ...
+	}
+}
+```
+
+`--local-events` stdout payload:
+
+```sh
+move,1711957542289249,1711957542289249,{"items":[{"from":"/root/foo.txt","to":"/root/bar.txt"}]}
+```
+
+`--remote-events` stdout payload:
+
+```sh
+move,0,1711957542289249,{"items":[{"from":"/root/foo.txt","to":"/root/bar.txt"}]}
+```
+
+### `trash` - trash files {#trash}
+
+`sub()` callback body:
+
+```lua
+{
+	urls = {
+		Url("/root/foo.txt"),
+		-- ...
+	}
+}
+```
+
+`sub_remote()` callback body:
+
+```lua
+{
+	urls = {
+		Url("/root/foo.txt"),
+		-- ...
+	}
+}
+```
+
+`--local-events` stdout payload:
+
+```sh
+trash,1711957542289249,1711957542289249,{"urls":["/root/foo.txt"]}
+```
+
+`--remote-events` stdout payload:
+
+```sh
+trash,0,1711957542289249,{"urls":["/root/foo.txt"]}
+```
+
+### `delete` - delete files {#delete}
+
+`sub()` callback body:
+
+```lua
+{
+	urls = {
+		Url("/root/foo.txt"),
+		-- ...
+	}
+}
+```
+
+`sub_remote()` callback body:
+
+```lua
+{
+	urls = {
+		Url("/root/foo.txt"),
+		-- ...
+	}
+}
+```
+
+`--local-events` stdout payload:
+
+```sh
+delete,1711957542289249,1711957542289249,{"urls":["/root/foo.txt"]}
+```
+
+`--remote-events` stdout payload:
+
+```sh
+delete,0,1711957542289249,{"urls":["/root/foo.txt"]}
+```
+
+### `hi` - client handshake {#hi}
 
 System reserves kind.
 
-### `hey`
+### `hey` - server handshake {#hey}
+
+System reserves kind.
+
+### `bye`
 
 System reserves kind.

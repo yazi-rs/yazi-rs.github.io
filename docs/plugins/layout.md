@@ -131,9 +131,10 @@ Methods (all methods return `self`):
 
 ## Line {#line}
 
-Create a line, which accepts a list of [Span](#span) and [Line](#line):
+Create a line, which accepts a string, or a list of [Span](#span) and [Line](#line):
 
 ```lua
+ui.Line("string")
 ui.Line { span, line, span, ... }
 ```
 
