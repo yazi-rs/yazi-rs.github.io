@@ -243,11 +243,12 @@ If it truly requires loading multiple files at once, the user needs to be prompt
 
 Yazi's plugin can run concurrently on multiple threads. For better performance, only the following types of combinations can be used for inter-thread data exchange:
 
-- nil
-- boolean
-- number
-- string
-- table and nested tables, with the above types as values
+- Nil
+- Boolean
+- Number
+- String
+- [Url](/docs/plugins/types#shared.url)
+- Table and nested tables, with the above types as values
 
 ## Debugging {#debugging}
 

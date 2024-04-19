@@ -36,13 +36,12 @@ Calculate the cached [Url](/docs/plugins/types#shared.url) corresponding to the 
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
 
-### `manager_emit(cmd, args, data)` {#ya.manager_emit}
+### `manager_emit(cmd, args)` {#ya.manager_emit}
 
 Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without waiting for the executor to execute:
 
 - `cmd` - Required, the command name, which is a string
-- `args` - Required, the arguments of the command, which is a table with a number key and string/number value, or a string key and string/number/boolean value
-- `data` - Optional, additional data passed to the command
+- `args` - Required, the arguments of the command, which is a table with a number or string key and [sendable values](/docs/plugins/overview#sendable)
 
 ```lua
 ya.manager_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
