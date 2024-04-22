@@ -3,6 +3,9 @@ sidebar_position: 7
 description: Data Distribution Service
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # DDS
 
 :::warning
@@ -37,8 +40,8 @@ ya pub <receiver> <kind> --str "string body"
 ya pub <receiver> <kind> --json '{"key": "json body"}'
 
 # If you're in a Yazi subshell,
-# you can obtain the ID of the current instance using `$YAZI_ID`.
-ya pub $YAZI_ID dds-cd --str "/root"
+# you can obtain the ID of the current instance through `$YAZI_ID`.
+ya pub "$YAZI_ID" dds-cd --str "/root"
 ```
 
 You can also send a static message to all remote instances using `ya pub-static`, with its `severity` and `kind` arguments consistent with [`ps.pub_static()`](/docs/plugins/utils#ps.pub_static):
@@ -350,7 +353,37 @@ System reserves kind.
 
 This plugin provides the `dds-cd` event kind, which accepts a string URL and changes the CWD to that URL when it is received.
 
-This is useful for synchronizing the CWD of the current Yazi instance when exiting from a subshell.
+This is useful for synchronizing the CWD of the current Yazi instance when exiting from a subshell:
+
+<Tabs>
+  <TabItem value="Zsh" label="Zsh" default>
+
+```sh
+# Change Yazi's CWD to PWD on subshell exit
+if [[ -n YAZI_ID ]]; then
+	function _yazi_cd() {
+		ya pub "$YAZI_ID" dds-cd --str "$PWD"
+	}
+	add-zsh-hook zshexit _yazi_cd
+fi
+```
+
+  </TabItem>
+  <TabItem value="fish" label="Fish">
+
+```sh
+# Please raise a PR if you have a fish version
+```
+
+  </TabItem>
+  <TabItem value="nushell" label="Nushell">
+
+```sh
+# Please raise a PR if you have a nushell version
+```
+
+  </TabItem>
+</Tabs>
 
 Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins/dds.lua
 
