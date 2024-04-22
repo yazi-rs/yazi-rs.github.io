@@ -86,7 +86,7 @@ One payload per line, each payload contains the following fields separated by co
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
-## Builtin kinds {#builtin}
+## Builtin kinds {#kinds}
 
 ### `cd` - change directory {#cd}
 
@@ -344,9 +344,9 @@ System reserves kind.
 
 System reserves kind.
 
-## Builtin plugin
+## Builtin plugins {#plugins}
 
-### `dds.lua`
+### `dds.lua` {#dds.lua}
 
 This plugin provides the `dds-cd` event kind, which accepts a string URL and changes the CWD to that URL when it is received.
 
@@ -354,7 +354,7 @@ This is useful for synchronizing the CWD of the current Yazi instance when exiti
 
 Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins/dds.lua
 
-### `session.lua`
+### `session.lua` {#session.lua}
 
 The plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
 
