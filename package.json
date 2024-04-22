@@ -14,8 +14,8 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
-		"@docusaurus/core": "3.2.0",
-		"@docusaurus/preset-classic": "3.2.0",
+		"@docusaurus/core": "3.2.1",
+		"@docusaurus/preset-classic": "3.2.1",
 		"@mdx-js/react": "^3.0.0",
 		"clsx": "^1.2.1",
 		"prism-react-renderer": "^2.1.0",
@@ -23,9 +23,9 @@
 		"react-dom": "^18.0.0"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "3.2.0",
-		"@docusaurus/tsconfig": "3.2.0",
-		"@docusaurus/types": "3.2.0",
+		"@docusaurus/module-type-aliases": "3.2.1",
+		"@docusaurus/tsconfig": "3.2.1",
+		"@docusaurus/types": "3.2.1",
 		"prettier": "^3.0.3",
 		"typescript": "~5.2.2"
 	},
@@ -44,5 +44,5 @@
 	"engines": {
 		"node": ">=18.0"
 	},
-	"packageManager": "pnpm@8.10.1"
+	"packageManager": "pnpm@9.0.5"
 }

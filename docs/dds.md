@@ -25,7 +25,35 @@ It deeply integrates with a publish-subscribe model based on the Lua API.
 The DDS has two usage:
 
 - [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the carrier for DDS.
+- [Command-line tool](#cli): Using `ya` command-line tool as the carrier for DDS.
 - [Real-time `stdout` reporting](#stdout-reporting): Using `stdout` as the carrier for DDS.
+
+### Command-line tool {#cli}
+
+You can send a message to the remote instance(s) using `ya pub`, with the two required `receiver` and `kind` arguments consistent with [`ps.pub_to()`](/docs/plugins/utils#ps.pub_to):
+
+```sh
+ya pub <receiver> <kind> --str "string body"
+ya pub <receiver> <kind> --json '{"key": "json body"}'
+
+# If you're in a Yazi subshell,
+# you can obtain the ID of the current instance using `$YAZI_ID`.
+ya pub $YAZI_ID dds-cd --str "/root"
+```
+
+You can also send a static message to all remote instances using `ya pub-static`, with its `severity` and `kind` arguments consistent with [`ps.pub_static()`](/docs/plugins/utils#ps.pub_static):
+
+```sh
+ya pub-static <severity> <kind> --str "string body"
+ya pub-static <severity> <kind> --json '{"key": "json body"}'
+```
+
+For greater convenience in integrating within the command-line environment, they support two body formats:
+
+- String: a straightforward format, suitable for most scenarios, without the need for additional tools for encoding
+- JSON: for advanced needs, support for types and more complex data can be represented through the JSON format
+
+Note that `ya` is a standalone CLI program introduced since Yazi 0.2.5, it might conflict with the shell wrapper you setup before, see [Introduce a standalone CLI program](https://github.com/sxyazi/yazi/issues/914) for details.
 
 ### Real-time `stdout` reporting {#stdout-reporting}
 
@@ -315,3 +343,27 @@ System reserves kind.
 ### `bye`
 
 System reserves kind.
+
+## Builtin plugin
+
+### `dds.lua`
+
+This plugin provides the `dds-cd` event kind, which accepts a string URL and changes the CWD to that URL when it is received.
+
+This is useful for synchronizing the CWD of the current Yazi instance when exiting from a subshell.
+
+Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins/dds.lua
+
+### `session.lua`
+
+The plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
+
+To enable it, add these lines to your `init.lua`:
+
+```lua
+require("session"):setup {
+	sync_yanked = true,
+}
+```
+
+Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins/session.lua
