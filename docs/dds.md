@@ -25,11 +25,11 @@ It deeply integrates with a publish-subscribe model based on the Lua API.
 
 ## Usage {#usage}
 
-The DDS has two usage:
+The DDS has three usage:
 
-- [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the carrier for DDS.
-- [Command-line tool](#cli): Using `ya` command-line tool as the carrier for DDS.
-- [Real-time `stdout` reporting](#stdout-reporting): Using `stdout` as the carrier for DDS.
+- [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the carrier.
+- [Command-line tool](#cli): Using `ya` command-line tool as the carrier.
+- [Real-time `stdout` reporting](#stdout-reporting): Using `stdout` as the carrier.
 
 ### Command-line tool {#cli}
 

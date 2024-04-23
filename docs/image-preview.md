@@ -83,6 +83,12 @@ wezterm ssh 127.0.0.1
 
 That's it! you can now get Yazi's image preview working properly.
 
+## Neovim users {#neovim}
+
+The builtin terminal emulator (`:term`) in Neovim [doesn't support any graphic protocols](https://github.com/neovim/neovim/issues/4349), so Yazi will try to fallback to X11/Wayland/Chafa in sequence.
+
+Note that Überzug++ might display images in the wrong position; in that case, please adjust it manually using [`ueberzug_offset`](/docs/configuration/yazi/#preview.ueberzug_scale).
+
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
 This may be an issue with Überzug++, please try running `ueberzugpp layer` directly in the terminal without Yazi, and paste:

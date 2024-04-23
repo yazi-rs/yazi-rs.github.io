@@ -180,7 +180,7 @@ local function entry(_, args)
 
 	local target = parent.files[parent.cursor + 1 + args[1]]
 	if target and target.cha.is_dir then
-		ya.manager_emit("cd", { tostring(target.url) })
+		ya.manager_emit("cd", { target.url })
 	end
 end
 
@@ -204,7 +204,7 @@ local function entry(_, args)
 	for i = start, end_, step do
 		local target = parent.files[i]
 		if target and target.cha.is_dir then
-			return ya.manager_emit("cd", { tostring(target.url) })
+			return ya.manager_emit("cd", { target.url })
 		end
 	end
 end
