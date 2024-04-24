@@ -71,7 +71,7 @@ yazi --remote-events=kind1,kind2
 yazi --local-events=kind1,kind2 --remote-events=kind1,kind2
 ```
 
-When an event of the specified kind is triggered, it will be output to `stdout`:
+When an event of the specified kind is received, it will be output to `stdout`:
 
 ```sh
 hover,0,200,{"tab":0,"url":"/root/Downloads"}
@@ -389,7 +389,7 @@ Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins
 
 ### `session.lua` {#session.lua}
 
-The plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
+This plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
 
 To enable it, add these lines to your `init.lua`:
 

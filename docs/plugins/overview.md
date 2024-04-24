@@ -188,7 +188,7 @@ When the user presses <kbd>j</kbd> or <kbd>k</kbd> to switch between hovering fi
 
 | Key      | Description                                                                                                                 |
 | -------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `file`   | The [File](/docs/plugins/types#app-data.folder-file) to be previewed.                                                       |
+| `file`   | The [File](/docs/plugins/types#shared.file) to be previewed.                                                                |
 | `skip`   | The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos. |
 | `area`   | The [Rect](/docs/plugins/layout#rect) of the available preview area.                                                        |
 | `window` | The [Rect](/docs/plugins/layout#rect) of the entire terminal window.                                                        |
@@ -197,7 +197,7 @@ When the user presses <kbd>Alt-j</kbd> or <kbd>Alt-k</kbd> to scroll the preview
 
 | Key    | Description                                                          |
 | ------ | -------------------------------------------------------------------- |
-| `file` | The [File](/docs/plugins/types#app-data.folder-file) being scrolled. |
+| `file` | The [File](/docs/plugins/types#shared.file) being scrolled.          |
 | `area` | The [Rect](/docs/plugins/layout#rect) of the available preview area. |
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
