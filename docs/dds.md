@@ -155,17 +155,7 @@ hover,0,200,{"tab":0,"url":"/root/foo.txt"}
 
 ### `rename` - rename a file {#rename}
 
-`sub()` callback body:
-
-```lua
-{
-  tab = 0,
-  from = Url("/root/foo.txt"),
-  to = Url("/root/bar.txt"),
-}
-```
-
-`sub_remote()` callback body:
+`sub()` / `sub_remote()` callback body:
 
 ```lua
 {
@@ -189,7 +179,36 @@ rename,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 
 ### `bulk` - bulk rename files {#bulk}
 
-TODO
+:::note
+This kind currently requires the nightly version of Yazi.
+:::
+
+`sub()` / `sub_remote()` callback body:
+
+```lua
+-- Since `Iterator` implementing `__pairs()`,
+-- you can iterate over all URL pairs using `pairs(body)`
+Iterator {
+	__len = function(self)
+		-- Returns the number of files changed
+	end,
+	__pairs = function(self)
+		-- Returns (Url("/path/from.txt"), Url("/path/to.txt"))
+	end
+}
+```
+
+`--local-events` stdout payload:
+
+```sh
+bulk,1711957542289249,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
+```
+
+`--remote-events` stdout payload:
+
+```sh
+bulk,0,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
+```
 
 ### `yank` - yank files {#yank}
 

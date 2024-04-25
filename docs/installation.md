@@ -214,10 +214,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
-Now you can install `yazi-fm` from [crates.io](https://crates.io/crates/yazi-fm):
+Now you can install Yazi from crates.io:
 
 ```sh
-cargo install --locked yazi-fm
+cargo install --locked yazi-fm yazi-cli
 ```
 
 Or install the latest git version:
