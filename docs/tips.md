@@ -106,6 +106,34 @@ run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
 
+### Smart paste: `paste` files without entering the directory {#smart-paste}
+
+Save these lines as `~/.config/yazi/plugins/smart-paste.yazi/init.lua`:
+
+```lua
+return {
+	entry = function()
+		local h = cx.active.current.hovered
+		if h and h.cha.is_dir then
+			ya.manager_emit("enter", {})
+			ya.manager_emit("paste", {})
+			ya.manager_emit("leave", {})
+		else
+			ya.manager_emit("paste", {})
+		end
+	end,
+}
+```
+
+Then bind it for <kbd>p</kbd> key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "p" ]
+run  = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
+```
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
