@@ -379,7 +379,7 @@ This is useful for synchronizing the CWD of the current Yazi instance when exiti
 
 ```sh
 # Change Yazi's CWD to PWD on subshell exit
-if [[ -n YAZI_ID ]]; then
+if [[ -n "$YAZI_ID" ]]; then
 	function _yazi_cd() {
 		ya pub "$YAZI_ID" dds-cd --str "$PWD"
 	}
