@@ -327,13 +327,6 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
 </details>
 
-### `jump` {#manager.jump}
-
-| Argument/Option | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `fzf`           | Jump to a directory, or reveal a file using fzf. |
-| `zoxide`        | Jump to a directory using zoxide.                |
-
 ### `find` {#manager.find}
 
 | Argument/Option | Description                                                                                                              |
