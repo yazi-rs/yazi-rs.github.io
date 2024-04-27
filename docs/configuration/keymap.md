@@ -278,8 +278,9 @@ Run a shell command.
 | Argument/Option | Description                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `[run]`         | Optional, command template to be run.                                                                                                                                                                                                    |
-| `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--confirm`     | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
+| `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
+| `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
 
 You can use the following shell variables in `[run]`:
 

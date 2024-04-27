@@ -635,6 +635,17 @@ Wait for the child process to finish, returns `(status, err)`:
 - `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `wait_with_output()` {#Child.wait_with_output}
+
+```lua
+local output, err = child:wait_with_output()
+```
+
+Wait for the child process to finish and get the output, returns `(output, err)`:
+
+- `output` - The [Output](#output) of the child process if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is an integer if any
+
 ### `start_kill()` {#Child.start_kill}
 
 ```lua
