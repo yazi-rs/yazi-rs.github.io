@@ -71,6 +71,13 @@ Properties:
 - `is_search` - Whether the file represented by this url from the search result
 - `is_archive` - Whether the file represented by this url from an archive
 
+Methods:
+
+- `name()` - The file name of this url
+- `stem()` - The file name without the extension of this url
+- `join(url)` - Join this url with another url
+- `parent()` - The url of the parent directory
+
 Meta methods:
 
 - `__eq(another_url)`
