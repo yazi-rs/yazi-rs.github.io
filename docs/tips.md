@@ -462,6 +462,7 @@ The script to run looks like this with the fish shell for example:
 
 ```fish
 # open_in_helix_from_yazi.fish
+#! /usr/bin/env fish
 set -l tmpfile /tmp/yazi-choice.txt
 rm -f $tmpfile
 yazi --chooser-file=$tmpfile
