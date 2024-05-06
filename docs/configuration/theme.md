@@ -173,11 +173,14 @@ Set file list item display styles for specific file types, supporting matching b
 [filetype]
 rules = [
 	# Images
-	{ mime = "image/*", fg = "cyan" },
+	{ mime = "image/*", fg = "yellow" },
 
 	# Videos
-	{ mime = "video/*", fg = "yellow" },
-	{ mime = "audio/*", fg = "yellow" },
+	{ mime = "video/*", fg = "magenta" },
+	{ mime = "audio/*", fg = "magenta" },
+
+	# Empty files
+	{ mime = "inode/x-empty", fg = "cyan" },
 
 	# Orphan symbolic links
 	{ name = "*", is = "orphan", fg = "red" },
