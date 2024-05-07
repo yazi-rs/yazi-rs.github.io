@@ -21,7 +21,7 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 └── yazi.toml
 ```
 
-Each plugin is a directory with a hyphen-separated name, ending in `.yazi`, and containing at least the following files:
+Each plugin is a directory with a [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) name, ending in `.yazi`, and containing at least the following files:
 
 ```
 ~/.config/yazi/plugins/bar.yazi/
