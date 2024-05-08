@@ -471,6 +471,11 @@ Note: this uses a floating window, but you should also be able to open a new pan
 
 Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton) and [@postsolar](https://github.com/postsolar) for sharing and polishing it!
 
+<details>
+  <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
+	<video src="https://github.com/helix-editor/helix/assets/17523360/a4dde9e0-96bf-42a4-b946-40cbee984e69" width="100%" controls muted></video>
+</details>
+
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
 
 While Yazi is already fast, there is still plenty of room for optimization for specific users or under certain conditions:
