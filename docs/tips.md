@@ -441,24 +441,29 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
 
 Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
 
-Add a keymap to your Helix config, for example <kbd>'</kbd> + <kbd>y</kbd>:
+Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 
 ```toml
 # ~/.config/helix/config.toml
-[keys.normal."'"]
-y = ":sh zellij run --floating -n 'Yazi picker' -- bash ~/.config/helix/yazi-picker.sh"
+[keys.normal]
+C-y = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh"
 ```
 
 Then save the following script as `~/.config/helix/yazi-picker.sh`:
 
 ```sh
 #!/usr/bin/env bash
+
 paths=$(yazi --chooser-file=/dev/stdout | xargs -I {} command printf "%q " {})
-zellij action toggle-floating-panes
-zellij action write 27 # send <Escape> key
-zellij action write-chars ":open $paths"
-zellij action write 13 # send <Enter> key
-zellij action toggle-floating-panes
+
+if [[ -n "$paths" ]]; then
+	zellij action toggle-floating-panes
+	zellij action write 27 # send <Escape> key
+	zellij action write-chars ":open $paths"
+	zellij action write 13 # send <Enter> key
+	zellij action toggle-floating-panes
+fi
+
 zellij action close-pane
 ```
 
