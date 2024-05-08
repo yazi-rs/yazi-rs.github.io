@@ -454,9 +454,7 @@ Then save the following script as `~/.config/helix/yazi-picker.sh`:
 ```sh
 #!/usr/bin/env bash
 
-paths="$(yazi --chooser-file=/dev/stdout | while read -r; do
-  command printf '%q ' "$REPLY"
-done)"
+paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
 
 if [[ -n "$paths" ]]; then
 	zellij action toggle-floating-panes
