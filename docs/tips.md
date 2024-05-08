@@ -133,6 +133,12 @@ run  = "plugin --sync smart-paste"
 desc = "Paste into the hovered directory or CWD"
 ```
 
+<details>
+  <summary>Demonstrate smart paste</summary>
+	<p>Original post: https://github.com/sxyazi/yazi/discussions/957#discussioncomment-9239519</p>
+	<video src="https://github.com/sxyazi/yazi/assets/17523360/080212b5-43e7-4c36-83e8-312495d50383" width="100%" controls muted></video>
+</details>
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
