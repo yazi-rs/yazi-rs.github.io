@@ -437,6 +437,33 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
  		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
 ```
 
+## File tree picker in Helix with Zellij {#helix-with-zellij}
+
+Yazi can be used as a file picker to browse and open a file in your current Helix instance (running in a Zellij session).
+
+Add a keymap to your Helix config, for example <kbd>'</kbd> + <kbd>y</kbd>:
+
+```toml
+# ~/.config/helix/config.toml
+[keys.normal."'"]
+y = ":sh zellij run --floating -n 'Yazi picker' -- bash ~/.config/helix/yazi-picker.sh"
+```
+
+Then save the following script as `~/.config/helix/yazi-picker.sh`:
+
+```sh
+#!/usr/bin/env bash
+paths=$(yazi --chooser-file=/dev/stdout | xargs -I {} command printf "%q " {})
+zellij action toggle-floating-panes
+zellij action write 27 # send <Escape> key
+zellij action write-chars ":open $paths"
+zellij action write 13 # send <Enter> key
+zellij action toggle-floating-panes
+zellij action close-pane
+```
+
+Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
+
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
 
 While Yazi is already fast, there is still plenty of room for optimization for specific users or under certain conditions:
@@ -445,34 +472,3 @@ While Yazi is already fast, there is still plenty of room for optimization for s
 - For users managing network files, it's recommended to disable all previewers and preloaders since previewing and preloading these files means they need to be downloaded locally.
 - For low-spec devices like Raspberry Pi, [reducing the concurrency](/docs/configuration/yazi#tasks) will make Yazi faster since the default configuration is optimized for PCs, and high concurrency on these low-spec devices may have the opposite effect.
 - For users who don't need accurate mime-type, [`mime.yazi`](https://github.com/DreamMaoMao/mime.yazi) may be useful, as it simply returns mime-type based on file extensions, while Yazi defaults to obtaining mime-type based on file content for accuracy. Mime-type is used for matching opening, previewing, rendering rules. Encourage users to choose the appropriate `mime` plugin based on their needs, which is why we decided to open it up to plugin developers.
-
-## Use Yazi as a file tree picker in Helix with Zellij
-
-Yazi can be used as a file picker to browse and open a file in your current Helix instance (running in a Zellij session). 
-
-Add a keymap to your Helix config, e.g.:
-
-```toml
-# config.toml
-[keys.normal."'"]
-y = ":sh zellij run --floating -n 'yazi picker' -- /home/rboynton/.config/fish/scripts/open_in_helix_from_yazi.fish"
-```
-
-The script to run looks like this with the fish shell for example:
-
-```fish
-# open_in_helix_from_yazi.fish
-#! /usr/bin/env fish
-set -l tmpfile /tmp/yazi-choice.txt
-rm -f $tmpfile
-yazi --chooser-file=$tmpfile
-zellij action toggle-floating-panes
-zellij action write 27 # send escape-key
-zellij action write-chars ":open $(cat /tmp/yazi-choice.txt)"
-zellij action write 13 # send enter-key
-zellij action toggle-floating-panes
-zellij action close-pane
-```
-
-> Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
-
