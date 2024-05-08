@@ -439,7 +439,7 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
 
-Yazi can be used as a file picker to browse and open a file in your current Helix instance (running in a Zellij session).
+Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
 
 Add a keymap to your Helix config, for example <kbd>'</kbd> + <kbd>y</kbd>:
 
