@@ -437,6 +437,35 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
  		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
 ```
 
+## File tree picker in Helix with Zellij {#helix-with-zellij}
+
+Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
+
+Add a keymap to your Helix config, for example <kbd>'</kbd> + <kbd>y</kbd>:
+
+```toml
+# ~/.config/helix/config.toml
+[keys.normal."'"]
+y = ":sh zellij run --floating -n 'Yazi picker' -- bash ~/.config/helix/yazi-picker.sh"
+```
+
+Then save the following script as `~/.config/helix/yazi-picker.sh`:
+
+```sh
+#!/usr/bin/env bash
+paths=$(yazi --chooser-file=/dev/stdout | xargs -I {} command printf "%q " {})
+zellij action toggle-floating-panes
+zellij action write 27 # send <Escape> key
+zellij action write-chars ":open $paths"
+zellij action write 13 # send <Enter> key
+zellij action toggle-floating-panes
+zellij action close-pane
+```
+
+Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
+
+Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton) and [@postsolar](https://github.com/postsolar) for sharing and polishing it!
+
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
 
 While Yazi is already fast, there is still plenty of room for optimization for specific users or under certain conditions:
