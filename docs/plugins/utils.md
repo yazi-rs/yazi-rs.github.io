@@ -109,6 +109,7 @@ Request user input:
     - `w`: Required, the width of the input, which is an positive integer.
     - `h`: Optional, the height of the input, which is an positive integer.
   - `realtime`: Optional, whether to report user input in real time, which is a boolean.
+  - `debounce`: Optional, the number of seconds to wait for the user to stop typing, which is a positive float. Can only be used when `realtime = true`. (Currently needs the nightly version of Yazi)
 
 ```lua
 local value, event = ya.input {
