@@ -223,7 +223,7 @@ cargo install --locked yazi-fm yazi-cli
 Or install the latest git version:
 
 ```sh
-cargo install --locked --git https://github.com/sxyazi/yazi.git
+cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
