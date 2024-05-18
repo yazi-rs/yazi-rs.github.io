@@ -20,7 +20,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
-- [`imagemagick`](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
+- [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
 
 If the functions are not working properly, please try upgrading them to the latest version.
@@ -222,7 +222,7 @@ brew install yazi --HEAD
 ## MacPorts
 
 ```bash
-sudo port install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide imagemagick
+sudo port install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
 ## NetBSD
