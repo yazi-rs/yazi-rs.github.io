@@ -59,6 +59,47 @@ function Manager:render(area)
 
 If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUNDED)`.
 
+If you're using two panes, add the following instead:
+
+```lua
+function Manager:render(area)
+	local chunks = self:layout(area)
+
+	local bar = function(c, x, y)
+		x, y = math.max(0, x), math.max(0, y)
+		return ui.Bar(ui.Rect({ x = x, y = y, w = ya.clamp(0, area.w - x, 1), h = math.min(1, area.h) }), ui.Bar.TOP)
+			:symbol(c)
+	end
+
+	return ya.flat({
+		-- Borders
+		ui.Border(area, ui.Border.ALL):type(ui.Border.ROUNDED),
+		ui.Bar(chunks[1], ui.Bar.RIGHT),
+		ui.Bar(chunks[3], ui.Bar.LEFT),
+
+		-- Left vertical bar
+		bar("╭", chunks[1].right - 1, chunks[1].y),
+		bar("╰", chunks[1].right - 1, chunks[1].bottom - 1),
+
+		-- Central vertical bar
+		bar("┬", chunks[2].right, chunks[2].y),
+		bar("┴", chunks[2].right, chunks[1].bottom - 1),
+
+		-- Right vertical bar
+		bar("╮", chunks[3].right - 1, chunks[3].y),
+		bar("╯", chunks[3].right - 1, chunks[1].bottom - 1),
+
+		-- Parent
+		Parent:render(chunks[1]:padding(ui.Padding.xy(1))),
+		-- Current
+		Current:render(chunks[2]:padding(ui.Padding.xy(1))),
+		-- Preview
+		Preview:render(chunks[3]:padding(ui.Padding.xy(1))),
+	})
+end
+```
+
+
 ## Dropping to the shell {#dropping-to-shell}
 
 Add this keybinding to your `keymap.toml`:
@@ -92,6 +133,26 @@ return {
 	entry = function()
 		local h = cx.active.current.hovered
 		ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = true })
+	end,
+}
+```
+
+Add the following instead if you're also using `zoxide`:
+
+```lua
+return {
+	entry = function()
+		local h = cx.active.current.hovered
+		if h and h.cha.is_dir then
+			ya.manager_emit("enter", { hovered = true })
+			ya.manager_emit("shell", {
+				orphan = true,
+				confirm = true,
+				"zoxide add " .. ya.quote(tostring(cx.active.current.cwd)),
+			})
+		else
+			ya.manager_emit("open", { hovered = true })
+		end
 	end,
 }
 ```
