@@ -20,6 +20,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
+- [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
 
 If the functions are not working properly, please try upgrading them to the latest version.
@@ -33,13 +34,13 @@ Most packages on this page are maintained by the community, and they **may not a
 ## Arch Linux
 
 ```sh
-sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
+sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
 ```sh
-paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide
+paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 ## Nix
@@ -145,7 +146,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide imagemagick
 brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
 ```
 
@@ -158,7 +159,7 @@ brew install yazi --HEAD
 ## MacPorts
 
 ```bash
-sudo port install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
+sudo port install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
 ## NetBSD
@@ -190,7 +191,7 @@ You can download the latest official binaries from [GitHub Releases](https://git
 ```sh
 scoop install yazi
 # Install the optional dependencies (recommended):
-scoop install unar jq poppler fd ripgrep fzf zoxide
+scoop install unar jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 ## AOSC OS

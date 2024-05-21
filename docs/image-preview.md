@@ -9,27 +9,27 @@ Yazi has done a lot of work to adapt to different terminals and multiplexers, tr
 
 This is by no means a simple task, to reduce maintenance costs, we only guarantee it is available in the **latest version** of terminals and multiplexers (tmux, Zellij):
 
-| Platform          | Protocol                                                                                              | Support               |
-| ----------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
-| kitty             | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | ✅ Built-in           |
-| Konsole           | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adaptor/src/kitty_old.rs)          | ✅ Built-in           |
-| iTerm2            | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in           |
-| WezTerm           | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in           |
-| Mintty (Git Bash) | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in           |
-| foot              | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in           |
-| Ghostty           | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adaptor/src/kitty_old.rs)          | ✅ Built-in           |
-| Black Box         | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in           |
-| VSCode            | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in           |
-| Tabby             | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in           |
-| Hyper             | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in           |
-| X11 / Wayland     | Window system protocol                                                                                | ☑️ Überzug++ required |
-| Fallback          | [Chafa](https://hpjansson.org/chafa/)                                                                 | ☑️ Überzug++ required |
+| Platform          | Protocol                                                                                              | Support                                                        |
+| ----------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| kitty             | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | ✅ Built-in                                                    |
+| Konsole           | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adaptor/src/kitty_old.rs)          | ✅ Built-in                                                    |
+| iTerm2            | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
+| WezTerm           | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
+| Mintty (Git Bash) | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
+| foot              | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
+| Ghostty           | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adaptor/src/kitty_old.rs)          | ✅ Built-in                                                    |
+| Black Box         | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
+| VSCode            | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
+| Tabby             | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
+| Hyper             | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
+| X11 / Wayland     | Window system protocol                                                                                | ☑️ [Überzug++](https://github.com/jstkdng/ueberzugpp) required |
+| Fallback          | [ASCII art (Unicode block)](https://en.wikipedia.org/wiki/ASCII_art)                                  | ☑️ [Chafa](https://hpjansson.org/chafa/) required              |
 
 Yazi automatically selects the appropriate preview method for you, based on the priority from top to bottom.
 That's relying on the `$TERM`, `$TERM_PROGRAM`, and `$XDG_SESSION_TYPE` variables, make sure you don't overwrite them by mistake!
 
 For instance, if your terminal is Alacritty, which doesn't support displaying images itself, but you are running on an X11/Wayland environment,
-it will automatically use the "Window system protocol" to display images - this requires you to have [Überzug++](https://github.com/jstkdng/ueberzugpp) installed.
+it will automatically use the "Window system protocol" to display images - this requires you to have Überzug++ installed.
 
 ## tmux users {#tmux}
 
