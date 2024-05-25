@@ -137,26 +137,6 @@ return {
 }
 ```
 
-Add the following instead if you're also using `zoxide`:
-
-```lua
-return {
-	entry = function()
-		local h = cx.active.current.hovered
-		if h and h.cha.is_dir then
-			ya.manager_emit("enter", { hovered = true })
-			ya.manager_emit("shell", {
-				orphan = true,
-				confirm = true,
-				"zoxide add " .. ya.quote(tostring(cx.active.current.cwd)),
-			})
-		else
-			ya.manager_emit("open", { hovered = true })
-		end
-	end,
-}
-```
-
 Then bind it for <kbd>l</kbd> key, in your `keymap.toml`:
 
 ```toml
