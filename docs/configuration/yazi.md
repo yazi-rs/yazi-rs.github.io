@@ -50,6 +50,15 @@ Display directories first.
 - `true`: Directories first
 - `false`: Respects `sort_by` and `sort_reverse` only
 
+### `sort_translit` {#manager.sort_translit}
+
+Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if `sort_by = "natural"`.
+
+This is useful for files that contain Hungarian characters. (Currently requires nightly builds.)
+
+- `true`: Enabled
+- `false`: Disabled
+
 ### `linemode` {#manager.linemode}
 
 Line mode: display information associated with the file on the right side of the file list row.

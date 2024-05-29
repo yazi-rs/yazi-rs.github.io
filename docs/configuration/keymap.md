@@ -355,7 +355,7 @@ Move the cursor to the next or previous occurrence.
 
 ### `sort` {#manager.sort}
 
-- `by`: Optional, if not provided, the sort method will be kept unchanged.
+- `[by]`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
   - `"modified"`: Sort by last modified time.
   - `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
@@ -363,8 +363,9 @@ Move the cursor to the next or previous occurrence.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
   - `"size"`: Sort by file size.
-- `--reverse`: Display files in reverse order.
-- `--dir-first`: Display directories first.
+- `--reverse`: Display files in reverse order. `--reverse` or `--reverse=yes` to reverse, `--reverse=no` to cancel.
+- `--dir-first`: Display directories first. `--dir-first` or `--dir-first=yes` to enable, `--dir-first=no` to cancel.
+- `--translit`: Transliterate filenames for sorting, see [sort_translit](/docs/configuration/yazi#manager.sort_translit) for details. `--translit` or `--translit=yes` to enable, `--translit=no` to cancel.
 
 ### `tab_create` {#manager.tab_create}
 

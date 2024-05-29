@@ -124,6 +124,7 @@ Properties:
 - `sort_sensitive`
 - `sort_reverse`
 - `sort_dir_first`
+- `sort_translit`
 - `linemode`
 - `show_hidden`
 
