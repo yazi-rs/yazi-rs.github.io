@@ -145,8 +145,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
-brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
+brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide font-symbols-only-nerd-font
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
