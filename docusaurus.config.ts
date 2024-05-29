@@ -128,7 +128,7 @@ const config: Config = {
 		announcementBar: {
 			id: "improve-docs",
 			content:
-				`🙏 Please help us improve docs: If you find any errors, don't hesitate to click the "Edit this page" at the bottom.
+				`🙏 Please help us improve docs: If you find any errors, don't hesitate to click the "Edit this page" link at bottom.
 If you want to contribute, please check out <a target="_blank" href="https://github.com/yazi-rs/yazi-rs.github.io/issues/70">the Tracker issue</a>.`,
 		},
 	} satisfies Preset.ThemeConfig,
