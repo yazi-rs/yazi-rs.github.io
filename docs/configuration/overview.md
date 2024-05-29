@@ -45,7 +45,7 @@ keymap = [
 ]
 ```
 
-And instead want to customize your keys upon the default, you can use `prepend_*` or `append_*` directories to prepend or append them to the default:
+And instead want to customize your keys upon the default, you can use `prepend_*` or `append_*` directories to prepend or append them to the default (See [keymap.toml](/docs/configuration/keymap) for details):
 
 ```toml
 # keymap.toml
@@ -58,7 +58,7 @@ append_keymap = [
 ]
 ```
 
-They are also available for open, icon, previewer, and preloader rules. See [keymap.toml](/docs/configuration/keymap) for more details.
+They are also available for open, icon, previewer, and preloader rules.
 
 ## Custom config directory {#custom-directory}
 

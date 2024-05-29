@@ -175,7 +175,24 @@ Available options are as follows:
 
 ## [open] {#open}
 
-Set rules for opening specific files, for example:
+Set rules for opening specific files. You can prepend or append rules to the default through `prepend_rules` and `append_rules` (See [Configuration mixing](/docs/configuration/overview#mixing) for details):
+
+```toml
+[open]
+prepend_rules = [
+	{ name = "*.json", use = "edit" },
+
+	# Multiple openers for a single rule
+	{ name = "*.html", use = [ "open", "edit" ] },
+]
+append_rules = [
+	{ name = "*", use = "my-fallback" },
+]
+```
+
+If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback (Currently requires nightly builds).
+
+Or, use `rules` to rewrite the entire default rules:
 
 ```toml
 [open]
