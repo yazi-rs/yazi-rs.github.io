@@ -29,10 +29,6 @@ Audio:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
 
-Images:
-
-- [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
-
 Archives:
 
 - [ouch.yazi](https://github.com/ndtoan96/ouch.yazi) - An archive previewer plugin for Yazi, using [ouch](https://github.com/ouch-org/ouch).
@@ -40,10 +36,6 @@ Archives:
 BitTorrent:
 
 - [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission)
-
-## 🚀 Preloaders
-
-- [mime.yazi](https://github.com/DreamMaoMao/mime.yazi) - Replace the builtin `mime` plugin to speed up the identification of large files by using file extensions instead of file content to obtain the mime-types.
 
 ## 🧩 Functional plugins
 
@@ -54,6 +46,16 @@ BitTorrent:
 - [fg.yazi](https://github.com/DreamMaoMao/fg.yazi) - A Yazi plugin that supports file searching with an fzf preview.
 - [bookmarks-persistence.yazi](https://github.com/DreamMaoMao/bookmarks-persistence.yazi) - A Yazi plugin that supports persistent bookmark management.No bookmarks are lost after you close yazi.
 - [bypass.yazi](https://github.com/Rolv-Apneseth/bypass.yazi) - Yazi plugin for skipping directories with only a single sub-directory.
+
+## 🚀 Preloaders
+
+Images:
+
+- [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
+
+## 🔍Fetchers
+
+- [mime.yazi](https://github.com/DreamMaoMao/mime.yazi) - Replace the builtin `mime` plugin to speed up the identification of large files by using file extensions instead of file content to obtain the mime-types.
 
 ## 📝 (Neo)vim plugins
 
@@ -74,11 +76,11 @@ Vim:
 
 ## 💖 Add yours
 
-We are so happy to add your plugin/flavor to this page!
+We are so happy to add your plugin to this page!
 
-If your plugin/flavor meets the following requirements, please click `Edit this page` below to add it:
+If your plugin meets the following requirements, please click "Edit this page" below to add it:
 
 - **Functional** - we will install and test it, since we want all links included on this page to be valid. If it's available only on a specific platform, a note should be added in the README.
-- **Follow conventions** - it should be a directory/repository ending with `.yazi`, and include the files listed in the [plugin documentation](/docs/plugins/overview) or [flavor documentation](/docs/flavors/overview).
+- **Follow conventions** - it should be a directory/repository ending with `.yazi`, and include the files listed in the [plugin documentation](/docs/plugins/overview).
 
 If it's a Neovim or Shell plugin, appending `.nvim` or `.sh` to the name to make it distinguishable is a best practice, but it's not required.
