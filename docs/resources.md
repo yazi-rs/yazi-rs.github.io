@@ -39,13 +39,14 @@ BitTorrent:
 
 ## 🧩 Functional plugins
 
-- [keyjump.yazi](https://github.com/DreamMaoMao/keyjump.yazi) - A Yazi plugin like flash.nvim, allows precise navigation using single (or double) characters.
+- [keyjump.yazi](https://github.com/DreamMaoMao/keyjump.yazi) - A Yazi plugin that jumps to a file by typing a hint character, much like hop.nvim.
 - [bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi) - A Yazi plugin that adds the basic functionality of Vi-like marks.
 - [relative-motions.yazi](https://github.com/dedukun/relative-motions.yazi) - A Yazi plugin based about vim motions.
 - [starship.yazi](https://github.com/Rolv-Apneseth/starship.yazi) - Starship prompt plugin for yazi.
 - [fg.yazi](https://github.com/DreamMaoMao/fg.yazi) - A Yazi plugin that supports file searching with an fzf preview.
 - [bookmarks-persistence.yazi](https://github.com/DreamMaoMao/bookmarks-persistence.yazi) - A Yazi plugin that supports persistent bookmark management.No bookmarks are lost after you close yazi.
 - [bypass.yazi](https://github.com/Rolv-Apneseth/bypass.yazi) - Yazi plugin for skipping directories with only a single sub-directory.
+- [searchjump.yazi](https://github.com/DreamMaoMao/searchjump.yazi) - Yazi plugin that navigates your file with search labels, consistent with flash.nvim.
 
 ## 🚀 Preloaders
 
