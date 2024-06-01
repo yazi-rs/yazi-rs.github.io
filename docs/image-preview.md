@@ -54,6 +54,11 @@ Now you should be able to enjoy with the image preview.
 
 Zellij currently only supports the Sixel graphics format, so you will need a terminal that also supports Sixel.
 
+Note that, the image rendering in Zellij has some performance issues, causing noticeable lagginess when quickly switching between images,
+and sometimes even [image tearing](https://github.com/zellij-org/zellij/issues/2576#issuecomment-1707107473).
+
+These issues won't be improved until Zellij enhances it's Sixel implementation or [provides a passthrough mode](https://github.com/zellij-org/zellij/issues/775), if the image is a stronger need to you, consider running Yazi outside of Zellij or using Überzug++.
+
 ## Windows users {#windows}
 
 Currently, only the following two terminals support displaying images on Windows:
@@ -82,6 +87,12 @@ wezterm ssh 127.0.0.1
 ```
 
 That's it! you can now get Yazi's image preview working properly.
+
+## Neovim users {#neovim}
+
+The builtin terminal emulator (`:term`) in Neovim [doesn't support any graphic protocols](https://github.com/neovim/neovim/issues/4349), so Yazi will try to fallback to X11/Wayland/Chafa in sequence.
+
+Note that Überzug++ might display images in the wrong position; in that case, please adjust it manually using [`ueberzug_offset`](/docs/configuration/yazi/#preview.ueberzug_scale).
 
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 

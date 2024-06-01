@@ -36,13 +36,12 @@ Calculate the cached [Url](/docs/plugins/types#shared.url) corresponding to the 
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
 
-### `manager_emit(cmd, args, data)` {#ya.manager_emit}
+### `manager_emit(cmd, args)` {#ya.manager_emit}
 
 Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without waiting for the executor to execute:
 
 - `cmd` - Required, the command name, which is a string
-- `args` - Required, the arguments of the command, which is a table with a number key and string/number value, or a string key and string/number/boolean value
-- `data` - Optional, additional data passed to the command
+- `args` - Required, the arguments of the command, which is a table with a number or string key and [sendable values](/docs/plugins/overview#sendable)
 
 ```lua
 ya.manager_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
@@ -110,6 +109,7 @@ Request user input:
     - `w`: Required, the width of the input, which is an positive integer.
     - `h`: Optional, the height of the input, which is an positive integer.
   - `realtime`: Optional, whether to report user input in real time, which is a boolean.
+  - `debounce`: Optional, the number of seconds to wait for the user to stop typing, which is a positive float. Can only be used when `realtime = true`. (Currently needs the nightly version of Yazi)
 
 ```lua
 local value, event = ya.input {
@@ -634,6 +634,17 @@ local status, err = child:wait()
 Wait for the child process to finish, returns `(status, err)`:
 
 - `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is an integer if any
+
+### `wait_with_output()` {#Child.wait_with_output}
+
+```lua
+local output, err = child:wait_with_output()
+```
+
+Wait for the child process to finish and get the output, returns `(output, err)`:
+
+- `output` - The [Output](#output) of the child process if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
 ### `start_kill()` {#Child.start_kill}

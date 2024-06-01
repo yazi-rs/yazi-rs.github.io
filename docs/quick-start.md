@@ -72,7 +72,7 @@ function yy {
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        Set-Location -Path $cwd
+        Set-Location -LiteralPath $cwd
     }
     Remove-Item -Path $tmp
 }
@@ -209,4 +209,4 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 
 ## Flavors
 
-Check out our [flavors repository](https://github.com/yazi-rs/flavors), or [cooking a flavor](/docs/flavors/overview#cooking)!
+Pick a color scheme you like from our [flavors repository](https://github.com/yazi-rs/flavors), or [cooking a flavor](/docs/flavors/overview#cooking)!

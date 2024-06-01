@@ -21,7 +21,7 @@ You can extend Yazi's functionality through Lua plugins, which need to be placed
 └── yazi.toml
 ```
 
-Each plugin is a directory with a hyphen-separated name, ending in `.yazi`, and containing at least the following files:
+Each plugin is a directory with a [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case) name, ending in `.yazi`, and containing at least the following files:
 
 ```
 ~/.config/yazi/plugins/bar.yazi/
@@ -188,7 +188,7 @@ When the user presses <kbd>j</kbd> or <kbd>k</kbd> to switch between hovering fi
 
 | Key      | Description                                                                                                                 |
 | -------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `file`   | The [File](/docs/plugins/types#app-data.folder-file) to be previewed.                                                       |
+| `file`   | The [File](/docs/plugins/types#shared.file) to be previewed.                                                                |
 | `skip`   | The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos. |
 | `area`   | The [Rect](/docs/plugins/layout#rect) of the available preview area.                                                        |
 | `window` | The [Rect](/docs/plugins/layout#rect) of the entire terminal window.                                                        |
@@ -197,7 +197,7 @@ When the user presses <kbd>Alt-j</kbd> or <kbd>Alt-k</kbd> to scroll the preview
 
 | Key    | Description                                                          |
 | ------ | -------------------------------------------------------------------- |
-| `file` | The [File](/docs/plugins/types#app-data.folder-file) being scrolled. |
+| `file` | The [File](/docs/plugins/types#shared.file) being scrolled.          |
 | `area` | The [Rect](/docs/plugins/layout#rect) of the available preview area. |
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
@@ -243,11 +243,12 @@ If it truly requires loading multiple files at once, the user needs to be prompt
 
 Yazi's plugin can run concurrently on multiple threads. For better performance, only the following types of combinations can be used for inter-thread data exchange:
 
-- nil
-- boolean
-- number
-- string
-- table and nested tables, with the above types as values
+- Nil
+- Boolean
+- Number
+- String
+- [Url](/docs/plugins/types#shared.url)
+- Table and nested tables, with the above types as values
 
 ## Debugging {#debugging}
 

@@ -28,8 +28,7 @@ function Manager:render(area)
 
 +	local bar = function(c, x, y)
 +		x, y = math.max(0, x), math.max(0, y)
-+		return ui.Bar(ui.Rect { x = x, y = y, w = ya.clamp(0, area.w - x, 1), h = math.min(1, area.h) }, ui.Bar.TOP)
-+			:symbol(c)
++		return ui.Bar(ui.Rect { x = x, y = y, w = ya.clamp(0, area.w - x, 1), h = math.min(1, area.h) }, ui.Bar.TOP):symbol(c)
 +	end
 +
  	return ya.flat {
@@ -106,6 +105,40 @@ run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
 
+## Smart paste: `paste` files without entering the directory {#smart-paste}
+
+Save these lines as `~/.config/yazi/plugins/smart-paste.yazi/init.lua`:
+
+```lua
+return {
+	entry = function()
+		local h = cx.active.current.hovered
+		if h and h.cha.is_dir then
+			ya.manager_emit("enter", {})
+			ya.manager_emit("paste", {})
+			ya.manager_emit("leave", {})
+		else
+			ya.manager_emit("paste", {})
+		end
+	end,
+}
+```
+
+Then bind it for <kbd>p</kbd> key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "p" ]
+run  = "plugin --sync smart-paste"
+desc = "Paste into the hovered directory or CWD"
+```
+
+<details>
+  <summary>Demonstrate smart paste</summary>
+	<p>Original post: https://github.com/sxyazi/yazi/discussions/957#discussioncomment-9239519</p>
+	<video src="https://github.com/sxyazi/yazi/assets/17523360/080212b5-43e7-4c36-83e8-312495d50383" width="100%" controls muted></video>
+</details>
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
@@ -139,6 +172,93 @@ run = [ "yank", '''
 	shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
 ''' ]
 ```
+
+## Maximize preview pane {#max-preview}
+
+Save these lines as `~/.config/yazi/plugins/max-preview.yazi/init.lua`:
+
+```lua
+local function entry(st)
+  if st.old then
+    Manager.layout, st.old = st.old, nil
+  else
+    st.old = Manager.layout
+    Manager.layout = function(self, area)
+      self.area = area
+
+      return ui.Layout()
+        :direction(ui.Layout.HORIZONTAL)
+        :constraints({
+          ui.Constraint.Percentage(0),
+          ui.Constraint.Percentage(0),
+          ui.Constraint.Percentage(100),
+        })
+        :split(area)
+    end
+  end
+  ya.app_emit("resize", {})
+end
+
+return { entry = entry }
+```
+
+Then find a unused key, for example <kbd>T</kbd>, and bind it in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on  = [ "T" ]
+run = "plugin --sync max-preview"
+```
+
+<details>
+  <summary>Demonstrate max preview</summary>
+	<p>Original post: https://github.com/sxyazi/yazi/issues/51#issuecomment-1913283446</p>
+	<video src="https://github.com/sxyazi/yazi/assets/17523360/4bb43f85-0696-4e93-879f-c617a96e5f46" width="100%" controls muted></video>
+</details>
+
+## Hide preview pane {#hide-preview}
+
+Save these lines as `~/.config/yazi/plugins/hide-preview.yazi/init.lua`:
+
+```lua
+local function entry(st)
+	if st.old then
+		Manager.layout, st.old = st.old, nil
+	else
+		st.old = Manager.layout
+		Manager.layout = function(self, area)
+			self.area = area
+
+			local all = MANAGER.ratio.parent + MANAGER.ratio.current
+			return ui.Layout()
+				:direction(ui.Layout.HORIZONTAL)
+				:constraints({
+					ui.Constraint.Ratio(MANAGER.ratio.parent, all),
+					ui.Constraint.Ratio(MANAGER.ratio.current, all),
+					ui.Constraint.Min(1),
+				})
+				:split(area)
+		end
+	end
+	ya.app_emit("resize", {})
+end
+
+return { entry = entry }
+```
+
+Then find a unused key, for example <kbd>T</kbd>, and bind it in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on  = [ "T" ]
+run = "plugin --sync hide-preview"
+```
+
+<details>
+  <summary>Demonstrate hide preview</summary>
+	<p>Original post: https://github.com/sxyazi/yazi/issues/51#issuecomment-1913283446</p>
+	<video src="https://github.com/sxyazi/yazi/assets/17523360/30557214-d0a7-409e-8702-62485a274b27" width="100%" controls muted></video>
+</details>
 
 ## File navigation wraparound {#navigation-wraparound}
 
@@ -180,7 +300,7 @@ local function entry(_, args)
 
 	local target = parent.files[parent.cursor + 1 + args[1]]
 	if target and target.cha.is_dir then
-		ya.manager_emit("cd", { tostring(target.url) })
+		ya.manager_emit("cd", { target.url })
 	end
 end
 
@@ -204,7 +324,7 @@ local function entry(_, args)
 	for i = start, end_, step do
 		local target = parent.files[i]
 		if target and target.cha.is_dir then
-			return ya.manager_emit("cd", { tostring(target.url) })
+			return ya.manager_emit("cd", { target.url })
 		end
 	end
 end
@@ -322,6 +442,45 @@ Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
  		ui.Paragraph(area, { left }),
  		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
 ```
+
+## File tree picker in Helix with Zellij {#helix-with-zellij}
+
+Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
+
+Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
+
+```toml
+# ~/.config/helix/config.toml
+[keys.normal]
+C-y = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh"
+```
+
+Then save the following script as `~/.config/helix/yazi-picker.sh`:
+
+```sh
+#!/usr/bin/env bash
+
+paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+
+if [[ -n "$paths" ]]; then
+	zellij action toggle-floating-panes
+	zellij action write 27 # send <Escape> key
+	zellij action write-chars ":open $paths"
+	zellij action write 13 # send <Enter> key
+	zellij action toggle-floating-panes
+fi
+
+zellij action close-pane
+```
+
+Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
+
+Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton) and [@postsolar](https://github.com/postsolar) for sharing and polishing it!
+
+<details>
+  <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
+	<video src="https://github.com/helix-editor/helix/assets/17523360/a4dde9e0-96bf-42a4-b946-40cbee984e69" width="100%" controls muted></video>
+</details>
 
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
 

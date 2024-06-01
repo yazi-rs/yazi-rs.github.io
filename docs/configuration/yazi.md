@@ -50,6 +50,15 @@ Display directories first.
 - `true`: Directories first
 - `false`: Respects `sort_by` and `sort_reverse` only
 
+### `sort_translit` {#manager.sort_translit}
+
+Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if `sort_by = "natural"`.
+
+This is useful for files that contain Hungarian characters. (Currently requires nightly builds.)
+
+- `true`: Enabled
+- `false`: Disabled
+
 ### `linemode` {#manager.linemode}
 
 Line mode: display information associated with the file on the right side of the file list row.
@@ -165,9 +174,9 @@ Available options are as follows:
   - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
   - `$0` (Unix) / `%0` (Windows): The hovered file.
 - `block`: Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
-- `orphan`: Keep the process running even if Yazi has exited.
-- `desc`: Description of the opener, displayed in the selection menu.
-- `for`: Optional. This opener is only available on this system; when not specified, it's available on all systems. Available values:
+- `orphan`: Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.
+- `desc`: Description of the opener, display in interactive components, such as "Open with" and help menu.
+- `for`: The opener is only available on this system; if not specified, it's available on all systems. Available values:
   - `unix`: Linux and macOS
   - `windows`: Windows
   - `linux`: Linux
@@ -175,7 +184,24 @@ Available options are as follows:
 
 ## [open] {#open}
 
-Set rules for opening specific files, for example:
+Set rules for opening specific files. You can prepend or append rules to the default through `prepend_rules` and `append_rules` (See [Configuration mixing](/docs/configuration/overview#mixing) for details):
+
+```toml
+[open]
+prepend_rules = [
+	{ name = "*.json", use = "edit" },
+
+	# Multiple openers for a single rule
+	{ name = "*.html", use = [ "open", "edit" ] },
+]
+append_rules = [
+	{ name = "*", use = "my-fallback" },
+]
+```
+
+If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback (Currently requires nightly builds).
+
+Or, use `rules` to rewrite the entire default rules:
 
 ```toml
 [open]

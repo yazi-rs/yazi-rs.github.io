@@ -278,8 +278,9 @@ Run a shell command.
 | Argument/Option | Description                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `[run]`         | Optional, command template to be run.                                                                                                                                                                                                    |
-| `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--confirm`     | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
+| `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
+| `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
 
 You can use the following shell variables in `[run]`:
 
@@ -327,13 +328,6 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
 </details>
 
-### `jump` {#manager.jump}
-
-| Argument/Option | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `fzf`           | Jump to a directory, or reveal a file using fzf. |
-| `zoxide`        | Jump to a directory using zoxide.                |
-
 ### `find` {#manager.find}
 
 | Argument/Option | Description                                                                                                              |
@@ -361,7 +355,7 @@ Move the cursor to the next or previous occurrence.
 
 ### `sort` {#manager.sort}
 
-- `by`: Optional, if not provided, the sort method will be kept unchanged.
+- `[by]`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
   - `"modified"`: Sort by last modified time.
   - `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
@@ -369,8 +363,9 @@ Move the cursor to the next or previous occurrence.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
   - `"size"`: Sort by file size.
-- `--reverse`: Display files in reverse order.
-- `--dir-first`: Display directories first.
+- `--reverse`: Display files in reverse order. `--reverse` or `--reverse=yes` to reverse, `--reverse=no` to cancel.
+- `--dir-first`: Display directories first. `--dir-first` or `--dir-first=yes` to enable, `--dir-first=no` to cancel.
+- `--translit`: Transliterate filenames for sorting, see [sort_translit](/docs/configuration/yazi#manager.sort_translit) for details. `--translit` or `--translit=yes` to enable, `--translit=no` to cancel.
 
 ### `tab_create` {#manager.tab_create}
 

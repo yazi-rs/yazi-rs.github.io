@@ -9,9 +9,9 @@ To use Yazi, you must have the following prerequisites installed:
 
 - [`file`](https://github.com/file/file) (for file type detection)
 
-Yazi can be _optionally_ extended with other command line tools to enable additional features.
+Yazi can be **optionally** extended with other command line tools to enable additional features.
 
-- [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](./faq#dont-like-nerd-fonts))
+- [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](/docs/faq#dont-like-nerd-fonts))
 - [`ffmpegthumbnailer`](https://github.com/dirkvdb/ffmpegthumbnailer) (for video thumbnails)
 - [`unar`](https://theunarchiver.com/command-line) (for archive preview)
 - [`jq`](https://jqlang.github.io/jq/) (for JSON preview)
@@ -145,8 +145,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide
-brew tap homebrew/cask-fonts && brew install --cask font-symbols-only-nerd-font
+brew install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide font-symbols-only-nerd-font
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
@@ -214,16 +213,16 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
-Now you can install `yazi-fm` from [crates.io](https://crates.io/crates/yazi-fm):
+Now you can install Yazi from crates.io:
 
 ```sh
-cargo install --locked yazi-fm
+cargo install --locked yazi-fm yazi-cli
 ```
 
 Or install the latest git version:
 
 ```sh
-cargo install --locked --git https://github.com/sxyazi/yazi.git
+cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.

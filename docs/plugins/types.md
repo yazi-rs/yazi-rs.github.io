@@ -19,6 +19,8 @@ Cha means one file's characteristics with the following properties:
 - `is_char_device` - Whether this file is a character device
 - `is_fifo` - Whether this file is a fifo
 - `is_socket` - Whether this file is a socket
+- `is_exec` - Whether this file is executable
+- `is_sticky` - Whether this file has the sticky bit set
 - `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
 - `created` - The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `modified` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
@@ -69,6 +71,13 @@ Properties:
 - `is_search` - Whether the file represented by this url from the search result
 - `is_archive` - Whether the file represented by this url from an archive
 
+Methods:
+
+- `name()` - The file name of this url
+- `stem()` - The file name without the extension of this url
+- `join(url)` - Join this url with another url
+- `parent()` - The url of the parent directory
+
 Meta methods:
 
 - `__eq(another_url)`
@@ -115,6 +124,7 @@ Properties:
 - `sort_sensitive`
 - `sort_reverse`
 - `sort_dir_first`
+- `sort_translit`
 - `linemode`
 - `show_hidden`
 
