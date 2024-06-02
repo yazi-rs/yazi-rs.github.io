@@ -22,8 +22,8 @@ You can implement a full border for Yazi via the UI plugin.
 Copy the [`Manager:render` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/manager.lua) _*only*_ to your `~/.config/yazi/init.lua`, then apply the following patch:
 
 ```diff
-@@ -18,16 +18,28 @@
-function Manager:render(area)
+@@ -18,16 +18,27 @@
+ function Manager:render(area)
 	local chunks = self:layout(area)
 
 +	local bar = function(c, x, y)
