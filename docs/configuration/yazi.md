@@ -91,6 +91,18 @@ The number of files to keep above and below the cursor when moving through the f
 
 If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
 
+### `mouse_events` {#manager.mouse_events}
+
+Array of strings, the types of mouse events can be received by the plugin system, available values:
+
+- `"click"`: Mouse click
+- `"scroll"`: Mouse vertical scroll
+- `"touch"`: Mouse horizontal scroll
+- `"move"`: Mouse move
+- `"drag"`: Mouse drag (Some terminals do not support this)
+
+Currently needs the nightly version of Yazi.
+
 ## [preview] {#preview}
 
 ### `tab_size` {#preview.tab_size}
