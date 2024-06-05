@@ -7,7 +7,7 @@ description: How to preview images in Yazi.
 
 Yazi has done a lot of work to adapt to different terminals and multiplexers, trying their best to make it out-of-the-box for users.
 
-This is by no means a simple task, to reduce maintenance costs, we only guarantee it is available in the **latest version** of terminals and multiplexers (tmux, Zellij):
+This is by no means a simple task, to reduce maintenance costs, we only guarantee it is available in the **_latest version_** of terminals and multiplexers (tmux, Zellij):
 
 | Platform          | Protocol                                                                                              | Support               |
 | ----------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |

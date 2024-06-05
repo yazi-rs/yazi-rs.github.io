@@ -26,7 +26,7 @@ If the functions are not working properly, please try upgrading them to the late
 
 ## Packaging status
 
-Most packages on this page are maintained by the community, and they **may not always be the latest**. Please check their versions before installation:
+Most packages on this page are maintained by the community, and they **_may not always be the latest_**. Please check their versions before installation:
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/yazi.svg)](https://repology.org/project/yazi/versions)
 
