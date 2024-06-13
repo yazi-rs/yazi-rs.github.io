@@ -77,6 +77,10 @@ Vim:
 
 - [yazi-prompt.sh](https://github.com/Sonico98/yazi-prompt.sh) - Display an indicator in your prompt when running inside a yazi subshell.
 
+## 🛠️ Utilities
+
+- [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
+
 ## 💖 Add yours
 
 We are so happy to add your plugin to this page!
