@@ -175,90 +175,11 @@ run = [ "yank", '''
 
 ## Maximize preview pane {#max-preview}
 
-Save these lines as `~/.config/yazi/plugins/max-preview.yazi/init.lua`:
-
-```lua
-local function entry(st)
-  if st.old then
-    Manager.layout, st.old = st.old, nil
-  else
-    st.old = Manager.layout
-    Manager.layout = function(self, area)
-      self.area = area
-
-      return ui.Layout()
-        :direction(ui.Layout.HORIZONTAL)
-        :constraints({
-          ui.Constraint.Percentage(0),
-          ui.Constraint.Percentage(0),
-          ui.Constraint.Percentage(100),
-        })
-        :split(area)
-    end
-  end
-  ya.app_emit("resize", {})
-end
-
-return { entry = entry }
-```
-
-Then find a unused key, for example <kbd>T</kbd>, and bind it in your `keymap.toml`:
-
-```toml
-[[manager.prepend_keymap]]
-on  = [ "T" ]
-run = "plugin --sync max-preview"
-```
-
-<details>
-  <summary>Demonstrate max preview</summary>
-	<p>Original post: https://github.com/sxyazi/yazi/issues/51#issuecomment-1913283446</p>
-	<video src="https://github.com/sxyazi/yazi/assets/17523360/4bb43f85-0696-4e93-879f-c617a96e5f46" width="100%" controls muted></video>
-</details>
+Moved to https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi
 
 ## Hide preview pane {#hide-preview}
 
-Save these lines as `~/.config/yazi/plugins/hide-preview.yazi/init.lua`:
-
-```lua
-local function entry(st)
-	if st.old then
-		Manager.layout, st.old = st.old, nil
-	else
-		st.old = Manager.layout
-		Manager.layout = function(self, area)
-			self.area = area
-
-			local all = MANAGER.ratio.parent + MANAGER.ratio.current
-			return ui.Layout()
-				:direction(ui.Layout.HORIZONTAL)
-				:constraints({
-					ui.Constraint.Ratio(MANAGER.ratio.parent, all),
-					ui.Constraint.Ratio(MANAGER.ratio.current, all),
-					ui.Constraint.Min(1),
-				})
-				:split(area)
-		end
-	end
-	ya.app_emit("resize", {})
-end
-
-return { entry = entry }
-```
-
-Then find a unused key, for example <kbd>T</kbd>, and bind it in your `keymap.toml`:
-
-```toml
-[[manager.prepend_keymap]]
-on  = [ "T" ]
-run = "plugin --sync hide-preview"
-```
-
-<details>
-  <summary>Demonstrate hide preview</summary>
-	<p>Original post: https://github.com/sxyazi/yazi/issues/51#issuecomment-1913283446</p>
-	<video src="https://github.com/sxyazi/yazi/assets/17523360/30557214-d0a7-409e-8702-62485a274b27" width="100%" controls muted></video>
-</details>
+Moved to https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi
 
 ## File navigation wraparound {#navigation-wraparound}
 
