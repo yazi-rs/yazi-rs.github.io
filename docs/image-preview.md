@@ -96,15 +96,27 @@ Note that Überzug++ might display images in the wrong position; in that case, p
 
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
-This may be an issue with Überzug++, please try running `ueberzugpp layer` directly in the terminal without Yazi, and paste:
+This may be a problem with Überzug++ itself. Please build Yazi in debug mode [as per this](https://yazi-rs.github.io/docs/installation#build-from-source) but `cargo build` without `--release` flag - you can run `yazi --debug` to verify it, and you will see the output includes `Debug : true`.
 
-```sh
-{"action":"add","identifier":"preview","max_height":0,"max_width":0,"path":"/your/image-path.jpg","x":0,"y":0}
+And hover on some images, then find the last Überzug++ command in your `~/.local/state/yazi/yazi.log` sorted by time. It is usually at the very end of the file and looks like:
+
+```
+ueberzugpp command: {"action":"add","identifier":"yazi","x":96,"y":1,"max_width":400,"max_height":150,"path":"/root/test.jpg"}
 ```
 
-into it, then press `Enter`, and to see if any image is shown, without exiting the Überzug++. Note that you need to replace `/your/image-path.jpg` with the actual path of an image.
+Finally, run `ueberzugpp layer` directly in the terminal without and outside Yazi, and paste the command:
 
-If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report.
+```sh
+{"action":"add","identifier":"yazi","x":96,"y":1,"max_width":400,"max_height":150,"path":"/root/test.jpg"}
+```
+
+into it, press `Enter`, and to see if any image is shown, without exiting the Überzug++.
+
+If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report with:
+
+- The contents of `~/.local/state/yazi/yazi.log`
+- The contents of `/tmp/ueberzugpp-$USER.log`
+- A GIF demonstration of the above steps
 
 ## Why won't my images adapt to terminal size? {#size}
 
