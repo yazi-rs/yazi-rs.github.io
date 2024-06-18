@@ -15,49 +15,9 @@ If you are using Yazi for the first time, please read our [configuration](/docs/
 
 ## Full border {#full-border}
 
-You can implement a full border for Yazi via the UI plugin.
-
 <img src={useBaseUrl("/img/full-border.png")} width="600" />
 
-Copy the [`Manager:render` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/manager.lua) _*only*_ to your `~/.config/yazi/init.lua`, then apply the following patch:
-
-```diff
-@@ -18,16 +18,27 @@
- function Manager:render(area)
-	local chunks = self:layout(area)
-
-+	local bar = function(c, x, y)
-+		x, y = math.max(0, x), math.max(0, y)
-+		return ui.Bar(ui.Rect { x = x, y = y, w = ya.clamp(0, area.w - x, 1), h = math.min(1, area.h) }, ui.Bar.TOP):symbol(c)
-+	end
-+
- 	return ya.flat {
- 		-- Borders
--		ui.Bar(chunks[1], ui.Bar.RIGHT):symbol(THEME.manager.border_symbol):style(THEME.manager.border_style),
--		ui.Bar(chunks[3], ui.Bar.LEFT):symbol(THEME.manager.border_symbol):style(THEME.manager.border_style),
-+		ui.Border(area, ui.Border.ALL):type(ui.Border.ROUNDED),
-+		ui.Bar(chunks[1], ui.Bar.RIGHT),
-+		ui.Bar(chunks[3], ui.Bar.LEFT),
-
-+		bar("┬", chunks[1].right - 1, chunks[1].y),
-+		bar("┴", chunks[1].right - 1, chunks[1].bottom - 1),
-+		bar("┬", chunks[2].right, chunks[2].y),
-+		bar("┴", chunks[2].right, chunks[1].bottom - 1),
-+
- 		-- Parent
--		Parent:render(chunks[1]:padding(ui.Padding.x(1))),
-+		Parent:render(chunks[1]:padding(ui.Padding.xy(1))),
- 		-- Current
--		Current:render(chunks[2]),
-+		Current:render(chunks[2]:padding(ui.Padding.y(1))),
- 		-- Preview
--		Preview:render(chunks[3]:padding(ui.Padding.x(1))),
-+		Preview:render(chunks[3]:padding(ui.Padding.xy(1))),
- 	}
- end
-```
-
-If you prefer sharp corners for the border, you can remove `:type(ui.Border.ROUNDED)`.
+Moved to https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
 
 ## Dropping to the shell {#dropping-to-shell}
 

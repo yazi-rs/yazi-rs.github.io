@@ -11,7 +11,7 @@ The plugin system is still in the early stage, and most of the plugins below onl
 Please make sure that both your Yazi and plugins are on the `HEAD` to ensure proper functionality!
 :::
 
-## 🖼️ Previewers
+## 🖼️ Previewers {#previewers}
 
 Markdown:
 
@@ -37,7 +37,7 @@ BitTorrent:
 
 - [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission)
 
-## 🧩 Functional plugins
+## 🧩 Functional plugins {#functional}
 
 Jumping:
 
@@ -71,17 +71,17 @@ UI enhancements:
 - [hide-preview.yazi](https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi) - Switch the preview pane between hidden and shown.
 - [starship.yazi](https://github.com/Rolv-Apneseth/starship.yazi) - Starship prompt plugin for yazi.
 
-## 🚀 Preloaders
+## 🚀 Preloaders {#preloaders}
 
 Images:
 
 - [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
 
-## 🔍Fetchers
+## 🔍Fetchers {#fetchers}
 
 - [mime.yazi](https://github.com/DreamMaoMao/mime.yazi) - Replace the builtin `mime` plugin to speed up the identification of large files by using file extensions instead of file content to obtain the mime-types.
 
-## 📝 (Neo)vim plugins
+## 📝 (Neo)vim plugins {#vim}
 
 Neovim:
 
@@ -94,15 +94,15 @@ Vim:
 
 - [yazi.vim](https://github.com/chriszarate/yazi.vim) - Vim plugin for Yazi.
 
-## 🐚 Shell plugins
+## 🐚 Shell plugins {#shell}
 
 - [yazi-prompt.sh](https://github.com/Sonico98/yazi-prompt.sh) - Display an indicator in your prompt when running inside a yazi subshell.
 
-## 🛠️ Utilities
+## 🛠️ Utilities {#utilities}
 
 - [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
 
-## 💖 Add yours
+## 💖 Add yours {#add-yours}
 
 We are so happy to add your plugin to this page!
 
