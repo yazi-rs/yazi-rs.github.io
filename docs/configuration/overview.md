@@ -62,4 +62,10 @@ They are also available for open, icon, previewer, and preloader rules.
 
 ## Custom config directory {#custom-directory}
 
-You can change the Yazi configuration directory by exporting the `YAZI_CONFIG_HOME` environment variable.
+You can change the Yazi configuration directory by exporting the `YAZI_CONFIG_HOME` environment variable. For example:
+
+```sh
+env "YAZI_CONFIG_HOME=~/.config/yazi-alt" yazi
+```
+
+will start Yazi with `~/.config/yazi-alt` as the configuration directory, and can have its own `yazi.toml`, `keymap.toml`, `init.lua`, etc. files within it.
