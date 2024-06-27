@@ -23,12 +23,28 @@ Moved to https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
 
 Add this keybinding to your `keymap.toml`:
 
+<Tabs>
+  <TabItem value="unix" label="Unix" default>
+
 ```toml
 [[manager.prepend_keymap]]
 on   = [ "<C-s>" ]
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
+
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "<C-s>" ]
+run  = 'shell "powershell.exe" --block --confirm'
+desc = "Open PowerShell here"
+```
+
+  </TabItem>
+</Tabs>
 
 ## Close input by once <kbd>Esc</kbd> press {#close-input-by-esc}
 
