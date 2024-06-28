@@ -232,6 +232,7 @@ In the Android platform, you can only use it with the `--permanently` option, si
 | --------------- | -------------------------------------------------------------------- |
 | `--force`       | Don't show the confirmation dialog, and trash/delete files directly. |
 | `--permanently` | Permanently delete the files.                                        |
+| `--hovered`     | Always remove the hovered file regardless of the selection state.    |
 
 ### `create` {#manager.create}
 
@@ -245,6 +246,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
+- `--hovered`: Always rename the hovered file regardless of the selection state.
 - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 - `--cursor`: Specify the cursor position of the renaming input box.
   - `"end"`: The end of the filename.
