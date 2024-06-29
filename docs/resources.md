@@ -105,6 +105,7 @@ Vim:
 
 - [yazi-prompt.sh](https://github.com/Sonico98/yazi-prompt.sh) - Display an indicator in your prompt when running inside a yazi subshell.
 - [zsh.yazi](https://github.com/AnirudhG07/zsh.yazi) - Make Zsh your default shell in yazi.
+- [fish.yazi](https://github.com/AnirudhG07/fish.yazi) - Make Fish <°))>< your default shell in yazi.
 
 ## 🛠️ Utilities {#utilities}
 
