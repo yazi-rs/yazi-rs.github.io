@@ -308,19 +308,19 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `none`          | No line mode.                                                                                                                                                                                                                          |
 | `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future. |
-| `permissions`   | Display the permissions of the file.                                                                                                                                                                                                   |
+| `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                                                              |
 | `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
+| `owner`         | Display the owner of the file, only available on Unix-like systems. (Nightly version of Yazi required atm)                                                                                                                             |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
 Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
 
 ### `search` {#manager.search}
 
-| Argument/Option | Description                            |
-| --------------- | -------------------------------------- |
-| `fd`            | Search files by name using fd.         |
-| `rg`            | Search files by content using ripgrep. |
-| `none`          | Default, cancel the ongoing search.    |
+| Argument/Option | Description                                                                                                                                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[engine]`      | Search engine, available values: [`fd`](https://github.com/sharkdp/fd), [`rg`](https://github.com/BurntSushi/ripgrep), `none` (cancel search) |
+| `--args`        | Additional arguments passed to the specified engine, for example `search fd --args='-e -H'` (Nightly version of Yazi required atm)            |
 
 You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 
