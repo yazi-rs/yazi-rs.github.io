@@ -83,6 +83,7 @@ UI enhancements:
 - [starship.yazi](https://github.com/Rolv-Apneseth/starship.yazi) - Starship prompt plugin for Yazi.
 - [omp.yazi](https://github.com/saumyajyoti/omp.yazi) - oh-my-posh prompt plugin for Yazi.
 - [git-status.yazi](https://github.com/DreamMaoMao/git-status.yazi) - git prompt plugin for Yazi.
+- [current-size.yazi](https://github.com/DreamMaoMao/current-size.yazi) - show current folder size in header.
 
 ## 🚀 Preloaders {#preloaders}
 
