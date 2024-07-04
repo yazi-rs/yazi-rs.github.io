@@ -251,3 +251,9 @@ Then, you can run:
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
+
+## Troubleshooting
+
+### Icons not showing in Iterm2
+
+For Iterm2 you will need to go to Settings > Profiles > Text > then check "Use a different font for non-ASCII text", then select "Symbols Nerd Font Mono."
