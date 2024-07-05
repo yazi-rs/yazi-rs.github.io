@@ -117,6 +117,7 @@ Vim:
 ## 🛠️ Utilities {#utilities}
 
 - [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
+- [lsColorsToToml](https://github.com/Mellbourn/lsColorsToToml) - Generate the color rules for the `[filetype]` section in `theme.toml` based on your `$LS_COLORS`.
 
 ## 💖 Add yours {#add-yours}
 
