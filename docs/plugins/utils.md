@@ -191,6 +191,18 @@ ya.err("Hello", "World!")                       -- Multiple arguments are suppor
 ya.err({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
+### `raw_err(msg)` {#ya.raw_err}
+
+Append a message to [the log file](/docs/plugins/overview#logging) at the error level, and keep the message as it is:
+
+- `msg` - Required, the message to be logged, which is a string.
+
+```lua
+ya.raw_err("Hello, World!")
+```
+
+The nightly version of Yazi is required at the moment.
+
 ### `sync(fn)` {#ya.sync}
 
 See [Async context](/docs/plugins/overview#async-context).

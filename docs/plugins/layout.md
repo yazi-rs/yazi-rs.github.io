@@ -102,12 +102,12 @@ Applies a minimum size constraint to the element
 The element size is set to at least the specified amount.
 
 ```lua
--- `{ Percentage(100), Min(20) }`
+-- { Percentage(100), Min(20) }
 -- ┌────────────────────────────┐┌──────────────────┐
 -- │            30 px           ││       20 px      │
 -- └────────────────────────────┘└──────────────────┘
---
--- `{ Percentage(100), Min(10) }`
+
+-- { Percentage(100), Min(10) }
 -- ┌──────────────────────────────────────┐┌────────┐
 -- │                 40 px                ││  10 px │
 -- └──────────────────────────────────────┘└────────┘
@@ -120,12 +120,12 @@ Applies a maximum size constraint to the element
 The element size is set to at most the specified amount.
 
 ```lua
--- `{ Percentage(0), Max(20) }`
+-- { Percentage(0), Max(20) }
 -- ┌────────────────────────────┐┌──────────────────┐
 -- │            30 px           ││       20 px      │
 -- └────────────────────────────┘└──────────────────┘
---
--- `{ Percentage(0), Max(10) }`
+
+-- { Percentage(0), Max(10) }
 -- ┌──────────────────────────────────────┐┌────────┐
 -- │                 40 px                ││  10 px │
 -- └──────────────────────────────────────┘└────────┘
@@ -139,12 +139,12 @@ Applies a length constraint to the element
 The element size is set to the specified amount.
 
 ```lua
--- `{ Length(20), Length(20) }`
+-- { Length(20), Length(20) }
 -- ┌──────────────────┐┌──────────────────┐
 -- │       20 px      ││       20 px      │
 -- └──────────────────┘└──────────────────┘
---
--- `{ Length(20), Length(30) }`
+
+-- { Length(20), Length(30) }
 -- ┌──────────────────┐┌────────────────────────────┐
 -- │       20 px      ││            30 px           │
 -- └──────────────────┘└────────────────────────────┘
@@ -158,12 +158,12 @@ Converts the given percentage to a floating-point value and multiplies that with
 This value is rounded back to a integer as part of the layout split calculation.
 
 ```lua
--- `{ Percentage(75), Fill(1) }`
+-- { Percentage(75), Fill(1) }
 -- ┌────────────────────────────────────┐┌──────────┐
 -- │                38 px               ││   12 px  │
 -- └────────────────────────────────────┘└──────────┘
---
--- `{ Percentage(50), Fill(1) }`
+
+-- { Percentage(50), Fill(1) }
 -- ┌───────────────────────┐┌───────────────────────┐
 -- │         25 px         ││         25 px         │
 -- └───────────────────────┘└───────────────────────┘
@@ -177,12 +177,12 @@ Converts the given ratio to a floating-point value and multiplies that with area
 This value is rounded back to a integer as part of the layout split calculation.
 
 ```lua
--- `{ Ratio(1, 2), Ratio(1, 2) }`
+-- { Ratio(1, 2), Ratio(1, 2) }
 -- ┌───────────────────────┐┌───────────────────────┐
 -- │         25 px         ││         25 px         │
 -- └───────────────────────┘└───────────────────────┘
---
--- `{ Ratio(1, 4), Ratio(1, 4), Ratio(1, 4), Ratio(1, 4) }`
+
+-- { Ratio(1, 4), Ratio(1, 4), Ratio(1, 4), Ratio(1, 4) }
 -- ┌───────────┐┌──────────┐┌───────────┐┌──────────┐
 -- │   13 px   ││   12 px  ││   13 px   ││   12 px  │
 -- └───────────┘└──────────┘└───────────┘└──────────┘
@@ -197,12 +197,12 @@ The element will only expand or fill into excess available space, proportionally
 other `Fill` elements while satisfying all other constraints.
 
 ```lua
--- `{ Fill(1), Fill(2), Fill(3) }`
+-- { Fill(1), Fill(2), Fill(3) }
 -- ┌──────┐┌───────────────┐┌───────────────────────┐
 -- │ 8 px ││     17 px     ││         25 px         │
 -- └──────┘└───────────────┘└───────────────────────┘
---
--- `{ Fill(1), Percentage(50), Fill(1) }`
+
+-- { Fill(1), Percentage(50), Fill(1) }
 -- ┌───────────┐┌───────────────────────┐┌──────────┐
 -- │   13 px   ││         25 px         ││   12 px  │
 -- └───────────┘└───────────────────────┘└──────────┘
@@ -302,6 +302,13 @@ All parameters for padding are integers:
 ui.Padding(left, right, top, bottom)
 ```
 
+Properties:
+
+- `left` - left padding
+- `right` - right padding
+- `top` - top padding
+- `bottom` - bottom padding
+
 If you want to specify only one of them, you can:
 
 - `ui.Padding.left(left)` equal to `ui.Padding(left, 0, 0, 0)`
@@ -314,13 +321,6 @@ Or specify a particular direction for them:
 - `ui.Padding.x(x)` equal to `ui.Padding(x, x, 0, 0)`
 - `ui.Padding.y(y)` equal to `ui.Padding(0, 0, y, y)`
 - `ui.Padding.xy(x, y)` equal to `ui.Padding(x, x, y, y)`
-
-Properties:
-
-- `left` - left padding
-- `right` - right padding
-- `top` - top padding
-- `bottom` - bottom padding
 
 ## Paragraph {#paragraph}
 
@@ -362,10 +362,6 @@ ui.Rect {
 ui.Rect.default  -- Equal to `ui.Rect { x = 0, y = 0, w = 0, h = 0 }`
 ```
 
-You can obtain a pre-computed `Rect` through [Yazi's layout system](#layout).
-
-Note that if you intend to create it yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
-
 Properties:
 
 - `x` - x position
@@ -380,6 +376,9 @@ Properties:
 Methods (all methods return `self`):
 
 - `padding(padding)` - Set padding. It accepts a [Padding](#padding)
+
+You can obtain a pre-computed `Rect` through [`ui.Layout()`](#layout).
+Note that if you intend to create a `Rect` yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
 
 ## Span {#span}
 
