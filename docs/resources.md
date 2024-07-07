@@ -35,7 +35,11 @@ Archives:
 
 BitTorrent:
 
-- [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission)
+- [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission).
+
+Jupyter Notebooks:
+
+- [nbpreview.yazi](https://github.com/AnirudhG07/nbpreview.yazi) - Preview jupyter notebooks(\*.ipynb) files using [nbpreview](https://github.com/paw-lu/nbpreview).
 
 ## 🧩 Functional plugins {#functional}
 
@@ -73,7 +77,7 @@ File actions:
 
 General command enhancements:
 
-- [augment-command.yazi](https://github.com/hankertrix/augment-command.yazi) - Enhances a few Yazi commands with better handling of the choice between selected items and the hovered item. It also auto-extracts archives and has bidirectional skipping of directories with a single sub-directory, while also including quite a few of the plugins on the [tips page](/docs/tips) like `smart-enter`, `smart-paste`, `parent-arrow` and more.
+- [augment-command.yazi](https://github.com/hankertrix/augment-command.yazi) - Enhances a few Yazi commands with better handling of the choice between selected items and the hovered item.
 
 UI enhancements:
 
