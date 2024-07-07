@@ -37,6 +37,9 @@ BitTorrent:
 
 - [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission)
 
+Jupyter Notebooks:
+- [nbpreview.yazi](https://github.com/AnirudhG07/nbpreview.yazi) - Preview jupyter notebooks(*.ipynb) files using [nbpreview](https://github.com/paw-lu/nbpreview)
+
 ## 🧩 Functional plugins {#functional}
 
 Jumping:
