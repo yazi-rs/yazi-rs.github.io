@@ -228,11 +228,11 @@ Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will fol
 
 In the Android platform, you can only use it with the `--permanently` option, since there lacks the concept of a trash bin.
 
-| Argument/Option | Description                                                          |
-| --------------- | -------------------------------------------------------------------- |
-| `--force`       | Don't show the confirmation dialog, and trash/delete files directly. |
-| `--permanently` | Permanently delete the files.                                        |
-| `--hovered`     | Always remove the hovered file regardless of the selection state.    |
+| Argument/Option | Description                                                                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------- |
+| `--force`       | Don't show the confirmation dialog, and trash/delete files directly.                                        |
+| `--permanently` | Permanently delete the files.                                                                               |
+| `--hovered`     | Always remove the hovered file regardless of the selection state. (Nightly version of Yazi is required ATM) |
 
 ### `create` {#manager.create}
 
@@ -246,7 +246,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
-- `--hovered`: Always rename the hovered file regardless of the selection state.
+- `--hovered`: Always rename the hovered file regardless of the selection state. (Nightly version of Yazi is required ATM)
 - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 - `--empty`: Empty a part of the filename.
   - `"stem"`: Empty the stem. e.g. `"foo.jpg"` -> `".jpg"`.

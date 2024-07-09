@@ -134,9 +134,9 @@ Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y
 ```toml
 [[manager.prepend_keymap]]
 on  = [ "y" ]
-run = [ "yank", '''
-	shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
-''' ]
+run = [ '''
+	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
+''', "yank" ]
 ```
 
 The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
@@ -144,9 +144,9 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 ```toml
 [[manager.prepend_keymap]]
 on  = [ "y" ]
-run = [ "yank", '''
-	shell --confirm 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
-''' ]
+run = [ '''
+	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
+''', "yank" ]
 ```
 
 ## Maximize preview pane {#max-preview}
