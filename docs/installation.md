@@ -73,8 +73,8 @@ You can also manage Yazi's configuration using [home-manager](https://nix-commun
 	plugins-repo = pkgs.fetchFromGitHub {
 		owner = "yazi-rs";
 		repo = "plugins";
-		rev = "8d1aa6c7839b868973e34f6160055d824bb8c399";
-		hash = "sha256-EuXkiK80a1roD6ZJs5KEvXELcQhhBtAH5VyfW9YFRc8=";
+		rev = "...";
+		hash = "sha256-...";
 	};
 in {
 	programs.yazi = {
@@ -94,27 +94,23 @@ in {
 
 		plugins = {
 			chmod = "${plugins-repo}/chmod.yazi";
-			hide-preview = "${plugins-repo}/hide-preview.yazi";
+			full-border = "${plugins-repo}/full-border.yazi";
 			max-preview = "${plugins-repo}/max-preview.yazi";
 			starship = pkgs.fetchFromGitHub {
 				owner = "Rolv-Apneseth";
 				repo = "starship.yazi";
-				rev = "6197e4cca4caed0121654079151632f6abcdcae9";
-				sha256 = "sha256-oHoBq7BESjGeKsaBnDt0TXV78ggGCdYndLpcwwQ8Zts=";
+				rev = "...";
+				sha256 = "sha256-...";
 			};
 		};
 
 		initLua = ''
+			require("full-border"):setup()
 			require("starship"):setup()
 		'';
 
 		keymap = {
 			manager.prepend_keymap = [
-				{
-					on = ["t"];
-					run = "plugin --sync hide-preview";
-					desc = "Switch the preview pane between hidden and shown";
-				}
 				{
 					on = ["T"];
 					run = "plugin --sync max-preview";
