@@ -92,6 +92,13 @@ The number of files to keep above and below the cursor when moving through the f
 
 If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
 
+### `update_title` {#manager.update_title}
+
+Update the title of the terminal window using ANSI escape sequences.
+
+- `true`: Update the title
+- `false`: Do not update the title
+
 ### `mouse_events` {#manager.mouse_events}
 
 Array of strings, the types of mouse events can be received by the plugin system, available values:
