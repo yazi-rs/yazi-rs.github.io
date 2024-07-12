@@ -123,7 +123,7 @@ To select files and directories, the following commands are available.
 | <kbd>Ctrl</kbd> + <kbd>r</kbd> | Inverse selection of all files             |
 | <kbd>Esc</kbd>                 | Cancel selection                           |
 
-### File/directory operations
+### File operations
 
 To interact with selected files/directories use any of the commands below.
 
@@ -151,7 +151,7 @@ To interact with selected files/directories use any of the commands below.
 | <kbd>z</kbd>                       | Jump to a directory using zoxide                                            |
 | <kbd>Z</kbd>                       | Jump to a directory, or reveal a file using fzf                             |
 
-### Copying paths
+### Copy paths
 
 To copy paths, use any of the following commands below.
 
@@ -164,13 +164,13 @@ _Observation: <kbd>c</kbd> ⇒ <kbd>d</kbd> indicates pressing the <kbd>c</kbd> 
 | <kbd>c</kbd> ⇒ <kbd>f</kbd> | Copy the name of the file                       |
 | <kbd>c</kbd> ⇒ <kbd>n</kbd> | Copy the name of the file without the extension |
 
-### Filtering files/directories
+### Filter files
 
 | Key binding  | Action                              |
 | ------------ | ----------------------------------- |
 | <kbd>f</kbd> | Filter the files/directories in CWD |
 
-### Finding files/directories
+### Find files
 
 | Key binding  | Action                              |
 | ------------ | ----------------------------------- |
@@ -179,7 +179,7 @@ _Observation: <kbd>c</kbd> ⇒ <kbd>d</kbd> indicates pressing the <kbd>c</kbd> 
 | <kbd>n</kbd> | Jump to next occurrence             |
 | <kbd>N</kbd> | Jump to previous occurrence         |
 
-### Searching files/directories
+### Search files
 
 | Key binding  | Action                                                                         |
 | ------------ | ------------------------------------------------------------------------------ |
@@ -209,22 +209,14 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 
 ### Multi-tab
 
-| Key binding  | Action                             |
-| ------------ | ---------------------------------- |
-| <kbd>t</kbd> | Create a new tab with CWD          |
-| <kbd>1</kbd> | Switch to the first tab            |
-| <kbd>2</kbd> | Switch to the second tab           |
-| <kbd>3</kbd> | Switch to the third tab            |
-| <kbd>4</kbd> | Switch to the fourth tab           |
-| <kbd>5</kbd> | Switch to the fifth tab            |
-| <kbd>6</kbd> | Switch to the sixth tab            |
-| <kbd>7</kbd> | Switch to the seventh tab          |
-| <kbd>8</kbd> | Switch to the eighth tab           |
-| <kbd>9</kbd> | Switch to the ninth tab            |
-| <kbd>[</kbd> | Switch to the previous tab         |
-| <kbd>]</kbd> | Switch to the next tab             |
-| <kbd>{</kbd> | Swap current tab with previous tab |
-| <kbd>}</kbd> | Swap current tab with next tab     |
+| Key binding                                   | Action                             |
+| --------------------------------------------- | ---------------------------------- |
+| <kbd>t</kbd>                                  | Create a new tab with CWD          |
+| <kbd>1</kbd>, <kbd>2</kbd>, ..., <kbd>9</kbd> | Switch to the N-th tab             |
+| <kbd>[</kbd>                                  | Switch to the previous tab         |
+| <kbd>]</kbd>                                  | Switch to the next tab             |
+| <kbd>\{</kbd>                                 | Swap current tab with previous tab |
+| <kbd>}</kbd>                                  | Swap current tab with next tab     |
 
 ## Flavors
 
