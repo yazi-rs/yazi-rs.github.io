@@ -207,6 +207,25 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | <kbd>,</kbd> ⇒ <kbd>s</kbd> | Sort by size                     |
 | <kbd>,</kbd> ⇒ <kbd>S</kbd> | Sort by size (reverse)           |
 
+### Multi-tab
+
+| Key binding  | Action                             |
+| ------------ | ---------------------------------- |
+| <kbd>t</kbd> | Create a new tab with CWD          |
+| <kbd>1</kbd> | Switch to the first tab            |
+| <kbd>2</kbd> | Switch to the second tab           |
+| <kbd>3</kbd> | Switch to the third tab            |
+| <kbd>4</kbd> | Switch to the fourth tab           |
+| <kbd>5</kbd> | Switch to the fifth tab            |
+| <kbd>6</kbd> | Switch to the sixth tab            |
+| <kbd>7</kbd> | Switch to the seventh tab          |
+| <kbd>8</kbd> | Switch to the eighth tab           |
+| <kbd>9</kbd> | Switch to the ninth tab            |
+| <kbd>[</kbd> | Switch to the previous tab         |
+| <kbd>]</kbd> | Switch to the next tab             |
+| <kbd>{</kbd> | Swap current tab with previous tab |
+| <kbd>}</kbd> | Swap current tab with next tab     |
+
 ## Flavors
 
 Pick a color scheme you like from our [flavors repository](https://github.com/yazi-rs/flavors), or [cooking a flavor](/docs/flavors/overview#cooking)!
