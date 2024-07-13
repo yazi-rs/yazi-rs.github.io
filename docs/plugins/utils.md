@@ -670,18 +670,7 @@ Properties:
 
 This object represents the exit status of a child process, and it is created by [`wait()`](#Child.wait), or [`output()`](#Command.output).
 
-### `success()` {#Status.success}
+Properties:
 
-```lua
-local ok = status:success()
-```
-
-Returns whether the child process exited successfully, which is a boolean.
-
-### `code()` {#Status.code}
-
-```lua
-local code = status:code()
-```
-
-Returns the exit code of the child process, which is an integer if any.
+- `success`: whether the child process exited successfully, which is a boolean.
+- `code`: the exit code of the child process, which is an integer if any
