@@ -37,4 +37,5 @@ div[class^="announcementBar_"] {
 	font-size: 20px;
 	background: repeating-linear-gradient(35deg, #e8d7ff, #e8d7ff 20px, #ffe9d1 10px, #ffe9d1 40px) !important;
 	font-weight: 700;
+	height: auto;
 }
