@@ -312,7 +312,7 @@ Returns the content of clipboard or adds content to the system clipboard.
 
 - `text` - Optional, value to be copied in the clipboard. If not set, will return the value present in the clipboard.
 
-```
+```lua
 -- get contents of the clipboard
 local content = ya.clipboard()
 
