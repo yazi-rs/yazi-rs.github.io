@@ -306,11 +306,11 @@ This function is only available on Unix-like systems.
 
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
 
-### `clipboard(content)` {#ya.clipboard}
+### `clipboard(text)` {#ya.clipboard}
 
 Returns the content of clipboard or adds content to the system clipboard.
 
-- `val` - Optional, value to be copied in the clipboard. If not set, will return the value present in the clipboard.
+- `text` - Optional, value to be copied in the clipboard. If not set, will return the value present in the clipboard.
 
 ```
 -- get contents of the clipboard
