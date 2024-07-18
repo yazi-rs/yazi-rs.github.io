@@ -306,6 +306,22 @@ This function is only available on Unix-like systems.
 
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
 
+### `clipboard(text)` {#ya.clipboard}
+
+Get or set the content of the system clipboard.
+
+- `text` - Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
+
+```lua
+-- Get contents from the clipboard
+local content = ya.clipboard()
+
+-- Set contents to the clipboard
+ya.clipboard("new content")
+```
+
+This function is only available in the async context.
+
 ## ps {#ps}
 
 Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API. See [DDS](/docs/dds) for details.
