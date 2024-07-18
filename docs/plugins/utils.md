@@ -707,7 +707,27 @@ Attempts to take the child process's standard error stream and returns it as a L
 - `error` - The captured standard error stream as a Lua userdata on success (or nil if there is no standard error).
 - `nil` - if an error occurs in attempting to capture the error.
 
-### `flush` {#Child.flush}
+### `write_all()` {#Child.write_all}
+
+```lua
+local ok, err = child:write_all()
+```
+
+Writes all bytes from the string src to the standard input (stdin) of the child process, returns:
+
+- `ok` - boolean indicating success (true) or failure (false).
+- `err` - error string if writing fails, otherwise nil.
+
+### `flush()` {#Child.flush}
+
+```lua
+local ok, err = child:flush()
+```
+
+Flushes any buffered data to the standard input (stdin) of the child process, returns:
+
+- `ok` - boolean indicating success (true) or failure (false).
+- `err` - error string if writing fails, otherwise nil.
 
 ## Output
 
