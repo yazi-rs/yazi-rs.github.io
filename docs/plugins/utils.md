@@ -674,6 +674,39 @@ Send a SIGTERM signal to the child process, returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `take_stdin` {#Child.take_stdin}
+
+```lua
+local stderr = child:take_stdin()
+```
+
+Attempts to the child process's standard input stream and returns it as a Lua userdata. This returns:
+
+- `input` - The captured standard input stream as a Lua userdata on success (or nil if there is no standard input).
+- `nil` - if an error occurs.
+
+### `take_stdout` {#Child.take_stdout}
+
+```lua
+local stderr = child:take_stdout()
+```
+
+Attempts to take the child process's standard error stream and returns it as a Lua userdata. This returns:
+
+- `output` - The captured standard output stream as a Lua userdata on success (or nil if there is no standard output).
+- `nil` - if an error occurs.
+
+### `take_stderr` {#Child.take_stderr}
+
+```lua
+local stderr = child:take_stderr()
+```
+
+Attempts to take the child process's standard error stream and returns it as a Lua userdata. This returns:
+
+- `error` - The captured standard error stream as a Lua userdata on success (or nil if there is no standard error).
+- `nil` - if an error occurs in attempting to capture the error.
+
 ## Output
 
 Properties:
