@@ -308,16 +308,16 @@ Only available on Unix-like systems. Returns the hostname of the current machine
 
 ### `clipboard(text)` {#ya.clipboard}
 
-Returns the content of clipboard or adds content to the system clipboard.
+Get or set the content of the system clipboard.
 
-- `text` - Optional, value to be copied in the clipboard. If not set, will return the value present in the clipboard.
+- `text` - Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
 
 ```lua
--- get contents of the clipboard
+-- Get contents from the clipboard
 local content = ya.clipboard()
 
--- set contents of the clipboard
-ya.clipboard("new clipboard content")
+-- Set contents to the clipboard
+ya.clipboard("new content")
 ```
 
 This function is only available in the async context.
