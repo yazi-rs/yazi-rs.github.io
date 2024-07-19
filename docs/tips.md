@@ -283,11 +283,11 @@ Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yaz
 
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
-Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following to your `init.lua`:
 
 ```diff
 @@ -1,8 +1,22 @@
-+function Status:owner()
++function Status_owner()
 +	local h = cx.active.current.hovered
 +	if h == nil or ya.target_family() ~= "unix" then
 +		return ui.Line {}
@@ -301,14 +301,7 @@ Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/y
 +	}
 +end
 +
- function Status:render(area)
- 	self.area = area
-
- 	local left = ui.Line { self:mode(), self:size(), self:name() }
--	local right = ui.Line { self:permissions(), self:percentage(), self:position() }
-+	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
- 	return {
- 		ui.Paragraph(area, { left }),
++Status:children_add(Status_owner, 500, Status.RIGHT)
 ```
 
 ## Show username and hostname in header {#username-hostname-in-header}
