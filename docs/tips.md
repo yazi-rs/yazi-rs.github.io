@@ -308,29 +308,21 @@ Add the following to your `init.lua`:
 
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
-Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/header.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following to your `init.lua`:
 
 ```diff
 @@ -76,11 +76,18 @@
  		:split(area)
  end
 
-+function Header:host()
++function Header_host()
 +	if ya.target_family() ~= "unix" then
 +		return ui.Line {}
 +	end
 +	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
 +end
 +
- function Header:render(area)
- 	self.area = area
-
- 	local right = ui.Line { self:count(), self:tabs() }
--	local left = ui.Line { self:cwd(math.max(0, area.w - right:width())) }
-+	local left = ui.Line { self:host(), self:cwd(math.max(0, area.w - right:width())) }
- 	return {
- 		ui.Paragraph(area, { left }),
- 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
++Header:children_add(Header_host, 500, Header.LEFT)
 ```
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
