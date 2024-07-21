@@ -630,7 +630,7 @@ Similar to [`read()`](#Child.read), but it reads data line by line.
 ### `read_line_with(opts)` {#Child.read_line_with}
 
 ```lua
-local line, event = child:wait_line_with { timeout = 500 }
+local line, event = child:read_line_with { timeout = 500 }
 ```
 
 Similar to [`read_line()`](#Child.read_line), but it accepts a table of options:
