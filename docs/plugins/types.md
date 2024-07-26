@@ -66,17 +66,17 @@ local url = Url("archive:///root/ost.zip#bgm.mp3")
 
 Properties:
 
-- `frag` - The fragment string of this url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
-- `is_regular` - Whether the file represented by this url is a regular file
-- `is_search` - Whether the file represented by this url from the search result
-- `is_archive` - Whether the file represented by this url from an archive
+- `frag` - The fragment string of the url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
+- `is_regular` - Whether the file represented by the url is a regular file
+- `is_search` - Whether the file represented by the url from the search result
+- `is_archive` - Whether the file represented by the url from an archive
 
 Methods:
 
-- `name()` - The file name of this url
-- `stem()` - The file name without the extension of this url
-- `join(url)` - Join this url with another url
-- `parent()` - The url of the parent directory
+- `name()` - Returns the filename in string if any, otherwise `nil`
+- `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
+- `join(url)` - Joins with another url or a string of url, returns a new `Url`
+- `parent()` - Returns parent directory in string if any, otherwise `nil`
 
 Meta methods:
 

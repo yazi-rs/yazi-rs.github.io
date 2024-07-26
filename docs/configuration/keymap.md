@@ -145,6 +145,36 @@ Change the current directory.
 | `[path]`        | The path to change to.                   |
 | `--interactive` | Use an interactive UI to input the path. |
 
+You can add your own `g` series keys to achieve a simple bookmark feature:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "g", "d" ],
+run  = "cd ~/Downloads"
+desc = "Cd to ~/Downloads"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ],
+run  = "cd ~/Pictures"
+desc = "Cd to ~/Pictures"
+```
+
+For Windows users, you can also switch drives using the `cd` command (Nightly version of Yazi required atm):
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "g", "d" ],
+run  = "cd D:"
+desc = "Switch to D drive"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ],
+run  = 'cd "E:\\Pictures"'  # We need to escape the backslash
+desc = 'Cd to E:\Pictures'
+```
+
+Check out the [resources page](/docs/resources) for a more comprehensive bookmark plugin.
+
 ### `reveal` {#manager.reveal}
 
 Change the current directory to the parent of specified file, and hover on it.
