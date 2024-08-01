@@ -263,7 +263,7 @@ end
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
-Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()

@@ -204,7 +204,7 @@ The task of `peek` is to draw in the preview area based on the values of `file` 
 
 The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/types#app-data) through `cx`.
 
-Here are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/latest/yazi-plugin/preset/plugins)
+Here are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/shipped/yazi-plugin/preset/plugins)
 
 ### Preloader {#preloader}
 
