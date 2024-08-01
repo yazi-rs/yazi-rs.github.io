@@ -34,13 +34,13 @@ Most packages on this page are maintained by the community, and they **_may not 
 ## Arch Linux
 
 ```sh
-sudo pacman -S yazi ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide imagemagick
+sudo pacman -S yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
 ```sh
-paru -S yazi-git ffmpegthumbnailer unarchiver jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-git ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 ## Nix
@@ -222,7 +222,7 @@ brew install yazi --HEAD
 ## MacPorts
 
 ```bash
-sudo port install yazi ffmpegthumbnailer unar jq poppler fd ripgrep fzf zoxide ImageMagick
+sudo port install yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
 ## NetBSD
