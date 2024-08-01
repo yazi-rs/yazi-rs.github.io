@@ -677,46 +677,56 @@ Send a SIGTERM signal to the child process, returns `(ok, err)`:
 ### `take_stdin()` {#Child.take_stdin}
 
 ```lua
-local input = child:take_stdin()
+local stdin = child:take_stdin()
 ```
 
-Attempts to the child process's standard input stream and returns it as a Lua userdata. This returns:
-
-- `input` - The captured standard input stream as a Lua userdata on success (or nil if there is no standard input).
-- `nil` - if an error occurs.
+Take and return the stdin stream of the child process, which can only be called once and is only applicable to processes with [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
 
 ### `take_stdout()` {#Child.take_stdout}
 
 ```lua
-local output = child:take_stdout()
+local stderr = child:take_stdout()
 ```
 
-Attempts to take the child process's standard error stream and returns it as a Lua userdata. This returns:
+Take and return the stdout stream of the child process, which can only be called once and is only applicable to processes with [`stdout(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
 
-- `output` - The captured standard output stream as a Lua userdata on success (or nil if there is no standard output).
-- `nil` - if an error occurs.
+This is useful when redirecting stdout to another process's stdin:
+
+```lua
+local echo = Command("echo"):arg("Hello"):stdout(Command.PIPED):spawn()
+
+local rev = Command("rev"):stdin(echo:take_stdout()):stdout(Command.PIPED):output()
+
+ya.err(rev.stdout) -- "olleH\n"
+```
 
 ### `take_stderr()` {#Child.take_stderr}
 
 ```lua
-local error = child:take_stderr()
+local stderr = child:take_stderr()
 ```
 
-Attempts to take the child process's standard error stream and returns it as a Lua userdata. This returns:
+Take and return the stderr stream of the child process, which can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
 
-- `error` - The captured standard error stream as a Lua userdata on success (or nil if there is no standard error).
-- `nil` - if an error occurs in attempting to capture the error.
+See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
 
-### `write_all()` {#Child.write_all}
+### `write_all(src)` {#Child.write_all}
 
 ```lua
-local ok, err = child:write_all()
+local ok, err = child:write_all(src)
 ```
 
-Writes all bytes from the string src to the standard input (stdin) of the child process, returns:
+Writes all bytes from the string `src` to the stdin of the child process, returns:
 
-- `ok` - boolean indicating success (true) or failure (false).
-- `err` - error string if writing fails, otherwise nil.
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
 
 ### `flush()` {#Child.flush}
 
@@ -724,10 +734,17 @@ Writes all bytes from the string src to the standard input (stdin) of the child 
 local ok, err = child:flush()
 ```
 
-Flushes any buffered data to the standard input (stdin) of the child process, returns:
+Flushes any buffered data to the stdin of the child process, returns:
 
-- `ok` - boolean indicating success (true) or failure (false).
-- `err` - error string if writing fails, otherwise nil.
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
 
 ## Output
 
