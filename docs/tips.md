@@ -286,21 +286,19 @@ Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yaz
 Add the following code to your `~/.config/yazi/init.lua`:
 
 ```lua
-function Status:owner()
+Status:children_add(function()
 	local h = cx.active.current.hovered
 	if h == nil or ya.target_family() ~= "unix" then
-		return ui.Line({})
+		return ui.Line {}
 	end
 
-	return ui.Line({
+	return ui.Line {
 		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
 		ui.Span(":"),
 		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
 		ui.Span(" "),
-	})
-end
-
-table.insert(Status._right, 1, { "owner", id = 99, order = 100 })
+	}
+end, 500, Status.RIGHT)
 ```
 
 ## Show username and hostname in header {#username-hostname-in-header}
@@ -310,14 +308,12 @@ table.insert(Status._right, 1, { "owner", id = 99, order = 100 })
 Add the following code to your `~/.config/yazi/init.lua`:
 
 ```lua
-function Header:host()
+Header:children_add(function()
 	if ya.target_family() ~= "unix" then
-		return ui.Line({})
+		return ui.Line {}
 	end
 	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
-end
-
-table.insert(Header._left, 1, { "host", id = 99, order = 100 })
+end, 500, Header.LEFT)
 ```
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
