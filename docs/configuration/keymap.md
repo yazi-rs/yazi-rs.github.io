@@ -26,10 +26,10 @@ Since Yazi selects the first matching key to run, prepend always has a higher pr
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 ]
 append_keymap = [
-	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
+	{ on = [ "g", "a" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -37,16 +37,16 @@ Or in another different style:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-a>" ]
+on   = "<C-a>"
 run  = 'my-fev-command1'
 desc = "Just for test!"
 
 [[manager.prepend_keymap]]
-on  = [ "<C-b>" ]
+on  = [ "g", "a" ]
 run = 'my-fev-command2'
 
 [[manager.append_keymap]]
-on  = [ "<C-c>" ]
+on  = "c"
 run = 'my-fev-command3'
 ```
 
@@ -55,11 +55,11 @@ But keep in mind that you can only choose one of them, and it cannot be a combin
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 ]
 
 [[manager.prepend_keymap]]
-on   = [ "<C-b>" ]
+on   = [ "g", "a" ]
 run  = 'my-fev-command2'
 desc = "Just for test!"
 ```
@@ -70,8 +70,8 @@ When you don't need any default and want to fully customize your keybindings, us
 [manager]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
-	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
+	{ on = "<C-a>",      run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "g", "a" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 

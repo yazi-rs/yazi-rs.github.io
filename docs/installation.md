@@ -113,7 +113,7 @@ in {
 		keymap = {
 			manager.prepend_keymap = [
 				{
-					on = ["T"];
+					on = "T";
 					run = "plugin --sync max-preview";
 					desc = "Maximize or restore the preview pane";
 				}
