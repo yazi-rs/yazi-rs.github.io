@@ -179,10 +179,6 @@ rename,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 
 ### `bulk` - bulk rename files {#bulk}
 
-:::note
-This kind currently requires the nightly version of Yazi.
-:::
-
 `sub()` / `sub_remote()` callback body:
 
 ```lua

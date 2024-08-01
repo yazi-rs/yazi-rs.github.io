@@ -13,7 +13,7 @@ There are three configuration files for Yazi:
 - [`keymap.toml`](/docs/configuration/keymap) - Keybindings configuration.
 - [`theme.toml`](/docs/configuration/theme) - Color scheme configuration.
 
-You can find the default configuration files on the **_`latest`_** tag [https://github.com/sxyazi/yazi/tree/**_latest_**/yazi-config/preset](https://github.com/sxyazi/yazi/tree/latest/yazi-config/preset).
+You can find the default configuration files on the **_`shipped`_** tag [https://github.com/sxyazi/yazi/tree/**_shipped_**/yazi-config/preset](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset).
 
 To override any of the defaults, begin by creating the corresponding file (from the directory linked above) to:
 
@@ -25,7 +25,7 @@ For example, to change the visible status of hidden files, start by creating a `
 - `~/.config/yazi/yazi.toml` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\config\yazi.toml` on Windows.
 
-Then [copy the required part](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/yazi.toml) into it, here is `show_hidden`:
+Then [copy the required part](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/yazi.toml) into it, here is `show_hidden`:
 
 ```toml
 # yazi.toml

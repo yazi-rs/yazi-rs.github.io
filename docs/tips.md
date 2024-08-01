@@ -28,7 +28,7 @@ Add this keybinding to your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-s>" ]
+on   = "<C-s>"
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
@@ -38,7 +38,7 @@ desc = "Open shell here"
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-s>" ]
+on   = "<C-s>"
 run  = 'shell "powershell.exe" --block --confirm'
 desc = "Open PowerShell here"
 ```
@@ -52,7 +52,7 @@ You can change the <kbd>Esc</kbd> of input component from the default `escape` t
 
 ```toml
 [[input.prepend_keymap]]
-on   = [ "<Esc>" ]
+on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
 ```
@@ -77,7 +77,7 @@ Then bind it for <kbd>l</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "l" ]
+on   = "l"
 run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
@@ -106,7 +106,7 @@ Then bind it for <kbd>p</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "p" ]
+on   = "p"
 run  = "plugin --sync smart-paste"
 desc = "Paste into the hovered directory or CWD"
 ```
@@ -123,7 +123,7 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "<C-n>" ]
+on  = "<C-n>"
 run = '''
 	shell 'dragon -x -i -T "$1"' --confirm
 '''
@@ -135,7 +135,7 @@ Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "y" ]
+on  = "y"
 run = [ '''
 	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
 ''', "yank" ]
@@ -145,7 +145,7 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "y" ]
+on  = "y"
 run = [ '''
 	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
 ''', "yank" ]
@@ -177,11 +177,11 @@ Then bind it for <kbd>k</kbd> and <kbd>j</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "k" ]
+on  = "k"
 run = "plugin --sync arrow --args=-1"
 
 [[manager.prepend_keymap]]
-on  = [ "j" ]
+on  = "j"
 run = "plugin --sync arrow --args=1"
 ```
 
@@ -238,11 +238,11 @@ Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "K" ]
+on  = "K"
 run = "plugin --sync parent-arrow --args=-1"
 
 [[manager.prepend_keymap]]
-on  = [ "J" ]
+on  = "J"
 run = "plugin --sync parent-arrow --args=1"
 ```
 
@@ -265,7 +265,7 @@ end
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
-Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
 @@ -42,7 +42,11 @@ function Status:name()
@@ -285,61 +285,37 @@ Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yaz
 
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
-Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following code to your `~/.config/yazi/init.lua`:
 
-```diff
-@@ -1,8 +1,22 @@
-+function Status:owner()
-+	local h = cx.active.current.hovered
-+	if h == nil or ya.target_family() ~= "unix" then
-+		return ui.Line {}
-+	end
-+
-+	return ui.Line {
-+		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
-+		ui.Span(":"),
-+		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
-+		ui.Span(" "),
-+	}
-+end
-+
- function Status:render(area)
- 	self.area = area
+```lua
+Status:children_add(function()
+	local h = cx.active.current.hovered
+	if h == nil or ya.target_family() ~= "unix" then
+		return ui.Line {}
+	end
 
- 	local left = ui.Line { self:mode(), self:size(), self:name() }
--	local right = ui.Line { self:permissions(), self:percentage(), self:position() }
-+	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
- 	return {
- 		ui.Paragraph(area, { left }),
+	return ui.Line {
+		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
+		ui.Span(":"),
+		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
+		ui.Span(" "),
+	}
+end, 500, Status.RIGHT)
 ```
 
 ## Show username and hostname in header {#username-hostname-in-header}
 
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
-Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/header.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following code to your `~/.config/yazi/init.lua`:
 
-```diff
-@@ -76,11 +76,18 @@
- 		:split(area)
- end
-
-+function Header:host()
-+	if ya.target_family() ~= "unix" then
-+		return ui.Line {}
-+	end
-+	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
-+end
-+
- function Header:render(area)
- 	self.area = area
-
- 	local right = ui.Line { self:count(), self:tabs() }
--	local left = ui.Line { self:cwd(math.max(0, area.w - right:width())) }
-+	local left = ui.Line { self:host(), self:cwd(math.max(0, area.w - right:width())) }
- 	return {
- 		ui.Paragraph(area, { left }),
- 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
+```lua
+Header:children_add(function()
+	if ya.target_family() ~= "unix" then
+		return ui.Line {}
+	end
+	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
+end, 500, Header.LEFT)
 ```
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}

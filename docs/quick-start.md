@@ -86,7 +86,7 @@ To use it, copy the function into the configuration file of your respective shel
 ## Keybindings
 
 :::tip
-For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml).
+For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap.toml).
 :::
 
 ### Navigation
@@ -192,21 +192,21 @@ To sort files/directories use the following commands.
 
 _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> key followed by pressing the <kbd>a</kbd> key._
 
-| Key binding                 | Action                                |
-| --------------------------- | ------------------------------------- |
-| <kbd>,</kbd> ⇒ <kbd>m</kbd> | Sort by modified time                 |
-| <kbd>,</kbd> ⇒ <kbd>M</kbd> | Sort by modified time (reverse)       |
-| <kbd>,</kbd> ⇒ <kbd>c</kbd> | Sort by creation time                 |
-| <kbd>,</kbd> ⇒ <kbd>C</kbd> | Sort by creation time (reverse)       |
-| <kbd>,</kbd> ⇒ <kbd>e</kbd> | Sort by file extension                |
-| <kbd>,</kbd> ⇒ <kbd>E</kbd> | Sort by file extension (reverse)      |
-| <kbd>,</kbd> ⇒ <kbd>a</kbd> | Sort alphabetically                   |
-| <kbd>,</kbd> ⇒ <kbd>A</kbd> | Sort alphabetically (reverse)         |
-| <kbd>,</kbd> ⇒ <kbd>n</kbd> | Sort naturally                        |
-| <kbd>,</kbd> ⇒ <kbd>N</kbd> | Sort naturally (reverse)              |
-| <kbd>,</kbd> ⇒ <kbd>s</kbd> | Sort by size                          |
-| <kbd>,</kbd> ⇒ <kbd>S</kbd> | Sort by size (reverse)                |
-| <kbd>,</kbd> ⇒ <kbd>r</kbd> | Sort randomly (Nightly version needs) |
+| Key binding                 | Action                           |
+| --------------------------- | -------------------------------- |
+| <kbd>,</kbd> ⇒ <kbd>m</kbd> | Sort by modified time            |
+| <kbd>,</kbd> ⇒ <kbd>M</kbd> | Sort by modified time (reverse)  |
+| <kbd>,</kbd> ⇒ <kbd>c</kbd> | Sort by creation time            |
+| <kbd>,</kbd> ⇒ <kbd>C</kbd> | Sort by creation time (reverse)  |
+| <kbd>,</kbd> ⇒ <kbd>e</kbd> | Sort by file extension           |
+| <kbd>,</kbd> ⇒ <kbd>E</kbd> | Sort by file extension (reverse) |
+| <kbd>,</kbd> ⇒ <kbd>a</kbd> | Sort alphabetically              |
+| <kbd>,</kbd> ⇒ <kbd>A</kbd> | Sort alphabetically (reverse)    |
+| <kbd>,</kbd> ⇒ <kbd>n</kbd> | Sort naturally                   |
+| <kbd>,</kbd> ⇒ <kbd>N</kbd> | Sort naturally (reverse)         |
+| <kbd>,</kbd> ⇒ <kbd>s</kbd> | Sort by size                     |
+| <kbd>,</kbd> ⇒ <kbd>S</kbd> | Sort by size (reverse)           |
+| <kbd>,</kbd> ⇒ <kbd>r</kbd> | Sort randomly                    |
 
 ### Multi-tab
 
@@ -218,7 +218,7 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | <kbd>]</kbd>                                  | Switch to the next tab             |
 | <kbd>\{</kbd>                                 | Swap current tab with previous tab |
 | <kbd>}</kbd>                                  | Swap current tab with next tab     |
-| <kbd>Ctrl</kbd> + <kbd>q</kbd> (<kbd>Ctrl</kbd> + <kbd>c</kbd> on nightly)                | Close the current tab              |
+| <kbd>Ctrl</kbd> + <kbd>c</kbd>                | Close the current tab              |
 
 ## Flavors
 

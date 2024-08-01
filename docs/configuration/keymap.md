@@ -19,17 +19,17 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[help\]](#help) - Help menu.
 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
-Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml), while append inserts after them.
+Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap.toml), while append inserts after them.
 
 Since Yazi selects the first matching key to run, prepend always has a higher priority than default, and append always has a lower priority than default:
 
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 ]
 append_keymap = [
-	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
+	{ on = [ "g", "a" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -37,16 +37,16 @@ Or in another different style:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-a>" ]
+on   = "<C-a>"
 run  = 'my-fev-command1'
 desc = "Just for test!"
 
 [[manager.prepend_keymap]]
-on  = [ "<C-b>" ]
+on  = [ "g", "a" ]
 run = 'my-fev-command2'
 
 [[manager.append_keymap]]
-on  = [ "<C-c>" ]
+on  = "c"
 run = 'my-fev-command3'
 ```
 
@@ -55,11 +55,11 @@ But keep in mind that you can only choose one of them, and it cannot be a combin
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 ]
 
 [[manager.prepend_keymap]]
-on   = [ "<C-b>" ]
+on   = [ "g", "a" ]
 run  = 'my-fev-command2'
 desc = "Just for test!"
 ```
@@ -70,8 +70,8 @@ When you don't need any default and want to fully customize your keybindings, us
 [manager]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
-	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
+	{ on = "<C-a>",      run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "g", "a" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -149,26 +149,26 @@ You can add your own `g` series keys to achieve a simple bookmark feature:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "g", "d" ],
+on   = [ "g", "d" ]
 run  = "cd ~/Downloads"
 desc = "Cd to ~/Downloads"
 
 [[manager.prepend_keymap]]
-on   = [ "g", "p" ],
+on   = [ "g", "p" ]
 run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
 ```
 
-For Windows users, you can also switch drives using the `cd` command (Nightly version of Yazi required atm):
+For Windows users, you can also switch drives using the `cd` command:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "g", "d" ],
+on   = [ "g", "d" ]
 run  = "cd D:"
 desc = "Switch to D drive"
 
 [[manager.prepend_keymap]]
-on   = [ "g", "p" ],
+on   = [ "g", "p" ]
 run  = 'cd "E:\\Pictures"'  # We need to escape the backslash
 desc = 'Cd to E:\Pictures'
 ```
@@ -258,11 +258,11 @@ Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will fol
 
 In the Android platform, you can only use it with the `--permanently` option, since there lacks the concept of a trash bin.
 
-| Argument/Option | Description                                                                                                 |
-| --------------- | ----------------------------------------------------------------------------------------------------------- |
-| `--force`       | Don't show the confirmation dialog, and trash/delete files directly.                                        |
-| `--permanently` | Permanently delete the files.                                                                               |
-| `--hovered`     | Always remove the hovered file regardless of the selection state. (Nightly version of Yazi is required ATM) |
+| Argument/Option | Description                                                          |
+| --------------- | -------------------------------------------------------------------- |
+| `--force`       | Don't show the confirmation dialog, and trash/delete files directly. |
+| `--permanently` | Permanently delete the files.                                        |
+| `--hovered`     | Always remove the hovered file regardless of the selection state.    |
 
 ### `create` {#manager.create}
 
@@ -276,7 +276,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
 
-- `--hovered`: Always rename the hovered file regardless of the selection state. (Nightly version of Yazi is required ATM)
+- `--hovered`: Always rename the hovered file regardless of the selection state.
 - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
 - `--empty`: Empty a part of the filename.
   - `"stem"`: Empty the stem. e.g. `"foo.jpg"` -> `".jpg"`.
@@ -340,17 +340,17 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 | `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future. |
 | `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                                                              |
 | `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
-| `owner`         | Display the owner of the file, only available on Unix-like systems. (Nightly version of Yazi required atm)                                                                                                                             |
+| `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                                                    |
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
+Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/folder.lua).
 
 ### `search` {#manager.search}
 
 | Argument/Option | Description                                                                                                                                   |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `[engine]`      | Search engine, available values: [`fd`](https://github.com/sharkdp/fd), [`rg`](https://github.com/BurntSushi/ripgrep), `none` (cancel search) |
-| `--args`        | Additional arguments passed to the specified engine, for example `search fd --args='-e -H'` (Nightly version of Yazi required atm)            |
+| `--args`        | Additional arguments passed to the specified engine, for example `search fd --args='-e -H'`                                                   |
 
 You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 

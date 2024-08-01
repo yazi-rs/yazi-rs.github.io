@@ -23,7 +23,7 @@ File sorting method.
 
 - `"none"`: Don't sort.
 - `"modified"`: Sort by last modified time.
-- `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
+- `"created"`: Sort by creation time.
 - `"extension"`: Sort by file extension.
 - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
 - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
@@ -54,7 +54,7 @@ Display directories first.
 
 Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if `sort_by = "natural"`.
 
-This is useful for files that contain Hungarian characters. (Currently requires nightly builds.)
+This is useful for files that contain Hungarian characters.
 
 - `true`: Enabled
 - `false`: Disabled
@@ -67,10 +67,10 @@ Line mode: display information associated with the file on the right side of the
 - `"size"`: Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future.
 - `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
 - `"mtime"`: Display the last modified time of the file.
-- `"owner"`: Display the owner of the file, only available on Unix-like systems. (Nightly version of Yazi required atm)
+- `"owner"`: Display the owner of the file, only available on Unix-like systems.
 
 In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
+Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/folder.lua).
 
 ### `show_hidden` {#manager.show_hidden}
 
@@ -101,8 +101,6 @@ Array of strings, the types of mouse events can be received by the plugin system
 - `"touch"`: Mouse horizontal scroll
 - `"move"`: Mouse move
 - `"drag"`: Mouse drag (Some terminals do not support this)
-
-Currently needs the nightly version of Yazi.
 
 ## [preview] {#preview}
 
@@ -212,7 +210,7 @@ append_rules = [
 ]
 ```
 
-If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback (Currently requires nightly builds).
+If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback.
 
 Or, use `rules` to rewrite the entire default rules:
 
