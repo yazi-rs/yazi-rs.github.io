@@ -283,61 +283,37 @@ Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/latest/yaz
 
 <img src={useBaseUrl("/img/owner.png")} width="600" />
 
-Copy the [`Status:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following code to your `~/.config/yazi/init.lua`:
 
-```diff
-@@ -1,8 +1,22 @@
-+function Status:owner()
-+	local h = cx.active.current.hovered
-+	if h == nil or ya.target_family() ~= "unix" then
-+		return ui.Line {}
-+	end
-+
-+	return ui.Line {
-+		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
-+		ui.Span(":"),
-+		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
-+		ui.Span(" "),
-+	}
-+end
-+
- function Status:render(area)
- 	self.area = area
+```lua
+Status:children_add(function()
+	local h = cx.active.current.hovered
+	if h == nil or ya.target_family() ~= "unix" then
+		return ui.Line {}
+	end
 
- 	local left = ui.Line { self:mode(), self:size(), self:name() }
--	local right = ui.Line { self:permissions(), self:percentage(), self:position() }
-+	local right = ui.Line { self:owner(), self:permissions(), self:percentage(), self:position() }
- 	return {
- 		ui.Paragraph(area, { left }),
+	return ui.Line {
+		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
+		ui.Span(":"),
+		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
+		ui.Span(" "),
+	}
+end, 500, Status.RIGHT)
 ```
 
 ## Show username and hostname in header {#username-hostname-in-header}
 
 <img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
 
-Copy the [`Header:render()` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/header.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following code to your `~/.config/yazi/init.lua`:
 
-```diff
-@@ -76,11 +76,18 @@
- 		:split(area)
- end
-
-+function Header:host()
-+	if ya.target_family() ~= "unix" then
-+		return ui.Line {}
-+	end
-+	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
-+end
-+
- function Header:render(area)
- 	self.area = area
-
- 	local right = ui.Line { self:count(), self:tabs() }
--	local left = ui.Line { self:cwd(math.max(0, area.w - right:width())) }
-+	local left = ui.Line { self:host(), self:cwd(math.max(0, area.w - right:width())) }
- 	return {
- 		ui.Paragraph(area, { left }),
- 		ui.Paragraph(area, { right }):align(ui.Paragraph.RIGHT),
+```lua
+Header:children_add(function()
+	if ya.target_family() ~= "unix" then
+		return ui.Line {}
+	end
+	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):fg("blue")
+end, 500, Header.LEFT)
 ```
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
