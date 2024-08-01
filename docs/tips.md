@@ -28,7 +28,7 @@ Add this keybinding to your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-s>" ]
+on   = "<C-s>"
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
@@ -38,7 +38,7 @@ desc = "Open shell here"
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-s>" ]
+on   = "<C-s>"
 run  = 'shell "powershell.exe" --block --confirm'
 desc = "Open PowerShell here"
 ```
@@ -52,7 +52,7 @@ You can change the <kbd>Esc</kbd> of input component from the default `escape` t
 
 ```toml
 [[input.prepend_keymap]]
-on   = [ "<Esc>" ]
+on   = "<Esc>"
 run  = "close"
 desc = "Cancel input"
 ```
@@ -76,7 +76,7 @@ Then bind it for <kbd>l</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "l" ]
+on   = "l"
 run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
@@ -104,7 +104,7 @@ Then bind it for <kbd>p</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "p" ]
+on   = "p"
 run  = "plugin --sync smart-paste"
 desc = "Paste into the hovered directory or CWD"
 ```
@@ -121,7 +121,7 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "<C-n>" ]
+on  = "<C-n>"
 run = '''
 	shell 'dragon -x -i -T "$1"' --confirm
 '''
@@ -133,7 +133,7 @@ Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "y" ]
+on  = "y"
 run = [ '''
 	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
 ''', "yank" ]
@@ -143,7 +143,7 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "y" ]
+on  = "y"
 run = [ '''
 	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
 ''', "yank" ]
@@ -175,11 +175,11 @@ Then bind it for <kbd>k</kbd> and <kbd>j</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "k" ]
+on  = "k"
 run = "plugin --sync arrow --args=-1"
 
 [[manager.prepend_keymap]]
-on  = [ "j" ]
+on  = "j"
 run = "plugin --sync arrow --args=1"
 ```
 
@@ -236,11 +236,11 @@ Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on  = [ "K" ]
+on  = "K"
 run = "plugin --sync parent-arrow --args=-1"
 
 [[manager.prepend_keymap]]
-on  = [ "J" ]
+on  = "J"
 run = "plugin --sync parent-arrow --args=1"
 ```
 
