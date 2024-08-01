@@ -674,6 +674,78 @@ Send a SIGTERM signal to the child process, returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `take_stdin()` {#Child.take_stdin}
+
+```lua
+local stdin = child:take_stdin()
+```
+
+Take and return the stdin stream of the child process, which can only be called once and is only applicable to processes with [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+### `take_stdout()` {#Child.take_stdout}
+
+```lua
+local stderr = child:take_stdout()
+```
+
+Take and return the stdout stream of the child process, which can only be called once and is only applicable to processes with [`stdout(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+This is useful when redirecting stdout to another process's stdin:
+
+```lua
+local echo = Command("echo"):arg("Hello"):stdout(Command.PIPED):spawn()
+
+local rev = Command("rev"):stdin(echo:take_stdout()):stdout(Command.PIPED):output()
+
+ya.err(rev.stdout) -- "olleH\n"
+```
+
+### `take_stderr()` {#Child.take_stderr}
+
+```lua
+local stderr = child:take_stderr()
+```
+
+Take and return the stderr stream of the child process, which can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
+
+### `write_all(src)` {#Child.write_all}
+
+```lua
+local ok, err = child:write_all(src)
+```
+
+Writes all bytes from the string `src` to the stdin of the child process, returns:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
+
+### `flush()` {#Child.flush}
+
+```lua
+local ok, err = child:flush()
+```
+
+Flushes any buffered data to the stdin of the child process, returns:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
+
 ## Output
 
 Properties:

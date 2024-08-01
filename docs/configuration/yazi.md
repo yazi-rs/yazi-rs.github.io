@@ -28,6 +28,7 @@ File sorting method.
 - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
 - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
 - `"size"`: Sort by file size.
+- `"random"`: Sort randomly.
 
 ### `sort_sensitive` {#manager.sort_sensitive}
 
