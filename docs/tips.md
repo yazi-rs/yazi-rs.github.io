@@ -63,12 +63,11 @@ to exiting input directly, without entering Vi mode, making it behave like a reg
 
 Save these lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
 
-
 ```lua
 return {
 	entry = function()
 		local h = cx.active.current.hovered
-		ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = false })
+		ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = true })
 	end,
 }
 ```
@@ -81,7 +80,8 @@ on   = "l"
 run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
-> Note: If you want to disable opening multiple files, set `hovered = true`.
+
+> Note: To allow opening multiple files, set `hovered = false`.
 
 ## Smart paste: `paste` files without entering the directory {#smart-paste}
 
