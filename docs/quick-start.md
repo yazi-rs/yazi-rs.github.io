@@ -103,12 +103,12 @@ or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 
 Further navigation commands can be found in the table below.
 
-| Key binding                 | Action                       |
-| --------------------------- | ---------------------------- |
-| <kbd>K</kbd>                | Move the cursor up 5 lines   |
-| <kbd>J</kbd>                | Move the cursor down 5 lines |
-| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top       |
-| <kbd>G</kbd>                | Move cursor to the bottom    |
+| Key binding                 | Action                           |
+| --------------------------- | -------------------------------- |
+| <kbd>K</kbd>                | Seek up 5 units in the preview   |
+| <kbd>J</kbd>                | Seek down 5 units in the preview |
+| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top           |
+| <kbd>G</kbd>                | Move cursor to the bottom        |
 
 ### Selection
 
