@@ -342,9 +342,6 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 | `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
 | `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                                                    |
 
-In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/folder.lua).
-
 ### `search` {#manager.search}
 
 | Argument/Option | Description                                                                                                                                   |

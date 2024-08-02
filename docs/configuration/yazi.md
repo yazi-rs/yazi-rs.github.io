@@ -70,8 +70,30 @@ Line mode: display information associated with the file on the right side of the
 - `"mtime"`: Display the last modified time of the file.
 - `"owner"`: Display the owner of the file, only available on Unix-like systems.
 
-In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/folder.lua).
+You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[manager]
+linemode = "size_and_mtime"
+```
+
+```lua
+-- ~/.config/yazi/init.lua
+function Linemode:size_and_mtime()
+	local year = os.date("%Y")
+  local time = (self._file.cha.modified or 0) // 1
+
+  if time > 0 and os.date("%Y", time) == year then
+    time = os.date("%b %d %H:%M", time)
+  else
+    time = time and os.date("%b %d  %Y", time) or ""
+  end
+
+  local size = self._file:size()
+  return ui.Line(string.format(" %s %s ", size and ya.readable_size(size):gsub(" ", "") or "-", time))
+end
+```
 
 ### `show_hidden` {#manager.show_hidden}
 
