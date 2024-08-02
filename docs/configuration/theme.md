@@ -237,7 +237,7 @@ If none of the above rules match, it will fallback to `conds` to check if any sp
 - `hidden`: The file is hidden
 - `link`: The file is a symbolic link
 - `orphan`: The file is an orphan (broken symbolic link)
-- `dummy`: The file is a dummy file (failed to load complete metadata, possibly because the filesystem (such as FUSE) doesn't support it.)
+- `dummy`: The file is dummy (failed to load complete metadata, possibly the filesystem doesn't support it, such as FUSE)
 - `block`: The file is a block device
 - `char`: The file is a char device
 - `fifo`: The file is a FIFO
@@ -245,7 +245,7 @@ If none of the above rules match, it will fallback to `conds` to check if any sp
 - `exec`: The file is executable
 - `sticky`: The file has the sticky bit set
 
-Yazi has builtin support for [`nvim-web-devicons`](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
+Yazi has builtin support for [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
 If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details), e.g.:
 
 ```toml
