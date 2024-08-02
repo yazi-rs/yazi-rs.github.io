@@ -211,41 +211,53 @@ You can restrict the specific type of files through `is`, noting that it must be
 
 ## [icon] {#icon}
 
-Display icon based on the first matched rule.
+Each icon rule contains the following properties:
 
-You can prepend or append rules to the default through `prepend_rules` and `append_rules`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
+- `name` (globs, dirs, files, exts), or `if` (conds): the rule itself, which is a string
+- `text`: icon text, which is a string
+- `fg_dark`: icon color in dark mode, which is a [Color](/docs/configuration/theme#types.color)
+- `fg_light`: icon color for light mode, which is a [Color](/docs/configuration/theme#types.color)
+
+Icons are matched according to the following priority:
+
+- globs: glob expressions, e.g., `{ name = "**/Downloads/*.zip", ... }`
+- dirs: directory names, e.g., `{ name = "Desktop", ... }`
+- files: file names, e.g., `{ name = ".bashrc", ... }`
+- exts: extensions, e.g., `{ name = "mp3", ... }`
+- conds: conditions, e.g., `{ if = "!dir", ... }`
+
+`dirs`, `files`, and `exts` are compiled into a `HashMap` at startup, offering `O(1)` time complexity for very fast lookups, which should meet most needs.
+
+For more complex and precise rules, such as matching a specific file in a specific directory, use `globs` - these are always executed first to check if any rules in the glob set are met.
+However, they are much slower than `dirs`, `files`, and `exts`, so it's not recommended to use them excessively.
+
+If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, such as whether a file is a directory or hidden.
+
+Yazi has builtin support for [`nvim-web-devicons`](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
+If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details), e.g.:
 
 ```toml
 [icon]
-prepend_rules = [
-	{ name = "*.rs"    , text = "" },
-	{ name = "Desktop/", text = "" },
+prepend_dirs = [
+	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
 	# ...
-
-	# Icon with a color
-	{ name = "*.lua", text = "", fg = "#51a0cf" },
-
-	# You can also use `is` rule, just like `[filetype]` section
-	# Orphan symbolic links
-	{ name = "*", is = "orphan", text = "" },
 ]
 
-append_rules = [
-	# My fallback icons
-	{ name = "*" , text = "" },
-	{ name = "*/", text = "" },
+append_exts = [
+	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	# ...
 ]
 ```
 
-Or, use `rules` to rewrite the entire default rules:
+If you want to completely override the default rules, you can do so with:
 
 ```toml
-[icon]
-rules = [
-	# ...Some rules
+dirs = [
+	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+	# ...
+]
+exts = [
+	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	# ...
 ]
 ```
-
-End with `/` for directories, so wildcard rule (`*` or `*/`) can be used for fallback matching all files or directories.
-
-If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback.
