@@ -254,7 +254,7 @@ You can download the latest official binaries from [GitHub Releases](https://git
 ```sh
 scoop install yazi
 # Install the optional dependencies (recommended):
-scoop install unar jq poppler fd ripgrep fzf zoxide imagemagick
+scoop install 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 ## AOSC OS

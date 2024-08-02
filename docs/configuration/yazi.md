@@ -302,7 +302,7 @@ Yazi comes with the these previewer plugins:
 - image: presentation layer of built-in image preview, offering mixed preview capabilities
 - video: bridge between `ffmpegthumbnailer` and the preview, offering mixed preview capabilities
 - pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
-- archive: bridge between `unar` and the preview, offering mixed preview and concurrent rendering capabilities
+- archive: bridge between 7-Zip and the preview, offering mixed preview and concurrent rendering capabilities
 
 If you want to create your own previewer, see [Previewer API](/docs/plugins/overview#previewer).
 
