@@ -231,7 +231,19 @@ Icons are matched according to the following priority:
 For more complex and precise rules, such as matching a specific file in a specific directory, use `globs` - these are always executed first to check if any rules in the glob set are met.
 However, they are much slower than `dirs`, `files`, and `exts`, so it's not recommended to use them excessively.
 
-If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, such as whether a file is a directory or hidden.
+If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, and includes the following conditional factors:
+
+- `dir`: The file is a directory
+- `hidden`: The file is hidden
+- `link`: The file is a symbolic link
+- `orphan`: The file is an orphan (broken symbolic link)
+- `dummy`: The file is a dummy file (failed to load complete metadata, possibly because the filesystem (such as FUSE) doesn't support it.)
+- `block`: The file is a block device
+- `char`: The file is a char device
+- `fifo`: The file is a FIFO
+- `sock`: The file is a socket
+- `exec`: The file is executable
+- `sticky`: The file has the sticky bit set
 
 Yazi has builtin support for [`nvim-web-devicons`](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
 If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details), e.g.:
