@@ -65,9 +65,10 @@ This is useful for files that contain Hungarian characters.
 Line mode: display information associated with the file on the right side of the file list row.
 
 - `"none"`: No line mode.
-- `"size"`: Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future.
-- `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
+- `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future.
+- `"ctime"`: Display the creation time of the file.
 - `"mtime"`: Display the last modified time of the file.
+- `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
 - `"owner"`: Display the owner of the file, only available on Unix-like systems.
 
 You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:

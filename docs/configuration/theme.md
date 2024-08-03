@@ -51,7 +51,7 @@ Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supp
 
 ## [flavor] {#flavor}
 
-- use (String): Flavor name, e.g. `"Dracula"`. See [flavor documentation](/docs/flavors/overview) for more details.
+- use (String): Flavor name, e.g. `"dracula"`. See [flavor documentation](/docs/flavors/overview) for more details.
 
 ## [manager] {#manager}
 
@@ -220,18 +220,18 @@ Each icon rule contains the following properties:
 
 Icons are matched according to the following priority:
 
-- globs: glob expressions, e.g., `{ name = "**/Downloads/*.zip", ... }`
-- dirs: directory names, e.g., `{ name = "Desktop", ... }`
-- files: file names, e.g., `{ name = ".bashrc", ... }`
-- exts: extensions, e.g., `{ name = "mp3", ... }`
-- conds: conditions, e.g., `{ if = "!dir", ... }`
+1. globs: glob expressions, e.g., `{ name = "**/Downloads/*.zip", ... }`
+2. dirs: directory names, e.g., `{ name = "Desktop", ... }`
+3. files: file names, e.g., `{ name = ".bashrc", ... }`
+4. exts: extensions, e.g., `{ name = "mp3", ... }`
+5. conds: conditions, e.g., `{ if = "!dir", ... }`
 
-`dirs`, `files`, and `exts` are compiled into a `HashMap` at startup, offering `O(1)` time complexity for very fast lookups, which should meet most needs.
+`dirs`, `files`, and `exts` are compiled into a HashMap at startup, offering O(1) time complexity for very fast lookups, which should meet most needs.
 
 For more complex and precise rules, such as matching a specific file in a specific directory, use `globs` - these are always executed first to check if any rules in the glob set are met.
 However, they are much slower than `dirs`, `files`, and `exts`, so it's not recommended to use them excessively.
 
-If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, and includes the following conditional factors:
+If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, which includes the following conditional factors:
 
 - `dir`: The file is a directory
 - `hidden`: The file is hidden
@@ -246,7 +246,7 @@ If none of the above rules match, it will fallback to `conds` to check if any sp
 - `sticky`: The file has the sticky bit set
 
 Yazi has builtin support for [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
-If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details), e.g.:
+If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details):
 
 ```toml
 [icon]
@@ -254,16 +254,17 @@ prepend_dirs = [
 	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
 	# ...
 ]
-
 append_exts = [
 	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
 	# ...
 ]
+# ...
 ```
 
 If you want to completely override the default rules, you can do so with:
 
 ```toml
+[icon]
 dirs = [
 	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
 	# ...
@@ -272,4 +273,5 @@ exts = [
 	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
 	# ...
 ]
+# ...
 ```
