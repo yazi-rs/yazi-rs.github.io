@@ -81,7 +81,7 @@ run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
 
-> Note: To allow opening multiple files, set `hovered = false`.
+> Note: To open multiple files at once, delete `hovered = true` from `{}`.
 
 ## Smart paste: `paste` files without entering the directory {#smart-paste}
 
