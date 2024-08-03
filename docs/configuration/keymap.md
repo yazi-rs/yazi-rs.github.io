@@ -334,16 +334,14 @@ Set the visibility of hidden files.
 
 Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
-| Argument/Option | Description                                                                                                                                                                                                                            |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `none`          | No line mode.                                                                                                                                                                                                                          |
-| `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future. |
-| `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                                                              |
-| `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
-| `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                                                    |
-
-In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/folder.lua).
+| Argument/Option | Description                                                                                                                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`          | No line mode.                                                                                                                                                                                           |
+| `size`          | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future. |
+| `ctime`         | Display the creation time of the file.                                                                                                                                                                  |
+| `mtime`         | Display the last modified time of the file.                                                                                                                                                             |
+| `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                               |
+| `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                     |
 
 ### `search` {#manager.search}
 
@@ -395,6 +393,7 @@ Move the cursor to the next or previous occurrence.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
   - `"size"`: Sort by file size.
+  - `"random"`: Sort randomly.
 - `--reverse`: Display files in reverse order. `--reverse` or `--reverse=yes` to reverse, `--reverse=no` to cancel.
 - `--dir-first`: Display directories first. `--dir-first` or `--dir-first=yes` to enable, `--dir-first=no` to cancel.
 - `--translit`: Transliterate filenames for sorting, see [sort_translit](/docs/configuration/yazi#manager.sort_translit) for details. `--translit` or `--translit=yes` to enable, `--translit=no` to cancel.

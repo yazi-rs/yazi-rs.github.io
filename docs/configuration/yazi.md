@@ -28,6 +28,7 @@ File sorting method.
 - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
 - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
 - `"size"`: Sort by file size.
+- `"random"`: Sort randomly.
 
 ### `sort_sensitive` {#manager.sort_sensitive}
 
@@ -64,13 +65,36 @@ This is useful for files that contain Hungarian characters.
 Line mode: display information associated with the file on the right side of the file list row.
 
 - `"none"`: No line mode.
-- `"size"`: Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future.
-- `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
+- `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future.
+- `"ctime"`: Display the creation time of the file.
 - `"mtime"`: Display the last modified time of the file.
+- `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
 - `"owner"`: Display the owner of the file, only available on Unix-like systems.
 
-In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/folder.lua).
+You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[manager]
+linemode = "size_and_mtime"
+```
+
+```lua
+-- ~/.config/yazi/init.lua
+function Linemode:size_and_mtime()
+	local year = os.date("%Y")
+	local time = (self._file.cha.modified or 0) // 1
+
+	if time > 0 and os.date("%Y", time) == year then
+		time = os.date("%b %d %H:%M", time)
+	else
+		time = time and os.date("%b %d  %Y", time) or ""
+	end
+
+	local size = self._file:size()
+	return ui.Line(string.format(" %s %s ", size and ya.readable_size(size) or "-", time))
+end
+```
 
 ### `show_hidden` {#manager.show_hidden}
 
@@ -301,7 +325,7 @@ Yazi comes with the these previewer plugins:
 - image: presentation layer of built-in image preview, offering mixed preview capabilities
 - video: bridge between `ffmpegthumbnailer` and the preview, offering mixed preview capabilities
 - pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
-- archive: bridge between `unar` and the preview, offering mixed preview and concurrent rendering capabilities
+- archive: bridge between 7-Zip and the preview, offering mixed preview and concurrent rendering capabilities
 
 If you want to create your own previewer, see [Previewer API](/docs/plugins/overview#previewer).
 

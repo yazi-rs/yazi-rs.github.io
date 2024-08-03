@@ -237,13 +237,32 @@ This function is only available in the async context.
 
 ### `target_family()` {#ya.target_family}
 
-Returns the target family of the current platform, `"windows"`, `"unix"`, or `"wasm"`.
+Returns the family of the operating system. Some possible values:
+
+- `"unix"`
+- `"windows"`
+- `"wasm"`
+
+### `target_os()` {#ya.target_os}
+
+Returns a string describing the specific operating system in use. Some possible values:
+
+- `"linux"`
+- `"macos"`
+- `"ios"`
+- `"freebsd"`
+- `"dragonfly"`
+- `"netbsd"`
+- `"openbsd"`
+- `"solaris"`
+- `"android"`
+- `"windows"`
 
 ### `quote(str)` {#ya.quote}
 
 Quote characters that may have special meaning in a shell:
 
-- `str`: Required, the string to be quoted, which is a string
+- `str`: Required, the string to be quoted
 
 ```lua
 local handle = io.popen("ls " .. ya.quote(filename))
@@ -438,30 +457,16 @@ Returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
-### `cha(url)` {#fs.cha}
+### `cha(url, follow)` {#fs.cha}
 
 ```lua
 local cha, err = fs.cha(url)
 ```
 
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file, which is faster than [`cha_follow()`](#fs.cha_follow) since it never follows the symbolic link:
+Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
 
 - `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
-
-Returns `(cha, err)`:
-
-- `cha` - The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is an integer if any
-
-### `cha_follow(url)` {#fs.cha_follow}
-
-```lua
-local cha, err = fs.cha_follow(url)
-```
-
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file, and follow the symbolic link:
-
-- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
+- `follow` - Optional, whether to follow the symbolic link, which is a boolean
 
 Returns `(cha, err)`:
 
@@ -673,6 +678,78 @@ Send a SIGTERM signal to the child process, returns `(ok, err)`:
 
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
+
+### `take_stdin()` {#Child.take_stdin}
+
+```lua
+local stdin = child:take_stdin()
+```
+
+Take and return the stdin stream of the child process, which can only be called once and is only applicable to processes with [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+### `take_stdout()` {#Child.take_stdout}
+
+```lua
+local stderr = child:take_stdout()
+```
+
+Take and return the stdout stream of the child process, which can only be called once and is only applicable to processes with [`stdout(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+This is useful when redirecting stdout to another process's stdin:
+
+```lua
+local echo = Command("echo"):arg("Hello"):stdout(Command.PIPED):spawn()
+
+local rev = Command("rev"):stdin(echo:take_stdout()):stdout(Command.PIPED):output()
+
+ya.err(rev.stdout) -- "olleH\n"
+```
+
+### `take_stderr()` {#Child.take_stderr}
+
+```lua
+local stderr = child:take_stderr()
+```
+
+Take and return the stderr stream of the child process, which can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
+
+### `write_all(src)` {#Child.write_all}
+
+```lua
+local ok, err = child:write_all(src)
+```
+
+Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
+
+### `flush()` {#Child.flush}
+
+```lua
+local ok, err = child:flush()
+```
+
+Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
 
 ## Output
 
