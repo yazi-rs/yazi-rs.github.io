@@ -38,13 +38,13 @@ BitTorrent:
 
 - [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission).
 
-Jupyter Notebooks:
+Jupyter notebooks:
 
 - [nbpreview.yazi](https://github.com/AnirudhG07/nbpreview.yazi) - Preview jupyter notebooks(\*.ipynb) files using [nbpreview](https://github.com/paw-lu/nbpreview).
 
-Multiple Filetypes:
+Misc:
 
-- [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview filetypes including markdown, json, csv, etc. using [rich](https://github.com/textualize/rich-cli)
+- [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 
 ## 🧩 Functional plugins {#functional}
 
