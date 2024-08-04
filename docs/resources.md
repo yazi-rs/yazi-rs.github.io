@@ -44,7 +44,7 @@ Jupyter Notebooks:
 
 Multiple Filetypes:
 
-- [rich-preview](https://github.com/AnirudhG07/rich-preview.yazi) - Preview filetypes including markdown, json, csv, etc. using [rich](https://github.com/textualize/rich-cli)
+- [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview filetypes including markdown, json, csv, etc. using [rich](https://github.com/textualize/rich-cli)
 
 ## 🧩 Functional plugins {#functional}
 
