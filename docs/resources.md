@@ -42,6 +42,10 @@ Jupyter Notebooks:
 
 - [nbpreview.yazi](https://github.com/AnirudhG07/nbpreview.yazi) - Preview jupyter notebooks(\*.ipynb) files using [nbpreview](https://github.com/paw-lu/nbpreview).
 
+Multiple Filetypes:
+
+- [rich-preview](https://github.com/AnirudhG07/rich-preview.yazi) - Preview filetypes including markdown, json, csv, etc. using [rich](https://github.com/textualize/rich-cli)
+
 ## 🧩 Functional plugins {#functional}
 
 Jumping:
