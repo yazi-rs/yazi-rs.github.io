@@ -15,10 +15,11 @@ Cha means one file's characteristics with the following properties:
 - `is_hidden` - Whether this file is hidden (starts with a dot)
 - `is_link` - Whether this file is a symlink
 - `is_orphan` - Whether this file is a bad symlink, which points to a non-existent file
-- `is_block_device` - Whether this file is a block device
-- `is_char_device` - Whether this file is a character device
+- `is_dummy` - Whether the file is dummy, which fails to load complete metadata, possibly the filesystem doesn't support it, such as FUSE.
+- `is_block` - Whether this file is a block device
+- `is_char` - Whether this file is a character device
 - `is_fifo` - Whether this file is a fifo
-- `is_socket` - Whether this file is a socket
+- `is_sock` - Whether this file is a socket
 - `is_exec` - Whether this file is executable
 - `is_sticky` - Whether this file has the sticky bit set
 - `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
@@ -31,6 +32,7 @@ And the Unix only properties:
 
 - `uid` - The user id of this file
 - `gid` - The group id of this file
+- `nlink` - The number of hard links to this file
 
 ### File {#shared.file}
 
