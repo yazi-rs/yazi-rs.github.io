@@ -86,9 +86,9 @@ Border:
 
 Highlighting: The built-in syntax highlighting feature
 
-- syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`. Only available in the user's `theme.toml` and cannot be used in [`flavor.toml`](/docs/flavors/overview).
+- syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor, as flavors always use their own tmTheme files `tmtheme.xml`.
 
-  Yazi's builtin code highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
+  Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
 
 ## [status] {#status}
 
