@@ -22,6 +22,7 @@ It deeply integrates with a publish-subscribe model based on the Lua API.
 
 - Local: the current instance, that is, the current Yazi process.
 - Remote: instances other than the current instance.
+- Static message: A message with a kind that starts with `@` will be persistently stored and automatically restored when a new instance starts. To un-persist, send `nil` to that kind.
 
 ## Usage {#usage}
 
@@ -34,8 +35,7 @@ The DDS has three usage:
 ### Command-line tool {#cli}
 
 If you're in a Yazi subshell where the `$YAZI_ID` environment variable is set, you can send a message to the current instance using `ya pub`.
-
-It requires a `<kind>` argument, which is consistent with [`ps.pub()`](/docs/plugins/utils#ps.pub):
+It requires a `kind` argument, which is consistent with [`ps.pub()`](/docs/plugins/utils#ps.pub):
 
 ```sh
 ya pub <kind> --str "string body"
@@ -46,12 +46,12 @@ ya pub <kind> --json '{"key":"json body"}'
 ya pub extract --list "/root/a.zip" "/root/b.7z"
 ```
 
-You can also send a message to a specified remote instance(s) using `ya pub-to`, with the required `<severity>` and `<kind>` arguments, consistent with [`ps.pub_to()`](/docs/plugins/utils#ps.pub_to):
+You can also send a message to a specified remote instance(s) using `ya pub-to`, with the required `receiver` and `kind` arguments, consistent with [`ps.pub_to()`](/docs/plugins/utils#ps.pub_to):
 
 ```sh
-ya pub-to <severity> <kind> --str "string body"
-ya pub-to <severity> <kind> --list "a" "b" "c"
-ya pub-to <severity> <kind> --json '{"key":"json body"}'
+ya pub-to <receiver> <kind> --str "string body"
+ya pub-to <receiver> <kind> --list "a" "b" "c"
+ya pub-to <receiver> <kind> --json '{"key":"json body"}'
 
 # If you're in a Yazi subshell,
 # you can obtain the ID of the current instance through `$YAZI_ID`.
@@ -88,12 +88,12 @@ cd,0,100,{"tab":0,"url":"/root/Downloads"}
 
 One payload per line, each payload contains the following fields separated by commas:
 
-| Field             | Description                                                                                                                             |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| kind              | The kind of this message                                                                                                                |
-| receiver          | The remote instance ID that receives this message; if it's `0`, broadcasts to all remote instances                                      |
-| sender / severity | The sender of this message if greater than `65535`; otherwise, the severity of this [static message](/docs/plugins/utils#ps.pub_static) |
-| body              | The body of this message, which is a JSON string                                                                                        |
+| Field    | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| kind     | The kind of the message                                                                           |
+| receiver | The remote instance ID that receives the message; if it's `0`, broadcasts to all remote instances |
+| sender   | The sender of the message                                                                         |
+| body     | The body of the message, which is a JSON string                                                   |
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
