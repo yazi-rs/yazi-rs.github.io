@@ -81,7 +81,8 @@ run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
 
-> Note: To open multiple files at once, delete `hovered = true` from `{}`.
+This plugin adds `hovered = true` to make the behavior of [`open`](/docs/configuration/keymap#manager.open) consistent with [`enter`](/docs/configuration/keymap#manager.enter) avoiding accidental triggers,
+which means both will only target the currently hovered file. If you still want `open` to target multiple selected files, set it to `false`.
 
 ## Smart paste: `paste` files without entering the directory {#smart-paste}
 
