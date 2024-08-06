@@ -251,16 +251,7 @@ run = "plugin --sync parent-arrow --args=1"
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
 
-Add these lines to your `~/.config/yazi/init.lua`:
-
-```lua
-function Status:render() return {} end
-
-local old_manager_render = Manager.render
-function Manager:render(area)
-	return old_manager_render(self, ui.Rect { x = area.x, y = area.y, w = area.w, h = area.h + 1 })
-end
-```
+Moved to https://github.com/yazi-rs/plugins/tree/main/no-status.yazi
 
 ## Show symlink in status bar {#symlink-in-status}
 

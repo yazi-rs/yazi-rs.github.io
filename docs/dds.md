@@ -414,7 +414,7 @@ Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins
 
 This plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
 
-To enable it, add these lines to your `init.lua`:
+To enable it, add these lines to your `init.lua`, then restart _*all*_ Yazi instances to apply the changes:
 
 ```lua
 require("session"):setup {
@@ -426,7 +426,7 @@ Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins
 
 ### `extract.lua` {#extract.lua}
 
-The plugin provides an `extract` event kind for archive extraction, which accepts an array of file URL. You can bind it as [the opener](/docs/configuration/yazi#opener) for archives:
+This plugin provides an `extract` event kind for archive extraction, which accepts an array of file URL. You can bind it as [the opener](/docs/configuration/yazi#opener) for archives:
 
 ```toml
 # ~/.config/yazi/yazi.toml
