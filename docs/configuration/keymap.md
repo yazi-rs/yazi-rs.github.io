@@ -359,6 +359,15 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
 </details>
 
+Or bind a key to the `search_do` command to quickly switch to the flat view:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "g", "f" ]
+run  = 'search_do --via=fd --args="-d 3"'
+desc = "Switch to the flat view with a max depth of 3"
+```
+
 ### `find` {#manager.find}
 
 | Argument/Option | Description                                                                                                              |
