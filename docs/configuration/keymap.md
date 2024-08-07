@@ -310,9 +310,10 @@ Run a shell command.
 | Argument/Option | Description                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `[run]`         | Optional, command template to be run.                                                                                                                                                                                                    |
-| `--confirm`     | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
 | `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
+| `--confirm`     | When the template is provided, run it directly, no input UI was shown. It's mutually exclusive with `--interactive`.                                                                                                                     |
+| `--interactive` | Request the user to input the command to be executed interactively. It's mutually exclusive with `--confirm`.                                                                                                                            |
 
 You can use the following shell variables in `[run]`:
 
