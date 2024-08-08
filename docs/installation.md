@@ -43,6 +43,12 @@ If you want to use the latest Git version, you can install it from [AUR](https:/
 paru -S yazi-git ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
+Alternatively, you can install the latest nightly build from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin):
+
+```sh
+paru -S yazi-nightly-bin ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+```
+
 ## Nix
 
 A [Nix package](https://search.nixos.org/packages?channel=unstable&show=yazi) for Yazi is available.
