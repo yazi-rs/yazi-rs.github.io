@@ -126,6 +126,14 @@ Array of strings, the types of mouse events can be received by the plugin system
 - `"move"`: Mouse move
 - `"drag"`: Mouse drag (Some terminals do not support this)
 
+### `title_format` {#manager.title_format}
+
+The terminal title format, which is a string with the following placeholders available:
+
+- `{cwd}` - current working directory
+
+If you don't want Yazi to automatically update the title, set it to an empty string (`""`). Nightly version of Yazi is required at the moment.
+
 ## [preview] {#preview}
 
 ### `tab_size` {#preview.tab_size}
