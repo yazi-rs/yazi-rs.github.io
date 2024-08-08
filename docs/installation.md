@@ -43,7 +43,8 @@ If you want to use the latest Git version, you can install it from [AUR](https:/
 paru -S yazi-git ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
-Alternatively, you can install the latest nightly build from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin):
+You can also install the [official nightly release binary](https://github.com/sxyazi/yazi/releases/tag/nightly) from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin),
+which is built from the latest code within the past 6 hours:
 
 ```sh
 paru -S yazi-nightly-bin ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
@@ -234,7 +235,7 @@ sudo port install yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf zoxide I
 ## NetBSD
 
 ```sh
-pkgin install yazi
+pkgin install yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
 ## Windows
@@ -275,9 +276,11 @@ You can download the latest official binaries from GitHub Releases: https://gith
 
 On this page, we offer GNU/Musl builds to meet the needs of different users; we also provide a Snapcraft package, which Ubuntu/Debian users can use.
 
+This page also includes a [nightly release](https://github.com/sxyazi/yazi/releases/tag/nightly), which is built from the latest code within the past 6 hours.
+
 ## Cargo
 
-Setup the latest stable Rust toolchain:
+Setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -290,7 +293,7 @@ Now you can install Yazi from crates.io:
 cargo install --locked yazi-fm yazi-cli
 ```
 
-Or install the latest git version:
+Or install the latest Git version:
 
 ```sh
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
@@ -300,7 +303,7 @@ If it fails to build, please check if `make` and `gcc` is installed on your syst
 
 ## Build from source
 
-Setup the latest stable Rust toolchain:
+Setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
