@@ -162,7 +162,7 @@ Properties:
 Meta methods:
 
 - `__len()`
-- `__pairs()` - Iterate over the [File](#shared.file)s.
+- `__index(idx)` - Access the [File](#app-data.folder-file) by index
 
 ### `folder::File` {#app-data.folder-file}
 
