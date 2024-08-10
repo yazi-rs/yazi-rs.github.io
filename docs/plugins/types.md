@@ -162,7 +162,7 @@ Properties:
 Meta methods:
 
 - `__len()`
-- `__index(idx)` - Access the [File](#app-data.folder-file) by index
+- `__index(idx)` - Access the [folder::File](#app-data.folder-file) by index
 
 ### `folder::File` {#app-data.folder-file}
 
