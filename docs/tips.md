@@ -260,16 +260,16 @@ Moved to https://github.com/yazi-rs/plugins/tree/main/no-status.yazi
 Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
 
 ```diff
-@@ -42,7 +42,11 @@ function Status:name()
- 		return ui.Span("")
+@@ -65,7 +65,11 @@ function Status:name()
+ 		return ui.Line {}
  	end
 
--	return ui.Span(" " .. h.name)
+-	return ui.Line(" " .. h.name)
 +	local linked = ""
 +	if h.link_to ~= nil then
 +		linked = " -> " .. tostring(h.link_to)
 +	end
-+	return ui.Span(" " .. h.name .. linked)
++	return ui.Line(" " .. h.name .. linked)
  end
 ```
 
