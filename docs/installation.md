@@ -21,6 +21,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
 - [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
+- [`mpv`](https://mpv.io/) (for media playback)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
 
 If the functions are not working properly, please try upgrading them to the latest version.
@@ -34,20 +35,20 @@ Most packages on this page are maintained by the community, and they **_may not 
 ## Arch Linux
 
 ```sh
-sudo pacman -S yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+sudo pacman -S yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick mpv
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
 ```sh
-paru -S yazi-git ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-git ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick mpv
 ```
 
 You can also install the [official nightly release binary](https://github.com/sxyazi/yazi/releases/tag/nightly) from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin),
 which is built from the latest code within the past 6 hours:
 
 ```sh
-paru -S yazi-nightly-bin ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-nightly-bin ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide imagemagick mpv
 ```
 
 ## Nix
@@ -217,7 +218,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpegthumbnailer sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+brew install yazi ffmpegthumbnailer sevenzip jq poppler fd ripgrep fzf zoxide imagemagick mpv font-symbols-only-nerd-font
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
@@ -229,13 +230,13 @@ brew install yazi --HEAD
 ## MacPorts
 
 ```bash
-sudo port install yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
+sudo port install yazi ffmpegthumbnailer 7zip jq poppler fd ripgrep fzf zoxide ImageMagick mpv
 ```
 
 ## NetBSD
 
 ```sh
-pkgin install yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide ImageMagick
+pkgin install yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide ImageMagick mpv
 ```
 
 ## Windows
@@ -261,7 +262,7 @@ You can download the latest official binaries from [GitHub Releases](https://git
 ```sh
 scoop install yazi
 # Install the optional dependencies (recommended):
-scoop install 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+scoop install 7zip jq poppler fd ripgrep fzf zoxide imagemagick mpv
 ```
 
 ## AOSC OS
