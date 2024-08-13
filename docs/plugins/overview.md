@@ -38,10 +38,24 @@ Where:
 
 ## Usage {#usage}
 
-A plugin has two usages:
+Plugins generally can have three usages:
 
+- [Utility plugin](#utility-plugin): Load them in your `init.lua`.
 - [Functional plugin](#functional-plugin): Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
 - [Custom previewers, preloaders](/docs/configuration/yazi#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
+
+### Utility plugin {#utility-plugin}
+
+Such plugins can be loaded by `require`-ing them in your `init.lua`, for example:
+
+```lua
+-- ~/.config/yazi/init.lua
+require("zoxide"):setup {
+  update_db = true,
+}
+```
+
+These plugins will usually [subscribe to events](/docs/plugins/utils/#ps.sub) and work in the background.
 
 ### Functional plugin {#functional-plugin}
 
