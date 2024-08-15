@@ -254,11 +254,12 @@ Create a symbolic link to the yanked files. (This is a privileged action in Wind
 
 ### `hardlink` {#manager.hardlink}
 
-Create hard links to the yanked files. 
+Hardlink the yanked files.
 
-| Argument/Option | Description                                  |
-| --------------- | -------------------------------------------- |
-| `--force`       | Overwrite the destination file if it exists. |
+| Argument/Option | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| `--force`       | Overwrite the destination file if it exists.                             |
+| `--follow`      | Hardlink the file pointed to by a symbolic link, not the symlink itself. |
 
 ### `remove` {#manager.remove}
 
