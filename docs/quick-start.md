@@ -139,6 +139,7 @@ To interact with selected files/directories use any of the commands below.
 | <kbd>P</kbd>                       | Paste yanked files (overwrite if the destination exists)                |
 | <kbd>-</kbd>                       | Symlink the absolute path of yanked files                               |
 | <kbd>\_</kbd>                      | Symlink the relative path of yanked files                               |
+| <kbd>Ctrl</kbd> + <kbd>-</kbd>     | Hardlink yanked files                                                   |
 | <kbd>Y</kbd> or <kbd>X</kbd>       | Cancel the yank status                                                  |
 | <kbd>d</kbd>                       | Trash selected files                                                    |
 | <kbd>D</kbd>                       | Permanently delete selected files                                       |

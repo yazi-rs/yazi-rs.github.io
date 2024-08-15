@@ -252,6 +252,15 @@ Create a symbolic link to the yanked files. (This is a privileged action in Wind
 | `--relative`    | Use a relative path for the symbolic link.   |
 | `--force`       | Overwrite the destination file if it exists. |
 
+### `hardlink` {#manager.hardlink}
+
+Hardlink the yanked files.
+
+| Argument/Option | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| `--force`       | Overwrite the destination file if it exists.                             |
+| `--follow`      | Hardlink the file pointed to by a symbolic link, not the symlink itself. |
+
 ### `remove` {#manager.remove}
 
 Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html).
