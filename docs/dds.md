@@ -395,7 +395,10 @@ fi
   <TabItem value="fish" label="Fish">
 
 ```sh
-# Please raise a PR if you have a fish version
+# Change Yazi's CWD to PWD on subshell exit
+if [ -n "$YAZI_ID" ]
+	trap 'ya pub dds-cd --str "$PWD"' EXIT
+end
 ```
 
   </TabItem>
