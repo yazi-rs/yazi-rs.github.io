@@ -69,6 +69,7 @@ File actions:
 - [reflink.yazi](https://github.com/Ape/reflink.yazi) - Create reflinks to files.
 - [rsync.yazi](https://github.com/GianniBYoung/rsync.yazi) - Simple rsync copying locally and to remote servers.
 - [what-size.yazi](https://github.com/pirafrank/what-size.yazi) - Calculate total size of current selection or of current working directory
+- [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage git Directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut
 
 `filter` enhancements:
 
