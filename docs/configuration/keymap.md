@@ -324,6 +324,7 @@ Run a shell command.
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
 | `--confirm`     | When the template is provided, run it directly, no input UI was shown. It's mutually exclusive with `--interactive`.                                                                                                                     |
 | `--interactive` | Request the user to input the command to be executed interactively. It's mutually exclusive with `--confirm`.                                                                                                                            |
+| `--cursor`     | Allows user to define keymaps with cursor set to generic place like `--cursor=<usize>`. Use `<usize>` to specify the place, in integer. Default is set to end.
 
 You can use the following shell variables in `[run]`:
 
