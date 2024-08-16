@@ -315,7 +315,7 @@ Clone the repository and build Yazi:
 ```sh
 git clone https://github.com/sxyazi/yazi.git
 cd yazi
-cargo build --release
+cargo build --release --locked
 ```
 
 Then, you can run:
