@@ -341,6 +341,16 @@ ya.clipboard("new content")
 
 This function is only available in the async context.
 
+### `md5(str)` {#ya.md5}
+
+Calculates the MD5 hash of the given string.
+
+- `str` - Required, the string to be hashed.
+
+```lua
+local hash =  ya.md5(str)
+```
+
 ## ps {#ps}
 
 Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API. See [DDS](/docs/dds) for details.
