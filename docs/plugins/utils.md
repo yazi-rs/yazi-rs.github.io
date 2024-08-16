@@ -585,6 +585,17 @@ Spawn the command and wait for it to finish, returns `(output, err)`:
 - `output` - The [Output](#output) of the command if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `status()` {#Command.status}
+
+```lua
+local status, err = Command("ls"):status()
+```
+
+Retrieves the current status of the child process, returns `(status, err)`:
+
+- `status` - The Status object representing the child process status, or nil if an error occurred.
+- `err` - The error code if fetching the status fails, otherwise nil.
+
 ## Child
 
 This object is created by [`Command:spawn()`](#Command.spawn) and represents a running child process.
