@@ -448,6 +448,42 @@ Returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `remove(type, url)` {#fs.remove}
+
+```lua
+local ok, err = fs.remove("file", "url")
+```
+
+Removes a file or directory:
+
+- `type` - Required, the type of removal, which can be "file", "dir", "dir_all", or "dir_clean".
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file or directory.
+
+Returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+### `read_dir(url, options)` {#fs.read_dir}
+
+```lua
+local files, err = fs.read_dir("url", { limit = 10 })
+```
+
+Reads the contents of a directory:
+
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the directory
+- `options` - Optional, a table with the following options:
+  - `limit` - The maximum number of files to return, defaults to `math.maxint`
+  - `resolve` - Whether to resolve symbolic links, defaults to `false`
+  - `glob` - A glob pattern to filter files
+
+Returns `(files, err)`:
+
+- `files` - A table of [File](/docs/plugins/types#shared.file) objects if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is an integer if any
+
+
 ### `cha(url, follow)` {#fs.cha}
 
 ```lua
