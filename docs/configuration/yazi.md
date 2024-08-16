@@ -132,7 +132,7 @@ The terminal title format, which is a string with the following placeholders ava
 
 - `{cwd}` - current working directory
 
-If you don't want Yazi to automatically update the title, set it to an empty string (`""`). Nightly version of Yazi is required at the moment.
+If you don't want Yazi to automatically update the title, set it to an empty string (`""`).
 
 ## [preview] {#preview}
 
