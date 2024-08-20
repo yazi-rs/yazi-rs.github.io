@@ -200,6 +200,7 @@ Configure available openers that can be used in [`[open]`](#open), for example:
 [opener]
 edit = [
 	{ run = 'nvim "$@"', block = true },
+	{ run = 'nvim %*', block = true, for = "windows"},
 ]
 play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
