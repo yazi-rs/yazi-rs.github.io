@@ -66,6 +66,50 @@ For greater convenience in integrating within the command-line environment, they
 
 Note that `ya` is a standalone CLI program introduced since Yazi 0.2.5, it might conflict with the shell wrapper you setup before, see [Introduce a standalone CLI program](https://github.com/sxyazi/yazi/issues/914) for details.
 
+### Yazi Package manager {#yazi-package-manager}
+
+Yazi command line tool also provides a package manager for Yazi plugins, flavors and other packages. You can download and add a package using `ya pack`. For example, to install a plugin with author `author_name` and plugin name `plugin.yazi`, you can run:
+
+```sh
+ya pack -a author_name/plugin
+```
+
+This downloads the plugin in your `$YAZI_CONFIG_HOME` directory(default is `~/.config/yazi`). The package information is stored in `package.toml` file containing the latest commit of plugin, author and plugin name in the format:
+
+```toml
+[plugin]
+
+deps = [{
+    use = "author_name/plugin",
+    rev = "abcd12",
+}]
+```
+
+Similarly, flavours can be installed using `ya pack -f author_name/flavour` which will be stored in the format:
+
+```toml
+[flavour]
+
+deps = [{
+    use = "author_name/flavour",
+    rev = "abcd12",
+}]
+```
+
+To list all the plugins managed by `ya pack`, you can run:
+
+```sh
+ya pack {-l|--list}
+```
+
+`ya pack` allows you to upgrade all packages at once using:
+
+```sh
+ya pack {-u|--upgrade}
+```
+
+This will also update the `package.toml` file with the latest commit of the plugin. For more information on `ya pack`, you check `ya pack --help`
+
 ### Real-time `stdout` reporting {#stdout-reporting}
 
 You can specify the `--local-events` and `--remote-events` options when starting Yazi:
