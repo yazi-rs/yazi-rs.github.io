@@ -275,10 +275,11 @@ In the Android platform, you can only use it with the `--permanently` option, si
 
 ### `create` {#manager.create}
 
-Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directories.
+Create a file or directory. For directories, end name with `/` (Unix) or `\` (Windows), or use the `--dir` option.
 
 | Argument/Option | Description                                                                                    |
 | --------------- | ---------------------------------------------------------------------------------------------- |
+| `--dir`         | Create a directory. Filename does not need to end with `/` (Unix) or `\` (Windows).            |
 | `--force`       | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
 
 ### `rename` {#manager.rename}
