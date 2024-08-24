@@ -205,10 +205,10 @@ Preview the file as code into the specified area:
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](/docs/plugins/types#shared.window) of the preview
 
-Returns `(ok, upper_bound)`:
+Returns `(err, upper_bound)`:
 
-- `ok` - Whether the preview is successful, which is a boolean.
-- `upper_bound` - If the preview fails (`ok = false`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
+- `err` - Whether the preview is successful, which is a string.
+- `upper_bound` - If the preview fails (`err = true`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
 This function is only available in the async context.
 
