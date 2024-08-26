@@ -208,7 +208,7 @@ Preview the file as code into the specified area:
 Returns `(err, upper_bound)`:
 
 - `err` - Whether the preview is successful, which is a string.
-- `upper_bound` - If the preview fails (`err = true`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
+- `upper_bound` - If the preview fails and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
 This function is only available in the async context.
 
@@ -482,7 +482,6 @@ Returns `(files, err)`:
 
 - `files` - A table of [File](/docs/plugins/types#shared.file) objects if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
-
 
 ### `cha(url, follow)` {#fs.cha}
 
