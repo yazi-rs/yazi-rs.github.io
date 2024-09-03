@@ -79,6 +79,27 @@ function yy {
 ```
 
   </TabItem>
+  <TabItem value="command-prompt" label="Command Prompt">
+
+Create the file `yy.cmd` and place it in your `%PATH%`.
+
+```cmd
+@echo off
+
+set tmpfile=%TEMP%\tempfile.txt
+
+yazi %* --cwd-file="%tmpfile%"
+
+set /p cwd=<%tmpfile%
+
+if not "%cwd%"=="" (
+    cd /d "%cwd%"
+)
+
+del "%tmpfile%"
+```
+
+  </TabItem>
 </Tabs>
 
 To use it, copy the function into the configuration file of your respective shell. Then use `yy` instead of `yazi` to start.
