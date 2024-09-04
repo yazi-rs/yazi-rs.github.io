@@ -325,3 +325,12 @@ Then, you can run:
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
+
+## x-cmd
+
+[x-cmd](https://www.x-cmd.com/) is a **toolbox for Posix Shell**, offering a lightweight package manager built using shell and awk.
+
+```sh
+x env use yazi fzf 7za jq fd rg zoxide
+```
+
