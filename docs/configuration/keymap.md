@@ -279,6 +279,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 | Argument/Option | Description                                                                                    |
 | --------------- | ---------------------------------------------------------------------------------------------- |
+| `--dir`         | Always create directories, regardless of whether end with `/` or `\`.                          |
 | `--force`       | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
 
 ### `rename` {#manager.rename}
