@@ -86,7 +86,7 @@ Create the file `yy.cmd` and place it in your `%PATH%`.
 ```cmd
 @echo off
 
-set tmpfile=%TEMP%\tempfile.txt
+set tmpfile=%TEMP%\yazi-cwd.%random%
 
 yazi %* --cwd-file="%tmpfile%"
 
