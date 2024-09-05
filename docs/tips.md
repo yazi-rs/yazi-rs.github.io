@@ -52,7 +52,7 @@ You can change the <kbd>Esc</kbd> of input component from the default `escape` t
 
 ```toml
 [[input.prepend_keymap]]
-on   = "<Esc>"
+on   = ["<Esc>"]
 run  = "close"
 desc = "Cancel input"
 ```
@@ -76,7 +76,7 @@ Then bind it for <kbd>l</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = "l"
+on   = ["l"]
 run  = "plugin --sync smart-enter"
 desc = "Enter the child directory, or open the file"
 ```
