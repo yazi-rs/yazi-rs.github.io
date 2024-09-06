@@ -29,10 +29,15 @@ Media:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
 - [mediainfo.yazi](https://github.com/Ape/mediainfo.yazi) - Preview image, audio, video, and subtitle files using `ffmpegthumbnailer` and `mediainfo`.
+- [video-ffmpeg.yazi](https://github.com/Tyarel8/video-ffmpeg.yazi) - Use `ffmpeg` to preview video thumbnails instead of `ffmpegthumbnailer` since ffmpeg is also available on Windows.
 
 Archives:
 
 - [ouch.yazi](https://github.com/ndtoan96/ouch.yazi) - An [ouch](https://github.com/ouch-org/ouch) plugin for Yazi, supporting preview and compression.
+
+Directories:
+
+- [eza-preview.yazi](https://github.com/sharklasers996/eza-preview.yazi) - Preview directories using `eza`, can be switched between list and tree modes.
 
 BitTorrent:
 
@@ -59,6 +64,10 @@ Bookmarks:
 - [mactag.yazi](https://github.com/yazi-rs/plugins/tree/main/mactag.yazi) - Bring macOS's awesome tagging feature to Yazi! The plugin is only available for macOS just like the name says.
 - [yamb.yazi](https://github.com/h-hg/yamb.yazi) - Yet another bookmarks plugins. It supports persistence, jumping by a key, jumping by [fzf](https://github.com/junegunn/fzf).
 
+Tabs:
+
+- [projects.yazi](https://github.com/MasouShizuka/projects.yazi) - Save all tabs and their states as a project, and restore them at any time.
+
 File actions:
 
 - [chmod.yazi](https://github.com/yazi-rs/plugins/tree/main/chmod.yazi) - Execute `chmod` on the selected files to change their mode.
@@ -68,8 +77,13 @@ File actions:
 - [archivemount.yazi](https://github.com/AnirudhG07/archivemount.yazi) - Mounting and unmounting archives in yazi using [archivemount](https://github.com/cybernoid/archivemount).
 - [reflink.yazi](https://github.com/Ape/reflink.yazi) - Create reflinks to files.
 - [rsync.yazi](https://github.com/GianniBYoung/rsync.yazi) - Simple rsync copying locally and to remote servers.
-- [what-size.yazi](https://github.com/pirafrank/what-size.yazi) - Calculate total size of current selection or of current working directory
-- [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut
+- [what-size.yazi](https://github.com/pirafrank/what-size.yazi) - Calculate total size of current selection or of current working directory.
+- [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
+- [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
+
+Clipboard:
+
+- [simple-clipboard.yazi](https://github.com/orhnk/system-clipboard.yazi) - Cross platform implementation of a simple system clipboard.
 
 `filter` enhancements:
 
@@ -107,6 +121,10 @@ Images:
 - [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
 
 ## 🔍Fetchers {#fetchers}
+
+Mime-type:
+
+- [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) - A mime-type provider based on a file extension database, replacing the builtin `file(1)` to speed up mime-type retrieval at the expense of accuracy.
 
 ## 📝 (Neo)vim plugins {#vim}
 
