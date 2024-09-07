@@ -192,6 +192,13 @@ This is useful for solving [a bug of Überzug++ image size calculation](https://
 
 If your monitor has a `2.0` scale factor, and is running on Wayland under Hyprland, you may need to set `ueberzug_scale: 0.5`, and adjust the value of `ueberzug_offset` according to your case, to offset this issue.
 
+### `wrap` {#preview.wrap}
+
+Wrap long lines in the preview for code preview.
+
+- `"yes"`: Enable wrapping in preview.
+- `"no"`: Disable wrapping in preview.
+
 ## [opener] {#opener}
 
 Configure available openers that can be used in [`[open]`](#open), for example:

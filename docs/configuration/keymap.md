@@ -319,11 +319,12 @@ Run a shell command.
 
 | Argument/Option | Description                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[run]`         | Optional, command template to be run.                                                                                                                                                                                                    |
+| `[template]`    | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
-| `--confirm`     | When the template is provided, run it directly, no input UI was shown. It's mutually exclusive with `--interactive`.                                                                                                                     |
-| `--interactive` | Request the user to input the command to be executed interactively. It's mutually exclusive with `--confirm`.                                                                                                                            |
+| `--confirm`     | When the template is provided, run it directly, no input box was shown. It's mutually exclusive with `--interactive`.                                                                                                                    |
+| `--interactive` | Request the user to input the command to be ran interactively. It's mutually exclusive with `--confirm`.                                                                                                                                 |
+| `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip "$0"' --cursor=7 --interactive` places the cursor before `.zip`.                                                           |
 
 You can use the following shell variables in `[run]`:
 
