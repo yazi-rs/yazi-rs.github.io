@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 description: Some awesome plugins for Yazi.
 ---
 
@@ -141,7 +141,7 @@ Vim:
 ## 🐚 Shell plugins {#shell}
 
 - [yazi-prompt.sh](https://github.com/Sonico98/yazi-prompt.sh) - Display an indicator in your prompt when running inside a yazi subshell.
-- [custom-shell.yazi](https://github.com/AnirudhG07/custom-shell.yazi) - Set your custom-shell as your default yazi Shell and run any custom command through any shell.
+- [custom-shell.yazi](https://github.com/AnirudhG07/custom-shell.yazi) - Run any commands through your default system shell.
 - [command.yazi](https://github.com/KKV9/command.yazi) - Display a prompt for executing yazi commands.
 
 ## 🛠️ Utilities {#utilities}

@@ -194,12 +194,10 @@ If your monitor has a `2.0` scale factor, and is running on Wayland under Hyprla
 
 ### `wrap` {#preview.wrap}
 
-Wrap long lines in the preview for `code` preview.
+Wrap long lines in the preview for code preview.
 
 - `"yes"`: Enable wrapping in preview.
 - `"no"`: Disable wrapping in preview.
-
-Default is set to `"no"`.
 
 ## [opener] {#opener}
 

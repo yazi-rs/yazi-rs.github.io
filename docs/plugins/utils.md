@@ -207,21 +207,8 @@ Preview the file as code into the specified area:
 
 Returns `(err, upper_bound)`:
 
-- `err` - Whether the preview is successful, which is a string.
+- `err` - Error string if the preview fails; otherwise, `nil`.
 - `upper_bound` - If the preview fails and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
-
-This function is only available in the async context.
-
-### `preview_archive(opts)` {#ya.preview_archive}
-
-Preview the file as an archive into the specified area:
-
-- `opts` - Required, the options of the preview. It's the same as [`preview_code()`](#ya.preview_code)
-
-Returns `(ok, upper_bound)`:
-
-- `ok` - Whether the preview is successful, which is a boolean.
-- `upper_bound` - If the preview fails (`ok = false`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
 This function is only available in the async context.
 
@@ -280,6 +267,16 @@ Truncate the text to the specified length and return it:
 ### `time()` {#ya.time}
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
+
+### `md5(str)` {#ya.md5}
+
+Calculates the MD5 of the given string.
+
+- `str` - Required, the string to be hashed.
+
+```lua
+local hash = ya.md5("Hello, World!")
+```
 
 ### `sleep(secs)` {#ya.sleep}
 
@@ -340,16 +337,6 @@ ya.clipboard("new content")
 ```
 
 This function is only available in the async context.
-
-### `md5(str)` {#ya.md5}
-
-Calculates the MD5 hash of the given string.
-
-- `str` - Required, the string to be hashed.
-
-```lua
-local hash =  ya.md5(str)
-```
 
 ## ps {#ps}
 
@@ -451,13 +438,17 @@ Returns `(ok, err)`:
 ### `remove(type, url)` {#fs.remove}
 
 ```lua
-local ok, err = fs.remove("file", "url")
+local ok, err = fs.remove("file", Url("/tmp/test.txt"))
 ```
 
-Removes a file or directory:
+Remove the specified file(s) from the filesystem:
 
-- `type` - Required, the type of removal, which can be "file", "dir", "dir_all", or "dir_clean".
-- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file or directory.
+- `type` - Required, the type of removal, which can be:
+  - `"file"` - Removes a file from the filesystem.
+  - `"dir"` - Removes an existing, empty directory.
+  - `"dir_all"` - Removes a directory at this url, after removing all its contents. Use carefully!
+  - `"dir_clean"` - Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the target.
 
 Returns `(ok, err)`:
 
@@ -472,16 +463,16 @@ local files, err = fs.read_dir("url", { limit = 10 })
 
 Reads the contents of a directory:
 
-- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the directory
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the directory.
 - `options` - Optional, a table with the following options:
-  - `limit` - The maximum number of files to return, defaults to `math.maxint`
-  - `resolve` - Whether to resolve symbolic links, defaults to `false`
-  - `glob` - A glob pattern to filter files
+  - `glob` - A glob pattern to filter files out if provided.
+  - `limit` - The maximum number of files to read, which is an integer, defaults to unlimited.
+  - `resolve` - Whether to resolve symbolic links, defaults to `false`.
 
 Returns `(files, err)`:
 
-- `files` - A table of [File](/docs/plugins/types#shared.file) objects if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is an integer if any
+- `files` - A table of [File](/docs/plugins/types#shared.file) if successful; otherwise, `nil`.
+- `err` - The error code if the operation is failed, which is an integer if any.
 
 ### `cha(url, follow)` {#fs.cha}
 
@@ -636,10 +627,10 @@ Spawn the command and wait for it to finish, returns `(output, err)`:
 local status, err = Command("ls"):status()
 ```
 
-Retrieves the current status of the child process, returns `(status, err)`:
+Executes the command as a child process, waiting for it to finish and collecting its exit status. Returns `(status, err)`:
 
-- `status` - The Status object representing the child process status, or nil if an error occurred.
-- `err` - The error code if fetching the status fails, otherwise nil.
+- `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is an integer if any
 
 ## Child
 
