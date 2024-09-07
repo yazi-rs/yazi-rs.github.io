@@ -1,6 +1,6 @@
 ---
-sidebar_position: 8
-description: Data Distribution Service
+sidebar_position: 7
+description: Command-line interface for Yazi
 ---
 
 # CLI
