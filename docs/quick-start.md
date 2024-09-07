@@ -18,13 +18,13 @@ Press <kbd>q</kbd> to quit and <kbd>~</kbd> to open the help menu.
 
 ## Shell wrapper
 
-We suggest using this `yy` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
+We suggest using this `y` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
 
 <Tabs>
   <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
-function yy() {
+function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -38,7 +38,7 @@ function yy() {
   <TabItem value="fish" label="Fish">
 
 ```sh
-function yy
+function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	yazi $argv --cwd-file="$tmp"
 	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
@@ -52,7 +52,7 @@ end
   <TabItem value="nushell" label="Nushell">
 
 ```sh
-def --env yy [...args] {
+def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
@@ -67,7 +67,7 @@ def --env yy [...args] {
   <TabItem value="powershell" label="PowerShell">
 
 ```powershell
-function yy {
+function y {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
@@ -81,7 +81,7 @@ function yy {
   </TabItem>
   <TabItem value="command-prompt" label="Command Prompt">
 
-Create the file `yy.cmd` and place it in your `%PATH%`.
+Create the file `y.cmd` and place it in your `%PATH%`.
 
 ```cmd
 @echo off
@@ -102,7 +102,7 @@ del "%tmpfile%"
   </TabItem>
 </Tabs>
 
-To use it, copy the function into the configuration file of your respective shell. Then use `yy` instead of `yazi` to start.
+To use it, copy the function into the configuration file of your respective shell. Then use `y` instead of `yazi` to start.
 
 ## Keybindings
 

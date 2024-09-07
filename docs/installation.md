@@ -78,7 +78,7 @@ You can also manage Yazi's configuration using [home-manager](https://nix-commun
 
 ```nix
 {pkgs, ...}: let
-	plugins-repo = pkgs.fetchFromGitHub {
+	yazi-plugins = pkgs.fetchFromGitHub {
 		owner = "yazi-rs";
 		repo = "plugins";
 		rev = "...";
@@ -101,9 +101,9 @@ in {
 		};
 
 		plugins = {
-			chmod = "${plugins-repo}/chmod.yazi";
-			full-border = "${plugins-repo}/full-border.yazi";
-			max-preview = "${plugins-repo}/max-preview.yazi";
+			chmod = "${yazi-plugins}/chmod.yazi";
+			full-border = "${yazi-plugins}/full-border.yazi";
+			max-preview = "${yazi-plugins}/max-preview.yazi";
 			starship = pkgs.fetchFromGitHub {
 				owner = "Rolv-Apneseth";
 				repo = "starship.yazi";
@@ -333,4 +333,3 @@ If it fails to build, please check if `make` and `gcc` is installed on your syst
 ```sh
 x env use yazi fzf 7za jq fd rg zoxide
 ```
-
