@@ -158,6 +158,10 @@ The system cache directory is used by default, and the cached files will go away
 
 If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
 
+### `image_delay` {#preview.image_delay}
+
+Time delay in milliseconds for image previewing.
+
 ### `image_filter` {#preview.image_filter}
 
 The filter used on image downscaling, available values:
@@ -461,3 +465,11 @@ Display candidates in reverse order.
 
 - `true`: Reverse order
 - `false`: Normal order
+
+### `sort_translit` {#which.sort_translit}
+
+Transliterate candidates for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.).
+
+- `true`: Enabled
+- `false`: Disabled
+
