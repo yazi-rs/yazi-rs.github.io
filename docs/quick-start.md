@@ -102,7 +102,9 @@ del "%tmpfile%"
   </TabItem>
 </Tabs>
 
-To use it, copy the function into the configuration file of your respective shell. Then use `y` instead of `yazi` to start.
+To use it, copy the function into the configuration file of your respective shell.
+
+Then use `y` instead of `yazi` to start, and press <kbd>q</kbd> to quit, you'll see the CWD changed. Sometimes, you don't want to change, press <kbd>Q</kbd> to quit.
 
 ## Keybindings
 

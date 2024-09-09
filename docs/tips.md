@@ -152,6 +152,18 @@ run = [ '''
 ''', "yank" ]
 ```
 
+## `cd` back to the root of the current Git repository {#cd-to-git-root}
+
+```toml
+[[manager.prepend_keymap]]
+on = [ "g", "r" ]
+run = '''
+	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+'''
+```
+
+Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
+
 ## Maximize preview pane {#max-preview}
 
 Moved to https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi
