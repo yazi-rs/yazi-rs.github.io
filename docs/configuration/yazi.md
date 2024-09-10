@@ -126,6 +126,8 @@ Array of strings, the types of mouse events can be received by the plugin system
 - `"move"`: Mouse move
 - `"drag"`: Mouse drag (Some terminals do not support this)
 
+Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
+
 ### `title_format` {#manager.title_format}
 
 The terminal title format, which is a string with the following placeholders available:
@@ -160,7 +162,11 @@ If you want to make it more persistent, you can specify the cache directory manu
 
 ### `image_delay` {#preview.image_delay}
 
-Time delay in milliseconds for image previewing.
+Wait for at least the specified milliseconds before starting to send image preview data to the terminal.
+
+This is to alleviate lag caused by some terminal emulators struggling to render images Yazi sent in time, when users scroll through the file list quickly.
+
+See https://github.com/sxyazi/yazi/pull/1512 for more information.
 
 ### `image_filter` {#preview.image_filter}
 
@@ -468,8 +474,9 @@ Display candidates in reverse order.
 
 ### `sort_translit` {#which.sort_translit}
 
-Transliterate candidates for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.).
+Transliterate filenames for sorting, i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.
+
+This is useful for files that contain Hungarian characters.
 
 - `true`: Enabled
 - `false`: Disabled
-
