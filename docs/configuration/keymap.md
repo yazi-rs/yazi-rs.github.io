@@ -96,9 +96,9 @@ Automatically determine the operation by default, and it will only execute the s
 
 Exit the process.
 
-| Argument/Option | Description                                          |
-| --------------- | ---------------------------------------------------- |
-| `--no-cwd-file` | Don't write the current directory to the `cwd-file`. |
+| Argument/Option | Description                                                                    |
+| --------------- | ------------------------------------------------------------------------------ |
+| `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file`. |
 
 ### `close` {#manager.close}
 
