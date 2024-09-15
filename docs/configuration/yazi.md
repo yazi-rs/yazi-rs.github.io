@@ -138,6 +138,13 @@ If you don't want Yazi to automatically update the title, set it to an empty str
 
 ## [preview] {#preview}
 
+### `wrap` {#preview.wrap}
+
+Wrap long lines in the code preview.
+
+- `"yes"`: Enable word wrap
+- `"no"`: Disable word wrap
+
 ### `tab_size` {#preview.tab_size}
 
 Tab width.
@@ -201,13 +208,6 @@ This value determines the number of samples used during the training, range 10-2
 This is useful for solving [a bug of Überzug++ image size calculation](https://github.com/jstkdng/ueberzugpp/issues/122).
 
 If your monitor has a `2.0` scale factor, and is running on Wayland under Hyprland, you may need to set `ueberzug_scale: 0.5`, and adjust the value of `ueberzug_offset` according to your case, to offset this issue.
-
-### `wrap` {#preview.wrap}
-
-Wrap long lines in the preview for code preview.
-
-- `"yes"`: Enable wrapping in preview.
-- `"no"`: Disable wrapping in preview.
 
 ## [opener] {#opener}
 

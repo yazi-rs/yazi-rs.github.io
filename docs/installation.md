@@ -270,6 +270,12 @@ scoop install 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 sudo oma install yazi
 ```
 
+## x-cmd
+
+```sh
+x env use yazi fzf 7za jq fd rg zoxide
+```
+
 ## Official binaries
 
 You can download the latest official binaries from GitHub Releases: https://github.com/sxyazi/yazi/releases
@@ -325,11 +331,3 @@ Then, you can run:
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
-
-## x-cmd
-
-[x-cmd](https://www.x-cmd.com/) is a **toolbox for Posix Shell**, offering a lightweight package manager built using shell and awk.
-
-```sh
-x env use yazi fzf 7za jq fd rg zoxide
-```

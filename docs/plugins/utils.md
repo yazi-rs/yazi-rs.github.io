@@ -268,16 +268,6 @@ Truncate the text to the specified length and return it:
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
 
-### `md5(str)` {#ya.md5}
-
-Calculates the MD5 of the given string.
-
-- `str` - Required, the string to be hashed.
-
-```lua
-local hash = ya.md5("Hello, World!")
-```
-
 ### `sleep(secs)` {#ya.sleep}
 
 Waits until `secs` has elapsed:
