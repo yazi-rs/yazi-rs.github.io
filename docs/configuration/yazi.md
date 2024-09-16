@@ -418,35 +418,41 @@ As for the offset, it's a 4-element tuple: `(x, y, width, height)`.
 
 Some inputs have special placeholders that will be replaced with actual content on display:
 
-- trash_title: String
+- cd_title: String
 
-  - `{n}`: Number of files to be trashed
-  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+  Title of the [`cd --interactive`](/docs/configuration/keymap/#manager.cd) input used to enter the target path.
 
-- delete_title: String
+- create_title: [String, String]
 
-  - `{n}`: Number of files to be deleted
-  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+  It's a tuple of 2-element: first for [`create`](/docs/configuration/keymap/#manager.create) input title, second for `create --dir` command.
+
+- rename_title: String
+
+  Title of the [`rename`](/docs/configuration/keymap/#manager.rename) input used to enter the new name.
+
+- filter_title: String
+
+  Title of the [`filter`](/docs/configuration/keymap/#manager.filter) input used to enter the keyword.
 
 - find_title: [String, String]
 
-  It's a tuple of 2-element: first for "Find next", second for "Find previous".
+  It's a tuple of 2-element: first for [`find`](/docs/configuration/keymap/#manager.find), second for `find --previous`.
 
 - search_title: String
 
-  - `{n}`: Name of the current search engine
+  - `{n}`: Name of the current [`search`](/docs/configuration/keymap/#manager.search) engine.
 
 - shell_title: [String, String]
 
-  It's a tuple of 2-element: first for "Non-blocking shell", second for "Blocking shell".
+  It's a tuple of 2-element: first for [`shell --interactive`](/docs/configuration/keymap/#manager.shell), second for `shell --interactive --block`.
 
-- quit_title: String
-  - `{n}`: Number of tasks are running
-  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+## [confirm] {#confirm}
+
+TODO
 
 ## [select] {#select}
 
-As same as the [`[input]`](#input) section.
+Same as the [`[input]`](#input) section.
 
 ## [which] {#which}
 
