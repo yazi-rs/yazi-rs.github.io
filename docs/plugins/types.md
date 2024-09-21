@@ -72,8 +72,8 @@ Properties:
 - `is_regular` - Whether the file represented by the url is a regular file
 - `is_search` - Whether the file represented by the url from the search result
 - `is_archive` - Whether the file represented by the url from an archive
-- `is_absolute` - Whether the file represented by the url is an absolute path
-- `has_root` - Whether the file represented by the url has a root
+- `is_absolute` - Whether the path represented by the url is absolute
+- `has_root` - Whether the path represented by the url has a root
 
 Methods:
 
