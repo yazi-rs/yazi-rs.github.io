@@ -62,9 +62,10 @@ These issues won't be improved until Zellij enhances it's Sixel implementation o
 
 ## Windows users {#windows}
 
-Currently, only the following two terminals support displaying images on Windows:
+Currently, only the following 3 terminals support displaying images on Windows:
 
 - WezTerm
+- [Windows Terminal Preview 1.22.2362.0](https://github.com/microsoft/terminal/releases/tag/v1.22.2362.0) with the patch from [microsoft/terminal#17833](https://github.com/microsoft/terminal/pull/17833) - see more details in [sxyazi/yazi#1588](https://github.com/sxyazi/yazi/pull/1588)
 - Mintty (Git Bash, which comes with Git for Windows)
 
 ## Windows with WSL users {#wsl}
