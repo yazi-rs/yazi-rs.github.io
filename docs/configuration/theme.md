@@ -13,25 +13,25 @@ If you're looking for ready-made themes and don't want to create one yourself, c
 
 ### Color {#types.color}
 
-A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be one of the following 17 values:
+A color. It can be in Hex format with RGB values, such as `"#484D66"`. Or can be one of the following 17 values:
 
-- reset
-- black
-- white
-- red
-- lightred
-- green
-- lightgreen
-- yellow
-- lightyellow
-- blue
-- lightblue
-- magenta
-- lightmagenta
-- cyan
-- lightcyan
-- gray
-- darkgray
+- `"reset"`
+- `"black"`
+- `"white"`
+- `"red"`
+- `"lightred"`
+- `"green"`
+- `"lightgreen"`
+- `"yellow"`
+- `"lightyellow"`
+- `"blue"`
+- `"lightblue"`
+- `"magenta"`
+- `"lightmagenta"`
+- `"cyan"`
+- `"lightcyan"`
+- `"gray"`
+- `"darkgray"`
 
 ### Style {#types.style}
 

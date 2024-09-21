@@ -25,8 +25,9 @@ The second denotes the direction of the bar and accepts the following constants:
 - `ui.Bar.LEFT`
 - `ui.Bar.ALL`
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
+- `area(rect)` - accepts a [Rect](#rect), changing the area of the bar. If not specified, returns the current area. (Nightly version required for now)
 - `symbol(symbol)` - accepts a string, specifying the symbol for the bar
 - `style(style)` - accepts a [Style](#style), specifying the style of the bar
 
@@ -57,13 +58,14 @@ You can also use `ui.Border:type(type)` to specify different types for the borde
 - `ui.Border.QUADRANT_INSIDE`
 - `ui.Border.QUADRANT_OUTSIDE`
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
+- `area(rect)` - accepts a [Rect](#rect), changing the area of the border. If not specified, returns the current area. (Nightly version required for now)
 - `style(style)` - accepts a [Style](#style), specifying the style of the border
 
 ## Clear {#clear}
 
-Clear the content of a specific area. Place it followed by the component that you want to clear:
+Clear the content of a specific area, which is a [Rect](#rect). Place it followed by the component that you want to clear:
 
 ```lua
 local components = {
@@ -73,6 +75,10 @@ local components = {
 	ui.Clear(rect),
 }
 ```
+
+Methods (return `self` if not specified):
+
+- `area(rect)` - accepts a [Rect](#rect), changing the area of the clear. If not specified, returns the current area. (Nightly version required for now)
 
 ## Constraint {#constraint}
 
@@ -218,8 +224,9 @@ Create a gauge:
 ui.Gauge(rect)
 ```
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
+- `area(rect)` - accepts a [Rect](#rect), changing the area of the gauge. If not specified, returns the current area. (Nightly version required for now)
 - `percent(percent)` - Set the percentage of the gauge
 - `ratio(ratio)` - Set the ratio of the gauge
 - `label(label)` - Set the label of the gauge
@@ -240,7 +247,7 @@ local left = areas[1] -- The first rect
 local right = areas[2] -- The second rect
 ```
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
 - `direction(direction)` - Set the direction of the layout, which accepts the following constants:
   - `ui.Layout.HORIZONTAL`
@@ -260,14 +267,22 @@ ui.Line("string")
 ui.Line { span, line, span, ... }
 ```
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
+- `area(rect)` - accepts a [Rect](#rect), changing the area of the line. If not specified, returns the current area. (Nightly version required for now)
 - `width()` - Get the width of the line, which returns an integer.
-- `style(style)` - Set the style of the line, which accepts a [Style](#style).
 - `align(alignment)` - Set the alignment of the line. It accepts the following constants:
   - `ui.Line.LEFT`
   - `ui.Line.CENTER`
   - `ui.Line.RIGHT`
+- `visible()` - Whether the line is visible (includes any printable characters), which returns a boolean. Nightly version required for now.
+- `style(style)` - Set the style of the line, which accepts a [Style](#style).
+
+Like with [`Span`](#span), you can directly call [`Style`](#style) methods on it (Nightly version required for now):
+
+```lua
+ui.Line("Hello world"):fg("white"):bg("black"):bold()
+```
 
 ## List {#list}
 
@@ -280,6 +295,10 @@ ui.List(rect, items)
 The first attribute is a [Rect](#rect), representing the position of this list.
 The second denotes the items of the list and accepts a list of [ListItem](#list-item).
 
+Methods (return `self` if not specified):
+
+- `style(style)` - Set the style of the list, which accepts a [Style](#style)
+
 ## ListItem {#list-item}
 
 Create a list item:
@@ -290,7 +309,7 @@ ui.ListItem(span)
 ui.ListItem("string")
 ```
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
 - `style(style)` - Set the style of the list item, which accepts a [Style](#style)
 
@@ -335,17 +354,25 @@ The second denotes the lines of the paragraph and accepts a list of [Line](#line
 
 You can also use `ui.Paragraph.parse(string)` to parse an [ANSI escape sequence](https://en.wikipedia.org/wiki/ANSI_escape_code) string into a paragraph.
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
-- `style(style)` - Set the style of the paragraph, which accepts a [Style](#style)
-- `wrap(wrap)` - Set the wrap of the paragraph, which accepts the following constants:
-  - `ui.Paragraph.WRAP_NO` - No wrap
-  - `ui.Paragraph.WRAP` - Wrap at the end of the line
-  - `ui.Paragraph.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
+- `area(rect)` - accepts a [Rect](#rect), changing the area of the paragraph. If not specified, returns the current area. (Nightly version required for now)
 - `align(alignment)` - Set the alignment of the paragraph. It accepts the following constants:
   - `ui.Paragraph.LEFT`
   - `ui.Paragraph.CENTER`
   - `ui.Paragraph.RIGHT`
+- `wrap(wrap)` - Set the wrap of the paragraph, which accepts the following constants:
+  - `ui.Paragraph.WRAP_NO` - No wrap
+  - `ui.Paragraph.WRAP` - Wrap at the end of the line
+  - `ui.Paragraph.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
+- `max_width()` - Get the maximum width of the paragraph, which returns an integer (Nightly version required for now).
+- `style(style)` - Set the style of the paragraph, which accepts a [Style](#style)
+
+Like with [`Span`](#span), you can directly call [`Style`](#style) methods on it (Nightly version required for now):
+
+```lua
+ui.Paragraph("Hello world"):fg("white"):bg("black"):bold()
+```
 
 ## Rect {#rect}
 
@@ -373,7 +400,7 @@ Properties:
 - `top` - top position
 - `bottom` - bottom position
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
 - `padding(padding)` - Set padding. It accepts a [Padding](#padding)
 
@@ -388,20 +415,23 @@ Create a span:
 ui.Span("string")
 ```
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
-- `fg(color)` - Set the foreground color of the span, which accepts a [Color](/docs/configuration/theme#types.color)
-- `bg(color)` - Set the background color of the span, which accepts a [Color](/docs/configuration/theme#types.color)
-- `bold()` - Set the span to bold
-- `dim()` - Set the span to dim
-- `italic()` - Set the span to italic
-- `underline()` - Set the span to underline
-- `blink()` - Set the span to blink
-- `blink_rapid()` - Set the span to blink rapidly
-- `hidden()` - Set the span to hidden
-- `crossed()` - Set the span to crossed
-- `reset()` - Reset the style of the span
+- `visible()` - Whether the span is visible (includes any printable characters), which returns a boolean. Nightly version required for now.
 - `style(style)` - Set the style of the span, which accepts a [Style](#style)
+
+Besides applying the whole [`Style`](#style), you can also call those methods of `Style` directly on it, which means:
+
+```lua
+local style = ui.Style():fg("white"):bg("black"):bold()
+ui.Span("Hello world"):style(style)
+```
+
+can be also written as (Nightly version required for now):
+
+```lua
+ui.Span("Hello world"):fg("white"):bg("black"):bold()
+```
 
 ## Style {#style}
 
@@ -411,16 +441,18 @@ Create a style:
 ui.Style()
 ```
 
-Methods (all methods return `self`):
+Methods (return `self` if not specified):
 
-- `fg(string)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
-- `bg(string)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
+- `fg(color)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
+- `bg(color)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
 - `bold()` - Set the style to bold
 - `dim()` - Set the style to dim
 - `italic()` - Set the style to italic
 - `underline()` - Set the style to underline
 - `blink()` - Set the style to blink
 - `blink_rapid()` - Set the style to blink rapidly
+- `reverse()` - Set the style to reverse
 - `hidden()` - Set the style to hidden
 - `crossed()` - Set the style to crossed
 - `reset()` - Reset the style
+- `patch()` - Patch the style with another style
