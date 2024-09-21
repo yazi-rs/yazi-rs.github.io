@@ -72,13 +72,18 @@ Properties:
 - `is_regular` - Whether the file represented by the url is a regular file
 - `is_search` - Whether the file represented by the url from the search result
 - `is_archive` - Whether the file represented by the url from an archive
+- `is_absolute` - Whether the file represented by the url is an absolute path
+- `has_root` - Whether the file represented by the url has a root
 
 Methods:
 
 - `name()` - Returns the filename in string if any, otherwise `nil`
 - `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
-- `join(url)` - Joins with another url or a string of url, returns a new `Url`
+- `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
 - `parent()` - Returns parent directory in string if any, otherwise `nil`
+- `starts_with(url)` - Whether the url starts with another `Url` or a string of url
+- `ends_with(url)` - Whether the url ends with another `Url` or a string of url
+- `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`
 
 Meta methods:
 
