@@ -455,4 +455,4 @@ Methods (return `self` if not specified):
 - `hidden()` - Set the style to hidden
 - `crossed()` - Set the style to crossed
 - `reset()` - Reset the style
-- `patch()` - Patch the style with another style
+- `patch(style)` - Patch the style with another `Style`
