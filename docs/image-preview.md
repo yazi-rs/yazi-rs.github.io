@@ -56,9 +56,15 @@ Now you should be able to enjoy with the image preview.
 Zellij currently only supports the Sixel graphics format, so you will need a terminal that also supports Sixel.
 
 Note that, Zellij's Sixel implementation is quite buggy and has serious performance issues at the moment,
-causing noticeable lagginess when quickly switching between images, and sometimes even [image tearing](https://github.com/zellij-org/zellij/issues/2576#issuecomment-1707107473) or [not work at all](https://github.com/zellij-org/zellij/issues/2814#issuecomment-2318473921).
+causing noticeable lagginess when quickly switching between images, and sometimes even [image tearing](https://github.com/zellij-org/zellij/issues/2576#issuecomment-1707107473) or [not working at all](https://github.com/zellij-org/zellij/issues/2814#issuecomment-2318473921).
 
-These issues won't be improved until Zellij enhances it's Sixel implementation or [provides a passthrough mode](https://github.com/zellij-org/zellij/issues/775). If the image is a stronger need to you, consider running Yazi outside of Zellij or using Überzug++.
+These issues won't be improved until Zellij enhances it's Sixel implementation or [provides a passthrough mode](https://github.com/zellij-org/zellij/issues/775). If the image is a stronger need to you, consider running Yazi outside of Zellij or using Überzug++:
+
+```sh
+# Deceive Yazi into thinking you're running in Neovim,
+# forcing it fallback to Überzug++ or Chafa
+NVIM=1 NVIM_LOG_FILE=1 yazi
+```
 
 ## Windows users {#windows}
 
