@@ -599,6 +599,7 @@ Delete the character before the cursor. This command is only available in insert
 | Argument/Option | Description                            |
 | --------------- | -------------------------------------- |
 | `--under`       | Delete the character under the cursor. |
+| `--close`       | Close the input when value is empty.   |
 
 ### `kill` {#input.kill}
 
