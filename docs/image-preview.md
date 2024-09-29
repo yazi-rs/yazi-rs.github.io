@@ -18,7 +18,7 @@ This is by no means a simple task, to reduce maintenance costs, we only guarante
 | [Mintty](https://github.com/mintty/mintty) (Git Bash)                       | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
 | [foot](https://codeberg.org/dnkl/foot)                                      | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
 | [Ghostty](https://mitchellh.com/ghostty)                                    | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | ✅ Built-in                                                    |
-| [Windows Terminal](https://github.com/microsoft/terminal) (>= v1.22.2362.0) | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
+| [Windows Terminal](https://github.com/microsoft/terminal) (>= v1.22.2702.0) | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
 | [Black Box](https://gitlab.gnome.org/raggesilver/blackbox)                  | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
 | [VSCode](https://github.com/microsoft/vscode)                               | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
 | [Tabby](https://github.com/Eugeny/tabby)                                    | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
@@ -70,7 +70,7 @@ NVIM=1 NVIM_LOG_FILE=1 yazi
 Currently, only the following 3 terminals support displaying images on Windows:
 
 - WezTerm
-- [Windows Terminal Preview 1.22.2362.0](https://github.com/microsoft/terminal/releases/tag/v1.22.2362.0) with the patch from [microsoft/terminal#17833](https://github.com/microsoft/terminal/pull/17833) - see more details in [sxyazi/yazi#1588](https://github.com/sxyazi/yazi/pull/1588)
+- [Windows Terminal Preview v1.22.2702.0](https://github.com/microsoft/terminal/releases/tag/v1.22.2702.0)
 - Mintty (Git Bash, which comes with Git for Windows)
 
 ## Windows with WSL users {#wsl}
