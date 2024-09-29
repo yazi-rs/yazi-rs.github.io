@@ -28,7 +28,7 @@ Add this keybinding to your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = "<C-s>"
+on   = "!"
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 ```
