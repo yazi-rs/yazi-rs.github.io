@@ -118,6 +118,35 @@ desc = "Paste into the hovered directory or CWD"
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/080212b5-43e7-4c36-83e8-312495d50383" width="100%" controls muted></video>
 </details>
 
+## Folder-specific rules {#folder-rules}
+
+You can subscribe to directory change events through the [`cd` event provided by DDS](/docs/dds#cd), and then do any action you want, such as setting different sorting methods for specific directories.
+
+The following code demonstrates making the `Downloads` directory to sort by modification time, while others are sorted alphabetically. Save these lines as `~/.config/yazi/plugins/folder-rules.yazi/init.lua`:
+
+```lua
+return {
+	setup = function()
+		ps.sub("cd", function()
+			local cwd = cx.active.current.cwd
+			if cwd:ends_with("Downloads") then
+				ya.manager_emit("sort", { "modified", reverse = true, dir_first = false })
+			else
+				ya.manager_emit("sort", { "alphabetical", reverse = false, dir_first = true })
+			end
+		end)
+	end,
+}
+```
+
+Then enable it in your `~/.config/yazi/init.lua`:
+
+```lua
+require("folder-rules"):setup()
+```
+
+Credits to [@tianze0926 for sharing it](https://github.com/sxyazi/yazi/issues/623#issuecomment-2096270843).
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
