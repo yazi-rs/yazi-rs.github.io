@@ -125,18 +125,18 @@ You can subscribe to directory change events through the [`cd` event provided by
 The following code demonstrates making the `Downloads` directory to sort by modification time, while others are sorted alphabetically. Save these lines as `~/.config/yazi/plugins/folder-rules.yazi/init.lua`:
 
 ```lua
-return {
-	setup = function()
-		ps.sub("cd", function()
-			local cwd = cx.active.current.cwd
-			if cwd:ends_with("Downloads") then
-				ya.manager_emit("sort", { "modified", reverse = true, dir_first = false })
-			else
-				ya.manager_emit("sort", { "alphabetical", reverse = false, dir_first = true })
-			end
-		end)
-	end,
-}
+local function setup()
+	ps.sub("cd", function()
+		local cwd = cx.active.current.cwd
+		if cwd:ends_with("Downloads") then
+			ya.manager_emit("sort", { "modified", reverse = true, dir_first = false })
+		else
+			ya.manager_emit("sort", { "alphabetical", reverse = false, dir_first = true })
+		end
+	end)
+end
+
+return { setup = setup }
 ```
 
 Then enable it in your `~/.config/yazi/init.lua`:
