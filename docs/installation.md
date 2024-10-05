@@ -322,8 +322,7 @@ Clone the repository and build Yazi:
 
 ```sh
 git clone https://github.com/sxyazi/yazi.git
-cd yazi
-cargo build --release --locked
+cargo build --release --locked --manifest-path=yazi/Cargo.toml
 ```
 
 Then, you can run:
