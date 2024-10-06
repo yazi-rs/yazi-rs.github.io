@@ -359,8 +359,13 @@ Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 
 ```toml
 # ~/.config/helix/config.toml
-[keys.normal]
-C-y = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh"
+[keys.normal.'C-y']
+# Open the file(s) in the current window
+"c" = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+# Open the file(s) in a vertical window
+"v" = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit"
+# Open the file(s) in a horizontal window
+"h" = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit"
 ```
 
 Then save the following script as `~/.config/helix/yazi-picker.sh`:
@@ -368,17 +373,17 @@ Then save the following script as `~/.config/helix/yazi-picker.sh`:
 ```sh
 #!/usr/bin/env bash
 
+command=$1
 paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
 
 if [[ -n "$paths" ]]; then
 	zellij action toggle-floating-panes
 	zellij action write 27 # send <Escape> key
-	zellij action write-chars ":open $paths"
+	zellij action write-chars ":$command $paths"
 	zellij action write 13 # send <Enter> key
+else
 	zellij action toggle-floating-panes
 fi
-
-zellij action close-pane
 ```
 
 Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
@@ -386,8 +391,34 @@ Note: this uses a floating window, but you should also be able to open a new pan
 Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton) and [@postsolar](https://github.com/postsolar) for sharing and polishing it!
 
 <details>
+  <summary>The commands too long, and its descriptions annoying!</summary>
+
+I know, but currently [Helix doesn't want to support custom keymap description](https://github.com/helix-editor/helix/pull/6862#issuecomment-2053817233), but you can use [@TheAwiteb patch](https://github.com/helix-editor/helix/commit/b11c248f18b1cac9dc11aa876afb5852aa3aa668.patch) until it is supported by Helix.
+
+To apply the patch, clone the helix repository then run this command in it
+
+```sh
+curl -sS https://github.com/helix-editor/helix/commit/b11c248f18b1cac9dc11aa876afb5852aa3aa668.patch | git am -3
+# Install the patched version
+cargo install --path helix-term
+```
+
+Then in the future when you want to update your Helix, run `git pull --rebase` then reinstall it. (If you face a conflicts ping us)
+
+After patched your helix, update your keymap to be like this
+
+```toml
+[keys.normal.'C-y']
+"c: Open the file(s) in the current window" = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+"v: Open the file(s) in a vertical window" = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit"
+"h: Open the file(s) in a horizontal window" = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit"
+```
+
+</details>
+
+<details>
   <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
-	<video src="https://github.com/helix-editor/helix/assets/17523360/a4dde9e0-96bf-42a4-b946-40cbee984e69" width="100%" controls muted></video>
+	<video src="https://github.com/user-attachments/assets/584696cb-89e0-4eaa-8cce-6faa84e350d6" width="100%" controls muted></video>
 </details>
 
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
