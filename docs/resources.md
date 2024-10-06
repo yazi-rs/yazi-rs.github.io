@@ -58,6 +58,7 @@ Jumping:
 
 - [relative-motions.yazi](https://github.com/dedukun/relative-motions.yazi) - A Yazi plugin based about vim motions.
 - [jump-to-char.yazi](https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi) - Vim-like `f<char>`, jump to the next file whose name starts with `<char>`.
+- [first-non-directory.yazi](first-non-directory.yazi) - Skyp directories and jump to the first file with `fj`, or your preffered keybind.
 
 Bookmarks:
 
