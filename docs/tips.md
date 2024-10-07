@@ -363,7 +363,7 @@ For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs
 
 to use as the editor for editing the file list.
 
-By default, this matches your editor used for opening normal text files, if you want to use an editor that's different that:
+By default, this matches your editor used for opening normal text files, if you want to use an editor different from that:
 
 ```toml
 # ~/.config/yazi/yazi.toml
