@@ -351,6 +351,31 @@ Header:children_add(function()
 end, 500, Header.LEFT)
 ```
 
+## Specify a different editor for bulk renaming {#bulk-editor}
+
+For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs/configuration/yazi#open) rules with:
+
+|         | Value          |
+| ------- | -------------- |
+| `block` | `true`         |
+| `name`  | `"bulk.txt"`   |
+| `mime`  | `"text/plain"` |
+
+to use as the editor for editing the file list.
+
+By default, this matches your editor used for opening normal text files, if you want to use an editor that's different that:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[[opener.bulk-edit]]
+run   = 'hx "$@"'
+block = true
+
+[[open.prepend_rules]]
+name = "bulk.txt"
+use  = "bulk-edit"
+```
+
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
 
 Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
