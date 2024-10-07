@@ -284,7 +284,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 ### `rename` {#manager.rename}
 
-Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
+Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default, see [Specify a different editor for bulk renaming](/docs/tips#bulk-editor) for details).
 
 - `--hovered`: Always rename the hovered file regardless of the selection state.
 - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
