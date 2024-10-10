@@ -240,10 +240,6 @@ pkgin install yazi ffmpegthumbnailer p7zip jq poppler fd ripgrep fzf zoxide Imag
 
 ## Windows
 
-Windows has been supported since Yazi v0.1.4, but it's still in the early stage, so please file an issue if you encounter any bugs.
-
-### Requirements
-
 Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file.exe` that comes with it.
 
 1. Install Git for Windows by running [the official installer](https://git-scm.com/download/win), or through your package manager of choice.
