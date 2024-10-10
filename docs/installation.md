@@ -247,7 +247,7 @@ Windows has been supported since Yazi v0.1.4, but it's still in the early stage,
 Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file.exe` that comes with it.
 
 1. Install Git for Windows by running [the official installer](https://git-scm.com/download/win), or through your package manager of choice.
-2. To allow Yazi to use file(1), add `<Git_Installed_Directory>\usr\bin\file.exe` to your `YAZI_FILE_ONE` environment variable, which differs depending on how you installed Git:
+2. To allow Yazi to use `file(1)`, add `<Git_Installed_Directory>\usr\bin\file.exe` to your `YAZI_FILE_ONE` environment variable, which differs depending on how you installed Git:
    - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin\file.exe`.
    - If you installed Git with Scoop, it would be `C:\Users\<Username>\scoop\apps\git\current\usr\bin\file.exe`.
 3. Restart your terminal.
@@ -256,18 +256,7 @@ This is **the ONLY way we recommend**. We do not recommend install `file` via Sc
 
 Most users already have Git installed, and Yazi is also hosted via Git, so this usually isn't an issue. But if you really don't have/want to install it, the [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) plugin can help, which use a extension database instead of relying on the `file(1)` binary.
 
-### Installation
-
-#### winget
-
-```sh
-winget install sxyaxi.yazi
-# Install the optional dependencies (recommended):
-winget install 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick
-```
-Poppler is not yet on winget. Install manually or with scoop. ([link](https://github.com/oschwartz10612/poppler-windows))
-
-#### scoop
+### Install with Scoop
 
 ```sh
 scoop install yazi
@@ -275,9 +264,15 @@ scoop install yazi
 scoop install 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
-### Video previews
+### Install with WinGet
 
-ffmpegthumbnailer is used for video previews, but is not available on Windows. To preview videos, install the [video-ffmpeg plugin](https://github.com/Tyarel8/video-ffmpeg.yazi).
+```sh
+winget install sxyaxi.yazi
+# Install the optional dependencies (recommended):
+winget install 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick
+```
+
+Poppler is not yet on WinGet, install with Scoop or manually download from [poppler-windows](https://github.com/oschwartz10612/poppler-windows).
 
 ## AOSC OS
 
