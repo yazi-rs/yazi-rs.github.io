@@ -9,28 +9,41 @@ Yazi has done a lot of work to adapt to different terminals and multiplexers, tr
 
 This is by no means a simple task, to reduce maintenance costs, we only guarantee it is available in the **_latest version_** of terminals and multiplexers (tmux, Zellij):
 
-| Platform                                                                    | Protocol                                                                                              | Support                                                        |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [kitty](https://github.com/kovidgoyal/kitty)                                | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | ✅ Built-in                                                    |
-| [Konsole](https://invent.kde.org/utilities/konsole)                         | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adapter/src/kgp_old.rs)            | ✅ Built-in                                                    |
-| [iTerm2](https://iterm2.com)                                                | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
-| [WezTerm](https://github.com/wez/wezterm)                                   | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
-| [Mintty](https://github.com/mintty/mintty) (Git Bash)                       | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
-| [foot](https://codeberg.org/dnkl/foot)                                      | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
-| [Ghostty](https://mitchellh.com/ghostty)                                    | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | ✅ Built-in                                                    |
-| [Windows Terminal](https://github.com/microsoft/terminal) (>= v1.22.2702.0) | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
-| [Black Box](https://gitlab.gnome.org/raggesilver/blackbox)                  | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | ✅ Built-in                                                    |
-| [VSCode](https://github.com/microsoft/vscode)                               | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
-| [Tabby](https://github.com/Eugeny/tabby)                                    | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
-| [Hyper](https://github.com/vercel/hyper)                                    | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | ✅ Built-in                                                    |
-| X11 / Wayland                                                               | Window system protocol                                                                                | ☑️ [Überzug++](https://github.com/jstkdng/ueberzugpp) required |
-| Fallback                                                                    | [ASCII art (Unicode block)](https://en.wikipedia.org/wiki/ASCII_art)                                  | ☑️ [Chafa](https://hpjansson.org/chafa/) required              |
+| Platform                                                                    | Protocol                               | Support                           |
+| --------------------------------------------------------------------------- | -------------------------------------- | --------------------------------- |
+| [kitty](https://github.com/kovidgoyal/kitty)                                | [Kitty unicode placeholders][kgp]      | ✅ Built-in                       |
+| [Konsole](https://invent.kde.org/utilities/konsole)                         | [Kitty old protocol][kgp-old]          | ✅ Built-in                       |
+| [iTerm2](https://iterm2.com)                                                | [Inline images protocol][iip]          | ✅ Built-in                       |
+| [WezTerm](https://github.com/wez/wezterm)                                   | [Inline images protocol][iip]          | ✅ Built-in                       |
+| [Mintty](https://github.com/mintty/mintty) (Git Bash)                       | [Inline images protocol][iip]          | ✅ Built-in                       |
+| [foot](https://codeberg.org/dnkl/foot)                                      | [Sixel graphics format][sixel]         | ✅ Built-in                       |
+| [Ghostty](https://mitchellh.com/ghostty)                                    | [Kitty unicode placeholders][kgp]      | ✅ Built-in                       |
+| [Windows Terminal](https://github.com/microsoft/terminal) (>= v1.22.2702.0) | [Sixel graphics format][sixel]         | ✅ Built-in                       |
+| [Black Box](https://gitlab.gnome.org/raggesilver/blackbox)                  | [Sixel graphics format][sixel]         | ✅ Built-in                       |
+| [VSCode](https://github.com/microsoft/vscode)                               | [Inline images protocol][iip]          | ✅ Built-in                       |
+| [Tabby](https://github.com/Eugeny/tabby)                                    | [Inline images protocol][iip]          | ✅ Built-in                       |
+| [Hyper](https://github.com/vercel/hyper)                                    | [Inline images protocol][iip]          | ✅ Built-in                       |
+| X11 / Wayland                                                               | Window system protocol                 | ☑️ [Überzug++][ueberzug] required |
+| Fallback                                                                    | [ASCII art (Unicode block)][ascii-art] | ☑️ [Chafa][chafa] required        |
 
 Yazi automatically selects the appropriate preview method for you, based on the priority from top to bottom.
 That's relying on the `$TERM`, `$TERM_PROGRAM`, and `$XDG_SESSION_TYPE` variables, make sure you don't overwrite them by mistake!
 
 For instance, if your terminal is Alacritty, which doesn't support displaying images itself, but you are running on an X11/Wayland environment,
 it will automatically use the "Window system protocol" to display images - this requires you to have Überzug++ installed.
+
+<!-- Protocols -->
+
+[kgp]: https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders
+[kgp-old]: https://github.com/sxyazi/yazi/blob/main/yazi-adapter/src/kgp_old.rs
+[iip]: https://iterm2.com/documentation-images.html
+[sixel]: https://www.vt100.net/docs/vt3xx-gp/chapter14.html
+[ascii-art]: https://en.wikipedia.org/wiki/ASCII_art
+
+<!-- Dependencies -->
+
+[ueberzug]: https://github.com/jstkdng/ueberzugpp
+[chafa]: https://hpjansson.org/chafa/
 
 ## tmux users {#tmux}
 
@@ -132,14 +145,17 @@ Adapter
 
 which indicates the image protocol detected and used by Yazi:
 
-| `Adapter.matches`  | Protocol                                                                                              | Notes                                                                          |
-| ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `Kgp`              | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | Ensure your terminal is up to date to support it                               |
-| `KgpOld`           | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adapter/src/kgp_old.rs)            | Doesn't work under `tmux` due to the limitations of the protocol itself        |
-| `Iip`              | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | -                                                                              |
-| `Sixel`            | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | See [tmux](#tmux) and [Zellij](#zellij) section if you're using either of them |
-| `X11` or `Wayland` | Window system protocol                                                                                | [Überzug++](https://github.com/jstkdng/ueberzugpp) is required to install      |
-| `Chafa`            | [ASCII art (Unicode block)](https://en.wikipedia.org/wiki/ASCII_art)                                  | [Chafa](https://hpjansson.org/chafa/) is required to install                   |
+| `Adapter.matches` | Protocol                               | Notes                                                                                                |
+| ----------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Kgp`             | [Kitty unicode placeholders][kgp]      | Ensure your terminal is up to date to support it                                                     |
+| `KgpOld`          | [Kitty old protocol][kgp-old]          | Doesn't work under `tmux` due to the limitations of the protocol itself                              |
+| `Iip`             | [Inline images protocol][iip]          | -                                                                                                    |
+| `Sixel`           | [Sixel graphics format][sixel]         | See [tmux](#tmux) and [Zellij](#zellij) section if you're using either of them                       |
+| `X11`             | Window system protocol                 | [Überzug++][ueberzug] is required                                                                    |
+| `Wayland`         | Window system protocol                 | [Überzug++][ueberzug] is required and [_only_ supports Sway, Hyprland, and Wayfire][uberzug-wayland] |
+| `Chafa`           | [ASCII art (Unicode block)][ascii-art] | [Chafa][chafa] is required as the last fallback resort                                               |
+
+[uberzug-wayland]: https://github.com/jstkdng/ueberzugpp/blob/eea57daece774e152aedba9ac82a8113056fbab4/README.md?plain=1#L12
 
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
