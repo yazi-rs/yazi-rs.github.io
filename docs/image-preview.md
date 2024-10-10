@@ -50,6 +50,9 @@ tmux kill-server && tmux || tmux
 
 Now you should be able to enjoy with the image preview.
 
+Note that if [the protocol you are using](#protocol) is Sixel, make sure you passed `--enable-sixel` when building tmux, as it's disabled by default.
+You can verify this through [tmux/tmux#4104](https://github.com/tmux/tmux/issues/4104#issuecomment-2326339395).
+
 ## Zellij users {#zellij}
 
 Zellij currently only supports the Sixel graphics format, so you will need a terminal that also supports Sixel.
@@ -101,6 +104,43 @@ The builtin terminal emulator (`:term`) in Neovim [doesn't support any graphic p
 
 Note that Überzug++ might display images in the wrong position; in that case, please adjust it manually using [`ueberzug_offset`](/docs/configuration/yazi/#preview.ueberzug_scale).
 
+## Why won't my images adapt to terminal size? {#size}
+
+The size of the image depends on two factors:
+
+1. The [max_width](/docs/configuration/yazi#preview.max_width) and [max_height](/docs/configuration/yazi#preview.max_height) config options, which need to be adjusted by the user as needed.
+2. The pixel size of the terminal.
+
+Yazi will use the smaller of these two factors as the image preview size.
+
+However, some terminals (such as VSCode, Tabby, and all Windows terminals) don't implement the `ioctl` system call, before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it's not possible to obtain the actual pixel width and height of the terminal.
+
+Hence, only `max_width` and `max_height` will be used in this case.
+
+## How can I know what image protocol Yazi uses? {#protocol}
+
+Yazi provides a `yazi --debug` command that includes all your environment information, such as terminal emulator, image adapter, whether you're in SSH mode, etc.
+
+Run it in the terminal where you want to preview images, and you'll see output like:
+
+```sh
+...
+Adapter
+    Adapter.matches: Kgp
+...
+```
+
+which indicates the image protocol detected and used by Yazi:
+
+| `Adapter.matches`  | Protocol                                                                                              | Notes                                                                          |
+| ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `Kgp`              | [Kitty unicode placeholders](https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders) | Ensure your terminal is up to date to support it                               |
+| `KgpOld`           | [Kitty old protocol](https://github.com/sxyazi/yazi/blob/main/yazi-adapter/src/kgp_old.rs)            | Doesn't work under `tmux` due to the limitations of the protocol itself        |
+| `Iip`              | [Inline images protocol](https://iterm2.com/documentation-images.html)                                | -                                                                              |
+| `Sixel`            | [Sixel graphics format](https://www.vt100.net/docs/vt3xx-gp/chapter14.html)                           | See [tmux](#tmux) and [Zellij](#zellij) section if you're using either of them |
+| `X11` or `Wayland` | Window system protocol                                                                                | [Überzug++](https://github.com/jstkdng/ueberzugpp) is required to install      |
+| `Chafa`            | [ASCII art (Unicode block)](https://en.wikipedia.org/wiki/ASCII_art)                                  | [Chafa](https://hpjansson.org/chafa/) is required to install                   |
+
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
 This may be a problem with Überzug++ itself. Please build Yazi in debug mode [as per this](/docs/installation#build-from-source) but `cargo build` without `--release` flag - you can run `yazi --debug` to verify it, and you will see the output includes `Debug : true`.
@@ -124,16 +164,3 @@ If the image shows properly when using Überzug++ independently, but not when us
 - The contents of `~/.local/state/yazi/yazi.log`
 - The contents of `/tmp/ueberzugpp-$USER.log`
 - A GIF demonstration of the above steps
-
-## Why won't my images adapt to terminal size? {#size}
-
-The size of the image depends on two factors:
-
-1. The [max_width](/docs/configuration/yazi#preview.max_width) and [max_height](/docs/configuration/yazi#preview.max_height) config options, which need to be adjusted by the user as needed.
-2. The pixel size of the terminal.
-
-Yazi will use the smaller of these two factors as the image preview size.
-
-However, some terminals (such as VSCode, Tabby, and all Windows terminals) don't implement the `ioctl` system call, before [Add `CSI 14 t` sequence support](https://github.com/crossterm-rs/crossterm/pull/810) is merged, it's not possible to obtain the actual pixel width and height of the terminal.
-
-Hence, only `max_width` and `max_height` will be used in this case.
