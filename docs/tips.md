@@ -385,7 +385,20 @@ Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 ```toml
 # ~/.config/helix/config.toml
 [keys.normal]
-C-y = ":sh zellij run -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh"
+C-y = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+```
+
+Or if you also want to support splitting the pane, you can add more keymaps:
+
+```toml
+# ~/.config/helix/config.toml
+[keys.normal.C-y]
+# Open the file(s) in the current window
+y = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+# Open the file(s) in a vertical pane
+v = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit"
+# Open the file(s) in a horizontal pane
+h = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit"
 ```
 
 Then save the following script as `~/.config/helix/yazi-picker.sh`:
@@ -393,22 +406,22 @@ Then save the following script as `~/.config/helix/yazi-picker.sh`:
 ```sh
 #!/usr/bin/env bash
 
+op="$1"
 paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
 
 if [[ -n "$paths" ]]; then
 	zellij action toggle-floating-panes
 	zellij action write 27 # send <Escape> key
-	zellij action write-chars ":open $paths"
+	zellij action write-chars ":$op $paths"
 	zellij action write 13 # send <Enter> key
+else
 	zellij action toggle-floating-panes
 fi
-
-zellij action close-pane
 ```
 
 Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
 
-Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton) and [@postsolar](https://github.com/postsolar) for sharing and polishing it!
+Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton), [@postsolar](https://github.com/postsolar) and [@TheAwiteb](https://github.com/TheAwiteb) for sharing and polishing it!
 
 <details>
   <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
