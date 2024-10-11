@@ -351,6 +351,18 @@ Header:children_add(function()
 end, 500, Header.LEFT)
 ```
 
+## macOS: Preview files with the system Quick Look {#macos-quick-look}
+
+```toml
+[[manager.prepend_keymap]]
+on = "<C-p>"
+run = '''
+  shell 'qlmanage -p "$@"' --confirm
+'''
+```
+
+Credits to [@UncleGravity for sharing it](https://discord.com/channels/1136203602898194542/1146658361740369960/1293471643959558156) in Yazi's discord server.
+
 ## Specify a different editor for bulk renaming {#bulk-editor}
 
 **This tip currently requires Yazi nightly version.**
