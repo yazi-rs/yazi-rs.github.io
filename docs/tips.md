@@ -353,13 +353,15 @@ end, 500, Header.LEFT)
 
 ## Specify a different editor for bulk renaming {#bulk-editor}
 
+**This tip currently requires Yazi nightly version.**
+
 For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs/configuration/yazi#open) rules with:
 
-|         | Value          |
-| ------- | -------------- |
-| `block` | `true`         |
-| `name`  | `"bulk.txt"`   |
-| `mime`  | `"text/plain"` |
+|         | Value               |
+| ------- | ------------------- |
+| `block` | `true`              |
+| `name`  | `"bulk-rename.txt"` |
+| `mime`  | `"text/plain"`      |
 
 to use as the editor for editing the file list.
 
@@ -367,13 +369,13 @@ By default, this matches your editor used for opening normal text files, if you 
 
 ```toml
 # ~/.config/yazi/yazi.toml
-[[opener.bulk-edit]]
+[[opener.bulk-rename]]
 run   = 'hx "$@"'
 block = true
 
 [[open.prepend_rules]]
-name = "bulk.txt"
-use  = "bulk-edit"
+name = "bulk-rename.txt"
+use  = "bulk-rename"
 ```
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
