@@ -83,6 +83,7 @@ File actions:
 - [what-size.yazi](https://github.com/pirafrank/what-size.yazi) - Calculate total size of current selection or of current working directory.
 - [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
 - [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
+- [fuse-archive](https://github.com/dawsers/fuse-archive.yazi) - Mount and unmount archives transparently while navigating in yazi with [fuse-archive](https://github.com/google/fuse-archive).
 
 Clipboard:
 
