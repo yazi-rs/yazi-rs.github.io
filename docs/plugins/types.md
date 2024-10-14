@@ -80,7 +80,7 @@ Methods:
 - `name()` - Returns the filename in string if any, otherwise `nil`
 - `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
 - `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
-- `parent()` - Returns parent directory in string if any, otherwise `nil`
+- `parent()` - Returns parent directory `Url` if any, otherwise `nil`
 - `starts_with(url)` - Whether the url starts with another `Url` or a string of url
 - `ends_with(url)` - Whether the url ends with another `Url` or a string of url
 - `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`

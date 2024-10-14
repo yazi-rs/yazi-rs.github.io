@@ -8,12 +8,6 @@ import TabItem from '@theme/TabItem';
 
 # DDS
 
-:::warning
-This is a new feature that will be released in Yazi 0.2.5 and currently requires the latest code.
-
-Document is still being written...
-:::
-
 DDS (Data Distribution Service) is designed to achieve communication and state synchronization between multiple Yazi instances, as well as state persistence. It is built on a client-server architecture but does not require running additional server processes.
 
 It deeply integrates with a publish-subscribe model based on the Lua API.

@@ -218,7 +218,7 @@ This function is only available in the async context.
   - `file` - The previewed [File](/docs/plugins/types#shared.file)
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](/docs/plugins/types#shared.window) of the preview
-- `widgets` - List of renderable widgets, such as `{ ui.Paragraph {...}, ui.List {...}, ... }`
+- `widgets` - List of renderable widgets, such as `{ ui.Text {...}, ui.List {...}, ... }`
 
 This function is only available in the async context.
 
