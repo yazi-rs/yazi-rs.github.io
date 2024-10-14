@@ -147,7 +147,7 @@ Wrap long lines in the code preview.
 
 ### `tab_size` {#preview.tab_size}
 
-The width of a tab character in spaces.
+The width of a tab character (`\t`) in spaces.
 
 ### `max_width` {#preview.max_width}
 
