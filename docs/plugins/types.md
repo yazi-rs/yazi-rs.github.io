@@ -15,10 +15,11 @@ Cha means one file's characteristics with the following properties:
 - `is_hidden` - Whether this file is hidden (starts with a dot)
 - `is_link` - Whether this file is a symlink
 - `is_orphan` - Whether this file is a bad symlink, which points to a non-existent file
-- `is_block_device` - Whether this file is a block device
-- `is_char_device` - Whether this file is a character device
+- `is_dummy` - Whether the file is dummy, which fails to load complete metadata, possibly the filesystem doesn't support it, such as FUSE.
+- `is_block` - Whether this file is a block device
+- `is_char` - Whether this file is a character device
 - `is_fifo` - Whether this file is a fifo
-- `is_socket` - Whether this file is a socket
+- `is_sock` - Whether this file is a socket
 - `is_exec` - Whether this file is executable
 - `is_sticky` - Whether this file has the sticky bit set
 - `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
@@ -31,6 +32,7 @@ And the Unix only properties:
 
 - `uid` - The user id of this file
 - `gid` - The group id of this file
+- `nlink` - The number of hard links to this file
 
 ### File {#shared.file}
 
@@ -66,17 +68,22 @@ local url = Url("archive:///root/ost.zip#bgm.mp3")
 
 Properties:
 
-- `frag` - The fragment string of this url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
-- `is_regular` - Whether the file represented by this url is a regular file
-- `is_search` - Whether the file represented by this url from the search result
-- `is_archive` - Whether the file represented by this url from an archive
+- `frag` - The fragment string of the url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
+- `is_regular` - Whether the file represented by the url is a regular file
+- `is_search` - Whether the file represented by the url from the search result
+- `is_archive` - Whether the file represented by the url from an archive
+- `is_absolute` - Whether the path represented by the url is absolute
+- `has_root` - Whether the path represented by the url has a root
 
 Methods:
 
-- `name()` - The file name of this url
-- `stem()` - The file name without the extension of this url
-- `join(url)` - Join this url with another url
-- `parent()` - The url of the parent directory
+- `name()` - Returns the filename in string if any, otherwise `nil`
+- `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
+- `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
+- `parent()` - Returns parent directory `Url` if any, otherwise `nil`
+- `starts_with(url)` - Whether the url starts with another `Url` or a string of url
+- `ends_with(url)` - Whether the url ends with another `Url` or a string of url
+- `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`
 
 Meta methods:
 
@@ -124,6 +131,7 @@ Properties:
 - `sort_sensitive`
 - `sort_reverse`
 - `sort_dir_first`
+- `sort_translit`
 - `linemode`
 - `show_hidden`
 
@@ -159,7 +167,7 @@ Properties:
 Meta methods:
 
 - `__len()`
-- `__pairs()` - Iterate over the [File](#shared.file)s.
+- `__index(idx)` - Access the [folder::File](#app-data.folder-file) by index
 
 ### `folder::File` {#app-data.folder-file}
 

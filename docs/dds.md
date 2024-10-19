@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 description: Data Distribution Service
 ---
 
@@ -7,12 +7,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # DDS
-
-:::warning
-This is a new feature that will be released in Yazi 0.2.5 and currently requires the latest code.
-
-Document is still being written...
-:::
 
 DDS (Data Distribution Service) is designed to achieve communication and state synchronization between multiple Yazi instances, as well as state persistence. It is built on a client-server architecture but does not require running additional server processes.
 
@@ -22,6 +16,7 @@ It deeply integrates with a publish-subscribe model based on the Lua API.
 
 - Local: the current instance, that is, the current Yazi process.
 - Remote: instances other than the current instance.
+- Static message: A message with a kind that starts with `@` will be persistently stored and automatically restored when a new instance starts. To un-persist, send `nil` to that kind.
 
 ## Usage {#usage}
 
@@ -33,27 +28,34 @@ The DDS has three usage:
 
 ### Command-line tool {#cli}
 
-You can send a message to the remote instance(s) using `ya pub`, with the two required `receiver` and `kind` arguments consistent with [`ps.pub_to()`](/docs/plugins/utils#ps.pub_to):
+If you're in a Yazi subshell where the `$YAZI_ID` environment variable is set, you can send a message to the current instance using `ya pub`.
+It requires a `kind` argument, which is consistent with [`ps.pub()`](/docs/plugins/utils#ps.pub):
 
 ```sh
-ya pub <receiver> <kind> --str "string body"
-ya pub <receiver> <kind> --json '{"key": "json body"}'
+ya pub <kind> --str "string body"
+ya pub <kind> --list "a" "b" "c"
+ya pub <kind> --json '{"key":"json body"}'
+
+# For example, request the current instance to extract `a.zip` and `b.7z`
+ya pub extract --list "/root/a.zip" "/root/b.7z"
+```
+
+You can also send a message to a specified remote instance(s) using `ya pub-to`, with the required `receiver` and `kind` arguments, consistent with [`ps.pub_to()`](/docs/plugins/utils#ps.pub_to):
+
+```sh
+ya pub-to <receiver> <kind> --str "string body"
+ya pub-to <receiver> <kind> --list "a" "b" "c"
+ya pub-to <receiver> <kind> --json '{"key":"json body"}'
 
 # If you're in a Yazi subshell,
 # you can obtain the ID of the current instance through `$YAZI_ID`.
-ya pub "$YAZI_ID" dds-cd --str "/root"
-```
-
-You can also send a static message to all remote instances using `ya pub-static`, with its `severity` and `kind` arguments consistent with [`ps.pub_static()`](/docs/plugins/utils#ps.pub_static):
-
-```sh
-ya pub-static <severity> <kind> --str "string body"
-ya pub-static <severity> <kind> --json '{"key": "json body"}'
+ya pub-to "$YAZI_ID" dds-cd --str "/root"
 ```
 
 For greater convenience in integrating within the command-line environment, they support two body formats:
 
 - String: a straightforward format, suitable for most scenarios, without the need for additional tools for encoding
+- List: An array of strings, it is useful for carrying a file list to the message, through `$@` in your shell
 - JSON: for advanced needs, support for types and more complex data can be represented through the JSON format
 
 Note that `ya` is a standalone CLI program introduced since Yazi 0.2.5, it might conflict with the shell wrapper you setup before, see [Introduce a standalone CLI program](https://github.com/sxyazi/yazi/issues/914) for details.
@@ -80,12 +82,12 @@ cd,0,100,{"tab":0,"url":"/root/Downloads"}
 
 One payload per line, each payload contains the following fields separated by commas:
 
-| Field             | Description                                                                                                                             |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| kind              | The kind of this message                                                                                                                |
-| receiver          | The remote instance ID that receives this message; if it's `0`, broadcasts to all remote instances                                      |
-| sender / severity | The sender of this message if greater than `65535`; otherwise, the severity of this [static message](/docs/plugins/utils#ps.pub_static) |
-| body              | The body of this message, which is a JSON string                                                                                        |
+| Field    | Description                                                                                       |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| kind     | The kind of the message                                                                           |
+| receiver | The remote instance ID that receives the message; if it's `0`, broadcasts to all remote instances |
+| sender   | The sender of the message                                                                         |
+| body     | The body of the message, which is a JSON string                                                   |
 
 This provides the ability to report Yazi's internal events in real-time, which is useful for external tool integration (such as Neovim), as they will be able to subscribe to the events triggered by the user behavior.
 
@@ -178,10 +180,6 @@ rename,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 ```
 
 ### `bulk` - bulk rename files {#bulk}
-
-:::note
-This kind currently requires the nightly version of Yazi.
-:::
 
 `sub()` / `sub_remote()` callback body:
 
@@ -381,7 +379,7 @@ This is useful for synchronizing the CWD of the current Yazi instance when exiti
 # Change Yazi's CWD to PWD on subshell exit
 if [[ -n "$YAZI_ID" ]]; then
 	function _yazi_cd() {
-		ya pub "$YAZI_ID" dds-cd --str "$PWD"
+		ya pub dds-cd --str "$PWD"
 	}
 	add-zsh-hook zshexit _yazi_cd
 fi
@@ -391,7 +389,10 @@ fi
   <TabItem value="fish" label="Fish">
 
 ```sh
-# Please raise a PR if you have a fish version
+# Change Yazi's CWD to PWD on subshell exit
+if [ -n "$YAZI_ID" ]
+	trap 'ya pub dds-cd --str "$PWD"' EXIT
+end
 ```
 
   </TabItem>
@@ -410,7 +411,7 @@ Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins
 
 This plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
 
-To enable it, add these lines to your `init.lua`:
+To enable it, add these lines to your `init.lua`, then restart _*all*_ Yazi instances to apply the changes:
 
 ```lua
 require("session"):setup {
@@ -419,3 +420,18 @@ require("session"):setup {
 ```
 
 Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins/session.lua
+
+### `extract.lua` {#extract.lua}
+
+This plugin provides an `extract` event kind for archive extraction, which accepts an array of file URL. You can bind it as [the opener](/docs/configuration/yazi#opener) for archives:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[opener]
+extract = [
+	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+]
+```
+
+Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins/extract.lua

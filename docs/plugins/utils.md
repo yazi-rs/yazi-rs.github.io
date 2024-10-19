@@ -109,7 +109,7 @@ Request user input:
     - `w`: Required, the width of the input, which is an positive integer.
     - `h`: Optional, the height of the input, which is an positive integer.
   - `realtime`: Optional, whether to report user input in real time, which is a boolean.
-  - `debounce`: Optional, the number of seconds to wait for the user to stop typing, which is a positive float. Can only be used when `realtime = true`. (Currently needs the nightly version of Yazi)
+  - `debounce`: Optional, the number of seconds to wait for the user to stop typing, which is a positive float. Can only be used when `realtime = true`.
 
 ```lua
 local value, event = ya.input {
@@ -205,23 +205,10 @@ Preview the file as code into the specified area:
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](/docs/plugins/types#shared.window) of the preview
 
-Returns `(ok, upper_bound)`:
+Returns `(err, upper_bound)`:
 
-- `ok` - Whether the preview is successful, which is a boolean.
-- `upper_bound` - If the preview fails (`ok = false`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
-
-This function is only available in the async context.
-
-### `preview_archive(opts)` {#ya.preview_archive}
-
-Preview the file as an archive into the specified area:
-
-- `opts` - Required, the options of the preview. It's the same as [`preview_code()`](#ya.preview_code)
-
-Returns `(ok, upper_bound)`:
-
-- `ok` - Whether the preview is successful, which is a boolean.
-- `upper_bound` - If the preview fails (`ok = false`) and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
+- `err` - Error string if the preview fails; otherwise, `nil`.
+- `upper_bound` - If the preview fails and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
 This function is only available in the async context.
 
@@ -231,19 +218,38 @@ This function is only available in the async context.
   - `file` - The previewed [File](/docs/plugins/types#shared.file)
   - `skip` - The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos
   - `window` - The [Window](/docs/plugins/types#shared.window) of the preview
-- `widgets` - List of renderable widgets, such as `{ ui.Paragraph {...}, ui.List {...}, ... }`
+- `widgets` - List of renderable widgets, such as `{ ui.Text {...}, ui.List {...}, ... }`
 
 This function is only available in the async context.
 
 ### `target_family()` {#ya.target_family}
 
-Returns the target family of the current platform, `"windows"`, `"unix"`, or `"wasm"`.
+Returns the family of the operating system. Some possible values:
+
+- `"unix"`
+- `"windows"`
+- `"wasm"`
+
+### `target_os()` {#ya.target_os}
+
+Returns a string describing the specific operating system in use. Some possible values:
+
+- `"linux"`
+- `"macos"`
+- `"ios"`
+- `"freebsd"`
+- `"dragonfly"`
+- `"netbsd"`
+- `"openbsd"`
+- `"solaris"`
+- `"android"`
+- `"windows"`
 
 ### `quote(str)` {#ya.quote}
 
 Quote characters that may have special meaning in a shell:
 
-- `str`: Required, the string to be quoted, which is a string
+- `str`: Required, the string to be quoted
 
 ```lua
 local handle = io.popen("ls " .. ya.quote(filename))
@@ -306,6 +312,22 @@ This function is only available on Unix-like systems.
 
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
 
+### `clipboard(text)` {#ya.clipboard}
+
+Get or set the content of the system clipboard.
+
+- `text` - Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
+
+```lua
+-- Get contents from the clipboard
+local content = ya.clipboard()
+
+-- Set contents to the clipboard
+ya.clipboard("new content")
+```
+
+This function is only available in the async context.
+
 ## ps {#ps}
 
 Yazi's DDS (Data Distribution Service) uses a Lua-based publish-subscribe model as its carrier. That is, you can achieve cross-instance communication and state persistence through the `ps` API. See [DDS](/docs/dds) for details.
@@ -341,25 +363,6 @@ With:
 - `receiver` - Required, ID of the remote instance, which is a integer; if it's `0` then broadcasting to all remote instances
 - `kind` - The same as `pub()`
 - `value` - The same as `pub()`
-
-### `pub_static(severity, kind, value)` {#ps.pub_static}
-
-```lua
--- Broadcast and store a static message
-ps.pub_static(10, "greeting", "Hello, World!")
--- Broadcast and remove a static message
-ps.pub_static(10, "greeting", nil)
-```
-
-Broadcast a static message to all remote instances subscribed to this `kind` through `sub_remote()`:
-
-- `severity` - Required, the severity of the message, which is an integer with a range of 0 to 65535
-- `kind` - The same as `pub()`
-- `value` - The same as `pub()`. If the value is `nil`, the static message will be unpersisted.
-
-The message will be stored as static data to achieve state persistence, and when a new instance is created, it will receive all static messages broadcasted by `sub_remote()` before in descending order of `severity` to restore its state from the data.
-
-If you simply want to broadcast a message to all remote instances, without the need for the message to be persisted, use `ps.pub_to()` with receiver `0` instead.
 
 ### `sub(kind, callback)` {#ps.sub}
 
@@ -422,30 +425,55 @@ Returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
-### `cha(url)` {#fs.cha}
+### `remove(type, url)` {#fs.remove}
+
+```lua
+local ok, err = fs.remove("file", Url("/tmp/test.txt"))
+```
+
+Remove the specified file(s) from the filesystem:
+
+- `type` - Required, the type of removal, which can be:
+  - `"file"` - Removes a file from the filesystem.
+  - `"dir"` - Removes an existing, empty directory.
+  - `"dir_all"` - Removes a directory at this url, after removing all its contents. Use carefully!
+  - `"dir_clean"` - Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the target.
+
+Returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+### `read_dir(url, options)` {#fs.read_dir}
+
+```lua
+local files, err = fs.read_dir("url", { limit = 10 })
+```
+
+Reads the contents of a directory:
+
+- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the directory.
+- `options` - Optional, a table with the following options:
+  - `glob` - A glob pattern to filter files out if provided.
+  - `limit` - The maximum number of files to read, which is an integer, defaults to unlimited.
+  - `resolve` - Whether to resolve symbolic links, defaults to `false`.
+
+Returns `(files, err)`:
+
+- `files` - A table of [File](/docs/plugins/types#shared.file) if successful; otherwise, `nil`.
+- `err` - The error code if the operation is failed, which is an integer if any.
+
+### `cha(url, follow)` {#fs.cha}
 
 ```lua
 local cha, err = fs.cha(url)
 ```
 
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file, which is faster than [`cha_follow()`](#fs.cha_follow) since it never follows the symbolic link:
+Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
 
 - `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
-
-Returns `(cha, err)`:
-
-- `cha` - The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`
-- `err` - The error code if the operation is failed, which is an integer if any
-
-### `cha_follow(url)` {#fs.cha_follow}
-
-```lua
-local cha, err = fs.cha_follow(url)
-```
-
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file, and follow the symbolic link:
-
-- `url` - Required, the [Url](/docs/plugins/types#shared.url) of the file
+- `follow` - Optional, whether to follow the symbolic link, which is a boolean
 
 Returns `(cha, err)`:
 
@@ -583,6 +611,17 @@ Spawn the command and wait for it to finish, returns `(output, err)`:
 - `output` - The [Output](#output) of the command if successful; otherwise, `nil`
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `status()` {#Command.status}
+
+```lua
+local status, err = Command("ls"):status()
+```
+
+Executes the command as a child process, waiting for it to finish and collecting its exit status. Returns `(status, err)`:
+
+- `status` - The [Status](#status) of the child process if successful; otherwise, `nil`
+- `err` - The error code if the operation is failed, which is an integer if any
+
 ## Child
 
 This object is created by [`Command:spawn()`](#Command.spawn) and represents a running child process.
@@ -614,7 +653,7 @@ Similar to [`read()`](#Child.read), but it reads data line by line.
 ### `read_line_with(opts)` {#Child.read_line_with}
 
 ```lua
-local line, event = child:wait_line_with { timeout = 500 }
+local line, event = child:read_line_with { timeout = 500 }
 ```
 
 Similar to [`read_line()`](#Child.read_line), but it accepts a table of options:
@@ -658,6 +697,78 @@ Send a SIGTERM signal to the child process, returns `(ok, err)`:
 - `ok` - Whether the operation is successful, which is a boolean
 - `err` - The error code if the operation is failed, which is an integer if any
 
+### `take_stdin()` {#Child.take_stdin}
+
+```lua
+local stdin = child:take_stdin()
+```
+
+Take and return the stdin stream of the child process, which can only be called once and is only applicable to processes with [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+### `take_stdout()` {#Child.take_stdout}
+
+```lua
+local stderr = child:take_stdout()
+```
+
+Take and return the stdout stream of the child process, which can only be called once and is only applicable to processes with [`stdout(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+This is useful when redirecting stdout to another process's stdin:
+
+```lua
+local echo = Command("echo"):arg("Hello"):stdout(Command.PIPED):spawn()
+
+local rev = Command("rev"):stdin(echo:take_stdout()):stdout(Command.PIPED):output()
+
+ya.err(rev.stdout) -- "olleH\n"
+```
+
+### `take_stderr()` {#Child.take_stderr}
+
+```lua
+local stderr = child:take_stderr()
+```
+
+Take and return the stderr stream of the child process, which can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+
+See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
+
+### `write_all(src)` {#Child.write_all}
+
+```lua
+local ok, err = child:write_all(src)
+```
+
+Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
+
+### `flush()` {#Child.flush}
+
+```lua
+local ok, err = child:flush()
+```
+
+Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
+
+- `ok` - Whether the operation is successful, which is a boolean
+- `err` - The error code if the operation is failed, which is an integer if any
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called
+
+otherwise, an error will be thrown.
+
 ## Output
 
 Properties:
@@ -670,18 +781,7 @@ Properties:
 
 This object represents the exit status of a child process, and it is created by [`wait()`](#Child.wait), or [`output()`](#Command.output).
 
-### `success()` {#Status.success}
+Properties:
 
-```lua
-local ok = status:success()
-```
-
-Returns whether the child process exited successfully, which is a boolean.
-
-### `code()` {#Status.code}
-
-```lua
-local code = status:code()
-```
-
-Returns the exit code of the child process, which is an integer if any.
+- `success`: whether the child process exited successfully, which is a boolean.
+- `code`: the exit code of the child process, which is an integer if any

@@ -18,17 +18,17 @@ Press <kbd>q</kbd> to quit and <kbd>~</kbd> to open the help menu.
 
 ## Shell wrapper
 
-We suggest using this `yy` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
+We suggest using this `y` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
 
 <Tabs>
   <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
-function yy() {
+function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
@@ -38,11 +38,11 @@ function yy() {
   <TabItem value="fish" label="Fish">
 
 ```sh
-function yy
+function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	yazi $argv --cwd-file="$tmp"
-	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-		cd -- "$cwd"
+	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		builtin cd -- "$cwd"
 	end
 	rm -f -- "$tmp"
 end
@@ -52,7 +52,7 @@ end
   <TabItem value="nushell" label="Nushell">
 
 ```sh
-def --env yy [...args] {
+def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
@@ -67,7 +67,7 @@ def --env yy [...args] {
   <TabItem value="powershell" label="PowerShell">
 
 ```powershell
-function yy {
+function y {
     $tmp = [System.IO.Path]::GetTempFileName()
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp
@@ -79,14 +79,37 @@ function yy {
 ```
 
   </TabItem>
+  <TabItem value="command-prompt" label="Command Prompt">
+
+Create the file `y.cmd` and place it in your `%PATH%`.
+
+```cmd
+@echo off
+
+set tmpfile=%TEMP%\yazi-cwd.%random%
+
+yazi %* --cwd-file="%tmpfile%"
+
+set /p cwd=<%tmpfile%
+
+if not "%cwd%"=="" (
+    cd /d "%cwd%"
+)
+
+del "%tmpfile%"
+```
+
+  </TabItem>
 </Tabs>
 
-To use it, copy the function into the configuration file of your respective shell. Then use `yy` instead of `yazi` to start.
+To use it, copy the function into the configuration file of your respective shell.
+
+Then use `y` instead of `yazi` to start, and press <kbd>q</kbd> to quit, you'll see the CWD changed. Sometimes, you don't want to change, press <kbd>Q</kbd> to quit.
 
 ## Keybindings
 
 :::tip
-For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml).
+For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap.toml).
 :::
 
 ### Navigation
@@ -103,12 +126,12 @@ or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 
 Further navigation commands can be found in the table below.
 
-| Key binding                 | Action                       |
-| --------------------------- | ---------------------------- |
-| <kbd>K</kbd>                | Move the cursor up 5 lines   |
-| <kbd>J</kbd>                | Move the cursor down 5 lines |
-| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top       |
-| <kbd>G</kbd>                | Move cursor to the bottom    |
+| Key binding                 | Action                           |
+| --------------------------- | -------------------------------- |
+| <kbd>K</kbd>                | Seek up 5 units in the preview   |
+| <kbd>J</kbd>                | Seek down 5 units in the preview |
+| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top           |
+| <kbd>G</kbd>                | Move cursor to the bottom        |
 
 ### Selection
 
@@ -123,68 +146,69 @@ To select files and directories, the following commands are available.
 | <kbd>Ctrl</kbd> + <kbd>r</kbd> | Inverse selection of all files             |
 | <kbd>Esc</kbd>                 | Cancel selection                           |
 
-### File/directory operations
+### File operations
 
 To interact with selected files/directories use any of the commands below.
 
-| Key binding                        | Action                                                                      |
-| ---------------------------------- | --------------------------------------------------------------------------- |
-| <kbd>o</kbd>                       | Open the selected files                                                     |
-| <kbd>O</kbd>                       | Open the selected files interactively                                       |
-| <kbd>Enter</kbd>                   | Open the selected files                                                     |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open the selected files interactively (some terminals don't support it yet) |
-| <kbd>y</kbd>                       | Yank the selected files (copy)                                              |
-| <kbd>x</kbd>                       | Yank the selected files (cut)                                               |
-| <kbd>p</kbd>                       | Paste the yanked files                                                      |
-| <kbd>P</kbd>                       | Paste the yanked files (overwrite if the destination exists)                |
-| <kbd>Y</kbd> or <kbd>X</kbd>       | Cancel the yank state (unyank)                                              |
-| <kbd>-</kbd>                       | Create a symbolic link to the yanked files (absolute path)                  |
-| <kbd>\_</kbd>                      | Create a symbolic link to the yanked files (relative path)                  |
-| <kbd>d</kbd>                       | Move the files to the trash                                                 |
-| <kbd>D</kbd>                       | Permanently delete the files                                                |
-| <kbd>a</kbd>                       | Create a file or directory (ends with "/" for directories)                  |
-| <kbd>r</kbd>                       | Rename a file or directory                                                  |
-| <kbd>;</kbd>                       | Run a shell command                                                         |
-| <kbd>:</kbd>                       | Run a shell command (block the UI until the command finishes)               |
-| <kbd>.</kbd>                       | Toggle the visibility of hidden files                                       |
-| <kbd>Ctrl</kbd> + <kbd>s</kbd>     | Cancel the ongoing search                                                   |
-| <kbd>z</kbd>                       | Jump to a directory using zoxide                                            |
-| <kbd>Z</kbd>                       | Jump to a directory, or reveal a file using fzf                             |
+| Key binding                        | Action                                                                  |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| <kbd>o</kbd>                       | Open selected files                                                     |
+| <kbd>O</kbd>                       | Open selected files interactively                                       |
+| <kbd>Enter</kbd>                   | Open selected files                                                     |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open selected files interactively (some terminals don't support it yet) |
+| <kbd>y</kbd>                       | Yank selected files (copy)                                              |
+| <kbd>x</kbd>                       | Yank selected files (cut)                                               |
+| <kbd>p</kbd>                       | Paste yanked files                                                      |
+| <kbd>P</kbd>                       | Paste yanked files (overwrite if the destination exists)                |
+| <kbd>-</kbd>                       | Symlink the absolute path of yanked files                               |
+| <kbd>\_</kbd>                      | Symlink the relative path of yanked files                               |
+| <kbd>Ctrl</kbd> + <kbd>-</kbd>     | Hardlink yanked files                                                   |
+| <kbd>Y</kbd> or <kbd>X</kbd>       | Cancel the yank status                                                  |
+| <kbd>d</kbd>                       | Trash selected files                                                    |
+| <kbd>D</kbd>                       | Permanently delete selected files                                       |
+| <kbd>a</kbd>                       | Create a file (ends with / for directories)                             |
+| <kbd>r</kbd>                       | Rename selected file(s)                                                 |
+| <kbd>;</kbd>                       | Run a shell command                                                     |
+| <kbd>:</kbd>                       | Run a shell command (block until finishes)                              |
+| <kbd>.</kbd>                       | Toggle the visibility of hidden files                                   |
+| <kbd>z</kbd>                       | Jump to a directory using zoxide                                        |
+| <kbd>Z</kbd>                       | Jump to a directory or reveal a file using fzf                          |
 
-### Copying paths
+### Copy paths
 
 To copy paths, use any of the following commands below.
 
 _Observation: <kbd>c</kbd> ⇒ <kbd>d</kbd> indicates pressing the <kbd>c</kbd> key followed by pressing the <kbd>d</kbd> key._
 
-| Key binding                 | Action                                          |
-| --------------------------- | ----------------------------------------------- |
-| <kbd>c</kbd> ⇒ <kbd>c</kbd> | Copy absolute path                              |
-| <kbd>c</kbd> ⇒ <kbd>d</kbd> | Copy the path of the parent directory           |
-| <kbd>c</kbd> ⇒ <kbd>f</kbd> | Copy the name of the file                       |
-| <kbd>c</kbd> ⇒ <kbd>n</kbd> | Copy the name of the file without the extension |
+| Key binding                 | Action                              |
+| --------------------------- | ----------------------------------- |
+| <kbd>c</kbd> ⇒ <kbd>c</kbd> | Copy the file path                  |
+| <kbd>c</kbd> ⇒ <kbd>d</kbd> | Copy the directory path             |
+| <kbd>c</kbd> ⇒ <kbd>f</kbd> | Copy the filename                   |
+| <kbd>c</kbd> ⇒ <kbd>n</kbd> | Copy the filename without extension |
 
-### Filtering files/directories
+### Filter files
 
-| Key binding  | Action                              |
-| ------------ | ----------------------------------- |
-| <kbd>f</kbd> | Filter the files/directories in CWD |
+| Key binding  | Action       |
+| ------------ | ------------ |
+| <kbd>f</kbd> | Filter files |
 
-### Finding files/directories
+### Find files
 
-| Key binding  | Action                              |
-| ------------ | ----------------------------------- |
-| <kbd>/</kbd> | Forward find file/directory in CWD  |
-| <kbd>?</kbd> | Backward find file/directory in CWD |
-| <kbd>n</kbd> | Jump to next occurrence             |
-| <kbd>N</kbd> | Jump to previous occurrence         |
+| Key binding  | Action                   |
+| ------------ | ------------------------ |
+| <kbd>/</kbd> | Find next file           |
+| <kbd>?</kbd> | Find previous file       |
+| <kbd>n</kbd> | Go to the next found     |
+| <kbd>N</kbd> | Go to the previous found |
 
-### Searching files/directories
+### Search files
 
-| Key binding  | Action                                                                         |
-| ------------ | ------------------------------------------------------------------------------ |
-| <kbd>s</kbd> | Search files by name using [fd](https://github.com/sharkdp/fd)                 |
-| <kbd>S</kbd> | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
+| Key binding                    | Action                                                                         |
+| ------------------------------ | ------------------------------------------------------------------------------ |
+| <kbd>s</kbd>                   | Search files by name using [fd](https://github.com/sharkdp/fd)                 |
+| <kbd>S</kbd>                   | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
+| <kbd>Ctrl</kbd> + <kbd>s</kbd> | Cancel the ongoing search                                                      |
 
 ### Sorting
 
@@ -206,7 +230,20 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | <kbd>,</kbd> ⇒ <kbd>N</kbd> | Sort naturally (reverse)         |
 | <kbd>,</kbd> ⇒ <kbd>s</kbd> | Sort by size                     |
 | <kbd>,</kbd> ⇒ <kbd>S</kbd> | Sort by size (reverse)           |
+| <kbd>,</kbd> ⇒ <kbd>r</kbd> | Sort randomly                    |
+
+### Multi-tab
+
+| Key binding                                   | Action                             |
+| --------------------------------------------- | ---------------------------------- |
+| <kbd>t</kbd>                                  | Create a new tab with CWD          |
+| <kbd>1</kbd>, <kbd>2</kbd>, ..., <kbd>9</kbd> | Switch to the N-th tab             |
+| <kbd>[</kbd>                                  | Switch to the previous tab         |
+| <kbd>]</kbd>                                  | Switch to the next tab             |
+| <kbd>\{</kbd>                                 | Swap current tab with previous tab |
+| <kbd>}</kbd>                                  | Swap current tab with next tab     |
+| <kbd>Ctrl</kbd> + <kbd>c</kbd>                | Close the current tab              |
 
 ## Flavors
 
-Check out our [flavors repository](https://github.com/yazi-rs/flavors), or [cooking a flavor](/docs/flavors/overview#cooking)!
+Pick a color scheme you like from our [flavors repository](https://github.com/yazi-rs/flavors), or [cooking a flavor](/docs/flavors/overview#cooking)!

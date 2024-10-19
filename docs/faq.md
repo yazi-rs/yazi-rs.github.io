@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 11
 description: Answers to some frequently asked questions about Yazi.
 ---
 
@@ -69,7 +69,11 @@ separator_open  = ""
 separator_close = ""
 
 [icon]
-rules = []
+globs = []
+dirs  = []
+files = []
+exts  = []
+conds = []
 ```
 
 The above code changed all icons to `""`, and the whole world went quiet, nice!

@@ -13,25 +13,25 @@ If you're looking for ready-made themes and don't want to create one yourself, c
 
 ### Color {#types.color}
 
-A color. It can be in Hex format with RGB values, such as `#484D66`. Or can be one of the following 17 values:
+A color. It can be in Hex format with RGB values, such as `"#484D66"`. Or can be one of the following 17 values:
 
-- reset
-- black
-- white
-- red
-- lightred
-- green
-- lightgreen
-- yellow
-- lightyellow
-- blue
-- lightblue
-- magenta
-- lightmagenta
-- cyan
-- lightcyan
-- gray
-- darkgray
+- `"reset"`
+- `"black"`
+- `"white"`
+- `"red"`
+- `"lightred"`
+- `"green"`
+- `"lightgreen"`
+- `"yellow"`
+- `"lightyellow"`
+- `"blue"`
+- `"lightblue"`
+- `"magenta"`
+- `"lightmagenta"`
+- `"cyan"`
+- `"lightcyan"`
+- `"gray"`
+- `"darkgray"`
 
 ### Style {#types.style}
 
@@ -51,7 +51,7 @@ Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supp
 
 ## [flavor] {#flavor}
 
-- use (String): Flavor name, e.g. `"Dracula"`. See [flavor documentation](/docs/flavors/overview) for more details.
+- use (String): Flavor name, e.g. `"dracula"`. See [flavor documentation](/docs/flavors/overview) for more details.
 
 ## [manager] {#manager}
 
@@ -86,9 +86,9 @@ Border:
 
 Highlighting: The built-in syntax highlighting feature
 
-- syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`. Only available in the user's `theme.toml` and cannot be used in [`flavor.toml`](/docs/flavors/overview).
+- syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor, as flavors always use their own tmTheme files `tmtheme.xml`.
 
-  Yazi's builtin code highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
+  Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
 
 ## [status] {#status}
 
@@ -211,41 +211,67 @@ You can restrict the specific type of files through `is`, noting that it must be
 
 ## [icon] {#icon}
 
-Display icon based on the first matched rule.
+Each icon rule contains the following properties:
 
-You can prepend or append rules to the default through `prepend_rules` and `append_rules`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
+- `name` (globs, dirs, files, exts), or `if` (conds): the rule itself, which is a string
+- `text`: icon text, which is a string
+- `fg_dark`: icon color in dark mode, which is a [Color](/docs/configuration/theme#types.color)
+- `fg_light`: icon color for light mode, which is a [Color](/docs/configuration/theme#types.color)
+
+Icons are matched according to the following priority:
+
+1. globs: glob expressions, e.g., `{ name = "**/Downloads/*.zip", ... }`
+2. dirs: directory names, e.g., `{ name = "Desktop", ... }`
+3. files: file names, e.g., `{ name = ".bashrc", ... }`
+4. exts: extensions, e.g., `{ name = "mp3", ... }`
+5. conds: conditions, e.g., `{ if = "!dir", ... }`
+
+`dirs`, `files`, and `exts` are compiled into a HashMap at startup, offering O(1) time complexity for very fast lookups, which should meet most needs.
+
+For more complex and precise rules, such as matching a specific file in a specific directory, use `globs` - these are always executed first to check if any rules in the glob set are met.
+However, they are much slower than `dirs`, `files`, and `exts`, so it's not recommended to use them excessively.
+
+If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, which includes the following conditional factors:
+
+- `dir`: The file is a directory
+- `hidden`: The file is hidden
+- `link`: The file is a symbolic link
+- `orphan`: The file is an orphan (broken symbolic link)
+- `dummy`: The file is dummy (failed to load complete metadata, possibly the filesystem doesn't support it, such as FUSE)
+- `block`: The file is a block device
+- `char`: The file is a char device
+- `fifo`: The file is a FIFO
+- `sock`: The file is a socket
+- `exec`: The file is executable
+- `sticky`: The file has the sticky bit set
+
+Yazi has builtin support for [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
+If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details):
 
 ```toml
 [icon]
-prepend_rules = [
-	{ name = "*.rs"    , text = "" },
-	{ name = "Desktop/", text = "" },
+prepend_dirs = [
+	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
 	# ...
-
-	# Icon with a color
-	{ name = "*.lua", text = "", fg = "#51a0cf" },
-
-	# You can also use `is` rule, just like `[filetype]` section
-	# Orphan symbolic links
-	{ name = "*", is = "orphan", text = "" },
 ]
-
-append_rules = [
-	# My fallback icons
-	{ name = "*" , text = "" },
-	{ name = "*/", text = "" },
+append_exts = [
+	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	# ...
 ]
+# ...
 ```
 
-Or, use `rules` to rewrite the entire default rules:
+If you want to completely override the default rules, you can do so with:
 
 ```toml
 [icon]
-rules = [
-	# ...Some rules
+dirs = [
+	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+	# ...
 ]
+exts = [
+	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	# ...
+]
+# ...
 ```
-
-End with `/` for directories, so wildcard rule (`*` or `*/`) can be used for fallback matching all files or directories.
-
-If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback.

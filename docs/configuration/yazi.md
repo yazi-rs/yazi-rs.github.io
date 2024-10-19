@@ -23,11 +23,12 @@ File sorting method.
 
 - `"none"`: Don't sort.
 - `"modified"`: Sort by last modified time.
-- `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
+- `"created"`: Sort by creation time.
 - `"extension"`: Sort by file extension.
 - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
 - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
 - `"size"`: Sort by file size.
+- `"random"`: Sort randomly.
 
 ### `sort_sensitive` {#manager.sort_sensitive}
 
@@ -50,17 +51,50 @@ Display directories first.
 - `true`: Directories first
 - `false`: Respects `sort_by` and `sort_reverse` only
 
+### `sort_translit` {#manager.sort_translit}
+
+Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if `sort_by = "natural"`.
+
+This is useful for files that contain Hungarian characters.
+
+- `true`: Enabled
+- `false`: Disabled
+
 ### `linemode` {#manager.linemode}
 
 Line mode: display information associated with the file on the right side of the file list row.
 
 - `"none"`: No line mode.
-- `"size"`: Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future.
-- `"permissions"`: Display the permissions of the file.
+- `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future.
+- `"ctime"`: Display the creation time of the file.
 - `"mtime"`: Display the last modified time of the file.
+- `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
+- `"owner"`: Display the owner of the file, only available on Unix-like systems.
 
-In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
+You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+
+```toml
+# ~/.config/yazi/yazi.toml
+[manager]
+linemode = "size_and_mtime"
+```
+
+```lua
+-- ~/.config/yazi/init.lua
+function Linemode:size_and_mtime()
+	local time = math.floor(self._file.cha.modified or 0)
+	if time == 0 then
+		time = ""
+	elseif os.date("%Y", time) == os.date("%Y") then
+		time = os.date("%b %d %H:%M", time)
+	else
+		time = os.date("%b %d  %Y", time)
+	end
+
+	local size = self._file:size()
+	return ui.Line(string.format("%s %s", size and ya.readable_size(size) or "-", time))
+end
+```
 
 ### `show_hidden` {#manager.show_hidden}
 
@@ -82,11 +116,38 @@ The number of files to keep above and below the cursor when moving through the f
 
 If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
 
+### `mouse_events` {#manager.mouse_events}
+
+Array of strings, the types of mouse events can be received by the plugin system, available values:
+
+- `"click"`: Mouse click
+- `"scroll"`: Mouse vertical scroll
+- `"touch"`: Mouse horizontal scroll
+- `"move"`: Mouse move
+- `"drag"`: Mouse drag (Some terminals do not support this)
+
+Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
+
+### `title_format` {#manager.title_format}
+
+The terminal title format, which is a string with the following placeholders available:
+
+- `{cwd}` - current working directory
+
+If you don't want Yazi to automatically update the title, set it to an empty string (`""`).
+
 ## [preview] {#preview}
+
+### `wrap` {#preview.wrap}
+
+Wrap long lines in the code preview.
+
+- `"yes"`: Enable word wrap
+- `"no"`: Disable word wrap
 
 ### `tab_size` {#preview.tab_size}
 
-Tab width.
+The width of a tab character (`\t`) in spaces.
 
 ### `max_width` {#preview.max_width}
 
@@ -105,6 +166,14 @@ This value is also used for preloading images; the larger it is, the larger the 
 The system cache directory is used by default, and the cached files will go away on a reboot automatically.
 
 If you want to make it more persistent, you can specify the cache directory manually as an absolute path.
+
+### `image_delay` {#preview.image_delay}
+
+Wait for at least the specified milliseconds before starting to send image preview data to the terminal.
+
+This is to alleviate lag caused by some terminal emulators struggling to render images Yazi sent in time, when users scroll through the file list quickly.
+
+See https://github.com/sxyazi/yazi/pull/1512 for more information.
 
 ### `image_filter` {#preview.image_filter}
 
@@ -147,10 +216,12 @@ Configure available openers that can be used in [`[open]`](#open), for example:
 ```toml
 [opener]
 edit = [
-	{ run = 'nvim "$@"', block = true },
+	{ run = 'nvim "$@"', block = true, for = "unix" },
+	{ run = "nvim %*",   block = true, for = "windows" },
 ]
 play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+	{ run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
 ]
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },
@@ -173,9 +244,30 @@ Available options are as follows:
   - `linux`: Linux
   - `macos`: macOS
 
+The commands specified by `run` follow platform-specific differences. For example, Unix shell requires wrapping `$` with quotes, while `%` in Windows batch scripts doesn't.
+
+Refer to the documentation of `sh` and `cmd.exe` for details.
+
 ## [open] {#open}
 
-Set rules for opening specific files, for example:
+Set rules for opening specific files. You can prepend or append rules to the default through `prepend_rules` and `append_rules` (See [Configuration mixing](/docs/configuration/overview#mixing) for details):
+
+```toml
+[open]
+prepend_rules = [
+	{ name = "*.json", use = "edit" },
+
+	# Multiple openers for a single rule
+	{ name = "*.html", use = [ "open", "edit" ] },
+]
+append_rules = [
+	{ name = "*", use = "my-fallback" },
+]
+```
+
+If your `append_rules` contains wildcard rules, they will always take precedence over the default wildcard rules as the fallback.
+
+Or, use `rules` to rewrite the entire default rules:
 
 ```toml
 [open]
@@ -264,7 +356,7 @@ Yazi comes with the these previewer plugins:
 - image: presentation layer of built-in image preview, offering mixed preview capabilities
 - video: bridge between `ffmpegthumbnailer` and the preview, offering mixed preview capabilities
 - pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
-- archive: bridge between `unar` and the preview, offering mixed preview and concurrent rendering capabilities
+- archive: bridge between 7-Zip and the preview, offering mixed preview and concurrent rendering capabilities
 
 If you want to create your own previewer, see [Previewer API](/docs/plugins/overview#previewer).
 
@@ -326,35 +418,41 @@ As for the offset, it's a 4-element tuple: `(x, y, width, height)`.
 
 Some inputs have special placeholders that will be replaced with actual content on display:
 
-- trash_title: String
+- cd_title: String
 
-  - `{n}`: Number of files to be trashed
-  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+  Title of the [`cd --interactive`](/docs/configuration/keymap/#manager.cd) input used to enter the target path.
 
-- delete_title: String
+- create_title: [String, String]
 
-  - `{n}`: Number of files to be deleted
-  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+  It's a tuple of 2-element: first for [`create`](/docs/configuration/keymap/#manager.create) input title, second for `create --dir` command.
+
+- rename_title: String
+
+  Title of the [`rename`](/docs/configuration/keymap/#manager.rename) input used to enter the new name.
+
+- filter_title: String
+
+  Title of the [`filter`](/docs/configuration/keymap/#manager.filter) input used to enter the keyword.
 
 - find_title: [String, String]
 
-  It's a tuple of 2-element: first for "Find next", second for "Find previous".
+  It's a tuple of 2-element: first for [`find`](/docs/configuration/keymap/#manager.find), second for `find --previous`.
 
 - search_title: String
 
-  - `{n}`: Name of the current search engine
+  - `{n}`: Name of the current [`search`](/docs/configuration/keymap/#manager.search) engine.
 
 - shell_title: [String, String]
 
-  It's a tuple of 2-element: first for "Non-blocking shell", second for "Blocking shell".
+  It's a tuple of 2-element: first for [`shell --interactive`](/docs/configuration/keymap/#manager.shell), second for `shell --interactive --block`.
 
-- quit_title: String
-  - `{n}`: Number of tasks are running
-  - `{s}`: `"s"` if `n > 1`, otherwise `""`
+## [confirm] {#confirm}
+
+TODO
 
 ## [select] {#select}
 
-As same as the [`[input]`](#input) section.
+Same as the [`[input]`](#input) section.
 
 ## [which] {#which}
 
@@ -379,3 +477,12 @@ Display candidates in reverse order.
 
 - `true`: Reverse order
 - `false`: Normal order
+
+### `sort_translit` {#which.sort_translit}
+
+Transliterate filenames for sorting, i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.
+
+This is useful for files that contain Hungarian characters.
+
+- `true`: Enabled
+- `false`: Disabled

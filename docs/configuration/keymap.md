@@ -19,17 +19,17 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[help\]](#help) - Help menu.
 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
-Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/latest/yazi-config/preset/keymap.toml), while append inserts after them.
+Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap.toml), while append inserts after them.
 
 Since Yazi selects the first matching key to run, prepend always has a higher priority than default, and append always has a lower priority than default:
 
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 ]
 append_keymap = [
-	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
+	{ on = [ "g", "a" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -37,16 +37,16 @@ Or in another different style:
 
 ```toml
 [[manager.prepend_keymap]]
-on   = [ "<C-a>" ]
+on   = "<C-a>"
 run  = 'my-fev-command1'
 desc = "Just for test!"
 
 [[manager.prepend_keymap]]
-on  = [ "<C-b>" ]
+on  = [ "g", "a" ]
 run = 'my-fev-command2'
 
 [[manager.append_keymap]]
-on  = [ "<C-c>" ]
+on  = "c"
 run = 'my-fev-command3'
 ```
 
@@ -55,11 +55,11 @@ But keep in mind that you can only choose one of them, and it cannot be a combin
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = "<C-a>", run = 'my-fev-command1', desc = "Just for test!" },
 ]
 
 [[manager.prepend_keymap]]
-on   = [ "<C-b>" ]
+on   = [ "g", "a" ]
 run  = 'my-fev-command2'
 desc = "Just for test!"
 ```
@@ -70,8 +70,8 @@ When you don't need any default and want to fully customize your keybindings, us
 [manager]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
-	{ on = [ "<C-a>" ], run = 'my-fev-command1', desc = "Just for test!" },
-	{ on = [ "<C-b>" ], run = 'my-fev-command2', desc = "Just for test!" },
+	{ on = "<C-a>",      run = 'my-fev-command1', desc = "Just for test!" },
+	{ on = [ "g", "a" ], run = 'my-fev-command2', desc = "Just for test!" },
 ]
 ```
 
@@ -96,9 +96,9 @@ Automatically determine the operation by default, and it will only execute the s
 
 Exit the process.
 
-| Argument/Option | Description                                          |
-| --------------- | ---------------------------------------------------- |
-| `--no-cwd-file` | Don't write the current directory to the `cwd-file`. |
+| Argument/Option | Description                                                                    |
+| --------------- | ------------------------------------------------------------------------------ |
+| `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file`. |
 
 ### `close` {#manager.close}
 
@@ -144,6 +144,36 @@ Change the current directory.
 | --------------- | ---------------------------------------- |
 | `[path]`        | The path to change to.                   |
 | `--interactive` | Use an interactive UI to input the path. |
+
+You can add your own `g` series keys to achieve a simple bookmark feature:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd ~/Downloads"
+desc = "Cd to ~/Downloads"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = "cd ~/Pictures"
+desc = "Cd to ~/Pictures"
+```
+
+For Windows users, you can also switch drives using the `cd` command:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd D:"
+desc = "Switch to D drive"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = 'cd "E:\\Pictures"'  # We need to escape the backslash
+desc = 'Cd to E:\Pictures'
+```
+
+Check out the [resources page](/docs/resources) for a more comprehensive bookmark plugin.
 
 ### `reveal` {#manager.reveal}
 
@@ -222,6 +252,15 @@ Create a symbolic link to the yanked files. (This is a privileged action in Wind
 | `--relative`    | Use a relative path for the symbolic link.   |
 | `--force`       | Overwrite the destination file if it exists. |
 
+### `hardlink` {#manager.hardlink}
+
+Hardlink the yanked files.
+
+| Argument/Option | Description                                                              |
+| --------------- | ------------------------------------------------------------------------ |
+| `--force`       | Overwrite the destination file if it exists.                             |
+| `--follow`      | Hardlink the file pointed to by a symbolic link, not the symlink itself. |
+
 ### `remove` {#manager.remove}
 
 Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html).
@@ -232,6 +271,7 @@ In the Android platform, you can only use it with the `--permanently` option, si
 | --------------- | -------------------------------------------------------------------- |
 | `--force`       | Don't show the confirmation dialog, and trash/delete files directly. |
 | `--permanently` | Permanently delete the files.                                        |
+| `--hovered`     | Always remove the hovered file regardless of the selection state.    |
 
 ### `create` {#manager.create}
 
@@ -239,22 +279,24 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 
 | Argument/Option | Description                                                                                    |
 | --------------- | ---------------------------------------------------------------------------------------------- |
+| `--dir`         | Always create directories, regardless of whether end with `/` or `\`.                          |
 | `--force`       | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
 
 ### `rename` {#manager.rename}
 
-Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default).
+Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default, see [Specify a different editor for bulk renaming](/docs/tips#bulk-editor) for details).
 
+- `--hovered`: Always rename the hovered file regardless of the selection state.
 - `--force`: Overwrite the destination file directly if it exists, without showing the confirmation dialog.
-- `--cursor`: Specify the cursor position of the renaming input box.
-  - `"end"`: The end of the filename.
-  - `"start"`: The start of the filename.
-  - `"before_ext"`: Before the extension of the filename.
 - `--empty`: Empty a part of the filename.
   - `"stem"`: Empty the stem. e.g. `"foo.jpg"` -> `".jpg"`.
   - `"ext"`: Empty the extension. e.g. `"foo.jpg"` -> `"foo."`.
   - `"dot_ext"`: Empty the dot and extension. e.g. `"foo.jpg"` -> `"foo"`.
   - `"all"`: Empty the whole filename. e.g. `"foo.jpg"` -> `""`.
+- `--cursor`: Specify the cursor position of the renaming input box.
+  - `"end"`: The end of the filename.
+  - `"start"`: The start of the filename.
+  - `"before_ext"`: Before the extension of the filename.
 
 You can also use `--cursor` with `--empty`, for example, `rename --empty=stem --cursor=start` will empty the file's stem, and move the cursor to the start.
 
@@ -277,10 +319,12 @@ Run a shell command.
 
 | Argument/Option | Description                                                                                                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[run]`         | Optional, command template to be run.                                                                                                                                                                                                    |
-| `--confirm`     | When the template is provided, run it directly, no input UI was shown.                                                                                                                                                                   |
+| `[template]`    | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
+| `--confirm`     | When the template is provided, run it directly, no input box was shown. It's mutually exclusive with `--interactive`.                                                                                                                    |
+| `--interactive` | Request the user to input the command to be ran interactively. It's mutually exclusive with `--confirm`.                                                                                                                                 |
+| `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip "$0"' --cursor=7 --interactive` places the cursor before `.zip`.                                                           |
 
 You can use the following shell variables in `[run]`:
 
@@ -302,23 +346,21 @@ Set the visibility of hidden files.
 
 Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
-| Argument/Option | Description                                                                                                                                                                                                                            |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `none`          | No line mode.                                                                                                                                                                                                                          |
-| `size`          | Display the size in bytes of the file. Since file sizes are only evaluated when sorting by size, it only works after [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by) set, and this behavior might change in the future. |
-| `permissions`   | Display the permissions of the file.                                                                                                                                                                                                   |
-| `mtime`         | Display the last modified time of the file.                                                                                                                                                                                            |
-
-In addition, you can also specify any 1 to 20 characters, and extend it within a UI plugin.
-Which means you can implement your own linemode through the plugin by simply overriding the [`Folder:linemode` method](https://github.com/sxyazi/yazi/blob/latest/yazi-plugin/preset/components/folder.lua).
+| Argument/Option | Description                                                                                                                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `none`          | No line mode.                                                                                                                                                                                           |
+| `size`          | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future. |
+| `ctime`         | Display the creation time of the file.                                                                                                                                                                  |
+| `mtime`         | Display the last modified time of the file.                                                                                                                                                             |
+| `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                               |
+| `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                     |
 
 ### `search` {#manager.search}
 
-| Argument/Option | Description                            |
-| --------------- | -------------------------------------- |
-| `fd`            | Search files by name using fd.         |
-| `rg`            | Search files by content using ripgrep. |
-| `none`          | Default, cancel the ongoing search.    |
+| Argument/Option | Description                                                                                                                                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[engine]`      | Search engine, available values: [`fd`](https://github.com/sharkdp/fd), [`rg`](https://github.com/BurntSushi/ripgrep), `none` (cancel search) |
+| `--args`        | Additional arguments passed to the specified engine, for example `search fd --args='-e -H'`                                                   |
 
 You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 
@@ -327,6 +369,15 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 	<p>Original post: https://github.com/sxyazi/yazi/issues/676#issuecomment-1943494129</p>
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
 </details>
+
+Or bind a key to the `search_do` command to quickly switch to the flat view:
+
+```toml
+[[manager.prepend_keymap]]
+on   = [ "g", "f" ]
+run  = 'search_do --via=fd --args="-d 3"'
+desc = "Switch to the flat view with a max depth of 3"
+```
 
 ### `find` {#manager.find}
 
@@ -355,7 +406,7 @@ Move the cursor to the next or previous occurrence.
 
 ### `sort` {#manager.sort}
 
-- `by`: Optional, if not provided, the sort method will be kept unchanged.
+- `[by]`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
   - `"modified"`: Sort by last modified time.
   - `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
@@ -363,8 +414,10 @@ Move the cursor to the next or previous occurrence.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
   - `"size"`: Sort by file size.
-- `--reverse`: Display files in reverse order.
-- `--dir-first`: Display directories first.
+  - `"random"`: Sort randomly.
+- `--reverse`: Display files in reverse order. `--reverse` or `--reverse=yes` to reverse, `--reverse=no` to cancel.
+- `--dir-first`: Display directories first. `--dir-first` or `--dir-first=yes` to enable, `--dir-first=no` to cancel.
+- `--translit`: Transliterate filenames for sorting, see [sort_translit](/docs/configuration/yazi#manager.sort_translit) for details. `--translit` or `--translit=yes` to enable, `--translit=no` to cancel.
 
 ### `tab_create` {#manager.tab_create}
 
