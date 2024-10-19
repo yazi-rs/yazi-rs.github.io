@@ -93,8 +93,8 @@ Currently, only the following 3 terminals support displaying images on Windows:
 
 Limited by ConPTY, the Windows edition has had to implement many workarounds, which are not perfect.
 
-However, if you run Yazi in WSL, you can experience perfect image previews using `wezterm ssh`.<br/>
-[WezTerm](https://wezfurlong.org/wezterm/) is an excellent terminal that can bypass the limitations of ConPTY through its SSH feature, and it's currently the only terminal that allows this approach.
+However, if you run Yazi in WSL, you can experience perfect image previews through [`wezterm ssh`][wezterm-ssh].<br/>
+[WezTerm][wezterm] is an excellent terminal that can bypass the limitations of ConPTY through its SSH feature, and it's currently the only terminal that allows this approach.
 
 You need to install `sshd` in WSL and start it:
 
@@ -103,13 +103,16 @@ sudo apt install openssh-server
 sudo service ssh restart
 ```
 
-Then, on the host machine, connect to WSL over SSH:
+Then, on the _host_ machine, connect to WSL over SSH:
 
 ```sh
 wezterm ssh 127.0.0.1
 ```
 
 That's it! you can now get Yazi's image preview working properly.
+
+[wezterm]: https://wezfurlong.org/wezterm/
+[wezterm-ssh]: https://wezfurlong.org/wezterm/cli/ssh.html
 
 ## Neovim users {#neovim}
 
