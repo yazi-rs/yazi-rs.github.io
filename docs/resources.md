@@ -118,6 +118,8 @@ UI enhancements:
 - [yatline.yazi](https://github.com/imsi32/yatline.yazi) - Customize header-line and status-line with an easy configuration.
 - [simple-status.yazi](https://github.com/Ape/simple-status.yazi) - Minimalistic status line with useful file attribute information.
 - [no-status.yazi](https://github.com/yazi-rs/plugins/tree/main/no-status.yazi) - Remove the status bar.
+- [dual-pane.yazi](https://github.com/dawsers/dual-pane.yazi) - Dual pane navigation for Yazi like vifm or midnight commander.
+- [toggle-view.yazi](https://github.com/dawsers/toggle-view.yazi) - Toggle on or off the parent, current or preview panels.
 
 ## 🚀 Preloaders {#preloaders}
 
