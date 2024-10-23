@@ -147,6 +147,20 @@ require("folder-rules"):setup()
 
 Credits to [@tianze0926 for sharing it](https://github.com/sxyazi/yazi/issues/623#issuecomment-2096270843).
 
+## Folder-specific previewer and preloader {#folder-previewer}
+
+In addition to the `mime` rules, Yazi also has `name` rules for pre\{viewer,loader}, which accept a glob expression.
+This allows for flexible creation of different pre\{viewer,loader} rules for various directories.
+
+For example, you can use the `noop` builtin preloader for a remote mount point like `/remote`, disabling preloads in that directory:
+
+```toml
+# yazi.toml
+[[plugin.prepend_preloaders]]
+name = "/remote/**"
+run  = "noop"
+```
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
