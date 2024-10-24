@@ -242,7 +242,7 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | <kbd>]</kbd>                                  | Switch to the next tab             |
 | <kbd>\{</kbd>                                 | Swap current tab with previous tab |
 | <kbd>}</kbd>                                  | Swap current tab with next tab     |
-| <kbd>Ctrl</kbd> + <kbd>c</kbd>                | Close the current tab              |
+| <kbd>Ctrl</kbd> + <kbd>q</kbd>                | Close the current tab              |
 
 ## Flavors
 
