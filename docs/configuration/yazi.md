@@ -215,13 +215,13 @@ Configure available openers that can be used in [`[open]`](#open), for example:
 
 ```toml
 [opener]
-edit = [
-	{ run = 'nvim "$@"', block = true, for = "unix" },
-	{ run = "nvim %*",   block = true, for = "windows" },
-]
 play = [
 	{ run = 'mpv "$@"', orphan = true, for = "unix" },
 	{ run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
+]
+edit = [
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+	{ run = "%EDITOR% %*",  block = true, for = "windows" },
 ]
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },
