@@ -245,6 +245,18 @@ If none of the above rules match, it will fallback to `conds` to check if any sp
 - `exec`: The file is executable
 - `sticky`: The file has the sticky bit set
 
+```toml
+[icon]
+prepend_conds = [
+    # Fallback
+    { if = "hidden & dir", text = "👻" },
+    { if = "dir", text = "🗂️" },
+]
+```
+See [`preset/theme.toml`](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/theme.toml) for more examples
+
+-----
+
 Yazi has builtin support for [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
 If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details):
 
