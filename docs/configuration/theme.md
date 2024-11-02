@@ -69,9 +69,10 @@ Find: The `find` feature
 
 Marker: Color block on the left side separator line in the filename.
 
-- marker_selected (Style): Selected file marker style.
 - marker_copied (Style): Copied file marker style.
 - marker_cut (Style): Cut file marker style.
+- marker_marked (Style): Currently selecting marker style.
+- marker_selected (Style): Selected file marker style.
 
 Tab: Tab bar
 
