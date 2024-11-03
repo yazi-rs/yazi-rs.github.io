@@ -495,7 +495,7 @@ For example, to disable the default keybinding of <kbd>g</kbd> ⇒ <kbd>c</kbd>,
 
 ```toml
 [[manager.prepend_keymap]]
-on = [ "g", "c" ]
+on  = [ "g", "c" ]
 run = "noop"
 ```
 
@@ -503,7 +503,7 @@ Or, if you prefer an array style:
 
 ```toml
 [[manager.prepend_keymap]]
-on = [ "g", "c" ]
+on  = [ "g", "c" ]
 run = [ "noop" ]  # The array can only have one element and must be "noop"
 ```
 
