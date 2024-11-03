@@ -205,6 +205,32 @@ Note that `--state=false` will deselect all files in the current working directo
 
 If you have selected files across directories and want to deselect all of them, use [`escape --select`](#manager.escape) instead.
 
+### `toggle` {#manager.toggle}
+
+**Note**: This command is introduced in the upcoming v0.4 to replace `select` and currently requires the nightly build.
+
+Toggle the selection state of the hovered file.
+
+| Argument/Option | Description            |
+| --------------- | ---------------------- |
+| N/A             | Reverse the selection. |
+| `on`            | Select the file.       |
+| `off`           | Deselect the file.     |
+
+### `toggle_all` {#manager.toggle_all}
+
+**Note**: This command is introduced in the upcoming v0.4 to replace `select_all` and currently requires the nightly build.
+
+Toggle the selection state of all files in the current working directory.
+
+| Argument/Option | Description             |
+| --------------- | ----------------------- |
+| N/A             | Reverse the selections. |
+| `on`            | Select the files.       |
+| `off`           | Deselect the files.     |
+
+Note that `toggle_all off` only deselect the files in CWD, if you have selected files across multiple directories, and want to deselect all of them, use [`escape --select`](#manager.escape).
+
 ### `visual_mode` {#manager.visual_mode}
 
 Enter visual mode (selection mode).
