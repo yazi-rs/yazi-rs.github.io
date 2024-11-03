@@ -464,3 +464,17 @@ While Yazi is already fast, there is still plenty of room for optimization for s
 - For low-spec devices like Raspberry Pi, [reducing the concurrency](/docs/configuration/yazi#tasks) will make Yazi faster since the default configuration is optimized for PCs, and high concurrency on these low-spec devices may have the opposite effect.
 - For users who don't need accurate mime-type, [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) may be useful, as it simply returns mime-type based on file extensions, while Yazi defaults to obtaining mime-type based on file content for accuracy. Mime-type is used for matching opening, previewing, rendering rules. Encourage users to choose an appropriate `mime` plugin based on their needs, which is why we decided to open it up to plugin developers.
 - For high-performance terminal emulators, lowering the [`image_delay` option](/docs/configuration/yazi/#preview.image_delay) or setting it to 0 can reduce image preview latency.
+
+## Email selected files using Thunderbird
+
+To send selected files using Thunderbird, with a keybinding (in the example below, with Ctrl+S):
+
+```toml
+# ~/.config/yazi/keymap.toml
+[[manager.prepend_keymap]]
+on  = "<C-s>"
+run = '''
+    shell 'filenames=$(for path in "$@"; do echo $path; done | paste -s -d,);singlequoteslist=$(printf '"\'"%s"\'"' "$filenames");thunderbird -compose "attachment=$singlequoteslist"' --confirm
+'''
+```
+
