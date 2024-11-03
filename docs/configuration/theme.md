@@ -211,6 +211,37 @@ You can restrict the specific type of files through `is`, noting that it must be
 
 ## [icon] {#icon}
 
+Yazi has builtin support for [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
+If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details):
+
+```toml
+[icon]
+prepend_dirs = [
+	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+	# ...
+]
+append_exts = [
+	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	# ...
+]
+# ...
+```
+
+If you want to completely override the default rules, you can do so with:
+
+```toml
+[icon]
+dirs = [
+	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+	# ...
+]
+exts = [
+	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	# ...
+]
+# ...
+```
+
 Each icon rule contains the following properties:
 
 - `name` (globs, dirs, files, exts), or `if` (conds): the rule itself, which is a string
@@ -245,33 +276,13 @@ If none of the above rules match, it will fallback to `conds` to check if any sp
 - `exec`: The file is executable
 - `sticky`: The file has the sticky bit set
 
-Yazi has builtin support for [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons), a rich set of icons ready to use.
-If you want to add your own rules to this set, you can use `prepend_*` and `append_*` to prepend or append rules to the default ones (see [Configuration Mixing](/docs/configuration/overview#mixing) for details):
+These conditions support basic `|` (or), `&` (and), `!` (not), and `()` for priority, so you can combine them as needed, for example:
 
-```toml
-[icon]
-prepend_dirs = [
-	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
-	# ...
-]
-append_exts = [
-	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
-	# ...
-]
-# ...
 ```
-
-If you want to completely override the default rules, you can do so with:
-
-```toml
 [icon]
-dirs = [
-	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
-	# ...
+prepend_conds = [
+	{ if = "hidden & dir",  text = "👻" },  # Hidden directories
+	{ if = "dir",           text = "📁" },  # Directories
+	{ if = "!(dir | link)", text = "📄" },  # Normal files (not directories or symlinks)
 ]
-exts = [
-	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
-	# ...
-]
-# ...
 ```
