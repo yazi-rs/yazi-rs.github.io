@@ -485,6 +485,28 @@ Open the help menu.
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
+### `noop` {#manager.noop}
+
+If you want to disable certain preset keybindings without rewriting the entire `keymap`, you can use the virtual `noop` command.
+
+For example, to disable the default keybinding of <kbd>g</kbd> ⇒ <kbd>c</kbd>, use:
+
+```toml
+[[manager.prepend_keymap]]
+on = [ "g", "c" ]
+run = "noop"
+```
+
+Or, if you prefer an array style:
+
+```toml
+[[manager.prepend_keymap]]
+on = [ "g", "c" ]
+run = [ "noop" ]  # The array can only have one element and must be "noop"
+```
+
+The disabled keys won't trigger any actions when pressed and won't show up in the `which` component.
+
 ## [tasks] {#tasks}
 
 ### `close` {#tasks.close}
@@ -514,6 +536,10 @@ Open the help menu.
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
+### `noop` {#tasks.noop}
+
+See [`noop` command](#manager.noop).
+
 ## [select] {#select}
 
 ### `close` {#select.close}
@@ -537,6 +563,10 @@ Open the help menu.
 ### `plugin` {#select.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
+
+### `noop` {#select.noop}
+
+See [`noop` command](#manager.noop).
 
 ## [input] {#input}
 
@@ -641,6 +671,10 @@ Kill the specified range of characters. This command is only available in insert
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin). This command is only available in insert mode.
 
+### `noop` {#input.noop}
+
+See [`noop` command](#manager.noop).
+
 ## [completion] {#completion}
 
 ### `close` {#completion.close}
@@ -669,6 +703,10 @@ Open the help menu.
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
+### `noop` {#completion.noop}
+
+See [`noop` command](#manager.noop).
+
 ## [help] {#help}
 
 ### `close` {#help.close}
@@ -692,3 +730,7 @@ Apply a filter for the help items.
 ### `plugin` {#help.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
+
+### `noop` {#help.noop}
+
+See [`noop` command](#manager.noop).
