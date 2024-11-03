@@ -279,7 +279,7 @@ If none of the above rules match, it will fallback to `conds` to check if any sp
 
 These conditions support basic `|` (or), `&` (and), `!` (not), and `()` for priority, so you can combine them as needed, for example:
 
-```
+```toml
 [icon]
 prepend_conds = [
 	{ if = "hidden & dir",  text = "👻" },  # Hidden directories
