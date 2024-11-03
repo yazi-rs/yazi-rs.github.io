@@ -83,7 +83,7 @@ Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
 | Argument/Option | Description          |
 | --------------- | -------------------- |
-| `--all`         | Do all of the below. |
+| `--all`         | Do all the below.    |
 | `--find`        | Cancel find.         |
 | `--visual`      | Exit visual mode.    |
 | `--select`      | Clear selected.      |
@@ -103,6 +103,12 @@ Exit the process.
 ### `close` {#manager.close}
 
 Close the current tab; if it's the last tab, exit the process instead.
+
+### `suspend` {#manager.suspend}
+
+Pauses Yazi and returns to the parent shell to continue with other tasks.
+
+Once those tasks are done, use the `fg` command of the shell to send a resume signal and return back to Yazi.
 
 ### `arrow` {#manager.arrow}
 
@@ -271,7 +277,7 @@ Paste the yanked files.
 
 ### `link` {#manager.link}
 
-Create a symbolic link to the yanked files. (This is a privileged action in Windows and must be run as an administrator.)
+Create a symbolic link to the yanked files. (This is a privileged action on Windows and must be run as an administrator.)
 
 | Argument/Option | Description                                  |
 | --------------- | -------------------------------------------- |
@@ -349,7 +355,7 @@ Run a shell command.
 | `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
 | `--confirm`     | When the template is provided, run it directly, no input box was shown. It's mutually exclusive with `--interactive`.                                                                                                                    |
-| `--interactive` | Request the user to input the command to be ran interactively. It's mutually exclusive with `--confirm`.                                                                                                                                 |
+| `--interactive` | Request the user to input the command to be run interactively. It's mutually exclusive with `--confirm`.                                                                                                                                 |
 | `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip "$0"' --cursor=7 --interactive` places the cursor before `.zip`.                                                           |
 
 You can use the following shell variables in `[run]`:
@@ -591,7 +597,7 @@ Move the cursor left or right.
 | Argument/Option  | Description                                                                                      |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
 | `[n]`            | Move the cursor `n` characters left or right. Negative value for left, positive value for right. |
-| `--in-operating` | Move the cursor only if its currently waiting for an operation.                                  |
+| `--in-operating` | Move the cursor only if it's currently waiting for an operation.                                  |
 
 ### `backward` {#input.backward}
 
@@ -676,6 +682,28 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin). This command 
 ### `noop` {#input.noop}
 
 See [`noop` command](#manager.noop).
+
+## [confirm] {#confirm}
+
+### `close` {#confirm.close}
+
+Cancel and close the confirmation dialog.
+
+| Argument/Option | Description            |
+| --------------- | ---------------------- |
+| `--submit`      | Submit the confirmation. |
+
+### `arrow` {#confirm.arrow}
+
+Move the confirmation cursor.
+
+| Argument/Option | Description                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+
+### `help` {#confirm.help}
+
+Open the help menu.
 
 ## [completion] {#completion}
 
