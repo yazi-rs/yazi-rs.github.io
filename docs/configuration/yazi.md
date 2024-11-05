@@ -325,8 +325,10 @@ An array of `[width, height]`, maximum image size (in pixels) for decoding a sin
 ### fetchers {#plugin.fetchers}
 
 :::warning
-Fetchers are not complete yet and will undergo further changes!
+Fetchers are not complete yet, and the API is subject to change without prior notice!
 :::
+
+TODO
 
 You can prepend or append new fetchers to the default `fetchers` under `[plugin]` by `prepend_fetchers` and `append_fetchers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
@@ -408,17 +410,17 @@ If you want to create your own preloader, see [Preloader API](/docs/plugins/over
 
 ## [input] {#input}
 
-You can customize the title and position of each input. There are following inputs: `cd`, `create`, `rename`, `filter`, `find`, `search` and `shell`. To change their configuration use the underscore between the name and the option, like `cd_origin`.
-
-As for position, it consists of two parts: [Origin](#input.origin) and [Offset](#input.offset).
-The origin is the top-left corner of the input, and the offset is the increment from this origin. Together, they determine the area of the input on the screen.
-
-### Cursor blink {#input.cursor_blink}
+### `cursor_blink` {#input.cursor_blink}
 
 Control the cursor blinking.
 
 - `true`: Blink.
 - `false`: Do not blink.
+
+You can customize the title and position of each input. There are following inputs: `cd`, `create`, `rename`, `filter`, `find`, `search` and `shell`. To change their configuration use the underscore between the name and the option, like `cd_origin`.
+
+As for position, it consists of two parts: [Origin](#input.origin) and [Offset](#input.offset).
+The origin is the top-left corner of the input, and the offset is the increment from this origin. Together, they determine the area of the input on the screen.
 
 ### Origin {#input.origin}
 
@@ -509,12 +511,3 @@ This is useful for files that contain Hungarian characters.
 
 - `true`: Enabled
 - `false`: Disabled
-
-## [log] {#log}
-
-### `enabled` {#log.enabled}
-
-Whether to enable logging.
-
-- `true`: Enable logging.
-- `false`: Disable logging.

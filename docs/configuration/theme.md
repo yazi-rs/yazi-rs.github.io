@@ -83,8 +83,8 @@ Tab: Tab bar.
 Count: Counters.
 
 - count_copied (Style): Style of copied file number.
-- count_cut (Style): Number of cut files.
-- count_selected (Style): Number of selected files.
+- count_cut (Style): Style of cut file number.
+- count_selected (Style): Style of selected file number.
 
 Border:
 
@@ -176,9 +176,9 @@ Icons
 
 Title: Notification title.
 
-- title_info (Style): Info notification.
-- title_warn (Style): Warning notification.
-- title_error (Style): Error notification.
+- title_info (Style): Style of the info title.
+- title_warn (Style): Style of the warning title.
+- title_error (Style): Style of the error title.
 
 Icon: Notification icon.
 
