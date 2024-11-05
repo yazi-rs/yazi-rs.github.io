@@ -455,6 +455,23 @@ Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-208
 	<video src="https://github.com/helix-editor/helix/assets/17523360/a4dde9e0-96bf-42a4-b946-40cbee984e69" width="100%" controls muted></video>
 </details>
 
+## Email selected files using Thunderbird
+
+To send selected files using Thunderbird, with a keybinding <kbd>Ctrl</kbd> + <kbd>e</kbd>:
+
+```toml
+# ~/.config/yazi/keymap.toml
+[[manager.prepend_keymap]]
+on  = "<C-e>"
+run = '''
+	shell --confirm '
+		paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
+		quoted="'\'$paths\''"
+		thunderbird -compose "attachment=$quoted"
+	'
+'''
+```
+
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
 
 While Yazi is already fast, there is still plenty of room for optimization for specific users or under certain conditions:
