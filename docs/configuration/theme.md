@@ -74,11 +74,17 @@ Marker: Color block on the left side separator line in the filename.
 - marker_marked (Style): Marker style of pre-selected file in visual mode.
 - marker_selected (Style): Selected file marker style.
 
-Tab: Tab bar
+Tab: Tab bar.
 
 - tab_active (Style): Active tab style.
 - tab_inactive (Style): Inactive tab style.
 - tab_width (Number): Tab maximum width. When set to a value greater than 2, the remaining space will be filled with the tab name, which is current directory name.
+
+Count: Counters.
+
+- count_copied (Style): Style of copied file number.
+- count_cut (Style): Style of cut file number.
+- count_selected (Style): Style of selected file number.
 
 Border:
 
@@ -165,6 +171,20 @@ Icons
 - desc (Style): Description column style.
 - hovered (Style): Hovered item style.
 - footer (Style): Footer style.
+
+## [notify] {#notify}
+
+Title: Notification title.
+
+- title_info (Style): Style of the info title.
+- title_warn (Style): Style of the warning title.
+- title_error (Style): Style of the error title.
+
+Icon: Notification icon.
+
+- icon_info (String): Info icon.
+- icon_warn (String): Warning icon.
+- icon_error (String): Error icon.
 
 ## [filetype] {#filetype}
 
@@ -263,7 +283,7 @@ Icons are matched according to the following priority:
 For more complex and precise rules, such as matching a specific file in a specific directory, use `globs` - these are always executed first to check if any rules in the glob set are met.
 However, they are much slower than `dirs`, `files`, and `exts`, so it's not recommended to use them excessively.
 
-If none of the above rules match, it will fallback to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, which includes the following conditional factors:
+If none of the above rules match, it will fall back to `conds` to check if any specific conditions are met. `conds` are mostly used for rules related to file metadata, which includes the following conditional factors:
 
 - `dir`: The file is a directory
 - `hidden`: The file is hidden

@@ -285,8 +285,8 @@ rules = [
 
 Available rule options are as follows:
 
-- `name`: Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- `mime`: Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `name`: Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `mime`: Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `use`: Opener name corresponding to the names in the [`[opener]` section](#opener).
 
 With that:
@@ -322,14 +322,31 @@ An array of `[width, height]`, maximum image size (in pixels) for decoding a sin
 
 ## [plugin] {#plugin}
 
+### fetchers {#plugin.fetchers}
+
+:::warning
+Fetchers are not complete yet, and the API is subject to change without prior notice!
+:::
+
+TODO
+
+You can prepend or append new fetchers to the default `fetchers` under `[plugin]` by `prepend_fetchers` and `append_fetchers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
+Here are the available options for a single rule:
+
+- `id` (String): Fetcher's ID.
+- `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `run` (String): The name of the Lua plugin to be run.
+- `if` (String): Execute the fetcher based on this condition.
+- `prio` (String): The priority of the task. One of `high`, `normal` or `low`.
+
 ### previewers {#plugin.previewers}
 
 You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- `run` (String): The name of the Lua plugin to be ran.
+- `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `run` (String): The name of the Lua plugin to be run.
 - `sync` (Boolean): Whether to run in the sync context, default is `false`.
 
 ```toml
@@ -365,11 +382,11 @@ If you want to create your own previewer, see [Previewer API](/docs/plugins/over
 You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `name` (String): Glob expression for matching the file name. Case insensitive by default, add `\s` to the beginning to make it sensitive.
-- `mime` (String): Glob expression for matching the mime-type. Case insensitive by default, add `\s` to the beginning to make it sensitive.
+- `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `name` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
   - `mime`: This file has a mime-type.
-- `run` (String): The name of the Lua plugin to be ran.
+- `run` (String): The name of the Lua plugin to be run.
 - `multi` (Boolean): Whether to preload multiple files at once.
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
 
@@ -393,8 +410,16 @@ If you want to create your own preloader, see [Preloader API](/docs/plugins/over
 
 ## [input] {#input}
 
-You can customize the title and position of each input. As for position, it consists of two parts: [Origin](#input.origin) and [Offset](#input.offset).
+### `cursor_blink` {#input.cursor_blink}
 
+Control the cursor blinking.
+
+- `true`: Blink.
+- `false`: Do not blink.
+
+You can customize the title and position of each input. There are following inputs: `cd`, `create`, `rename`, `filter`, `find`, `search` and `shell`. To change their configuration use the underscore between the name and the option, like `cd_origin`.
+
+As for position, it consists of two parts: [Origin](#input.origin) and [Offset](#input.offset).
 The origin is the top-left corner of the input, and the offset is the increment from this origin. Together, they determine the area of the input on the screen.
 
 ### Origin {#input.origin}
@@ -448,11 +473,11 @@ Some inputs have special placeholders that will be replaced with actual content 
 
 ## [confirm] {#confirm}
 
-TODO
+Same as the [`[input]`](#input) section. There are a few available: `trash`, `delete`, `overwrite` and `quit`.
 
 ## [select] {#select}
 
-Same as the [`[input]`](#input) section.
+Same as the [`[input]`](#input) section. Available selectors: `open`.
 
 ## [which] {#which}
 
