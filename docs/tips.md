@@ -64,6 +64,7 @@ to exiting input directly, without entering Vi mode, making it behave like a reg
 Save these lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
 
 ```lua
+--- @sync entry
 return {
 	entry = function()
 		local h = cx.active.current.hovered
@@ -89,6 +90,7 @@ which means both will only target the currently hovered file. If you still want 
 Save these lines as `~/.config/yazi/plugins/smart-paste.yazi/init.lua`:
 
 ```lua
+--- @sync entry
 return {
 	entry = function()
 		local h = cx.active.current.hovered
@@ -220,6 +222,7 @@ Moved to https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi
 Save these lines as `~/.config/yazi/plugins/arrow.yazi/init.lua`:
 
 ```lua
+--- @sync entry
 return {
 	entry = function(_, args)
 		local current = cx.active.current
@@ -266,6 +269,7 @@ return { entry = entry }
   <TabItem value="skip-files" label="Skip files">
 
 ```lua
+--- @sync entry
 local function entry(_, args)
 	local parent = cx.active.parent
 	if not parent then return end
