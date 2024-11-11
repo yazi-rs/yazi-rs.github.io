@@ -11,17 +11,18 @@ To use Yazi, you must have the following prerequisites installed:
 
 Yazi can be **optionally** extended with other command line tools to enable additional features.
 
-- [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](/docs/faq#dont-like-nerd-fonts))
+- [`nerd-fonts`](https://www.nerdfonts.com/) ([_recommended_](/docs/faq#dont-like-nerd-fonts))
 - [`ffmpegthumbnailer`](https://github.com/dirkvdb/ffmpegthumbnailer) (for video thumbnails)
-- [7-Zip](https://www.7-zip.org/) (for archive extraction and preview)
+- [`7-Zip`](https://www.7-zip.org/) (for archive extraction and preview)
 - [`jq`](https://jqlang.github.io/jq/) (for JSON preview)
 - [`poppler`](https://poppler.freedesktop.org/) (for PDF preview)
 - [`fd`](https://github.com/sharkdp/fd) (for file searching)
 - [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
-- [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
+- [`ImageMagick`](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
+- [`mpv`](https://mpv.io/) (for video opening)
 
 If the functions are not working properly, please try upgrading them to the latest version.
 
