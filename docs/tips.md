@@ -38,7 +38,7 @@ desc = "Open shell here"
 
 ```toml
 [[manager.prepend_keymap]]
-on   = "<C-s>"
+on   = "!"
 run  = 'shell "powershell.exe" --block --confirm'
 desc = "Open PowerShell here"
 ```
