@@ -120,6 +120,29 @@ desc = "Paste into the hovered directory or CWD"
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/080212b5-43e7-4c36-83e8-312495d50383" width="100%" controls muted></video>
 </details>
 
+## Smart tab: create a tab and enter the hovered directory {#smart-tab}
+
+Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/init.lua`:
+
+```lua
+--- @sync entry
+return {
+	entry = function()
+		local h = cx.active.current.hovered
+		ya.manager_emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
+	end,
+}
+```
+
+Then bind it for <kbd>t</kbd> key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on   = "t"
+run  = "plugin --sync smart-tab"
+desc = "Create a tab and enter the hovered directory"
+```
+
 ## Folder-specific rules {#folder-rules}
 
 You can subscribe to directory change events through the [`cd` event provided by DDS](/docs/dds#cd), and then do any action you want, such as setting different sorting methods for specific directories.
