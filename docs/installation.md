@@ -29,7 +29,9 @@ If the functions are not working properly, please try upgrading them to the late
 
 Most packages on this page are maintained by the community, and they **_may not always be the latest_**. Please check their versions before installation:
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/yazi.svg)](https://repology.org/project/yazi/versions)
+<a alt="Yazi packaging status" href="https://repology.org/project/yazi/versions">
+	<img alt="Yazi packaging status" height="685" src="https://repology.org/badge/vertical-allrepos/yazi.svg" />
+</a>
 
 ## Arch Linux
 
@@ -286,7 +288,7 @@ x env use yazi fzf 7za jq fd rg zoxide
 
 You can download the latest official binaries from GitHub Releases: https://github.com/sxyazi/yazi/releases
 
-On this page, we offer GNU/Musl builds to meet the needs of different users; we also provide a Snapcraft package, which Ubuntu/Debian users can use.
+On this page, we offer GNU/Musl builds to meet the needs of different users.
 
 This page also includes a [nightly release](https://github.com/sxyazi/yazi/releases/tag/nightly), which is built from the latest code within the past 6 hours.
 
