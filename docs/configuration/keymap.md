@@ -295,7 +295,7 @@ Hardlink the yanked files.
 
 ### `remove` {#manager.remove}
 
-Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/trashspec-1.0.html).
+Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/1.0/).
 
 In the Android platform, you can only use it with the `--permanently` option, since there lacks the concept of a trash bin.
 
