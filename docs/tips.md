@@ -298,6 +298,7 @@ Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/init.lua`:
   <TabItem value="classic" label="Classic" default>
 
 ```lua
+--- @sync entry
 local function entry(_, args)
 	local parent = cx.active.parent
 	if not parent then return end
