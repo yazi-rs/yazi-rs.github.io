@@ -232,6 +232,27 @@ run = '''
 
 Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
 
+## Add subtitle to the running MPV {#mpv-subtitle}
+
+```toml
+# ~/.config/yazi/yazi.toml
+[[opener.add-sub]]
+run  = ''' echo sub-add "'$0'" | socat - /tmp/mpv.sock '''
+desc = "Add sub to MPV"
+
+[[open.prepend_rules]]
+name = "*.{ass,srt,ssa,sty,sup,vtt}"
+use  = [ "add-sub", "edit" ]
+```
+
+Make sure you've enabled and configured the ipc socket to `/tmp/mpv.sock`, that is, include:
+
+```
+input-ipc-server=/tmp/mpv.sock
+```
+
+in your `~/.config/mpv/mpv.conf`.
+
 ## Maximize preview pane {#max-preview}
 
 Moved to https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi
