@@ -232,10 +232,11 @@ run = '''
 
 Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
 
-## Add subtitle to the running MPV {#mpv-subtitle}
+## Unix: Add subtitle to the running MPV {#mpv-subtitle}
+
+Add these lines to your `~/.config/yazi/yazi.toml`:
 
 ```toml
-# ~/.config/yazi/yazi.toml
 [[opener.add-sub]]
 run  = ''' echo sub-add "'$0'" | socat - /tmp/mpv.sock '''
 desc = "Add sub to MPV"
@@ -245,13 +246,14 @@ name = "*.{ass,srt,ssa,sty,sup,vtt}"
 use  = [ "add-sub", "edit" ]
 ```
 
-Make sure you've enabled and configured the ipc socket to `/tmp/mpv.sock`, that is, include:
+To make it work, make sure you've:
 
-```
-input-ipc-server=/tmp/mpv.sock
-```
-
-in your `~/.config/mpv/mpv.conf`.
+1. Installed `socat` and can be found in your `$PATH`
+2. Enabled and configured the ipc socket to `/tmp/mpv.sock`, that is, include:
+   ```
+   input-ipc-server=/tmp/mpv.sock
+   ```
+   in your `~/.config/mpv/mpv.conf`. See [the documentation of `--input-ipc-server`](https://mpv.io/manual/stable/#options-input-ipc-server) for more info.
 
 ## Maximize preview pane {#max-preview}
 
