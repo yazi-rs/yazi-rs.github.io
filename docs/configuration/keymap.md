@@ -6,7 +6,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 # keymap.toml
 
 :::note
-If you haven't created and used your own configuration file yet, please see [Configuration](/docs/configuration/overview).
+If you want to fine-tune the default settings, the first step is to [create your own configuration file](/docs/configuration/overview).
 :::
 
 You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 6 layers:
@@ -81,14 +81,14 @@ keymap = [
 
 Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
-| Argument/Option | Description          |
-| --------------- | -------------------- |
-| `--all`         | Do all the below.    |
-| `--find`        | Cancel find.         |
-| `--visual`      | Exit visual mode.    |
-| `--select`      | Clear selected.      |
-| `--filter`      | Cancel filter.       |
-| `--search`      | Cancel search.       |
+| Argument/Option | Description       |
+| --------------- | ----------------- |
+| `--all`         | Do all the below. |
+| `--find`        | Cancel find.      |
+| `--visual`      | Exit visual mode. |
+| `--select`      | Clear selected.   |
+| `--filter`      | Cancel filter.    |
+| `--search`      | Cancel search.    |
 
 Automatically determine the operation by default, and it will only execute the selected operation after specifying the option; multiple options can be stacked.
 
@@ -597,7 +597,7 @@ Move the cursor left or right.
 | Argument/Option  | Description                                                                                      |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
 | `[n]`            | Move the cursor `n` characters left or right. Negative value for left, positive value for right. |
-| `--in-operating` | Move the cursor only if it's currently waiting for an operation.                                  |
+| `--in-operating` | Move the cursor only if it's currently waiting for an operation.                                 |
 
 ### `backward` {#input.backward}
 
@@ -689,8 +689,8 @@ See [`noop` command](#manager.noop).
 
 Cancel and close the confirmation dialog.
 
-| Argument/Option | Description            |
-| --------------- | ---------------------- |
+| Argument/Option | Description              |
+| --------------- | ------------------------ |
 | `--submit`      | Submit the confirmation. |
 
 ### `arrow` {#confirm.arrow}

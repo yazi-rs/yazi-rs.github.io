@@ -6,16 +6,18 @@ description: Learn how to configure Yazi's basic functionality.
 # yazi.toml
 
 :::note
-If you haven't created and used your own configuration file yet, please see [Configuration](/docs/configuration/overview).
+If you want to fine-tune the default settings, the first step is to [create your own configuration file](/docs/configuration/overview).
 :::
 
 ## [manager] {#manager}
 
 ### `ratio` {#manager.ratio}
 
-Manager layout by ratio, 3-element array.
+Manager layout by ratio, 3-element array. For example:
 
 - `[1, 4, 3]`: 1/8 width for parent, 4/8 width for current, 3/8 width for preview
+
+Set the value to `0` to hide the corresponding panel, but at least one panel must be visible (non-zero).
 
 ### `sort_by` {#manager.sort_by}
 
