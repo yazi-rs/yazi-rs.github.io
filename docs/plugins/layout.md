@@ -41,17 +41,17 @@ Properties:
 
 Methods (return `self` if not specified):
 
-- `padding(padding)` - Set padding, accepts a [Padding](#padding)
+- `pad(pad)` - Apply a [Pad](#pad)
 
 You can get a pre-computed `Rect` through [`ui.Layout()`](#layout).
 Note that if you intend to create a `Rect` yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
 
-## Padding {#padding}
+## Pad {#pad}
 
-All parameters for padding are integers:
+`Pad` represents a padding, and all of its parameters are integers:
 
 ```lua
-ui.Padding(left, right, top, bottom)
+ui.Pad(top, right, bottom, left)
 ```
 
 Properties:
@@ -61,18 +61,18 @@ Properties:
 - `top` - top padding
 - `bottom` - bottom padding
 
-If you want to specify only one of them, you can:
+If you want to specify only one of them:
 
-- `ui.Padding.left(left)` equal to `ui.Padding(left, 0, 0, 0)`
-- `ui.Padding.right(right)` equal to `ui.Padding(0, right, 0, 0)`
-- `ui.Padding.top(top)` equal to `ui.Padding(0, 0, top, 0)`
-- `ui.Padding.bottom(bottom)` equal to `ui.Padding(0, 0, 0, bottom)`
+- `ui.Pad.left(left)` equal to `ui.Pad(left, 0, 0, 0)`
+- `ui.Pad.right(right)` equal to `ui.Pad(0, right, 0, 0)`
+- `ui.Pad.top(top)` equal to `ui.Pad(0, 0, top, 0)`
+- `ui.Pad.bottom(bottom)` equal to `ui.Pad(0, 0, 0, bottom)`
 
 Or specify a particular direction for them:
 
-- `ui.Padding.x(x)` equal to `ui.Padding(x, x, 0, 0)`
-- `ui.Padding.y(y)` equal to `ui.Padding(0, 0, y, y)`
-- `ui.Padding.xy(x, y)` equal to `ui.Padding(x, x, y, y)`
+- `ui.Pad.x(x)` equal to `ui.Pad(x, x, 0, 0)`
+- `ui.Pad.y(y)` equal to `ui.Pad(0, 0, y, y)`
+- `ui.Pad.xy(x, y)` equal to `ui.Pad(x, x, y, y)`
 
 ## Style {#style}
 
