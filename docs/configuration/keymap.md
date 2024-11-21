@@ -413,9 +413,10 @@ desc = "Switch to the flat view with a max depth of 3"
 
 ### `find` {#manager.find}
 
+Find files in the current working directory interactively and incrementally.
+
 | Argument/Option | Description                                                                                                              |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `[query]`       | Optional, the query to find for. If not provided, an interactive UI will be used to input with.                          |
 | `--previous`    | Find for the previous occurrence.                                                                                        |
 | `--smart`       | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive` | Use case-insensitive find.                                                                                               |
