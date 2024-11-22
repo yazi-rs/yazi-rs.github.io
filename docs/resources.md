@@ -129,6 +129,8 @@ UI enhancements:
 Images:
 
 - [allmytoes.yazi](https://github.com/Sonico98/allmytoes.yazi) - Preview freedesktop-compatible thumbnails using [allmytoes](https://gitlab.com/allmytoes/allmytoes).
+- [sips-preview.yazi](https://github.com/andreas-timm/sips-preview.yazi) -
+  Quick previews of images on macOS. It focuses on PSD (Photoshop) files but also supports other image formats, utilizing the sips command-line tool.
 
 ## 🔍Fetchers {#fetchers}
 
