@@ -23,6 +23,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
 - [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
+- [ExifTool](https://exiftool.org) (for viewing EXIF information)
 
 If the functions are not working properly, please try upgrading them to the latest version.
 
@@ -37,20 +38,20 @@ Most packages on this page are maintained by the community, and they **_may not 
 ## Arch Linux
 
 ```sh
-sudo pacman -S yazi ffmpegthumbnailer ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+sudo pacman -S yazi ffmpegthumbnailer ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick perl-image-exiftool
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
 ```sh
-paru -S yazi-git ffmpegthumbnailer ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-git ffmpegthumbnailer ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick perl-image-exiftool
 ```
 
 You can also install the [official nightly release binary](https://github.com/sxyazi/yazi/releases/tag/nightly) from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin),
 which is built from the latest code within the past 6 hours:
 
 ```sh
-paru -S yazi-nightly-bin ffmpegthumbnailer ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-nightly-bin ffmpegthumbnailer ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick perl-image-exiftool
 ```
 
 ## Nix
@@ -220,7 +221,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpegthumbnailer ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+brew install yazi ffmpegthumbnailer ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font exiftool
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
@@ -232,13 +233,13 @@ brew install yazi --HEAD
 ## MacPorts
 
 ```bash
-sudo port install yazi ffmpegthumbnailer ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
+sudo port install yazi ffmpegthumbnailer ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick exiftool
 ```
 
 ## NetBSD
 
 ```sh
-pkgin install yazi ffmpegthumbnailer ffmpeg7 p7zip jq poppler fd ripgrep fzf zoxide ImageMagick
+pkgin install yazi ffmpegthumbnailer ffmpeg7 p7zip jq poppler fd ripgrep fzf zoxide ImageMagick p5-Image-ExifTool
 ```
 
 ## Windows
@@ -260,7 +261,7 @@ Most users already have Git installed, and Yazi is also hosted via Git, so this 
 ```sh
 scoop install yazi
 # Install the optional dependencies (recommended):
-scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick exiftool
 ```
 
 ### Install with WinGet
@@ -268,7 +269,7 @@ scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```sh
 winget install sxyazi.yazi
 # Install the optional dependencies (recommended):
-winget install Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick
+winget install Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick OliverBetz.ExifTool
 ```
 
 Poppler is not yet on WinGet, install with Scoop or manually download from [poppler-windows](https://github.com/oschwartz10612/poppler-windows).
