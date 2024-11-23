@@ -17,7 +17,7 @@ If you are using Yazi for the first time, please read our [configuration](/docs/
 
 <img src={useBaseUrl("/img/full-border.png")} width="600" />
 
-Moved to https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
+Moved to: https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
 
 ## Dropping to the shell {#dropping-to-shell}
 
@@ -59,31 +59,9 @@ desc = "Cancel input"
 
 to exiting input directly, without entering Vi mode, making it behave like a regular input box.
 
-## Smart enter: `enter` for directory, `open` for file {#smart-enter}
+## Smart enter: `open` files or `enter` directories all in one key {#smart-enter}
 
-Save these lines as `~/.config/yazi/plugins/smart-enter.yazi/init.lua`:
-
-```lua
---- @sync entry
-return {
-	entry = function()
-		local h = cx.active.current.hovered
-		ya.manager_emit(h and h.cha.is_dir and "enter" or "open", { hovered = true })
-	end,
-}
-```
-
-Then bind it for <kbd>l</kbd> key, in your `keymap.toml`:
-
-```toml
-[[manager.prepend_keymap]]
-on   = "l"
-run  = "plugin --sync smart-enter"
-desc = "Enter the child directory, or open the file"
-```
-
-This plugin adds `hovered = true` to make the behavior of [open](/docs/configuration/keymap#manager.open) consistent with [enter](/docs/configuration/keymap#manager.enter) avoiding accidental triggers,
-which means both will only target the currently hovered file. If you still want `open` to target multiple selected files, set it to `false`.
+Moved to: https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
 
 ## Smart paste: `paste` files without entering the directory {#smart-paste}
 
@@ -257,11 +235,11 @@ To make it work, make sure you've:
 
 ## Maximize preview pane {#max-preview}
 
-Moved to https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi
+Moved to: https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi
 
 ## Hide preview pane {#hide-preview}
 
-Moved to https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi
+Moved to: https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi
 
 ## File navigation wraparound {#navigation-wraparound}
 
@@ -357,7 +335,7 @@ run = "plugin --sync parent-arrow --args=1"
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
 
-Moved to https://github.com/yazi-rs/plugins/tree/main/no-status.yazi
+Moved to: https://github.com/yazi-rs/plugins/tree/main/no-status.yazi
 
 ## Show symlink in status bar {#symlink-in-status}
 
