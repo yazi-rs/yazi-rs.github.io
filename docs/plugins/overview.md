@@ -265,3 +265,16 @@ If you want to debug some runtime data, use [`ya.dbg()`](/docs/plugins/utils#ya.
 
 - `~/.local/state/yazi/yazi.log` on Unix-like systems.
 - `C:\Users\USERNAME\AppData\Roaming\yazi\state\yazi.log` on Windows.
+
+Make sure to set the `YAZI_LOG` environment variable before starting Yazi:
+
+```sh
+YAZI_LOG=debug yazi
+```
+
+otherwise, no logs will be recorded. Its value can be (in descending order of verbosity):
+
+- `debug`
+- `info`
+- `warn`
+- `error`
