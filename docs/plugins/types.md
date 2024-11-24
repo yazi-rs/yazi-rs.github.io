@@ -193,7 +193,7 @@ Properties:
 Meta methods:
 
 - `__len()`
-- `__index(idx)`
+- `__index(idx)` - Access the [tab::Tab](#app-data.tab-tab) by index
 
 ### `tab::Tab` {#app-data.tab-tab}
 
