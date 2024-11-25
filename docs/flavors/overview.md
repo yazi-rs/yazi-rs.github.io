@@ -57,6 +57,14 @@ For example, if you want to use the `bar.yazi` flavor, add these lines to your `
 use = "bar"
 ```
 
+## Why flavors over themes? {#why}
+
+We recommend using the new flavor format instead of the old theme, because flavors:
+
+- More powerful - auto dark/light mode switching with the terminal
+- Easier to update - can be managed with the `ya pack` package manager
+- Offers configuration merging - override some styles from `flavor.toml` in your own `theme.toml`
+
 ## Cooking a flavor {#cooking}
 
 Please use our [flavor-template](https://github.com/yazi-rs/flavor-template) repository as a starting point to create your own flavor.
