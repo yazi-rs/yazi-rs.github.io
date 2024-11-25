@@ -228,6 +228,9 @@ edit = [
 open = [
 	{ run = 'xdg-open "$@"', desc = "Open" },
 ]
+open_directory = [
+	{ run = 'code "$@"', desc = "Open Directory in VSCode" },
+]
 # ...
 ```
 
@@ -282,6 +285,9 @@ rules = [
 
 	# Multiple openers for a single rule
 	{ name = "*.html", use = [ "open", "edit" ] },
+
+	# Rule for opening a directory
+	{ mime = "inode/directory", use = "open_directory" },
 ]
 ```
 
