@@ -22,7 +22,6 @@ This is by no means a simple task, to reduce maintenance costs, we only guarante
 | [Tabby](https://github.com/Eugeny/tabby)                                    | [Inline images protocol][iip]          | ✅ Built-in                                   |
 | [VSCode](https://github.com/microsoft/vscode)                               | [Inline images protocol][iip]          | ✅ Built-in                                   |
 | [Rio](https://github.com/raphamorim/rio)                                    | [Inline images protocol][iip]          | ❌ Rio doesn't correctly clear images (#1786) |
-| [Mintty](https://github.com/mintty/mintty) (Git Bash)                       | [Inline images protocol][iip]          | ✅ Built-in                                   |
 | [Black Box](https://gitlab.gnome.org/raggesilver/blackbox)                  | [Sixel graphics format][sixel]         | ✅ Built-in                                   |
 | [Hyper](https://github.com/vercel/hyper)                                    | [Inline images protocol][iip]          | ✅ Built-in                                   |
 | X11 / Wayland                                                               | Window system protocol                 | ☑️ [Überzug++][ueberzug] required             |
@@ -89,7 +88,6 @@ Currently, only the following 3 terminals support displaying images on Windows:
 
 - WezTerm
 - [Windows Terminal Preview v1.22.2702.0](https://github.com/microsoft/terminal/releases/tag/v1.22.2702.0)
-- Mintty (Git Bash, which comes with Git for Windows)
 
 ## Windows with WSL users {#wsl}
 
