@@ -220,8 +220,8 @@ Toggle the selection state of the hovered file.
 | Argument/Option | Description            |
 | --------------- | ---------------------- |
 | N/A             | Reverse the selection. |
-| `on`            | Select the file.       |
-| `off`           | Deselect the file.     |
+| `--state=on`    | Select the file.       |
+| `--state=off`   | Deselect the file.     |
 
 ### `toggle_all` {#manager.toggle_all}
 
@@ -232,10 +232,10 @@ Toggle the selection state of all files in the current working directory.
 | Argument/Option | Description             |
 | --------------- | ----------------------- |
 | N/A             | Reverse the selections. |
-| `on`            | Select the files.       |
-| `off`           | Deselect the files.     |
+| `--state=on`    | Select the files.       |
+| `--state=off`   | Deselect the files.     |
 
-Note that `toggle_all off` only deselect the files in CWD, if you have selected files across multiple directories, and want to deselect all of them, use [`escape --select`](#manager.escape).
+Note that `toggle_all --state=off` only deselect the files in CWD, if you have selected files across multiple directories, and want to deselect all of them, use [`escape --select`](#manager.escape).
 
 ### `visual_mode` {#manager.visual_mode}
 
