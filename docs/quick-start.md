@@ -150,29 +150,29 @@ To select files and directories, the following commands are available.
 
 To interact with selected files/directories use any of the commands below.
 
-| Key binding                        | Action                                                                  |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| <kbd>o</kbd>                       | Open selected files                                                     |
-| <kbd>O</kbd>                       | Open selected files interactively                                       |
-| <kbd>Enter</kbd>                   | Open selected files                                                     |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> | Open selected files interactively (some terminals don't support it yet) |
-| <kbd>y</kbd>                       | Yank selected files (copy)                                              |
-| <kbd>x</kbd>                       | Yank selected files (cut)                                               |
-| <kbd>p</kbd>                       | Paste yanked files                                                      |
-| <kbd>P</kbd>                       | Paste yanked files (overwrite if the destination exists)                |
-| <kbd>-</kbd>                       | Symlink the absolute path of yanked files                               |
-| <kbd>\_</kbd>                      | Symlink the relative path of yanked files                               |
-| <kbd>Ctrl</kbd> + <kbd>-</kbd>     | Hardlink yanked files                                                   |
-| <kbd>Y</kbd> or <kbd>X</kbd>       | Cancel the yank status                                                  |
-| <kbd>d</kbd>                       | Trash selected files                                                    |
-| <kbd>D</kbd>                       | Permanently delete selected files                                       |
-| <kbd>a</kbd>                       | Create a file (ends with / for directories)                             |
-| <kbd>r</kbd>                       | Rename selected file(s)                                                 |
-| <kbd>;</kbd>                       | Run a shell command                                                     |
-| <kbd>:</kbd>                       | Run a shell command (block until finishes)                              |
-| <kbd>.</kbd>                       | Toggle the visibility of hidden files                                   |
-| <kbd>z</kbd>                       | Jump to a directory using zoxide                                        |
-| <kbd>Z</kbd>                       | Jump to a directory or reveal a file using fzf                          |
+| Key binding                         | Action                                                                  |
+| ----------------------------------- | ----------------------------------------------------------------------- |
+| <kbd>o</kbd>                        | Open selected files                                                     |
+| <kbd>O</kbd>                        | Open selected files interactively                                       |
+| <kbd>Enter</kbd>                    | Open selected files                                                     |
+| <kbd>Shift</kbd> + <kbd>Enter</kbd> | Open selected files interactively (some terminals don't support it yet) |
+| <kbd>y</kbd>                        | Yank selected files (copy)                                              |
+| <kbd>x</kbd>                        | Yank selected files (cut)                                               |
+| <kbd>p</kbd>                        | Paste yanked files                                                      |
+| <kbd>P</kbd>                        | Paste yanked files (overwrite if the destination exists)                |
+| <kbd>Y</kbd> or <kbd>X</kbd>        | Cancel the yank status                                                  |
+| <kbd>d</kbd>                        | Trash selected files                                                    |
+| <kbd>D</kbd>                        | Permanently delete selected files                                       |
+| <kbd>a</kbd>                        | Create a file (ends with / for directories)                             |
+| <kbd>r</kbd>                        | Rename selected file(s)                                                 |
+| <kbd>;</kbd>                        | Run a shell command                                                     |
+| <kbd>:</kbd>                        | Run a shell command (block until finishes)                              |
+| <kbd>.</kbd>                        | Toggle the visibility of hidden files                                   |
+| <kbd>-</kbd>                        | Symlink the absolute path of yanked files                               |
+| <kbd>\_</kbd>                       | Symlink the relative path of yanked files                               |
+| <kbd>Ctrl</kbd> + <kbd>-</kbd>      | Hardlink yanked files                                                   |
+| <kbd>z</kbd>                        | Jump to a directory using zoxide                                        |
+| <kbd>Z</kbd>                        | Jump to a directory or reveal a file using fzf                          |
 
 ### Copy paths
 
