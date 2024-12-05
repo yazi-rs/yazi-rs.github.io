@@ -50,12 +50,14 @@ Where:
 
 ## Usage {#usage}
 
-For example, if you want to use the `bar.yazi` flavor, add these lines to your `theme.toml`:
+For example, if you want to use the `bar.yazi` flavor, set the content of your `theme.toml` to:
 
 ```toml
 [flavor]
 use = "bar"
 ```
+
+Make sure your `theme.toml` doesn't contain anything other than `[flavor]`, unless you want to override certain styles of the `bar.yazi` flavor.
 
 ## Why flavors over themes? {#why}
 

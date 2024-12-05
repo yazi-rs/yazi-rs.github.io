@@ -33,6 +33,8 @@ Then [copy the required part](https://github.com/sxyazi/yazi/blob/shipped/yazi-c
 show_hidden = true
 ```
 
+Yazi has already preset these default configurations in the release, so you don't need to copy the entire file unless you want to completely overwrite them.
+
 ## Configuration mixing {#mixing}
 
 The options from your configuration file will be used to override the default. However, for key bindings, if you don't want to override the default directly:
