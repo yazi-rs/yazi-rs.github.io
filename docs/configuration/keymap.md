@@ -19,7 +19,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[help\]](#help) - Help menu.
 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
-Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap.toml), while append inserts after them.
+Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml), while append inserts after them.
 
 Since Yazi selects the first matching key to run, prepend always has a higher priority than default, and append always has a lower priority than default:
 
