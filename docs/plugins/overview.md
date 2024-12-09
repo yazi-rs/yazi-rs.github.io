@@ -5,6 +5,9 @@ sidebar_label: Plugins (BETA)
 description: Learn how to extend Yazi with Lua plugins.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Plugins (BETA)
 
 You can extend Yazi's functionality through Lua plugins, which need to be placed in the `plugins` subdirectory of Yazi's configuration directory, so either:
@@ -275,9 +278,23 @@ If you want to debug some runtime data, use [`ya.dbg()`](/docs/plugins/utils#ya.
 
 Make sure to set the `YAZI_LOG` environment variable before starting Yazi:
 
+<Tabs>
+  <TabItem value="unix" label="Unix-like" default>
+
 ```sh
 YAZI_LOG=debug yazi
 ```
+
+  </TabItem>
+
+  <TabItem value="powershell" label="PowerShell">
+
+```powershell
+$env:YAZI_LOG = "debug"; yazi
+```
+
+  </TabItem>
+</Tabs>
 
 otherwise, no logs will be recorded. Its value can be (in descending order of verbosity):
 
