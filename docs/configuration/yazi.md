@@ -373,7 +373,7 @@ Yazi comes with the these previewer plugins:
 - json: bridge between `jq` and the preview, providing async concurrent rendering
 - noop: no operation
 - image: presentation layer of built-in image preview, offering mixed preview capabilities
-- video: bridge between `ffmpegthumbnailer` and the preview, offering mixed preview capabilities
+- video: bridge between `ffmpeg` and the preview, offering mixed preview capabilities
 - pdf: bridge between `pdftoppm` and the preview, offering mixed preview capabilities
 - archive: bridge between 7-Zip and the preview, offering mixed preview and concurrent rendering capabilities
 
