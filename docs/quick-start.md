@@ -109,7 +109,7 @@ Then use `y` instead of `yazi` to start, and press <kbd>q</kbd> to quit, you'll 
 ## Keybindings
 
 :::tip
-For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap.toml).
+For all keybindings, see the [default `keymap.toml` file](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/keymap-default.toml).
 :::
 
 ### Navigation
