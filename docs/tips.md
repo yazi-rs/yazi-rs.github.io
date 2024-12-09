@@ -29,7 +29,7 @@ Add this keybinding to your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = "!"
-run  = 'shell "$SHELL" --block --confirm'
+run  = 'shell "$SHELL" --block'
 desc = "Open shell here"
 ```
 
@@ -39,7 +39,7 @@ desc = "Open shell here"
 ```toml
 [[manager.prepend_keymap]]
 on   = "!"
-run  = 'shell "powershell.exe" --block --confirm'
+run  = 'shell "powershell.exe" --block'
 desc = "Open PowerShell here"
 ```
 
@@ -88,7 +88,7 @@ Then bind it for <kbd>p</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = "p"
-run  = "plugin --sync smart-paste"
+run  = "plugin smart-paste"
 desc = "Paste into the hovered directory or CWD"
 ```
 
@@ -117,7 +117,7 @@ Then bind it for <kbd>t</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = "t"
-run  = "plugin --sync smart-tab"
+run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 ```
 
@@ -132,7 +132,7 @@ local function setup()
 	ps.sub("cd", function()
 		local cwd = cx.active.current.cwd
 		if cwd:ends_with("Downloads") then
-			ya.manager_emit("sort", { "modified", reverse = true, dir_first = false })
+			ya.manager_emit("sort", { "mtime", reverse = true, dir_first = false })
 		else
 			ya.manager_emit("sort", { "alphabetical", reverse = false, dir_first = true })
 		end
@@ -172,7 +172,7 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 [[manager.prepend_keymap]]
 on  = "<C-n>"
 run = '''
-	shell 'dragon -x -i -T "$1"' --confirm
+	shell 'dragon -x -i -T "$1"'
 '''
 ```
 
@@ -184,7 +184,7 @@ Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y
 [[manager.prepend_keymap]]
 on  = "y"
 run = [ '''
-	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list' --confirm
+	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
 ''', "yank" ]
 ```
 
@@ -194,7 +194,7 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 [[manager.prepend_keymap]]
 on  = "y"
 run = [ '''
-	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
+	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
 ''', "yank" ]
 ```
 
@@ -204,7 +204,7 @@ run = [ '''
 [[manager.prepend_keymap]]
 on = [ "g", "r" ]
 run = '''
-	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"'
 '''
 ```
 
@@ -248,9 +248,9 @@ Save these lines as `~/.config/yazi/plugins/arrow.yazi/init.lua`:
 ```lua
 --- @sync entry
 return {
-	entry = function(_, args)
+	entry = function(_, job)
 		local current = cx.active.current
-		local new = (current.cursor + args[1]) % #current.files
+		local new = (current.cursor + job.args[1]) % #current.files
 		ya.manager_emit("arrow", { new - current.cursor })
 	end,
 }
@@ -261,11 +261,11 @@ Then bind it for <kbd>k</kbd> and <kbd>j</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on  = "k"
-run = "plugin --sync arrow --args=-1"
+run = "plugin arrow --args=-1"
 
 [[manager.prepend_keymap]]
 on  = "j"
-run = "plugin --sync arrow --args=1"
+run = "plugin arrow --args=1"
 ```
 
 ## Navigation in the parent directory without leaving the CWD {#parent-arrow}
@@ -277,11 +277,11 @@ Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/init.lua`:
 
 ```lua
 --- @sync entry
-local function entry(_, args)
+local function entry(_, job)
 	local parent = cx.active.parent
 	if not parent then return end
 
-	local target = parent.files[parent.cursor + 1 + args[1]]
+	local target = parent.files[parent.cursor + 1 + job.args[1]]
 	if target and target.cha.is_dir then
 		ya.manager_emit("cd", { target.url })
 	end
@@ -295,12 +295,12 @@ return { entry = entry }
 
 ```lua
 --- @sync entry
-local function entry(_, args)
+local function entry(_, job)
 	local parent = cx.active.parent
 	if not parent then return end
 
-	local offset = tonumber(args[1])
-	if not offset then return ya.err(args[1], 'is not a number') end
+	local offset = tonumber(job.args[1])
+	if not offset then return ya.err(job.args[1], 'is not a number') end
 
 	local start = parent.cursor + 1 + offset
 	local end_ = offset < 0 and 1 or #parent.files
@@ -324,11 +324,11 @@ Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on  = "K"
-run = "plugin --sync parent-arrow --args=-1"
+run = "plugin parent-arrow --args=-1"
 
 [[manager.prepend_keymap]]
 on  = "J"
-run = "plugin --sync parent-arrow --args=1"
+run = "plugin parent-arrow --args=1"
 ```
 
 ## No status bar {#no-status-bar}
@@ -400,7 +400,7 @@ end, 500, Header.LEFT)
 [[manager.prepend_keymap]]
 on = "<C-p>"
 run = '''
-  shell 'qlmanage -p "$@"' --confirm
+  shell 'qlmanage -p "$@"'
 '''
 ```
 
@@ -493,7 +493,7 @@ To send selected files using Thunderbird, with a keybinding <kbd>Ctrl</kbd> + <k
 [[manager.prepend_keymap]]
 on  = "<C-e>"
 run = '''
-	shell --confirm '
+	shell '
 		paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
 		quoted="'\'$paths\''"
 		thunderbird -compose "attachment=$quoted"

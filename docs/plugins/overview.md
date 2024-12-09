@@ -50,22 +50,29 @@ You can bind a `plugin` command to a specific key in your `keymap.toml` with:
 | Argument/Option | Description                                 |
 | --------------- | ------------------------------------------- |
 | `[name]`        | The name of the plugin to run.              |
-| `--sync`        | Run the plugin in a sync context.           |
 | `--args=[args]` | Shell-style arguments passed to the plugin. |
 
-For example, `plugin test --sync --args='hello world'` will run the `test` plugin with the arguments `hello` and `world` in a sync context.
+For example, `plugin test --args='hello --foo --bar=baz'` will run the `test` plugin with the arguments `hello --foo --bar=baz` in a sync context.
 
-To receive the arguments in the plugin, use `args`:
+To access the arguments in the plugin, use `job.args`:
+
+TODO: add doc about `@sync` (`--sync`)
 
 ```lua
+--- @sync entry
 -- ~/.config/yazi/plugins/test.yazi/init.lua
 return {
-	entry = function(self, args)
-		ya.err(args[1]) -- "hello"
-		ya.err(args[2]) -- "world"
+	entry = function(self, job)
+		ya.err(job.args[1])  -- "hello"
+		ya.err(job.args.foo) -- true
+		ya.err(job.args.bar) -- "baz"
 	end,
 }
 ```
+
+Note that currently Yazi only supports positional arguments (`hello`) and named arguments (`--foo`, `--bar`), it does not support shorthand arguments like `-f` or `-b`.
+
+These will be treated as positional arguments, but as Yazi adds support for shorthands in the future, their behavior will change. So please avoid using them to prevent any potential conflicts.
 
 ## Sync vs Async {#sync-vs-async}
 

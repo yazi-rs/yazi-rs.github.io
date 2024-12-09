@@ -13,7 +13,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 
 - [\[manager\]](#manager) - File list.
 - [\[tasks\]](#tasks) - Task manager.
-- [\[select\]](#select) - Select component. e.g. "open with" for files.
+- [\[pick\]](#pick) - Pick component. e.g. "open with" for files.
 - [\[input\]](#input) - Input component. e.g. create, rename, etc.
 - [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
 - [\[help\]](#help) - Help menu.
@@ -189,31 +189,7 @@ Change the current directory to the parent of specified file, and hover on it.
 | --------------- | ------------------- |
 | `[path]`        | The path to reveal. |
 
-### `select` {#manager.select}
-
-| Argument/Option | Description                                              |
-| --------------- | -------------------------------------------------------- |
-| `--state=true`  | Select the current file.                                 |
-| `--state=false` | Deselect the current file.                               |
-| `--state=none`  | Default, toggle the selection state of the current file. |
-
-### `select_all` {#manager.select_all}
-
-Select all files in the current working directory.
-
-| Argument/Option | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `--state=true`  | Select all files                                 |
-| `--state=false` | Deselect all files                               |
-| `--state=none`  | Default, toggle the selection state of all files |
-
-Note that `--state=false` will deselect all files in the current working directory.
-
-If you have selected files across directories and want to deselect all of them, use [`escape --select`](#manager.escape) instead.
-
 ### `toggle` {#manager.toggle}
-
-**Note**: This command is introduced in the upcoming v0.4 to replace `select` and currently requires the nightly build.
 
 Toggle the selection state of the hovered file.
 
@@ -224,8 +200,6 @@ Toggle the selection state of the hovered file.
 | `--state=off`   | Deselect the file.     |
 
 ### `toggle_all` {#manager.toggle_all}
-
-**Note**: This command is introduced in the upcoming v0.4 to replace `select_all` and currently requires the nightly build.
 
 Toggle the selection state of all files in the current working directory.
 
@@ -354,8 +328,7 @@ Run a shell command.
 | `[template]`    | Optional, command template to be run.                                                                                                                                                                                                    |
 | `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
-| `--confirm`     | When the template is provided, run it directly, no input box was shown. It's mutually exclusive with `--interactive`.                                                                                                                    |
-| `--interactive` | Request the user to input the command to be run interactively. It's mutually exclusive with `--confirm`.                                                                                                                                 |
+| `--interactive` | Request the user to input the command to be run interactively                                                                                                                                                                            |
 | `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip "$0"' --cursor=7 --interactive` places the cursor before `.zip`.                                                           |
 
 You can use the following shell variables in `[run]`:
@@ -382,7 +355,7 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `none`          | No line mode.                                                                                                                                                                                           |
 | `size`          | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future. |
-| `ctime`         | Display the creation time of the file.                                                                                                                                                                  |
+| `btime`         | Display the birth time of the file.                                                                                                                                                                     |
 | `mtime`         | Display the last modified time of the file.                                                                                                                                                             |
 | `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                               |
 | `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                     |
@@ -441,8 +414,8 @@ Move the cursor to the next or previous occurrence.
 
 - `[by]`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
-  - `"modified"`: Sort by last modified time.
-  - `"created"`: Sort by creation time. (Due to a Rust bug, this is not available at the moment, see [sxyazi/yazi#356](https://github.com/sxyazi/yazi/issues/356) and [rust-lang/rust#108277](https://github.com/rust-lang/rust/issues/108277))
+  - `"mtime"`: Sort by last modified time.
+  - `"btime"`: Sort by birth time.
   - `"extension"`: Sort by file extension.
   - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
   - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
@@ -549,31 +522,31 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 See [`noop` command](#manager.noop).
 
-## [select] {#select}
+## [pick] {#pick}
 
-### `close` {#select.close}
+### `close` {#pick.close}
 
-Cancel selection.
+Cancel the picker.
 
-| Argument/Option | Description           |
-| --------------- | --------------------- |
-| `--submit`      | Submit the selection. |
+| Argument/Option | Description        |
+| --------------- | ------------------ |
+| `--submit`      | Submit the picker. |
 
-### `arrow` {#select.arrow}
+### `arrow` {#pick.arrow}
 
 | Argument/Option | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
 | `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
-### `help` {#select.help}
+### `help` {#pick.help}
 
 Open the help menu.
 
-### `plugin` {#select.plugin}
+### `plugin` {#pick.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-### `noop` {#select.noop}
+### `noop` {#pick.noop}
 
 See [`noop` command](#manager.noop).
 

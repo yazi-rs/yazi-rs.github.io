@@ -24,8 +24,8 @@ Set the value to `0` to hide the corresponding panel, but at least one panel mus
 File sorting method.
 
 - `"none"`: Don't sort.
-- `"modified"`: Sort by last modified time.
-- `"created"`: Sort by creation time.
+- `"mtime"`: Sort by last modified time.
+- `"btime"`: Sort by birth time.
 - `"extension"`: Sort by file extension.
 - `"alphabetical"`: Sort alphabetically, e.g. `1.md` < `10.md` < `2.md`
 - `"natural"`: Sort naturally, e.g. `1.md` < `2.md` < `10.md`
@@ -68,7 +68,7 @@ Line mode: display information associated with the file on the right side of the
 
 - `"none"`: No line mode.
 - `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future.
-- `"ctime"`: Display the creation time of the file.
+- `"btime"`: Display the birth time of the file.
 - `"mtime"`: Display the last modified time of the file.
 - `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
 - `"owner"`: Display the owner of the file, only available on Unix-like systems.
@@ -84,7 +84,7 @@ linemode = "size_and_mtime"
 ```lua
 -- ~/.config/yazi/init.lua
 function Linemode:size_and_mtime()
-	local time = math.floor(self._file.cha.modified or 0)
+	local time = math.floor(self._file.cha.mtime or 0)
 	if time == 0 then
 		time = ""
 	elseif os.date("%Y", time) == os.date("%Y") then
@@ -94,7 +94,7 @@ function Linemode:size_and_mtime()
 	end
 
 	local size = self._file:size()
-	return ui.Line(string.format("%s %s", size and ya.readable_size(size) or "-", time))
+	return string.format("%s %s", size and ya.readable_size(size) or "-", time)
 end
 ```
 

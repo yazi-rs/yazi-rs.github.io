@@ -220,8 +220,8 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | --------------------------- | -------------------------------- |
 | <kbd>,</kbd> ⇒ <kbd>m</kbd> | Sort by modified time            |
 | <kbd>,</kbd> ⇒ <kbd>M</kbd> | Sort by modified time (reverse)  |
-| <kbd>,</kbd> ⇒ <kbd>c</kbd> | Sort by creation time            |
-| <kbd>,</kbd> ⇒ <kbd>C</kbd> | Sort by creation time (reverse)  |
+| <kbd>,</kbd> ⇒ <kbd>b</kbd> | Sort by birth time               |
+| <kbd>,</kbd> ⇒ <kbd>B</kbd> | Sort by birth time (reverse)     |
 | <kbd>,</kbd> ⇒ <kbd>e</kbd> | Sort by file extension           |
 | <kbd>,</kbd> ⇒ <kbd>E</kbd> | Sort by file extension (reverse) |
 | <kbd>,</kbd> ⇒ <kbd>a</kbd> | Sort alphabetically              |

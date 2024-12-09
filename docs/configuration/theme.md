@@ -117,11 +117,11 @@ Progress
 
 Permissions
 
-- permissions_t (Style): File type.
-- permissions_r (Style): Read permission.
-- permissions_w (Style): Write permission.
-- permissions_x (Style): Execute permission.
-- permissions_s (Style): `-` separator.
+- perm_type (Style): File type.
+- perm_read (Style): Read permission.
+- perm_write (Style): Write permission.
+- perm_exec (Style): Execute permission.
+- perm_sep (Style): `-` separator.
 
 ## [select] {#select}
 
@@ -201,7 +201,7 @@ rules = [
 	{ mime = "audio/*", fg = "magenta" },
 
 	# Empty files
-	{ mime = "inode/x-empty", fg = "cyan" },
+	{ mime = "inode/empty", fg = "cyan" },
 
 	# Orphan symbolic links
 	{ name = "*", is = "orphan", fg = "red" },
@@ -238,11 +238,11 @@ If you want to add your own rules to this set, you can use `prepend_*` and `appe
 ```toml
 [icon]
 prepend_dirs = [
-	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+	{ name = "desktop", text = "", fg = "#563d7c" },
 	# ...
 ]
 append_exts = [
-	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	{ name = "mp3", text = "", fg = "#00afff" },
 	# ...
 ]
 # ...
@@ -253,11 +253,11 @@ If you want to completely override the default rules, you can do so with:
 ```toml
 [icon]
 dirs = [
-	{ name = "desktop", text = "", fg_dark = "#563d7c", fg_light = "#563d7c" },
+	{ name = "desktop", text = "", fg = "#563d7c" },
 	# ...
 ]
 exts = [
-	{ name = "mp3", text = "", fg_dark = "#00afff", fg_light = "#0075aa" },
+	{ name = "mp3", text = "", fg = "#00afff" },
 	# ...
 ]
 # ...
@@ -267,8 +267,7 @@ Each icon rule contains the following properties:
 
 - `name` (globs, dirs, files, exts), or `if` (conds): the rule itself, which is a string
 - `text`: icon text, which is a string
-- `fg_dark`: icon color in dark mode, which is a [Color](/docs/configuration/theme#types.color)
-- `fg_light`: icon color for light mode, which is a [Color](/docs/configuration/theme#types.color)
+- `fg`: icon color, which is a [Color](/docs/configuration/theme#types.color)
 
 Icons are matched according to the following priority:
 

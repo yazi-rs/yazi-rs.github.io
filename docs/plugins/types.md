@@ -22,11 +22,14 @@ Cha means one file's characteristics with the following properties:
 - `is_sock` - Whether this file is a socket
 - `is_exec` - Whether this file is executable
 - `is_sticky` - Whether this file has the sticky bit set
-- `length` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
-- `created` - The created time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `modified` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `accessed` - The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `permissions` - Unix permissions of this file in string, e.g. `drwxr-xr-x`. For Windows, it's always `nil`
+- `len` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
+- `atime` - The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `btime` - The birth time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+- `mtime` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+
+And methods:
+
+- `perm()` - Unix permissions of this file in string, e.g. `drwxr-xr-x`. For Windows, it's always `nil`
 
 And the Unix only properties:
 
