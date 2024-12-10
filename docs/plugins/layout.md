@@ -3,12 +3,6 @@ sidebar_position: 2
 description: Learn how to use Yazi's Lua API.
 ---
 
-:::warning
-The content of this document has been updated to align with the upcoming major release of Yazi 0.4.
-
-Please make sure you are using the latest nightly version of Yazi to access these APIs.
-:::
-
 # Layout
 
 Text, List, Bar, Border, and Gauge are renderable elements; others need to be placed within any of them.

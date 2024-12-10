@@ -185,48 +185,67 @@ end
 
 ### Previewer {#previewer}
 
-A previewer needs to return a table that implements the `peek` and `seek` functions. Both functions take a table parameter `self` and do not return any values:
+A previewer needs to return a table that implements the `peek` and `seek` methods. Both methods take a table parameter `job` and do not return any values:
 
 ```lua
-return {
-	peek = function(self) return end,
-	seek = function(self) return end,
-}
+local M = {}
+
+function M:peek(job)
+	-- ...
+end
+
+function M:seek(job)
+	-- ...
+end
+
+return M
 ```
 
 When the user presses <kbd>j</kbd> or <kbd>k</kbd> to switch between hovering files, `peek` is called, with:
 
-| Key      | Description                                                                                                                 |
-| -------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `file`   | The [File](/docs/plugins/types#shared.file) to be previewed.                                                                |
-| `skip`   | The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos. |
-| `area`   | The [Rect](/docs/plugins/layout#rect) of the available preview area.                                                        |
-| `window` | The [Rect](/docs/plugins/layout#rect) of the entire terminal window.                                                        |
+| Key    | Description                                                                                                     |
+| ------ | --------------------------------------------------------------------------------------------------------------- |
+| `area` | [Rect](/docs/plugins/layout#rect) of the available preview area.                                                |
+| `args` | Arguments passed to the previewer.                                                                              |
+| `file` | [File](/docs/plugins/types#shared.file) to be previewed.                                                        |
+| `skip` | Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos. |
 
-When the user presses <kbd>Alt-j</kbd> or <kbd>Alt-k</kbd> to scroll the preview of this file, `seek` is called, with:
+When the user presses <kbd>J</kbd> or <kbd>K</kbd> to scroll the preview of the file, `seek` is called, with:
 
-| Key    | Description                                                          |
-| ------ | -------------------------------------------------------------------- |
-| `file` | The [File](/docs/plugins/types#shared.file) being scrolled.          |
-| `area` | The [Rect](/docs/plugins/layout#rect) of the available preview area. |
+| Key     | Description                                                      |
+| ------- | ---------------------------------------------------------------- |
+| `file`  | [File](/docs/plugins/types#shared.file) being scrolled.          |
+| `area`  | [Rect](/docs/plugins/layout#rect) of the available preview area. |
+| `units` | Number of units to scroll.                                       |
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
 The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/types#app-data) through `cx`.
 
-Here are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/shipped/yazi-plugin/preset/plugins)
+There are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/shipped/yazi-plugin/preset/plugins)
 
 ### Preloader {#preloader}
 
-You need to return a table that implements the `preload` function, it receives a `self` parameter, which is a table with the same fields as [`peek()`](#previewer):
+You need to return a table that implements the `preload` method:
 
 ```lua
-return {
-	preload = function(self)
-		return 1
-	end,
-}
+local M = {}
+
+function M:preload(job)
+	-- ...
+end
+
+return M
 ```
+
+It receives a `job` parameter, which is a table:
+
+| Key    | Description                                                      |
+| ------ | ---------------------------------------------------------------- |
+| `area` | [Rect](/docs/plugins/layout#rect) of the available preview area. |
+| `args` | Arguments passed to the preloader.                               |
+| `file` | [File](/docs/plugins/types#shared.file) to be preloaded.         |
+| `skip` | Always `0`                                                       |
 
 And has the following return values:
 
@@ -243,11 +262,6 @@ When "continue" is set, the preloader can reload the files that have already bee
 - Refreshing the file status upon successful loading
 
 Yazi will automatically invoke the `preload` concurrently for each file that matches the preload rules on the page.
-
-When the user specifies [`multi = true`](/docs/configuration/yazi#plugin.preloaders) for it, the plugin allows preloading multiple files at once. In this case, `self.file` will be replaced by `self.files`.
-
-Typically, a preloader only needs to implement one of them - either single or multiple. This depends on the specific task and the magnitude of the workload.
-If it truly requires loading multiple files at once, the user needs to be prompted to enable the `multi` option for it.
 
 ## Sendable value {#sendable}
 
