@@ -293,7 +293,7 @@ Available rule options are as follows:
 
 With that:
 
-- If you're using the default mime-type preloader, it retrieves the mime-type of a file through `file -bL --mime-type /path/to/file` command.
+- You can [`spot`](/docs/configuration/keymap#manager.spot) on a file to check it's mime-type with the default <kbd>Tab</kbd> key.
 - If `use` is an array containing multiple openers, all commands in these openers will be merged. [`open`](/docs/configuration/keymap#manager.open) will run the first of these commands; [`open --interactive`](/docs/configuration/keymap#manager.open) will list all of these commands in the "open with" menu.
 
 ## [tasks] {#tasks}

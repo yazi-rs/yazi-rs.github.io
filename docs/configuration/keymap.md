@@ -140,7 +140,9 @@ Scroll the contents in the preview panel.
 | --------------- | ---------------------------------------------------------------- |
 | `[n]`           | Use negative values to seek up and positive values to seek down. |
 
-Note that the default scroll keys are <kbd>Alt</kbd> + <kbd>j</kbd> and <kbd>Alt</kbd> + <kbd>k</kbd>, make sure your terminal supports <kbd>Alt</kbd> key combinations, or you can change them in your `keymap.toml`.
+### `spot` {#manager.spot}
+
+Display file information with the preset or user-customized spotter.
 
 ### `cd` {#manager.cd}
 

@@ -126,12 +126,14 @@ or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 
 Further navigation commands can be found in the table below.
 
-| Key binding                 | Action                           |
-| --------------------------- | -------------------------------- |
-| <kbd>K</kbd>                | Seek up 5 units in the preview   |
-| <kbd>J</kbd>                | Seek down 5 units in the preview |
-| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top           |
-| <kbd>G</kbd>                | Move cursor to the bottom        |
+| Key binding                 | Action                                         |
+| --------------------------- | ---------------------------------------------- |
+| <kbd>K</kbd>                | Seek up 5 units in the preview                 |
+| <kbd>J</kbd>                | Seek down 5 units in the preview               |
+| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top                         |
+| <kbd>G</kbd>                | Move cursor to the bottom                      |
+| <kbd>z</kbd>                | Jump to a directory using zoxide               |
+| <kbd>Z</kbd>                | Jump to a directory or reveal a file using fzf |
 
 ### Selection
 
@@ -156,6 +158,7 @@ To interact with selected files/directories use any of the commands below.
 | <kbd>O</kbd>                        | Open selected files interactively                                       |
 | <kbd>Enter</kbd>                    | Open selected files                                                     |
 | <kbd>Shift</kbd> + <kbd>Enter</kbd> | Open selected files interactively (some terminals don't support it yet) |
+| <kbd>Tab</kbd>                      | Show the file information                                               |
 | <kbd>y</kbd>                        | Yank selected files (copy)                                              |
 | <kbd>x</kbd>                        | Yank selected files (cut)                                               |
 | <kbd>p</kbd>                        | Paste yanked files                                                      |
@@ -165,14 +168,17 @@ To interact with selected files/directories use any of the commands below.
 | <kbd>D</kbd>                        | Permanently delete selected files                                       |
 | <kbd>a</kbd>                        | Create a file (ends with / for directories)                             |
 | <kbd>r</kbd>                        | Rename selected file(s)                                                 |
-| <kbd>;</kbd>                        | Run a shell command                                                     |
-| <kbd>:</kbd>                        | Run a shell command (block until finishes)                              |
 | <kbd>.</kbd>                        | Toggle the visibility of hidden files                                   |
-| <kbd>-</kbd>                        | Symlink the absolute path of yanked files                               |
-| <kbd>\_</kbd>                       | Symlink the relative path of yanked files                               |
-| <kbd>Ctrl</kbd> + <kbd>-</kbd>      | Hardlink yanked files                                                   |
-| <kbd>z</kbd>                        | Jump to a directory using zoxide                                        |
-| <kbd>Z</kbd>                        | Jump to a directory or reveal a file using fzf                          |
+
+Further file operation commands can be found in the table below.
+
+| Key binding                    | Action                                     |
+| ------------------------------ | ------------------------------------------ |
+| <kbd>;</kbd>                   | Run a shell command                        |
+| <kbd>:</kbd>                   | Run a shell command (block until finishes) |
+| <kbd>-</kbd>                   | Symlink the absolute path of yanked files  |
+| <kbd>\_</kbd>                  | Symlink the relative path of yanked files  |
+| <kbd>Ctrl</kbd> + <kbd>-</kbd> | Hardlink yanked files                      |
 
 ### Copy paths
 
