@@ -13,6 +13,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 
 - [\[manager\]](#manager) - File list.
 - [\[tasks\]](#tasks) - Task manager.
+- [\[spot\]](#spot) - File information spotter.
 - [\[pick\]](#pick) - Pick component. e.g. "open with" for files.
 - [\[input\]](#input) - Input component. e.g. create, rename, etc.
 - [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
@@ -523,6 +524,44 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 ### `noop` {#tasks.noop}
 
 See [`noop` command](#manager.noop).
+
+## [spot] {#spot}
+
+### `close` {#spot.close}
+
+Hide the spotter.
+
+### `arrow` {#spot.arrow}
+
+| Argument/Option | Description                                                                           |
+| --------------- | ------------------------------------------------------------------------------------- |
+| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+
+### `swipe` {#spot.swipe}
+
+| Argument/Option | Description                                                                                  |
+| --------------- | -------------------------------------------------------------------------------------------- |
+| `[n]`           | Swipe `n` files up or down in the file list. Negative value for up, positive value for down. |
+
+### `copy` {#spot.copy}
+
+Copy the content from the spotter.
+
+| Argument/Option | Description                  |
+| --------------- | ---------------------------- |
+| `cell`          | Copy the selected table cell |
+
+### `plugin` {#spot.plugin}
+
+See [Functional plugin](/docs/plugins/overview#functional-plugin).
+
+### `noop` {#spot.noop}
+
+See [`noop` command](#manager.noop).
+
+### `help` {#spot.help}
+
+Open the help menu.
 
 ## [pick] {#pick}
 
