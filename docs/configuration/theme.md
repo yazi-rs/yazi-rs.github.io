@@ -123,7 +123,7 @@ Permissions
 - perm_exec (Style): Execute permission.
 - perm_sep (Style): `-` separator.
 
-## [select] {#select}
+## [pick] {#pick}
 
 - border (Style): Border style.
 - active (Style): Selected item style.

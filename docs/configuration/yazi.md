@@ -477,7 +477,7 @@ Some inputs have special placeholders that will be replaced with actual content 
 
 Same as the [`[input]`](#input) section. There are a few available: `trash`, `delete`, `overwrite` and `quit`.
 
-## [select] {#select}
+## [pick] {#pick}
 
 Same as the [`[input]`](#input) section. Available selectors: `open`.
 
