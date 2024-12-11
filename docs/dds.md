@@ -22,11 +22,12 @@ It deeply integrates with a publish-subscribe model based on the Lua API.
 
 The DDS has three usage:
 
-- [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the carrier.
-- [Command-line tool](#cli): Using `ya` command-line tool as the carrier.
+- [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the message carrier.
+- [`ya pub` and `ya pub-to`](#ya-pub): Using `ya` CLI tool as the message carrier.
+- [`ya emit` and `ya emit-to`](#ya-emit): Using `ya` CLI tool as the command carrier.
 - [Real-time `stdout` reporting](#stdout-reporting): Using `stdout` as the carrier.
 
-### Command-line tool {#cli}
+### `ya pub` and `ya pub-to` {#ya-pub}
 
 If you're in a Yazi subshell where the `$YAZI_ID` environment variable is set, you can send a message to the current instance using `ya pub`.
 It requires a `kind` argument, which is consistent with [`ps.pub()`](/docs/plugins/utils#ps.pub):
@@ -49,7 +50,7 @@ ya pub-to <receiver> <kind> --json '{"key":"json body"}'
 
 # If you're in a Yazi subshell,
 # you can obtain the ID of the current instance through `$YAZI_ID`.
-ya pub-to "$YAZI_ID" dds-cd --str "/root"
+ya pub-to "$YAZI_ID" my-event --str "Hello world!"
 ```
 
 For greater convenience in integrating within the command-line environment, they support two body formats:
@@ -58,7 +59,34 @@ For greater convenience in integrating within the command-line environment, they
 - List: An array of strings, it is useful for carrying a file list to the message, through `$@` in your shell
 - JSON: for advanced needs, support for types and more complex data can be represented through the JSON format
 
-Note that `ya` is a standalone CLI program introduced since Yazi 0.2.5, it might conflict with the shell wrapper you setup before, see [Introduce a standalone CLI program](https://github.com/sxyazi/yazi/issues/914) for details.
+### `ya emit` and `ya emit-to` {#ya-emit}
+
+If you're in a Yazi subshell where the `$YAZI_ID` environment variable is set, you can use `ya emit` to send a command to the current instance for execution.
+
+The command format is the same as what you'd write in the [`keymap.toml`](/docs/configuration/keymap):
+
+```sh
+ya emit <command> <args>
+```
+
+For example:
+
+```sh
+ya emit cd /tmp
+ya emit reveal /tmp/foo
+```
+
+You can also send commands to a specific remote instance using `ya emit-to`:
+
+```sh
+ya emit-to <receiver> <command> <args>
+```
+
+For example:
+
+```sh
+ya emit-to "$YAZI_ID" cd /tmp
+```
 
 ### Real-time `stdout` reporting {#stdout-reporting}
 
@@ -368,9 +396,9 @@ System reserves kind.
 
 ### `dds.lua` {#dds.lua}
 
-This plugin provides the `dds-cd` event kind, which accepts a string URL and changes the CWD to that URL when it is received.
+This plugin provides a `dds-emit` event kind, which is used for the implementation of the `ya emit` subcommand — `ya emit` is a shorthand for `ya pub`, and the emitted command will be converted into an equivalent `ya pub` event message.
 
-This is useful for synchronizing the CWD of the current Yazi instance when exiting from a subshell:
+With `ya emit`, you can implement many interesting features, such as synchronizing the CWD of the current Yazi instance when exiting from a subshell:
 
 <Tabs>
   <TabItem value="Zsh" label="Zsh" default>
@@ -379,7 +407,7 @@ This is useful for synchronizing the CWD of the current Yazi instance when exiti
 # Change Yazi's CWD to PWD on subshell exit
 if [[ -n "$YAZI_ID" ]]; then
 	function _yazi_cd() {
-		ya pub dds-cd --str "$PWD"
+		ya emit cd "$PWD"
 	}
 	add-zsh-hook zshexit _yazi_cd
 fi
@@ -391,7 +419,7 @@ fi
 ```sh
 # Change Yazi's CWD to PWD on subshell exit
 if [ -n "$YAZI_ID" ]
-	trap 'ya pub dds-cd --str "$PWD"' EXIT
+	trap 'ya emit cd "$PWD"' EXIT
 end
 ```
 
