@@ -30,7 +30,6 @@ Media:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
 - [mediainfo.yazi](https://github.com/Ape/mediainfo.yazi) - Preview image, audio, video, and subtitle files using `ffmpegthumbnailer` and `mediainfo`.
-- [video-ffmpeg.yazi](https://github.com/Tyarel8/video-ffmpeg.yazi) - Use `ffmpeg` to preview video thumbnails instead of `ffmpegthumbnailer` since ffmpeg is also available on Windows.
 
 Archives:
 
@@ -66,7 +65,7 @@ Bookmarks:
 - [bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi) - A Yazi plugin that adds the basic functionality of Vi-like marks.
 - [mactag.yazi](https://github.com/yazi-rs/plugins/tree/main/mactag.yazi) - Bring macOS's awesome tagging feature to Yazi! The plugin is only available for macOS just like the name says.
 - [yamb.yazi](https://github.com/h-hg/yamb.yazi) - Yet another bookmarks plugins. It supports persistence, jumping by a key, jumping by [fzf](https://github.com/junegunn/fzf).
-- [bunny.yazi](https://github.com/stelcodes/bunny.yazi) - Simple bookmarks menu with fuzzy searching and an option to mark a single directory. 
+- [bunny.yazi](https://github.com/stelcodes/bunny.yazi) - Simple bookmarks menu with fuzzy searching and an option to mark a single directory.
 
 Tabs:
 
@@ -86,7 +85,7 @@ File actions:
 - [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
 - [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
 - [restore.yazi](https://github.com/boydaihungst/restore.yazi) - Restore/recover latest deleted files/folders using `trash-cli`.
-- [simple-mtpfs.yazi](https://github.com/boydaihungst/simple-mtpfs.yazi) -  Mounting MTP devices (Android, Camera, etc) using `simple-mtpfs` (for Linux only).
+- [simple-mtpfs.yazi](https://github.com/boydaihungst/simple-mtpfs.yazi) - Mounting MTP devices (Android, Camera, etc) using `simple-mtpfs` (for Linux only).
 
 Clipboard:
 
