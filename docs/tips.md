@@ -408,8 +408,6 @@ Credits to [@UncleGravity for sharing it](https://discord.com/channels/113620360
 
 ## Specify a different editor for bulk renaming {#bulk-editor}
 
-**This tip currently requires Yazi nightly version.**
-
 For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs/configuration/yazi#open) rules with:
 
 |         | Value               |

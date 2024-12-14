@@ -470,8 +470,6 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#manager.noop}
 
-**Note**: This command is introduced in the upcoming v0.4 and currently requires the nightly build.
-
 If you want to disable certain preset keybindings without rewriting the entire `keymap`, you can use the virtual `noop` command.
 
 For example, to disable the default keybinding of <kbd>g</kbd> ⇒ <kbd>c</kbd>, use:
