@@ -96,6 +96,7 @@ Highlighting: The built-in syntax highlighting feature
 - syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor, as flavors always use their own tmTheme files `tmtheme.xml`.
 
   Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
+
 ## [mode] {#mode}
 
 Normal mode
