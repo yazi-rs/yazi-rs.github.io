@@ -96,18 +96,28 @@ Highlighting: The built-in syntax highlighting feature
 - syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor, as flavors always use their own tmTheme files `tmtheme.xml`.
 
   Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
+## [mode] {#mode}
+
+Normal mode
+
+- normal_main (Style): Normal mode main style.
+- normal_alt (Style): Normal mode alt style.
+
+Select mode
+
+- select_main (Style): Select mode main style.
+- select_alt (Style): Select mode alt style.
+
+Unset mode
+
+- unset_main (Style): Unset mode main style.
+- unset_alt (Style): Unset mode alt style.
 
 ## [status] {#status}
 
 - separator_open (String): Opening separator symbol. e.g. `"["`.
 - separator_close (String): Closing separator symbol. e.g. `"]"`.
 - separator_style (Style): Separator style.
-
-Mode
-
-- mode_normal (Style): Normal mode style.
-- mode_select (Style): Select mode style.
-- mode_unset (Style): Unset mode style.
 
 Progress
 
