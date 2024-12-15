@@ -102,17 +102,17 @@ Highlighting: The built-in syntax highlighting feature
 Normal mode
 
 - normal_main (Style): Normal mode main style.
-- normal_alt (Style): Normal mode alt style.
+- normal_alt (Style): Normal mode alternative style.
 
 Select mode
 
 - select_main (Style): Select mode main style.
-- select_alt (Style): Select mode alt style.
+- select_alt (Style): Select mode alternative style.
 
 Unset mode
 
 - unset_main (Style): Unset mode main style.
-- unset_alt (Style): Unset mode alt style.
+- unset_alt (Style): Unset mode alternative style.
 
 ## [status] {#status}
 
