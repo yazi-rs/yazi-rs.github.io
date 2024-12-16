@@ -64,6 +64,25 @@ def --env y [...args] {
 ```
 
   </TabItem>
+  <TabItem value="elvish" label="Elvish">
+
+```elvish
+edit:add-var y~ {|@argv|
+	use str
+	use os
+	use file
+	var tmp = (os:temp-file)
+	yazi $@argv --cwd-file=$tmp[name]
+	var cwd = (str:trim-space (slurp < $tmp))
+	file:close $tmp
+	os:remove $tmp[name]
+	if (and (not-eq $cwd '') (not-eq $cwd $pwd)) {
+		cd $cwd
+	}
+}
+```
+
+  </TabItem>
   <TabItem value="powershell" label="PowerShell">
 
 ```powershell
