@@ -50,11 +50,26 @@ Where:
 
 ## Usage {#usage}
 
-For example, if you want to use the `bar.yazi` flavor, set the content of your `theme.toml` to:
+For example, if you want to use the `bar.yazi` flavor in _dark_ mode, set the content of your `theme.toml` to:
 
 ```toml
 [flavor]
-use = "bar"
+dark = "bar"
+```
+
+or use it in _light_ mode:
+
+```toml
+[flavor]
+light = "bar"
+```
+
+If you want to use the `bar.yazi` flavor in both _dark_ and _light_ modes:
+
+```toml
+[flavor]
+dark  = "bar"
+light = "bar"
 ```
 
 Make sure your `theme.toml` doesn't contain anything other than `[flavor]`, unless you want to override certain styles of the `bar.yazi` flavor.
