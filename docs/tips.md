@@ -210,6 +210,27 @@ run = '''
 
 Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
 
+## Browse hovered file or directory in Git repository on Github {#browse-on-github}
+
+```toml
+[[manager.prepend_keymap]]
+on = [ "g", "b"]
+run = '''
+    shell 'gh browse .'
+desc = "Browse cwd on Github."
+'''
+
+[[manager.prepend_keymap]]
+on = [ "g", "f"]
+run = '''
+    shell 'gh browse $(git ls-files $0) --branch=$(git branch --show-current)'
+'''
+desc = "Browse hovered file on Github."
+'''
+```
+
+Browse hovered file/directory inside Git repository using [gh](https://cli.github.com/manual/gh_browse) on Github.
+
 ## Unix: Add subtitle to the running MPV {#mpv-subtitle}
 
 Add these lines to your `~/.config/yazi/yazi.toml`:
