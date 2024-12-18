@@ -204,7 +204,7 @@ run = [ '''
 [[manager.prepend_keymap]]
 on = [ "g", "r" ]
 run = '''
-	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"'
+	shell 'ya emit cd "$(git rev-parse --show-toplevel)"'
 '''
 ```
 
