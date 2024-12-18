@@ -121,6 +121,30 @@ run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 ```
 
+## Switch & create tabs: {#switch-create-tab}
+
+Save these lines as `~/.config/yazi/plugins/switch-create-tab.yazi/init.lua`:
+
+```lua
+local function entry(_, args)
+  for _ = #cx.tabs, args[1] do
+    ya.manager_emit("tab_create", { current = true })
+  end
+  ya.manager_emit("tab_switch", { args[1] })
+end
+
+return { entry = entry }
+```
+
+Then bind it for <kbd>2</kbd> key or any number key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on = [ "2" ]
+run = "plugin --sync switch-create-tab --args=1"
+desc = "Create a new tab using the current path and switch to it"
+```
+
 ## Folder-specific rules {#folder-rules}
 
 You can subscribe to directory change events through the [`cd` event provided by DDS](/docs/dds#cd), and then do any action you want, such as setting different sorting methods for specific directories.
@@ -209,6 +233,26 @@ run = '''
 ```
 
 Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
+
+## Browse hovered file or directory in Git repository on Github {#browse-on-github}
+
+```toml
+[[manager.prepend_keymap]]
+on = [ "g", "b"]
+run = '''
+    shell 'gh browse .'
+desc = "Browse cwd on Github."
+'''
+
+[[manager.prepend_keymap]]
+on = [ "g", "f"]
+run = '''
+    shell 'gh browse $(git ls-files $0) --branch=$(git branch --show-current)'
+'''
+desc = "Browse hovered file on Github."
+```
+
+Browse hovered file/directory inside Git repository using [gh](https://cli.github.com/manual/gh_browse) on Github.
 
 ## Unix: Add subtitle to the running MPV {#mpv-subtitle}
 
