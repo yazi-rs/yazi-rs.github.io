@@ -431,6 +431,12 @@ name = "bulk-rename.txt"
 use  = "bulk-rename"
 ```
 
+## Linux: Yazi as your system file chooser {#system-chooser}
+
+The `xdg-desktop-portal-termfilechooser` backend lets you replace the default file picker with Yazi, providing seamless integration with applications, such as Firefox.
+
+For installation steps, refer to the [installation guide](https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser?tab=readme-ov-file#installation) and additional instructions available there.
+
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
 
 Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
