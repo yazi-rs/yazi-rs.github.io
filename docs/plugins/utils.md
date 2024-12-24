@@ -230,6 +230,14 @@ This function is only available in the async context.
 
 This function is only available in the async context.
 
+### `target_family()` {#ya.target_family}
+
+Returns the family of the operating system. Some possible values:
+
+- `"unix"`
+- `"windows"`
+- `"wasm"`
+
 ### `target_os()` {#ya.target_os}
 
 Returns a string describing the specific operating system in use. Some possible values:
@@ -244,14 +252,6 @@ Returns a string describing the specific operating system in use. Some possible 
 - `"solaris"`
 - `"android"`
 - `"windows"`
-
-### `target_family()` {#ya.target_family}
-
-Returns the family of the operating system. Some possible values:
-
-- `"unix"`
-- `"windows"`
-- `"wasm"`
 
 ### `hash(str)` {#ya.hash}
 
