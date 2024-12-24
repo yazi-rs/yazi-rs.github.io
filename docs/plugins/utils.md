@@ -34,7 +34,7 @@ Calculate the cached [Url](/docs/plugins/types#shared.url) corresponding to the 
   - `file`: The [File](/docs/plugins/types#shared.file) to be cached.
   - `skip`: The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos.
 
-If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
+If the file is not allowed to be cached, such as when it's ignored in the user config, or the file itself is a cache, returns `nil`.
 
 ### `render()` {#ya.render}
 
@@ -112,10 +112,10 @@ Request user input:
   - `value`: Optional, the default value of the input, which is a string.
   - `position`: Required, the position of the input, which is a table:
     - `1`: Required, the origin position of the input, which is a string accepts `"top-left"`, `"top-center"`, `"top-right"`, `"bottom-left"`, `"bottom-center"`, `"bottom-right"`, `"center"`, and `"hovered"`.
-    - `x`: Optional, the X offset from the origin position, which is an positive or negative integer.
-    - `y`: Optional, the Y offset from the origin position, which is an positive or negative integer.
-    - `w`: Required, the width of the input, which is an positive integer.
-    - `h`: Optional, the height of the input, which is an positive integer.
+    - `x`: Optional, the X offset from the origin position, which is a positive or negative integer.
+    - `y`: Optional, the Y offset from the origin position, which is a positive or negative integer.
+    - `w`: Required, the width of the input, which is a positive integer.
+    - `h`: Optional, the height of the input, which is a positive integer.
   - `realtime`: Optional, whether to report user input in real time, which is a boolean.
   - `debounce`: Optional, the number of seconds to wait for the user to stop typing, which is a positive float. Can only be used when `realtime = true`.
 
@@ -163,7 +163,7 @@ Send a foreground notification to the user:
 - `opts`: Required, the options of the notification, which is a table:
   - `title`: Required, the title of the notification, which is a string.
   - `content`: Required, the content of the notification, which is a string.
-  - `timeout`: Required, the timeout of the notification, which is an non-negative float in seconds.
+  - `timeout`: Required, the timeout of the notification, which is a non-negative float in seconds.
   - `level`: Optional, the level of the notification, which is a string accepts `"info"`, `"warn"`, and `"error"`. Default is `"info"`.
 
 ```lua
@@ -216,7 +216,7 @@ Preview the file as code into the specified area:
 Returns `(err, upper_bound)`:
 
 - `err`: Error string if the preview fails; otherwise, `nil`.
-- `upper_bound`: If the preview fails and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
+- `upper_bound`: If the preview fails, and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
 This function is only available in the async context.
 
@@ -316,17 +316,17 @@ This function is only available in the async context.
 
 ### `uid()` {#ya.uid}
 
-Only available on Unix-like systems. Returns the user id of the current user, which is an integer.
+Only available on Unix-like systems. Returns the user ID of the current user, which is an integer.
 
 ### `gid()` {#ya.gid}
 
-Only available on Unix-like systems. Returns the group id of the current user, which is an integer.
+Only available on Unix-like systems. Returns the group ID of the current user, which is an integer.
 
 ### `user_name(uid)` {#ya.user_name}
 
 Get the name of the user:
 
-- `uid`: Optional, the user id of the user, which is an integer. If not set, it will use the current user's id.
+- `uid`: Optional, the user ID of the user, which is an integer. If not set, it will use the current user's ID.
 
 Returns the name of the current user, which is a string if successful; otherwise, `nil`.
 
@@ -336,7 +336,7 @@ This function is only available on Unix-like systems.
 
 Get the name of the user group:
 
-- `gid`: Optional, the group id of the user, which is an integer. If not set, it will use the current user's group id.
+- `gid`: Optional, the group ID of the user, which is an integer. If not set, it will use the current user's group ID.
 
 Returns the name of the current group, which is a string if successful; otherwise, `nil`.
 
@@ -378,7 +378,7 @@ Publish a message to a specific instance with `receiver` as the ID:
 
 With:
 
-- `receiver`: Required, ID of the remote instance, which is a integer; if it's `0` then broadcasting to all remote instances.
+- `receiver`: Required, ID of the remote instance, which is an integer; if it's `0` then broadcasting to all remote instances.
 - `kind`: The same as `pub()`.
 - `value`: The same as `pub()`.
 
