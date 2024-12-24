@@ -282,22 +282,6 @@ Truncate the text to the specified length and return it:
   - `max`: Required, the maximum length of the text, which is an integer.
   - `rtl`: Optional, whether the text is right-to-left, which is a boolean.
 
-### `clipboard(text)` {#ya.clipboard}
-
-Get or set the content of the system clipboard.
-
-- `text`: Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
-
-```lua
--- Get contents from the clipboard
-local content = ya.clipboard()
-
--- Set contents to the clipboard
-ya.clipboard("new content")
-```
-
-This function is only available in the async context.
-
 ### `time()` {#ya.time}
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
@@ -345,6 +329,22 @@ This function is only available on Unix-like systems.
 ### `host_name()` {#ya.host_name}
 
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
+
+### `clipboard(text)` {#ya.clipboard}
+
+Get or set the content of the system clipboard.
+
+- `text`: Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
+
+```lua
+-- Get contents from the clipboard
+local content = ya.clipboard()
+
+-- Set contents to the clipboard
+ya.clipboard("new content")
+```
+
+This function is only available in the async context.
 
 ## ps {#ps}
 
@@ -426,43 +426,6 @@ Unsubscribe from remote messages of this `kind`:
 
 The following functions can only be used within an async context.
 
-### `cwd()` {#fs.cwd}
-
-```lua
-local current_working_directory = fs.cwd()
-```
-
-Get the [Url](/docs/plugins/types#shared.url) of the current working directory.
-Most of the time, it is very unlikely that you will need this API, as the
-current working directory obtained is likely to be out of date when the user
-takes an action.
-You should be using [`cx.active.current.cwd`](/docs/plugins/types#app-data.folder-folder) instead.
-This function just fills the gap as Lua lacks a [`getcwd`](https://man7.org/linux/man-pages/man3/getcwd.3.html) API.
-It is useful if you just need a valid directory as the current working directory
-of a process to start some work that doesn't depend on the current working directory,
-like in the example [here](https://github.com/sxyazi/yazi/blob/d746ae8338112ff27b56bedf4da9e8764fb5f7da/yazi-plugin/preset/plugins/zoxide.lua#L70).
-
-Returns `(url, err)`
-
-- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
-
-### `cha(url, follow)` {#fs.cha}
-
-```lua
-local cha, err = fs.cha(url)
-```
-
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
-
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
-- `follow`: Optional, whether to follow the symbolic link, which is a boolean.
-
-Returns `(cha, err)`:
-
-- `cha`: The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
-
 ### `write(url, data)` {#fs.write}
 
 ```lua
@@ -473,24 +436,6 @@ Write data to the specified file:
 
 - `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
 - `data`: Required, the data to be written, which is a string.
-
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
-
-### `create(type, url)` {#fs.create}
-
-```lua
-local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
-```
-
-Create the specified file(s) in the filesystem.
-
-- `type`: Required, the type of creation, which can be:
-  - `"dir"`: Create an empty directory.
-  - `"dir_all"`: Recursive creates all the directories needed for the given path to exist.
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
 
 Returns `(ok, err)`:
 
@@ -534,6 +479,61 @@ Reads the contents of a directory:
 Returns `(files, err)`:
 
 - `files`: A table of [File](/docs/plugins/types#shared.file) if successful; otherwise, `nil`.
+- `err`: The error code if the operation is failed, which is an integer if any.
+
+### `cha(url, follow)` {#fs.cha}
+
+```lua
+local cha, err = fs.cha(url)
+```
+
+Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
+
+- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
+- `follow`: Optional, whether to follow the symbolic link, which is a boolean.
+
+Returns `(cha, err)`:
+
+- `cha`: The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`.
+- `err`: The error code if the operation is failed, which is an integer if any.
+
+### `cwd()` {#fs.cwd}
+
+```lua
+local current_working_directory = fs.cwd()
+```
+
+Get the [Url](/docs/plugins/types#shared.url) of the current working directory.
+Most of the time, it is very unlikely that you will need this API, as the
+current working directory obtained is likely to be out of date when the user
+takes an action.
+You should be using [`cx.active.current.cwd`](/docs/plugins/types#app-data.folder-folder) instead.
+This function just fills the gap as Lua lacks a [`getcwd`](https://man7.org/linux/man-pages/man3/getcwd.3.html) API.
+It is useful if you just need a valid directory as the current working directory
+of a process to start some work that doesn't depend on the current working directory,
+like in the example [here](https://github.com/sxyazi/yazi/blob/d746ae8338112ff27b56bedf4da9e8764fb5f7da/yazi-plugin/preset/plugins/zoxide.lua#L70).
+
+Returns `(url, err)`
+
+- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
+- `err`: The error code if the operation is failed, which is an integer if any.
+
+### `create(type, url)` {#fs.create}
+
+```lua
+local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
+```
+
+Create the specified file(s) in the filesystem.
+
+- `type`: Required, the type of creation, which can be:
+  - `"dir"`: Create an empty directory.
+  - `"dir_all"`: Recursive creates all the directories needed for the given path to exist.
+- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation is successful, which is a boolean.
 - `err`: The error code if the operation is failed, which is an integer if any.
 
 ### `unique_name(url)`
