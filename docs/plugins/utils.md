@@ -209,10 +209,10 @@ See [Async context](/docs/plugins/overview#async-context).
 Preview the file as code into the specified area:
 
 - `opts`: Required, the options of the preview, which is a table:
-  - `file`: The previewed [File](/docs/plugins/types#shared.file).
-  - `area`: The area of the preview, which is a [Rect](/docs/plugins/layout#rect).
-  - `skip`: The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos.
-  - `window`: The [Window](/docs/plugins/types#shared.window) of the preview.
+  - `area`: [Rect](/docs/plugins/layout#rect) of the available preview area.
+  - `file`: [File](/docs/plugins/types#shared.file) to be previewed.
+  - `mime`: String of the MIME type of the file.
+  - `skip`: Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos.
 
 Returns `(err, upper_bound)`:
 
@@ -224,9 +224,10 @@ This function is only available in the async context.
 ### `preview_widgets(opts, widgets)` {#ya.preview_widgets}
 
 - `opts`: Required, the options of the preview, which is a table:
-  - `file`: The previewed [File](/docs/plugins/types#shared.file).
-  - `skip`: The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos.
-  - `window`: The [Window](/docs/plugins/types#shared.window) of the preview.
+  - `area`: [Rect](/docs/plugins/layout#rect) of the available preview area.
+  - `file`: [File](/docs/plugins/types#shared.file) to be previewed.
+  - `mime`: String of the MIME type of the file.
+  - `skip`: Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos.
 - `widgets`: List of renderable widgets, such as `{ ui.Text {...}, ui.List {...}, ... }`.
 
 This function is only available in the async context.

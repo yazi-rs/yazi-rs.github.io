@@ -444,6 +444,8 @@ If neither `[path]` nor `--current` is specified, will use the startup directory
 | --------------- | ----------------------------------------------- |
 | `[n]`           | Close the tab at position `n`, starting from 0. |
 
+If you want to close the current tab, use the [`close`](/docs/configuration/keymap/#manager.close) command instead.
+
 ### `tab_switch` {#manager.tab_switch}
 
 | Argument/Option | Description                                                                                                              |
