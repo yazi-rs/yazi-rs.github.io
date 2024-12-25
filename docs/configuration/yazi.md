@@ -369,7 +369,7 @@ If your `append_previewers` contains wildcard `name` rules (`"*"` or `"*/"`), th
 
 Yazi comes with the these previewer plugins:
 
-- folder: bridge between the Yazi file system and the preview
+- folder: bridge between the Yazi filesystem and the preview
 - code: bridge between built-in code highlighting and the preview, providing async concurrent rendering
 - json: bridge between `jq` and the preview, providing async concurrent rendering
 - noop: no operation
