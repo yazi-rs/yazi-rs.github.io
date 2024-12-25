@@ -189,8 +189,6 @@ ya.dbg("Hello", "World!")                       -- Multiple arguments are suppor
 ya.dbg({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-Note that if you use a release build of Yazi, the log level is "error" instead of "debug", so you'll need to use [`ya.err`](#ya.err).
-
 ### `err(msg, ...)` {#ya.err}
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the error level:
@@ -448,7 +446,7 @@ Write data to the specified file:
 Returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `remove(type, url)` {#fs.remove}
 
@@ -468,7 +466,7 @@ Remove the specified file(s) from the filesystem:
 Returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `read_dir(url, options)` {#fs.read_dir}
 
@@ -487,7 +485,7 @@ Reads the contents of a directory:
 Returns `(files, err)`:
 
 - `files`: A table of [File](/docs/plugins/types#shared.file) if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `cha(url, follow)` {#fs.cha}
 
@@ -503,7 +501,7 @@ Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
 Returns `(cha, err)`:
 
 - `cha`: The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `cwd()` {#fs.cwd}
 
@@ -511,18 +509,18 @@ Returns `(cha, err)`:
 local url, err = fs.cwd()
 ```
 
-This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call.
+This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call:
+
+Returns `(url, err)`:
+
+- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-folder], which is the current directory where the user is working.
 
 Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
 
 So, there may be some delay, which is particularly noticeable on slow devices. For example, when an HDD wakes up from sleep, it typically takes 3~4 seconds.
-
-Returns `(url, err)`:
-
-- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
 
 It is useful if you just need a valid directory as the CWD of a process to start some work that doesn't depend on the CWD.
 
@@ -683,7 +681,7 @@ local child, err = Command("ls"):spawn()
 Spawn the command, returns `(child, err)`:
 
 - `child`: The [Child](#child) of the command if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `output()` {#Command.output}
 
@@ -694,7 +692,7 @@ local output, err = Command("ls"):output()
 Spawn the command and wait for it to finish, returns `(output, err)`:
 
 - `output`: The [Output](#output) of the command if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `status()` {#Command.status}
 
@@ -705,7 +703,7 @@ local status, err = Command("ls"):status()
 Executes the command as a child process, waiting for it to finish and collecting its exit status. Returns `(status, err)`:
 
 - `status`: The [Status](#status) of the child process if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ## Child
 
@@ -758,7 +756,7 @@ local status, err = child:wait()
 Wait for the child process to finish, returns `(status, err)`:
 
 - `status`: The [Status](#status) of the child process if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `wait_with_output()` {#Child.wait_with_output}
 
@@ -769,7 +767,7 @@ local output, err = child:wait_with_output()
 Wait for the child process to finish and get the output, returns `(output, err)`:
 
 - `output`: The [Output](#output) of the child process if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `start_kill()` {#Child.start_kill}
 
@@ -780,7 +778,7 @@ local ok, err = child:start_kill()
 Send a SIGTERM signal to the child process, returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `take_stdin()` {#Child.take_stdin}
 
@@ -827,7 +825,7 @@ local ok, err = child:write_all(src)
 Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 Please ensure that the child's stdin is available when calling this method, specifically:
 
@@ -845,7 +843,7 @@ local ok, err = child:flush()
 Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 Please ensure that the child's stdin is available when calling this method, specifically:
 

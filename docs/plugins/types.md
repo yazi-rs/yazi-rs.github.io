@@ -7,6 +7,43 @@ description: Learn how to use Yazi's Lua API.
 
 ## Shared {#shared}
 
+### Url {#shared.url}
+
+Create a Url:
+
+```lua
+-- regular file
+local url = Url("/root/Downloads/logo.png")
+
+-- `bgm.mp3` from the archive `ost.zip`
+local url = Url("archive:///root/ost.zip#bgm.mp3")
+```
+
+Properties:
+
+- `frag` - The fragment string of the url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
+- `is_regular` - Whether the file represented by the url is a regular file
+- `is_search` - Whether the file represented by the url from the search result
+- `is_archive` - Whether the file represented by the url from an archive
+- `is_absolute` - Whether the path represented by the url is absolute
+- `has_root` - Whether the path represented by the url has a root
+
+Methods:
+
+- `name()` - Returns the filename in string if any, otherwise `nil`
+- `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
+- `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
+- `parent()` - Returns parent directory `Url` if any, otherwise `nil`
+- `starts_with(url)` - Whether the url starts with another `Url` or a string of url
+- `ends_with(url)` - Whether the url ends with another `Url` or a string of url
+- `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`
+
+Meta methods:
+
+- `__eq(another_url)`
+- `__tostring()`
+- `__concat(string)`
+
 ### Cha {#shared.cha}
 
 Cha means one file's characteristics with the following properties:
@@ -53,46 +90,20 @@ Properties:
 - `text` - The text of this icon
 - `style` - The [Style](/docs/plugins/layout#style) of this icon
 
-### Range {#shared.range}
-
-TODO
-
-### Url {#shared.url}
-
-Create a Url:
-
-```lua
--- regular file
-local url = Url("/root/Downloads/logo.png")
-
--- `bgm.mp3` from the archive `ost.zip`
-local url = Url("archive:///root/ost.zip#bgm.mp3")
-```
+### Error {#shared.error}
 
 Properties:
 
-- `frag` - The fragment string of the url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
-- `is_regular` - Whether the file represented by the url is a regular file
-- `is_search` - Whether the file represented by the url from the search result
-- `is_archive` - Whether the file represented by the url from an archive
-- `is_absolute` - Whether the path represented by the url is absolute
-- `has_root` - Whether the path represented by the url has a root
-
-Methods:
-
-- `name()` - Returns the filename in string if any, otherwise `nil`
-- `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
-- `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
-- `parent()` - Returns parent directory `Url` if any, otherwise `nil`
-- `starts_with(url)` - Whether the url starts with another `Url` or a string of url
-- `ends_with(url)` - Whether the url ends with another `Url` or a string of url
-- `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`
+- `code`: The raw error code if any, otherwise `nil`, which is a integer.
 
 Meta methods:
 
-- `__eq(another_url)`
 - `__tostring()`
 - `__concat(string)`
+
+### Range {#shared.range}
+
+TODO
 
 ### Window {#shared.window}
 
