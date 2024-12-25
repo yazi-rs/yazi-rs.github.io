@@ -16,6 +16,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[spot\]](#spot) - File information spotter.
 - [\[pick\]](#pick) - Pick component. e.g. "open with" for files.
 - [\[input\]](#input) - Input component. e.g. create, rename, etc.
+- [\[confirm\]](#confirm) - Confirmation dialog. e.g. remove, overwrite, etc.
 - [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
 - [\[help\]](#help) - Help menu.
 
