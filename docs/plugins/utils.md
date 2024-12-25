@@ -200,10 +200,6 @@ ya.err("Hello", "World!")                       -- Multiple arguments are suppor
 ya.err({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-### `sync(fn)` {#ya.sync}
-
-See [Async context](/docs/plugins/overview#async-context).
-
 ### `preview_code(opts)` {#ya.preview_code}
 
 Preview the file as code into the specified area:
@@ -232,13 +228,9 @@ This function is only available in the async context.
 
 This function is only available in the async context.
 
-### `target_family()` {#ya.target_family}
+### `sync(fn)` {#ya.sync}
 
-Returns the family of the operating system. Some possible values:
-
-- `"unix"`
-- `"windows"`
-- `"wasm"`
+See [Async context](/docs/plugins/overview#async-context).
 
 ### `target_os()` {#ya.target_os}
 
@@ -254,6 +246,14 @@ Returns a string describing the specific operating system in use. Some possible 
 - `"solaris"`
 - `"android"`
 - `"windows"`
+
+### `target_family()` {#ya.target_family}
+
+Returns the family of the operating system. Some possible values:
+
+- `"unix"`
+- `"windows"`
+- `"wasm"`
 
 ### `hash(str)` {#ya.hash}
 
@@ -287,6 +287,22 @@ Truncate the text to the specified length and return it:
 - `opts`: Required, the options of the truncation, which is a table:
   - `max`: Required, the maximum length of the text, which is an integer.
   - `rtl`: Optional, whether the text is right-to-left, which is a boolean.
+
+### `clipboard(text)` {#ya.clipboard}
+
+Get or set the content of the system clipboard.
+
+- `text`: Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
+
+```lua
+-- Get contents from the clipboard
+local content = ya.clipboard()
+
+-- Set contents to the clipboard
+ya.clipboard("new content")
+```
+
+This function is only available in the async context.
 
 ### `time()` {#ya.time}
 
@@ -335,22 +351,6 @@ This function is only available on Unix-like systems.
 ### `host_name()` {#ya.host_name}
 
 Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
-
-### `clipboard(text)` {#ya.clipboard}
-
-Get or set the content of the system clipboard.
-
-- `text`: Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
-
-```lua
--- Get contents from the clipboard
-local content = ya.clipboard()
-
--- Set contents to the clipboard
-ya.clipboard("new content")
-```
-
-This function is only available in the async context.
 
 ## ps {#ps}
 
@@ -433,6 +433,47 @@ Unsubscribe from remote messages of this `kind`:
 
 The following functions can only be used within an async context.
 
+### `cwd()` {#fs.cwd}
+
+```lua
+local url, err = fs.cwd()
+```
+
+This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call:
+
+Returns `(url, err)`:
+
+- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+
+You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-folder], which is the current directory where the user is working.
+
+Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
+
+So, there may be some delay, which is particularly noticeable on slow devices. For example, when an HDD wakes up from sleep, it typically takes 3~4 seconds.
+
+It is useful if you just need a valid directory as the CWD of a process to start some work that doesn't depend on the CWD.
+
+[getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
+[chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
+[folder-folder]: /docs/plugins/types#app-data.folder-folder
+
+### `cha(url, follow)` {#fs.cha}
+
+```lua
+local cha, err = fs.cha(url)
+```
+
+Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
+
+- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
+- `follow`: Optional, whether to follow the symbolic link, which is a boolean.
+
+Returns `(cha, err)`:
+
+- `cha`: The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+
 ### `write(url, data)` {#fs.write}
 
 ```lua
@@ -443,6 +484,24 @@ Write data to the specified file:
 
 - `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
 - `data`: Required, the data to be written, which is a string.
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation is successful, which is a boolean.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+
+### `create(type, url)` {#fs.create}
+
+```lua
+local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
+```
+
+Create the specified file(s) in the filesystem.
+
+- `type`: Required, the type of creation, which can be:
+  - `"dir"`: Creates a new, empty directory.
+  - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
+- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
 
 Returns `(ok, err)`:
 
@@ -486,65 +545,6 @@ Reads the contents of a directory:
 Returns `(files, err)`:
 
 - `files`: A table of [File](/docs/plugins/types#shared.file) if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
-
-### `cha(url, follow)` {#fs.cha}
-
-```lua
-local cha, err = fs.cha(url)
-```
-
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
-
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
-- `follow`: Optional, whether to follow the symbolic link, which is a boolean.
-
-Returns `(cha, err)`:
-
-- `cha`: The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
-
-### `cwd()` {#fs.cwd}
-
-```lua
-local url, err = fs.cwd()
-```
-
-This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call:
-
-Returns `(url, err)`:
-
-- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
-
-You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-folder], which is the current directory where the user is working.
-
-Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
-
-So, there may be some delay, which is particularly noticeable on slow devices. For example, when an HDD wakes up from sleep, it typically takes 3~4 seconds.
-
-It is useful if you just need a valid directory as the CWD of a process to start some work that doesn't depend on the CWD.
-
-[getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
-[chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
-[folder-folder]: /docs/plugins/types#app-data.folder-folder
-
-### `create(type, url)` {#fs.create}
-
-```lua
-local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
-```
-
-Create the specified file(s) in the filesystem.
-
-- `type`: Required, the type of creation, which can be:
-  - `"dir"`: Creates a new, empty directory.
-  - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
-
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
 - `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `unique_name(url)`
@@ -748,6 +748,42 @@ And includes the following additional events:
 
 - Timeout if event is 3.
 
+### `write_all(src)` {#Child.write_all}
+
+```lua
+local ok, err = child:write_all(src)
+```
+
+Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
+
+- `ok`: Whether the operation is successful, which is a boolean.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set.
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called.
+
+Otherwise, an error will be thrown.
+
+### `flush()` {#Child.flush}
+
+```lua
+local ok, err = child:flush()
+```
+
+Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
+
+- `ok`: Whether the operation is successful, which is a boolean.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+
+Please ensure that the child's stdin is available when calling this method, specifically:
+
+1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set.
+2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called.
+
+Otherwise, an error will be thrown.
+
 ### `wait()` {#Child.wait}
 
 ```lua
@@ -816,42 +852,6 @@ local stderr = child:take_stderr()
 Take and return the stderr stream of the child process, which can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
 
 See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
-
-### `write_all(src)` {#Child.write_all}
-
-```lua
-local ok, err = child:write_all(src)
-```
-
-Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
-
-Please ensure that the child's stdin is available when calling this method, specifically:
-
-1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set.
-2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called.
-
-Otherwise, an error will be thrown.
-
-### `flush()` {#Child.flush}
-
-```lua
-local ok, err = child:flush()
-```
-
-Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
-
-Please ensure that the child's stdin is available when calling this method, specifically:
-
-1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set.
-2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called.
-
-Otherwise, an error will be thrown.
 
 ## Output
 
