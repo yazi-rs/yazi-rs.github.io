@@ -511,9 +511,9 @@ Returns `(cha, err)`:
 local url, err = fs.cwd()
 ```
 
-This function was added to compensate for the lack of a `getcwd` in Lua; it is used to retrieve the directory of the last `chdir` call.
+This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call.
 
-You probably will never need it, and more likely, you'll need `cx.active.current.cwd`, which is the current directory where the user is working.
+You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-folder], which is the current directory where the user is working.
 
 Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
 
@@ -525,6 +525,10 @@ Returns `(url, err)`:
 - `err`: The error code if the operation is failed, which is an integer if any.
 
 It is useful if you just need a valid directory as the CWD of a process to start some work that doesn't depend on the CWD.
+
+[getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
+[chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
+[folder-folder]: /docs/plugins/types#app-data.folder-folder
 
 ### `create(type, url)` {#fs.create}
 
