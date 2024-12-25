@@ -401,7 +401,8 @@ Subscribe to local messages of `kind` and call the `callback` handler for it:
 
 - `kind`: Required, the kind of the message, which is a string.
 - `callback`: Required, the callback function, with a single parameter `body` containing the content of the message.
-  It runs in a sync context, so you can access app data via `cx` for the content of interest.
+
+It runs in a sync context, so you can access app data via `cx` for the content of interest.
 
 Note: No time-consuming operations should be done in the callback, and the same `kind` from the same plugin can only be subscribed once, re-subscribing (`sub()`) before unsubscribing (`unsub()`) will throw an error.
 
@@ -507,23 +508,23 @@ Returns `(cha, err)`:
 ### `cwd()` {#fs.cwd}
 
 ```lua
-local current_working_directory = fs.cwd()
+local url, err = fs.cwd()
 ```
 
-Get the [Url](/docs/plugins/types#shared.url) of the current working directory.
-Most of the time, it is very unlikely that you will need this API, as the
-current working directory obtained is likely to be out of date when the user
-takes an action.
-You should be using [`cx.active.current.cwd`](/docs/plugins/types#app-data.folder-folder) instead.
-This function just fills the gap as Lua lacks a [`getcwd`](https://man7.org/linux/man-pages/man3/getcwd.3.html) API.
-It is useful if you just need a valid directory as the current working directory
-of a process to start some work that doesn't depend on the current working directory,
-like in the example [here](https://github.com/sxyazi/yazi/blob/d746ae8338112ff27b56bedf4da9e8764fb5f7da/yazi-plugin/preset/plugins/zoxide.lua#L70).
+This function was added to compensate for the lack of a `getcwd` in Lua; it is used to retrieve the directory of the last `chdir` call.
 
-Returns `(url, err)`
+You probably will never need it, and more likely, you'll need `cx.active.current.cwd`, which is the current directory where the user is working.
+
+Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
+
+So, there may be some delay, which is particularly noticeable on slow devices. For example, when an HDD wakes up from sleep, it typically takes 3~4 seconds.
+
+Returns `(url, err)`:
 
 - `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
 - `err`: The error code if the operation is failed, which is an integer if any.
+
+It is useful if you just need a valid directory as the CWD of a process to start some work that doesn't depend on the CWD.
 
 ### `create(type, url)` {#fs.create}
 
