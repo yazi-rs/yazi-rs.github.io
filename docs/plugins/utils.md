@@ -38,11 +38,14 @@ If the file is not allowed to be cached, such as it's ignored in the user config
 
 ### `render()` {#ya.render}
 
-```lua
-ya.render()
-```
+Re-render the UI, can only be used in the sync context, for example:
 
-Re-render Yazi's UI.
+```lua
+local update_state = ya.sync(function(self, new_state)
+	self.state = new_state
+	ya.render()
+end)
+```
 
 ### `manager_emit(cmd, args)` {#ya.manager_emit}
 
@@ -256,12 +259,16 @@ Returns a string describing the specific operating system in use. Some possible 
 ### `hash(str)` {#ya.hash}
 
 ```lua
-ya.hash("test.txt")
+ya.hash("Hello, World!")
 ```
 
-Returns the MD5 hash of a given string, which is a `string`.
+Returns the hash of a given string:
 
-- `str`: Required, the string to calculate the MD5 hash for.
+- `str`: Required, the string to calculate the hash for.
+
+It is designed to work with algorithm-independent tasks, such as generating file cache names.
+
+The current implementation uses MD5, but it will be replaced with a faster hash algorithm, like [xxHash](https://github.com/Cyan4973/xxHash), in the future. So, don't rely on this implementation detail.
 
 ### `quote(str)` {#ya.quote}
 
@@ -527,14 +534,14 @@ local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
 Create the specified file(s) in the filesystem.
 
 - `type`: Required, the type of creation, which can be:
-  - `"dir"`: Create an empty directory.
-  - `"dir_all"`: Recursive creates all the directories needed for the given path to exist.
+  - `"dir"`: Creates a new, empty directory.
+  - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
 - `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
 
 Returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
 
 ### `unique_name(url)`
 
@@ -542,16 +549,16 @@ Returns `(ok, err)`:
 local url, err = fs.unique_name(Url("/tmp/test.txt"))
 ```
 
-Create a unique name for the given [Url](/docs/plugins/types#shared.url) if it already exists.
-The function usually just appends `_n` to the back of the file name in the given [Url](/docs/plugins/types#shared.url), where `n` is an integer.
-Otherwise, it just returns the given [Url](/docs/plugins/types#shared.url).
+Get a unique name from the given [Url](/docs/plugins/types#shared.url) to ensure it's unique in the filesystem:
 
 - `url`: Required, the [Url](/docs/plugins/types#shared.url) of the path to get a unique name.
 
-Returns `(url, err)`
+Returns `(url, err)`:
 
 - `url`: The unique [Url](/docs/plugins/types#shared.url) of the given path if successful; otherwise, `nil`.
-- `err`: The error code if the operation is failed, which is an integer if any.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+
+If the file already exists, the function will append `_n` to the filename, where `n` is a number, and keep incrementing it until it finds the first available name.
 
 ## Command
 
