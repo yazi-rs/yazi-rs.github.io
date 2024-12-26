@@ -81,27 +81,18 @@ keymap = [
 
 You can specify one or more keys in the `on` of each keybinding rule, and each key can be represented with the following notations:
 
-| Notation         | Description        |
-| ---------------- | ------------------ |
-| `a` - `z`        | Lowercase letters. |
-| `A` - `Z`        | Uppercase letters. |
-| `<Space>`        | Space key.         |
-| `<Backspace>`    | Backspace key.     |
-| `<Enter>`        | Enter key.         |
-| `<Left>`         | Left arrow key.    |
-| `<Right>`        | Right arrow key.   |
-| `<Up>`           | Up arrow key.      |
-| `<Down>`         | Down arrow key.    |
-| `<Home>`         | Home key.          |
-| `<End>`          | End key.           |
-| `<PageUp>`       | PageUp key.        |
-| `<PageDown>`     | PageDown key.      |
-| `<Tab>`          | Tab key.           |
-| `<BackTab>`      | Shift + Tab key.   |
-| `<Delete>`       | Delete key.        |
-| `<Insert>`       | Insert key.        |
-| `<F1>` - `<F19>` | Function keys.     |
-| `<Esc>`          | Escape key.        |
+| Notation         | Description       | Notation      | Description       |
+| ---------------- | ----------------- | ------------- | ----------------- |
+| `a` - `z`        | Lowercase letters | `A` - `Z`     | Uppercase letters |
+| `<Space>`        | Space key         | `<Backspace>` | Backspace key     |
+| `<Enter>`        | Enter key         | -             | -                 |
+| `<Left>`         | Left arrow key    | `<Right>`     | Right arrow key   |
+| `<Up>`           | Up arrow key      | `<Down>`      | Down arrow key    |
+| `<Home>`         | Home key          | `<End>`       | End key           |
+| `<PageUp>`       | PageUp key        | `<PageDown>`  | PageDown key      |
+| `<Tab>`          | Tab key           | `<BackTab>`   | Shift + Tab key   |
+| `<Delete>`       | Delete key        | `<Insert>`    | Insert key        |
+| `<F1>` - `<F19>` | Function keys     | `<Esc>`       | Escape key        |
 
 You can combine the following modifiers for the keys above:
 
