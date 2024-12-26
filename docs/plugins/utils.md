@@ -384,7 +384,7 @@ Publish a message to a specific instance with `receiver` as the ID:
 
 With:
 
-- `receiver`: Required, ID of the remote instance, which is a integer; if it's `0` then broadcasting to all remote instances.
+- `receiver`: Required, ID of the remote instance, which is an integer; if it's `0` then broadcasting to all remote instances.
 - `kind`: The same as `pub()`.
 - `value`: The same as `pub()`.
 

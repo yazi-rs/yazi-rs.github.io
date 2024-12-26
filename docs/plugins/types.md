@@ -59,7 +59,7 @@ Cha means one file's characteristics with the following properties:
 - `is_sock` - Whether this file is a socket
 - `is_exec` - Whether this file is executable
 - `is_sticky` - Whether this file has the sticky bit set
-- `len` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.folder-file) instead
+- `len` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.fs-file) instead
 - `atime` - The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `btime` - The birth time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
 - `mtime` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
@@ -94,7 +94,7 @@ Properties:
 
 Properties:
 
-- `code`: The raw error code if any, otherwise `nil`, which is a integer.
+- `code`: The raw error code if any, otherwise `nil`, which is an integer.
 
 Meta methods:
 
@@ -137,7 +137,7 @@ Meta methods:
 
 - `__tostring()`
 
-### `tab::Config` {#app-data.tab-config}
+### `tab::Preference` {#app-data.tab-preference}
 
 Properties:
 
@@ -163,9 +163,9 @@ Meta methods:
 Properties:
 
 - `skip` - The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
-- `folder` - The [folder::Folder](#app-data.folder-folder) being previewed, or `nil` if this preview is not for folders
+- `folder` - The [tab::Folder](#app-data.tab-folder) being previewed, or `nil` if this preview is not for folders
 
-### `folder::Folder` {#app-data.folder-folder}
+### `tab::Folder` {#app-data.tab-folder}
 
 Properties:
 
@@ -173,17 +173,17 @@ Properties:
 - `offset` - The offset of this folder, which is an integer
 - `cursor` - The cursor position of this folder, which is an integer
 - `window` - A table of [File](#shared.file) in the visible area of this folder
-- `files` - The [`folder::Files`](#app-data.folder-files) of this folder
+- `files` - The [`fs::Files`](#app-data.fs-files) of this folder
 - `hovered` - The hovered [File](#shared.file) of this folder, or `nil` if there is no hovered file
 
-### `folder::Files` {#app-data.folder-files}
+### `fs::Files` {#app-data.fs-files}
 
 Meta methods:
 
 - `__len()`
-- `__index(idx)` - Access the [folder::File](#app-data.folder-file) by index
+- `__index(idx)` - Access the [fs::File](#app-data.fs-file) by index
 
-### `folder::File` {#app-data.folder-file}
+### `fs::File` {#app-data.fs-file}
 
 Based on [File](#shared.file), with the following additional methods:
 
@@ -214,9 +214,9 @@ Meta methods:
 Properties:
 
 - `mode` - The [tab::Mode](#app-data.tab-mode) of this tab.
-- `pref` - The [tab::Config](#app-data.tab-config) of this tab.
-- `current` - The current folder within this tab, which is a [folder::Folder](#app-data.folder-folder).
-- `parent` - The parent folder within this tab, which is a [folder::Folder](#app-data.folder-folder) if `current` has a parent; otherwise, `nil`.
+- `pref` - The [tab::Preference](#app-data.tab-preference) of this tab.
+- `current` - The current folder within this tab, which is a [tab::Folder](#app-data.tab-folder).
+- `parent` - The parent folder within this tab, which is a [tab::Folder](#app-data.tab-folder) if `current` has a parent; otherwise, `nil`.
 - `selected` - The selected files within this tab, which is a [tab::Selected](#app-data.tab-selected).
 - `preview` - The [tab::Preview](#app-data.tab-preview) within this tab.
 

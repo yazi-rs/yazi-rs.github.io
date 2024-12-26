@@ -317,7 +317,7 @@ The element size is set to the specified amount.
 Applies a percentage of the available space to the element
 
 Converts the given percentage to a floating-point value and multiplies that with area.
-This value is rounded back to a integer as part of the layout split calculation.
+This value is rounded back to an integer as part of the layout split calculation.
 
 ```lua
 -- { Percentage(75), Fill(1) }
@@ -336,7 +336,7 @@ This value is rounded back to a integer as part of the layout split calculation.
 Applies a ratio of the available space to the element
 
 Converts the given ratio to a floating-point value and multiplies that with area.
-This value is rounded back to a integer as part of the layout split calculation.
+This value is rounded back to an integer as part of the layout split calculation.
 
 ```lua
 -- { Ratio(1, 2), Ratio(1, 2) }
