@@ -254,12 +254,17 @@ This is **the ONLY way we recommend**. We do not recommend install `file` via Sc
 
 Most users already have Git installed, and Yazi is also hosted via Git, so this usually isn't an issue. But if you really don't have/want to install it, the [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) plugin can help, which use a extension database instead of relying on the `file(1)` binary.
 
+Installing Yazi on Windows Terminal does not automatically install nerd-fonts, you need to manually change the font.Open Windows Terminal `Settings -> Profiles -> Defaults -> Additional settings -> Appearance -> Font face`. Changed from the default `Cascadia Mono` to `CaskaydiaMono Nerd Font Mono`.
+
 ### Install with Scoop
 
 ```sh
 scoop install yazi
 # Install the optional dependencies (recommended):
 scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+# Install the optional nerd‐fonts (recommended):
+scoop bucket add nerd-fonts
+scoop install nerd-fonts/CascadiaMono-NF-Mono
 ```
 
 ### Install with WinGet
@@ -271,6 +276,8 @@ winget install Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSV
 ```
 
 Poppler is not yet on WinGet, install with Scoop or manually download from [poppler-windows](https://github.com/oschwartz10612/poppler-windows).
+
+Nerd-fonts is not yet on WinGet, install with Scoop or manually download from [font-downloads](https://www.nerdfonts.com/font-downloads).
 
 ## AOSC OS
 
