@@ -51,7 +51,10 @@ Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supp
 
 ## [flavor] {#flavor}
 
-- use (String): Flavor name, e.g. `"dracula"`. See [flavor documentation](/docs/flavors/overview) for more details.
+- dark (String): Flavor name used in dark mode, e.g. `"dracula"`.
+- light (String): Flavor name used in light mode, e.g. `"gruvbox"`.
+
+See [flavor documentation](/docs/flavors/overview) for more details.
 
 ## [manager] {#manager}
 
