@@ -126,6 +126,7 @@ desc = "Create a tab and enter the hovered directory"
 Save these lines as `~/.config/yazi/plugins/smart-tab-switch.yazi/init.lua`:
 
 ```lua
+--- @sync entry
 local function entry(_, args)
 	for _ = #cx.tabs, args[1] do
 		ya.manager_emit("tab_create", { current = true })
@@ -133,7 +134,6 @@ local function entry(_, args)
 	ya.manager_emit("tab_switch", { args[1] })
 end
 
---- @sync entry
 return { entry = entry }
 ```
 
