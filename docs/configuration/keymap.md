@@ -77,6 +77,55 @@ keymap = [
 ]
 ```
 
+## Key notation {#notation}
+
+You can specify one or more keys in the `on` of each keybinding rule, and each key can be represented with the following notations:
+
+| Notation         | Description        |
+| ---------------- | ------------------ |
+| `a` - `z`        | Lowercase letters. |
+| `A` - `Z`        | Uppercase letters. |
+| `<Space>`        | Space key.         |
+| `<Backspace>`    | Backspace key.     |
+| `<Enter>`        | Enter key.         |
+| `<Left>`         | Left arrow key.    |
+| `<Right>`        | Right arrow key.   |
+| `<Up>`           | Up arrow key.      |
+| `<Down>`         | Down arrow key.    |
+| `<Home>`         | Home key.          |
+| `<End>`          | End key.           |
+| `<PageUp>`       | PageUp key.        |
+| `<PageDown>`     | PageDown key.      |
+| `<Tab>`          | Tab key.           |
+| `<BackTab>`      | Shift + Tab key.   |
+| `<Delete>`       | Delete key.        |
+| `<Insert>`       | Insert key.        |
+| `<F1>` - `<F19>` | Function keys.     |
+| `<Esc>`          | Escape key.        |
+
+You can combine the following modifiers for the keys above:
+
+| Modifier | Description                |
+| -------- | -------------------------- |
+| `<S-…>`  | Shift key.                 |
+| `<C-…>`  | Ctrl key.                  |
+| `<A-…>`  | Alt/Meta key.              |
+| `<D-…>`  | Command/Windows/Super key. |
+
+For example:
+
+- `<C-a>` for <kbd>Ctrl</kbd> + <kbd>a</kbd>.
+- `<C-S-b>` or `<C-B>` for <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>b</kbd>.
+
+Note that:
+
+1. Not all terminals support `<D-...>` - make sure your terminal supports and has [CSI u][CSI u] enabled if you want to use it.
+2. macOS doesn't have an <kbd>Alt</kbd> key, so `<A-...>` won't work. Some terminals offer a setting to map the <kbd>Option</kbd> as the <kbd>Alt</kbd> key, make sure you have it enabled.
+3. The [legacy terminal keyboard protocol][Control character] treats `<Tab>` and `<C-i>`, `<Enter>` and `<C-m>`, etc. as the same key. If you want to distinguish between them, make sure your terminal supports and has [CSI u][CSI u] enabled.
+
+[CSI u]: https://sw.kovidgoyal.net/kitty/keyboard-protocol/
+[Control character]: https://en.wikipedia.org/wiki/Control_character
+
 ## [manager] {#manager}
 
 ### `escape` {#manager.escape}
