@@ -214,7 +214,7 @@ Meta methods:
 Properties:
 
 - `mode` - The [tab::Mode](#app-data.tab-mode) of this tab.
-- `conf` - The [tab::Config](#app-data.tab-config) of this tab.
+- `pref` - The [tab::Config](#app-data.tab-config) of this tab.
 - `current` - The current folder within this tab, which is a [folder::Folder](#app-data.folder-folder).
 - `parent` - The parent folder within this tab, which is a [folder::Folder](#app-data.folder-folder) if `current` has a parent; otherwise, `nil`.
 - `selected` - The selected files within this tab, which is a [tab::Selected](#app-data.tab-selected).
