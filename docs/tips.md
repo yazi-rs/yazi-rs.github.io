@@ -98,7 +98,7 @@ desc = "Paste into the hovered directory or CWD"
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/080212b5-43e7-4c36-83e8-312495d50383" width="100%" controls muted></video>
 </details>
 
-## Smart tab create: create a tab and enter the hovered directory {#smart-tab-create}
+## Smart tab: create a tab and enter the hovered directory {#smart-tab}
 
 Save these lines as `~/.config/yazi/plugins/smart-tab-create.yazi/init.lua`:
 
@@ -121,7 +121,7 @@ run  = "plugin smart-tab-create"
 desc = "Create a tab and enter the hovered directory"
 ```
 
-## Smart tab switch: create tab if the tab being switched to does not exist {#smart-tab-switch}
+## Smart tab switch: create tab if the tab being switched to does not exist {#smart-switch}
 
 Save these lines as `~/.config/yazi/plugins/smart-tab-switch.yazi/init.lua`:
 
