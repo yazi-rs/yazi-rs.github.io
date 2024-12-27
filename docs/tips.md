@@ -112,13 +112,38 @@ return {
 }
 ```
 
-Then bind it for <kbd>t</kbd> key, in your `keymap.toml`:
+Then bind it to the <kbd>t</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[manager.prepend_keymap]]
 on   = "t"
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
+```
+
+## Smart switch: create tab if the tab being switched to does not exist {#smart-switch}
+
+Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/init.lua`:
+
+```lua
+--- @sync entry
+local function entry(_, args)
+	for _ = #cx.tabs, args[1] do
+		ya.manager_emit("tab_create", { current = true })
+	end
+	ya.manager_emit("tab_switch", { args[1] })
+end
+
+return { entry = entry }
+```
+
+Then bind it to the <kbd>2</kbd> key, in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on   = "2"
+run  = "plugin smart-switch --args=1"
+desc = "Switch or create tab 2"
 ```
 
 ## Folder-specific rules {#folder-rules}
