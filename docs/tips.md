@@ -100,7 +100,7 @@ desc = "Paste into the hovered directory or CWD"
 
 ## Smart tab: create a tab and enter the hovered directory {#smart-tab}
 
-Save these lines as `~/.config/yazi/plugins/smart-tab-create.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/init.lua`:
 
 ```lua
 --- @sync entry
@@ -117,13 +117,13 @@ Then bind it to the <kbd>t</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = "t"
-run  = "plugin smart-tab-create"
+run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 ```
 
-## Smart tab switch: create tab if the tab being switched to does not exist {#smart-switch}
+## Smart switch: create tab if the tab being switched to does not exist {#smart-switch}
 
-Save these lines as `~/.config/yazi/plugins/smart-tab-switch.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/init.lua`:
 
 ```lua
 --- @sync entry
@@ -142,8 +142,8 @@ Then bind it to the <kbd>2</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = "2"
-run  = "plugin smart-tab-switch --args=1"
-desc = "Switch and create tab if it doesn't exist"
+run  = "plugin smart-switch --args=1"
+desc = "Switch or create tab 2"
 ```
 
 ## Folder-specific rules {#folder-rules}
