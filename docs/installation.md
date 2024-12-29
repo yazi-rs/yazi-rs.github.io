@@ -33,6 +33,38 @@ Most packages on this page are maintained by the community, and they **_may not 
 	<img alt="Yazi packaging status" height="685" src="https://repology.org/badge/vertical-allrepos/yazi.svg" />
 </a>
 
+## Debian based Linux
+
+run in root
+
+```bash
+apt -y install ffmpeg 7zip jq fzf zoxide imagemagick xclip ripgrep fd-find poppler-utils git unzip
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip \
+&& cd ~/.local/share/fonts \
+&& unzip JetBrainsMono.zip \
+&& rm JetBrainsMono.zip \
+&& fc-cache -fv
+wget "https://github.com/sxyazi/yazi/releases/download/v0.4.2/yazi-x86_64-unknown-linux-gnu.zip" -O /tmp/yazi.zip
+unzip /tmp/yazi.zip -d /opt/
+echo "export PATH=$PATH:/opt/yazi-x86_64-unknown-linux-gnu/" >> ~/.bashrc
+```
+
+run in normal user
+
+```bash
+echo "export PATH=$PATH:/opt/yazi-x86_64-unknown-linux-gnu/" >> ~/.bashrc
+mkdir ~/.config/yazi
+wget "https://github.com/sxyazi/yazi/raw/refs/heads/main/yazi-config/preset/keymap-default.toml" -O ~/.config/yazi/keymap.toml
+wget "https://github.com/sxyazi/yazi/raw/refs/heads/main/yazi-config/preset/yazi-default.toml" -O ~/.config/yazi/yazi.toml
+wget "https://github.com/sxyazi/yazi/raw/refs/heads/main/yazi-config/preset/theme-dark.toml" -O ~/.config/yazi/theme.toml
+```
+
+works immediately
+
+```bash
+export PATH=$PATH:/opt/yazi-x86_64-unknown-linux-gnu/
+```
+
 ## Arch Linux
 
 ```sh
