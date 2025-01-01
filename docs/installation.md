@@ -289,13 +289,13 @@ If you know how to package Yazi for Debian/Ubuntu and would like to help us subm
 ## AOSC OS {#aosc}
 
 ```sh
-sudo oma install yazi
+sudo oma install yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 ## x-cmd {#x-cmd}
 
 ```sh
-x env use yazi ffmpeg fzf 7za jq fd rg zoxide
+x env use yazi ffmpeg 7zz jq fd rg fzf zoxide magick
 ```
 
 ## Official binaries {#binaries}
