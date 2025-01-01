@@ -25,7 +25,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 
 If the functions are not working properly, please try upgrading them to the latest version.
 
-## Packaging status
+## Packaging status {#packaging}
 
 Most packages on this page are maintained by the community, and they **_may not always be the latest_**. Please check their versions before installation:
 
@@ -33,39 +33,7 @@ Most packages on this page are maintained by the community, and they **_may not 
 	<img alt="Yazi packaging status" height="685" src="https://repology.org/badge/vertical-allrepos/yazi.svg" />
 </a>
 
-## Debian based Linux
-
-run in root
-
-```bash
-apt -y install ffmpeg 7zip jq fzf zoxide imagemagick xclip ripgrep fd-find poppler-utils git unzip
-wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/JetBrainsMono.zip \
-&& cd ~/.local/share/fonts \
-&& unzip JetBrainsMono.zip \
-&& rm JetBrainsMono.zip \
-&& fc-cache -fv
-wget "https://github.com/sxyazi/yazi/releases/download/v0.4.2/yazi-x86_64-unknown-linux-gnu.zip" -O /tmp/yazi.zip
-unzip /tmp/yazi.zip -d /opt/
-echo "export PATH=$PATH:/opt/yazi-x86_64-unknown-linux-gnu/" >> ~/.bashrc
-```
-
-run in normal user
-
-```bash
-echo "export PATH=$PATH:/opt/yazi-x86_64-unknown-linux-gnu/" >> ~/.bashrc
-mkdir ~/.config/yazi
-wget "https://github.com/sxyazi/yazi/raw/refs/heads/main/yazi-config/preset/keymap-default.toml" -O ~/.config/yazi/keymap.toml
-wget "https://github.com/sxyazi/yazi/raw/refs/heads/main/yazi-config/preset/yazi-default.toml" -O ~/.config/yazi/yazi.toml
-wget "https://github.com/sxyazi/yazi/raw/refs/heads/main/yazi-config/preset/theme-dark.toml" -O ~/.config/yazi/theme.toml
-```
-
-works immediately
-
-```bash
-export PATH=$PATH:/opt/yazi-x86_64-unknown-linux-gnu/
-```
-
-## Arch Linux
+## Arch Linux {#arch}
 
 ```sh
 sudo pacman -S yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
@@ -84,7 +52,7 @@ which is built from the latest code within the past 6 hours:
 paru -S yazi-nightly-bin ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
-## Nix
+## Nix {#nix}
 
 A [Nix package](https://search.nixos.org/packages?channel=unstable&show=yazi) for Yazi is available.
 
@@ -171,7 +139,7 @@ in {
 
 </details>
 
-## Nix flakes
+## Nix flakes {#flakes}
 
 The upstream repository provides a flake so that Nix users can easily keep up with the bleeding edge. A basic `flake.nix` setup to get you started:
 
@@ -244,7 +212,7 @@ Note that the cache will only be applied _after_ you rebuild your Nix config. If
 
 If you're having any problems, refer to this [entry](https://docs.cachix.org/faq#why-is-nix-not-picking-up-on-any-of-the-pre-built-artifacts) from Cachix's FAQ.
 
-## Homebrew
+## Homebrew {#homebrew}
 
 First, make sure that Homebrew is fully up-to-date with `brew update`.
 
@@ -260,19 +228,19 @@ If you prefer to use the most recent code, use the `--HEAD` flag when installing
 brew install yazi --HEAD
 ```
 
-## MacPorts
+## MacPorts {#macports}
 
 ```bash
 sudo port install yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
-## NetBSD
+## NetBSD {#netbsd}
 
 ```sh
 pkgin install yazi ffmpeg7 p7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
-## Windows
+## Windows {#windows}
 
 Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest and most reliable way to get it on Windows is to install Git for Windows and use the `file.exe` that comes with it.
 
@@ -304,19 +272,33 @@ winget install Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSV
 
 Poppler is not yet on WinGet, install with Scoop or manually download from [poppler-windows](https://github.com/oschwartz10612/poppler-windows).
 
-## AOSC OS
+## Debian based Linux {#debian}
+
+In Debian/Ubuntu, you currently need to [manually build Yazi](/docs/installation#source) or [download our official binary release](/docs/installation#binaries).
+
+You can install optional dependencies with:
+
+```sh
+apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+```
+
+Note that these dependencies are quite old on some Debian/Ubuntu versions and may cause Yazi to malfunction. In that case, you will need to manually build them from the latest source.
+
+If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
+
+## AOSC OS {#aosc}
 
 ```sh
 sudo oma install yazi
 ```
 
-## x-cmd
+## x-cmd {#x-cmd}
 
 ```sh
 x env use yazi ffmpeg fzf 7za jq fd rg zoxide
 ```
 
-## Official binaries
+## Official binaries {#binaries}
 
 You can download the latest official binaries from GitHub Releases: https://github.com/sxyazi/yazi/releases
 
@@ -324,16 +306,18 @@ On this page, we offer GNU/Musl builds to meet the needs of different users.
 
 This page also includes a [nightly release](https://github.com/sxyazi/yazi/releases/tag/nightly), which is built from the latest code within the past 6 hours.
 
-## Cargo
+## crates.io {#crates}
 
-Setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
+Yazi is available as [`yazi-fm`](https://crates.io/crates/yazi-fm) and [`yazi-cli`](https://crates.io/crates/yazi-cli) on [crates.io](https://crates.io/).
+
+To install them, setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
-Now you can install Yazi from crates.io:
+Now you can install Yazi via `cargo`:
 
 ```sh
 cargo install --locked yazi-fm yazi-cli
@@ -347,7 +331,7 @@ cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
 
-## Build from source
+## Build from source {#source}
 
 Setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
 
@@ -364,10 +348,10 @@ cd yazi
 cargo build --release --locked
 ```
 
-Then, you can run:
+Then, add `yazi` and `ya` to your `$PATH`:
 
 ```sh
-./target/release/yazi
+mv target/release/yazi target/release/ya /usr/local/bin/
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.

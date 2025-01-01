@@ -162,7 +162,7 @@ which indicates the image protocol detected and used by Yazi:
 
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
-This may be a problem with Überzug++ itself. Please build Yazi in debug mode [as per this](/docs/installation#build-from-source) but `cargo build` without `--release` flag - you can run `yazi --debug` to verify it, and you will see the output includes `Debug : true`.
+This may be a problem with Überzug++ itself. Please build Yazi in debug mode [as per this](/docs/installation#source) but `cargo build` without `--release` flag - you can run `yazi --debug` to verify it, and you will see the output includes `Debug : true`.
 
 And hover on some images, then find the last Überzug++ command in your `~/.local/state/yazi/yazi.log` sorted by time. It is usually at the very end of the file and looks like:
 

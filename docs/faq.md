@@ -18,7 +18,7 @@ For Windows, there is no concept of `$EDITOR`, so users need to modify the text 
 
 ## Why can't I open/edit/preview files on Windows? {#why-cant-preview}
 
-Please make sure you have set the `YAZI_FILE_ONE` environment variable as per the [Windows Requirements](/docs/installation#requirements).
+Please make sure you have set the `YAZI_FILE_ONE` environment variable as per the [Windows Requirements](/docs/installation#windows).
 
 ## Why is my text color not distinct? {#why-text-indistinct}
 
