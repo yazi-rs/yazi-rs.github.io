@@ -276,7 +276,7 @@ Poppler is not yet on WinGet, install with Scoop or manually download from [popp
 
 In Debian/Ubuntu, you currently need to [manually build Yazi](/docs/installation#source) or [download our official binary release](/docs/installation#binaries).
 
-You can install optional dependencies with:
+You can install the optional dependencies with:
 
 ```sh
 apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
