@@ -127,11 +127,15 @@ Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/init.lua`:
 
 ```lua
 --- @sync entry
-local function entry(_, args)
-	for _ = #cx.tabs, args[1] do
-		ya.manager_emit("tab_create", { current = true })
+local function entry(_, job)
+	local cur = cx.active.current
+	for _ = #cx.tabs, job.args[1] do
+		ya.manager_emit("tab_create", { cur.cwd })
+		if cur.hovered then
+			ya.manager_emit("reveal", { cur.hovered.url })
+		end
 	end
-	ya.manager_emit("tab_switch", { args[1] })
+	ya.manager_emit("tab_switch", { job.args[1] })
 end
 
 return { entry = entry }
@@ -201,7 +205,7 @@ run = '''
 '''
 ```
 
-## Copy selected files to the system clipboard while yanking {#selected-files-to-clipboard}
+## Linux: Copy selected files to the system clipboard while yanking {#selected-files-to-clipboard}
 
 Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
 
