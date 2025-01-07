@@ -88,7 +88,7 @@ edit:add-var y~ {|@argv|
 ```powershell
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
-    yazi --cwd-file="$tmp"
+    yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp -Encoding UTF8
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
         Set-Location -LiteralPath [System.IO.Path]::GetFullPath($cwd)
