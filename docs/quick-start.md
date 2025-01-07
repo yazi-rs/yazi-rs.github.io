@@ -91,8 +91,7 @@ function y {
     yazi --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp -Encoding UTF8
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        $cwd = [System.IO.Path]::GetFullPath($cwd)
-        Set-Location -LiteralPath $cwd
+        Set-Location -LiteralPath [System.IO.Path]::GetFullPath($cwd)
     }
     Remove-Item -Path $tmp
 }
