@@ -162,9 +162,9 @@ which indicates the image protocol detected and used by Yazi:
 
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
-This may be a problem with Überzug++ itself. Please build Yazi in debug mode [as per this](/docs/installation#source) but `cargo build` without `--release` flag - you can run `yazi --debug` to verify it, and you will see the output includes `Debug : true`.
+This may be a problem with Überzug++ itself. Please [run Yazi in debug mode](/docs/plugins/overview#logging), then hover on the image that's causing the issue.
 
-And hover on some images, then find the last Überzug++ command in your `~/.local/state/yazi/yazi.log` sorted by time. It is usually at the very end of the file and looks like:
+Then find the last Überzug++ command in your log file sorted by time, it is usually at the very end of the file and looks like:
 
 ```
 ueberzugpp command: {"action":"add","identifier":"yazi","x":96,"y":1,"max_width":400,"max_height":150,"path":"/root/test.jpg"}
@@ -180,6 +180,6 @@ into it, press `Enter`, and to see if any image is shown, without exiting the Ü
 
 If the image shows properly when using Überzug++ independently, but not when used with Yazi, please create a bug report with:
 
-- The contents of `~/.local/state/yazi/yazi.log`
-- The contents of `/tmp/ueberzugpp-$USER.log`
-- A GIF demonstration of the above steps
+- The contents of your log file.
+- The contents of `/tmp/ueberzugpp-$USER.log`.
+- A GIF demonstration of the above steps.
