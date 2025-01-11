@@ -146,9 +146,9 @@ Exit the process.
 
 Close the current tab; if it's the last tab, exit the process instead.
 
-| Argument/Option | Description                                                                                   |
-| --------------- | --------------------------------------------------------------------------------------------- |
-| `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file`. (Nightly only) |
+| Argument/Option | Description                                                                                           |
+| --------------- | ----------------------------------------------------------------------------------------------------- |
+| `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file` on exit. (Nightly only) |
 
 ### `suspend` {#manager.suspend}
 
