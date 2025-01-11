@@ -245,7 +245,7 @@ Available options are as follows:
   - `windows`: Windows
   - `linux`: Linux
   - `macos`: macOS
-  - `android`: Android (Termux, nightly only)
+  - `android`: Android (Termux)
 
 The commands specified by `run` follow platform-specific differences. For example, Unix shell requires wrapping `$` with quotes, while `%` in Windows batch scripts doesn't.
 
