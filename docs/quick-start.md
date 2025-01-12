@@ -119,6 +119,22 @@ del "%tmpfile%"
 ```
 
   </TabItem>
+  <TabItem value="xonsh" label="Xonsh">
+
+```xonsh
+def y():
+    tmp = $(mktemp -t "yazi-cwd.XXXXXX")
+    $[yazi @(f"--cwd-file={tmp}")]
+    with open(tmp) as f:
+        cwd = f.read().strip()
+    if cwd != $PWD:
+        cd @(cwd)
+    rm -f -- @(tmp)
+
+aliases["y"] = y
+```
+
+  </TabItem>
 </Tabs>
 
 To use it, copy the function into the configuration file of your respective shell.
