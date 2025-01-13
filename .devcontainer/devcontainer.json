@@ -1,0 +1,13 @@
+{
+    "name": "Node.js",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node",
+    "postCreateCommand": "pnpm install",
+    "postAttachCommand": "pnpm start",
+    "forwardPorts": [3000],
+    "portsAttributes": {
+        "3000": {
+            "label": "Site",
+            "onAutoForward": "notify"
+        }
+    }
+}
