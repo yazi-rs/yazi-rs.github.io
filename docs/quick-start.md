@@ -122,16 +122,17 @@ del "%tmpfile%"
   <TabItem value="xonsh" label="Xonsh">
 
 ```xonsh
-def y():
+def _y(args):
     tmp = $(mktemp -t "yazi-cwd.XXXXXX")
-    $[yazi @(f"--cwd-file={tmp}")]
+    args.append(f"--cwd-file={tmp}")
+    $[yazi @(args)]
     with open(tmp) as f:
         cwd = f.read().strip()
     if cwd != $PWD:
         cd @(cwd)
     rm -f -- @(tmp)
 
-aliases["y"] = y
+aliases["y"] = _y
 ```
 
   </TabItem>
