@@ -36,7 +36,7 @@ it will automatically use the "Window system protocol" to display images - this 
 <!-- Protocols -->
 
 [kgp]: https://sw.kovidgoyal.net/kitty/graphics-protocol/#unicode-placeholders
-[kgp-old]: https://github.com/sxyazi/yazi/blob/main/yazi-adapter/src/kgp_old.rs
+[kgp-old]: https://github.com/sxyazi/yazi/blob/main/yazi-adapter/src/drivers/kgp_old.rs
 [iip]: https://iterm2.com/documentation-images.html
 [sixel]: https://www.vt100.net/docs/vt3xx-gp/chapter14.html
 [ascii-art]: https://en.wikipedia.org/wiki/ASCII_art
