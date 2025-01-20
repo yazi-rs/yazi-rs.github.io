@@ -370,20 +370,17 @@ Moved to: https://github.com/yazi-rs/plugins/tree/main/no-status.yazi
 
 <img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
 
-Copy the [`Status:name()` method](https://github.com/sxyazi/yazi/blob/shipped/yazi-plugin/preset/components/status.lua) _*only*_ to your `~/.config/yazi/init.lua`, and apply the following patch:
+Add the following code to your `~/.config/yazi/init.lua`:
 
-```diff
-@@ -65,7 +65,11 @@ function Status:name()
- 		return ui.Line {}
- 	end
-
--	return ui.Line(" " .. h.name)
-+	local linked = ""
-+	if h.link_to ~= nil then
-+		linked = " -> " .. tostring(h.link_to)
-+	end
-+	return ui.Line(" " .. h.name .. linked)
- end
+```lua
+Status:children_add(function(self)
+	local h = self._current.hovered
+	if h and h.link_to then
+		return " -> " .. tostring(h.link_to)
+	else
+		return ""
+	end
+end, 3300, Status.LEFT)
 ```
 
 ## Show user/group of files in status bar {#user-group-in-status}
