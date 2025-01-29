@@ -92,6 +92,7 @@ Clipboard:
 - [copy-file-contents.yazi](https://github.com/AnirudhG07/plugins-yazi/tree/main/copy-file-contents.yazi) - A simple plugin to copy file contents just from Yazi without going into editor.
 - [system-clipboard.yazi](https://github.com/orhnk/system-clipboard.yazi) - Cross platform implementation of a simple system clipboard.
 - [wl-clipboard.yazi](https://github.com/grappas/wl-clipboard.yazi) - Wayland implementation of a simple system clipboard.
+- [path-from-root.yazi](https://github.com/aresler/path-from-root.yazi) - Copy file path relative to git root
 
 `filter` enhancements:
 
