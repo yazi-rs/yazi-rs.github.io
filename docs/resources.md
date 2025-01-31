@@ -152,6 +152,11 @@ Vim:
 
 - [yazi.vim](https://github.com/chriszarate/yazi.vim) - Vim plugin for Yazi.
 
+## 📝 Helix {#helix}
+
+- [Yazelix](https://github.com/luccahuguet/yazelix) - Adding a file tree to Helix & helix-friendly keybindings for Zellij
+- [Zide](https://github.com/josephschmitt/zide) - Group of configuration files and scripts to create an IDE-like experience in zellij
+
 ## 🐚 Shell plugins {#shell}
 
 - [yazi-prompt.sh](https://github.com/Sonico98/yazi-prompt.sh) - Display an indicator in your prompt when running inside a yazi subshell.
