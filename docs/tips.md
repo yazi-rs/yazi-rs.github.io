@@ -360,6 +360,43 @@ on  = "J"
 run = "plugin parent-arrow --args=1"
 ```
 
+## Confirm before quitting if multiple tabs are open {#confirm-quit}
+
+**Note**: This plugin currently only works with the nightly version of Yazi.
+
+Save these lines as `~/.config/yazi/plugins/confirm-quit.yazi/main.lua`:
+
+```lua
+local count = ya.sync(function() return #cx.tabs end)
+
+local function entry()
+	if count() < 2 then
+		return ya.manager_emit("quit", {})
+	end
+
+	local yes = ya.confirm {
+		pos = { "center", w = 60, h = 10 },
+		title = "Quit?",
+		content = "There are multiple tabs open. Are you sure you want to quit?",
+	}
+	if yes then
+		ya.manager_emit("quit", {})
+	end
+end
+
+return { entry = entry }
+```
+
+Next, bind it to the <kbd>q</kbd> key in your `keymap.toml`:
+
+```toml
+[[manager.prepend_keymap]]
+on  = "q"
+run = "plugin confirm-quit"
+```
+
+Credits to [@lpnh for sharing it](https://github.com/sxyazi/yazi/issues/2267#issuecomment-2624805134).
+
 ## No status bar {#no-status-bar}
 
 <img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
@@ -461,7 +498,7 @@ use  = "bulk-rename"
 
 The `xdg-desktop-portal-termfilechooser` backend lets you replace the default file picker with Yazi, providing seamless integration with applications, such as Firefox.
 
-For installation steps, refer to the [installation guide](https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser?tab=readme-ov-file#installation) and additional instructions available there.
+For installation steps, refer to the [installation guide](https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser?tab=readme-ov-file#installation) and additional instructions available there.
 
 ## File tree picker in Helix with Zellij {#helix-with-zellij}
 
