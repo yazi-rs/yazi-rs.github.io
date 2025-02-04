@@ -3,6 +3,9 @@ sidebar_position: 1
 description: How to install Yazi on various operating systems.
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Installation
 
 To use Yazi, you must have the following prerequisites installed:
@@ -342,16 +345,45 @@ rustup update
 
 Clone the repository and build Yazi:
 
+<Tabs>
+  <TabItem value="non-windows" label="non-Windows" default>
+
 ```sh
 git clone https://github.com/sxyazi/yazi.git
 cd yazi
 cargo build --release --locked
 ```
 
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+
+```sh
+git clone https://github.com/sxyazi/yazi.git
+cd yazi
+cargo build --profile release-windows --locked
+```
+
+  </TabItem>
+</Tabs>
+
 Then, add `yazi` and `ya` to your `$PATH`:
+
+<Tabs>
+  <TabItem value="non-windows" label="non-Windows" default>
 
 ```sh
 mv target/release/yazi target/release/ya /usr/local/bin/
 ```
+
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+
+```sh
+move target\release-windows\yazi.exe "%ProgramFiles%\yazi.exe"
+move target\release-windows\ya.exe "%ProgramFiles%\ya.exe"
+```
+
+  </TabItem>
+</Tabs>
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
