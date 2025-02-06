@@ -41,10 +41,24 @@ Where:
 
 ## Usage {#usage}
 
-A plugin has two usages:
+Plugins generally can have three usages:
 
+- [Utility plugin](#utility-plugin): Load them in your `init.lua`.
 - [Functional plugin](#functional-plugin): Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
 - [Custom previewers, preloaders](/docs/configuration/yazi#plugin): Configure them as `previewers` or `preloaders` in your `[plugin]` of `yazi.toml` file.
+
+### Utility plugin {#utility-plugin}
+
+Such plugins can be loaded by `require`-ing them in your `init.lua`, for example:
+
+```lua
+-- ~/.config/yazi/init.lua
+require("zoxide"):setup {
+  update_db = true,
+}
+```
+
+These plugins will usually [subscribe to events](/docs/plugins/utils/#ps.sub) and work in the background.
 
 ### Functional plugin {#functional-plugin}
 
@@ -79,9 +93,9 @@ These will be treated as positional arguments, but as Yazi adds support for shor
 
 ## Sync vs Async {#sync-vs-async}
 
-The plugin system is designed with an async-first philosophy. Therefore, unless specifically specified, such as the `--sync` for the `plugin` command, all plugins run in an async context.
+The plugin system is designed with an async-first philosophy. Therefore, unless specifically specified, such as the `--sync` for the `plugin` command, plugin code runs in an async context.
 
-There is one exception - all `init.lua` are synchronous, which includes:
+There is one exception - all top-level statements in `init.lua` files are synchronous, which includes:
 
 - The `init.lua` for Yazi itself, i.e. `~/.config/yazi/init.lua`.
 - The `init.lua` for each plugin, e.g. `~/.config/yazi/plugins/bar.yazi/init.lua`.
@@ -138,7 +152,7 @@ i = 2
 
 ### Async context {#async-context}
 
-When a plugin is executed asynchronously, an isolated async context is created for it automatically.
+When a plugin function is executed asynchronously (as is the default), an isolated async context is created for it automatically.
 
 In this context, you can use all the async functions supported by Yazi, and it operates concurrently with the main thread, ensuring that the main thread is not blocked.
 
@@ -168,6 +182,10 @@ return {
 	end,
 }
 ```
+
+`ya.sync` wraps a user-supplied function that operates in the sync context, and returns a function callable from an async context.
+When the wrapped function is thus called from an async context, it will run the wrapped code inside the sync context,
+propagating the return value to the caller back in the async context.
 
 Note that `ya.sync()` call must be at the top level:
 
