@@ -28,14 +28,14 @@ Each plugin is a directory with a [kebab-case](https://developer.mozilla.org/en-
 
 ```
 ~/.config/yazi/plugins/bar.yazi/
-├── init.lua
+├── main.lua
 ├── README.md
 └── LICENSE
 ```
 
 Where:
 
-- `init.lua` is the entry point of this plugin.
+- `main.lua` is the entry point of this plugin.
 - `README.md` is the documentation of this plugin.
 - `LICENSE` is the license file for this plugin.
 
@@ -50,12 +50,12 @@ A plugin has two usages:
 
 You can bind a `plugin` command to a specific key in your `keymap.toml` with:
 
-| Argument/Option | Description                                 |
-| --------------- | ------------------------------------------- |
-| `[name]`        | The name of the plugin to run.              |
-| `--args=[args]` | Shell-style arguments passed to the plugin. |
+| Argument/Option | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `[name]`        | Required, the name of the plugin to run.              |
+| `[args]`        | Optional, shell-style arguments passed to the plugin. |
 
-For example, `plugin test --args='hello --foo --bar=baz'` will run the `test` plugin with the arguments `hello --foo --bar=baz` in a sync context.
+For example, `plugin test -- hello --foo --bar=baz` will run the `test` plugin with the arguments `hello --foo --bar=baz` in a sync context.
 
 To access the arguments in the plugin, use `job.args`:
 
@@ -63,7 +63,7 @@ TODO: add doc about `@sync` (`--sync`)
 
 ```lua
 --- @sync entry
--- ~/.config/yazi/plugins/test.yazi/init.lua
+-- ~/.config/yazi/plugins/test.yazi/main.lua
 return {
 	entry = function(self, job)
 		ya.err(job.args[1])  -- "hello"
@@ -81,12 +81,7 @@ These will be treated as positional arguments, but as Yazi adds support for shor
 
 The plugin system is designed with an async-first philosophy. Therefore, unless specifically specified, such as the `--sync` for the `plugin` command, all plugins run in an async context.
 
-There is one exception - all `init.lua` are synchronous, which includes:
-
-- The `init.lua` for Yazi itself, i.e. `~/.config/yazi/init.lua`.
-- The `init.lua` for each plugin, e.g. `~/.config/yazi/plugins/bar.yazi/init.lua`.
-
-This is because `init.lua` is commonly used to initialize plugin configurations, and this process is synchronous:
+There is one exception: the user's `init.lua` is synchronous, since `init.lua` is often used to initialize plugin configurations:
 
 ```lua
 -- ~/.config/yazi/init.lua
@@ -98,7 +93,7 @@ require("bar"):setup {
 ```
 
 ```lua
--- ~/.config/yazi/plugins/bar.yazi/init.lua
+-- ~/.config/yazi/plugins/bar.yazi/main.lua
 return {
 	setup = function(state, opts)
 		-- Save the user configuration to the plugin's state
@@ -116,7 +111,7 @@ For better performance, the sync context is created only at the app's start and 
 prompting plugin developers to use plugin-specific state persistence for their plugins to prevent global space contamination:
 
 ```lua
--- ~/.config/yazi/test.yazi/init.lua
+-- ~/.config/yazi/test.yazi/main.lua
 return {
   entry = function(state)
     state.i = state.i or 0
@@ -145,7 +140,7 @@ In this context, you can use all the async functions supported by Yazi, and it o
 You can also obtain [a small amount](#sendable) of app data from the sync context by calling a "sync function":
 
 ```lua
--- ~/.config/yazi/plugins/my-async-plugin.yazi/init.lua
+-- ~/.config/yazi/plugins/my-async-plugin.yazi/main.lua
 local set_state = ya.sync(function(state, a)
 	-- You can get/set the state of the plugin through `state` parameter
 	-- in the `sync()` block
@@ -233,6 +228,7 @@ local M = {}
 
 function M:preload(job)
 	-- ...
+	return false, Err("some error")
 end
 
 return M
@@ -247,16 +243,14 @@ It receives a `job` parameter, which is a table:
 | `file` | [File](/docs/plugins/types#shared.file) to be preloaded.         |
 | `skip` | Always `0`                                                       |
 
-And has the following return values:
+And returns a `(complete, err)`:
 
-| Binary | Decimal |                         |
-| ------ | ------- | ----------------------- |
-| `0 0`  | 0       | Failure, don't continue |
-| `0 1`  | 1       | Success, don't continue |
-| `1 0`  | 2       | Failure, continue       |
-| `1 1`  | 3       | Success, continue       |
+- `complete`: Required, Whether the preloading is complete, which is a boolean.
+  - `true`: Marks the task as complete, and the task will not be called again.
+  - `false`: Marks the task as incomplete, and the task will be retried until it's complete (returns `true`).
+- `err`: Optional, the error to be logged.
 
-When "continue" is set, the preloader can reload the files that have already been loaded at the next time point, such as when the user scrolls, leading to a page switch. This is usually done for the either:
+When `complete = false`, the preloader will be re-triggered at the next time point, such as when the user scrolls leading to a page switch. This is usually done for either:
 
 - Retrying in case of file loading failure
 - Refreshing the file status upon successful loading

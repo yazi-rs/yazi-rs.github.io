@@ -146,9 +146,9 @@ Exit the process.
 
 Close the current tab; if it's the last tab, exit the process instead.
 
-| Argument/Option | Description                                                                                           |
-| --------------- | ----------------------------------------------------------------------------------------------------- |
-| `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file` on exit. (Nightly only) |
+| Argument/Option | Description                                                                            |
+| --------------- | -------------------------------------------------------------------------------------- |
+| `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file` on exit. |
 
 ### `suspend` {#manager.suspend}
 
@@ -158,9 +158,16 @@ Once those tasks are done, use the `fg` command of the shell to send a resume si
 
 ### `arrow` {#manager.arrow}
 
-| Argument/Option | Description                                                                                                       |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `[n]` / `[n%]`  | Move the cursor up or down by `n` or `n%` lines. Use negative values to move up and positive values to move down. |
+| Argument/Option | Description                                      |
+| --------------- | ------------------------------------------------ |
+| `[steps]`       | The number of steps the cursor moves up or down. |
+
+`[steps]` can be one of the following values:
+
+- `n`: Move the cursor `n` lines up or down, negative for up, positive for down.
+- `n%`: Move the cursor `n%` of the screen height up or down, negative for up, positive for down.
+- `"top"`: Move the cursor to the first file.
+- `"bot"`: Move the cursor to the last file.
 
 ### `leave` {#manager.leave}
 

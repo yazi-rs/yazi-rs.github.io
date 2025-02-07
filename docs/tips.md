@@ -65,7 +65,7 @@ Moved to: https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
 
 ## Smart paste: `paste` files without entering the directory {#smart-paste}
 
-Save these lines as `~/.config/yazi/plugins/smart-paste.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/smart-paste.yazi/main.lua`:
 
 ```lua
 --- @sync entry
@@ -100,7 +100,7 @@ desc = "Paste into the hovered directory or CWD"
 
 ## Smart tab: create a tab and enter the hovered directory {#smart-tab}
 
-Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/main.lua`:
 
 ```lua
 --- @sync entry
@@ -123,7 +123,7 @@ desc = "Create a tab and enter the hovered directory"
 
 ## Smart switch: create tab if the tab being switched to does not exist {#smart-switch}
 
-Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/main.lua`:
 
 ```lua
 --- @sync entry
@@ -146,7 +146,7 @@ Then bind it to the <kbd>2</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on   = "2"
-run  = "plugin smart-switch --args=1"
+run  = "plugin smart-switch 1"
 desc = "Switch or create tab 2"
 ```
 
@@ -154,7 +154,7 @@ desc = "Switch or create tab 2"
 
 You can subscribe to directory change events through the [`cd` event provided by DDS](/docs/dds#cd), and then do any action you want, such as setting different sorting methods for specific directories.
 
-The following code demonstrates making the `Downloads` directory to sort by modification time, while others are sorted alphabetically. Save these lines as `~/.config/yazi/plugins/folder-rules.yazi/init.lua`:
+The following code demonstrates making the `Downloads` directory to sort by modification time, while others are sorted alphabetically. Save these lines as `~/.config/yazi/plugins/folder-rules.yazi/main.lua`:
 
 ```lua
 local function setup()
@@ -272,7 +272,7 @@ Moved to: https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi
 
 ## File navigation wraparound {#navigation-wraparound}
 
-Save these lines as `~/.config/yazi/plugins/arrow.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/arrow.yazi/main.lua`:
 
 ```lua
 --- @sync entry
@@ -290,16 +290,16 @@ Then bind it for <kbd>k</kbd> and <kbd>j</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on  = "k"
-run = "plugin arrow --args=-1"
+run = "plugin arrow -1"
 
 [[manager.prepend_keymap]]
 on  = "j"
-run = "plugin arrow --args=1"
+run = "plugin arrow 1"
 ```
 
 ## Navigation in the parent directory without leaving the CWD {#parent-arrow}
 
-Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/init.lua`:
+Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/main.lua`:
 
 <Tabs>
   <TabItem value="classic" label="Classic" default>
@@ -353,16 +353,14 @@ Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 ```toml
 [[manager.prepend_keymap]]
 on  = "K"
-run = "plugin parent-arrow --args=-1"
+run = "plugin parent-arrow -1"
 
 [[manager.prepend_keymap]]
 on  = "J"
-run = "plugin parent-arrow --args=1"
+run = "plugin parent-arrow 1"
 ```
 
 ## Confirm before quitting if multiple tabs are open {#confirm-quit}
-
-**Note**: This plugin currently only works with the nightly version of Yazi.
 
 Save these lines as `~/.config/yazi/plugins/confirm-quit.yazi/main.lua`:
 
