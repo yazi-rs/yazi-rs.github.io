@@ -14,7 +14,7 @@ Once you've [installed Yazi](/docs/installation), start the program with:
 yazi
 ```
 
-Press <kbd>q</kbd> to quit and <kbd>~</kbd> to open the help menu.
+Press <kbd>q</kbd> to quit, <kbd>F1</kbd> or <kbd>~</kbd> to open the help menu.
 
 ## Shell wrapper
 
