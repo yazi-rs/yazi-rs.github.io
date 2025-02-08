@@ -200,9 +200,7 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 ```toml
 [[manager.prepend_keymap]]
 on  = "<C-n>"
-run = '''
-	shell 'dragon -x -i -T "$1"'
-'''
+run = 'shell -- dragon -x -i -T "$1"'
 ```
 
 ## Linux: Copy selected files to the system clipboard while yanking {#selected-files-to-clipboard}
@@ -212,9 +210,7 @@ Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y
 ```toml
 [[manager.prepend_keymap]]
 on  = "y"
-run = [ '''
-	shell 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'
-''', "yank" ]
+run = [ 'shell -- echo "$@" | xclip -i -selection clipboard -t text/uri-list', "yank" ]
 ```
 
 The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
@@ -222,9 +218,7 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 ```toml
 [[manager.prepend_keymap]]
 on  = "y"
-run = [ '''
-	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list'
-''', "yank" ]
+run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
 ```
 
 ## `cd` back to the root of the current Git repository {#cd-to-git-root}
@@ -232,9 +226,7 @@ run = [ '''
 ```toml
 [[manager.prepend_keymap]]
 on = [ "g", "r" ]
-run = '''
-	shell 'ya emit cd "$(git rev-parse --show-toplevel)"'
-'''
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
 ```
 
 Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
@@ -460,9 +452,7 @@ end, 500, Header.LEFT)
 ```toml
 [[manager.prepend_keymap]]
 on = "<C-p>"
-run = '''
-  shell 'qlmanage -p "$@"'
-'''
+run = 'shell -- qlmanage -p "$@"'
 ```
 
 Credits to [@UncleGravity for sharing it](https://discord.com/channels/1136203602898194542/1146658361740369960/1293471643959558156) in Yazi's discord server.
@@ -557,12 +547,9 @@ To send selected files using Thunderbird, with a keybinding <kbd>Ctrl</kbd> + <k
 # ~/.config/yazi/keymap.toml
 [[manager.prepend_keymap]]
 on  = "<C-e>"
-run = '''
-	shell '
-		paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
-		quoted="'\'$paths\''"
-		thunderbird -compose "attachment=$quoted"
-	'
+run = '''shell --
+	paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
+	thunderbird -compose "attachment='$paths'"
 '''
 ```
 
