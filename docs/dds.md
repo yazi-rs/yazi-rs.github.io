@@ -23,8 +23,8 @@ It deeply integrates with a publish-subscribe model based on the Lua API.
 The DDS has three usage:
 
 - [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the message carrier.
-- [`ya pub` and `ya pub-to`](#ya-pub): Using `ya` CLI tool as the message carrier.
-- [`ya emit` and `ya emit-to`](#ya-emit): Using `ya` CLI tool as the command carrier.
+- [`ya pub` and `ya pub-to`](#ya-pub): Using [`ya` CLI tool](/docs/cli) as the message carrier.
+- [`ya emit` and `ya emit-to`](#ya-emit): Using [`ya` CLI tool](/docs/cli) as the command carrier.
 - [Real-time `stdout` reporting](#stdout-reporting): Using `stdout` as the carrier.
 
 ### `ya pub` and `ya pub-to` {#ya-pub}
