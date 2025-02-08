@@ -27,11 +27,21 @@ and it will automatically clone them from GitHub, copy them to your plugins dire
 
 ```toml
 # ~/.config/yazi/package.toml
-[plugin]
-deps = [
-	{ use = "owner/my-plugin", rev = "0573024" },
-	{ use = "yazi-rs/plugins:git", rev = "9a1129c" }
-]
+[[plugin.deps]]
+use  = "owner/my-plugin"
+rev  = "0573024"
+hash = "d81b64a39432fcd6224cd75d296e7510"
+
+[[plugin.deps]]
+use  = "yazi-rs/plugins:git"
+rev  = "9a1129c"
+hash = "a8e15d3c21c02a5af41d46ed04778a02"
+```
+
+To delete a plugin:
+
+```sh
+ya pack -d yazi-rs/plugins:git
 ```
 
 To list all the plugins managed by `ya pack`:
@@ -55,9 +65,21 @@ ya pack -u
 If you want to pin a plugin to a specific version so that it doesn't get upgraded when running `ya pack -u`, add an `=` qualifier before the hash in `rev`:
 
 ```diff
-[plugin]
-deps = [
--	{ use = "owner/my-plugin", rev = "9a1129c" }
-+	{ use = "owner/my-plugin", rev = "=9a1129c" }
-]
+[[plugin.deps]]
+use = "owner/my-plugin"
+- rev = "9a1129c"
++ rev = "=9a1129c"
 ```
+
+For `-a` and `-d`, they can accept multiple arguments, which means you can operate on multiple packages at once:
+
+```sh
+ya pack -a owner/my-plugin yazi-rs/plugins:git
+ya pack -d owner/my-plugin yazi-rs/plugins:git
+```
+
+## Data Distribution Service
+
+You can use `ya` as a user interface to interact with the data distribution service.
+
+See the [DDS section](/docs/dds) for more information.
