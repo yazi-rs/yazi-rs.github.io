@@ -19,7 +19,7 @@ Behind the scenes, Yazi merges the user's `theme.toml` with the flavor's `flavor
 These flavors are placed in the `flavors` subdirectory of the Yazi configuration directory, so either:
 
 - `~/.config/yazi/flavors/` on Unix-like systems.
-- `C:\Users\USERNAME\AppData\Roaming\yazi\config\flavors\` on Windows.
+- `%AppData%\yazi\config\flavors\` on Windows.
 
 ```
 ~/.config/yazi/

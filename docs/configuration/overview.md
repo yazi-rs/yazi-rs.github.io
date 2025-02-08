@@ -18,12 +18,12 @@ You can find the default configuration files on the **_`shipped`_** tag [https:/
 To override any of the defaults, begin by creating the corresponding file (from the directory linked above) to:
 
 - `~/.config/yazi/` on Unix-like systems.
-- `C:\Users\USERNAME\AppData\Roaming\yazi\config\` on Windows.
+- `%AppData%\yazi\config\` on Windows.
 
 For example, to change the visible status of hidden files, start by creating a `yazi.toml` file to:
 
 - `~/.config/yazi/yazi.toml` on Unix-like systems.
-- `C:\Users\USERNAME\AppData\Roaming\yazi\config\yazi.toml` on Windows.
+- `%AppData%\yazi\config\yazi.toml` on Windows.
 
 Then [copy the required part](https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/yazi-default.toml) into it, here is `show_hidden`:
 

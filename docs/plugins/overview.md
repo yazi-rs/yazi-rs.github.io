@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 You can extend Yazi's functionality through Lua plugins, which need to be placed in the `plugins` subdirectory of Yazi's configuration directory, so either:
 
 - `~/.config/yazi/plugins/` on Unix-like systems.
-- `C:\Users\USERNAME\AppData\Roaming\yazi\config\plugins\` on Windows.
+- `%AppData%\yazi\config\plugins\` on Windows.
 
 ```
 ~/.config/yazi/
@@ -282,7 +282,7 @@ If you have no experience with Lua, you can quickly get started through https://
 If you want to debug some runtime data, use [`ya.dbg()`](/docs/plugins/utils#ya.dbg) and [`ya.err()`](/docs/plugins/utils#ya.err) to print what you want to debug to either:
 
 - `~/.local/state/yazi/yazi.log` on Unix-like systems.
-- `C:\Users\USERNAME\AppData\Roaming\yazi\state\yazi.log` on Windows.
+- `%AppData%\yazi\state\yazi.log` on Windows.
 
 Make sure to set the `YAZI_LOG` environment variable before starting Yazi:
 
