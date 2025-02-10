@@ -3,6 +3,8 @@ sidebar_position: 3
 description: Learn how to configure your Yazi theme.
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 # theme.toml
 
 :::tip
