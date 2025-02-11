@@ -292,28 +292,28 @@ If you know how to package Yazi for Debian/Ubuntu and would like to help us subm
 ## Flatpak
 
 :::warning
+The Flatpak edition comes with many limitations due to sandboxing - see its [README](https://github.com/flathub/io.github.sxyazi.yazi) for details.
 
-The flatpak version comes with many limitations due to sandboxing. See its [README](https://github.com/flathub/io.github.sxyazi.yazi) for details. Power users are recommended to transition to an alternative installation to avoid unexpected breakages.
-
+Power users are recommended to transition to an alternative installation to avoid unexpected breakages.
 :::
 
-<a href='https://flathub.org/apps/io.github.sxyazi.yazi'>
-    <img width='120' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
+<a href="https://flathub.org/apps/io.github.sxyazi.yazi">
+	<img height="40" alt="Download on Flathub" src="https://flathub.org/api/badge?locale=en" />
 </a>
 
-After installation, you can run `yazi` in the terminal with 
+After [installation](https://flathub.org/apps/io.github.sxyazi.yazi), you can run Yazi in the terminal with:
 
 ```sh
 flatpak run io.github.sxyazi.yazi
 ```
 
-You may want to create a commandline alias
+You may want to create a shell alias:
 
 ```sh
-alias yazi='flatpak run io.github.sxyazi.yazi'
+alias yazi="flatpak run io.github.sxyazi.yazi"
 ```
 
-See the flatpak version's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
+See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
 
 ## AOSC OS {#aosc}
 
