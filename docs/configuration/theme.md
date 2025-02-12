@@ -119,15 +119,9 @@ Unset mode
 
 ## [status] {#status}
 
+- overall (Style): Overall status bar style.
 - separator_open (String): Opening separator symbol. e.g. `"["`.
 - separator_close (String): Closing separator symbol. e.g. `"]"`.
-- separator_style (Style): Separator style.
-
-Progress
-
-- progress_label (Style): Progress label style.
-- progress_normal (Style): Style of the progress bar when it is not in an error state.
-- progress_error (Style): Style of the progress bar when an error occurs.
 
 Permissions
 
@@ -136,6 +130,12 @@ Permissions
 - perm_write (Style): Write permission.
 - perm_exec (Style): Execute permission.
 - perm_sep (Style): `-` separator.
+
+Progress
+
+- progress_label (Style): Progress label style.
+- progress_normal (Style): Style of the progress bar when it is not in an error state.
+- progress_error (Style): Style of the progress bar when an error occurs.
 
 ## [pick] {#pick}
 
