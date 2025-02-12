@@ -50,13 +50,14 @@ So it inherits the default terminal font color. This causes the icon size issue,
 
 ## How to troubleshoot terminal response timeout errors? {#trt}
 
-The error happens when running Yazi within tmux, since tmux interferes with the communication between Yazi and the actual terminal in various ways.
+The error happens when running Yazi within tmux - tmux interferes with the communication between Yazi and the actual terminal in various ways.
 
 To avoid any interference from tmux, Yazi has to implement a lot of hacks, most of which work fine in most cases. If it doesn't work for you, please check:
 
 1. Is your tmux up to date?
 2. Have you [enabled passthrough for tmux](/docs/image-preview#tmux)?
-3. Comment out all custom configurations _except_ [passthrough](/docs/image-preview#tmux) to check if the issue is caused by your settings. If so, add them back piece by piece to identify the cause.
+3. Have you bound `Alt+Shift+p` to tmux? [tmux currently doesn't support `DECRQSS`](https://github.com/tmux/tmux/issues/4034), and [its response](https://vt100.net/docs/vt510-rm/DECRQSS.html) overlaps partially with the `Alt+Shift+P` sequence, causing tmux mistakenly interpret it as a key event.
+4. Comment out all custom configurations _except_ [passthrough](/docs/image-preview#tmux) to check if the issue is caused by your settings. If so, add them back piece by piece to identify the cause.
 
 ## Why is "orphan" set to false by default? {#why-orphan-false}
 
