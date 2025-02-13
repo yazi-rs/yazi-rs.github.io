@@ -89,10 +89,11 @@ NVIM=1 NVIM_LOG_FILE=1 yazi
 
 ## Windows users {#windows}
 
-Currently, only the following 2 terminals support displaying images on Windows:
+Currently, only the following 3 terminals support displaying images on Windows:
 
 - WezTerm
 - [Windows Terminal Preview v1.22.2702.0](https://github.com/microsoft/terminal/releases/tag/v1.22.2702.0)
+- Bobcat (version >= 0.9.r242, requires the preview version of `conpty.dll` + `OpenConsole.exe`)
 
 ## Windows with WSL users {#wsl}
 
