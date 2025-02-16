@@ -539,13 +539,15 @@ Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-208
 	<video src="https://github.com/helix-editor/helix/assets/17523360/a4dde9e0-96bf-42a4-b946-40cbee984e69" width="100%" controls muted></video>
 </details>
 
-## File tree picker in Helix with Tmux {#helix-with-tmux}
+## Using Yazi as a File Picker in Helix with Tmux {#helix-with-tmux}  
 
-Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a tmux session).
+You can integrate Yazi as a file picker to navigate and open files within your active Helix session running inside Tmux.  
 
-This integration yazu with tmux is heavly inspired by the proposed method for using yazi with Zellij and Helix
+This setup is heavily inspired by similar methods used for integrating Yazi with Zellij and Helix.  
 
-Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
+### Configuring Keybindings in Helix  
+
+To enable this functionality, add a keybinding to your Helix configuration file. For example, to use <kbd>Ctrl</kbd> + <kbd>y</kbd> to open Yazi in a new Tmux window, add the following to `config.toml`:  
 
 ```toml
 # ~/.config/helix/config.toml
@@ -553,29 +555,31 @@ Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 C-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
 ```
 
-Or if you also want to support splitting the pane, you can add more keymaps:
+If you also want the ability to open files in split panes, you can define additional keybindings:  
 
 ```toml
 # ~/.config/helix/config.toml
 [keys.normal.C-y]
-# Open the file(s) in the current window
-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
-# Open the file(s) in a vertical pane
-v = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh vsplit'"
-# Open the file(s) in a horizontal pane
-h = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh hsplit'"
+# Open file(s) in the current window  
+y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"  
+# Open file(s) in a vertical split  
+v = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh vsplit'"  
+# Open file(s) in a horizontal split  
+h = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh hsplit'"  
 ```
 
-Then save the following script as `~/.config/helix/yazi-picker.sh`:
+### Creating the Yazi Picker Script  
+
+Save the following script as `~/.config/helix/yazi-picker.sh` to handle file selection and integration with Tmux:  
 
 ```sh
 #!/usr/bin/env bash
-# Run Yazi and capture selected paths
+# Launch Yazi and retrieve selected file paths  
 paths=$(yazi --chooser-file=/dev/stdout)
 
 if [[ -n "$paths" ]]; then
     tmux last-window
-    tmux sned-keys Escape
+    tmux send-keys Escape
     tmux send-keys ":$1 $paths"
     tmux send-keys Enter
 else
