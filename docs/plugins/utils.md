@@ -164,17 +164,17 @@ This function is only available in the async context.
 Send a foreground notification to the user:
 
 - `opts`: Required, the options of the notification, which is a table:
-  - `title`: Required, the title of the notification, which is a string.
+  - `title`: Required, the notification's title, which is a string.
   - `content`: Required, the content of the notification, which is a string.
-  - `timeout`: Required, the timeout of the notification, which is an non-negative float in seconds.
-  - `level`: Optional, the level of the notification, which is a string accepts `"info"`, `"warn"`, and `"error"`. Default is `"info"`.
+  - `timeout`: Required, the timeout of the notification, which is a non-negative float in seconds.
+  - `level`: Optional, the level of the notification, which is a string that accepts `"Info"`, `"Warn"`, and `"Error"`. The default is `"Info"`.
 
 ```lua
 ya.notify {
 	title = "Hello, World!",
 	content = "This is a notification from Lua!",
 	timeout = 6.5,
-	-- level = "info",
+	-- level = "Info",
 }
 ```
 
