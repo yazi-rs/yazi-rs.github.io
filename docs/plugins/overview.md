@@ -184,7 +184,7 @@ These annotations _must_ be at the very top of the file, with no content before 
 
 ### `@sync` {#@sync}
 
-Specifies that a method in the plugin runs in a async context instead of the default async context. Available values:
+Specifies that a method in the plugin runs in a sync context instead of the default async context. Available values:
 
 - `entry`: Run the `entry` method in a sync context.
 
