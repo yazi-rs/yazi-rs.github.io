@@ -29,7 +29,7 @@ Binary:
 Media:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
-- [mediainfo.yazi](https://github.com/boydaihungst/mediainfo.yazi) - Preview image, audio, video, sub and many more media types using `ffmpeg` and `mediainfo`.
+- [mediainfo.yazi](https://github.com/boydaihungst/mediainfo.yazi) - Preview image, audio, video, subtitle and many media files using `ffmpeg` and `mediainfo`.
 
 Archives:
 
@@ -64,7 +64,7 @@ Bookmarks:
 
 - [bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi) - A Yazi plugin that adds the basic functionality of Vi-like marks.
 - [mactag.yazi](https://github.com/yazi-rs/plugins/tree/main/mactag.yazi) - Bring macOS's awesome tagging feature to Yazi! The plugin is only available for macOS just like the name says.
-- [simple-tag.yazi](https://github.com/boydaihungst/simple-tag.yazi) - Tagging feature for linux/windows/macos! The plugin isn't use mactag.
+- [simple-tag.yazi](https://github.com/boydaihungst/simple-tag.yazi) - Tagging feature for Linux, macOS and Windows!
 - [yamb.yazi](https://github.com/h-hg/yamb.yazi) - Yet another bookmarks plugins. It supports persistence, jumping by a key, jumping by [fzf](https://github.com/junegunn/fzf).
 - [bunny.yazi](https://github.com/stelcodes/bunny.yazi) - Simple bookmarks menu with fuzzy searching and an option to mark a single directory.
 
@@ -124,9 +124,9 @@ UI enhancements:
 - [yatline.yazi](https://github.com/imsi32/yatline.yazi) - Customize header-line and status-line with an easy configuration.
 - [simple-status.yazi](https://github.com/Ape/simple-status.yazi) - Minimalistic status line with useful file attribute information.
 - [no-status.yazi](https://github.com/yazi-rs/plugins/tree/main/no-status.yazi) - Remove the status bar.
-- [dual-pane.yazi](https://github.com/dawsers/dual-pane.yazi) - Dual pane navigation for Yazi like vifm or midnight commander.
+- [dual-pane.yazi](https://github.com/dawsers/dual-pane.yazi) - Dual pane navigation for Yazi like Vifm or midnight commander.
 - [toggle-view.yazi](https://github.com/dawsers/toggle-view.yazi) - Toggle on or off the parent, current or preview panels.
-- [pref-by-location.yazi](https://github.com/boydaihungst/pref-by-location.yazi) - Save/Load linemode, sort, show_hidden preferences by location. Replace [Folder-specific rules](https://yazi-rs.github.io/docs/tips#folder-rules)
+- [pref-by-location.yazi](https://github.com/boydaihungst/pref-by-location.yazi) - Save and restore linemode/sorting/hidden preferences based on directory location.
 
 ## 🚀 Preloaders {#preloaders}
 
