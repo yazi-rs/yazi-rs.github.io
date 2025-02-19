@@ -193,6 +193,15 @@ name = "/remote/**"
 run  = "noop"
 ```
 
+If you want to disable all the preset previewers, preloaders:
+
+```toml
+# yazi.toml
+[plugin]
+preloaders = []
+previewers = []
+```
+
 ## Drag and drop via [`dragon`](https://github.com/mwh/dragon) {#drag-and-drop}
 
 Original post: https://github.com/sxyazi/yazi/discussions/327
