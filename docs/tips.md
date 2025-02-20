@@ -466,6 +466,21 @@ run = 'shell -- qlmanage -p "$@"'
 
 Credits to [@UncleGravity for sharing it](https://discord.com/channels/1136203602898194542/1146658361740369960/1293471643959558156) in Yazi's discord server.
 
+## Windows: Preview files with [QuickLook for Windows](https://github.com/QL-Win/QuickLook) {#windows-quick-look}
+
+If you have QuickLook for windows installed:
+* Head to [Develop, build and integrate](https://github.com/QL-Win/QuickLook/wiki/Develop%2C-build-and-integrate) on QuickLook's wiki, and download `Bridge.zip`, to get the executable `Bridge.exe`
+* Add its directory to PATH. Alternatively, use the full path to the executable in the next step
+* Add the following code to your `keymap.toml`
+```toml
+[[manager.prepend_keymap]]
+on = "<C-space>"
+run = '''
+shell 'Bridge.exe "%0"' --block
+'''
+desc = "QuickLook preview"
+```
+
 ## Specify a different editor for bulk renaming {#bulk-editor}
 
 For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs/configuration/yazi#open) rules with:
