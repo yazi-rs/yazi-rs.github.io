@@ -162,14 +162,17 @@ or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 
 Further navigation commands can be found in the table below.
 
-| Key binding                 | Action                                         |
-| --------------------------- | ---------------------------------------------- |
-| <kbd>K</kbd>                | Seek up 5 units in the preview                 |
-| <kbd>J</kbd>                | Seek down 5 units in the preview               |
-| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top                         |
-| <kbd>G</kbd>                | Move cursor to the bottom                      |
-| <kbd>z</kbd>                | Jump to a directory using zoxide               |
-| <kbd>Z</kbd>                | Jump to a directory or reveal a file using fzf |
+| Key binding                 | Action                                                                     |
+| --------------------------- | -------------------------------------------------------------------------- |
+| <kbd>K</kbd>                | Seek up 5 units in the preview                                             |
+| <kbd>J</kbd>                | Seek down 5 units in the preview                                           |
+| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top                                                     |
+| <kbd>G</kbd>                | Move cursor to the bottom                                                  |
+| <kbd>z</kbd>                | [Cd][manager.cd] to a directory via zoxide                                 |
+| <kbd>Z</kbd>                | [Cd][manager.cd] to a directory or [reveal][manager.reveal] a file via fzf |
+
+[manager.cd]: /docs/configuration/keymap#manager.cd
+[manager.reveal]: /docs/configuration/keymap#manager.reveal
 
 ### Selection
 

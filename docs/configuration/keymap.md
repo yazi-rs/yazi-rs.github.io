@@ -166,8 +166,8 @@ Once those tasks are done, use the `fg` command of the shell to send a resume si
 
 - `n`: Move the cursor `n` lines up or down, negative for up, positive for down.
 - `n%`: Move the cursor `n%` of the screen height up or down, negative for up, positive for down.
-- `"top"`: Move the cursor to the first file.
-- `"bot"`: Move the cursor to the last file.
+- `"top"`: Move the cursor to the top (first file).
+- `"bot"`: Move the cursor to the bottom (last file).
 
 ### `leave` {#manager.leave}
 
