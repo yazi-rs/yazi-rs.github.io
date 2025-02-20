@@ -265,11 +265,11 @@ To make it work, make sure you've:
 
 ## Maximize preview pane {#max-preview}
 
-Moved to: https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi
+Moved to: https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
 
 ## Hide preview pane {#hide-preview}
 
-Moved to: https://github.com/yazi-rs/plugins/tree/main/hide-preview.yazi
+Moved to: https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
 
 ## File navigation wraparound {#navigation-wraparound}
 

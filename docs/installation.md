@@ -108,7 +108,7 @@ in {
 		plugins = {
 			chmod = "${yazi-plugins}/chmod.yazi";
 			full-border = "${yazi-plugins}/full-border.yazi";
-			max-preview = "${yazi-plugins}/max-preview.yazi";
+			toggle-pane = "${yazi-plugins}/toggle-pane.yazi";
 			starship = pkgs.fetchFromGitHub {
 				owner = "Rolv-Apneseth";
 				repo = "starship.yazi";
@@ -126,7 +126,7 @@ in {
 			manager.prepend_keymap = [
 				{
 					on = "T";
-					run = "plugin max-preview";
+					run = "plugin toggle-pane max-preview";
 					desc = "Maximize or restore the preview pane";
 				}
 				{
