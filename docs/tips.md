@@ -480,6 +480,7 @@ shell 'Bridge.exe "%0"'
 '''
 desc = "QuickLook preview"
 ```
+**Tip:** While QuickLook is launched, if you press QuickLook's shortcut again and the same file is highlighted (hovered), it will close QuickLook. Alternatively, if another file is highlighted, press the shortcut again to switch QuickLook to it instead.
 
 ## Specify a different editor for bulk renaming {#bulk-editor}
 
