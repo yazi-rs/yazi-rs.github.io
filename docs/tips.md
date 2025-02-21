@@ -474,9 +474,9 @@ If you have QuickLook for windows installed:
 * Add the following code to your `keymap.toml`
 ```toml
 [[manager.prepend_keymap]]
-on = "<C-space>"
+on = "<C-Space>"
 run = '''
-shell 'Bridge.exe "%0"' --block
+shell 'Bridge.exe "%0"'
 '''
 desc = "QuickLook preview"
 ```
