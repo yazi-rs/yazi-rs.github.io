@@ -55,7 +55,7 @@ You can bind a `plugin` command to a specific key in your `keymap.toml` with:
 | `[name]`        | Required, the name of the plugin to run.              |
 | `[args]`        | Optional, shell-style arguments passed to the plugin. |
 
-For example, `plugin test -- foo --bar --baz=qux` will run the `test` plugin with the arguments `foo --bar --baz=qux` in a sync context.
+For example, `plugin test -- foo --bar --baz=qux` will run the `test` plugin with the arguments `foo --bar --baz=qux` in an async context.
 
 To access the arguments in the plugin, use `job.args`:
 
