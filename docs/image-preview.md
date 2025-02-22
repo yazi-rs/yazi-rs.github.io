@@ -188,3 +188,19 @@ If the image shows properly when using Überzug++ independently, but not when us
 - The contents of your log file.
 - The contents of `/tmp/ueberzugpp-$USER.log`.
 - A GIF demonstration of the above steps.
+
+## What Image formats are supported?
+
+Supported formats may depend on the protocol used.
+
+`Kgp` for example supports png, jpg, gif, bmp, tiff and webp formats out of the
+box but needs [ImageMagick](https://imagemagick.org/) for svg, font, heic, and
+jpeg xl preview. See [installation](./installation.md) instructions for more info.
+
+You can see check if yazi found magick by looking the `Dependencies` section of
+`yazi --debug`.
+
+```sh
+yazi --debug  | grep magick
+    magick        : 7.1.1-43
+```
