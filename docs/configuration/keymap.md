@@ -417,10 +417,10 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
 ### `search` {#manager.search}
 
-| Argument/Option | Description                                                                                                                                   |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[engine]`      | Search engine, available values: [`fd`](https://github.com/sharkdp/fd), [`rg`](https://github.com/BurntSushi/ripgrep), `none` (cancel search) |
-| `--args`        | Additional arguments passed to the specified engine, for example `search fd --args='-e -H'`                                                   |
+| Argument/Option | Description                                                                                       |
+| --------------- | ------------------------------------------------------------------------------------------------- |
+| `--via`         | Search engine, available values: [`fd`][fd], [`rg`][rg], and [`rga`][rga] (Nightly only)          |
+| `--args`        | Additional arguments passed to the specified engine, for example `search --via=fd --args='-e -H'` |
 
 You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 
@@ -438,6 +438,10 @@ on   = [ "g", "f" ]
 run  = 'search_do --via=fd --args="-d 3"'
 desc = "Switch to the flat view with a max depth of 3"
 ```
+
+[fd]: https://github.com/sharkdp/fd
+[rg]: https://github.com/BurntSushi/ripgrep
+[rga]: https://github.com/phiresky/ripgrep-all
 
 ### `find` {#manager.find}
 
