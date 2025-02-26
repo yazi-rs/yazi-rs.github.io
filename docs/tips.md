@@ -73,11 +73,11 @@ return {
 	entry = function()
 		local h = cx.active.current.hovered
 		if h and h.cha.is_dir then
-			ya.manager_emit("enter", {})
-			ya.manager_emit("paste", {})
-			ya.manager_emit("leave", {})
+			ya.mgr_emit("enter", {})
+			ya.mgr_emit("paste", {})
+			ya.mgr_emit("leave", {})
 		else
-			ya.manager_emit("paste", {})
+			ya.mgr_emit("paste", {})
 		end
 	end,
 }
@@ -107,7 +107,7 @@ Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/main.lua`:
 return {
 	entry = function()
 		local h = cx.active.current.hovered
-		ya.manager_emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
+		ya.mgr_emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
 	end,
 }
 ```
@@ -130,12 +130,12 @@ Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/main.lua`:
 local function entry(_, job)
 	local cur = cx.active.current
 	for _ = #cx.tabs, job.args[1] do
-		ya.manager_emit("tab_create", { cur.cwd })
+		ya.mgr_emit("tab_create", { cur.cwd })
 		if cur.hovered then
-			ya.manager_emit("reveal", { cur.hovered.url })
+			ya.mgr_emit("reveal", { cur.hovered.url })
 		end
 	end
-	ya.manager_emit("tab_switch", { job.args[1] })
+	ya.mgr_emit("tab_switch", { job.args[1] })
 end
 
 return { entry = entry }
@@ -161,9 +161,9 @@ local function setup()
 	ps.sub("cd", function()
 		local cwd = cx.active.current.cwd
 		if cwd:ends_with("Downloads") then
-			ya.manager_emit("sort", { "mtime", reverse = true, dir_first = false })
+			ya.mgr_emit("sort", { "mtime", reverse = true, dir_first = false })
 		else
-			ya.manager_emit("sort", { "alphabetical", reverse = false, dir_first = true })
+			ya.mgr_emit("sort", { "alphabetical", reverse = false, dir_first = true })
 		end
 	end)
 end
@@ -281,7 +281,7 @@ return {
 	entry = function(_, job)
 		local current = cx.active.current
 		local new = (current.cursor + job.args[1]) % #current.files
-		ya.manager_emit("arrow", { new - current.cursor })
+		ya.mgr_emit("arrow", { new - current.cursor })
 	end,
 }
 ```
@@ -313,7 +313,7 @@ local function entry(_, job)
 
 	local target = parent.files[parent.cursor + 1 + job.args[1]]
 	if target and target.cha.is_dir then
-		ya.manager_emit("cd", { target.url })
+		ya.mgr_emit("cd", { target.url })
 	end
 end
 
@@ -338,7 +338,7 @@ local function entry(_, job)
 	for i = start, end_, step do
 		local target = parent.files[i]
 		if target and target.cha.is_dir then
-			return ya.manager_emit("cd", { target.url })
+			return ya.mgr_emit("cd", { target.url })
 		end
 	end
 end
@@ -370,7 +370,7 @@ local count = ya.sync(function() return #cx.tabs end)
 
 local function entry()
 	if count() < 2 then
-		return ya.manager_emit("quit", {})
+		return ya.mgr_emit("quit", {})
 	end
 
 	local yes = ya.confirm {
@@ -379,7 +379,7 @@ local function entry()
 		content = "There are multiple tabs open. Are you sure you want to quit?",
 	}
 	if yes then
-		ya.manager_emit("quit", {})
+		ya.mgr_emit("quit", {})
 	end
 end
 

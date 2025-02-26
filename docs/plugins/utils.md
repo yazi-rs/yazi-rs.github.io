@@ -47,7 +47,7 @@ local update_state = ya.sync(function(self, new_state)
 end)
 ```
 
-### `manager_emit(cmd, args)` {#ya.manager_emit}
+### `mgr_emit(cmd, args)` {#ya.mgr_emit}
 
 Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without waiting for the executor to execute:
 
@@ -55,7 +55,7 @@ Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without 
 - `args`: Required, the arguments of the command, which is a table with a number or string key and [sendable values](/docs/plugins/overview#sendable).
 
 ```lua
-ya.manager_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
+ya.mgr_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 
 -- Equivalent to:
 -- my-cmd "hello" "123" --foo --bar-baz="world"
