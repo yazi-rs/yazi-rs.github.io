@@ -76,8 +76,8 @@ If you don't want to use it and want things to be calm, sure, you can modify the
 
 ```toml
 [status]
-separator_open  = ""
-separator_close = ""
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
 
 [icon]
 globs = []
