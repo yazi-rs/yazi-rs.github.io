@@ -157,7 +157,7 @@ Progress
 - value (Style): Value style.
 - selected (Style): Selected value style.
 
-## [completion] {#completion}
+## [cmp] {#cmp}
 
 - border (Style): Border style.
 - active (Style): Selected item style.

@@ -17,7 +17,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[pick\]](#pick) - Pick component. e.g. "open with" for files.
 - [\[input\]](#input) - Input component. e.g. create, rename, etc.
 - [\[confirm\]](#confirm) - Confirmation dialog. e.g. remove, overwrite, etc.
-- [\[completion\]](#completion) - Completion component. e.g. "cd" path completion.
+- [\[cmp\]](#cmp) - Completion component. e.g. "cd" path completion.
 - [\[help\]](#help) - Help menu.
 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
@@ -776,9 +776,9 @@ Move the confirmation cursor.
 
 Open the help menu.
 
-## [completion] {#completion}
+## [cmp] {#cmp}
 
-### `close` {#completion.close}
+### `close` {#cmp.close}
 
 Hide the completion menu.
 
@@ -786,25 +786,25 @@ Hide the completion menu.
 | --------------- | ---------------------- |
 | `--submit`      | Submit the completion. |
 
-### `close_input` {#completion.close_input}
+### `close_input` {#cmp.close_input}
 
 Close the input box. Arguments are the same as [`[input] close`](#input.close).
 
-### `arrow` {#completion.arrow}
+### `arrow` {#cmp.arrow}
 
 | Argument/Option | Description                                                                           |
 | --------------- | ------------------------------------------------------------------------------------- |
 | `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
 
-### `help` {#completion.help}
+### `help` {#cmp.help}
 
 Open the help menu.
 
-### `plugin` {#completion.plugin}
+### `plugin` {#cmp.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-### `noop` {#completion.noop}
+### `noop` {#cmp.noop}
 
 See [`noop` command](#manager.noop).
 
