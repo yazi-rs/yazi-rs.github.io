@@ -419,7 +419,7 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
 | Argument/Option | Description                                                                                       |
 | --------------- | ------------------------------------------------------------------------------------------------- |
-| `--via`         | Search engine, available values: [`fd`][fd], [`rg`][rg], and [`rga`][rga] (Nightly only)          |
+| `--via`         | Search engine, available values: [`fd`][fd], [`rg`][rg], and [`rga`][rga]                         |
 | `--args`        | Additional arguments passed to the specified engine, for example `search --via=fd --args='-e -H'` |
 
 You can search with an empty keyword (`""`) via `fd` to achieve flat view.
