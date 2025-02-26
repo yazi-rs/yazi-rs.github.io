@@ -119,9 +119,9 @@ Properties:
 You can access all app data through the `cx` within [Sync context](/docs/plugins/overview#sync-context):
 
 - `cx.active` - The active tab, which is a [tab::Tab](#app-data.tab-tab)
-- `cx.tabs` - All of tabs, which is a [manager::Tabs](#app-data.manager-tabs)
+- `cx.tabs` - All of tabs, which is a [mgr::Tabs](#app-data.mgr-tabs)
 - `cx.tasks` - All of tasks, which is a [tasks::Tasks](#app-data.tasks-tasks)
-- `cx.yanked` - The yanked urls, which is a [manager::Yanked](#app-data.manager-yanked)
+- `cx.yanked` - The yanked urls, which is a [mgr::Yanked](#app-data.mgr-yanked)
 
 ### `tab::Mode` {#app-data.tab-mode}
 
@@ -198,7 +198,7 @@ Based on [File](#shared.file), with the following additional methods:
 - `found()` - When users find a file using the `find` command, the status of the file - returns `nil` if it doesn't match the user's find keyword; otherwise, returns `{idx, all}`, where `idx` is the position of matched file, and `all` represents the number of all matched files.
 - `highlights()` - TODO
 
-### `manager::Tabs` {#app-data.manager-tabs}
+### `mgr::Tabs` {#app-data.mgr-tabs}
 
 Properties:
 
@@ -243,7 +243,7 @@ Properties:
   }
   ```
 
-### `manager::Yanked` {#app-data.manager-yanked}
+### `mgr::Yanked` {#app-data.mgr-yanked}
 
 ```lua
 for idx, url in pairs(cx.yanked) do
