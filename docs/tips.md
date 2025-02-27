@@ -541,7 +541,7 @@ fi
 
 Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
 
-Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton), [@postsolar](https://github.com/postsolar) and [@TheAwiteb](https://github.com/TheAwiteb) for sharing and polishing it!
+Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton), [@postsolar](https://github.com/postsolar), [@TheAwiteb](https://github.com/TheAwiteb) and [@Dreaming-Codes](https://github.com/Dreaming-Codes) for sharing and polishing it!
 
 <details>
   <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
