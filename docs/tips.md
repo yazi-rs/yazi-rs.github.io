@@ -506,7 +506,7 @@ Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 ```toml
 # ~/.config/helix/config.toml
 [keys.normal]
-C-y = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
+C-y = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open \"%{buffer_name}\""
 ```
 
 If you also want the ability to open files in split panes, you can define additional keybindings:
@@ -515,11 +515,11 @@ If you also want the ability to open files in split panes, you can define additi
 # ~/.config/helix/config.toml
 [keys.normal.C-y]
 # Open the file(s) in the current window
-y = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
-# Open the file(s) in a vertical split
-v = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit"
-# Open the file(s) in a horizontal split
-h = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit"
+y = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open \"%{buffer_name}\""
+# Open the file(s) in a vertical pane
+v = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh vsplit \"%{buffer_name}\""
+# Open the file(s) in a horizontal pane
+h = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh hsplit \"%{buffer_name}\""
 ```
 
 Then save the following script as `~/.config/helix/yazi-picker.sh`:
@@ -527,7 +527,7 @@ Then save the following script as `~/.config/helix/yazi-picker.sh`:
 ```sh
 #!/usr/bin/env bash
 
-paths=$(yazi --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+paths=$(yazi --chooser-file=/dev/stdout "$2" | while read -r line; do echo "$line"; done)
 
 if [[ -n "$paths" ]]; then
 	zellij action toggle-floating-panes
@@ -541,7 +541,7 @@ fi
 
 Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
 
-Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton), [@postsolar](https://github.com/postsolar) and [@TheAwiteb](https://github.com/TheAwiteb) for sharing and polishing it!
+Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton), [@postsolar](https://github.com/postsolar), [@TheAwiteb](https://github.com/TheAwiteb) and [@Dreaming-Codes](https://github.com/Dreaming-Codes) for sharing and polishing it!
 
 <details>
   <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
