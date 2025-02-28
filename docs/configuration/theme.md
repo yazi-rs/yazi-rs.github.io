@@ -144,6 +144,41 @@ Progress
 - progress_normal (Style): Style of the progress bar when it is not in an error state.
 - progress_error (Style): Style of the progress bar when an error occurs.
 
+## [which] {#which}
+
+- cols (Number): Number of columns. The value can be `1`, `2`, `3`.
+- mask (Style): Mask style.
+- cand (Style): Candidate key style.
+- rest (Style): Rest key style.
+- desc (Style): Description style.
+- separator (String): Separator symbol. e.g. `" -> "`.
+- separator_style (Style): Separator style.
+
+## [confirm] {#confirm}
+
+- border (Style): Border style.
+- title (Style): Title style.
+- content (Style): Content style.
+- list (Style): List style, which is the style of the list of items below the content.
+- btn_yes (Style): The style of the yes button.
+- btn_no (Style): The style of the no button.
+- btn_labels (\[String, String\]): The labels for the yes and no buttons. The first string is the label for the yes button and the second is the label for the no button.
+
+## [spot] {#spot}
+
+- border (Style): Border style.
+- title (Style): Title style.
+- tbl_col (Style): The style of values in the spotter.
+- tbl_cell (Style): The style of the hovered item in the spotter.
+
+## [notify] {#notify}
+
+Title: Notification title.
+
+- title_info (Style): Style of the info title.
+- title_warn (Style): Style of the warning title.
+- title_error (Style): Style of the error title.
+
 ## [pick] {#pick}
 
 - border (Style): Border style.
@@ -175,33 +210,6 @@ Icons
 - title (Style): Title style.
 - hovered (Style): Hovered item style.
 
-## [which] {#which}
-
-- cols (Number): Number of columns. The value can be `1`, `2`, `3`.
-- mask (Style): Mask style.
-- cand (Style): Candidate key style.
-- rest (Style): Rest key style.
-- desc (Style): Description style.
-- separator (String): Separator symbol. e.g. `" -> "`.
-- separator_style (Style): Separator style.
-
-## [confirm] {#confirm}
-
-- border (Style): Border style.
-- title (Style): Title style.
-- content (Style): Content style.
-- list (Style): List style, which is the style of the list of items below the content.
-- btn_yes (Style): The style of the yes button.
-- btn_no (Style): The style of the no button.
-- btn_labels (\[String, String\]): The labels for the yes and no buttons. The first string is the label for the yes button and the second is the label for the no button.
-
-## [spot] {#spot}
-
-- border (Style): Border style.
-- title (Style): Title style.
-- tbl_col (Style): The style of values in the spotter.
-- tbl_cell (Style): The style of the hovered item in the spotter.
-
 ## [help] {#help}
 
 - on (Style): Key column style.
@@ -209,14 +217,6 @@ Icons
 - desc (Style): Description column style.
 - hovered (Style): Hovered item style.
 - footer (Style): Footer style.
-
-## [notify] {#notify}
-
-Title: Notification title.
-
-- title_info (Style): Style of the info title.
-- title_warn (Style): Style of the warning title.
-- title_error (Style): Style of the error title.
 
 Icon: Notification icon.
 
