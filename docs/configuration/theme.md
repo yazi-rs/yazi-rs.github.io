@@ -126,7 +126,7 @@ Unset mode
 - sep_right (`{ open: String, close: String }`): Right separator symbol. e.g. `{ open = "[", close = "" }`.
 
 <details>
-  <summary>Explanation of `sep_left` and `sep_right`</summary>
+	<summary>Explanation of `sep_left` and `sep_right`</summary>
 	<img src="/img/status-sep-explain.png" />
 </details>
 
@@ -168,11 +168,11 @@ Progress
 
 - border (Style): Border style.
 - title (Style): Title style.
-- tbl_col (Style): The style of values in the spotter.
-- tbl_cell (Style): The style of the hovered item in the spotter.
+- tbl_col (Style): The style of the selected column in the table.
+- tbl_cell (Style): The style of the selected cell in the table.
 
 <details>
-  <summary>Explanation of `tbl_col` and `tbl_cell`</summary>
+	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
 	<img src="/img/spot-tbl-explain.png" />
 </details>
 
