@@ -289,6 +289,18 @@ Note that these dependencies are quite old on some Debian/Ubuntu versions and ma
 
 If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
 
+## Snapcraft
+
+<a href="https://snapcraft.io/yazi">
+	<img height="40" alt="Install Yazi from Snapcraft" src="https://snapcraft.io/en/dark/install.svg" />
+</a>
+
+You can install Yazi from the Snap Store with:
+
+```sh
+sudo snap install yazi --classic
+```
+
 ## Flatpak
 
 :::warning
@@ -298,7 +310,7 @@ Power users are recommended to transition to an alternative installation to avoi
 :::
 
 <a href="https://flathub.org/apps/io.github.sxyazi.yazi">
-	<img height="40" alt="Download on Flathub" src="https://flathub.org/api/badge?locale=en" />
+	<img height="40" alt="Install Yazi from Flathub" src="https://flathub.org/api/badge?locale=en" />
 </a>
 
 After [installation](https://flathub.org/apps/io.github.sxyazi.yazi), you can run Yazi in the terminal with:
