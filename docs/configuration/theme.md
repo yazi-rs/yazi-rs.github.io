@@ -173,7 +173,7 @@ Progress
 
 <details>
 	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
-	<img src="/img/spot-tbl-explain.png" />
+	<img src="/img/spot-tbl-explain.jpg" />
 </details>
 
 ## [notify] {#notify}
