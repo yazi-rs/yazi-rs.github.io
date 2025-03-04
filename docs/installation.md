@@ -295,7 +295,7 @@ If you know how to package Yazi for Debian/Ubuntu and would like to help us subm
 	<img height="40" alt="Install Yazi from Snapcraft" src="https://snapcraft.io/en/dark/install.svg" />
 </a>
 
-You can install Yazi from the Snap Store with:
+You can install Yazi from the [Snap Store](https://snapcraft.io/yazi) with:
 
 ```sh
 sudo snap install yazi --classic
