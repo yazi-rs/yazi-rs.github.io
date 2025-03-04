@@ -82,9 +82,9 @@ causing noticeable lagginess when quickly switching between images, and sometime
 These issues won't be improved until Zellij enhances it's Sixel implementation or [provides a passthrough mode](https://github.com/zellij-org/zellij/issues/775). If the image is a stronger need to you, consider running Yazi outside of Zellij or using Überzug++:
 
 ```sh
-# Deceive Yazi into thinking you're running in Neovim,
+# Deceive Yazi into thinking you're running in urxvt,
 # forcing it fallback to Überzug++ or Chafa
-NVIM=1 NVIM_LOG_FILE=1 yazi
+TERM=rxvt-unicode-256color yazi
 ```
 
 ## Windows users {#windows}
