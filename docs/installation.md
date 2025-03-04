@@ -301,6 +301,12 @@ You can install Yazi from the Snap Store with:
 sudo snap install yazi --classic
 ```
 
+If you want to keep up with the bleeding edge, get the nightly version with:
+
+```sh
+sudo snap install yazi --classic --edge
+```
+
 ## Flatpak
 
 :::warning
