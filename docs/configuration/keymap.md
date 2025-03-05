@@ -238,7 +238,9 @@ Check out the [resources page](/docs/resources) for a more comprehensive bookmar
 
 ### `reveal` {#manager.reveal}
 
-Change the current directory to the parent of specified file, and hover on it.
+Hover on the specified file.
+
+If the file is not in the current directory, it will change the current directory to the file's parent.
 
 | Argument/Option | Description         |
 | --------------- | ------------------- |
