@@ -156,7 +156,7 @@ which indicates the image protocol detected and used by Yazi:
 
 | `Adapter.matches` | Protocol                               | Notes                                                                                                |
 | ----------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `Kgp`             | [Kitty unicode placeholders][kgp]      | Ensure your terminal is up to date to support it                                                     |
+| `Kgp`             | [Kitty unicode placeholders][kgp]      | Ensure your terminal is up-to-date to support it                                                     |
 | `KgpOld`          | [Kitty old protocol][kgp-old]          | Doesn't work under `tmux` due to the limitations of the protocol itself                              |
 | `Iip`             | [Inline images protocol][iip]          | -                                                                                                    |
 | `Sixel`           | [Sixel graphics format][sixel]         | See [tmux](#tmux) and [Zellij](#zellij) section if you're using either of them                       |
