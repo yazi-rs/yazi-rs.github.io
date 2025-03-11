@@ -24,7 +24,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
 - [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
-- [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for system clipboard support)
+- [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for Linux clipboard support)
 
 If the functions are not working properly, please try upgrading them to the latest version.
 
