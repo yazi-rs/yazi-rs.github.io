@@ -520,7 +520,7 @@ C-y = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- ba
 ```toml
 # ~/.config/helix/config.toml
 [keys.normal]
-C-y = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
+C-y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
 ```
 
   </TabItem>
@@ -549,11 +549,11 @@ h = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash
 # ~/.config/helix/config.toml
 [keys.normal.C-y]
 # Open the file(s) in the current window
-y = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
+y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
 # Open the file(s) in a vertical split
-v = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh vsplit %{buffer_name}"
+v = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh vsplit %{buffer_name}"
 # Open the file(s) in a horizontal split
-h = ":sh zellij run -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh hsplit %{buffer_name}"
+h = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh hsplit %{buffer_name}"
 ```
 
   </TabItem>
