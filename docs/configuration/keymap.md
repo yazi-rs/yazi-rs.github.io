@@ -168,6 +168,10 @@ Once those tasks are done, use the `fg` command of the shell to send a resume si
 - `n%`: Move the cursor `n%` of the screen height up or down, negative for up, positive for down.
 - `"top"`: Move the cursor to the top (first file).
 - `"bot"`: Move the cursor to the bottom (last file).
+- `"prev"`: Go to the previous file, or the bottom if the cursor is at the top. (Nightly only)
+- `"next"`: Go to the next file, or the top if the cursor is at the bottom. (Nightly only)
+
+The `arrow prev`/`arrow next` commands are similar to `arrow -1`/`arrow 1`, except that the former supports wraparound scrolling.
 
 ### `leave` {#manager.leave}
 
