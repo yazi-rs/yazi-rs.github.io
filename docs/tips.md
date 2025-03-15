@@ -300,35 +300,6 @@ on  = "j"
 run = "plugin arrow 1"
 ```
 
-## File navigation stops at boundary {#navigation-boundary}
-
-Save these lines as `~/.config/yazi/plugins/arrow.yazi/main.lua`:
-
-```lua
---- @sync entry
-return {
-	entry = function(_, job)
-		local current = cx.active.current
-		local new = current.cursor + job.args[1]
-		if new >= 0 and new < #current.files then
-			ya.mgr_emit("arrow", { job.args[1] })
-		end
-	end,
-}
-```
-
-Then bind it for <kbd>k</kbd> and <kbd>j</kbd> key, in your `keymap.toml`:
-
-```toml
-[[manager.prepend_keymap]]
-on  = "k"
-run = "plugin arrow -1"
-
-[[manager.prepend_keymap]]
-on  = "j"
-run = "plugin arrow 1"
-```
-
 ## Navigation in the parent directory without leaving the CWD {#parent-arrow}
 
 Save these lines as `~/.config/yazi/plugins/parent-arrow.yazi/main.lua`:
