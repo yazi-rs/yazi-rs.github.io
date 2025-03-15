@@ -39,20 +39,20 @@ Most packages on this page are maintained by the community, and they **_may not 
 ## Arch Linux {#arch}
 
 ```sh
-sudo pacman -S yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
 ```sh
-paru -S yazi-git ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 You can also install the [official nightly release binary](https://github.com/sxyazi/yazi/releases/tag/nightly) from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin),
 which is built from the latest code within the past 6 hours:
 
 ```sh
-paru -S yazi-nightly-bin ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-nightly-bin ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```
 
 ## Nix {#nix}
