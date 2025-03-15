@@ -608,7 +608,7 @@ v = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh vsplit'"
 h = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh hsplit'"
 ```
 
-Save the following script as `~/.config/helix/yazi-picker.sh`:
+Then save the following script as `~/.config/helix/yazi-picker.sh`:
 
 ```sh
 #!/usr/bin/env bash
