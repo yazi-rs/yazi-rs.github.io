@@ -187,6 +187,7 @@ These annotations _must_ be at the very top of the file, with no content before 
 Specifies that a method in the plugin runs in a sync context instead of the default async context. Available values:
 
 - `entry`: Run the `entry` method in a sync context.
+- `peek`: Run the `peek` method in a sync context. (Nightly only)
 
 For example:
 
