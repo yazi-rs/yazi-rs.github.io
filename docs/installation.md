@@ -277,7 +277,24 @@ Poppler is not yet on WinGet, install with Scoop or manually download from [popp
 
 ## Debian based Linux {#debian}
 
-In Debian/Ubuntu, you currently need to [manually build Yazi](/docs/installation#source) or [download our official binary release](/docs/installation#binaries).
+In Debian/Ubuntu, you can use an unofficial repo or manually build.
+
+### Unofficial Debian repository
+
+> [!NOTE]
+> This uses an unofficial Debian repository maintained by [Dario Griffo](https://github.com/dariogriffo).
+
+- Debian
+
+```sh
+curl -sS https://debian.griffo.io/3B9335DF576D3D58059C6AA50B56A1A69762E9FF.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
+echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
+sudo apt install -y yazi
+```
+
+### Building yazi manually
+
+Currently need to [manually build Yazi](/docs/installation#source) or [download our official binary release](/docs/installation#binaries).
 
 You can install the optional dependencies with:
 
