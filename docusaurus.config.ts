@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic"
 const config: Config = {
 	title  : "Yazi",
 	tagline: "⚡️ Blazing fast terminal file manager written in Rust, based on async I/O.",
-	favicon: "img/logo.png",
+	favicon: "webp/logo.webp",
 
 	url    : "https://yazi-rs.github.io",
 	baseUrl: "/",
@@ -46,12 +46,12 @@ const config: Config = {
 
 	themeConfig: {
 		// Replace with your project's social card
-		image : "img/docusaurus-social-card.jpg",
+		image : "webp/docusaurus-social-card.wbep",
 		navbar: {
 			title: "Yazi",
 			logo : {
 				alt: "Yazi file manager",
-				src: "img/logo.png",
+				src: "webp/logo.webp",
 			},
 			items: [
 				{
