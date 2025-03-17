@@ -11,7 +11,7 @@ type CardProps = {
 const cards: CardProps[] = [
 	{
 		title: "Full Asynchronous Support",
-		Svg: require("@site/static/img/async.svg").default,
+		Svg: require("@site/static/images/async.svg").default,
 		description: (
 			<>
 				All I/O operations are asynchronous, CPU tasks are spread across multiple threads, making the most of available
@@ -21,17 +21,17 @@ const cards: CardProps[] = [
 	},
 	{
 		title: "Powerful Async Task Scheduling and Management",
-		Svg: require("@site/static/img/task.svg").default,
+		Svg: require("@site/static/images/task.svg").default,
 		description: <>Provides real-time progress updates, task cancellation, and internal task priority assignment.</>,
 	},
 	{
 		title: "Built-in Support for Multiple Image Protocols",
-		Svg: require("@site/static/img/image.svg").default,
+		Svg: require("@site/static/images/image.svg").default,
 		description: <>Also integrated with Überzug++, covering almost all terminals.</>,
 	},
 	{
 		title: "Built-in Code Highlighting and Image Encoding",
-		Svg: require("@site/static/img/code.svg").default,
+		Svg: require("@site/static/images/code.svg").default,
 		description: <>Combined with the pre-caching mechanism, greatly accelerates image and normal file loading.</>,
 	},
 ]

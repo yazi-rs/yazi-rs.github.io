@@ -15,7 +15,7 @@ If you are using Yazi for the first time, please read our [configuration](/docs/
 
 ## Full border {#full-border}
 
-<img src={useBaseUrl("/img/full-border.png")} width="600" />
+<img src={useBaseUrl("/webp/full-border.webp")} width="600" />
 
 Moved to: https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
 
@@ -400,13 +400,13 @@ Credits to [@lpnh for sharing it](https://github.com/sxyazi/yazi/issues/2267#iss
 
 ## No status bar {#no-status-bar}
 
-<img src={useBaseUrl("/img/no-status-bar.jpg")} width="600" />
+<img src={useBaseUrl("/webp/no-status-bar.webp")} width="600" />
 
 Moved to: https://github.com/yazi-rs/plugins/tree/main/no-status.yazi
 
 ## Show symlink in status bar {#symlink-in-status}
 
-<img src={useBaseUrl("/img/symlink-in-status.png")} width="600" />
+<img src={useBaseUrl("/webp/symlink-in-status.webp")} width="600" />
 
 Add the following code to your `~/.config/yazi/init.lua`:
 
@@ -423,7 +423,7 @@ end, 3300, Status.LEFT)
 
 ## Show user/group of files in status bar {#user-group-in-status}
 
-<img src={useBaseUrl("/img/owner.png")} width="600" />
+<img src={useBaseUrl("/webp/owner.webp")} width="600" />
 
 Add the following code to your `~/.config/yazi/init.lua`:
 
@@ -445,7 +445,7 @@ end, 500, Status.RIGHT)
 
 ## Show username and hostname in header {#username-hostname-in-header}
 
-<img src={useBaseUrl("/img/hostname-in-header.png")} width="600" />
+<img src={useBaseUrl("/webp/hostname-in-header.webp")} width="600" />
 
 Add the following code to your `~/.config/yazi/init.lua`:
 

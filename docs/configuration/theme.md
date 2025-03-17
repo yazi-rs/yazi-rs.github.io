@@ -127,7 +127,7 @@ Unset mode
 
 <details>
 	<summary>Explanation of `sep_left` and `sep_right`</summary>
-	<img src="/img/status-sep-explain.png" />
+	<img src="/webp/status-sep-explain.webp" loading="lazy" />
 </details>
 
 Permissions
@@ -173,7 +173,7 @@ Progress
 
 <details>
 	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
-	<img src="/img/spot-tbl-explain.jpg" />
+	<img src="/webp/spot-tbl-explain.webp" loading="lazy" />
 </details>
 
 ## [notify] {#notify}
