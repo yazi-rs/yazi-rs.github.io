@@ -174,6 +174,8 @@ if some_condition then
 end
 ```
 
+Passing data into and returning data from a `ya.sync()` block involves cross-thread data exchange. If the data contains userdata, it causes [Ownership transfer](/docs/plugins/overview#ownership).
+
 ## Annotations {#annotations}
 
 Each plugin can contain zero or more annotations that specify the behavior of the plugin during runtime.
@@ -302,6 +304,40 @@ Yazi's plugin can run concurrently on multiple threads. For better performance, 
 - String
 - [Url](/docs/plugins/types#shared.url)
 - Table and nested tables, with the above types as values
+
+## Ownership transfer {#ownership}
+
+Yazi's plugin system inherits [Rust's ownership and lifetime](https://doc.rust-lang.org/nomicon/ownership.html) concepts.
+
+All [userdata](https://www.lua.org/pil/28.1.html) are native Rust types that have their own ownership to ensure safe and efficient transfers across different threads, avoiding any memory reallocation overhead. Specifically:
+
+- [Url](/docs/plugins/types#shared.url)
+
+Passing these userdata to a cross-thread function like [`ya.mgr_emit()`](/docs/plugins/utils#ya.mgr_emit) transfers ownership. After transfer, the original userdata is no longer available, for example:
+
+```lua
+local target = Url("/tmp")
+ya.mgr_emit("cd", { target })  -- Ownership transferred
+
+ya.dbg(tostring(url)) -- Error: userdata has been destructed
+```
+
+To keep the original, clone a new userdata and pass that instead, but this allocates extra memory - `Url()` constructor can accept a `Url` userdata and return a new clone of that `Url`:
+
+```diff
+- ya.mgr_emit("cd", { target })
++ ya.mgr_emit("cd", { Url(target) })
+```
+
+A smarter way is to reverse the order of execution, use the `target` before it's transferred, to avoid the need for cloning:
+
+```lua
+local target = Url("/tmp")
+local target_str = tostring(target)
+
+ya.mgr_emit("cd", { target })  -- Ownership transferred
+ya.dbg(target_str) -- No error
+```
 
 ## Debugging {#debugging}
 
