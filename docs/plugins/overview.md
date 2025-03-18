@@ -322,7 +322,7 @@ ya.mgr_emit("cd", { target })  -- Ownership transferred
 ya.dbg(tostring(url)) -- Error: userdata has been destructed
 ```
 
-To keep the original, clone a new userdata and pass that instead, but this allocates extra memory - `Url()` constructor can accept a `Url` userdata and return a new clone of that `Url`:
+To keep the original, clone a new userdata and pass that instead, but this allocates extra memory - `Url()` constructor can accept a `Url` userdata (Nightly only) and return a new clone of that `Url`:
 
 ```diff
 - ya.mgr_emit("cd", { target })
