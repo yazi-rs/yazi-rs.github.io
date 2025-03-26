@@ -43,6 +43,8 @@ function y
 	yazi $argv --cwd-file="$tmp"
 	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		builtin cd -- "$cwd"
+		#uncomment the following line if using a keybind to redraw the prompt 
+		#commandline -f repaint
 	end
 	rm -f -- "$tmp"
 end
