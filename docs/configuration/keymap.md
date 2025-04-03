@@ -77,6 +77,16 @@ keymap = [
 ]
 ```
 
+You can also run multiple commands sequentially with a single keybinding by specifying an array for the `run` value:
+
+```toml
+[manager]
+prepend_keymap = [
+	{ on = "<C-a>", run = ["command1", "command2"], desc = "Run multiple commands" },
+]
+
+```
+
 ## Key notation {#notation}
 
 You can specify one or more keys in the `on` of each keybinding rule, and each key can be represented with the following notations:
