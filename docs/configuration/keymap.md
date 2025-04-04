@@ -84,7 +84,6 @@ You can also run multiple commands sequentially with a single keybinding by spec
 prepend_keymap = [
 	{ on = "<C-a>", run = ["command1", "command2"], desc = "Run multiple commands" },
 ]
-
 ```
 
 ## Key notation {#notation}
