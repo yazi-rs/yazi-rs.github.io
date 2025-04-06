@@ -291,8 +291,9 @@ If you know how to package Yazi for Debian/Ubuntu and would like to help us subm
 
 ## Fedora/Centos Stream 9+/RHEL 9+ {#copr}
 
-> [!NOTE]
-> This uses an unofficial COPR repository maintained by [Peter Li](https://github.com/lihaohong6).
+:::info
+This uses an [unofficial COPR repository](https://copr.fedorainfracloud.org/coprs/lihaohong/yazi) maintained by [Peter Li](https://github.com/lihaohong6).
+:::
 
 ```sh
 dnf copr enable lihaohong/yazi
