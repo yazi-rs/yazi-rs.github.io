@@ -51,11 +51,11 @@ Display files in reverse order.
 Display directories first.
 
 - `true`: Directories first
-- `false`: Respects `sort_by` and `sort_reverse` only
+- `false`: Normal order
 
 ### `sort_translit` {#manager.sort_translit}
 
-Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if `sort_by = "natural"`.
+Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if [`sort_by = "natural"`](#manager.sort_by).
 
 This is useful for files that contain Hungarian characters.
 
