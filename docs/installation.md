@@ -299,7 +299,7 @@ dnf copr enable lihaohong/yazi
 dnf install yazi
 ```
 
-Note that `dnf` will install recommended dependencies automatically, to install only Yazi:
+`dnf` will install recommended dependencies automatically. To install only Yazi:
 
 ```sh
 dnf copr enable lihaohong/yazi
