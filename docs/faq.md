@@ -71,7 +71,7 @@ On the other hand, tasks with `orphan=false` are scheduled through the Yazi task
 
 ## I don't like nerd‐fonts! {#dont-like-nerd-fonts}
 
-Yazi has `nerd-fonts` enabled by default, it looks really cool!
+Yazi has `nerd-fonts` icons enabled by default, it looks really cool!
 
 If you don't want to use it and want things to be calm, sure, you can modify these icons as much as you want in [`theme.toml`](/docs/configuration/theme):
 
@@ -88,7 +88,7 @@ exts  = []
 conds = []
 ```
 
-The above code changed all icons to `""`, and the whole world went quiet, nice!
+The code above hides all icons, and the entire world goes quiet. Nice!
 
 ## Why doesn't the XXX feature exist? {#why-no-xxx}
 
