@@ -28,11 +28,11 @@ Since Yazi selects the first matching key to run, prepend always has a higher pr
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = "<C-a>", run = "my-fev-command1", desc = "Single command with `Ctrl + a`" },
+	{ on = "<C-a>", run = "my-cmd1", desc = "Single command with `Ctrl + a`" },
 ]
 append_keymap = [
-	{ on = [ "g", "b" ], run = "my-fev-command2",          desc = "Single command with `g => b`" },
-	{ on = "c",          run = [ "command1", "command2" ], desc = "Multiple commands with `c`" }
+	{ on = [ "g", "b" ], run = "my-cmd2",          desc = "Single command with `g => b`" },
+	{ on = "c",          run = [ "cmd1", "cmd2" ], desc = "Multiple commands with `c`" }
 ]
 ```
 
@@ -41,17 +41,17 @@ Or in another different style:
 ```toml
 [[manager.prepend_keymap]]
 on   = "<C-a>"
-run  = "my-fev-command1"
+run  = "my-cmd1"
 desc = "Single command with `Ctrl + a`"
 
 [[manager.append_keymap]]
 on  = [ "g", "b" ]
-run = "my-fev-command2"
+run = "my-cmd2"
 desc = "Single command with `g => b`"
 
 [[manager.append_keymap]]
 on  = "c"
-run = [ "my-fev-command1", "my-fev-command2" ]
+run = [ "my-cmd1", "my-cmd2" ]
 desc = "Multiple commands with `c`"
 ```
 
@@ -60,12 +60,12 @@ But keep in mind that you can only choose one of them, and it cannot be a combin
 ```toml
 [manager]
 prepend_keymap = [
-	{ on = "<C-a>", run = "my-fev-command1" },
+	{ on = "<C-a>", run = "my-cmd1" },
 ]
 
 [[manager.append_keymap]]
 on  = [ "g", "b" ]
-run = "my-fev-command2"
+run = "my-cmd2"
 ```
 
 When you don't need any default and want to fully customize your keybindings, use `keymap`, for example:
@@ -74,8 +74,8 @@ When you don't need any default and want to fully customize your keybindings, us
 [manager]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
-	{ on = "<C-a>",      run = "my-fev-command1" },
-	{ on = [ "g", "b" ], run = "my-fev-command2" },
+	{ on = "<C-a>",      run = "my-cmd1" },
+	{ on = [ "g", "b" ], run = "my-cmd2" },
 ]
 ```
 

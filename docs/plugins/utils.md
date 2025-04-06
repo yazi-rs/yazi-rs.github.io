@@ -368,7 +368,7 @@ ps.pub("greeting", "Hello, World!")
 
 Publish a message to the current instance, and all plugins subscribed through `sub()` for this `kind` will receive it, achieving internal communication within the instance:
 
-- `kind`: Required, the kind of the message, which is a string of alphanumeric with dashes, and cannot be [built-in kinds](/docs/dds#builtin).
+- `kind`: Required, the kind of the message, which is a string of alphanumeric with dashes, and cannot be [built-in kinds](/docs/dds#kinds).
 - `value`: Required, the value of the message, which is a [sendable value](/docs/plugins/overview#sendable). If it's a userdata, it causes [Ownership transfer](/docs/plugins/overview#ownership).
 
 Since the `kind` is used globally, to add the plugin name as the prefix is a best practice. For example, the combination of the plugin `my-plugin` and the kind `event1` would be `my-plugin-event1`.

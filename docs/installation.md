@@ -289,7 +289,7 @@ Note that these dependencies are quite old on some Debian/Ubuntu versions and ma
 
 If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
 
-## Fedora/Centos Stream 9+/RHEL 9+ {copr}
+## Fedora/Centos Stream 9+/RHEL 9+ {#copr}
 
 > [!NOTE]
 > This uses an unofficial COPR repository maintained by [Peter Li](https://github.com/lihaohong6).
