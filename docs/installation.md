@@ -289,6 +289,25 @@ Note that these dependencies are quite old on some Debian/Ubuntu versions and ma
 
 If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
 
+## Fedora/Centos Stream 9+/RHEL 9+ {copr}
+
+> [!NOTE]
+> This uses an unofficial COPR repository maintained by [Peter Li](https://github.com/lihaohong6).
+
+```sh
+dnf copr enable lihaohong/yazi
+dnf install yazi
+```
+
+`dnf` will install recommended dependencies automatically. To install only Yazi:
+
+```sh
+dnf copr enable lihaohong/yazi
+dnf install yazi --setopt=install_weak_deps=False
+```
+
+If `dnf` complains about "No such command: copr", run `dnf install dnf-plugins-core` and then rerun the commands above.
+
 ## Snapcraft
 
 <a href="https://snapcraft.io/yazi">
