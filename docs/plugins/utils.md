@@ -155,7 +155,7 @@ while true do
 		break
 	end
 
-	ya.err(value)
+	ya.dbg(value)
 end
 ```
 
@@ -394,7 +394,7 @@ With:
 
 ```lua
 ps.sub("cd", function(body)
-	ya.err("New cwd", cx.active.current.cwd)
+	ya.dbg("New cwd", cx.active.current.cwd)
 end)
 ```
 
@@ -842,7 +842,7 @@ local echo = Command("echo"):arg("Hello"):stdout(Command.PIPED):spawn()
 
 local rev = Command("rev"):stdin(echo:take_stdout()):stdout(Command.PIPED):output()
 
-ya.err(rev.stdout) -- "olleH\n"
+ya.dbg(rev.stdout) -- "olleH\n"
 ```
 
 ### `take_stderr()` {#Child.take_stderr}

@@ -23,7 +23,8 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [`rg`](https://github.com/BurntSushi/ripgrep) (for file content searching)
 - [`fzf`](https://github.com/junegunn/fzf) (for quick file subtree navigation)
 - [`zoxide`](https://github.com/ajeetdsouza/zoxide) (for historical directories navigation)
-- [ImageMagick](https://imagemagick.org/) (for SVG, Font, HEIC, and JPEG XL preview)
+- [`resvg`](https://github.com/linebender/resvg) (for SVG preview)
+- [ImageMagick](https://imagemagick.org/) (for Font, HEIC, and JPEG XL preview)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for Linux clipboard support)
 
 If the functions are not working properly, please try upgrading them to the latest version.
@@ -40,19 +41,20 @@ Most packages on this page are maintained by the community, and they **_may not 
 
 ```sh
 sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S resvg
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
 
 ```sh
-paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-git ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 ```
 
 You can also install the [official nightly release binary](https://github.com/sxyazi/yazi/releases/tag/nightly) from [AUR](https://aur.archlinux.org/packages/yazi-nightly-bin),
 which is built from the latest code within the past 6 hours:
 
 ```sh
-paru -S yazi-nightly-bin ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+paru -S yazi-nightly-bin ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 ```
 
 ## Nix {#nix}
@@ -222,7 +224,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
@@ -262,7 +264,7 @@ Most users already have Git installed, and Yazi is also hosted via Git, so this 
 ```sh
 scoop install yazi
 # Install the optional dependencies (recommended):
-scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
+scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 ```
 
 ### Install with WinGet
@@ -273,7 +275,7 @@ winget install sxyazi.yazi
 winget install Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick
 ```
 
-Poppler is not yet on WinGet, install with Scoop or manually download from [poppler-windows](https://github.com/oschwartz10612/poppler-windows).
+Poppler and resvg are not yet on WinGet, install with Scoop or manually download from [poppler-windows](https://github.com/oschwartz10612/poppler-windows) and [resvg](https://github.com/linebender/resvg/releases).
 
 ## Debian based Linux {#debian}
 
