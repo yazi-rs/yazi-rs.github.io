@@ -170,8 +170,8 @@ Once those tasks are done, use the `fg` command of the shell to send a resume si
 - `n%`: Move the cursor `n%` of the screen height up or down, negative for up, positive for down.
 - `"top"`: Move the cursor to the top (first file).
 - `"bot"`: Move the cursor to the bottom (last file).
-- `"prev"`: Go to the previous file, or the bottom if the cursor is at the top. (Nightly only)
-- `"next"`: Go to the next file, or the top if the cursor is at the bottom. (Nightly only)
+- `"prev"`: Go to the previous file, or the bottom if the cursor is at the top.
+- `"next"`: Go to the next file, or the top if the cursor is at the bottom.
 
 The `arrow prev`/`arrow next` commands are similar to `arrow -1`/`arrow 1`, except that the former supports wraparound scrolling.
 
@@ -522,10 +522,6 @@ If you want to close the current tab, use the [`close`](/docs/configuration/keym
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `[n]`           | Swap the current tab with the tab at position `n`, where negative values move the tab forward, and positive values move it backward. |
 
-### `tasks_show` {#manager.tasks_show}
-
-Show the task manager.
-
 ### `help` {#manager.help}
 
 Open the help menu.
@@ -557,6 +553,10 @@ run = [ "noop" ]  # The array can only have one element and must be "noop"
 The disabled keys won't trigger any actions when pressed and won't show up in the `which` component.
 
 ## [tasks] {#tasks}
+
+### `show` {#tasks.show}
+
+Show the task manager.
 
 ### `close` {#tasks.close}
 
@@ -793,10 +793,6 @@ Hide the completion menu.
 | Argument/Option | Description            |
 | --------------- | ---------------------- |
 | `--submit`      | Submit the completion. |
-
-### `close_input` {#cmp.close_input}
-
-Close the input box. Arguments are the same as [`[input] close`](#input.close).
 
 ### `arrow` {#cmp.arrow}
 

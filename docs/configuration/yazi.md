@@ -350,7 +350,6 @@ Here are the available options for a single rule:
 - `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `run` (String): The name of the Lua plugin to be run.
-- `sync` (Boolean): Whether to run in the sync context, default is `false`.
 
 ```toml
 [plugin]

@@ -21,7 +21,10 @@ local url = Url("archive:///root/ost.zip#bgm.mp3")
 
 Properties:
 
+- `name` - The filename in string if any, otherwise `nil`
+- `stem` - The filename without the extension in string if any, otherwise `nil`
 - `frag` - The fragment string of the url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
+- `parent` - The parent directory `Url` if any, otherwise `nil`
 - `is_regular` - Whether the file represented by the url is a regular file
 - `is_search` - Whether the file represented by the url from the search result
 - `is_archive` - Whether the file represented by the url from an archive
@@ -30,10 +33,7 @@ Properties:
 
 Methods:
 
-- `name()` - Returns the filename in string if any, otherwise `nil`
-- `stem()` - Returns the filename without the extension in string if any, otherwise `nil`
 - `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
-- `parent()` - Returns parent directory `Url` if any, otherwise `nil`
 - `starts_with(url)` - Whether the url starts with another `Url` or a string of url
 - `ends_with(url)` - Whether the url ends with another `Url` or a string of url
 - `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`
@@ -192,11 +192,13 @@ Based on [File](#shared.file), with the following additional methods:
 - `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
 - `icon()` - The [Icon](#shared.icon) of this file, [`[icon]`](/docs/configuration/theme#icon) rules are applied; if no rule matches, returns `nil`
 - `style()` - The [Style](/docs/plugins/layout#style) of this file, [`[filetype]`](/docs/configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
-- `is_hovered()` - Whether this file is hovered
 - `is_yanked()` - Whether this file is yanked
 - `is_selected()` - Whether this file is selected
 - `found()` - When users find a file using the `find` command, the status of the file - returns `nil` if it doesn't match the user's find keyword; otherwise, returns `{idx, all}`, where `idx` is the position of matched file, and `all` represents the number of all matched files.
-- `highlights()` - TODO
+
+And properties:
+
+- `is_hovered` - Whether this file is hovered
 
 ### `mgr::Tabs` {#app-data.mgr-tabs}
 
@@ -213,16 +215,13 @@ Meta methods:
 
 Properties:
 
-- `mode` - The [tab::Mode](#app-data.tab-mode) of this tab.
-- `pref` - The [tab::Preference](#app-data.tab-preference) of this tab.
-- `current` - The current folder within this tab, which is a [tab::Folder](#app-data.tab-folder).
-- `parent` - The parent folder within this tab, which is a [tab::Folder](#app-data.tab-folder) if `current` has a parent; otherwise, `nil`.
-- `selected` - The selected files within this tab, which is a [tab::Selected](#app-data.tab-selected).
-- `preview` - The [tab::Preview](#app-data.tab-preview) within this tab.
-
-Methods:
-
-- `name()` - The name of this tab
+- `name` - The name of the tab.
+- `mode` - The [tab::Mode](#app-data.tab-mode) of the tab.
+- `pref` - The [tab::Preference](#app-data.tab-preference) of the tab.
+- `current` - The current folder within the tab, which is a [tab::Folder](#app-data.tab-folder).
+- `parent` - The parent folder within the tab, which is a [tab::Folder](#app-data.tab-folder) if `current` has a parent; otherwise, `nil`.
+- `selected` - The selected files within the tab, which is a [tab::Selected](#app-data.tab-selected).
+- `preview` - The [tab::Preview](#app-data.tab-preview) within the tab.
 
 ### `tasks::Tasks` {#app-data.tasks-tasks}
 
