@@ -385,7 +385,5 @@ otherwise, no logs will be recorded. Its value can be (in descending order of ve
 ### Debugging preset plugins
 
 1. Clone the latest source code.
-2. Go to the `yazi-plugin/preset` folder and find the plugin you want to debug, then make changes, such as [logging certain runtime data](/docs/plugins/overview#logging).
-3. [Build from source](/docs/installation#source) and run the output binary with an appropriate `YAZI_LOG`.
-
-You can build in debug mode (without the `--release` flag) for faster compilation at the expense of runtime performance.
+2. Go to the `yazi-plugin/preset` folder and find the plugin you want to debug, make changes, such as [logging certain runtime data](/docs/plugins/overview#logging).
+3. [Build in debug mode](/docs/installation#debug) and run the `yazi` binary with an appropriate `YAZI_LOG`.

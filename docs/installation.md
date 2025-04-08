@@ -453,3 +453,48 @@ move target\release-windows\ya.exe "%ProgramFiles%\ya.exe"
 </Tabs>
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
+
+## Build from source in debug mode {#debug}
+
+:::warning
+Building Yazi in debug mode is for debugging purposes only, as it can speed up the build and provide more stack trace information.
+
+It should not be used for daily purposes, as debug mode significantly reduces performance!
+:::
+
+Setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
+```
+
+Clone the repository and build Yazi:
+
+```sh
+git clone https://github.com/sxyazi/yazi.git
+cd yazi
+cargo build --release --locked
+```
+
+Then, run `yazi` in debug mode:
+
+<Tabs>
+  <TabItem value="unix" label="Unix-like" default>
+
+```sh
+YAZI_LOG=debug RUST_BACKTRACE=1 ./target/debug/yazi
+```
+
+  </TabItem>
+
+  <TabItem value="powershell" label="PowerShell">
+
+```powershell
+$env:YAZI_LOG = "debug"; $env:RUST_BACKTRACE = 1; .\target\debug\yazi.exe
+```
+
+  </TabItem>
+</Tabs>
+
+If it fails to build, please check if `make` and `gcc` is installed on your system.
