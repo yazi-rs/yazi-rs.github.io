@@ -388,15 +388,41 @@ rustup update
 
 Now you can install Yazi via `cargo`:
 
+<Tabs>
+  <TabItem value="non-windows" label="non-Windows" default>
+
 ```sh
 cargo install --locked yazi-fm yazi-cli
 ```
 
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+
+```sh
+cargo install --locked --profile release-windows yazi-fm yazi-cli
+```
+
+  </TabItem>
+</Tabs>
+
 Or install the latest Git version:
+
+<Tabs>
+  <TabItem value="non-windows" label="non-Windows" default>
 
 ```sh
 cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
 ```
+
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+
+```sh
+cargo install --locked --profile release-windows --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
+```
+
+  </TabItem>
+</Tabs>
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
 
@@ -474,7 +500,7 @@ Clone the repository and build Yazi:
 ```sh
 git clone https://github.com/sxyazi/yazi.git
 cd yazi
-cargo build --release --locked
+cargo build --locked
 ```
 
 Then, run `yazi` in debug mode:
