@@ -170,8 +170,8 @@ Further navigation commands can be found in the table below.
 | <kbd>J</kbd>                | Seek down 5 units in the preview                                           |
 | <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top                                                     |
 | <kbd>G</kbd>                | Move cursor to the bottom                                                  |
-| <kbd>z</kbd>                | [Cd][manager.cd] to a directory via zoxide                                 |
-| <kbd>Z</kbd>                | [Cd][manager.cd] to a directory or [reveal][manager.reveal] a file via fzf |
+| <kbd>z</kbd>                | [Cd][manager.cd] to a directory or [reveal][manager.reveal] a file via fzf |
+| <kbd>Z</kbd>                | [Cd][manager.cd] to a directory via zoxide                                 |
 
 [manager.cd]: /docs/configuration/keymap#manager.cd
 [manager.reveal]: /docs/configuration/keymap#manager.reveal
