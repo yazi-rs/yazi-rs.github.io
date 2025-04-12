@@ -101,10 +101,6 @@ Meta methods:
 - `__tostring()`
 - `__concat(string)`
 
-### Range {#shared.range}
-
-TODO
-
 ### Window {#shared.window}
 
 Properties:
