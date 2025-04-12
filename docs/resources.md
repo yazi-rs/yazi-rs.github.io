@@ -18,7 +18,7 @@ Markdown:
 - [glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files using [glow](https://github.com/charmbracelet/glow).
 - [mdcat.yazi](https://github.com/GrzegorzKozub/mdcat.yazi) - Preview markdown files using [mdcat](https://github.com/swsnr/mdcat).
 
-Data Files: 
+Data Files:
 
 - [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview CSV files (and other supported formats) using [miller](https://github.com/johnkerl/miller).
 - [duckdb.yazi](https://github.com/wylie102/duckdb.yazi) - Preview CSV/TSV, JSON, and Parquet files using [duckdb](https://github.com/duckdb/duckdb). View the raw data, or a summarized view with data-types, min, max, avg etc. for all columns.
@@ -47,6 +47,7 @@ Jupyter notebooks:
 
 Misc:
 
+- [piper.yazi](https://github.com/yazi-rs/plugins/tree/main/piper.yazi) - Pipe any shell command as a previewer.
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 
 ## 🧩 Functional plugins {#functional}
