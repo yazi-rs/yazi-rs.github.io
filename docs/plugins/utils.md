@@ -855,6 +855,14 @@ Take and return the stderr stream of the child process, which can only be called
 
 See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
 
+### `id()` {#Child.id}
+
+```lua
+local id = child:id()
+```
+
+Returns the OS-assigned process identifier associated with this child while it is still running.
+
 ## Output
 
 Properties:
