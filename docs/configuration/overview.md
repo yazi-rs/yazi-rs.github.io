@@ -19,6 +19,7 @@ To override any of the defaults, begin by creating the corresponding file (from 
 
 - `~/.config/yazi/` on Unix-like systems.
 - `%AppData%\yazi\config\` on Windows.
+> If you use powershell, "%AppData%" should not work, you can use "echo $Env:AppData" command get correct directory.
 
 For example, to change the visible status of hidden files, start by creating a `yazi.toml` file to:
 
