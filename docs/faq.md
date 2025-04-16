@@ -16,9 +16,11 @@ If you are unable to edit files, please check your Bash/Zsh/Fish configuration f
 
 For Windows, there is no concept of `$EDITOR`, so users need to modify the text opener as needed.
 
-## Why can't I open/edit/preview files on Windows? {#why-cant-preview}
+## Why can't I open/edit/preview files? {#why-cant-preview}
 
-Please make sure you have set the `YAZI_FILE_ONE` environment variable as per the [Windows Requirements](/docs/installation#windows).
+Yazi relies on `file(1)` to obtain the file mimetype to run the corresponding opener and previewer rules, please check whether your system has it pre-installed.
+
+For Windows, please make sure you have set the `YAZI_FILE_ONE` environment variable as per the [Windows Requirements](/docs/installation#windows).
 
 ## Why is my text color not distinct? {#why-text-indistinct}
 
