@@ -619,9 +619,9 @@ Or, use the Neomutt terminal email client for sending the selected files with <k
 [[manager.prepend_keymap]]
 on = "<C-m>"
 run = '''
-	shell '
+	shell --block '
         paths=$(for p in "$@"; do echo "$p"; done | tr "\n" " ")
-        ghostty -e neomutt -a $paths
+        neomutt -a $paths
     '
 '''
 ```
