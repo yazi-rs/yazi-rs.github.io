@@ -598,18 +598,27 @@ else
 fi
 ```
 
-## Email selected files using Thunderbird
+## Email selected files
 
-To send selected files using Thunderbird, with a keybinding <kbd>Ctrl</kbd> + <kbd>e</kbd>:
+To send selected files using [Thunderbird](https://www.thunderbird.net), with a keybinding <kbd>Ctrl</kbd> + <kbd>m</kbd>:
 
 ```toml
 # ~/.config/yazi/keymap.toml
 [[manager.prepend_keymap]]
-on  = "<C-e>"
+on  = "<C-m>"
 run = '''shell --
 	paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
 	thunderbird -compose "attachment='$paths'"
 '''
+```
+
+Or, use the [NeoMutt](https://neomutt.org) command-line mail client:
+
+```toml
+# ~/.config/yazi/keymap.toml
+[[manager.prepend_keymap]]
+on  = "<C-m>"
+run = 'shell --block -- neomutt -a "$@"'
 ```
 
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
