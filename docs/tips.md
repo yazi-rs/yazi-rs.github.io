@@ -620,8 +620,7 @@ Or, use the Neomutt terminal email client for sending the selected files with <k
 on = "<C-m>"
 run = '''
 	shell --block '
-        paths=$(for p in "$@"; do echo "$p"; done | tr "\n" " ")
-        neomutt -a $paths
+        neomutt -a "$@"
     '
 '''
 ```
