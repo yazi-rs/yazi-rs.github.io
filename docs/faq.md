@@ -58,7 +58,7 @@ To avoid any interference from tmux, Yazi has to implement a lot of hacks, most 
 
 1. Is your tmux up-to-date?
 2. Have you [enabled passthrough for tmux](/docs/image-preview#tmux)?
-3. Have you bound `Alt+Shift+p` to tmux? [tmux currently doesn't support `DECRQSS`](https://github.com/tmux/tmux/issues/4034), and [its response](https://vt100.net/docs/vt510-rm/DECRQSS.html) overlaps partially with the `Alt+Shift+P` sequence, causing tmux mistakenly interpret it as a key event.
+3. Have you bound `Alt+Shift+p` to tmux? [tmux currently doesn't support `DECRQSS`](https://github.com/tmux/tmux/issues/4034), and [its response](https://vt100.net/docs/vt510-rm/DECRQSS.html) overlaps partially with the <kbd>Alt</kbd> sequence, causing tmux mistakenly interpret it as a key event.
 4. If you are using `st` terminal, is it up-to-date? The older version of `st` didn't support the [Device Status Report (DSR)](https://vt100.net/docs/vt510-rm/DSR.html) correctly until [f17abd25](https://git.suckless.org/st/commit/f17abd25b376c292f783062ecf821453eaa9cc4c.html) was fixed. Make sure that your `st` or its fork has incorporated that patch.
 5. Comment out all custom configurations _except_ [passthrough](/docs/image-preview#tmux) to check if the issue is caused by your settings. If so, add them back piece by piece to identify the cause.
 
