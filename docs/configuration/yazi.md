@@ -360,7 +360,7 @@ prepend_previewers = [
 
 append_previewers = [
 	# My fallback previewer
-	{ name = "*" , run = "binary" },
+	{ name = "*", run = "binary" },
 ]
 ```
 

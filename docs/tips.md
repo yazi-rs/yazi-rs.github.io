@@ -600,7 +600,7 @@ fi
 
 ## Email selected files
 
-To send selected files using Thunderbird, with a keybinding <kbd>Ctrl</kbd> + <kbd>m</kbd>:
+To send selected files using [Thunderbird](https://www.thunderbird.net), with a keybinding <kbd>Ctrl</kbd> + <kbd>m</kbd>:
 
 ```toml
 # ~/.config/yazi/keymap.toml
@@ -612,17 +612,13 @@ run = '''shell --
 '''
 ```
 
-Or, use the Neomutt terminal email client for sending the selected files with <kbd>Ctrl</kbd> + <kbd>m</kbd>:
+Or, use the [NeoMutt](https://neomutt.org) command-line mail client:
 
 ```toml
 # ~/.config/yazi/keymap.toml
 [[manager.prepend_keymap]]
-on = "<C-m>"
-run = '''
-	shell --block '
-        neomutt -a "$@"
-    '
-'''
+on  = "<C-m>"
+run = 'shell --block -- neomutt -a "$@"'
 ```
 
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
