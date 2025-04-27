@@ -65,38 +65,7 @@ Moved to: https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
 
 ## Smart paste: `paste` files without entering the directory {#smart-paste}
 
-Save these lines as `~/.config/yazi/plugins/smart-paste.yazi/main.lua`:
-
-```lua
---- @sync entry
-return {
-	entry = function()
-		local h = cx.active.current.hovered
-		if h and h.cha.is_dir then
-			ya.mgr_emit("enter", {})
-			ya.mgr_emit("paste", {})
-			ya.mgr_emit("leave", {})
-		else
-			ya.mgr_emit("paste", {})
-		end
-	end,
-}
-```
-
-Then bind it for <kbd>p</kbd> key, in your `keymap.toml`:
-
-```toml
-[[manager.prepend_keymap]]
-on   = "p"
-run  = "plugin smart-paste"
-desc = "Paste into the hovered directory or CWD"
-```
-
-<details>
-  <summary>Demonstrate smart paste</summary>
-	<p>Original post: https://github.com/sxyazi/yazi/discussions/957#discussioncomment-9239519</p>
-	<video src="https://github.com/sxyazi/yazi/assets/17523360/080212b5-43e7-4c36-83e8-312495d50383" width="100%" controls muted></video>
-</details>
+Moved to: https://github.com/yazi-rs/plugins/tree/main/smart-paste.yazi
 
 ## Smart tab: create a tab and enter the hovered directory {#smart-tab}
 
