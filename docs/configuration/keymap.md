@@ -375,12 +375,27 @@ Which causes the input box content for the filename `foo.jpg` to be `|.jpg`, whe
 
 Copy the path of files or directories that are selected or hovered on.
 
-| Argument/Option    | Description                                      |
-| ------------------ | ------------------------------------------------ |
-| `path`             | Copy the absolute path.                          |
-| `dirname`          | Copy the path of the parent directory.           |
-| `filename`         | Copy the name of the file.                       |
-| `name_without_ext` | Copy the name of the file without the extension. |
+| Argument/Option | Description                                                     |
+| --------------- | --------------------------------------------------------------- |
+| `[what]`        | What to copy, see the table below.                              |
+| `--separator`   | Path separator, see the table below.                            |
+| `--hovered`     | Always copy the hovered file regardless of the selection state. |
+
+`[what]` can be one of the following values:
+
+| Value                | Description                             |
+| -------------------- | --------------------------------------- |
+| `"path"`             | Absolute path.                          |
+| `"dirname"`          | Path of the parent directory.           |
+| `"filename"`         | Name of the file.                       |
+| `"name_without_ext"` | Name of the file without the extension. |
+
+`--separator` can be one of the following values:
+
+| Value    | Description                                                         |
+| -------- | ------------------------------------------------------------------- |
+| N/A      | Platform-specific separator, e.g. `\` for Windows and `/` for Unix. |
+| `"unix"` | Use `/` for all platforms.                                          |
 
 ### `shell` {#manager.shell}
 
