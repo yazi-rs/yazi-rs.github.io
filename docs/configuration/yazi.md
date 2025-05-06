@@ -389,7 +389,6 @@ Here are the available options for a single rule:
 - `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `name` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
   - `mime`: This file has a mime-type.
 - `run` (String): The name of the Lua plugin to be run.
-- `multi` (Boolean): Whether to preload multiple files at once.
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
 
 ```toml

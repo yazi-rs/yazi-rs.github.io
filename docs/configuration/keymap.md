@@ -166,12 +166,14 @@ Once those tasks are done, use the `fg` command of the shell to send a resume si
 
 `[steps]` can be one of the following values:
 
-- `n`: Move the cursor `n` lines up or down, negative for up, positive for down.
-- `n%`: Move the cursor `n%` of the screen height up or down, negative for up, positive for down.
-- `"top"`: Move the cursor to the top (first file).
-- `"bot"`: Move the cursor to the bottom (last file).
-- `"prev"`: Go to the previous file, or the bottom if the cursor is at the top.
-- `"next"`: Go to the next file, or the top if the cursor is at the bottom.
+| Value    | Description                                                                               |
+| -------- | ----------------------------------------------------------------------------------------- |
+| `n`      | Move the cursor `n` lines up or down, negative for up, positive for down.                 |
+| `n%`     | Move the cursor `n%` of the screen height up or down, negative for up, positive for down. |
+| `"top"`  | Move the cursor to the top (first file).                                                  |
+| `"bot"`  | Move the cursor to the bottom (last file).                                                |
+| `"prev"` | Go to the previous file, or the bottom if the cursor is at the top.                       |
+| `"next"` | Go to the next file, or the top if the cursor is at the bottom.                           |
 
 The `arrow prev`/`arrow next` commands are similar to `arrow -1`/`arrow 1`, except that the former supports wraparound scrolling.
 
@@ -276,11 +278,12 @@ Note that `toggle_all --state=off` only deselect the files in CWD, if you have s
 
 ### `visual_mode` {#manager.visual_mode}
 
-Enter visual mode (selection mode).
+Enter visual mode.
 
-| Argument/Option | Description                     |
-| --------------- | ------------------------------- |
-| `--unset`       | Enter visual mode (unset mode). |
+| Argument/Option | Description     |
+| --------------- | --------------- |
+| N/A             | Selection mode. |
+| `--unset`       | Unset mode.     |
 
 ### `open` {#manager.open}
 
@@ -295,9 +298,10 @@ Open the selected files using [the rules in `[open]`](/docs/configuration/yazi#o
 
 Yank the selected files.
 
-| Argument/Option | Description             |
-| --------------- | ----------------------- |
-| `--cut`         | Cut the selected files. |
+| Argument/Option | Description |
+| --------------- | ----------- |
+| N/A             | Copy mode.  |
+| `--cut`         | Cut mode.   |
 
 ### `unyank` {#manager.unyank}
 
@@ -419,11 +423,11 @@ You can use the following shell variables in `[run]`:
 
 Set the visibility of hidden files.
 
-| Argument/Option | Description                       |
-| --------------- | --------------------------------- |
-| `show`          | Show hidden files.                |
-| `hide`          | Hide hidden files.                |
-| `toggle`        | Default, toggle the hidden state. |
+| Argument/Option | Description              |
+| --------------- | ------------------------ |
+| `"show"`        | Show hidden files.       |
+| `"hide"`        | Hide hidden files.       |
+| `"toggle"`      | Toggle the hidden state. |
 
 ### `linemode` {#manager.linemode}
 
@@ -431,12 +435,12 @@ Set the [line mode](/docs/configuration/yazi#manager.linemode).
 
 | Argument/Option | Description                                                                                                                                                                                             |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `none`          | No line mode.                                                                                                                                                                                           |
-| `size`          | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future. |
-| `btime`         | Display the birth time of the file.                                                                                                                                                                     |
-| `mtime`         | Display the last modified time of the file.                                                                                                                                                             |
-| `permissions`   | Display the permissions of the file, only available on Unix-like systems.                                                                                                                               |
-| `owner`         | Display the owner of the file, only available on Unix-like systems.                                                                                                                                     |
+| `"none"`        | No line mode.                                                                                                                                                                                           |
+| `"size"`        | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future. |
+| `"btime"`       | Display the birth time of the file.                                                                                                                                                                     |
+| `"mtime"`       | Display the last modified time of the file.                                                                                                                                                             |
+| `"permissions"` | Display the permissions of the file, only available on Unix-like systems.                                                                                                                               |
+| `"owner"`       | Display the owner of the file, only available on Unix-like systems.                                                                                                                                     |
 
 ### `search` {#manager.search}
 
@@ -628,7 +632,7 @@ Copy the content from the spotter.
 
 | Argument/Option | Description                  |
 | --------------- | ---------------------------- |
-| `cell`          | Copy the selected table cell |
+| `"cell"`        | Copy the selected table cell |
 
 ### `plugin` {#spot.plugin}
 
@@ -764,10 +768,10 @@ Kill the specified range of characters. This command is only available in insert
 
 | Argument/Option | Description                                      |
 | --------------- | ------------------------------------------------ |
-| `bol`           | Kill backwards to the BOL.                       |
-| `eol`           | Kill forwards to the EOL.                        |
-| `backward`      | Kill backwards to the start of the current word. |
-| `forward`       | Kill forwards to the end of the current word.    |
+| `"bol"`         | Kill backwards to the BOL.                       |
+| `"eol"`         | Kill forwards to the EOL.                        |
+| `"backward"`    | Kill backwards to the start of the current word. |
+| `"forward"`     | Kill forwards to the end of the current word.    |
 
 ### `plugin` {#input.plugin}
 
