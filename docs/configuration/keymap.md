@@ -3,6 +3,8 @@ sidebar_position: 2
 description: Learn how to configure keyboard shortcuts with Yazi.
 ---
 
+import KeymapArrow from './keymap-arrow.md'
+
 # keymap.toml
 
 :::info
@@ -160,22 +162,7 @@ Once those tasks are done, use the `fg` command of the shell to send a resume si
 
 ### `arrow` {#manager.arrow}
 
-| Argument/Option | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `[steps]`       | The number of steps the cursor moves up or down. |
-
-`[steps]` can be one of the following values:
-
-| Value    | Description                                                                               |
-| -------- | ----------------------------------------------------------------------------------------- |
-| `n`      | Move the cursor `n` lines up or down, negative for up, positive for down.                 |
-| `n%`     | Move the cursor `n%` of the screen height up or down, negative for up, positive for down. |
-| `"top"`  | Move the cursor to the top (first file).                                                  |
-| `"bot"`  | Move the cursor to the bottom (last file).                                                |
-| `"prev"` | Go to the previous file, or the bottom if the cursor is at the top.                       |
-| `"next"` | Go to the next file, or the top if the cursor is at the bottom.                           |
-
-The `arrow prev`/`arrow next` commands are similar to `arrow -1`/`arrow 1`, except that the former supports wraparound scrolling.
+<KeymapArrow />
 
 ### `leave` {#manager.leave}
 
@@ -583,10 +570,7 @@ Hide the task manager.
 
 ### `arrow` {#tasks.arrow}
 
-| Argument/Option | Description                  |
-| --------------- | ---------------------------- |
-| `-1`            | Move the cursor up 1 line.   |
-| `1`             | Move the cursor down 1 line. |
+<KeymapArrow />
 
 ### `inspect` {#tasks.inspect}
 
@@ -616,9 +600,7 @@ Hide the spotter.
 
 ### `arrow` {#spot.arrow}
 
-| Argument/Option | Description                                                                           |
-| --------------- | ------------------------------------------------------------------------------------- |
-| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+<KeymapArrow />
 
 ### `swipe` {#spot.swipe}
 
@@ -658,9 +640,7 @@ Cancel the picker.
 
 ### `arrow` {#pick.arrow}
 
-| Argument/Option | Description                                                                           |
-| --------------- | ------------------------------------------------------------------------------------- |
-| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+<KeymapArrow />
 
 ### `help` {#pick.help}
 
@@ -793,11 +773,7 @@ Cancel and close the confirmation dialog.
 
 ### `arrow` {#confirm.arrow}
 
-Move the confirmation cursor.
-
-| Argument/Option | Description                                                                           |
-| --------------- | ------------------------------------------------------------------------------------- |
-| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+<KeymapArrow />
 
 ### `help` {#confirm.help}
 
@@ -815,9 +791,7 @@ Hide the completion menu.
 
 ### `arrow` {#cmp.arrow}
 
-| Argument/Option | Description                                                                           |
-| --------------- | ------------------------------------------------------------------------------------- |
-| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+<KeymapArrow />
 
 ### `help` {#cmp.help}
 
@@ -843,9 +817,7 @@ Clear the filter, or hide the help menu.
 
 ### `arrow` {#help.arrow}
 
-| Argument/Option | Description                                                                           |
-| --------------- | ------------------------------------------------------------------------------------- |
-| `[n]`           | Move the cursor up or down `n` lines. Negative value for up, positive value for down. |
+<KeymapArrow />
 
 ### `filter` {#help.filter}
 
