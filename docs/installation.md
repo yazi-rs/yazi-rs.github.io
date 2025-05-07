@@ -424,7 +424,7 @@ cargo install --locked --profile release-windows --git https://github.com/sxyazi
   </TabItem>
 </Tabs>
 
-If it fails to build, please check if `make` and `gcc` is installed on your system.
+If it fails to build, please check if `make` and `gcc` (< GCC 15) is installed on your system.
 
 ## Build from source {#source}
 
@@ -478,7 +478,7 @@ move target\release-windows\ya.exe "%ProgramFiles%\ya.exe"
   </TabItem>
 </Tabs>
 
-If it fails to build, please check if `make` and `gcc` is installed on your system.
+If it fails to build, please check if `make` and `gcc` (< GCC 15) is installed on your system.
 
 ## Build from source in debug mode {#debug}
 
@@ -523,4 +523,4 @@ $env:YAZI_LOG = "debug"; $env:RUST_BACKTRACE = 1; .\target\debug\yazi.exe
   </TabItem>
 </Tabs>
 
-If it fails to build, please check if `make` and `gcc` is installed on your system.
+If it fails to build, please check if `make` and `gcc` (< GCC 15) is installed on your system.
