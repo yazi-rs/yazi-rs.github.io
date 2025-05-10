@@ -39,3 +39,7 @@ div[class^="announcementBar_"] {
 	font-weight: 700;
 	height: auto;
 }
+
+.menu__list-item.hidden {
+	display: none;
+}

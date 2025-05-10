@@ -1,3 +1,7 @@
+---
+sidebar_class_name: "hidden"
+---
+
 | Argument/Option | Description                                      |
 | --------------- | ------------------------------------------------ |
 | `[steps]`       | The number of steps the cursor moves up or down. |

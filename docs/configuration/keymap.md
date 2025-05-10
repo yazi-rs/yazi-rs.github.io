@@ -574,7 +574,12 @@ Hide the task manager.
 
 ### `inspect` {#tasks.inspect}
 
-Inspect the task (press `q` to exit the inspect view).
+Inspect the task log:
+
+- Lua error for failed async plugin tasks
+- Real-time stdout/stderr for background running or failed shell tasks
+
+press `q` to exit the inspect view.
 
 ### `cancel` {#tasks.cancel}
 
