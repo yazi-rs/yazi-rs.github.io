@@ -576,6 +576,7 @@ Hide the task manager.
 
 Inspect the task log:
 
+- I/O error for failed file operations
 - Lua error for failed async plugin tasks
 - Real-time stdout/stderr for background running or failed shell tasks
 
