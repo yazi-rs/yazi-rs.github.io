@@ -27,9 +27,8 @@ We suggest using this `y` shell wrapper that provides the ability to change the 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
 ```
@@ -41,7 +40,7 @@ function y() {
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	yazi $argv --cwd-file="$tmp"
-	if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		builtin cd -- "$cwd"
 	end
 	rm -f -- "$tmp"
@@ -73,7 +72,7 @@ edit:add-var y~ {|@argv|
 	use file
 	var tmp = (os:temp-file)
 	yazi $@argv --cwd-file=$tmp[name]
-	var cwd = (str:trim-space (slurp < $tmp))
+	var cwd = (slurp < $tmp)
 	file:close $tmp
 	os:remove $tmp[name]
 	if (and (not-eq $cwd '') (not-eq $cwd $pwd)) {
@@ -129,7 +128,7 @@ def _y(args):
     args.append(f"--cwd-file={tmp}")
     $[yazi @(args)]
     with open(tmp) as f:
-        cwd = f.read().strip()
+        cwd = f.read()
     if cwd != $PWD:
         cd @(cwd)
     rm -f -- @(tmp)
