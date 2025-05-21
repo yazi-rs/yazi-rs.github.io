@@ -50,23 +50,23 @@ ui.Pad(top, right, bottom, left)
 
 Properties:
 
-- `left` - left padding
-- `right` - right padding
 - `top` - top padding
+- `right` - right padding
 - `bottom` - bottom padding
+- `left` - left padding
 
 If you want to specify only one of them:
 
-- `ui.Pad.left(left)` equal to `ui.Pad(left, 0, 0, 0)`
+- `ui.Pad.top(top)` equal to `ui.Pad(top, 0, 0, 0)`
 - `ui.Pad.right(right)` equal to `ui.Pad(0, right, 0, 0)`
-- `ui.Pad.top(top)` equal to `ui.Pad(0, 0, top, 0)`
-- `ui.Pad.bottom(bottom)` equal to `ui.Pad(0, 0, 0, bottom)`
+- `ui.Pad.bottom(bottom)` equal to `ui.Pad(0, 0, bottom, 0)`
+- `ui.Pad.left(left)` equal to `ui.Pad(0, 0, 0, left)`
 
 Or specify a particular direction for them:
 
-- `ui.Pad.x(x)` equal to `ui.Pad(x, x, 0, 0)`
-- `ui.Pad.y(y)` equal to `ui.Pad(0, 0, y, y)`
-- `ui.Pad.xy(x, y)` equal to `ui.Pad(x, x, y, y)`
+- `ui.Pad.x(x)` equal to `ui.Pad(0, x, 0, x)`
+- `ui.Pad.y(y)` equal to `ui.Pad(y, 0, y, 0)`
+- `ui.Pad.xy(x, y)` equal to `ui.Pad(y, x, y, x)`
 
 ## Style {#style}
 
