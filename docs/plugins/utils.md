@@ -27,11 +27,11 @@ This function is only available in the async context.
 
 ### `file_cache(opts)` {#ya.file_cache}
 
-Calculate the cached [Url](/docs/plugins/types#shared.url) corresponding to the given file:
+Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given file:
 
 - `opts`: Required, the options of the cache, which is a table:
 
-  - `file`: The [File](/docs/plugins/types#shared.file) to be cached.
+  - `file`: The [File](/docs/plugins/types#file) to be cached.
   - `skip`: The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos.
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
@@ -67,7 +67,7 @@ If `args` contains userdata, it causes [Ownership transfer](/docs/plugins/overvi
 
 Display the given image within the specified area, and the image will downscale to fit that area automatically:
 
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the image.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the image.
 - `rect`: Required, the [Rect](/docs/plugins/layout#rect) of the area.
 
 This function is only available in the async context.
@@ -76,8 +76,8 @@ This function is only available in the async context.
 
 Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](/docs/configuration/yazi#preview):
 
-- `src`: Required, the source [Url](/docs/plugins/types#shared.url) of the image.
-- `dist`: Required, the destination [Url](/docs/plugins/types#shared.url) of the image.
+- `src`: Required, the source [Url](/docs/plugins/types#url) of the image.
+- `dist`: Required, the destination [Url](/docs/plugins/types#url) of the image.
 
 This function is only available in the async context.
 
@@ -208,7 +208,7 @@ Preview the file as code into the specified area:
 
 - `opts`: Required, the options of the preview, which is a table:
   - `area`: [Rect](/docs/plugins/layout#rect) of the available preview area.
-  - `file`: [File](/docs/plugins/types#shared.file) to be previewed.
+  - `file`: [File](/docs/plugins/types#file) to be previewed.
   - `mime`: String of the MIME type of the file.
   - `skip`: Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos.
 
@@ -223,7 +223,7 @@ This function is only available in the async context.
 
 - `opts`: Required, the options of the preview, which is a table:
   - `area`: [Rect](/docs/plugins/layout#rect) of the available preview area.
-  - `file`: [File](/docs/plugins/types#shared.file) to be previewed.
+  - `file`: [File](/docs/plugins/types#file) to be previewed.
   - `mime`: String of the MIME type of the file.
   - `skip`: Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos.
 - `widgets`: List of renderable widgets, such as `{ ui.Text {...}, ui.List {...}, ... }`.
@@ -445,8 +445,8 @@ This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lu
 
 Returns `(url, err)`:
 
-- `url`: The [Url](/docs/plugins/types#shared.url) of the current working directory if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `url`: The [Url](/docs/plugins/types#url) of the current working directory if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][tab-folder], which is the current directory where the user is working.
 
@@ -458,7 +458,7 @@ It is useful if you just need a valid directory as the CWD of a process to start
 
 [getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
 [chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
-[tab-folder]: /docs/plugins/types#app-data.tab-folder
+[tab-folder]: /docs/plugins/appdata#tab-folder
 
 ### `cha(url, follow)` {#fs.cha}
 
@@ -466,15 +466,15 @@ It is useful if you just need a valid directory as the CWD of a process to start
 local cha, err = fs.cha(url)
 ```
 
-Get the [Cha](/docs/plugins/types#shared.cha) of the specified file:
+Get the [Cha](/docs/plugins/types#cha) of the specified file:
 
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the file.
 - `follow`: Optional, whether to follow the symbolic link, which is a boolean.
 
 Returns `(cha, err)`:
 
-- `cha`: The [Cha](/docs/plugins/types#shared.cha) of the file if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `cha`: The [Cha](/docs/plugins/types#cha) of the file if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `write(url, data)` {#fs.write}
 
@@ -484,13 +484,13 @@ local ok, err = fs.write(url, "hello world")
 
 Write data to the specified file:
 
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the file.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the file.
 - `data`: Required, the data to be written, which is a string.
 
 Returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `create(type, url)` {#fs.create}
 
@@ -503,12 +503,12 @@ Create the specified file(s) in the filesystem.
 - `type`: Required, the type of creation, which can be:
   - `"dir"`: Creates a new, empty directory.
   - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the target.
 
 Returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `remove(type, url)` {#fs.remove}
 
@@ -523,12 +523,12 @@ Remove the specified file(s) from the filesystem:
   - `"dir"`: Removes an existing, empty directory.
   - `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
   - `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the target.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the target.
 
 Returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `read_dir(url, options)` {#fs.read_dir}
 
@@ -538,7 +538,7 @@ local files, err = fs.read_dir("url", { limit = 10 })
 
 Reads the contents of a directory:
 
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the directory.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the directory.
 - `options`: Optional, a table with the following options:
   - `glob`: A glob pattern to filter files out if provided.
   - `limit`: The maximum number of files to read, which is an integer, defaults to unlimited.
@@ -546,8 +546,8 @@ Reads the contents of a directory:
 
 Returns `(files, err)`:
 
-- `files`: A table of [File](/docs/plugins/types#shared.file) if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `files`: A table of [File](/docs/plugins/types#file) if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `unique_name(url)`
 
@@ -555,14 +555,14 @@ Returns `(files, err)`:
 local url, err = fs.unique_name(Url("/tmp/test.txt"))
 ```
 
-Get a unique name from the given [Url](/docs/plugins/types#shared.url) to ensure it's unique in the filesystem:
+Get a unique name from the given [Url](/docs/plugins/types#url) to ensure it's unique in the filesystem:
 
-- `url`: Required, the [Url](/docs/plugins/types#shared.url) of the path to get a unique name.
+- `url`: Required, the [Url](/docs/plugins/types#url) of the path to get a unique name.
 
 Returns `(url, err)`:
 
-- `url`: The unique [Url](/docs/plugins/types#shared.url) of the given path if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `url`: The unique [Url](/docs/plugins/types#url) of the given path if successful; otherwise, `nil`.
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 If the file already exists, the function will append `_n` to the filename, where `n` is a number, and keep incrementing it until it finds the first available name.
 
@@ -684,7 +684,7 @@ local child, err = Command("ls"):spawn()
 Spawn the command, returns `(child, err)`:
 
 - `child`: The [Child](#child) of the command if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `output()` {#Command.output}
 
@@ -695,7 +695,7 @@ local output, err = Command("ls"):output()
 Spawn the command and wait for it to finish, returns `(output, err)`:
 
 - `output`: The [Output](#output) of the command if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `status()` {#Command.status}
 
@@ -706,7 +706,7 @@ local status, err = Command("ls"):status()
 Executes the command as a child process, waiting for it to finish and collecting its exit status. Returns `(status, err)`:
 
 - `status`: The [Status](#status) of the child process if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ## Child
 
@@ -759,7 +759,7 @@ local ok, err = child:write_all(src)
 Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 Please ensure that the child's stdin is available when calling this method, specifically:
 
@@ -777,7 +777,7 @@ local ok, err = child:flush()
 Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 Please ensure that the child's stdin is available when calling this method, specifically:
 
@@ -795,7 +795,7 @@ local status, err = child:wait()
 Wait for the child process to finish, returns `(status, err)`:
 
 - `status`: The [Status](#status) of the child process if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `wait_with_output()` {#Child.wait_with_output}
 
@@ -806,7 +806,7 @@ local output, err = child:wait_with_output()
 Wait for the child process to finish and get the output, returns `(output, err)`:
 
 - `output`: The [Output](#output) of the child process if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `start_kill()` {#Child.start_kill}
 
@@ -817,7 +817,7 @@ local ok, err = child:start_kill()
 Send a SIGTERM signal to the child process, returns `(ok, err)`:
 
 - `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#shared.error).
+- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 ### `take_stdin()` {#Child.take_stdin}
 

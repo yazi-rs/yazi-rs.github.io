@@ -135,7 +135,7 @@ When a plugin is executed asynchronously, an isolated async context is created f
 
 In this context, you can use all the async functions supported by Yazi, and it operates concurrently with the main thread, ensuring that the main thread is not blocked.
 
-You can also obtain [a small amount](#sendable) of app data from the sync context by calling a "sync function":
+You can also obtain [a small amount](#sendable) of app data from the sync context by calling a "sync block":
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/main.lua
@@ -239,20 +239,20 @@ When the user presses <kbd>j</kbd> or <kbd>k</kbd> to switch between hovering fi
 | ------ | --------------------------------------------------------------------------------------------------------------- |
 | `area` | [Rect](/docs/plugins/layout#rect) of the available preview area.                                                |
 | `args` | Arguments passed to the previewer.                                                                              |
-| `file` | [File](/docs/plugins/types#shared.file) to be previewed.                                                        |
+| `file` | [File](/docs/plugins/types#file) to be previewed.                                                               |
 | `skip` | Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos. |
 
 When the user presses <kbd>J</kbd> or <kbd>K</kbd> to scroll the preview of the file, `seek` is called, with:
 
 | Key     | Description                                                      |
 | ------- | ---------------------------------------------------------------- |
-| `file`  | [File](/docs/plugins/types#shared.file) being scrolled.          |
+| `file`  | [File](/docs/plugins/types#file) being scrolled.                 |
 | `area`  | [Rect](/docs/plugins/layout#rect) of the available preview area. |
 | `units` | Number of units to scroll.                                       |
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
-The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/types#app-data) through `cx`.
+The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/appdata) through `cx`.
 
 There are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/shipped/yazi-plugin/preset/plugins)
 
@@ -277,7 +277,7 @@ It receives a `job` parameter, which is a table:
 | ------ | ---------------------------------------------------------------- |
 | `area` | [Rect](/docs/plugins/layout#rect) of the available preview area. |
 | `args` | Arguments passed to the preloader.                               |
-| `file` | [File](/docs/plugins/types#shared.file) to be preloaded.         |
+| `file` | [File](/docs/plugins/types#file) to be preloaded.                |
 | `skip` | Always `0`                                                       |
 
 And returns a `(complete, err)`:
@@ -302,7 +302,7 @@ Yazi's plugin can run concurrently on multiple threads. For better performance, 
 - Boolean
 - Number
 - String
-- [Url](/docs/plugins/types#shared.url)
+- [Url](/docs/plugins/types#url)
 - Table and nested tables, with the above types as values
 
 ## Ownership transfer {#ownership}
@@ -311,7 +311,7 @@ Yazi's plugin system inherits [Rust's ownership and lifetime](https://doc.rust-l
 
 All [userdata](https://www.lua.org/pil/28.1.html) are native Rust types that have their own ownership to ensure safe and efficient transfers across different threads, avoiding any memory reallocation overhead. Specifically:
 
-- [Url](/docs/plugins/types#shared.url)
+- [Url](/docs/plugins/types#url)
 
 Passing these userdata to a cross-thread function like [`ya.mgr_emit()`](/docs/plugins/utils#ya.mgr_emit) transfers ownership. After transfer, the original userdata is no longer available, for example:
 

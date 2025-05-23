@@ -22,23 +22,82 @@ ui.Rect {
 ui.Rect.default  -- Equal to `ui.Rect { x = 0, y = 0, w = 0, h = 0 }`
 ```
 
-Properties:
-
-- `x` - x position
-- `y` - y position
-- `w` - width
-- `h` - height
-- `left` - left position
-- `right` - right position
-- `top` - top position
-- `bottom` - bottom position
-
-Methods (return `self` if not specified):
-
-- `pad(pad)` - Apply a [Pad](#pad)
-
 You can get a pre-computed `Rect` through [`ui.Layout()`](#layout).
 Note that if you intend to create a `Rect` yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!
+
+### `x` {#rect.x}
+
+X position of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `y` {#rect.y}
+
+Y position of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `w` {#rect.w}
+
+Width of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `h` {#rect.h}
+
+Height of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `left` {#rect.left}
+
+Left position of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `right` {#rect.right}
+
+Right position of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `top` {#rect.top}
+
+Top position of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `bottom` {#rect.bottom}
+
+Bottom position of the rect.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `pad(self, padding)` {#rect.pad}
+
+Apply a `padding` to the rect.
+
+| In/Out    | Type          |
+| --------- | ------------- |
+| `self`    | `Rect`        |
+| `padding` | [`Pad`](#pad) |
+| Return    | `self`        |
 
 ## Pad {#pad}
 
@@ -48,25 +107,102 @@ Note that if you intend to create a `Rect` yourself, ensure these values are cal
 ui.Pad(top, right, bottom, left)
 ```
 
-Properties:
+### `top` {#pad.top}
 
-- `top` - top padding
-- `right` - right padding
-- `bottom` - bottom padding
-- `left` - left padding
+Top padding.
 
-If you want to specify only one of them:
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
 
-- `ui.Pad.top(top)` equal to `ui.Pad(top, 0, 0, 0)`
-- `ui.Pad.right(right)` equal to `ui.Pad(0, right, 0, 0)`
-- `ui.Pad.bottom(bottom)` equal to `ui.Pad(0, 0, bottom, 0)`
-- `ui.Pad.left(left)` equal to `ui.Pad(0, 0, 0, left)`
+### `right` {#pad.right}
 
-Or specify a particular direction for them:
+Right padding.
 
-- `ui.Pad.x(x)` equal to `ui.Pad(0, x, 0, x)`
-- `ui.Pad.y(y)` equal to `ui.Pad(y, 0, y, 0)`
-- `ui.Pad.xy(x, y)` equal to `ui.Pad(y, x, y, x)`
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `bottom` {#pad.bottom}
+
+Bottom padding.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `left` {#pad.left}
+
+Left padding.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `top(top)` {#pad.Top}
+
+Create a padding with only top value, which is equal to `ui.Pad(top, 0, 0, 0)`.
+
+| In     | Type      |
+| ------ | --------- |
+| `top`  | `integer` |
+| Return | `Pad`     |
+
+### `right(right)` {#pad.Right}
+
+Create a padding with only right value, which is equal to `ui.Pad(0, right, 0, 0)`.
+
+| In      | Type      |
+| ------- | --------- |
+| `right` | `integer` |
+| Return  | `Pad`     |
+
+### `bottom(bottom)` {#pad.Bottom}
+
+Create a padding with only bottom value, which is equal to `ui.Pad(0, 0, bottom, 0)`.
+
+| In       | Type      |
+| -------- | --------- |
+| `bottom` | `integer` |
+
+| Return | `Pad` |
+
+### `left(left)` {#pad.Left}
+
+Create a padding with only left value, which is equal to `ui.Pad(0, 0, 0, left)`.
+
+| In     | Type      |
+| ------ | --------- |
+| `left` | `integer` |
+| Return | `Pad`     |
+
+### `x(x)` {#pad.X}
+
+Create a padding on both x-axis, which is equal to `ui.Pad(0, x, 0, x)`.
+
+| In     | Type      |
+| ------ | --------- |
+| `x`    | `integer` |
+| Return | `Pad`     |
+
+### `y(y)` {#pad.Y}
+
+Create a padding on both y-axis, which is equal to `ui.Pad(y, 0, y, 0)`.
+
+| In     | Type      |
+| ------ | --------- |
+| `y`    | `integer` |
+| Return | `Pad`     |
+
+### `xy(x, y)` {#pad.XY}
+
+Create a padding on both x and y-axis, which is equal to `ui.Pad(y, x, y, x)`.
+
+| In     | Type      |
+| ------ | --------- |
+| `x`    | `integer` |
+| `y`    | `integer` |
+| Return | `Pad`     |
 
 ## Style {#style}
 
@@ -76,21 +212,129 @@ Create a style:
 ui.Style()
 ```
 
-Methods (return `self` if not specified):
+### `fg(self, color)` {#style.fg}
 
-- `fg(color)` - Set the foreground color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
-- `bg(color)` - Set the background color of the style, which accepts a [Color](/docs/configuration/theme#types.color)
-- `bold()` - Set the style to bold
-- `dim()` - Set the style to dim
-- `italic()` - Set the style to italic
-- `underline()` - Set the style to underline
-- `blink()` - Set the style to blink
-- `blink_rapid()` - Set the style to blink rapidly
-- `reverse()` - Set the style to reverse
-- `hidden()` - Set the style to hidden
-- `crossed()` - Set the style to crossed
-- `reset()` - Reset the style
-- `patch(style)` - Patch the style with another `Style`
+Apply a foreground color.
+
+| In/Out  | Type                                             |
+| ------- | ------------------------------------------------ |
+| `self`  | `Style`                                          |
+| `color` | [`Color`](/docs/configuration/theme#types.color) |
+| Return  | `self`                                           |
+
+### `bg(self, color)` {#style.bg}
+
+Apply a background color.
+
+| In/Out  | Type                                             |
+| ------- | ------------------------------------------------ |
+| `self`  | `Style`                                          |
+| `color` | [`Color`](/docs/configuration/theme#types.color) |
+| Return  | `self`                                           |
+
+### `bold(self)` {#style.bold}
+
+Apply a bold style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `dim(self)` {#style.dim}
+
+Apply a dim style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `italic(self)` {#style.italic}
+
+Apply an italic style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `underline(self)` {#style.underline}
+
+Apply an underline style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `blink(self)` {#style.blink}
+
+Apply a blink style.
+
+Note that this style may not be supported by all terminals.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `blink_rapid(self)` {#style.blink-rapid}
+
+Apply a rapid blink style.
+
+Note that this style may not be supported by all terminals.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `reverse(self)` {#style.reverse}
+
+Apply a reverse style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `hidden(self)` {#style.hidden}
+
+Apply a hidden style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `crossed(self)` {#style.crossed}
+
+Apply a crossed style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `reset(self)` {#style.reset}
+
+Apply a reset style.
+
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Style` |
+| Return | `self`  |
+
+### `patch(self, another)` {#style.patch}
+
+Patch the style with `another`.
+
+| In/Out    | Type    |
+| --------- | ------- |
+| `self`    | `Style` |
+| `another` | `Style` |
+| Return    | `self`  |
 
 ## Span {#span}
 
@@ -106,12 +350,26 @@ For convenience, `ui.Span` can also accept itself as a argument:
 ui.Span(ui.Span("bar"))
 ```
 
-Methods (return `self` if not specified):
+### `visible(self)` {#span.visible}
 
-- `visible()` - Whether the span is visible (includes any printable characters), which returns a boolean.
-- `style(style)` - Set the style of the span, which accepts a [Style](#style)
+Whether the span is visible, i.e. includes any printable characters.
 
-Besides applying the whole [`Style`](#style), you can also call those methods of `Style` directly on it, which means:
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Span`    |
+| Return | `boolean` |
+
+### `style(self, style)` {#span.style}
+
+Set the style of the span.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Span`            |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
+
+Besides applying the whole `Style`, you can also call those methods of `Style` directly on it, which means:
 
 ```lua
 local style = ui.Style():fg("white"):bg("black"):bold()
@@ -148,18 +406,63 @@ ui.Line(ui.Line("baz"))
 ui.Line { "foo", ui.Span("bar"), ui.Line("baz") }
 ```
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#line.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the line. If not specified, returns the current area.
-- `width()` - Get the width of the line, which returns an integer.
-- `align(alignment)` - Set the alignment of the line. It accepts the following constants:
-  - `ui.Line.LEFT`
-  - `ui.Line.CENTER`
-  - `ui.Line.RIGHT`
-- `visible()` - Whether the line is visible (includes any printable characters), which returns a boolean.
-- `style(style)` - Set the style of the line, which accepts a [Style](#style).
+Set the area of the line.
 
-Like with [`Span`](#span), you can directly call [`Style`](#style) methods on it
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `Line`                   |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.
+
+### `width(self)` {#line.width}
+
+Calculate the width of the line.
+
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Line`    |
+| Return | `integer` |
+
+### `align(self, align)` {#line.align}
+
+Set the alignment of the line.
+
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Line`  |
+| `align` | `Align` |
+| Return  | `self`  |
+
+The `align` accepts the following constants:
+
+- `ui.Line.LEFT`
+- `ui.Line.CENTER`
+- `ui.Line.RIGHT`
+
+### `visible(self)` {#line.visible}
+
+Whether the line is visible, i.e. includes any printable characters.
+
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Line`    |
+| Return | `boolean` |
+
+### `style(self, style)` {#line.style}
+
+Set the style of the line.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Line`            |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
+
+Like with [`Span`](#span), you can also call the [`Style`](#style) methods on it directly:
 
 ```lua
 ui.Line("Hello world"):fg("white"):bg("black"):bold()
@@ -191,21 +494,70 @@ ui.Text { "foo", ui.Line("bar"), ui.Span("baz") }
 
 You can also use `ui.Text.parse(code)` to parse an [ANSI escape sequence](https://en.wikipedia.org/wiki/ANSI_escape_code) string into a text.
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#text.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the text. If not specified, returns the current area.
-- `align(alignment)` - Set the alignment of the text, accepts the following constants:
-  - `ui.Text.LEFT`
-  - `ui.Text.CENTER`
-  - `ui.Text.RIGHT`
-- `wrap(wrap)` - Set the wrap of the text, which accepts the following constants:
-  - `ui.Text.WRAP_NO` - No wrap
-  - `ui.Text.WRAP` - Wrap at the end of the line
-  - `ui.Text.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
-- `max_width()` - Get the maximum width of the text, which returns an integer
-- `style(style)` - Set the style of the text, which accepts a [Style](#style)
+Set the area of the text.
 
-Like with [`Span`](#span), you can directly call [`Style`](#style) methods on it:
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `Text`                   |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.
+
+### `align(self, align)` {#text.align}
+
+Set the alignment of the text.
+
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Text`  |
+| `align` | `Align` |
+| Return  | `self`  |
+
+The `align` accepts the following constants:
+
+- `ui.Text.LEFT`
+- `ui.Text.CENTER`
+- `ui.Text.RIGHT`
+
+### `wrap(self, wrap)` {#text.wrap}
+
+Set the wrap of the text.
+
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Text` |
+| `wrap` | `Wrap` |
+| Return | `self` |
+
+The `wrap` accepts the following constants:
+
+- `ui.Text.WRAP_NO` - No wrap
+- `ui.Text.WRAP` - Wrap at the end of the line
+- `ui.Text.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
+
+### `max_width(self)` {#text.max-width}
+
+Calculate the maximum width of the text across all lines.
+
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Text`    |
+| Return | `integer` |
+
+### `style(self, style)` {#text.style}
+
+Set the style of the text.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Text`            |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
+
+Like with [`Span`](#span), you can also call the [`Style`](#style) methods on it directly:
 
 ```lua
 ui.Text("Hello world"):fg("white"):bg("black"):bold()
@@ -225,16 +577,70 @@ local left = areas[1] -- The first rect
 local right = areas[2] -- The second rect
 ```
 
-Methods (return `self` if not specified):
+### `direction(self, direction)` {#layout.direction}
 
-- `direction(direction)` - Set the direction of the layout, which accepts the following constants:
-  - `ui.Layout.HORIZONTAL`
-  - `ui.Layout.VERTICAL`
-- `margin(margin)` - Set the margin of the layout, which accepts an positive integer.
-- `margin_h(margin)` - Set the horizontal margin of the layout, which accepts an positive integer.
-- `margin_v(margin)` - Set the vertical margin of the layout, which accepts an positive integer.
-- `constraints({ constraint, ... })` - Set the constraints of the layout, which accepts a list of [Constraint](#constraint).
-- `split(rect)` - Accepts a [Rect](#rect) and split it into multiple [Rect](#rect) according to the constraints.
+Set the direction of the layout.
+
+| In/Out      | Type        |
+| ----------- | ----------- |
+| `self`      | `Layout`    |
+| `direction` | `Direction` |
+| Return      | `self`      |
+
+The `direction` accepts the following constants:
+
+- `ui.Layout.HORIZONTAL`
+- `ui.Layout.VERTICAL`
+
+### `margin(self, margin)` {#layout.margin}
+
+Set the margin of the layout.
+
+| In/Out   | Type      | Note             |
+| -------- | --------- | ---------------- |
+| `self`   | `Layout`  | -                |
+| `margin` | `integer` | Positive integer |
+| Return   | `self`    | -                |
+
+### `margin_h(self, margin)` {#layout.margin-h}
+
+Set the horizontal margin of the layout.
+
+| In/Out   | Type      | Note             |
+| -------- | --------- | ---------------- |
+| `self`   | `Layout`  | -                |
+| `margin` | `integer` | Positive integer |
+| Return   | `self`    | -                |
+
+### `margin_v(self, margin)` {#layout.margin-v}
+
+Set the vertical margin of the layout.
+
+| In/Out   | Type      | Note             |
+| -------- | --------- | ---------------- |
+| `self`   | `Layout`  | -                |
+| `margin` | `integer` | Positive integer |
+| Return   | `self`    | -                |
+
+### `constraints(self, constraints)` {#layout.constraints}
+
+Set the constraints of the layout.
+
+| In/Out        | Type                               |
+| ------------- | ---------------------------------- |
+| `self`        | `Layout`                           |
+| `constraints` | [`table<Constraint>`](#constraint) |
+| Return        | `self`                             |
+
+### `split(self, rect)` {#layout.split}
+
+Split the layout into multiple [Rect](#rect)s according to the constraints.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | `Layout`               |
+| `rect` | [`Rect`](#rect)        |
+| Return | [`table<Rect>`](#rect) |
 
 ## Constraint {#constraint}
 
@@ -257,9 +663,14 @@ Constraints are prioritized in the following order:
 5. `ui.Constraint.Ratio(num, den)`
 6. `ui.Constraint.Fill(scale)`
 
-### `Min(min)` {#constraint.min}
+### `Min(min)` {#constraint.Min}
 
-Applies a minimum size constraint to the element
+Applies a minimum size constraint to the element.
+
+| In/Out | Type         |
+| ------ | ------------ |
+| `min`  | `integer`    |
+| Return | `Constraint` |
 
 The element size is set to at least the specified amount.
 
@@ -275,9 +686,14 @@ The element size is set to at least the specified amount.
 -- └──────────────────────────────────────┘└────────┘
 ```
 
-### `Max(max)` {#constraint.max}
+### `Max(max)` {#constraint.Max}
 
-Applies a maximum size constraint to the element
+Applies a maximum size constraint to the element.
+
+| In/Out | Type         |
+| ------ | ------------ |
+| `max`  | `integer`    |
+| Return | `Constraint` |
 
 The element size is set to at most the specified amount.
 
@@ -294,11 +710,16 @@ The element size is set to at most the specified amount.
 
 ```
 
-### `Length(len)` {#constraint.length}
+### `Length(len)` {#constraint.Length}
 
-Applies a length constraint to the element
+Applies a length constraint to the element.
 
-The element size is set to the specified amount.
+| In/Out | Type         |
+| ------ | ------------ |
+| `len`  | `integer`    |
+| Return | `Constraint` |
+
+The element size is set to the specified amount:
 
 ```lua
 -- { Length(20), Length(20) }
@@ -312,9 +733,14 @@ The element size is set to the specified amount.
 -- └──────────────────┘└────────────────────────────┘
 ```
 
-### `Percentage(p)` {#constraint.percentage}
+### `Percentage(p)` {#constraint.Percentage}
 
-Applies a percentage of the available space to the element
+Applies a percentage of the available space to the element.
+
+| In/Out | Type         |
+| ------ | ------------ |
+| `p`    | `integer`    |
+| Return | `Constraint` |
 
 Converts the given percentage to a floating-point value and multiplies that with area.
 This value is rounded back to an integer as part of the layout split calculation.
@@ -331,9 +757,15 @@ This value is rounded back to an integer as part of the layout split calculation
 -- └───────────────────────┘└───────────────────────┘
 ```
 
-### `Ratio(num, den)` {#constraint.ratio}
+### `Ratio(num, den)` {#constraint.Ratio}
 
-Applies a ratio of the available space to the element
+Applies a ratio of the available space to the element.
+
+| In/Out | Type         |
+| ------ | ------------ |
+| `num`  | `integer`    |
+| `den`  | `integer`    |
+| Return | `Constraint` |
 
 Converts the given ratio to a floating-point value and multiplies that with area.
 This value is rounded back to an integer as part of the layout split calculation.
@@ -350,10 +782,15 @@ This value is rounded back to an integer as part of the layout split calculation
 -- └───────────┘└──────────┘└───────────┘└──────────┘
 ```
 
-### `Fill(scale)` {#constraint.fill}
+### `Fill(scale)` {#constraint.Fill}
 
 Applies the scaling factor proportional to all other `Fill` elements
-to fill excess space
+to fill excess space.
+
+| In/Out  | Type         |
+| ------- | ------------ |
+| `scale` | `integer`    |
+| Return  | `Constraint` |
 
 The element will only expand or fill into excess available space, proportionally matching
 other `Fill` elements while satisfying all other constraints.
@@ -396,10 +833,27 @@ ui.List { ui.Span("foo"), ui.Span("bar") }
 ui.List { "foo", ui.Line("bar"), ui.Span("baz") }
 ```
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#list.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the text. If not specified, returns the current area.
-- `style(style)` - Set the style of the list, which accepts a [Style](#style)
+Set the area of the list.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `List`                   |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.
+
+### `style(self, style)` {#list.style}
+
+Set the style of the list.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `List`            |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
 
 ## Bar {#bar}
 
@@ -418,11 +872,36 @@ The first attribute denotes the direction of the bar and accepts the following c
 - `ui.Bar.LEFT`
 - `ui.Bar.ALL`
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#bar.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the bar. If not specified, returns the current area.
-- `symbol(symbol)` - accepts a string, specifying the symbol for the bar
-- `style(style)` - accepts a [Style](#style), specifying the style of the bar
+Set the area of the bar.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `Bar`                    |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.
+
+### `symbol(self, symbol)` {#bar.symbol}
+
+Set the symbol of the bar.
+
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `string` |
+| Return | `self`   |
+
+### `style(self, style)` {#bar.style}
+
+Set the style of the bar.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Bar`             |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
 
 ## Border {#border}
 
@@ -441,17 +920,46 @@ The first attribute denotes the position of the border and accepts the following
 - `ui.Border.LEFT`
 - `ui.Border.ALL`
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#border.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the border. If not specified, returns the current area.
-- `type(type)` - accepts a type, specifying the type of the border:
-  - `ui.Border.PLAIN`
-  - `ui.Border.ROUNDED`
-  - `ui.Border.DOUBLE`
-  - `ui.Border.THICK`
-  - `ui.Border.QUADRANT_INSIDE`
-  - `ui.Border.QUADRANT_OUTSIDE`
-- `style(style)` - accepts a [Style](#style), specifying the style of the border
+Set the area of the border.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `Border`                 |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.
+
+### `type(self, type)` {#border.type}
+
+Set the type of the border.
+
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Border`  |
+| `type` | `integer` |
+| Return | `self`    |
+
+The `type` accepts the following constants:
+
+- `ui.Border.PLAIN`
+- `ui.Border.ROUNDED`
+- `ui.Border.DOUBLE`
+- `ui.Border.THICK`
+- `ui.Border.QUADRANT_INSIDE`
+- `ui.Border.QUADRANT_OUTSIDE`
+
+### `style(self, style)` {#border.style}
+
+Set the style of the border.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Border`          |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
 
 ## Gauge {#gauge}
 
@@ -461,14 +969,67 @@ Create a gauge:
 ui.Gauge()
 ```
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#gauge.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the gauge. If not specified, returns the current area.
-- `percent(percent)` - Set the percentage of the gauge
-- `ratio(ratio)` - Set the ratio of the gauge
-- `label(label)` - Set the label of the gauge
-- `style(style)` - Set the style of everything except the bar itself, which accepts a [Style](#style)
-- `gauge_style(style)` - Set the style of the bar, which accepts a [Style](#style)
+Set the area of the gauge.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `Gauge`                  |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.
+
+### `percent(self, percent)` {#gauge.percent}
+
+Set the percentage of the gauge.
+
+| In/Out    | Type      |
+| --------- | --------- |
+| `self`    | `Gauge`   |
+| `percent` | `integer` |
+| Return    | `self`    |
+
+### `ratio(self, ratio)` {#gauge.ratio}
+
+Set the ratio of the gauge.
+
+| In/Out  | Type     | Note            |
+| ------- | -------- | --------------- |
+| `self`  | `Gauge`  | -               |
+| `ratio` | `number` | Between 0 and 1 |
+| Return  | `self`   | -               |
+
+### `label(self, label)` {#gauge.label}
+
+Set the label of the gauge.
+
+| In/Out  | Type     |
+| ------- | -------- |
+| `self`  | `Gauge`  |
+| `label` | `string` |
+| Return  | `self`   |
+
+### `style(self, style)` {#gauge.style}
+
+Set the style of everything except the gauge itself.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Gauge`           |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
+
+### `gauge_style(self, style)` {#gauge.gauge-style}
+
+Set the style of the gauge itself.
+
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Gauge`           |
+| `style` | [`Style`](#style) |
+| Return  | `self`            |
 
 ## Clear {#clear}
 
@@ -483,6 +1044,14 @@ local components = {
 }
 ```
 
-Methods (return `self` if not specified):
+### `area(self, rect)` {#clear.area}
 
-- `area(rect)` - accepts a [Rect](#rect), changing the area of the clear. If not specified, returns the current area.
+Set the area of the clear.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | `Clear`                  |
+| `rect` | [`Rect`](#rect) \| `nil` |
+| Return | `self`                   |
+
+If `rect` is not specified, it returns the current area.

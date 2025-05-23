@@ -5,9 +5,7 @@ description: Learn how to use Yazi's Lua API.
 
 # Types
 
-## Shared {#shared}
-
-### Url {#shared.url}
+## Url {#url}
 
 Create a Url:
 
@@ -19,238 +17,422 @@ local url = Url("/root/Downloads/logo.png")
 local url = Url("archive:///root/ost.zip#bgm.mp3")
 ```
 
-Properties:
+### `name` {#url.name}
 
-- `name` - The filename in string if any, otherwise `nil`
-- `stem` - The filename without the extension in string if any, otherwise `nil`
-- `frag` - The fragment string of the url. Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`
-- `parent` - The parent directory `Url` if any, otherwise `nil`
-- `is_regular` - Whether the file represented by the url is a regular file
-- `is_search` - Whether the file represented by the url from the search result
-- `is_archive` - Whether the file represented by the url from an archive
-- `is_absolute` - Whether the path represented by the url is absolute
-- `has_root` - Whether the path represented by the url has a root
+Filename of the url.
 
-Methods:
+|      |                   |
+| ---- | ----------------- |
+| Type | `string` \| `nil` |
 
-- `join(url)` - Joins with another `Url` or a string of url, returns a new `Url`
-- `starts_with(url)` - Whether the url starts with another `Url` or a string of url
-- `ends_with(url)` - Whether the url ends with another `Url` or a string of url
-- `strip_prefix(url)` - Strips the prefix of another `Url` or a string of url, returns a new `Url`
+### `stem`
 
-Meta methods:
+Filename without the extension.
 
-- `__eq(another_url)`
-- `__tostring()`
-- `__concat(string)`
+|      |                   |
+| ---- | ----------------- |
+| Type | `string` \| `nil` |
 
-### Cha {#shared.cha}
+### `frag` {#url.frag}
 
-Cha means one file's characteristics with the following properties:
+Url fragment.
 
-- `is_dir` - Whether this file is a directory
-- `is_hidden` - Whether this file is hidden (starts with a dot)
-- `is_link` - Whether this file is a symlink
-- `is_orphan` - Whether this file is a bad symlink, which points to a non-existent file
-- `is_dummy` - Whether the file is dummy, which fails to load complete metadata, possibly the filesystem doesn't support it, such as FUSE.
-- `is_block` - Whether this file is a block device
-- `is_char` - Whether this file is a character device
-- `is_fifo` - Whether this file is a fifo
-- `is_sock` - Whether this file is a socket
-- `is_exec` - Whether this file is executable
-- `is_sticky` - Whether this file has the sticky bit set
-- `len` - The length of this file, returns an integer representing the size in bytes. Note that it can't reflect the size of a directory, use [`size()`](#app-data.fs-file) instead
-- `atime` - The accessed time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `btime` - The birth time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
-- `mtime` - The modified time of this file in Unix timestamp, or `nil` if it doesn't have a valid time
+Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`.
 
-And methods:
+|      |                   |
+| ---- | ----------------- |
+| Type | `string` \| `nil` |
 
-- `perm()` - Unix permissions of this file in string, e.g. `drwxr-xr-x`. For Windows, it's always `nil`
+### `parent` {#url.parent}
 
-And the Unix only properties:
+Parent directory.
 
-- `uid` - The user id of this file
-- `gid` - The group id of this file
-- `nlink` - The number of hard links to this file
+|      |                |
+| ---- | -------------- |
+| Type | `Url` \| `nil` |
 
-### File {#shared.file}
+### `is_regular` {#url.is_regular}
 
-Properties:
+Whether the file represented by the url is a regular file.
 
-- `url` - The [Url](#shared.url) of this file
-- `cha` - The [Cha](#shared.cha) of this file
-- `link_to` - The [Url](#shared.url) of this file pointing to, if it's a symlink; otherwise, `nil`
-- `name` - The name of this file
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-### Icon {#shared.icon}
+### `is_search`
 
-Properties:
+Whether the file represented by the url is from a search result.
 
-- `text` - The text of this icon
-- `style` - The [Style](/docs/plugins/layout#style) of this icon
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-### Error {#shared.error}
+### `is_archive` {#url.is_archive}
 
-Properties:
+Whether the file represented by the url is from an archive.
 
-- `code`: The raw error code if any, otherwise `nil`, which is an integer.
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Meta methods:
+### `is_absolute`
 
-- `__tostring()`
-- `__concat(string)`
+Whether the path represented by the url is absolute.
 
-### Window {#shared.window}
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Properties:
+### `has_root` {#url.has_root}
 
-- `rows` - The number of rows of this window
-- `cols` - The number of columns of this window
-- `width` - The width of this window in pixels
-- `height` - The height of this window in pixels
+Whether the path represented by the url has a root.
 
-## App data {#app-data}
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-You can access all app data through the `cx` within [Sync context](/docs/plugins/overview#sync-context):
+### `join(self, another)` {#url.join}
 
-- `cx.active` - The active tab, which is a [tab::Tab](#app-data.tab-tab)
-- `cx.tabs` - All of tabs, which is a [mgr::Tabs](#app-data.mgr-tabs)
-- `cx.tasks` - All of tasks, which is a [tasks::Tasks](#app-data.tasks-tasks)
-- `cx.yanked` - The yanked urls, which is a [mgr::Yanked](#app-data.mgr-yanked)
+Join with `another`.
 
-### `tab::Mode` {#app-data.tab-mode}
+| In/Out    | Type              |
+| --------- | ----------------- |
+| `self`    | `Url`             |
+| `another` | `Url` \| `string` |
+| Return    | `Url`             |
 
-Visual mode status.
+### `starts_with(self, another)` {#url.starts_with}
 
-Properties:
+Whether the url starts with `another`.
 
-- `is_select` - Whether the mode is select
-- `is_unset` - Whether the mode is unset
-- `is_visual` - Whether the mode is select or unset
+| In/Out    | Type              |
+| --------- | ----------------- |
+| `self`    | `Url`             |
+| `another` | `Url` \| `string` |
+| Return    | `boolean`         |
 
-Meta methods:
+### `ends_with(self, another)` {#url.ends_with}
 
-- `__tostring()`
+Whether the url ends with `another`.
 
-### `tab::Preference` {#app-data.tab-preference}
+| In/Out    | Type              |
+| --------- | ----------------- |
+| `self`    | `Url`             |
+| `another` | `Url` \| `string` |
+| Return    | `boolean`         |
 
-Properties:
+### `strip_prefix(self, another)` {#url.strip_prefix}
 
-- `sort_by`
-- `sort_sensitive`
-- `sort_reverse`
-- `sort_dir_first`
-- `sort_translit`
-- `linemode`
-- `show_hidden`
+Strips the prefix of `another`.
 
-These properties are consistent with those in [yazi.toml](/docs/configuration/yazi), and will not be detailed here.
+| In/Out    | Type              |
+| --------- | ----------------- |
+| `self`    | `Url`             |
+| `another` | `Url` \| `string` |
+| Return    | `Url`             |
 
-### `tab::Selected` {#app-data.tab-selected}
+### `__eq(self, another)` {#url.\_\_eq}
 
-Meta methods:
+Whether the url is equal to `another`.
 
-- `__len()`
-- `__pairs()` - Iterate over the selected [Url](#shared.url)s.
+| In/Out    | Type      |
+| --------- | --------- |
+| `self`    | `Url`     |
+| `another` | `Url`     |
+| Return    | `boolean` |
 
-### `tab::Preview` {#app-data.tab-preview}
+### `__tostring(self)` {#url.\_\_tostring}
 
-Properties:
+Convert the url to string.
 
-- `skip` - The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
-- `folder` - The [tab::Folder](#app-data.tab-folder) being previewed, or `nil` if this preview is not for folders
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Url`    |
+| Return | `string` |
 
-### `tab::Folder` {#app-data.tab-folder}
+### `__concat(self, another)` {#url.\_\_concat}
 
-Properties:
+Concatenate the url with `another`.
 
-- `cwd` - The current working directory of this folder, which is a [Url](#shared.url)
-- `offset` - The offset of this folder, which is an integer
-- `cursor` - The cursor position of this folder, which is an integer
-- `window` - A table of [File](#shared.file) in the visible area of this folder
-- `files` - The [`fs::Files`](#app-data.fs-files) of this folder
-- `hovered` - The hovered [File](#shared.file) of this folder, or `nil` if there is no hovered file
+| In/Out    | Type     |
+| --------- | -------- |
+| `self`    | `Url`    |
+| `another` | `string` |
+| Return    | `Url`    |
 
-### `fs::Files` {#app-data.fs-files}
+## Cha {#cha}
 
-Meta methods:
+Cha means one file's characteristics.
 
-- `__len()`
-- `__index(idx)` - Access the [fs::File](#app-data.fs-file) by index
+### `is_dir` {#cha.is_dir}
 
-### `fs::File` {#app-data.fs-file}
+Whether the file is a directory.
 
-Based on [File](#shared.file), with the following additional methods:
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-- `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been evaluated
-- `mime()` - The mime-type of this file, which is a string, or `nil` if it's a directory or hasn't been lazily calculated at all
-- `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The [Icon](#shared.icon) of this file, [`[icon]`](/docs/configuration/theme#icon) rules are applied; if no rule matches, returns `nil`
-- `style()` - The [Style](/docs/plugins/layout#style) of this file, [`[filetype]`](/docs/configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
-- `is_yanked()` - Whether this file is yanked
-- `is_selected()` - Whether this file is selected
-- `found()` - When users find a file using the `find` command, the status of the file - returns `nil` if it doesn't match the user's find keyword; otherwise, returns `{idx, all}`, where `idx` is the position of matched file, and `all` represents the number of all matched files.
+### `is_hidden` {#cha.is_hidden}
 
-And properties:
+Whether the file is hidden.
 
-- `is_hovered` - Whether this file is hovered
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-### `mgr::Tabs` {#app-data.mgr-tabs}
+### `is_link` {#cha.is_link}
 
-Properties:
+Whether the file is a symlink.
 
-- `idx` - The index of the active tab
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Meta methods:
+### `is_orphan` {#cha.is_orphan}
 
-- `__len()`
-- `__index(idx)` - Access the [tab::Tab](#app-data.tab-tab) by index
+Whether the file is a bad symlink, which points to a non-existent file.
 
-### `tab::Tab` {#app-data.tab-tab}
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Properties:
+### `is_dummy` {#cha.is_dummy}
 
-- `name` - The name of the tab.
-- `mode` - The [tab::Mode](#app-data.tab-mode) of the tab.
-- `pref` - The [tab::Preference](#app-data.tab-preference) of the tab.
-- `current` - The current folder within the tab, which is a [tab::Folder](#app-data.tab-folder).
-- `parent` - The parent folder within the tab, which is a [tab::Folder](#app-data.tab-folder) if `current` has a parent; otherwise, `nil`.
-- `selected` - The selected files within the tab, which is a [tab::Selected](#app-data.tab-selected).
-- `preview` - The [tab::Preview](#app-data.tab-preview) within the tab.
+Whether the file is dummy, which fails to load complete metadata, possibly the filesystem doesn't support it, such as FUSE.
 
-### `tasks::Tasks` {#app-data.tasks-tasks}
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Properties:
+### `is_block` {#cha.is_block}
 
-- `progress` - The progress of all tasks, which is a table:
+Whether the file is a block device.
 
-  ```lua
-  {
-  	-- Number of tasks
-  	total = 0,
-  	succ  = 0,
-  	fail  = 0,
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-  	-- Workload of tasks
-  	found     = 0,
-  	processed = 0,
-  }
-  ```
+### `is_char` {#cha.is_char}
 
-### `mgr::Yanked` {#app-data.mgr-yanked}
+Whether the file is a character device.
 
-```lua
-for idx, url in pairs(cx.yanked) do
-	-- ...
-end
-```
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Meta methods:
+### `is_fifo` {#cha.is_fifo}
 
-- `__len()`
-- `__pairs()` - Iterate over the yanked [Url](#shared.url)s.
+Whether the file is a FIFO.
 
-Properties:
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-- `is_cut` - Whether the yanked urls are cut.
+### `is_sock` {#cha.is_sock}
+
+Whether the file is a socket.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `is_exec` {#cha.is_exec}
+
+Whether the file is executable.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `is_sticky` {#cha.is_sticky}
+
+Whether the file has the sticky bit set.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `len` {#cha.len}
+
+Length of the file in bytes.
+
+If you want to get the size of a directory, use [`size()`](/docs/plugins/appdata#fs-file) instead.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `atime` {#cha.atime}
+
+Accessed time of the file in Unix timestamp.
+
+|      |                    |
+| ---- | ------------------ |
+| Type | `integer` \| `nil` |
+
+### `btime` {#cha.btime}
+
+Birth time of the file in Unix timestamp.
+
+|      |                    |
+| ---- | ------------------ |
+| Type | `integer` \| `nil` |
+
+### `mtime` {#cha.mtime}
+
+Modified time of the file in Unix timestamp.
+
+|      |                    |
+| ---- | ------------------ |
+| Type | `integer` \| `nil` |
+
+### `uid` {#cha.uid}
+
+User id of the file.
+
+|           |                        |
+| --------- | ---------------------- |
+| Type      | `integer` \| `nil`     |
+| Available | Unix-like systems only |
+
+### `gid` {#cha.gid}
+
+Group id of the file.
+
+|           |                        |
+| --------- | ---------------------- |
+| Type      | `integer` \| `nil`     |
+| Available | Unix-like systems only |
+
+### `nlink` {#cha.nlink}
+
+Number of hard links to the file.
+
+|           |                        |
+| --------- | ---------------------- |
+| Type      | `integer` \| `nil`     |
+| Available | Unix-like systems only |
+
+### `perm(self)` {#cha.perm}
+
+Unix permission representation, such as `drwxr-xr-x`.
+
+|           |                        |
+| --------- | ---------------------- |
+| Type      | `string` \| `nil`      |
+| Available | Unix-like systems only |
+
+## File {#file}
+
+### `url` {#file.url}
+
+`Url` of the file.
+
+|      |       |
+| ---- | ----- |
+| Type | `Url` |
+
+### `cha` {#file.cha}
+
+`Cha` of the file.
+
+|      |       |
+| ---- | ----- |
+| Type | `Cha` |
+
+### `link_to` {#file.link_to}
+
+`Url` of the file points to, if it's a symlink.
+
+|      |                |
+| ---- | -------------- |
+| Type | `Url` \| `nil` |
+
+### `name` {#file.name}
+
+Name of the file.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+## Icon {#icon}
+
+### `text` {#icon.text}
+
+Text of the icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `style` {#icon.style}
+
+[Style](/docs/plugins/layout#style) of the icon.
+
+|      |         |
+| ---- | ------- |
+| Type | `Style` |
+
+## Error {#error}
+
+### `code` {#error.code}
+
+Raw error code.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `__tostring(self)` {#error.\_\_tostring}
+
+Convert the error to string.
+
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Error`  |
+| Return | `string` |
+
+### `__concat(self, another)` {#error.\_\_concat}
+
+Concatenate the error with `another`.
+
+| In/Out    | Type     |
+| --------- | -------- |
+| `self`    | `Error`  |
+| `another` | `string` |
+| Return    | `Error`  |
+
+## Window {#window}
+
+### `rows` {#window.rows}
+
+Number of rows.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `cols` {#window.cols}
+
+Number of columns.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `width` {#window.width}
+
+Width in pixels.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `height` {#window.height}
+
+Height in pixels.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |

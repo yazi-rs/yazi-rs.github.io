@@ -43,3 +43,7 @@ div[class^="announcementBar_"] {
 .menu__list-item.hidden {
 	display: none;
 }
+
+thead:not(:has(th:not(:empty))) {
+	display: none;
+}
