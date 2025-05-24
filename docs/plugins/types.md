@@ -256,7 +256,7 @@ Whether the file has the sticky bit set.
 
 Length of the file in bytes.
 
-If you want to get the size of a directory, use [`size()`](/docs/plugins/appdata#fs-file) instead.
+If you want to get the size of a directory, use [`size()`](/docs/plugins/appdata#fs-file.size) instead.
 
 |      |           |
 | ---- | --------- |

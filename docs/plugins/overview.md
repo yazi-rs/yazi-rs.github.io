@@ -252,7 +252,7 @@ When the user presses <kbd>J</kbd> or <kbd>K</kbd> to scroll the preview of the 
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
-The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/appdata) through `cx`.
+The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/appdata).
 
 There are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/shipped/yazi-plugin/preset/plugins)
 

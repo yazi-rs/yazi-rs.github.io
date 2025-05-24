@@ -5,145 +5,472 @@ description: Learn how to access Yazi's app data.
 
 # App data
 
+## cx {#cx}
+
 You can access all app data through the `cx` within the [sync context](/docs/plugins/overview#sync-context):
 
-- `cx.active` - The active tab, which is a [tab::Tab](#tab-tab)
-- `cx.tabs` - All of tabs, which is a [mgr::Tabs](#mgr-tabs)
-- `cx.tasks` - All of tasks, which is a [tasks::Tasks](#tasks-tasks)
-- `cx.yanked` - The yanked urls, which is a [mgr::Yanked](#mgr-yanked)
+### `active` {#cx.active}
 
-### `tab::Mode` {#tab-mode}
+The active tab.
+
+|      |                        |
+| ---- | ---------------------- |
+| Type | [`tab::Tab`](#tab-tab) |
+
+### `tabs` {#cx.tabs}
+
+All of tabs.
+
+|      |                          |
+| ---- | ------------------------ |
+| Type | [`mgr::Tabs`](#mgr-tabs) |
+
+### `tasks` {#cx.tasks}
+
+All of tasks.
+
+|      |                                |
+| ---- | ------------------------------ |
+| Type | [`tasks::Tasks`](#tasks-tasks) |
+
+### `yanked` {#cx.yanked}
+
+The yanked files.
+
+|      |                              |
+| ---- | ---------------------------- |
+| Type | [`mgr::Yanked`](#mgr-yanked) |
+
+## tab::Mode {#tab-mode}
 
 Visual mode status.
 
-Properties:
+### `is_select` {#tab-mode.is-select}
 
-- `is_select` - Whether the mode is select
-- `is_unset` - Whether the mode is unset
-- `is_visual` - Whether the mode is select or unset
+Whether in select mode.
 
-Meta methods:
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-- `__tostring()`
+### `is_unset` {#tab-mode.is-unset}
 
-### `tab::Preference` {#tab-preference}
+Whether in unset mode.
 
-Properties:
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-- `sort_by`
-- `sort_sensitive`
-- `sort_reverse`
-- `sort_dir_first`
-- `sort_translit`
-- `linemode`
-- `show_hidden`
+### `is_visual` {#tab-mode.is-visual}
 
-These properties are consistent with those in [yazi.toml](/docs/configuration/yazi), and will not be detailed here.
+Whether in select mode, or unset mode.
 
-### `tab::Selected` {#tab-selected}
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Meta methods:
+### `__tostring(self)` {#tab-mode.\_\_tostring}
 
-- `__len()`
-- `__pairs()` - Iterate over the selected [Url](#url)s.
+Converts the mode to string.
 
-### `tab::Preview` {#tab-preview}
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | [`tab::Mode`](#tab-mode) |
+| Return | `string`                 |
 
-Properties:
+## tab::Pref {#tab-pref}
 
-- `skip` - The number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
-- `folder` - The [tab::Folder](#tab-folder) being previewed, or `nil` if this preview is not for folders
+Tab-specific user preferences.
 
-### `tab::Folder` {#tab-folder}
+### `sort_by` {#tab-pref.sort-by}
 
-Properties:
+File sorting method. See [`sort_by`](/docs/configuration/yazi#manager.sort_by) for details.
 
-- `cwd` - The current working directory of this folder, which is a [Url](#url)
-- `offset` - The offset of this folder, which is an integer
-- `cursor` - The cursor position of this folder, which is an integer
-- `window` - A table of [File](#file) in the visible area of this folder
-- `files` - The [`fs::Files`](#fs-files) of this folder
-- `hovered` - The hovered [File](#file) of this folder, or `nil` if there is no hovered file
+|      |                                                                                                                  |
+| ---- | ---------------------------------------------------------------------------------------------------------------- |
+| Type | `"none"` \| `"mtime"` \| `"btime"` \| `"extension"` \| `"alphabetical"` \| `"natural"` \| `"size"` \| `"random"` |
 
-### `fs::Files` {#fs-files}
+### `sort_sensitive` {#tab-pref.sort-sensitive}
 
-Meta methods:
+Sort case-sensitively. See [`sort_sensitive`](/docs/configuration/yazi#manager.sort_sensitive) for details.
 
-- `__len()`
-- `__index(idx)` - Access the [fs::File](#fs-file) by index
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-### `fs::File` {#fs-file}
+### `sort_reverse` {#tab-pref.sort-reverse}
 
-Based on [File](#file), with the following additional methods:
+Display files in reverse order. See [`sort_reverse`](/docs/configuration/yazi#manager.sort_reverse) for details.
 
-- `size()` - The size of this file, returns an integer representing the size in bytes, or `nil` if its a directory and it has not been evaluated
-- `mime()` - The mime-type of this file, which is a string, or `nil` if it's a directory or hasn't been lazily calculated at all
-- `prefix()` - The prefix of this file relative to `CWD`, which used in the flat view during search. For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`
-- `icon()` - The [Icon](#icon) of this file, [`[icon]`](/docs/configuration/theme#icon) rules are applied; if no rule matches, returns `nil`
-- `style()` - The [Style](/docs/plugins/layout#style) of this file, [`[filetype]`](/docs/configuration/theme#filetype) rules are applied; if no rule matches, returns `nil`
-- `is_yanked()` - Whether this file is yanked
-- `is_selected()` - Whether this file is selected
-- `found()` - When users find a file using the `find` command, the status of the file - returns `nil` if it doesn't match the user's find keyword; otherwise, returns `{idx, all}`, where `idx` is the position of matched file, and `all` represents the number of all matched files.
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-And properties:
+### `sort_dir_first` {#tab-pref.sort-dir-first}
 
-- `is_hovered` - Whether this file is hovered
+Display directories first. See [`sort_dir_first`](/docs/configuration/yazi#manager.sort_dir_first) for details.
 
-### `mgr::Tabs` {#mgr-tabs}
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-Properties:
+### `sort_translit` {#tab-pref.sort-translit}
 
-- `idx` - The index of the active tab
+Transliterate filenames for sorting. See [`sort_translit`](/docs/configuration/yazi#manager.sort_translit) for details.
 
-Meta methods:
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-- `__len()`
-- `__index(idx)` - Access the [tab::Tab](#tab-tab) by index
+### `linemode` {#tab-pref.linemode}
 
-### `tab::Tab` {#tab-tab}
+Line mode. See [`linemode`](/docs/configuration/yazi#manager.linemode) for details.
 
-Properties:
+|      |                                                                                            |
+| ---- | ------------------------------------------------------------------------------------------ |
+| Type | `string` \| `"none"` \| `"size"` \| `"btime"` \| `"mtime"` \| `"permissions"` \| `"owner"` |
 
-- `name` - The name of the tab.
-- `mode` - The [tab::Mode](#tab-mode) of the tab.
-- `pref` - The [tab::Preference](#tab-preference) of the tab.
-- `current` - The current folder within the tab, which is a [tab::Folder](#tab-folder).
-- `parent` - The parent folder within the tab, which is a [tab::Folder](#tab-folder) if `current` has a parent; otherwise, `nil`.
-- `selected` - The selected files within the tab, which is a [tab::Selected](#tab-selected).
-- `preview` - The [tab::Preview](#tab-preview) within the tab.
+### `show_hidden` {#tab-pref.show-hidden}
 
-### `tasks::Tasks` {#tasks-tasks}
+Show hidden files. See [`show_hidden`](/docs/configuration/yazi#manager.show_hidden) for details.
 
-Properties:
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
-- `progress` - The progress of all tasks, which is a table:
+## tab::Selected {#tab-selected}
 
-  ```lua
-  {
-  	-- Number of tasks
-  	total = 0,
-  	succ  = 0,
-  	fail  = 0,
+### `__len(self)` {#tab-selected.\_\_len}
 
-  	-- Workload of tasks
-  	found     = 0,
-  	processed = 0,
-  }
-  ```
+Returns the number of selected [Url](#url)s.
 
-### `mgr::Yanked` {#mgr-yanked}
+| In/Out | Type                             |
+| ------ | -------------------------------- |
+| `self` | [`tab::Selected`](#tab-selected) |
+| Return | `integer`                        |
+
+### `__pairs(self)` {#tab-selected.\_\_pairs}
+
+Iterate over the selected [Url](#url)s.
+
+| In/Out | Type                                 |
+| ------ | ------------------------------------ |
+| `self` | [`tab::Selected`](#tab-selected)     |
+| Return | `fun(t: self, k: any): integer, Url` |
+
+## tab::Preview {#tab-preview}
+
+### `skip` {#tab-preview.skip}
+
+Number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `folder` {#tab-preview.folder}
+
+The folder being previewed, or `nil` if this preview is not for a folder.
+
+|      |                               |
+| ---- | ----------------------------- |
+| Type | [`tab::Folder?`](#tab-folder) |
+
+## tab::Folder {#tab-folder}
+
+### `cwd` {#tab-folder.cwd}
+
+Current working directory.
+
+|      |               |
+| ---- | ------------- |
+| Type | [`Url`](#url) |
+
+### `offset` {#tab-folder.offset}
+
+Offset of the folder.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `cursor` {#tab-folder.cursor}
+
+Cursor position.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `window` {#tab-folder.window}
+
+Files within the visible area.
+
+|      |                          |
+| ---- | ------------------------ |
+| Type | [`fs::Files`](#fs-files) |
+
+### `files` {#tab-folder.files}
+
+All of the files in the folder.
+
+|      |                          |
+| ---- | ------------------------ |
+| Type | [`fs::Files`](#fs-files) |
+
+### `hovered` {#tab-folder.hovered}
+
+Hovered file, or `nil` if no file is hovered.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`fs::File?`](#fs-file) |
+
+## fs::Files {#fs-files}
+
+### `__len(self)` {#fs-files.\_\_len}
+
+Returns the number of files in this folder.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | [`fs::Files`](#fs-files) |
+| Return | `integer`                |
+
+### `__index(self, idx)` {#fs-files.\_\_index}
+
+Access each file by index.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | [`fs::Files`](#fs-files) |
+| `idx`  | `integer`                |
+| Return | [`fs::File?`](#fs-file)  |
+
+## fs::File {#fs-file}
+
+Based on [File](#file), with the following additional properties and methods.
+
+### `is_hovered` {#fs-file.is-hovered}
+
+Whether the file is hovered.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `size(self)` {#fs-file.size}
+
+Size of the file in bytes, or `nil` if it's a directory yet not been evaluated.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `integer?`             |
+
+### `mime(self)` {#fs-file.mime}
+
+Mimetype of the file, or `nil` if it's a directory or hasn't been lazily calculated.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `string?`              |
+
+### `prefix(self)` {#fs-file.prefix}
+
+Prefix of the file relative to `CWD`, which used in the flat view during search.
+
+For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `string?`              |
+
+### `icon(self)` {#fs-file.icon}
+
+Icon of the file, or `nil` if no [`[icon]`](/docs/configuration/theme#icon) rules match.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `Icon?`                |
+
+### `style(self)` {#fs-file.style}
+
+Style of the file, or `nil` if no [`[filetype]`](/docs/configuration/theme#filetype) rules match.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `Style?`               |
+
+### `is_yanked(self)` {#fs-file.is-yanked}
+
+Whether the file is yanked.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `boolean`              |
+
+### `is_selected(self)` {#fs-file.is-selected}
+
+Whether the file is selected.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `boolean`              |
+
+### `found(self)` {#fs-file.found}
+
+File find status:
+
+- `nil` if if the user not in [`find`](/docs/configuration/keymap#manager.find) mode.
+- `nil` if current file is not related to the keyword entered by the user.
+- `(idx, all)` if current file is one of the files found, where `idx` is its index among the results and `all` is the total count of files found.
+
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | [`fs::File`](#fs-file) |
+| Return | `(integer, integer)?`  |
+
+## mgr::Tabs {#mgr-tabs}
+
+### `idx` {#mgr-tabs.idx}
+
+Index of the active tab.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `__len(self)` {#mgr-tabs.\_\_len}
+
+Returns the number of tabs.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | [`mgr::Tabs`](#mgr-tabs) |
+| Return | `integer`                |
+
+### `__index(self, idx)` {#mgr-tabs.\_\_index}
+
+Access each tab by index.
+
+| In/Out | Type                     |
+| ------ | ------------------------ |
+| `self` | [`mgr::Tabs`](#mgr-tabs) |
+| `idx`  | `integer`                |
+| Return | [`tab::Tab?`](#tab-tab)  |
+
+## tab::Tab {#tab-tab}
+
+### `name` {#tab-tab.name}
+
+Name of the tab.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `mode` {#tab-tab.mode}
+
+Mode of the tab.
+
+|      |                          |
+| ---- | ------------------------ |
+| Type | [`tab::Mode`](#tab-mode) |
+
+### `pref` {#tab-tab.pref}
+
+Preference of the tab.
+
+|      |                          |
+| ---- | ------------------------ |
+| Type | [`tab::Pref`](#tab-pref) |
+
+### `current` {#tab-tab.current}
+
+Current working folder.
+
+|      |                              |
+| ---- | ---------------------------- |
+| Type | [`tab::Folder`](#tab-folder) |
+
+### `parent` {#tab-tab.parent}
+
+Parent folder of the `CWD`, or `nil` if no parent folder exists.
+
+|      |                               |
+| ---- | ----------------------------- |
+| Type | [`tab::Folder?`](#tab-folder) |
+
+### `selected` {#tab-tab.selected}
+
+Selected files within the tab.
+
+|      |                                  |
+| ---- | -------------------------------- |
+| Type | [`tab::Selected`](#tab-selected) |
+
+### `preview` {#tab-tab.preview}
+
+Preview of the tab.
+
+|      |                                |
+| ---- | ------------------------------ |
+| Type | [`tab::Preview`](#tab-preview) |
+
+## tasks::Tasks {#tasks-tasks}
+
+### `progress` {#tasks-tasks.progress}
+
+Progress of all tasks:
 
 ```lua
-for idx, url in pairs(cx.yanked) do
-	-- ...
-end
+{
+	-- Number of tasks
+	total = 0,
+	succ  = 0,
+	fail  = 0,
+
+	-- Workload of tasks
+	found     = 0,
+	processed = 0,
+}
 ```
 
-Meta methods:
+|      |                                                                                        |
+| ---- | -------------------------------------------------------------------------------------- |
+| Type | `{ total: integer, succ: integer, fail: integer, found: integer, processed: integer }` |
 
-- `__len()`
-- `__pairs()` - Iterate over the yanked [Url](#url)s.
+## mgr::Yanked {#mgr-yanked}
 
-Properties:
+### `is_cut` {#mgr-yanked.is-cut}
 
-- `is_cut` - Whether the yanked urls are cut.
+Whether in cut mode.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `__len(self)` {#mgr-yanked.\_\_len}
+
+Returns the number of yanked files.
+
+| In/Out | Type                         |
+| ------ | ---------------------------- |
+| `self` | [`mgr::Yanked`](#mgr-yanked) |
+| Return | `integer`                    |
+
+### `__pairs(self)` {#mgr-yanked.\_\_pairs}
+
+Iterate over the url of yanked files.
+
+| In/Out | Type                                 |
+| ------ | ------------------------------------ |
+| `self` | [`mgr::Yanked`](#mgr-yanked)         |
+| Return | `fun(t: self, k: any): integer, Url` |

@@ -590,7 +590,7 @@ This API was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it
 local url, err = fs.cwd()
 ```
 
-You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][tab-folder], which is the current directory where the user is working.
+You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-cwd], which is the current directory where the user is working.
 
 Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
 
@@ -605,7 +605,7 @@ It is useful if you just need a valid directory as the CWD of a process to start
 
 [getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
 [chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
-[tab-folder]: /docs/plugins/appdata#tab-folder
+[folder-cwd]: /docs/plugins/appdata#tab-folder.cwd
 
 ### `cha(url, follow)` {#fs.cha}
 
@@ -654,12 +654,12 @@ Where `type` can be one of the following:
 - `"dir"`: Creates a new, empty directory.
 - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
 
-| In/Out    | Type                       |
-| --------- | -------------------------- |
-| `type`    | `string\|"dir"\|"dir_all"` |
-| `url`     | `Url`                      |
-| Return    | `(boolean, Error?)`        |
-| Available | Async context only         |
+| In/Out    | Type                               |
+| --------- | ---------------------------------- |
+| `type`    | `string` \| `"dir"` \| `"dir_all"` |
+| `url`     | `Url`                              |
+| Return    | `(boolean, Error?)`                |
+| Available | Async context only                 |
 
 ### `remove(type, url)` {#fs.remove}
 
@@ -676,12 +676,12 @@ Where `type` can be one of the following:
 - `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
 - `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
 
-| In/Out    | Type                                            |
-| --------- | ----------------------------------------------- |
-| `type`    | `string\|"file"\|"dir"\|"dir_all"\|"dir_clean"` |
-| `url`     | `Url`                                           |
-| Return    | `(boolean, Error?)`                             |
-| Available | Async context only                              |
+| In/Out    | Type                                                            |
+| --------- | --------------------------------------------------------------- |
+| `type`    | `string` \| `"file"` \| `"dir"` \| `"dir_all"` \| `"dir_clean"` |
+| `url`     | `Url`                                                           |
+| Return    | `(boolean, Error?)`                                             |
+| Available | Async context only                                              |
 
 ### `read_dir(url, options)` {#fs.read_dir}
 
