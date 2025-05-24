@@ -23,22 +23,35 @@ permit:drop()
 
 Note that since there's always only one available terminal control resource, `ya.hide()` cannot be called again before the previous `permit` is dropped, otherwise an error will be thrown, effectively avoiding deadlocks.
 
-This function is only available in the async context.
+| In/Out    | Type               |
+| --------- | ------------------ |
+| Return    | `Permit`           |
+| Available | Async context only |
 
 ### `file_cache(opts)` {#ya.file_cache}
 
-Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given file:
+Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given file.
 
-- `opts`: Required, the options of the cache, which is a table:
-
-  - `file`: The [File](/docs/plugins/types#file) to be cached.
-  - `skip`: The number of units to skip. It's units largely depend on your previewer, such as lines for code, and percentages for videos.
+```lua
+ya.file_cache {
+	-- File to be cached.
+	file = file,
+	-- Number of units to skip. It's units largely depend on your previewer,
+	-- such as lines for code, and percentages for videos.
+	skip = 1,
+}
+```
 
 If the file is not allowed to be cached, such as it's ignored in the user config, or the file itself is a cache, returns `nil`.
 
+| In/Out | Type                            |
+| ------ | ------------------------------- |
+| `opts` | `{ file: File, skip: integer }` |
+| Return | `Url?`                          |
+
 ### `render()` {#ya.render}
 
-Re-render the UI, can only be used in the sync context, for example:
+Re-render the UI:
 
 ```lua
 local update_state = ya.sync(function(self, new_state)
@@ -47,12 +60,14 @@ local update_state = ya.sync(function(self, new_state)
 end)
 ```
 
+| In/Out    | Type              |
+| --------- | ----------------- |
+| Return    | `undefined`       |
+| Available | Sync context only |
+
 ### `mgr_emit(cmd, args)` {#ya.mgr_emit}
 
 Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without waiting for the executor to execute:
-
-- `cmd`: Required, the command name, which is a string.
-- `args`: Required, the arguments of the command, which is a table with a number or string key and [sendable values](/docs/plugins/overview#sendable).
 
 ```lua
 ya.mgr_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
@@ -61,73 +76,85 @@ ya.mgr_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 -- my-cmd "hello" "123" --foo --bar-baz="world"
 ```
 
-If `args` contains userdata, it causes [Ownership transfer](/docs/plugins/overview#ownership).
+| In/Out | Type                              | Note                                                                                    |
+| ------ | --------------------------------- | --------------------------------------------------------------------------------------- |
+| `cmd`  | `string`                          | -                                                                                       |
+| `args` | `{ [integer\|string]: Sendable }` | Table values are [Sendable][sendable] that follow [Ownership transfer rules][ownership] |
+| Return | `undefined`                       | -                                                                                       |
 
 ### `image_show(url, rect)` {#ya.image_show}
 
-Display the given image within the specified area, and the image will downscale to fit that area automatically:
+Display the image of `url` within the `rect`, and the image will downscale to fit the area automatically:
 
-- `url`: Required, the [Url](/docs/plugins/types#url) of the image.
-- `rect`: Required, the [Rect](/docs/plugins/layout#rect) of the area.
-
-This function is only available in the async context.
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `url`     | `Url`              |
+| `rect`    | `Rect`             |
+| Return    | `undefined`        |
+| Available | Async context only |
 
 ### `image_precache(src, dist)` {#ya.image_precache}
 
-Pre-cache the image to a specified url based on user-configured [`max_width` and `max_height`](/docs/configuration/yazi#preview):
+Pre-cache the image of `src` as `dist` based on user-configured [`max_width` and `max_height`](/docs/configuration/yazi#preview).
 
-- `src`: Required, the source [Url](/docs/plugins/types#url) of the image.
-- `dist`: Required, the destination [Url](/docs/plugins/types#url) of the image.
-
-This function is only available in the async context.
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `src`     | `Url`              |
+| `dist`    | `Url`              |
+| Return    | `undefined`        |
+| Available | Async context only |
 
 ### `which(opts)` {#ya.which}
 
 Prompt users with a set of available keys:
 
-- `opts`: Required, the options of the prompt, which is a table:
-  - `cands`: Required, the key candidates, which is a table of tables that contains the following fields:
-    - `on`: Required, the key to be prompted, which is a string or a table of strings if multiple keys.
-    - `desc`: Optional, the description of the key, which is a string.
-  - `silent`: Optional, whether to show the UI of key indicator, which is a boolean.
-
 ```lua
 local cand = ya.which {
+	-- Key candidates, contains the following fields:
+	--   `on`: Key to be prompted, which is a string or a table of strings if multiple.
+	--   `desc`: Description of the key.
 	cands = {
 		{ on = "a" },
 		{ on = "b", desc = "optional description" },
 		{ on = "<C-c>", desc = "key combination" },
 		{ on = { "d", "e" }, desc = "multiple keys" },
 	},
-	-- silent = true, -- If you don't want to show the UI of key indicator
+	-- Whether to show the UI of key indicator
+	silent = false,
 }
 ```
 
 When the user clicks a valid candidate, `ya.which` returns the 1-based index of that `cand`;
-otherwise, it returns nil, indicating that the user has canceled the key operation.
+otherwise, it returns `nil`, indicating that the user has canceled the key operation.
 
-This function is only available in the async context.
+| In/Out    | Type                                                                     |
+| --------- | ------------------------------------------------------------------------ |
+| `opts`    | `{ cands: { on: string\|string[], desc: string? }[], silent: boolean? }` |
+| Return    | `number?`                                                                |
+| Available | Async context only                                                       |
 
 ### `input(opts)` {#ya.input}
 
 Request user input:
 
-- `opts`: Required, the options of the input, which is a table:
-  - `title`: Required, the title of the input, which is a string.
-  - `value`: Optional, the default value of the input, which is a string.
-  - `position`: Required, the position of the input, which is a table:
-    - `1`: Required, the origin position of the input, which is a string accepts `"top-left"`, `"top-center"`, `"top-right"`, `"bottom-left"`, `"bottom-center"`, `"bottom-right"`, `"center"`, and `"hovered"`.
-    - `x`: Optional, the X offset from the origin position, which is an positive or negative integer.
-    - `y`: Optional, the Y offset from the origin position, which is an positive or negative integer.
-    - `w`: Required, the width of the input, which is an positive integer.
-    - `h`: Optional, the height of the input, which is an positive integer.
-  - `realtime`: Optional, whether to report user input in real time, which is a boolean.
-  - `debounce`: Optional, the number of seconds to wait for the user to stop typing, which is a positive float. Can only be used when `realtime = true`.
-
 ```lua
 local value, event = ya.input {
+	-- Title
 	title = "Archive name:",
+	-- Default value
+	value = "",
+	-- Position, which is a table:
+	-- 	`1`: Origin position, available values: "top-left", "top-center", "top-right",
+	-- 	     "bottom-left", "bottom-center", "bottom-right", "center", and "hovered".
+	-- 	`x`: X offset from the origin position.
+	-- 	`y`: Y offset from the origin position.
+	-- 	`w`: Width of the input.
+	-- 	`h`: Height of the input.
 	position = { "top-center", y = 3, w = 40 },
+	-- Whether to report user input in real time.
+	realtime = false,
+	-- Number of seconds to wait for the user to stop typing, available if `realtime = true`.
+	debounce = 0.3,
 }
 ```
 
@@ -140,7 +167,7 @@ Returns `(value, event)`:
   - 2: The user has canceled the input.
   - 3: The user has changed the input (only if `realtime` is true).
 
-When `realtime = true` specified, `ya.input()` returns a receiver, which has a `recv()` method that can be called multiple times to receive events.
+When `realtime = true` specified, `ya.input()` returns a receiver, which has a `recv()` method that can be called multiple times to receive events:
 
 ```lua
 local input = ya.input {
@@ -159,200 +186,295 @@ while true do
 end
 ```
 
-This function is only available in the async context.
+| In/Out    | Type                                                                                      |
+| --------- | ----------------------------------------------------------------------------------------- |
+| `opts`    | `{ title: string, value: string?, position: Pos, realtime: boolean?, debounce: number? }` |
+| Return    | `(string?, integer)` \| `Recv`                                                            |
+| Available | Async context only                                                                        |
 
 ### `notify(opts)` {#ya.notify}
 
 Send a foreground notification to the user:
 
-- `opts`: Required, the options of the notification, which is a table:
-  - `title`: Required, the title of the notification, which is a string.
-  - `content`: Required, the content of the notification, which is a string.
-  - `timeout`: Required, the timeout of the notification, which is an non-negative float in seconds.
-  - `level`: Optional, the level of the notification, which is a string accepts `"info"`, `"warn"`, and `"error"`. Default is `"info"`.
-
 ```lua
 ya.notify {
+	-- Title.
 	title = "Hello, World!",
+	-- Content.
 	content = "This is a notification from Lua!",
+	-- Timeout.
 	timeout = 6.5,
-	-- level = "info",
+	-- Level, available values: "info", "warn", and "error", default is "info".
+	level = "info",
 }
 ```
+
+| In/Out | Type                                                                   |
+| ------ | ---------------------------------------------------------------------- |
+| `opts` | `{ title: string, content: string, timeout: number?, level: string? }` |
+| Return | `undefined`                                                            |
 
 ### `dbg(msg, ...)` {#ya.dbg}
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the debug level:
-
-- `msg`: Required, the message to be logged.
 
 ```lua
 ya.dbg("Hello", "World!")                       -- Multiple arguments are supported
 ya.dbg({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
+| In/Out | Type        |
+| ------ | ----------- |
+| `msg`  | `any`       |
+| `...`  | `any`       |
+| Return | `undefined` |
+
 ### `err(msg, ...)` {#ya.err}
 
 Append messages to [the log file](/docs/plugins/overview#logging) at the error level:
-
-- `msg`: Required, the message to be logged.
 
 ```lua
 ya.err("Hello", "World!")                       -- Multiple arguments are supported
 ya.err({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
+| In/Out | Type        |
+| ------ | ----------- |
+| `msg`  | `any`       |
+| `...`  | `any`       |
+| Return | `undefined` |
+
 ### `preview_code(opts)` {#ya.preview_code}
 
 Preview the file as code into the specified area:
 
-- `opts`: Required, the options of the preview, which is a table:
-  - `area`: [Rect](/docs/plugins/layout#rect) of the available preview area.
-  - `file`: [File](/docs/plugins/types#file) to be previewed.
-  - `mime`: String of the MIME type of the file.
-  - `skip`: Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos.
+```lua
+ya.preview_code {
+	-- Available preview area
+  area = area,
+	-- File to be previewed.
+  file = file,
+	-- Mimetype of the file.
+  mime = "text/plain",
+	-- Number of units to skip. The units depend on your previewer,
+	-- such as lines for code and percentages for videos.
+  skip = 1,
+}
+```
 
 Returns `(err, upper_bound)`:
 
 - `err`: Error string if the preview fails; otherwise, `nil`.
 - `upper_bound`: If the preview fails and it's because exceeds the maximum upper bound, return this bound; otherwise, `nil`.
 
-This function is only available in the async context.
+| In/Out    | Type                                                      |
+| --------- | --------------------------------------------------------- |
+| `opts`    | `{ area: Rect, file: File, mime: string, skip: integer }` |
+| Return    | `(Error?, integer?)`                                      |
+| Available | Async context only                                        |
 
 ### `preview_widgets(opts, widgets)` {#ya.preview_widgets}
 
-- `opts`: Required, the options of the preview, which is a table:
-  - `area`: [Rect](/docs/plugins/layout#rect) of the available preview area.
-  - `file`: [File](/docs/plugins/types#file) to be previewed.
-  - `mime`: String of the MIME type of the file.
-  - `skip`: Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos.
-- `widgets`: List of renderable widgets, such as `{ ui.Text {...}, ui.List {...}, ... }`.
+```lua
+ya.preview_widgets({
+	-- Available preview area.
+  area = area,
+	-- File to be previewed.
+  file = file,
+	-- Mimetype of the file.
+  mime = "text/plain",
+	-- Number of units to skip. The units depend on your previewer,
+	-- such as lines for code and percentages for videos.
+  skip = 1,
+}, {
+	ui.Text("Hello, World!"):area(area),
+})
+```
 
-This function is only available in the async context.
+| In/Out    | Type                                                      |
+| --------- | --------------------------------------------------------- |
+| `opts`    | `{ area: Rect, file: File, mime: string, skip: integer }` |
+| `widgets` | `Renderable[]`                                            |
+| Return    | `undefined`                                               |
+| Available | Async context only                                        |
 
 ### `sync(fn)` {#ya.sync}
 
 See [Async context](/docs/plugins/overview#async-context).
 
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `fn`   | `fun(...: any): any` |
+| Return | `fun(...: any): any` |
+
 ### `target_os()` {#ya.target_os}
 
-Returns a string describing the specific operating system in use. Some possible values:
+Returns a string describing the specific operating system in use.
 
-- `"linux"`
-- `"macos"`
-- `"ios"`
-- `"freebsd"`
-- `"dragonfly"`
-- `"netbsd"`
-- `"openbsd"`
-- `"solaris"`
-- `"android"`
-- `"windows"`
+| In/Out | Type                                                                                                                                                    |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Return | `string` \| `"linux"` \| `"macos"` \| `"ios"` \| `"freebsd"` \| `"dragonfly"` \| `"netbsd"` \| `"openbsd"` \| `"solaris"` \| `"android"` \| `"windows"` |
 
 ### `target_family()` {#ya.target_family}
 
-Returns the family of the operating system. Some possible values:
+Returns the family of the operating system.
 
-- `"unix"`
-- `"windows"`
-- `"wasm"`
+| In/Out | Type                                            |
+| ------ | ----------------------------------------------- |
+| Return | `string` \| `"unix"` \| `"windows"` \| `"wasm"` |
 
 ### `hash(str)` {#ya.hash}
+
+Returns the hash of `str`:
 
 ```lua
 ya.hash("Hello, World!")
 ```
 
-Returns the hash of a given string:
-
-- `str`: Required, the string to calculate the hash for.
-
 It is designed to work with algorithm-independent tasks, such as generating file cache names.
 
 The current implementation uses MD5, but it will be replaced with a faster hash algorithm, like [xxHash](https://github.com/Cyan4973/xxHash), in the future. So, don't rely on this implementation detail.
 
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `str`     | `string`           |
+| Return    | `string`           |
+| Available | Async context only |
+
 ### `quote(str)` {#ya.quote}
+
+Quote characters in `str` that may have special meaning in a shell:
 
 ```lua
 local handle = io.popen("ls " .. ya.quote(filename))
 ```
 
-Quote characters that may have special meaning in a shell:
-
-- `str`: Required, the string to be quoted.
+| In/Out | Type     |
+| ------ | -------- |
+| `str`  | `string` |
+| Return | `string` |
 
 ### `truncate(text, opts)` {#ya.truncate}
 
-Truncate the text to the specified length and return it:
+Truncate the `text` to the specified width and return the truncated result:
 
-- `text`: Required, the text to be truncated, which is a string.
-- `opts`: Required, the options of the truncation, which is a table:
-  - `max`: Required, the maximum length of the text, which is an integer.
-  - `rtl`: Optional, whether the text is right-to-left, which is a boolean.
+```lua
+ya.truncate("Hello, World!", {
+	-- Maximum width of the text.
+	max = 5,
+	-- Whether to truncate the text from right-to-left.
+	rtl = false
+})
+```
+
+| In/Out | Type                              |
+| ------ | --------------------------------- |
+| `text` | `string`                          |
+| `opts` | `{ max: integer, rtl: boolean? }` |
+| Return | `string`                          |
 
 ### `clipboard(text)` {#ya.clipboard}
 
-Get or set the content of the system clipboard.
-
-- `text`: Optional, value to be set, which is a string. If not provided, the content of the clipboard will be returned.
+Get or set the content of the system clipboard:
 
 ```lua
--- Get contents from the clipboard
+-- Get contents from the clipboard if no argument is provided
 local content = ya.clipboard()
 
 -- Set contents to the clipboard
 ya.clipboard("new content")
 ```
 
-This function is only available in the async context.
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `text`    | `string?`          |
+| Return    | `string?`          |
+| Available | Async context only |
 
 ### `time()` {#ya.time}
 
 Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds.
 
+| In/Out | Type     |
+| ------ | -------- |
+| Return | `number` |
+
 ### `sleep(secs)` {#ya.sleep}
 
 Waits until `secs` has elapsed:
-
-- `secs`: Required, the number of seconds to sleep, which is a positive float.
 
 ```lua
 ya.sleep(0.5)  -- Sleep for 500 milliseconds
 ```
 
-This function is only available in the async context.
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `secs`    | `number`           |
+| Return    | `undefined`        |
+| Available | Async context only |
 
 ### `uid()` {#ya.uid}
 
-Only available on Unix-like systems. Returns the user id of the current user, which is an integer.
+Returns the id of the current user.
+
+| In/Out    | Type                   |
+| --------- | ---------------------- |
+| Return    | `integer`              |
+| Available | Unix-like systems only |
 
 ### `gid()` {#ya.gid}
 
-Only available on Unix-like systems. Returns the group id of the current user, which is an integer.
+Returns the group id of the current user.
+
+| In/Out    | Type                   |
+| --------- | ---------------------- |
+| Return    | `integer`              |
+| Available | Unix-like systems only |
 
 ### `user_name(uid)` {#ya.user_name}
 
-Get the name of the user:
+Get the username by `uid`:
 
-- `uid`: Optional, the user id of the user, which is an integer. If not set, it will use the current user's id.
+```lua
+-- Get the current user's name if no argument is provided
+ya.user_name()
 
-Returns the name of the current user, which is a string if successful; otherwise, `nil`.
+-- Get the name of user with id 1000
+ya.user_name(1000)
+```
 
-This function is only available on Unix-like systems.
+| In/Out    | Type                   |
+| --------- | ---------------------- |
+| `uid`     | `integer?`             |
+| Return    | `string?`              |
+| Available | Unix-like systems only |
 
 ### `group_name(gid)` {#ya.group_name}
 
-Get the name of the user group:
+Get the group name by `gid`:
 
-- `gid`: Optional, the group id of the user, which is an integer. If not set, it will use the current user's group id.
+```lua
+-- Get the current user's group name if no argument is provided
+ya.group_name()
 
-Returns the name of the current group, which is a string if successful; otherwise, `nil`.
+-- Get the name of group with id 1000
+ya.group_name(1000)
+```
 
-This function is only available on Unix-like systems.
+| In/Out    | Type                   |
+| --------- | ---------------------- |
+| `gid`     | `integer?`             |
+| Return    | `string?`              |
+| Available | Unix-like systems only |
 
 ### `host_name()` {#ya.host_name}
 
-Only available on Unix-like systems. Returns the hostname of the current machine, which is a string if successful; otherwise, `nil`.
+Returns the hostname of the current machine.
+
+| In/Out    | Type                   |
+| --------- | ---------------------- |
+| Return    | `string?`              |
+| Available | Unix-like systems only |
 
 ## ps {#ps}
 
@@ -362,74 +484,97 @@ The following functions can only be used within a sync context.
 
 ### `pub(kind, value)` {#ps.pub}
 
+Publish a message to the current instance, and all plugins subscribed through `sub()` for this `kind` will receive it, achieving internal communication within the instance:
+
 ```lua
 ps.pub("greeting", "Hello, World!")
 ```
 
-Publish a message to the current instance, and all plugins subscribed through `sub()` for this `kind` will receive it, achieving internal communication within the instance:
+Since the `kind` is used globally, to add the plugin name as the prefix is a best practice.
+For example, the combination of the plugin `my-plugin` and the kind `event1` would be `my-plugin-event1`.
 
-- `kind`: Required, the kind of the message, which is a string of alphanumeric with dashes, and cannot be [built-in kinds](/docs/dds#kinds).
-- `value`: Required, the value of the message, which is a [sendable value](/docs/plugins/overview#sendable). If it's a userdata, it causes [Ownership transfer](/docs/plugins/overview#ownership).
-
-Since the `kind` is used globally, to add the plugin name as the prefix is a best practice. For example, the combination of the plugin `my-plugin` and the kind `event1` would be `my-plugin-event1`.
+| In/Out  | Type        | Note                                                                            |
+| ------- | ----------- | ------------------------------------------------------------------------------- |
+| `kind`  | `string`    | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds)           |
+| `value` | `Sendable`  | A [Sendable value][sendable] that follows [Ownership transfer rules][ownership] |
+| Return  | `undefined` | -                                                                               |
 
 ### `pub_to(receiver, kind, value)` {#ps.pub_to}
+
+Publish a message to a specific instance with `receiver` as the ID:
 
 ```lua
 ps.pub_to(1711957283332834, "greeting", "Hello, World!")
 ```
 
-Publish a message to a specific instance with `receiver` as the ID:
+Where:
 
-- If the receiver is the current instance (local), and is subscribed to this `kind` through `sub()`, it will receive this message.
-- If the receiver is not the current instance (remote), and is subscribed to this `kind` through `sub_remote()`, it will receive this message.
+- Local - `receiver` is the current instance, and is subscribed to this `kind` via `sub()`, it will receive the message.
+- Remote - `receiver` isn't the current instance, and is subscribed to this `kind` via `sub_remote()`, it will receive the message.
+- Broadcast - `receiver` is `0`, all remote instances subscribed to this `kind` via `sub_remote()` will receive the message.
 
-With:
-
-- `receiver`: Required, ID of the remote instance, which is an integer; if it's `0` then broadcasting to all remote instances.
-- `kind`: The same as `pub()`.
-- `value`: The same as `pub()`.
+| In/Out     | Type        | Note                                                                            |
+| ---------- | ----------- | ------------------------------------------------------------------------------- |
+| `receiver` | `integer`   | -                                                                               |
+| `kind`     | `string`    | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds)           |
+| `value`    | `Sendable`  | A [Sendable value][sendable] that follows [Ownership transfer rules][ownership] |
+| Return     | `undefined` | -                                                                               |
 
 ### `sub(kind, callback)` {#ps.sub}
 
+Subscribe to local messages of `kind` and call the `callback` handler for it:
+
 ```lua
+-- The same `kind` from the same plugin can only be subscribed once,
+-- re-subscribing (`sub()`) before unsubscribing (`unsub()`) will throw an error.
 ps.sub("cd", function(body)
 	ya.dbg("New cwd", cx.active.current.cwd)
 end)
 ```
 
-Subscribe to local messages of `kind` and call the `callback` handler for it:
-
-- `kind`: Required, the kind of the message, which is a string.
-- `callback`: Required, the callback function, with a single parameter `body` containing the content of the message.
-
 It runs in a sync context, so you can access app data via `cx` for the content of interest.
 
-Note: No time-consuming operations should be done in the callback, and the same `kind` from the same plugin can only be subscribed once, re-subscribing (`sub()`) before unsubscribing (`unsub()`) will throw an error.
+| In/Out     | Type                  | Note                                                                  |
+| ---------- | --------------------- | --------------------------------------------------------------------- |
+| `kind`     | `string`              | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds) |
+| `callback` | `fun(body: Sendable)` | No time-consuming work should be done in the callback                 |
+| Return     | `undefined`           | -                                                                     |
 
 ### `sub_remote(kind, callback)` {#ps.sub_remote}
 
-Similar to `sub()`, but it subscribes to remote messages of this `kind` instead of local.
+Same as `sub()`, except it subscribes to remote messages of this `kind` instead of local.
+
+| In/Out     | Type                  | Note            |
+| ---------- | --------------------- | --------------- |
+| `kind`     | `string`              | Same as `sub()` |
+| `callback` | `fun(body: Sendable)` | Same as `sub()` |
+| Return     | `undefined`           | -               |
 
 ### `unsub(kind)` {#ps.unsub}
+
+Unsubscribe from local messages of this `kind`:
 
 ```lua
 ps.unsub("my-message")
 ```
 
-Unsubscribe from local messages of this `kind`:
-
-- `kind`: Required, the kind of the message, which is a string.
+| In/Out | Type        | Note                                                                  |
+| ------ | ----------- | --------------------------------------------------------------------- |
+| `kind` | `string`    | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds) |
+| Return | `undefined` | -                                                                     |
 
 ### `unsub_remote(kind)` {#ps.unsub_remote}
+
+Unsubscribe from remote messages of this `kind`:
 
 ```lua
 ps.unsub_remote("my-message")
 ```
 
-Unsubscribe from remote messages of this `kind`:
-
-- `kind`: Required, the kind of the message, which is a string.
+| In/Out | Type        | Note              |
+| ------ | ----------- | ----------------- |
+| `kind` | `string`    | Same as `unsub()` |
+| Return | `undefined` | -                 |
 
 ## fs
 
@@ -437,16 +582,13 @@ The following functions can only be used within an async context.
 
 ### `cwd()` {#fs.cwd}
 
+Get the current working directory (CWD) of the process.
+
+This API was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call:
+
 ```lua
 local url, err = fs.cwd()
 ```
-
-This function was added to compensate for the lack of a [`getcwd`][getcwd] in Lua; it is used to retrieve the directory of the last [`chdir`][chdir] call.
-
-Returns `(url, err)`:
-
-- `url`: The [Url](/docs/plugins/types#url) of the current working directory if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
 
 You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][tab-folder], which is the current directory where the user is working.
 
@@ -456,115 +598,128 @@ So, there may be some delay, which is particularly noticeable on slow devices. F
 
 It is useful if you just need a valid directory as the CWD of a process to start some work that doesn't depend on the CWD.
 
+| In/Out    | Type               |
+| --------- | ------------------ |
+| Return    | `(Url?, Error?)`   |
+| Available | Async context only |
+
 [getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
 [chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
 [tab-folder]: /docs/plugins/appdata#tab-folder
 
 ### `cha(url, follow)` {#fs.cha}
 
+Get the [Cha](/docs/plugins/types#cha) of the specified `url`:
+
 ```lua
+-- Not following symbolic links
 local cha, err = fs.cha(url)
+
+-- Follow symbolic links
+local cha, err = fs.cha(url, true)
 ```
 
-Get the [Cha](/docs/plugins/types#cha) of the specified file:
-
-- `url`: Required, the [Url](/docs/plugins/types#url) of the file.
-- `follow`: Optional, whether to follow the symbolic link, which is a boolean.
-
-Returns `(cha, err)`:
-
-- `cha`: The [Cha](/docs/plugins/types#cha) of the file if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `url`     | `Url`              |
+| `follow`  | `boolean?`         |
+| Return    | `(Cha?, Error?)`   |
+| Available | Async context only |
 
 ### `write(url, data)` {#fs.write}
+
+Write `data` to the specified `url`:
 
 ```lua
 local ok, err = fs.write(url, "hello world")
 ```
 
-Write data to the specified file:
-
-- `url`: Required, the [Url](/docs/plugins/types#url) of the file.
-- `data`: Required, the data to be written, which is a string.
-
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+| In/Out    | Type                |
+| --------- | ------------------- |
+| `url`     | `Url`               |
+| `data`    | `string`            |
+| Return    | `(boolean, Error?)` |
+| Available | Async context only  |
 
 ### `create(type, url)` {#fs.create}
+
+Create file(s) at the `url` of the file system:
 
 ```lua
 local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
 ```
 
-Create the specified file(s) in the filesystem.
+Where `type` can be one of the following:
 
-- `type`: Required, the type of creation, which can be:
-  - `"dir"`: Creates a new, empty directory.
-  - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
-- `url`: Required, the [Url](/docs/plugins/types#url) of the target.
+- `"dir"`: Creates a new, empty directory.
+- `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
 
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+| In/Out    | Type                       |
+| --------- | -------------------------- |
+| `type`    | `string\|"dir"\|"dir_all"` |
+| `url`     | `Url`                      |
+| Return    | `(boolean, Error?)`        |
+| Available | Async context only         |
 
 ### `remove(type, url)` {#fs.remove}
+
+Remove file(s) at the `url` of the file system:
 
 ```lua
 local ok, err = fs.remove("file", Url("/tmp/test.txt"))
 ```
 
-Remove the specified file(s) from the filesystem:
+Where `type` can be one of the following:
 
-- `type`: Required, the type of removal, which can be:
-  - `"file"`: Removes a file from the filesystem.
-  - `"dir"`: Removes an existing, empty directory.
-  - `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
-  - `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
-- `url`: Required, the [Url](/docs/plugins/types#url) of the target.
+- `"file"`: Removes a file from the filesystem.
+- `"dir"`: Removes an existing, empty directory.
+- `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
+- `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
 
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+| In/Out    | Type                                            |
+| --------- | ----------------------------------------------- |
+| `type`    | `string\|"file"\|"dir"\|"dir_all"\|"dir_clean"` |
+| `url`     | `Url`                                           |
+| Return    | `(boolean, Error?)`                             |
+| Available | Async context only                              |
 
 ### `read_dir(url, options)` {#fs.read_dir}
 
+Reads the directory contents of `url`:
+
 ```lua
-local files, err = fs.read_dir("url", { limit = 10 })
+local files, err = fs.read_dir(url, {
+	-- Glob pattern to filter files out if provided.
+	glob = nil,
+	-- Maximum number of files to read, defaults to unlimited.
+	limit = 10,
+	-- Whether to resolve symbolic links, defaults to `false`.
+	resolve = false,
+})
 ```
 
-Reads the contents of a directory:
-
-- `url`: Required, the [Url](/docs/plugins/types#url) of the directory.
-- `options`: Optional, a table with the following options:
-  - `glob`: A glob pattern to filter files out if provided.
-  - `limit`: The maximum number of files to read, which is an integer, defaults to unlimited.
-  - `resolve`: Whether to resolve symbolic links, defaults to `false`.
-
-Returns `(files, err)`:
-
-- `files`: A table of [File](/docs/plugins/types#file) if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+| In/Out    | Type                                                    |
+| --------- | ------------------------------------------------------- |
+| `url`     | `Url`                                                   |
+| `options` | `{ glob: string?, limit: integer?, resolve: boolean? }` |
+| Return    | `(File[]?, Error?)`                                     |
+| Available | Async context only                                      |
 
 ### `unique_name(url)`
+
+Get a unique name from the given `url` to ensure it's unique in the filesystem:
 
 ```lua
 local url, err = fs.unique_name(Url("/tmp/test.txt"))
 ```
 
-Get a unique name from the given [Url](/docs/plugins/types#url) to ensure it's unique in the filesystem:
+If the file already exists, it will append `_n` to the filename, where `n` is a number, and keep incrementing until the first available name is found.
 
-- `url`: Required, the [Url](/docs/plugins/types#url) of the path to get a unique name.
-
-Returns `(url, err)`:
-
-- `url`: The unique [Url](/docs/plugins/types#url) of the given path if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
-
-If the file already exists, the function will append `_n` to the filename, where `n` is a number, and keep incrementing it until it finds the first available name.
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `url`     | `Url`              |
+| Return    | `(Url?, Error?)`   |
+| Available | Async context only |
 
 ## Command
 
@@ -581,132 +736,161 @@ Compared to Lua's `os.execute`, it provides many comprehensive and convenient me
 
 It takes better advantage of the benefits of concurrent scheduling. However, it can only be used in async contexts, such as preloaders, previewers, and async functional plugins.
 
-### `arg(arg)` {#Command.arg}
+### `arg(self, arg)` {#Command.arg}
+
+Append an argument to the command:
 
 ```lua
 local cmd = Command("ls"):arg("-a"):arg("-l")
 ```
 
-Append an argument to the command:
-
-- `arg`: Required, the argument to be appended, which is a string.
-
-Returns `self`.
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Command` |
+| `arg`  | `string`  |
+| Return | `self`    |
 
 ### `args(args)` {#Command.args}
+
+Append multiple arguments to the command:
 
 ```lua
 local cmd = Command("ls"):args({ "-a", "-l" }):args({ "-h" })
 ```
 
-Append multiple arguments to the command:
+| In/Out | Type       |
+| ------ | ---------- |
+| `self` | `Command`  |
+| `arg`  | `string[]` |
+| Return | `self`     |
 
-- `args`: Required, the arguments to be appended, which is a table of strings.
+### `cwd(self, dir)` {#Command.cwd}
 
-Returns `self`.
-
-### `cwd(dir)` {#Command.cwd}
+Set the current working directory of the command:
 
 ```lua
 local cmd = Command("ls"):cwd("/root")
 ```
 
-Set the current working directory of the command:
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Command` |
+| `dir`  | `string`  |
+| Return | `self`    |
 
-- `dir`: Required, the directory of the command, which is a string.
+### `env(self, key, value)` {#Command.env}
 
-Returns `self`.
-
-### `env(key, value)` {#Command.env}
+Append an environment variable to the command:
 
 ```lua
 local cmd = Command("ls"):env("PATH", "/bin"):env("HOME", "/home")
 ```
 
-Append an environment variable to the command:
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Command` |
+| `key`   | `string`  |
+| `value` | `string`  |
+| Return  | `self`    |
 
-- `key`: Required, the key of the environment variable, which is a string.
-- `value`: Required, the value of the environment variable, which is a string.
+### `stdin(self, stdio)` {#Command.stdin}
 
-Returns `self`.
-
-### `stdin(cfg)` {#Command.stdin}
+Set the stdin of the command:
 
 ```lua
 local cmd = Command("ls"):stdin(Command.PIPED)
 ```
 
-Set the stdin of the command:
+Where `stdio` can be one of the following:
 
-- `cfg`: Required, the configuration of the stdin, accepts the following values:
-  - `Command.PIPED`: Pipe the stdin.
-  - `Command.NULL`: Discard the stdin.
-  - `Command.INHERIT`: Inherit the stdin.
+- `Command.PIPED`: Pipe the stdin.
+- `Command.NULL`: Discard the stdin (default).
+- `Command.INHERIT`: Inherit the stdin.
 
-If not set, the stdin will be null. Returns `self`.
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Command` |
+| `stdio` | `Stdio`   |
+| Return  | `self`    |
 
-### `stdout(cfg)` {#Command.stdout}
+### `stdout(self, stdio)` {#Command.stdout}
+
+Set the stdout of the command:
 
 ```lua
 local cmd = Command("ls"):stdout(Command.PIPED)
 ```
 
-Set the stdout of the command:
+Where `stdio` can be one of the following:
 
-- `cfg`: Required, the configuration of the stdout, accepts the following values:
-  - `Command.PIPED`: Pipe the stdout.
-  - `Command.NULL`: Discard the stdout.
-  - `Command.INHERIT`: Inherit the stdout.
+- `Command.PIPED`: Pipe the stdout.
+- `Command.NULL`: Discard the stdout (default).
+- `Command.INHERIT`: Inherit the stdout.
 
-If not set, the stdout will be null. Returns `self`.
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Command` |
+| `stdio` | `Stdio`   |
+| Return  | `self`    |
 
-### `stderr(cfg)` {#Command.stderr}
+### `stderr(self, stdio)` {#Command.stderr}
+
+Set the stderr of the command:
 
 ```lua
 local cmd = Command("ls"):stderr(Command.PIPED)
 ```
 
-Set the stderr of the command:
+Where `stdio` can be one of the following:
 
-- `cfg`: Required, the configuration of the stderr, accepts the following values:
-  - `Command.PIPED`: Pipe the stderr.
-  - `Command.NULL`: Discard the stderr.
-  - `Command.INHERIT`: Inherit the stderr.
+- `Command.PIPED`: Pipe the stderr.
+- `Command.NULL`: Discard the stderr (default).
+- `Command.INHERIT`: Inherit the stderr.
 
-If not set, the stderr will be null. Returns `self`.
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Command` |
+| `stdio` | `Stdio`   |
+| Return  | `self`    |
 
-### `spawn()` {#Command.spawn}
+### `spawn(self)` {#Command.spawn}
+
+Spawn the command:
 
 ```lua
 local child, err = Command("ls"):spawn()
 ```
 
-Spawn the command, returns `(child, err)`:
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Command`          |
+| Return | `(Child?, Error?)` |
 
-- `child`: The [Child](#child) of the command if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+### `output(self)` {#Command.output}
 
-### `output()` {#Command.output}
+Spawn the command and wait for it to finish:
 
 ```lua
 local output, err = Command("ls"):output()
 ```
 
-Spawn the command and wait for it to finish, returns `(output, err)`:
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Command`           |
+| Return | `(Output?, Error?)` |
 
-- `output`: The [Output](#output) of the command if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+### `status(self)` {#Command.status}
 
-### `status()` {#Command.status}
+Executes the command as a child process, waiting for it to finish and collecting its exit status:
 
 ```lua
 local status, err = Command("ls"):status()
 ```
 
-Executes the command as a child process, waiting for it to finish and collecting its exit status. Returns `(status, err)`:
-
-- `status`: The [Status](#status) of the child process if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Command`           |
+| Return | `(Status?, Error?)` |
 
 ## Child
 
@@ -714,128 +898,165 @@ This object is created by [`Command:spawn()`](#Command.spawn) and represents a r
 
 You can access the runtime data of this process through its proprietary methods.
 
-### `read(len)` {#Child.read}
+### `read(self, len)` {#Child.read}
+
+Reads data from the available data source alternately:
 
 ```lua
 local data, event = child:read(1024)
 ```
 
-Let's say "available data source" refers to `stdout` or `stderr` that has been set with `Command.PIPED`, or them both.
+"available data source" refers to `stdout` or `stderr` that has `Command.PIPED` set, or them both, the `event` indicates where the data comes from:
 
-`read()` reads data from the available data source alternately, and the `event` indicates the source of the data:
+- Data comes from stdout, if event is 0.
+- Data comes from stderr, if event is 1.
+- No data to read from both stdout and stderr, if event is 2.
 
-- The data comes from stdout if event is 0.
-- The data comes from stderr if event is 1.
-- There's no data to read from both stdout and stderr, if event is 2.
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Child`             |
+| `len`  | `integer`           |
+| Return | `(string, integer)` |
 
-### `read_line()` {#Child.read_line}
+### `read_line(self)` {#Child.read_line}
+
+Same as [`read()`](#Child.read), except it reads data line by line:
 
 ```lua
 local line, event = child:read_line()
 ```
 
-Similar to [`read()`](#Child.read), but it reads data line by line.
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Child`             |
+| Return | `(string, integer)` |
 
-### `read_line_with(opts)` {#Child.read_line_with}
+### `read_line_with(self, opts)` {#Child.read_line_with}
+
+Same as [`read_line()`](#Child.read_line), except it accepts a table of options:
 
 ```lua
-local line, event = child:read_line_with { timeout = 500 }
+local line, event = child:read_line_with {
+	-- Timeout to read
+	timeout = 500,
+}
 ```
 
-Similar to [`read_line()`](#Child.read_line), but it accepts a table of options:
+It has a extra event:
 
-- `timeout`: Required, timeout in milliseconds, which is an integer
+- Timeout, if event is 3.
 
-And includes the following additional events:
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | `Child`                |
+| `opts` | `{ timeout: integer }` |
+| Return | `(string, integer)`    |
 
-- Timeout if event is 3.
+### `write_all(self, src)` {#Child.write_all}
 
-### `write_all(src)` {#Child.write_all}
+Writes all `src` to the stdin of the child process:
 
 ```lua
 local ok, err = child:write_all(src)
 ```
 
-Writes all bytes from the string `src` to the stdin of the child process, returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
-
-Please ensure that the child's stdin is available when calling this method, specifically:
+Ensure that the child's stdin is available when calling this method, specifically:
 
 1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set.
 2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called.
 
 Otherwise, an error will be thrown.
 
-### `flush()` {#Child.flush}
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Child`             |
+| `src`  | `string`            |
+| Return | `(boolean, Error?)` |
+
+### `flush(self)` {#Child.flush}
+
+Flushes any buffered data to the stdin of the child process:
 
 ```lua
 local ok, err = child:flush()
 ```
 
-Flushes any buffered data to the stdin of the child process, returns `(ok, err)`:
-
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
-
-Please ensure that the child's stdin is available when calling this method, specifically:
+Ensure that the child's stdin is available when calling this method, specifically:
 
 1. [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) is set.
 2. [`take_stdin()`](/docs/plugins/utils#Child.take_stdin) has never been called.
 
 Otherwise, an error will be thrown.
 
-### `wait()` {#Child.wait}
+| In/Out   | Type                |
+| -------- | ------------------- |
+| `self`   | `Child`             |
+| `Return` | `(boolean, Error?)` |
+
+### `wait(self)` {#Child.wait}
+
+Wait for the child process to finish:
 
 ```lua
 local status, err = child:wait()
 ```
 
-Wait for the child process to finish, returns `(status, err)`:
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Child`             |
+| Return | `(Status?, Error?)` |
 
-- `status`: The [Status](#status) of the child process if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+### `wait_with_output(self)` {#Child.wait_with_output}
 
-### `wait_with_output()` {#Child.wait_with_output}
+Wait for the child process to finish and get the output:
 
 ```lua
 local output, err = child:wait_with_output()
 ```
 
-Wait for the child process to finish and get the output, returns `(output, err)`:
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Child`             |
+| Return | `(Output?, Error?)` |
 
-- `output`: The [Output](#output) of the child process if successful; otherwise, `nil`.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+### `start_kill(self)` {#Child.start_kill}
 
-### `start_kill()` {#Child.start_kill}
+Send a SIGTERM signal to the child process:
 
 ```lua
 local ok, err = child:start_kill()
 ```
 
-Send a SIGTERM signal to the child process, returns `(ok, err)`:
+| In/Out | Type                |
+| ------ | ------------------- |
+| `self` | `Child`             |
+| Return | `(boolean, Error?)` |
 
-- `ok`: Whether the operation is successful, which is a boolean.
-- `err`: The error if the operation is failed, which is an [Error](/docs/plugins/types#error).
+### `take_stdin(self)` {#Child.take_stdin}
 
-### `take_stdin()` {#Child.take_stdin}
+Take and return the stdin stream of the child process:
 
 ```lua
 local stdin = child:take_stdin()
 ```
 
-Take and return the stdin stream of the child process, which can only be called once and is only applicable to processes with [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
+This method can only be called once and is only applicable to processes with [`stdin(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set;
+otherwise, it returns `nil`.
 
-### `take_stdout()` {#Child.take_stdout}
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Child`  |
+| Return | `Stdio?` |
+
+### `take_stdout(self)` {#Child.take_stdout}
+
+Take and return the stdout stream of the child process:
 
 ```lua
 local stderr = child:take_stdout()
 ```
 
-Take and return the stdout stream of the child process, which can only be called once and is only applicable to processes with [`stdout(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
-
-This is useful when redirecting stdout to another process's stdin:
+which is useful when redirecting stdout to another process's stdin:
 
 ```lua
 local echo = Command("echo"):arg("Hello"):stdout(Command.PIPED):spawn()
@@ -845,29 +1066,79 @@ local rev = Command("rev"):stdin(echo:take_stdout()):stdout(Command.PIPED):outpu
 ya.dbg(rev.stdout) -- "olleH\n"
 ```
 
-### `take_stderr()` {#Child.take_stderr}
+This method can only be called once and is only applicable to processes with [`stdout(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set;
+otherwise, it returns `nil`.
+
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Child`  |
+| Return | `Stdio?` |
+
+### `take_stderr(self)` {#Child.take_stderr}
+
+Take and return the stderr stream of the child process:
 
 ```lua
 local stderr = child:take_stderr()
 ```
 
-Take and return the stderr stream of the child process, which can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set; otherwise, it returns `nil`.
-
 See [`take_stdout()`](/docs/plugins/utils#Child.take_stdout) for an example.
+
+This method can only be called once and is only applicable to processes with [`stderr(Command.PIPED)`](/docs/plugins/utils#Command.stdin) set;
+otherwise, it returns `nil`.
+
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Child`  |
+| Return | `Stdio?` |
 
 ## Output
 
-Properties:
+### `status` {#output.status}
 
-- `status`: The [Status](#status) of the child process.
-- `stdout`: The stdout of the child process, which is a string.
-- `stderr`: The stderr of the child process, which is a string.
+[Status](#status) of the child process.
+
+|      |          |
+| ---- | -------- |
+| Type | `Status` |
+
+### `stdout` {#output.stdout}
+
+Stdout of the child process.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `stderr` {#output.stderr}
+
+Stderr of the child process.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
 
 ## Status
 
 This object represents the exit status of a child process, and it is created by [`wait()`](#Child.wait), or [`output()`](#Command.output).
 
-Properties:
+### `success` {#status.success}
 
-- `success`: whether the child process exited successfully, which is a boolean.
-- `code`: the exit code of the child process, which is an integer if any.
+Whether the child process exited successfully.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `code` {#status.code}
+
+Exit code of the child process.
+
+|      |            |
+| ---- | ---------- |
+| Type | `integer?` |
+
+<!-- Links -->
+
+[sendable]: /docs/plugins/overview#sendable
+[ownership]: /docs/plugins/overview#ownership

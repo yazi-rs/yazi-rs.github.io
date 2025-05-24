@@ -99,6 +99,13 @@ Apply a `padding` to the rect.
 | `padding` | [`Pad`](#pad) |
 | Return    | `self`        |
 
+### `__new(value)` {#rect.\_\_new}
+
+| In/Out  | Type                                                     |
+| ------- | -------------------------------------------------------- |
+| `value` | `{ x: integer?, y: integer?, w: integer?, h: integer? }` |
+| Return  | `Rect`                                                   |
+
 ## Pad {#pad}
 
 `Pad` represents a padding, and all of its parameters are integers:
@@ -143,7 +150,7 @@ Left padding.
 
 Create a padding with only top value, which is equal to `ui.Pad(top, 0, 0, 0)`.
 
-| In     | Type      |
+| In/Out | Type      |
 | ------ | --------- |
 | `top`  | `integer` |
 | Return | `Pad`     |
@@ -152,7 +159,7 @@ Create a padding with only top value, which is equal to `ui.Pad(top, 0, 0, 0)`.
 
 Create a padding with only right value, which is equal to `ui.Pad(0, right, 0, 0)`.
 
-| In      | Type      |
+| In/Out  | Type      |
 | ------- | --------- |
 | `right` | `integer` |
 | Return  | `Pad`     |
@@ -161,7 +168,7 @@ Create a padding with only right value, which is equal to `ui.Pad(0, right, 0, 0
 
 Create a padding with only bottom value, which is equal to `ui.Pad(0, 0, bottom, 0)`.
 
-| In       | Type      |
+| In/Out   | Type      |
 | -------- | --------- |
 | `bottom` | `integer` |
 
@@ -171,7 +178,7 @@ Create a padding with only bottom value, which is equal to `ui.Pad(0, 0, bottom,
 
 Create a padding with only left value, which is equal to `ui.Pad(0, 0, 0, left)`.
 
-| In     | Type      |
+| In/Out | Type      |
 | ------ | --------- |
 | `left` | `integer` |
 | Return | `Pad`     |
@@ -180,7 +187,7 @@ Create a padding with only left value, which is equal to `ui.Pad(0, 0, 0, left)`
 
 Create a padding on both x-axis, which is equal to `ui.Pad(0, x, 0, x)`.
 
-| In     | Type      |
+| In/Out | Type      |
 | ------ | --------- |
 | `x`    | `integer` |
 | Return | `Pad`     |
@@ -189,7 +196,7 @@ Create a padding on both x-axis, which is equal to `ui.Pad(0, x, 0, x)`.
 
 Create a padding on both y-axis, which is equal to `ui.Pad(y, 0, y, 0)`.
 
-| In     | Type      |
+| In/Out | Type      |
 | ------ | --------- |
 | `y`    | `integer` |
 | Return | `Pad`     |
@@ -198,11 +205,21 @@ Create a padding on both y-axis, which is equal to `ui.Pad(y, 0, y, 0)`.
 
 Create a padding on both x and y-axis, which is equal to `ui.Pad(y, x, y, x)`.
 
-| In     | Type      |
+| In/Out | Type      |
 | ------ | --------- |
 | `x`    | `integer` |
 | `y`    | `integer` |
 | Return | `Pad`     |
+
+### `__new(top, right, bottom, left)` {#pad.\_\_new}
+
+| In/Out   | Type      |
+| -------- | --------- |
+| `top`    | `integer` |
+| `right`  | `integer` |
+| `bottom` | `integer` |
+| `left`   | `integer` |
+| Return   | `Pad`     |
 
 ## Style {#style}
 
@@ -336,6 +353,12 @@ Patch the style with `another`.
 | `another` | `Style` |
 | Return    | `self`  |
 
+### `__new()` {#style.\_\_new}
+
+| In/Out | Type    |
+| ------ | ------- |
+| Return | `Style` |
+
 ## Span {#span}
 
 `ui.Span` is the smallest unit of text, yet a component of `ui.Line`. Create a span:
@@ -382,6 +405,13 @@ can be also written as:
 ui.Span("Hello world"):fg("white"):bg("black"):bold()
 ```
 
+### `__new(value)` {#span.\_\_new}
+
+| In/Out  | Type               |
+| ------- | ------------------ |
+| `value` | `string` \| `Span` |
+| Return  | `Span`             |
+
 ## Line {#line}
 
 `ui.Line` represents a line, consisting of multiple `ui.Span`s, and it accepts a table of them:
@@ -410,11 +440,11 @@ ui.Line { "foo", ui.Span("bar"), ui.Line("baz") }
 
 Set the area of the line.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `Line`                   |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `Line`                    |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
 
@@ -468,6 +498,13 @@ Like with [`Span`](#span), you can also call the [`Style`](#style) methods on it
 ui.Line("Hello world"):fg("white"):bg("black"):bold()
 ```
 
+### `__new(value)` {#line.\_\_new}
+
+| In/Out  | Type                                                     |
+| ------- | -------------------------------------------------------- |
+| `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
+| Return  | `Line`                                                   |
+
 ## Text {#text}
 
 `ui.Text` is used to represent multi-line text, it takes a table of `ui.Line`:
@@ -498,11 +535,11 @@ You can also use `ui.Text.parse(code)` to parse an [ANSI escape sequence](https:
 
 Set the area of the text.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `Text`                   |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `Text`                    |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
 
@@ -562,6 +599,13 @@ Like with [`Span`](#span), you can also call the [`Style`](#style) methods on it
 ```lua
 ui.Text("Hello world"):fg("white"):bg("black"):bold()
 ```
+
+### `__new(value)` {#text.\_\_new}
+
+| In/Out  | Type                                                     |
+| ------- | -------------------------------------------------------- |
+| `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
+| Return  | `Text`                                                   |
 
 ## Layout {#layout}
 
@@ -641,6 +685,12 @@ Split the layout into multiple [Rect](#rect)s according to the constraints.
 | `self` | `Layout`               |
 | `rect` | [`Rect`](#rect)        |
 | Return | [`table<Rect>`](#rect) |
+
+### `__new()` {#layout.\_\_new}
+
+| In/Out | Type     |
+| ------ | -------- |
+| Return | `Layout` |
 
 ## Constraint {#constraint}
 
@@ -837,11 +887,11 @@ ui.List { "foo", ui.Line("bar"), ui.Span("baz") }
 
 Set the area of the list.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `List`                   |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `List`                    |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
 
@@ -854,6 +904,13 @@ Set the style of the list.
 | `self`  | `List`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
+
+### `__new(value)` {#list.\_\_new}
+
+| In/Out  | Type                                                                     |
+| ------- | ------------------------------------------------------------------------ |
+| `value` | `string` \| `Span` \| `Line` \| `Text` \| `(string\|Span\|Line\|Text)[]` |
+| Return  | `List`                                                                   |
 
 ## Bar {#bar}
 
@@ -876,11 +933,11 @@ The first attribute denotes the direction of the bar and accepts the following c
 
 Set the area of the bar.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `Bar`                    |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `Bar`                     |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
 
@@ -903,6 +960,13 @@ Set the style of the bar.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
+### `__new(value)` {#bar.\_\_new}
+
+| In/Out  | Type        |
+| ------- | ----------- |
+| `value` | `Direction` |
+| Return  | `Bar`       |
+
 ## Border {#border}
 
 Create a border:
@@ -924,11 +988,11 @@ The first attribute denotes the position of the border and accepts the following
 
 Set the area of the border.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `Border`                 |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `Border`                  |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
 
@@ -961,6 +1025,13 @@ Set the style of the border.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
+### `__new(value)` {#border.\_\_new}
+
+| In/Out  | Type       |
+| ------- | ---------- |
+| `value` | `Position` |
+| Return  | `Border`   |
+
 ## Gauge {#gauge}
 
 Create a gauge:
@@ -973,11 +1044,11 @@ ui.Gauge()
 
 Set the area of the gauge.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `Gauge`                  |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `Gauge`                   |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
 
@@ -1031,6 +1102,12 @@ Set the style of the gauge itself.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
+### `__new()` {#gauge.\_\_new}
+
+| In/Out | Type    |
+| ------ | ------- |
+| Return | `Gauge` |
+
 ## Clear {#clear}
 
 Clear the content of a specific area, which is a [Rect](#rect). Place it followed by the component that you want to clear:
@@ -1048,10 +1125,17 @@ local components = {
 
 Set the area of the clear.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | `Clear`                  |
-| `rect` | [`Rect`](#rect) \| `nil` |
-| Return | `self`                   |
+| In/Out | Type                      |
+| ------ | ------------------------- |
+| `self` | `Clear`                   |
+| `rect` | [`Rect?`](#rect)          |
+| Return | `self` \| [`Rect`](#rect) |
 
 If `rect` is not specified, it returns the current area.
+
+### `__new()` {#clear.\_\_new}
+
+| In/Out | Type            |
+| ------ | --------------- |
+| `rect` | [`Rect`](#rect) |
+| Return | `Clear`         |

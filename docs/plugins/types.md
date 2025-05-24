@@ -21,17 +21,17 @@ local url = Url("archive:///root/ost.zip#bgm.mp3")
 
 Filename of the url.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | `string` \| `nil` |
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
 
-### `stem`
+### `stem` {#url.stem}
 
 Filename without the extension.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | `string` \| `nil` |
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
 
 ### `frag` {#url.frag}
 
@@ -39,17 +39,17 @@ Url fragment.
 
 Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | `string` \| `nil` |
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
 
 ### `parent` {#url.parent}
 
 Parent directory.
 
-|      |                |
-| ---- | -------------- |
-| Type | `Url` \| `nil` |
+|      |        |
+| ---- | ------ |
+| Type | `Url?` |
 
 ### `is_regular` {#url.is_regular}
 
@@ -266,25 +266,25 @@ If you want to get the size of a directory, use [`size()`](/docs/plugins/appdata
 
 Accessed time of the file in Unix timestamp.
 
-|      |                    |
-| ---- | ------------------ |
-| Type | `integer` \| `nil` |
+|      |            |
+| ---- | ---------- |
+| Type | `integer?` |
 
 ### `btime` {#cha.btime}
 
 Birth time of the file in Unix timestamp.
 
-|      |                    |
-| ---- | ------------------ |
-| Type | `integer` \| `nil` |
+|      |            |
+| ---- | ---------- |
+| Type | `integer?` |
 
 ### `mtime` {#cha.mtime}
 
 Modified time of the file in Unix timestamp.
 
-|      |                    |
-| ---- | ------------------ |
-| Type | `integer` \| `nil` |
+|      |            |
+| ---- | ---------- |
+| Type | `integer?` |
 
 ### `uid` {#cha.uid}
 
@@ -292,7 +292,7 @@ User id of the file.
 
 |           |                        |
 | --------- | ---------------------- |
-| Type      | `integer` \| `nil`     |
+| Type      | `integer?`             |
 | Available | Unix-like systems only |
 
 ### `gid` {#cha.gid}
@@ -301,7 +301,7 @@ Group id of the file.
 
 |           |                        |
 | --------- | ---------------------- |
-| Type      | `integer` \| `nil`     |
+| Type      | `integer?`             |
 | Available | Unix-like systems only |
 
 ### `nlink` {#cha.nlink}
@@ -310,7 +310,7 @@ Number of hard links to the file.
 
 |           |                        |
 | --------- | ---------------------- |
-| Type      | `integer` \| `nil`     |
+| Type      | `integer?`             |
 | Available | Unix-like systems only |
 
 ### `perm(self)` {#cha.perm}
@@ -319,7 +319,7 @@ Unix permission representation, such as `drwxr-xr-x`.
 
 |           |                        |
 | --------- | ---------------------- |
-| Type      | `string` \| `nil`      |
+| Type      | `string?`              |
 | Available | Unix-like systems only |
 
 ## File {#file}
@@ -344,9 +344,9 @@ Unix permission representation, such as `drwxr-xr-x`.
 
 `Url` of the file points to, if it's a symlink.
 
-|      |                |
-| ---- | -------------- |
-| Type | `Url` \| `nil` |
+|      |        |
+| ---- | ------ |
+| Type | `Url?` |
 
 ### `name` {#file.name}
 
