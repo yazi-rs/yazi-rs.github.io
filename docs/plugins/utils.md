@@ -5,7 +5,7 @@ description: Learn how to use Yazi's Lua API.
 
 # Utils
 
-## ya
+## ya {#ya}
 
 ### `hide()` {#ya.hide}
 
@@ -576,7 +576,7 @@ ps.unsub_remote("my-message")
 | `kind` | `string`    | Same as `unsub()` |
 | Return | `undefined` | -                 |
 
-## fs
+## fs {#fs}
 
 The following functions can only be used within an async context.
 
@@ -721,7 +721,7 @@ If the file already exists, it will append `_n` to the filename, where `n` is a 
 | Return    | `(Url?, Error?)`   |
 | Available | Async context only |
 
-## Command
+## Command {#command}
 
 You can invoke external programs through:
 
@@ -761,7 +761,7 @@ local cmd = Command("ls"):args({ "-a", "-l" }):args({ "-h" })
 | In/Out | Type       |
 | ------ | ---------- |
 | `self` | `Self`     |
-| `arg`  | `string[]` |
+| `args` | `string[]` |
 | Return | `self`     |
 
 ### `cwd(self, dir)` {#Command.cwd}
@@ -892,7 +892,7 @@ local status, err = Command("ls"):status()
 | `self` | `Self`              |
 | Return | `(Status?, Error?)` |
 
-## Child
+## Child {#child}
 
 This object is created by [`Command:spawn()`](#Command.spawn) and represents a running child process.
 
@@ -1092,7 +1092,7 @@ otherwise, it returns `nil`.
 | `self` | `Self`   |
 | Return | `Stdio?` |
 
-## Output
+## Output {#output}
 
 ### `status` {#output.status}
 
@@ -1118,7 +1118,7 @@ Stderr of the child process.
 | ---- | -------- |
 | Type | `string` |
 
-## Status
+## Status {#status}
 
 This object represents the exit status of a child process, and it is created by [`wait()`](#Child.wait), or [`output()`](#Command.output).
 

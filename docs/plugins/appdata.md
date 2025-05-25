@@ -45,7 +45,7 @@ The yanked files.
 
 Visual mode status.
 
-### `is_select` {#tab-mode.is-select}
+### `is_select` {#tab-mode.is_select}
 
 Whether in select mode.
 
@@ -53,7 +53,7 @@ Whether in select mode.
 | ---- | --------- |
 | Type | `boolean` |
 
-### `is_unset` {#tab-mode.is-unset}
+### `is_unset` {#tab-mode.is_unset}
 
 Whether in unset mode.
 
@@ -61,7 +61,7 @@ Whether in unset mode.
 | ---- | --------- |
 | Type | `boolean` |
 
-### `is_visual` {#tab-mode.is-visual}
+### `is_visual` {#tab-mode.is_visual}
 
 Whether in select mode, or unset mode.
 
@@ -82,7 +82,7 @@ Converts the mode to string.
 
 Tab-specific user preferences.
 
-### `sort_by` {#tab-pref.sort-by}
+### `sort_by` {#tab-pref.sort_by}
 
 File sorting method. See [`sort_by`](/docs/configuration/yazi#manager.sort_by) for details.
 
@@ -90,7 +90,7 @@ File sorting method. See [`sort_by`](/docs/configuration/yazi#manager.sort_by) f
 | ---- | ---------------------------------------------------------------------------------------------------------------- |
 | Type | `"none"` \| `"mtime"` \| `"btime"` \| `"extension"` \| `"alphabetical"` \| `"natural"` \| `"size"` \| `"random"` |
 
-### `sort_sensitive` {#tab-pref.sort-sensitive}
+### `sort_sensitive` {#tab-pref.sort_sensitive}
 
 Sort case-sensitively. See [`sort_sensitive`](/docs/configuration/yazi#manager.sort_sensitive) for details.
 
@@ -98,7 +98,7 @@ Sort case-sensitively. See [`sort_sensitive`](/docs/configuration/yazi#manager.s
 | ---- | --------- |
 | Type | `boolean` |
 
-### `sort_reverse` {#tab-pref.sort-reverse}
+### `sort_reverse` {#tab-pref.sort_reverse}
 
 Display files in reverse order. See [`sort_reverse`](/docs/configuration/yazi#manager.sort_reverse) for details.
 
@@ -106,7 +106,7 @@ Display files in reverse order. See [`sort_reverse`](/docs/configuration/yazi#ma
 | ---- | --------- |
 | Type | `boolean` |
 
-### `sort_dir_first` {#tab-pref.sort-dir-first}
+### `sort_dir_first` {#tab-pref.sort_dir_first}
 
 Display directories first. See [`sort_dir_first`](/docs/configuration/yazi#manager.sort_dir_first) for details.
 
@@ -114,7 +114,7 @@ Display directories first. See [`sort_dir_first`](/docs/configuration/yazi#manag
 | ---- | --------- |
 | Type | `boolean` |
 
-### `sort_translit` {#tab-pref.sort-translit}
+### `sort_translit` {#tab-pref.sort_translit}
 
 Transliterate filenames for sorting. See [`sort_translit`](/docs/configuration/yazi#manager.sort_translit) for details.
 
@@ -130,7 +130,7 @@ Line mode. See [`linemode`](/docs/configuration/yazi#manager.linemode) for detai
 | ---- | ------------------------------------------------------------------------------------------ |
 | Type | `string` \| `"none"` \| `"size"` \| `"btime"` \| `"mtime"` \| `"permissions"` \| `"owner"` |
 
-### `show_hidden` {#tab-pref.show-hidden}
+### `show_hidden` {#tab-pref.show_hidden}
 
 Show hidden files. See [`show_hidden`](/docs/configuration/yazi#manager.show_hidden) for details.
 
@@ -249,9 +249,39 @@ Access each file by index.
 
 ## fs::File {#fs-file}
 
-Based on [File](#file), with the following additional properties and methods.
+### `url` {#fs-file.url}
 
-### `is_hovered` {#fs-file.is-hovered}
+Url of the file.
+
+|      |       |
+| ---- | ----- |
+| Type | `Url` |
+
+### `cha` {#fs-file.cha}
+
+Cha of the file.
+
+|      |       |
+| ---- | ----- |
+| Type | `Cha` |
+
+### `link_to` {#fs-file.link_to}
+
+Url of the file points to, if it's a symlink.
+
+|      |        |
+| ---- | ------ |
+| Type | `Url?` |
+
+### `name` {#fs-file.name}
+
+Name of the file.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `is_hovered` {#fs-file.is_hovered}
 
 Whether the file is hovered.
 
@@ -306,7 +336,7 @@ Style of the file, or `nil` if no [`[filetype]`](/docs/configuration/theme#filet
 | `self` | `Self`   |
 | Return | `Style?` |
 
-### `is_yanked(self)` {#fs-file.is-yanked}
+### `is_yanked(self)` {#fs-file.is_yanked}
 
 Whether the file is yanked.
 
@@ -315,7 +345,7 @@ Whether the file is yanked.
 | `self` | `Self`    |
 | Return | `boolean` |
 
-### `is_selected(self)` {#fs-file.is-selected}
+### `is_selected(self)` {#fs-file.is_selected}
 
 Whether the file is selected.
 
@@ -449,7 +479,7 @@ Progress of all tasks:
 
 ## mgr::Yanked {#mgr-yanked}
 
-### `is_cut` {#mgr-yanked.is-cut}
+### `is_cut` {#mgr-yanked.is_cut}
 
 Whether in cut mode.
 

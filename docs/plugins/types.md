@@ -93,7 +93,7 @@ Whether the path represented by the url has a root.
 
 ### `join(self, another)` {#url.join}
 
-Join with `another`.
+Join with `another` to create a new url.
 
 | In/Out    | Type               |
 | --------- | ------------------ |

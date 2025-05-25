@@ -295,7 +295,7 @@ Note that this style may not be supported by all terminals.
 | `self` | `Self` |
 | Return | `self` |
 
-### `blink_rapid(self)` {#style.blink-rapid}
+### `blink_rapid(self)` {#style.blink_rapid}
 
 Apply a rapid blink style.
 
@@ -574,7 +574,7 @@ The `wrap` accepts the following constants:
 - `ui.Text.WRAP` - Wrap at the end of the line
 - `ui.Text.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
 
-### `max_width(self)` {#text.max-width}
+### `max_width(self)` {#text.max_width}
 
 Calculate the maximum width of the text across all lines.
 
@@ -645,7 +645,7 @@ Set the margin of the layout.
 | `margin` | `integer` | Positive integer |
 | Return   | `self`    | -                |
 
-### `margin_h(self, margin)` {#layout.margin-h}
+### `margin_h(self, margin)` {#layout.margin_h}
 
 Set the horizontal margin of the layout.
 
@@ -655,7 +655,7 @@ Set the horizontal margin of the layout.
 | `margin` | `integer` | Positive integer |
 | Return   | `self`    | -                |
 
-### `margin_v(self, margin)` {#layout.margin-v}
+### `margin_v(self, margin)` {#layout.margin_v}
 
 Set the vertical margin of the layout.
 
@@ -944,10 +944,11 @@ If `rect` is not specified, it returns the current area.
 
 Set the symbol of the bar.
 
-| In/Out | Type   |
-| ------ | ------ |
-| `self` | `Self` |
-| Return | `self` |
+| In/Out   | Type     |
+| -------- | -------- |
+| `self`   | `Self`   |
+| `symbol` | `string` |
+| Return   | `self`   |
 
 ### `style(self, style)` {#bar.style}
 
@@ -1091,7 +1092,7 @@ Set the style of everything except the gauge itself.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
-### `gauge_style(self, style)` {#gauge.gauge-style}
+### `gauge_style(self, style)` {#gauge.gauge_style}
 
 Set the style of the gauge itself.
 

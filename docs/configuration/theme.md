@@ -53,123 +53,478 @@ Appears in a format similar to `{ fg = "#e4e4e4", bg = "black", ... }`, and supp
 
 ## [flavor] {#flavor}
 
-- dark (String): Flavor name used in dark mode, e.g. `"dracula"`.
-- light (String): Flavor name used in light mode, e.g. `"gruvbox"`.
-
 See [flavor documentation](/docs/flavors/overview) for more details.
+
+### `dark` {#flavor.dark}
+
+Flavor name used in dark mode, e.g. `"dracula"`.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `light` {#flavor.light}
+
+Flavor name used in light mode, e.g. `"gruvbox"`.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
 
 ## [manager] {#manager}
 
-- cwd (Style): CWD text style.
+### `cwd` {#manager.cwd}
 
-Hovered:
+CWD text style.
 
-- hovered (Style): Hovered file style.
-- preview_hovered (Style): Hovered file style, in the preview pane.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
-Find: The `find` feature
+### `hovered` {#manager.hovered}
 
-- find_keyword (Style): Style of the highlighted portion in the filename.
-- find_position (Style): Style of current file location in all found files to the right of the filename.
+Hovered file style.
 
-Marker: Color block on the left side separator line in the filename.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
-- marker_copied (Style): Copied file marker style.
-- marker_cut (Style): Cut file marker style.
-- marker_marked (Style): Marker style of pre-selected file in visual mode.
-- marker_selected (Style): Selected file marker style.
+### `preview_hovered` {#manager.preview_hovered}
 
-Tab: Tab bar.
+Hovered file style, in the preview pane.
 
-- tab_active (Style): Active tab style.
-- tab_inactive (Style): Inactive tab style.
-- tab_width (Number): Tab maximum width. When set to a value greater than 2, the remaining space will be filled with the tab name, which is current directory name.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
-Count: Counters.
+### `find_keyword` {#manager.find_keyword}
 
-- count_copied (Style): Style of copied file number.
-- count_cut (Style): Style of cut file number.
-- count_selected (Style): Style of selected file number.
+Style of the highlighted portion in the filename.
 
-Border:
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
-- border_symbol (String): Border symbol. e.g. `"│"`.
-- border_style (Style): Border style.
+### `find_position` {#manager.find_position}
 
-Highlighting: The built-in syntax highlighting feature
+Style of current file location in all found files to the right of the filename.
 
-- syntect_theme (String): For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor, as flavors always use their own tmTheme files `tmtheme.xml`.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
-  Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
+### `marker_copied` {#manager.marker_copied}
+
+Copied file marker style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `marker_cut` {#manager.marker_cut}
+
+Cut file marker style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `marker_marked` {#manager.marker_marked}
+
+Marker style of pre-selected file in visual mode.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `marker_selected` {#manager.marker_selected}
+
+Selected file marker style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `tab_active` {#manager.tab_active}
+
+Active tab style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `tab_inactive` {#manager.tab_inactive}
+
+Inactive tab style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `tab_width` {#manager.tab_width}
+
+Tab maximum width. When set to a value greater than 2, the remaining space will be filled with the tab name, which is current directory name.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `count_copied` {#manager.count_copied}
+
+Style of copied file number.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `count_cut` {#manager.count_cut}
+
+Style of cut file number.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `count_selected` {#manager.count_selected}
+
+Style of selected file number.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `border_symbol` {#manager.border_symbol}
+
+Border symbol, e.g. `"│"`.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `border_style` {#manager.border_style}
+
+Border style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `syntect_theme` {#manager.syntect_theme}
+
+Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
+
+For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor, as flavors always use their own tmTheme files `tmtheme.xml`.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
 
 ## [mode] {#mode}
 
-Normal mode
+### `normal_main` {#mode.normal_main}
 
-- normal_main (Style): Normal mode main style.
-- normal_alt (Style): Normal mode alternative style.
+Normal mode main style.
 
-Select mode
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
-- select_main (Style): Select mode main style.
-- select_alt (Style): Select mode alternative style.
+### `normal_alt` {#mode.normal_alt}
 
-Unset mode
+Normal mode alternative style.
 
-- unset_main (Style): Unset mode main style.
-- unset_alt (Style): Unset mode alternative style.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `select_main` {#mode.select_main}
+
+Select mode main style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `select_alt` {#mode.select_alt}
+
+Select mode alternative style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `unset_main` {#mode.unset_main}
+
+Unset mode main style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `unset_alt` {#mode.unset_alt}
+
+Unset mode alternative style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [status] {#status}
 
-- overall (Style): Overall status bar style.
-- sep_left (`{ open: String, close: String }`): Left separator symbol. e.g. `{ open = "", close = "]" }`.
-- sep_right (`{ open: String, close: String }`): Right separator symbol. e.g. `{ open = "[", close = "" }`.
+### `overall` {#status.overall}
+
+Overall status bar style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `sep_left` {#status.sep_left}
+
+Left separator symbol, e.g. `{ open = "", close = "]" }`.
+
+|      |                                   |
+| ---- | --------------------------------- |
+| Type | `{ open: string, close: string }` |
 
 <details>
 	<summary>Explanation of `sep_left` and `sep_right`</summary>
 	<img src="/webp/status-sep-explain.webp" loading="lazy" />
 </details>
 
-Permissions
+### `sep_right` {#status.sep_right}
 
-- perm_type (Style): File type.
-- perm_read (Style): Read permission.
-- perm_write (Style): Write permission.
-- perm_exec (Style): Execute permission.
-- perm_sep (Style): `-` separator.
+Right separator symbol, e.g. `{ open = "[", close = "" }`.
 
-Progress
+|      |                                   |
+| ---- | --------------------------------- |
+| Type | `{ open: string, close: string }` |
 
-- progress_label (Style): Progress label style.
-- progress_normal (Style): Style of the progress bar when it is not in an error state.
-- progress_error (Style): Style of the progress bar when an error occurs.
+<details>
+	<summary>Explanation of `sep_left` and `sep_right`</summary>
+	<img src="/webp/status-sep-explain.webp" loading="lazy" />
+</details>
+
+### `perm_type` {#status.perm_type}
+
+Style of the file type symbol, such as `d` for directory, `-` for file, `l` for symlink, etc.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `perm_read` {#status.perm_read}
+
+Style of the read permission symbol (`r`).
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `perm_write` {#status.perm_write}
+
+Style of the write permission symbol (`w`).
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `perm_exec` {#status.perm_exec}
+
+Style of the execute permission symbol (`x`).
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `perm_sep` {#status.perm_sep}
+
+Style of the permission separator symbol (`-`).
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `progress_label` {#status.progress_label}
+
+Progress label style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `progress_normal` {#status.progress_normal}
+
+Style of the progress bar when it is not in an error state.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `progress_error` {#status.progress_error}
+
+Style of the progress bar when an error occurs.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [which] {#which}
 
-- cols (Number): Number of columns. The value can be `1`, `2`, `3`.
-- mask (Style): Mask style.
-- cand (Style): Candidate key style.
-- rest (Style): Rest key style.
-- desc (Style): Description style.
-- separator (String): Separator symbol. e.g. `" -> "`.
-- separator_style (Style): Separator style.
+### `cols` {#which.cols}
+
+Number of columns.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | `1` \| `2` \| `3` |
+
+### `mask` {#which.mask}
+
+Mask style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `cand` {#which.cand}
+
+Candidate key style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `rest` {#which.rest}
+
+Rest key style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `desc` {#which.desc}
+
+Description style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `separator` {#which.separator}
+
+Separator symbol, e.g. `" -> "`.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `separator_style` {#which.separator_style}
+
+Separator style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [confirm] {#confirm}
 
-- border (Style): Border style.
-- title (Style): Title style.
-- content (Style): Content style.
-- list (Style): List style, which is the style of the list of items below the content.
-- btn_yes (Style): The style of the yes button.
-- btn_no (Style): The style of the no button.
-- btn_labels (`[String, String]`): The labels for the yes and no buttons. The first string is the label for the yes button and the second is the label for the no button.
+### `border` {#confirm.border}
+
+Border style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `title` {#confirm.title}
+
+Title style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `content` {#confirm.content}
+
+Content style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `list` {#confirm.list}
+
+List style, which is the style of the list of items below the content.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `btn_yes` {#confirm.btn_yes}
+
+The style of the yes button.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `btn_no` {#confirm.btn_no}
+
+The style of the no button.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `btn_labels` {#confirm.btn_labels}
+
+Labels for the yes and no buttons.
+
+The first string is the label for the yes button and the second is the label for the no button.
+
+|      |                    |
+| ---- | ------------------ |
+| Type | `[string, string]` |
 
 ## [spot] {#spot}
 
-- border (Style): Border style.
-- title (Style): Title style.
-- tbl_col (Style): The style of the selected column in the table.
-- tbl_cell (Style): The style of the selected cell in the table.
+### `border` {#spot.border}
+
+Border style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `title` {#spot.title}
+
+Title style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `tbl_col` {#spot.tbl_col}
+
+The style of the selected column in the table.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+<details>
+	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
+	<img src="/webp/spot-tbl-explain.webp" loading="lazy" />
+</details>
+
+### `tbl_cell` {#spot.tbl_cell}
+
+The style of the selected cell in the table.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 <details>
 	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
@@ -178,56 +533,231 @@ Progress
 
 ## [notify] {#notify}
 
-Title: Notification title.
+### `title_info` {#notify.title_info}
 
-- title_info (Style): Style of the info title.
-- title_warn (Style): Style of the warning title.
-- title_error (Style): Style of the error title.
+Style of the info title.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `title_warn` {#notify.title_warn}
+
+Style of the warning title.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `title_error` {#notify.title_error}
+
+Style of the error title.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [pick] {#pick}
 
-- border (Style): Border style.
-- active (Style): Selected item style.
-- inactive (Style): Unselected item style.
+### `border` {#pick.border}
+
+Border style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `active` {#pick.active}
+
+Selected item style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `inactive` {#pick.inactive}
+
+Unselected item style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [input] {#input}
 
-- border (Style): Border style.
-- title (Style): Title style.
-- value (Style): Value style.
-- selected (Style): Selected value style.
+### `border` {#input.border}
+
+Border style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `title` {#input.title}
+
+Title style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `value` {#input.value}
+
+Value style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `selected` {#input.selected}
+
+Selected value style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [cmp] {#cmp}
 
-- border (Style): Border style.
-- active (Style): Selected item style.
-- inactive (Style): Unselected item style.
+### `border` {#cmp.border}
 
-Icons
+Border style.
 
-- icon_file (String): File icon.
-- icon_folder (String): Folder icon.
-- icon_command (String): Command icon.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `active` {#cmp.active}
+
+Selected item style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `inactive` {#cmp.inactive}
+
+Unselected item style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `icon_file` {#cmp.icon_file}
+
+File icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `icon_folder` {#cmp.icon_folder}
+
+Folder icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `icon_command` {#cmp.icon_command}
+
+Command icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
 
 ## [tasks] {#tasks}
 
-- border (Style): Border style.
-- title (Style): Title style.
-- hovered (Style): Hovered item style.
+### `border` {#tasks.border}
+
+Border style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `title` {#tasks.title}
+
+Title style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `hovered` {#tasks.hovered}
+
+Hovered item style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
 
 ## [help] {#help}
 
-- on (Style): Key column style.
-- run (Style): Command column style.
-- desc (Style): Description column style.
-- hovered (Style): Hovered item style.
-- footer (Style): Footer style.
+### `on` {#help.on}
 
-Icon: Notification icon.
+Key column style.
 
-- icon_info (String): Info icon.
-- icon_warn (String): Warning icon.
-- icon_error (String): Error icon.
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `run` {#help.run}
+
+Command column style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `desc` {#help.desc}
+
+Description column style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `hovered` {#help.hovered}
+
+Hovered item style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `footer` {#help.footer}
+
+Footer style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `icon_info` {#help.icon_info}
+
+Info icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `icon_warn` {#help.icon_warn}
+
+Warning icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `icon_error` {#help.icon_error}
+
+Error icon.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
 
 ## [filetype] {#filetype}
 

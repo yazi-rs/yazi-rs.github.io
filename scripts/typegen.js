@@ -1,7 +1,52 @@
 import { readFileSync } from "node:fs"
 
+const STABS = `
+-- luacheck: globals cx fs ps rt th ui ya
+
+---@alias undefined any
+
+---@alias Color string
+---@alias Align integer
+---@alias Wrap integer
+---@alias Direction integer
+---@alias Position integer
+---@alias Stdio integer
+
+---@alias Sendable nil|boolean|number|string|Url|{ [Sendable]: Sendable }
+---@alias Renderable ui.Bar|ui.Border|ui.Clear|ui.Gauge|ui.Line|ui.List|ui.Text
+
+---@class (exact) Pos
+---@field [1] "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered"
+---@field x integer
+---@field y integer
+---@field w integer
+---@field h integer
+---@overload fun(value: {
+---  [1]: "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered",
+---  x: integer?, y: integer?, w: integer?, h: integer?,
+---}): self
+
+---@class (exact) Recv
+---@field recv fun(self: self): string
+
+---@type cx
+cx = cx
+---@type fs
+fs = fs
+---@type ps
+ps = ps
+---@type rt
+rt = rt
+---@type th
+th = th
+---@type ui
+ui = ui
+---@type ya
+ya = ya
+`
+
 function matchHeaders2(s) {
-	const re = /## ([A-Z][a-z]+) {#[a-z]+}$([\S\s]+?)(?=^##[^#]|$(?![\n\r]))/gm
+	const re = /## ([:A-Za-z]+) {#[a-z-]+}$([\S\s]+?)(?=^##[^#]|$(?![\n\r]))/gm
 	const result = {}
 	for (const m of s.matchAll(re)) {
 		result[normalizeType(m[1])] = {
@@ -13,7 +58,7 @@ function matchHeaders2(s) {
 }
 
 function matchHeaders3(s) {
-	const re = /^### `([A-Z_a-z]+)(\([^()]+\))?` {#([A-Za-z]+)\.[A-Z\\_a-z-]+}$([\S\s]+?)(?=^#|$(?![\n\r]))/gm
+	const re = /^### `([A-Z_a-z]+)(\([^()]+\))?` {#([A-Za-z-]+)\.[A-Z\\_a-z]+}$([\S\s]+?)(?=^#|$(?![\n\r]))/gm
 	const result = []
 	for (const m of s.matchAll(re)) {
 		const table = matchTable(m[4])
@@ -80,10 +125,8 @@ function matchParams(s) {
 
 function matchTypes(s) {
 	const result = []
-	for (let type of s.split("\\|")) {
-		type = type.replaceAll("`", "").trim()
-		type = type.startsWith("[") ? type.slice(1, type.indexOf("]")) : type
-		result.push(normalizeType(type))
+	for (const m of s.matchAll(/`([^`]+)`/g)) {
+		result.push(normalizeType(m[1].replaceAll("\\|", "|")))
 	}
 	return result
 }
@@ -105,7 +148,8 @@ function gen(headers) {
 		// Methods
 		for (const child of header.children) {
 			if (child.return && child.name !== "__new") {
-				s += `---@field ${child.name} fun(`
+				s += child.desc.split("\n").map(s => `-- ${s}`).join("\n")
+				s += `\n---@field ${child.name} fun(`
 				for (const param of child.params) {
 					s += `${param}: `
 					s += (child.args[param] || []).join("|")
@@ -129,36 +173,29 @@ function gen(headers) {
 
 		s += `\n`
 	}
-	console.log(s)
-	// return result
+	return s
 }
 
 function normalizeDesc(s) {
-	return s.replaceAll(/[\n\r]+/g, "\n").replaceAll("\t", "    ").trim()
+	return s.replaceAll(/[\n\r]+/g, "\n").replaceAll("\t", "  ").trim()
 }
 
 function normalizeType(s) {
-	switch (s) {
-	case "Rect":
-	case "Pad":
-	case "Style":
-	case "Span":
-	case "Line":
-	case "Text":
-	case "Layout":
-	case "Constraint":
-	case "List":
-	case "Bar":
-	case "Border":
-	case "Gauge":
-	case "Clear":
-		return `ui.${s}`
-	default:
-		return s
-	}
+	const re = /(?<!ui\.)(Bar|Border|Clear|Constraint|Gauge|Layout|Line|List|Pad|Rect|Span|Style|Text)/g
+	return s.replaceAll("::", "__").replaceAll("Self", "self").replaceAll(re, m => `ui.${m}`)
 }
 
 const types = matchHeaders2(readFileSync("../docs/plugins/types.md", { encoding: "utf8" }))
-// const layout = matchHeaders2(readFileSync("../docs/plugins/layout.md", { encoding: "utf8" }))
+const layout = matchHeaders2(readFileSync("../docs/plugins/layout.md", { encoding: "utf8" }))
+const utils = matchHeaders2(readFileSync("../docs/plugins/utils.md", { encoding: "utf8" }))
+const appdata = matchHeaders2(readFileSync("../docs/plugins/appdata.md", { encoding: "utf8" }))
 
-gen(types)
+const combined = [
+	STABS,
+	gen(types),
+	gen(layout),
+	gen(utils),
+	gen(appdata),
+].join("\n")
+
+console.log(combined)
