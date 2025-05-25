@@ -135,7 +135,7 @@ When a plugin is executed asynchronously, an isolated async context is created f
 
 In this context, you can use all the async functions supported by Yazi, and it operates concurrently with the main thread, ensuring that the main thread is not blocked.
 
-You can also obtain [a small amount](#sendable) of app data from the sync context by calling a "sync block":
+You can also obtain [a small amount](#sendable) of data from the sync context by calling a "sync block":
 
 ```lua
 -- ~/.config/yazi/plugins/my-async-plugin.yazi/main.lua
@@ -146,7 +146,7 @@ local set_state = ya.sync(function(state, a)
 end)
 
 local get_state = ya.sync(function(state, b)
-	-- You can access all app data through the `cx`,
+	-- You can access all states through the `cx`,
 	-- within the `sync()` block, in an async plugin
 	local h = cx.active.current.hovered
 	return h and state.a .. tostring(h.url) or b
@@ -252,7 +252,7 @@ When the user presses <kbd>J</kbd> or <kbd>K</kbd> to scroll the preview of the 
 
 The task of `peek` is to draw in the preview area based on the values of `file` and `skip`. This process is asynchronous.
 
-The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It is synchronous, meaning you can access [app data](/docs/plugins/appdata).
+The task of `seek` is to change the value of `skip` based on user behavior and trigger `peek` again. It's synchronous, meaning you can access [the context](/docs/plugins/context).
 
 There are some preset previewers and preloaders you can refer to: [Yazi Preset Plugins](https://github.com/sxyazi/yazi/tree/shipped/yazi-plugin/preset/plugins)
 

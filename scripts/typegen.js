@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs"
 
-const STABS = `
--- luacheck: globals cx fs ps rt th ui ya
+const STUBS = `
+-- luacheck: globals Command Url cx fs ps rt th ui ya
 
 ---@alias undefined any
 
@@ -29,6 +29,10 @@ const STABS = `
 ---@class (exact) Recv
 ---@field recv fun(self: self): string
 
+---@type Command
+Command = Command
+---@type Url
+Url = Url
 ---@type cx
 cx = cx
 ---@type fs
@@ -58,7 +62,7 @@ function matchHeaders2(s) {
 }
 
 function matchHeaders3(s) {
-	const re = /^### `([A-Z_a-z]+)(\([^()]+\))?` {#([A-Za-z-]+)\.[A-Z\\_a-z]+}$([\S\s]+?)(?=^#|$(?![\n\r]))/gm
+	const re = /^### `([A-Z_a-z]+)(\([^()]*\))?` {#([A-Za-z-]+)\.[A-Z\\_a-z]+}$([\S\s]+?)(?=^#|$(?![\n\r]))/gm
 	const result = []
 	for (const m of s.matchAll(re)) {
 		const table = matchTable(m[4])
@@ -120,7 +124,7 @@ function matchColumns(s) {
 }
 
 function matchParams(s) {
-	return s.split(",").map(s => s.trim().replace(/^\(/, "").replace(/\)$/, ""))
+	return s.split(",").map(s => s.trim().replace(/^\(/, "").replace(/\)$/, "")).filter(s => s !== "")
 }
 
 function matchTypes(s) {
@@ -130,6 +134,38 @@ function matchTypes(s) {
 	}
 	return result
 }
+
+function stubUi(headers) {
+	const children = []
+	for (const [type, header] of Object.entries(headers)) {
+		if (!type.startsWith("ui.")) {
+			continue
+		}
+
+		const name = type.replace(/^ui\./, "")
+		const constructor = header.children.find(c => c.name === "__new")
+		if (constructor) {
+			children.push({
+				...constructor,
+				name,
+				return: constructor.return.map(t => t === "self" ? type : t),
+			})
+		} else {
+			children.push({
+				name,
+				type: [type],
+				desc: "",
+			})
+		}
+	}
+	return { ui: { children, desc: "" } }
+}
+
+// TODO
+function stubRt(headers) {}
+
+// TODO
+function stubTh(headers) {}
 
 function gen(headers) {
 	let s = ""
@@ -187,15 +223,18 @@ function normalizeType(s) {
 
 const types = matchHeaders2(readFileSync("../docs/plugins/types.md", { encoding: "utf8" }))
 const layout = matchHeaders2(readFileSync("../docs/plugins/layout.md", { encoding: "utf8" }))
+const context = matchHeaders2(readFileSync("../docs/plugins/context.md", { encoding: "utf8" }))
+const runtime = matchHeaders2(readFileSync("../docs/plugins/runtime.md", { encoding: "utf8" }))
 const utils = matchHeaders2(readFileSync("../docs/plugins/utils.md", { encoding: "utf8" }))
-const appdata = matchHeaders2(readFileSync("../docs/plugins/appdata.md", { encoding: "utf8" }))
 
 const combined = [
-	STABS,
+	STUBS,
 	gen(types),
 	gen(layout),
+	gen(context),
+	gen(runtime),
 	gen(utils),
-	gen(appdata),
+	gen(stubUi(layout)),
 ].join("\n")
 
 console.log(combined)

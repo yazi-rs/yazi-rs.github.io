@@ -1,13 +1,13 @@
 ---
-sidebar_position: 4
-description: Learn how to access Yazi's app data.
+sidebar_position: 3
+description: Learn how to access Yazi's sync context.
 ---
 
-# App data
+# Context
 
 ## cx {#cx}
 
-You can access all app data through the `cx` within the [sync context](/docs/plugins/overview#sync-context):
+You can access all states within [sync context](/docs/plugins/overview#sync-context) through `cx`.
 
 ### `active` {#cx.active}
 
@@ -360,12 +360,12 @@ File find status:
 
 - `nil` if if the user not in [`find`](/docs/configuration/keymap#manager.find) mode.
 - `nil` if current file is not related to the keyword entered by the user.
-- `(idx, all)` if current file is one of the files found, where `idx` is its index among the results and `all` is the total count of files found.
+- `integer, integer` if current file is one of the files found, where first is its index among the results and second is the total count of files found.
 
-| In/Out | Type                  |
-| ------ | --------------------- |
-| `self` | `Self`                |
-| Return | `(integer, integer)?` |
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `self` | `Self`               |
+| Return | `integer?, integer?` |
 
 ## mgr::Tabs {#mgr-tabs}
 

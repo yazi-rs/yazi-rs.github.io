@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 5
 description: Learn how to use Yazi's Lua API.
 ---
 
@@ -270,7 +270,7 @@ Returns `(err, upper_bound)`:
 | In/Out    | Type                                                      |
 | --------- | --------------------------------------------------------- |
 | `opts`    | `{ area: Rect, file: File, mime: string, skip: integer }` |
-| Return    | `(Error?, integer?)`                                      |
+| Return    | `Error?, integer?`                                        |
 | Available | Async context only                                        |
 
 ### `preview_widgets(opts, widgets)` {#ya.preview_widgets}
@@ -532,7 +532,7 @@ ps.sub("cd", function(body)
 end)
 ```
 
-It runs in a sync context, so you can access app data via `cx` for the content of interest.
+It runs in a sync context, so you can access all states via `cx` for the data of interest.
 
 | In/Out     | Type                  | Note                                                                  |
 | ---------- | --------------------- | --------------------------------------------------------------------- |
@@ -600,12 +600,12 @@ It is useful if you just need a valid directory as the CWD of a process to start
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| Return    | `(Url?, Error?)`   |
+| Return    | `Url?, Error?`     |
 | Available | Async context only |
 
 [getcwd]: https://man7.org/linux/man-pages/man3/getcwd.3.html
 [chdir]: https://man7.org/linux/man-pages/man2/chdir.2.html
-[folder-cwd]: /docs/plugins/appdata#tab-folder.cwd
+[folder-cwd]: /docs/plugins/context#tab-folder.cwd
 
 ### `cha(url, follow)` {#fs.cha}
 
@@ -623,7 +623,7 @@ local cha, err = fs.cha(url, true)
 | --------- | ------------------ |
 | `url`     | `Url`              |
 | `follow`  | `boolean?`         |
-| Return    | `(Cha?, Error?)`   |
+| Return    | `Cha?, Error?`     |
 | Available | Async context only |
 
 ### `write(url, data)` {#fs.write}
@@ -634,12 +634,12 @@ Write `data` to the specified `url`:
 local ok, err = fs.write(url, "hello world")
 ```
 
-| In/Out    | Type                |
-| --------- | ------------------- |
-| `url`     | `Url`               |
-| `data`    | `string`            |
-| Return    | `(boolean, Error?)` |
-| Available | Async context only  |
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `url`     | `Url`              |
+| `data`    | `string`           |
+| Return    | `boolean, Error?`  |
+| Available | Async context only |
 
 ### `create(type, url)` {#fs.create}
 
@@ -658,7 +658,7 @@ Where `type` can be one of the following:
 | --------- | ---------------------------------- |
 | `type`    | `string` \| `"dir"` \| `"dir_all"` |
 | `url`     | `Url`                              |
-| Return    | `(boolean, Error?)`                |
+| Return    | `boolean, Error?`                  |
 | Available | Async context only                 |
 
 ### `remove(type, url)` {#fs.remove}
@@ -680,7 +680,7 @@ Where `type` can be one of the following:
 | --------- | --------------------------------------------------------------- |
 | `type`    | `string` \| `"file"` \| `"dir"` \| `"dir_all"` \| `"dir_clean"` |
 | `url`     | `Url`                                                           |
-| Return    | `(boolean, Error?)`                                             |
+| Return    | `boolean, Error?`                                               |
 | Available | Async context only                                              |
 
 ### `read_dir(url, options)` {#fs.read_dir}
@@ -702,7 +702,7 @@ local files, err = fs.read_dir(url, {
 | --------- | ------------------------------------------------------- |
 | `url`     | `Url`                                                   |
 | `options` | `{ glob: string?, limit: integer?, resolve: boolean? }` |
-| Return    | `(File[]?, Error?)`                                     |
+| Return    | `File[]?, Error?`                                       |
 | Available | Async context only                                      |
 
 ### `unique_name(url)`
@@ -718,7 +718,7 @@ If the file already exists, it will append `_n` to the filename, where `n` is a 
 | In/Out    | Type               |
 | --------- | ------------------ |
 | `url`     | `Url`              |
-| Return    | `(Url?, Error?)`   |
+| Return    | `Url?, Error?`     |
 | Available | Async context only |
 
 ## Command {#command}
@@ -861,10 +861,10 @@ Spawn the command:
 local child, err = Command("ls"):spawn()
 ```
 
-| In/Out | Type               |
-| ------ | ------------------ |
-| `self` | `Self`             |
-| Return | `(Child?, Error?)` |
+| In/Out | Type             |
+| ------ | ---------------- |
+| `self` | `Self`           |
+| Return | `Child?, Error?` |
 
 ### `output(self)` {#Command.output}
 
@@ -874,10 +874,10 @@ Spawn the command and wait for it to finish:
 local output, err = Command("ls"):output()
 ```
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| Return | `(Output?, Error?)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| Return | `Output?, Error?` |
 
 ### `status(self)` {#Command.status}
 
@@ -887,10 +887,19 @@ Executes the command as a child process, waiting for it to finish and collecting
 local status, err = Command("ls"):status()
 ```
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| Return | `(Status?, Error?)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| Return | `Status?, Error?` |
+
+### `__new(value)` {#command.\_\_new}
+
+Make a new command.
+
+| In/Out  | Type     |
+| ------- | -------- |
+| `value` | `string` |
+| Return  | `Self`   |
 
 ## Child {#child}
 
@@ -912,11 +921,11 @@ local data, event = child:read(1024)
 - Data comes from stderr, if event is 1.
 - No data to read from both stdout and stderr, if event is 2.
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| `len`  | `integer`           |
-| Return | `(string, integer)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| `len`  | `integer`         |
+| Return | `string, integer` |
 
 ### `read_line(self)` {#Child.read_line}
 
@@ -926,10 +935,10 @@ Same as [`read()`](#Child.read), except it reads data line by line:
 local line, event = child:read_line()
 ```
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| Return | `(string, integer)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| Return | `string, integer` |
 
 ### `read_line_with(self, opts)` {#Child.read_line_with}
 
@@ -950,7 +959,7 @@ It has a extra event:
 | ------ | ---------------------- |
 | `self` | `Self`                 |
 | `opts` | `{ timeout: integer }` |
-| Return | `(string, integer)`    |
+| Return | `string, integer`      |
 
 ### `write_all(self, src)` {#Child.write_all}
 
@@ -967,11 +976,11 @@ Ensure that the child's stdin is available when calling this method, specificall
 
 Otherwise, an error will be thrown.
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| `src`  | `string`            |
-| Return | `(boolean, Error?)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| `src`  | `string`          |
+| Return | `boolean, Error?` |
 
 ### `flush(self)` {#Child.flush}
 
@@ -988,10 +997,10 @@ Ensure that the child's stdin is available when calling this method, specificall
 
 Otherwise, an error will be thrown.
 
-| In/Out   | Type                |
-| -------- | ------------------- |
-| `self`   | `Self`              |
-| `Return` | `(boolean, Error?)` |
+| In/Out   | Type              |
+| -------- | ----------------- |
+| `self`   | `Self`            |
+| `Return` | `boolean, Error?` |
 
 ### `wait(self)` {#Child.wait}
 
@@ -1001,10 +1010,10 @@ Wait for the child process to finish:
 local status, err = child:wait()
 ```
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| Return | `(Status?, Error?)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| Return | `Status?, Error?` |
 
 ### `wait_with_output(self)` {#Child.wait_with_output}
 
@@ -1014,10 +1023,10 @@ Wait for the child process to finish and get the output:
 local output, err = child:wait_with_output()
 ```
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| Return | `(Output?, Error?)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| Return | `Output?, Error?` |
 
 ### `start_kill(self)` {#Child.start_kill}
 
@@ -1027,10 +1036,10 @@ Send a SIGTERM signal to the child process:
 local ok, err = child:start_kill()
 ```
 
-| In/Out | Type                |
-| ------ | ------------------- |
-| `self` | `Self`              |
-| Return | `(boolean, Error?)` |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| Return | `boolean, Error?` |
 
 ### `take_stdin(self)` {#Child.take_stdin}
 

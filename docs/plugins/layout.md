@@ -101,6 +101,8 @@ Apply a `padding` to the rect.
 
 ### `__new(value)` {#rect.\_\_new}
 
+Make a new rect.
+
 | In/Out  | Type                                                     |
 | ------- | -------------------------------------------------------- |
 | `value` | `{ x: integer?, y: integer?, w: integer?, h: integer? }` |
@@ -211,6 +213,8 @@ Create a padding on both x and y-axis, which is equal to `ui.Pad(y, x, y, x)`.
 | Return | `Self`    |
 
 ### `__new(top, right, bottom, left)` {#pad.\_\_new}
+
+Make a new padding.
 
 | In/Out   | Type      |
 | -------- | --------- |
@@ -354,6 +358,8 @@ Patch the style with `another`.
 
 ### `__new()` {#style.\_\_new}
 
+Make a new style.
+
 | In/Out | Type   |
 | ------ | ------ |
 | Return | `Self` |
@@ -405,6 +411,8 @@ ui.Span("Hello world"):fg("white"):bg("black"):bold()
 ```
 
 ### `__new(value)` {#span.\_\_new}
+
+Make a new span.
 
 | In/Out  | Type               |
 | ------- | ------------------ |
@@ -498,6 +506,8 @@ ui.Line("Hello world"):fg("white"):bg("black"):bold()
 ```
 
 ### `__new(value)` {#line.\_\_new}
+
+Make a new line.
 
 | In/Out  | Type                                                     |
 | ------- | -------------------------------------------------------- |
@@ -601,6 +611,8 @@ ui.Text("Hello world"):fg("white"):bg("black"):bold()
 
 ### `__new(value)` {#text.\_\_new}
 
+Make a new text.
+
 | In/Out  | Type                                                     |
 | ------- | -------------------------------------------------------- |
 | `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
@@ -686,6 +698,8 @@ Split the layout into multiple [Rect](#rect)s according to the constraints.
 | Return | [`Rect[]`](#rect) |
 
 ### `__new()` {#layout.\_\_new}
+
+Make a new layout.
 
 | In/Out | Type   |
 | ------ | ------ |
@@ -906,6 +920,8 @@ Set the style of the list.
 
 ### `__new(value)` {#list.\_\_new}
 
+Make a new list.
+
 | In/Out  | Type                                                                     |
 | ------- | ------------------------------------------------------------------------ |
 | `value` | `string` \| `Span` \| `Line` \| `Text` \| `(string\|Span\|Line\|Text)[]` |
@@ -961,6 +977,8 @@ Set the style of the bar.
 | Return  | `self`            |
 
 ### `__new(value)` {#bar.\_\_new}
+
+Make a new bar.
 
 | In/Out  | Type        |
 | ------- | ----------- |
@@ -1026,6 +1044,8 @@ Set the style of the border.
 | Return  | `self`            |
 
 ### `__new(value)` {#border.\_\_new}
+
+Make a new border.
 
 | In/Out  | Type       |
 | ------- | ---------- |
@@ -1104,6 +1124,8 @@ Set the style of the gauge itself.
 
 ### `__new()` {#gauge.\_\_new}
 
+Make a new gauge.
+
 | In/Out | Type   |
 | ------ | ------ |
 | Return | `Self` |
@@ -1134,6 +1156,8 @@ Set the area of the clear.
 If `rect` is not specified, it returns the current area.
 
 ### `__new()` {#clear.\_\_new}
+
+Make a new clear.
 
 | In/Out | Type            |
 | ------ | --------------- |

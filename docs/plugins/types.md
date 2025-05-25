@@ -160,6 +160,15 @@ Concatenate the url with `another`.
 | `another` | `string` |
 | Return    | `Self`   |
 
+### `__new(value)` {#url.\_\_new}
+
+Make a new url.
+
+| In/Out  | Type               |
+| ------- | ------------------ |
+| `value` | `string` \| `Self` |
+| Return  | `Self`             |
+
 ## Cha {#cha}
 
 Cha means one file's characteristics.
@@ -256,7 +265,7 @@ Whether the file has the sticky bit set.
 
 Length of the file in bytes.
 
-If you want to get the size of a directory, use [`size()`](/docs/plugins/appdata#fs-file.size) instead.
+If you want to get the size of a directory, use [`size()`](/docs/plugins/context#fs-file.size) instead.
 
 |      |           |
 | ---- | --------- |
