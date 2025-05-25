@@ -47,9 +47,9 @@ Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`.
 
 Parent directory.
 
-|      |        |
-| ---- | ------ |
-| Type | `Url?` |
+|      |         |
+| ---- | ------- |
+| Type | `Self?` |
 
 ### `is_regular` {#url.is_regular}
 
@@ -95,41 +95,41 @@ Whether the path represented by the url has a root.
 
 Join with `another`.
 
-| In/Out    | Type              |
-| --------- | ----------------- |
-| `self`    | `Self`            |
-| `another` | `Url` \| `string` |
-| Return    | `Url`             |
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| `another` | `Self` \| `string` |
+| Return    | `Self`             |
 
 ### `starts_with(self, another)` {#url.starts_with}
 
 Whether the url starts with `another`.
 
-| In/Out    | Type              |
-| --------- | ----------------- |
-| `self`    | `Self`            |
-| `another` | `Url` \| `string` |
-| Return    | `boolean`         |
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| `another` | `Self` \| `string` |
+| Return    | `boolean`          |
 
 ### `ends_with(self, another)` {#url.ends_with}
 
 Whether the url ends with `another`.
 
-| In/Out    | Type              |
-| --------- | ----------------- |
-| `self`    | `Self`            |
-| `another` | `Url` \| `string` |
-| Return    | `boolean`         |
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| `another` | `Self` \| `string` |
+| Return    | `boolean`          |
 
 ### `strip_prefix(self, another)` {#url.strip_prefix}
 
 Strips the prefix of `another`.
 
-| In/Out    | Type              |
-| --------- | ----------------- |
-| `self`    | `Self`            |
-| `another` | `Url` \| `string` |
-| Return    | `Url`             |
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| `another` | `Self` \| `string` |
+| Return    | `Self`             |
 
 ### `__eq(self, another)` {#url.\_\_eq}
 
@@ -138,7 +138,7 @@ Whether the url is equal to `another`.
 | In/Out    | Type      |
 | --------- | --------- |
 | `self`    | `Self`    |
-| `another` | `Url`     |
+| `another` | `Self`    |
 | Return    | `boolean` |
 
 ### `__tostring(self)` {#url.\_\_tostring}
@@ -158,7 +158,7 @@ Concatenate the url with `another`.
 | --------- | -------- |
 | `self`    | `Self`   |
 | `another` | `string` |
-| Return    | `Url`    |
+| Return    | `Self`   |
 
 ## Cha {#cha}
 
@@ -326,7 +326,7 @@ Unix permission representation, such as `drwxr-xr-x`.
 
 ### `url` {#file.url}
 
-`Url` of the file.
+Url of the file.
 
 |      |       |
 | ---- | ----- |
@@ -334,7 +334,7 @@ Unix permission representation, such as `drwxr-xr-x`.
 
 ### `cha` {#file.cha}
 
-`Cha` of the file.
+Cha of the file.
 
 |      |       |
 | ---- | ----- |
@@ -342,7 +342,7 @@ Unix permission representation, such as `drwxr-xr-x`.
 
 ### `link_to` {#file.link_to}
 
-`Url` of the file points to, if it's a symlink.
+Url of the file points to, if it's a symlink.
 
 |      |        |
 | ---- | ------ |

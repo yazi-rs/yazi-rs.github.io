@@ -104,7 +104,7 @@ Apply a `padding` to the rect.
 | In/Out  | Type                                                     |
 | ------- | -------------------------------------------------------- |
 | `value` | `{ x: integer?, y: integer?, w: integer?, h: integer? }` |
-| Return  | `Rect`                                                   |
+| Return  | `Self`                                                   |
 
 ## Pad {#pad}
 
@@ -153,7 +153,7 @@ Create a padding with only top value, which is equal to `ui.Pad(top, 0, 0, 0)`.
 | In/Out | Type      |
 | ------ | --------- |
 | `top`  | `integer` |
-| Return | `Pad`     |
+| Return | `Self`    |
 
 ### `right(right)` {#pad.Right}
 
@@ -162,7 +162,7 @@ Create a padding with only right value, which is equal to `ui.Pad(0, right, 0, 0
 | In/Out  | Type      |
 | ------- | --------- |
 | `right` | `integer` |
-| Return  | `Pad`     |
+| Return  | `Self`    |
 
 ### `bottom(bottom)` {#pad.Bottom}
 
@@ -171,8 +171,7 @@ Create a padding with only bottom value, which is equal to `ui.Pad(0, 0, bottom,
 | In/Out   | Type      |
 | -------- | --------- |
 | `bottom` | `integer` |
-
-| Return | `Pad` |
+| Return   | `Self`    |
 
 ### `left(left)` {#pad.Left}
 
@@ -181,7 +180,7 @@ Create a padding with only left value, which is equal to `ui.Pad(0, 0, 0, left)`
 | In/Out | Type      |
 | ------ | --------- |
 | `left` | `integer` |
-| Return | `Pad`     |
+| Return | `Self`    |
 
 ### `x(x)` {#pad.X}
 
@@ -190,7 +189,7 @@ Create a padding on both x-axis, which is equal to `ui.Pad(0, x, 0, x)`.
 | In/Out | Type      |
 | ------ | --------- |
 | `x`    | `integer` |
-| Return | `Pad`     |
+| Return | `Self`    |
 
 ### `y(y)` {#pad.Y}
 
@@ -199,7 +198,7 @@ Create a padding on both y-axis, which is equal to `ui.Pad(y, 0, y, 0)`.
 | In/Out | Type      |
 | ------ | --------- |
 | `y`    | `integer` |
-| Return | `Pad`     |
+| Return | `Self`    |
 
 ### `xy(x, y)` {#pad.XY}
 
@@ -209,7 +208,7 @@ Create a padding on both x and y-axis, which is equal to `ui.Pad(y, x, y, x)`.
 | ------ | --------- |
 | `x`    | `integer` |
 | `y`    | `integer` |
-| Return | `Pad`     |
+| Return | `Self`    |
 
 ### `__new(top, right, bottom, left)` {#pad.\_\_new}
 
@@ -219,7 +218,7 @@ Create a padding on both x and y-axis, which is equal to `ui.Pad(y, x, y, x)`.
 | `right`  | `integer` |
 | `bottom` | `integer` |
 | `left`   | `integer` |
-| Return   | `Pad`     |
+| Return   | `Self`    |
 
 ## Style {#style}
 
@@ -409,8 +408,8 @@ ui.Span("Hello world"):fg("white"):bg("black"):bold()
 
 | In/Out  | Type               |
 | ------- | ------------------ |
-| `value` | `string` \| `Span` |
-| Return  | `Span`             |
+| `value` | `string` \| `Self` |
+| Return  | `Self`             |
 
 ## Line {#line}
 
@@ -502,8 +501,8 @@ ui.Line("Hello world"):fg("white"):bg("black"):bold()
 
 | In/Out  | Type                                                     |
 | ------- | -------------------------------------------------------- |
-| `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
-| Return  | `Line`                                                   |
+| `value` | `string` \| `Span` \| `Self` \| `(string\|Span\|Self)[]` |
+| Return  | `Self`                                                   |
 
 ## Text {#text}
 
@@ -605,7 +604,7 @@ ui.Text("Hello world"):fg("white"):bg("black"):bold()
 | In/Out  | Type                                                     |
 | ------- | -------------------------------------------------------- |
 | `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
-| Return  | `Text`                                                   |
+| Return  | `Self`                                                   |
 
 ## Layout {#layout}
 
@@ -670,27 +669,27 @@ Set the vertical margin of the layout.
 
 Set the constraints of the layout.
 
-| In/Out        | Type                               |
-| ------------- | ---------------------------------- |
-| `self`        | `Self`                             |
-| `constraints` | [`table<Constraint>`](#constraint) |
-| Return        | `self`                             |
+| In/Out        | Type                          |
+| ------------- | ----------------------------- |
+| `self`        | `Self`                        |
+| `constraints` | [`Constraint[]`](#constraint) |
+| Return        | `self`                        |
 
 ### `split(self, rect)` {#layout.split}
 
 Split the layout into multiple [Rect](#rect)s according to the constraints.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | `Self`                 |
-| `rect` | [`Rect`](#rect)        |
-| Return | [`table<Rect>`](#rect) |
+| In/Out | Type              |
+| ------ | ----------------- |
+| `self` | `Self`            |
+| `rect` | [`Rect`](#rect)   |
+| Return | [`Rect[]`](#rect) |
 
 ### `__new()` {#layout.\_\_new}
 
-| In/Out | Type     |
-| ------ | -------- |
-| Return | `Layout` |
+| In/Out | Type   |
+| ------ | ------ |
+| Return | `Self` |
 
 ## Constraint {#constraint}
 
@@ -717,10 +716,10 @@ Constraints are prioritized in the following order:
 
 Applies a minimum size constraint to the element.
 
-| In/Out | Type         |
-| ------ | ------------ |
-| `min`  | `integer`    |
-| Return | `Constraint` |
+| In/Out | Type      |
+| ------ | --------- |
+| `min`  | `integer` |
+| Return | `Self`    |
 
 The element size is set to at least the specified amount.
 
@@ -740,10 +739,10 @@ The element size is set to at least the specified amount.
 
 Applies a maximum size constraint to the element.
 
-| In/Out | Type         |
-| ------ | ------------ |
-| `max`  | `integer`    |
-| Return | `Constraint` |
+| In/Out | Type      |
+| ------ | --------- |
+| `max`  | `integer` |
+| Return | `Self`    |
 
 The element size is set to at most the specified amount.
 
@@ -764,10 +763,10 @@ The element size is set to at most the specified amount.
 
 Applies a length constraint to the element.
 
-| In/Out | Type         |
-| ------ | ------------ |
-| `len`  | `integer`    |
-| Return | `Constraint` |
+| In/Out | Type      |
+| ------ | --------- |
+| `len`  | `integer` |
+| Return | `Self`    |
 
 The element size is set to the specified amount:
 
@@ -787,10 +786,10 @@ The element size is set to the specified amount:
 
 Applies a percentage of the available space to the element.
 
-| In/Out | Type         |
-| ------ | ------------ |
-| `p`    | `integer`    |
-| Return | `Constraint` |
+| In/Out | Type      |
+| ------ | --------- |
+| `p`    | `integer` |
+| Return | `Self`    |
 
 Converts the given percentage to a floating-point value and multiplies that with area.
 This value is rounded back to an integer as part of the layout split calculation.
@@ -811,11 +810,11 @@ This value is rounded back to an integer as part of the layout split calculation
 
 Applies a ratio of the available space to the element.
 
-| In/Out | Type         |
-| ------ | ------------ |
-| `num`  | `integer`    |
-| `den`  | `integer`    |
-| Return | `Constraint` |
+| In/Out | Type      |
+| ------ | --------- |
+| `num`  | `integer` |
+| `den`  | `integer` |
+| Return | `Self`    |
 
 Converts the given ratio to a floating-point value and multiplies that with area.
 This value is rounded back to an integer as part of the layout split calculation.
@@ -837,10 +836,10 @@ This value is rounded back to an integer as part of the layout split calculation
 Applies the scaling factor proportional to all other `Fill` elements
 to fill excess space.
 
-| In/Out  | Type         |
-| ------- | ------------ |
-| `scale` | `integer`    |
-| Return  | `Constraint` |
+| In/Out  | Type      |
+| ------- | --------- |
+| `scale` | `integer` |
+| Return  | `Self`    |
 
 The element will only expand or fill into excess available space, proportionally matching
 other `Fill` elements while satisfying all other constraints.
@@ -910,7 +909,7 @@ Set the style of the list.
 | In/Out  | Type                                                                     |
 | ------- | ------------------------------------------------------------------------ |
 | `value` | `string` \| `Span` \| `Line` \| `Text` \| `(string\|Span\|Line\|Text)[]` |
-| Return  | `List`                                                                   |
+| Return  | `Self`                                                                   |
 
 ## Bar {#bar}
 
@@ -965,7 +964,7 @@ Set the style of the bar.
 | In/Out  | Type        |
 | ------- | ----------- |
 | `value` | `Direction` |
-| Return  | `Bar`       |
+| Return  | `Self`      |
 
 ## Border {#border}
 
@@ -1030,7 +1029,7 @@ Set the style of the border.
 | In/Out  | Type       |
 | ------- | ---------- |
 | `value` | `Position` |
-| Return  | `Border`   |
+| Return  | `Self`     |
 
 ## Gauge {#gauge}
 
@@ -1104,9 +1103,9 @@ Set the style of the gauge itself.
 
 ### `__new()` {#gauge.\_\_new}
 
-| In/Out | Type    |
-| ------ | ------- |
-| Return | `Gauge` |
+| In/Out | Type   |
+| ------ | ------ |
+| Return | `Self` |
 
 ## Clear {#clear}
 
@@ -1138,4 +1137,4 @@ If `rect` is not specified, it returns the current area.
 | In/Out | Type            |
 | ------ | --------------- |
 | `rect` | [`Rect`](#rect) |
-| Return | `Clear`         |
+| Return | `Self`          |
