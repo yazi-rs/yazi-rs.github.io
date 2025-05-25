@@ -73,10 +73,10 @@ Whether in select mode, or unset mode.
 
 Converts the mode to string.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | [`tab::Mode`](#tab-mode) |
-| Return | `string`                 |
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Self`   |
+| Return | `string` |
 
 ## tab::Pref {#tab-pref}
 
@@ -144,10 +144,10 @@ Show hidden files. See [`show_hidden`](/docs/configuration/yazi#manager.show_hid
 
 Returns the number of selected [Url](#url)s.
 
-| In/Out | Type                             |
-| ------ | -------------------------------- |
-| `self` | [`tab::Selected`](#tab-selected) |
-| Return | `integer`                        |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `integer` |
 
 ### `__pairs(self)` {#tab-selected.\_\_pairs}
 
@@ -155,7 +155,7 @@ Iterate over the selected [Url](#url)s.
 
 | In/Out | Type                                 |
 | ------ | ------------------------------------ |
-| `self` | [`tab::Selected`](#tab-selected)     |
+| `self` | `Self`                               |
 | Return | `fun(t: self, k: any): integer, Url` |
 
 ## tab::Preview {#tab-preview}
@@ -232,20 +232,20 @@ Hovered file, or `nil` if no file is hovered.
 
 Returns the number of files in this folder.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | [`fs::Files`](#fs-files) |
-| Return | `integer`                |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `integer` |
 
 ### `__index(self, idx)` {#fs-files.\_\_index}
 
 Access each file by index.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | [`fs::Files`](#fs-files) |
-| `idx`  | `integer`                |
-| Return | [`fs::File?`](#fs-file)  |
+| In/Out | Type                    |
+| ------ | ----------------------- |
+| `self` | `Self`                  |
+| `idx`  | `integer`               |
+| Return | [`fs::File?`](#fs-file) |
 
 ## fs::File {#fs-file}
 
@@ -263,19 +263,19 @@ Whether the file is hovered.
 
 Size of the file in bytes, or `nil` if it's a directory yet not been evaluated.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `integer?`             |
+| In/Out | Type       |
+| ------ | ---------- |
+| `self` | `Self`     |
+| Return | `integer?` |
 
 ### `mime(self)` {#fs-file.mime}
 
 Mimetype of the file, or `nil` if it's a directory or hasn't been lazily calculated.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `string?`              |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `string?` |
 
 ### `prefix(self)` {#fs-file.prefix}
 
@@ -283,46 +283,46 @@ Prefix of the file relative to `CWD`, which used in the flat view during search.
 
 For instance, if `CWD` is `/foo`, and the file is `/foo/bar/baz`, then the prefix is `bar/`.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `string?`              |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `string?` |
 
 ### `icon(self)` {#fs-file.icon}
 
 Icon of the file, or `nil` if no [`[icon]`](/docs/configuration/theme#icon) rules match.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `Icon?`                |
+| In/Out | Type    |
+| ------ | ------- |
+| `self` | `Self`  |
+| Return | `Icon?` |
 
 ### `style(self)` {#fs-file.style}
 
 Style of the file, or `nil` if no [`[filetype]`](/docs/configuration/theme#filetype) rules match.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `Style?`               |
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Self`   |
+| Return | `Style?` |
 
 ### `is_yanked(self)` {#fs-file.is-yanked}
 
 Whether the file is yanked.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `boolean`              |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `boolean` |
 
 ### `is_selected(self)` {#fs-file.is-selected}
 
 Whether the file is selected.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `boolean`              |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `boolean` |
 
 ### `found(self)` {#fs-file.found}
 
@@ -332,10 +332,10 @@ File find status:
 - `nil` if current file is not related to the keyword entered by the user.
 - `(idx, all)` if current file is one of the files found, where `idx` is its index among the results and `all` is the total count of files found.
 
-| In/Out | Type                   |
-| ------ | ---------------------- |
-| `self` | [`fs::File`](#fs-file) |
-| Return | `(integer, integer)?`  |
+| In/Out | Type                  |
+| ------ | --------------------- |
+| `self` | `Self`                |
+| Return | `(integer, integer)?` |
 
 ## mgr::Tabs {#mgr-tabs}
 
@@ -351,20 +351,20 @@ Index of the active tab.
 
 Returns the number of tabs.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | [`mgr::Tabs`](#mgr-tabs) |
-| Return | `integer`                |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `integer` |
 
 ### `__index(self, idx)` {#mgr-tabs.\_\_index}
 
 Access each tab by index.
 
-| In/Out | Type                     |
-| ------ | ------------------------ |
-| `self` | [`mgr::Tabs`](#mgr-tabs) |
-| `idx`  | `integer`                |
-| Return | [`tab::Tab?`](#tab-tab)  |
+| In/Out | Type                    |
+| ------ | ----------------------- |
+| `self` | `Self`                  |
+| `idx`  | `integer`               |
+| Return | [`tab::Tab?`](#tab-tab) |
 
 ## tab::Tab {#tab-tab}
 
@@ -461,10 +461,10 @@ Whether in cut mode.
 
 Returns the number of yanked files.
 
-| In/Out | Type                         |
-| ------ | ---------------------------- |
-| `self` | [`mgr::Yanked`](#mgr-yanked) |
-| Return | `integer`                    |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| Return | `integer` |
 
 ### `__pairs(self)` {#mgr-yanked.\_\_pairs}
 
@@ -472,5 +472,5 @@ Iterate over the url of yanked files.
 
 | In/Out | Type                                 |
 | ------ | ------------------------------------ |
-| `self` | [`mgr::Yanked`](#mgr-yanked)         |
+| `self` | `Self`                               |
 | Return | `fun(t: self, k: any): integer, Url` |

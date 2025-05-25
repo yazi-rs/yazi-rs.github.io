@@ -95,7 +95,7 @@ Apply a `padding` to the rect.
 
 | In/Out    | Type          |
 | --------- | ------------- |
-| `self`    | `Rect`        |
+| `self`    | `Self`        |
 | `padding` | [`Pad`](#pad) |
 | Return    | `self`        |
 
@@ -235,7 +235,7 @@ Apply a foreground color.
 
 | In/Out  | Type                                             |
 | ------- | ------------------------------------------------ |
-| `self`  | `Style`                                          |
+| `self`  | `Self`                                           |
 | `color` | [`Color`](/docs/configuration/theme#types.color) |
 | Return  | `self`                                           |
 
@@ -245,7 +245,7 @@ Apply a background color.
 
 | In/Out  | Type                                             |
 | ------- | ------------------------------------------------ |
-| `self`  | `Style`                                          |
+| `self`  | `Self`                                           |
 | `color` | [`Color`](/docs/configuration/theme#types.color) |
 | Return  | `self`                                           |
 
@@ -253,37 +253,37 @@ Apply a background color.
 
 Apply a bold style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `dim(self)` {#style.dim}
 
 Apply a dim style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `italic(self)` {#style.italic}
 
 Apply an italic style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `underline(self)` {#style.underline}
 
 Apply an underline style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `blink(self)` {#style.blink}
 
@@ -291,10 +291,10 @@ Apply a blink style.
 
 Note that this style may not be supported by all terminals.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `blink_rapid(self)` {#style.blink-rapid}
 
@@ -302,62 +302,62 @@ Apply a rapid blink style.
 
 Note that this style may not be supported by all terminals.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `reverse(self)` {#style.reverse}
 
 Apply a reverse style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `hidden(self)` {#style.hidden}
 
 Apply a hidden style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `crossed(self)` {#style.crossed}
 
 Apply a crossed style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `reset(self)` {#style.reset}
 
 Apply a reset style.
 
-| In/Out | Type    |
-| ------ | ------- |
-| `self` | `Style` |
-| Return | `self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `patch(self, another)` {#style.patch}
 
 Patch the style with `another`.
 
-| In/Out    | Type    |
-| --------- | ------- |
-| `self`    | `Style` |
-| `another` | `Style` |
-| Return    | `self`  |
+| In/Out    | Type   |
+| --------- | ------ |
+| `self`    | `Self` |
+| `another` | `Self` |
+| Return    | `self` |
 
 ### `__new()` {#style.\_\_new}
 
-| In/Out | Type    |
-| ------ | ------- |
-| Return | `Style` |
+| In/Out | Type   |
+| ------ | ------ |
+| Return | `Self` |
 
 ## Span {#span}
 
@@ -379,7 +379,7 @@ Whether the span is visible, i.e. includes any printable characters.
 
 | In/Out | Type      |
 | ------ | --------- |
-| `self` | `Span`    |
+| `self` | `Self`    |
 | Return | `boolean` |
 
 ### `style(self, style)` {#span.style}
@@ -388,7 +388,7 @@ Set the style of the span.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Span`            |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -442,7 +442,7 @@ Set the area of the line.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `Line`                    |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 
@@ -454,7 +454,7 @@ Calculate the width of the line.
 
 | In/Out | Type      |
 | ------ | --------- |
-| `self` | `Line`    |
+| `self` | `Self`    |
 | Return | `integer` |
 
 ### `align(self, align)` {#line.align}
@@ -463,7 +463,7 @@ Set the alignment of the line.
 
 | In/Out  | Type    |
 | ------- | ------- |
-| `self`  | `Line`  |
+| `self`  | `Self`  |
 | `align` | `Align` |
 | Return  | `self`  |
 
@@ -479,7 +479,7 @@ Whether the line is visible, i.e. includes any printable characters.
 
 | In/Out | Type      |
 | ------ | --------- |
-| `self` | `Line`    |
+| `self` | `Self`    |
 | Return | `boolean` |
 
 ### `style(self, style)` {#line.style}
@@ -488,7 +488,7 @@ Set the style of the line.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Line`            |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -537,7 +537,7 @@ Set the area of the text.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `Text`                    |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 
@@ -549,7 +549,7 @@ Set the alignment of the text.
 
 | In/Out  | Type    |
 | ------- | ------- |
-| `self`  | `Text`  |
+| `self`  | `Self`  |
 | `align` | `Align` |
 | Return  | `self`  |
 
@@ -565,7 +565,7 @@ Set the wrap of the text.
 
 | In/Out | Type   |
 | ------ | ------ |
-| `self` | `Text` |
+| `self` | `Self` |
 | `wrap` | `Wrap` |
 | Return | `self` |
 
@@ -581,7 +581,7 @@ Calculate the maximum width of the text across all lines.
 
 | In/Out | Type      |
 | ------ | --------- |
-| `self` | `Text`    |
+| `self` | `Self`    |
 | Return | `integer` |
 
 ### `style(self, style)` {#text.style}
@@ -590,7 +590,7 @@ Set the style of the text.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Text`            |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -627,7 +627,7 @@ Set the direction of the layout.
 
 | In/Out      | Type        |
 | ----------- | ----------- |
-| `self`      | `Layout`    |
+| `self`      | `Self`      |
 | `direction` | `Direction` |
 | Return      | `self`      |
 
@@ -642,7 +642,7 @@ Set the margin of the layout.
 
 | In/Out   | Type      | Note             |
 | -------- | --------- | ---------------- |
-| `self`   | `Layout`  | -                |
+| `self`   | `Self`    | -                |
 | `margin` | `integer` | Positive integer |
 | Return   | `self`    | -                |
 
@@ -652,7 +652,7 @@ Set the horizontal margin of the layout.
 
 | In/Out   | Type      | Note             |
 | -------- | --------- | ---------------- |
-| `self`   | `Layout`  | -                |
+| `self`   | `Self`    | -                |
 | `margin` | `integer` | Positive integer |
 | Return   | `self`    | -                |
 
@@ -662,7 +662,7 @@ Set the vertical margin of the layout.
 
 | In/Out   | Type      | Note             |
 | -------- | --------- | ---------------- |
-| `self`   | `Layout`  | -                |
+| `self`   | `Self`    | -                |
 | `margin` | `integer` | Positive integer |
 | Return   | `self`    | -                |
 
@@ -672,7 +672,7 @@ Set the constraints of the layout.
 
 | In/Out        | Type                               |
 | ------------- | ---------------------------------- |
-| `self`        | `Layout`                           |
+| `self`        | `Self`                             |
 | `constraints` | [`table<Constraint>`](#constraint) |
 | Return        | `self`                             |
 
@@ -682,7 +682,7 @@ Split the layout into multiple [Rect](#rect)s according to the constraints.
 
 | In/Out | Type                   |
 | ------ | ---------------------- |
-| `self` | `Layout`               |
+| `self` | `Self`                 |
 | `rect` | [`Rect`](#rect)        |
 | Return | [`table<Rect>`](#rect) |
 
@@ -889,7 +889,7 @@ Set the area of the list.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `List`                    |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 
@@ -901,7 +901,7 @@ Set the style of the list.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `List`            |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -935,7 +935,7 @@ Set the area of the bar.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `Bar`                     |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 
@@ -945,10 +945,10 @@ If `rect` is not specified, it returns the current area.
 
 Set the symbol of the bar.
 
-| In/Out | Type     |
-| ------ | -------- |
-| `self` | `string` |
-| Return | `self`   |
+| In/Out | Type   |
+| ------ | ------ |
+| `self` | `Self` |
+| Return | `self` |
 
 ### `style(self, style)` {#bar.style}
 
@@ -956,7 +956,7 @@ Set the style of the bar.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Bar`             |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -990,7 +990,7 @@ Set the area of the border.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `Border`                  |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 
@@ -1002,7 +1002,7 @@ Set the type of the border.
 
 | In/Out | Type      |
 | ------ | --------- |
-| `self` | `Border`  |
+| `self` | `Self`    |
 | `type` | `integer` |
 | Return | `self`    |
 
@@ -1021,7 +1021,7 @@ Set the style of the border.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Border`          |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -1046,7 +1046,7 @@ Set the area of the gauge.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `Gauge`                   |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 
@@ -1058,7 +1058,7 @@ Set the percentage of the gauge.
 
 | In/Out    | Type      |
 | --------- | --------- |
-| `self`    | `Gauge`   |
+| `self`    | `Self`    |
 | `percent` | `integer` |
 | Return    | `self`    |
 
@@ -1068,7 +1068,7 @@ Set the ratio of the gauge.
 
 | In/Out  | Type     | Note            |
 | ------- | -------- | --------------- |
-| `self`  | `Gauge`  | -               |
+| `self`  | `Self`   | -               |
 | `ratio` | `number` | Between 0 and 1 |
 | Return  | `self`   | -               |
 
@@ -1078,7 +1078,7 @@ Set the label of the gauge.
 
 | In/Out  | Type     |
 | ------- | -------- |
-| `self`  | `Gauge`  |
+| `self`  | `Self`   |
 | `label` | `string` |
 | Return  | `self`   |
 
@@ -1088,7 +1088,7 @@ Set the style of everything except the gauge itself.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Gauge`           |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -1098,7 +1098,7 @@ Set the style of the gauge itself.
 
 | In/Out  | Type              |
 | ------- | ----------------- |
-| `self`  | `Gauge`           |
+| `self`  | `Self`            |
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
@@ -1127,7 +1127,7 @@ Set the area of the clear.
 
 | In/Out | Type                      |
 | ------ | ------------------------- |
-| `self` | `Clear`                   |
+| `self` | `Self`                    |
 | `rect` | [`Rect?`](#rect)          |
 | Return | `self` \| [`Rect`](#rect) |
 

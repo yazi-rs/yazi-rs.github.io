@@ -97,7 +97,7 @@ Join with `another`.
 
 | In/Out    | Type              |
 | --------- | ----------------- |
-| `self`    | `Url`             |
+| `self`    | `Self`            |
 | `another` | `Url` \| `string` |
 | Return    | `Url`             |
 
@@ -107,7 +107,7 @@ Whether the url starts with `another`.
 
 | In/Out    | Type              |
 | --------- | ----------------- |
-| `self`    | `Url`             |
+| `self`    | `Self`            |
 | `another` | `Url` \| `string` |
 | Return    | `boolean`         |
 
@@ -117,7 +117,7 @@ Whether the url ends with `another`.
 
 | In/Out    | Type              |
 | --------- | ----------------- |
-| `self`    | `Url`             |
+| `self`    | `Self`            |
 | `another` | `Url` \| `string` |
 | Return    | `boolean`         |
 
@@ -127,7 +127,7 @@ Strips the prefix of `another`.
 
 | In/Out    | Type              |
 | --------- | ----------------- |
-| `self`    | `Url`             |
+| `self`    | `Self`            |
 | `another` | `Url` \| `string` |
 | Return    | `Url`             |
 
@@ -137,7 +137,7 @@ Whether the url is equal to `another`.
 
 | In/Out    | Type      |
 | --------- | --------- |
-| `self`    | `Url`     |
+| `self`    | `Self`    |
 | `another` | `Url`     |
 | Return    | `boolean` |
 
@@ -147,7 +147,7 @@ Convert the url to string.
 
 | In/Out | Type     |
 | ------ | -------- |
-| `self` | `Url`    |
+| `self` | `Self`   |
 | Return | `string` |
 
 ### `__concat(self, another)` {#url.\_\_concat}
@@ -156,7 +156,7 @@ Concatenate the url with `another`.
 
 | In/Out    | Type     |
 | --------- | -------- |
-| `self`    | `Url`    |
+| `self`    | `Self`   |
 | `another` | `string` |
 | Return    | `Url`    |
 
@@ -390,7 +390,7 @@ Convert the error to string.
 
 | In/Out | Type     |
 | ------ | -------- |
-| `self` | `Error`  |
+| `self` | `Self`   |
 | Return | `string` |
 
 ### `__concat(self, another)` {#error.\_\_concat}
@@ -399,7 +399,7 @@ Concatenate the error with `another`.
 
 | In/Out    | Type     |
 | --------- | -------- |
-| `self`    | `Error`  |
+| `self`    | `Self`   |
 | `another` | `string` |
 | Return    | `Error`  |
 

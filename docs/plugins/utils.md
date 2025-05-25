@@ -744,11 +744,11 @@ Append an argument to the command:
 local cmd = Command("ls"):arg("-a"):arg("-l")
 ```
 
-| In/Out | Type      |
-| ------ | --------- |
-| `self` | `Command` |
-| `arg`  | `string`  |
-| Return | `self`    |
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Self`   |
+| `arg`  | `string` |
+| Return | `self`   |
 
 ### `args(args)` {#Command.args}
 
@@ -760,7 +760,7 @@ local cmd = Command("ls"):args({ "-a", "-l" }):args({ "-h" })
 
 | In/Out | Type       |
 | ------ | ---------- |
-| `self` | `Command`  |
+| `self` | `Self`     |
 | `arg`  | `string[]` |
 | Return | `self`     |
 
@@ -772,11 +772,11 @@ Set the current working directory of the command:
 local cmd = Command("ls"):cwd("/root")
 ```
 
-| In/Out | Type      |
-| ------ | --------- |
-| `self` | `Command` |
-| `dir`  | `string`  |
-| Return | `self`    |
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Self`   |
+| `dir`  | `string` |
+| Return | `self`   |
 
 ### `env(self, key, value)` {#Command.env}
 
@@ -786,12 +786,12 @@ Append an environment variable to the command:
 local cmd = Command("ls"):env("PATH", "/bin"):env("HOME", "/home")
 ```
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Command` |
-| `key`   | `string`  |
-| `value` | `string`  |
-| Return  | `self`    |
+| In/Out  | Type     |
+| ------- | -------- |
+| `self`  | `Self`   |
+| `key`   | `string` |
+| `value` | `string` |
+| Return  | `self`   |
 
 ### `stdin(self, stdio)` {#Command.stdin}
 
@@ -807,11 +807,11 @@ Where `stdio` can be one of the following:
 - `Command.NULL`: Discard the stdin (default).
 - `Command.INHERIT`: Inherit the stdin.
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Command` |
-| `stdio` | `Stdio`   |
-| Return  | `self`    |
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Self`  |
+| `stdio` | `Stdio` |
+| Return  | `self`  |
 
 ### `stdout(self, stdio)` {#Command.stdout}
 
@@ -827,11 +827,11 @@ Where `stdio` can be one of the following:
 - `Command.NULL`: Discard the stdout (default).
 - `Command.INHERIT`: Inherit the stdout.
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Command` |
-| `stdio` | `Stdio`   |
-| Return  | `self`    |
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Self`  |
+| `stdio` | `Stdio` |
+| Return  | `self`  |
 
 ### `stderr(self, stdio)` {#Command.stderr}
 
@@ -847,11 +847,11 @@ Where `stdio` can be one of the following:
 - `Command.NULL`: Discard the stderr (default).
 - `Command.INHERIT`: Inherit the stderr.
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Command` |
-| `stdio` | `Stdio`   |
-| Return  | `self`    |
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Self`  |
+| `stdio` | `Stdio` |
+| Return  | `self`  |
 
 ### `spawn(self)` {#Command.spawn}
 
@@ -863,7 +863,7 @@ local child, err = Command("ls"):spawn()
 
 | In/Out | Type               |
 | ------ | ------------------ |
-| `self` | `Command`          |
+| `self` | `Self`             |
 | Return | `(Child?, Error?)` |
 
 ### `output(self)` {#Command.output}
@@ -876,7 +876,7 @@ local output, err = Command("ls"):output()
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Command`           |
+| `self` | `Self`              |
 | Return | `(Output?, Error?)` |
 
 ### `status(self)` {#Command.status}
@@ -889,7 +889,7 @@ local status, err = Command("ls"):status()
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Command`           |
+| `self` | `Self`              |
 | Return | `(Status?, Error?)` |
 
 ## Child
@@ -914,7 +914,7 @@ local data, event = child:read(1024)
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Child`             |
+| `self` | `Self`              |
 | `len`  | `integer`           |
 | Return | `(string, integer)` |
 
@@ -928,7 +928,7 @@ local line, event = child:read_line()
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Child`             |
+| `self` | `Self`              |
 | Return | `(string, integer)` |
 
 ### `read_line_with(self, opts)` {#Child.read_line_with}
@@ -948,7 +948,7 @@ It has a extra event:
 
 | In/Out | Type                   |
 | ------ | ---------------------- |
-| `self` | `Child`                |
+| `self` | `Self`                 |
 | `opts` | `{ timeout: integer }` |
 | Return | `(string, integer)`    |
 
@@ -969,7 +969,7 @@ Otherwise, an error will be thrown.
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Child`             |
+| `self` | `Self`              |
 | `src`  | `string`            |
 | Return | `(boolean, Error?)` |
 
@@ -990,7 +990,7 @@ Otherwise, an error will be thrown.
 
 | In/Out   | Type                |
 | -------- | ------------------- |
-| `self`   | `Child`             |
+| `self`   | `Self`              |
 | `Return` | `(boolean, Error?)` |
 
 ### `wait(self)` {#Child.wait}
@@ -1003,7 +1003,7 @@ local status, err = child:wait()
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Child`             |
+| `self` | `Self`              |
 | Return | `(Status?, Error?)` |
 
 ### `wait_with_output(self)` {#Child.wait_with_output}
@@ -1016,7 +1016,7 @@ local output, err = child:wait_with_output()
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Child`             |
+| `self` | `Self`              |
 | Return | `(Output?, Error?)` |
 
 ### `start_kill(self)` {#Child.start_kill}
@@ -1029,7 +1029,7 @@ local ok, err = child:start_kill()
 
 | In/Out | Type                |
 | ------ | ------------------- |
-| `self` | `Child`             |
+| `self` | `Self`              |
 | Return | `(boolean, Error?)` |
 
 ### `take_stdin(self)` {#Child.take_stdin}
@@ -1045,7 +1045,7 @@ otherwise, it returns `nil`.
 
 | In/Out | Type     |
 | ------ | -------- |
-| `self` | `Child`  |
+| `self` | `Self`   |
 | Return | `Stdio?` |
 
 ### `take_stdout(self)` {#Child.take_stdout}
@@ -1071,7 +1071,7 @@ otherwise, it returns `nil`.
 
 | In/Out | Type     |
 | ------ | -------- |
-| `self` | `Child`  |
+| `self` | `Self`   |
 | Return | `Stdio?` |
 
 ### `take_stderr(self)` {#Child.take_stderr}
@@ -1089,7 +1089,7 @@ otherwise, it returns `nil`.
 
 | In/Out | Type     |
 | ------ | -------- |
-| `self` | `Child`  |
+| `self` | `Self`   |
 | Return | `Stdio?` |
 
 ## Output
