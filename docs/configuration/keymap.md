@@ -406,6 +406,13 @@ You can use the following shell variables in `[run]`:
 - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
 - `$0` (Unix) / `%0` (Windows): The hovered file.
 
+For complex shell scripts, you can use an end-of-options marker (`--`), everything following the `--` will be treated as a raw string to avoid any escaping:
+
+```diff
+- { on = "d", run = "shell 'trash-put \"$@\"'" }
++ { on = "d", run = 'shell -- trash-put "$@"' }
+```
+
 ### `hidden` {#manager.hidden}
 
 Set the visibility of hidden files.

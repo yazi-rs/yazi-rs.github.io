@@ -750,7 +750,7 @@ local cmd = Command("ls"):arg("-a"):arg("-l")
 | `arg`  | `string` |
 | Return | `self`   |
 
-### `args(args)` {#Command.args}
+### `args(self, args)` {#Command.args}
 
 Append multiple arguments to the command:
 
