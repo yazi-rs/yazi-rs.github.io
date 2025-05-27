@@ -406,12 +406,17 @@ You can use the following shell variables in `[run]`:
 - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
 - `$0` (Unix) / `%0` (Windows): The hovered file.
 
-For complex shell scripts, you can use an end-of-options marker (`--`), everything following the `--` will be treated as a raw string to avoid any escaping:
+You can use an end-of-options marker (`--`) to avoid any escaping - everything following the `--` will be treated as a raw string:
 
 ```diff
-- { on = "d", run = "shell 'trash-put \"$@\"'" }
-+ { on = "d", run = 'shell -- trash-put "$@"' }
+[[manager.prepend_keymap]]
+on = "d"
+- run = "shell 'trash-put \"$@\"'"
++ run = 'shell -- trash-put "$@"'
+desc = "Trash selected files"
 ```
+
+For complex shell scripts, you can use TOML's basic strings (`'''` or `"""`) to write them in multiple lines, as demonstrated in [this tip](/docs/tips#email-selected-files).
 
 ### `hidden` {#manager.hidden}
 
