@@ -6,8 +6,6 @@ const STUBS = `
 ---@alias undefined any
 
 ---@alias Color string
----@alias Align integer
----@alias Wrap integer
 ---@alias Direction integer
 ---@alias Position integer
 ---@alias Stdio integer

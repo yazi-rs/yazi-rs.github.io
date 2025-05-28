@@ -3,6 +3,14 @@ sidebar_position: 2
 description: Learn how to use Yazi's Lua API.
 ---
 
+:::warning
+This page reflects the latest changes in the Yazi nightly API.
+
+Please ensure that your Yazi is on the latest nightly - a new stable version will be released soon.
+
+Last updated: 2025-05-28
+:::
+
 # Layout
 
 Text, List, Bar, Border, and Gauge are renderable elements; others need to be placed within any of them.
@@ -468,17 +476,11 @@ Calculate the width of the line.
 
 Set the alignment of the line.
 
-| In/Out  | Type    |
-| ------- | ------- |
-| `self`  | `Self`  |
-| `align` | `Align` |
-| Return  | `self`  |
-
-The `align` accepts the following constants:
-
-- `ui.Line.LEFT`
-- `ui.Line.CENTER`
-- `ui.Line.RIGHT`
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Self`            |
+| `align` | [`Align`](#align) |
+| Return  | `self`            |
 
 ### `visible(self)` {#line.visible}
 
@@ -556,33 +558,21 @@ If `rect` is not specified, it returns the current area.
 
 Set the alignment of the text.
 
-| In/Out  | Type    |
-| ------- | ------- |
-| `self`  | `Self`  |
-| `align` | `Align` |
-| Return  | `self`  |
-
-The `align` accepts the following constants:
-
-- `ui.Text.LEFT`
-- `ui.Text.CENTER`
-- `ui.Text.RIGHT`
+| In/Out  | Type              |
+| ------- | ----------------- |
+| `self`  | `Self`            |
+| `align` | [`Align`](#align) |
+| Return  | `self`            |
 
 ### `wrap(self, wrap)` {#text.wrap}
 
 Set the wrap of the text.
 
-| In/Out | Type   |
-| ------ | ------ |
-| `self` | `Self` |
-| `wrap` | `Wrap` |
-| Return | `self` |
-
-The `wrap` accepts the following constants:
-
-- `ui.Text.WRAP_NO` - No wrap
-- `ui.Text.WRAP` - Wrap at the end of the line
-- `ui.Text.WRAP_TRIM` - Wrap at the end of the line, and trim the leading whitespace
+| In/Out | Type            |
+| ------ | --------------- |
+| `self` | `Self`          |
+| `wrap` | [`Wrap`](#wrap) |
+| Return | `self`          |
 
 ### `max_width(self)` {#text.max_width}
 
@@ -932,17 +922,10 @@ Make a new list.
 Create a bar:
 
 ```lua
-ui.Bar(direction)
+ui.Bar(edge)
 ```
 
-The first attribute denotes the direction of the bar and accepts the following constants:
-
-- `ui.Bar.NONE`
-- `ui.Bar.TOP`
-- `ui.Bar.RIGHT`
-- `ui.Bar.BOTTOM`
-- `ui.Bar.LEFT`
-- `ui.Bar.ALL`
+The first attribute denotes the direction of the bar and accepts an [`Edge`](#edge) constant.
 
 ### `area(self, rect)` {#bar.area}
 
@@ -990,17 +973,10 @@ Make a new bar.
 Create a border:
 
 ```lua
-ui.Border(position)
+ui.Border(edge)
 ```
 
-The first attribute denotes the position of the border and accepts the following constants:
-
-- `ui.Border.NONE`
-- `ui.Border.TOP`
-- `ui.Border.RIGHT`
-- `ui.Border.BOTTOM`
-- `ui.Border.LEFT`
-- `ui.Border.ALL`
+The first attribute denotes the edge of the border and accepts an [`Edge`](#edge) constant.
 
 ### `area(self, rect)` {#border.area}
 
@@ -1043,14 +1019,14 @@ Set the style of the border.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
-### `__new(value)` {#border.\_\_new}
+### `__new(edge)` {#border.\_\_new}
 
 Make a new border.
 
-| In/Out  | Type       |
-| ------- | ---------- |
-| `value` | `Position` |
-| Return  | `Self`     |
+| In/Out | Type            |
+| ------ | --------------- |
+| `edge` | [`Edge`](#edge) |
+| Return | `Self`          |
 
 ## Gauge {#gauge}
 
@@ -1163,3 +1139,107 @@ Make a new clear.
 | ------ | --------------- |
 | `rect` | [`Rect`](#rect) |
 | Return | `Self`          |
+
+## Align {#align}
+
+Align is used to set the alignment of an element, such as a [Line](#line) or [Text](#text).
+
+### `LEFT` {#align.LEFT}
+
+Align to the left.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `CENTER` {#align.CENTER}
+
+Align to the center.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `RIGHT` {#align.RIGHT}
+
+Align to the right.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+## Wrap {#wrap}
+
+### `NO` {#wrap.NO}
+
+Disables wrapping.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `YES` {#wrap.YES}
+
+Enables wrapping.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `TRIM` {#wrap.TRIM}
+
+Enables wrapping and trims the leading whitespace.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+## Edge {#edge}
+
+### `NONE` {#edge.NONE}
+
+No edge is applied.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `TOP` {#edge.TOP}
+
+Applies the top edge.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `RIGHT` {#edge.RIGHT}
+
+Applies the right edge.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `BOTTOM` {#edge.BOTTOM}
+
+Applies the bottom edge.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `LEFT` {#edge.LEFT}
+
+Applies the left edge.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
+
+### `ALL` {#edge.ALL}
+
+Applies all edges.
+
+|      |             |
+| ---- | ----------- |
+| Type | `undefined` |
