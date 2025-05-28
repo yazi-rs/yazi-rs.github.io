@@ -13,7 +13,7 @@ If you want to fine-tune the default settings, the first step is to [create your
 
 You can change Yazi's keybindings in your `keymap.toml` file, which consists of the following 8 layers:
 
-- [\[manager\]](#manager) - File list.
+- [\[mgr\]](#mgr) - File list.
 - [\[tasks\]](#tasks) - Task manager.
 - [\[spot\]](#spot) - File information spotter.
 - [\[pick\]](#pick) - Pick component. e.g. "open with" for files.
@@ -28,7 +28,7 @@ Prepend inserts before [the default keybindings](https://github.com/sxyazi/yazi/
 Since Yazi selects the first matching key to run, prepend always has a higher priority than default, and append always has a lower priority than default:
 
 ```toml
-[manager]
+[mgr]
 prepend_keymap = [
 	{ on = "<C-a>", run = "my-cmd1", desc = "Single command with `Ctrl + a`" },
 ]
@@ -41,17 +41,17 @@ append_keymap = [
 Or in another different style:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "<C-a>"
 run  = "my-cmd1"
 desc = "Single command with `Ctrl + a`"
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on  = [ "g", "b" ]
 run = "my-cmd2"
 desc = "Single command with `g => b`"
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on  = "c"
 run = [ "my-cmd1", "my-cmd2" ]
 desc = "Multiple commands with `c`"
@@ -60,12 +60,12 @@ desc = "Multiple commands with `c`"
 But keep in mind that you can only choose one of them, and it cannot be a combination of the two, as TOML language does not allow this:
 
 ```toml
-[manager]
+[mgr]
 prepend_keymap = [
 	{ on = "<C-a>", run = "my-cmd1" },
 ]
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on  = [ "g", "b" ]
 run = "my-cmd2"
 ```
@@ -73,7 +73,7 @@ run = "my-cmd2"
 When you don't need any default and want to fully customize your keybindings, use `keymap`, for example:
 
 ```toml
-[manager]
+[mgr]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
 	{ on = "<C-a>",      run = "my-cmd1" },
@@ -121,9 +121,9 @@ Note that:
 [CSI u]: https://sw.kovidgoyal.net/kitty/keyboard-protocol/
 [Control character]: https://en.wikipedia.org/wiki/Control_character
 
-## [manager] {#manager}
+## [mgr] {#mgr}
 
-### `escape` {#manager.escape}
+### `escape` {#mgr.escape}
 
 Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
@@ -138,7 +138,7 @@ Cancel find, exit visual mode, clear selected, cancel filter, or cancel search.
 
 Automatically determine the operation by default, and it will only execute the selected operation after specifying the option; multiple options can be stacked.
 
-### `quit` {#manager.quit}
+### `quit` {#mgr.quit}
 
 Exit the process.
 
@@ -146,7 +146,7 @@ Exit the process.
 | --------------- | ------------------------------------------------------------------------------ |
 | `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file`. |
 
-### `close` {#manager.close}
+### `close` {#mgr.close}
 
 Close the current tab; if it's the last tab, exit the process instead.
 
@@ -154,33 +154,33 @@ Close the current tab; if it's the last tab, exit the process instead.
 | --------------- | -------------------------------------------------------------------------------------- |
 | `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file` on exit. |
 
-### `suspend` {#manager.suspend}
+### `suspend` {#mgr.suspend}
 
 Pauses Yazi and returns to the parent shell to continue with other tasks.
 
 Once those tasks are done, use the `fg` command of the shell to send a resume signal and return back to Yazi.
 
-### `arrow` {#manager.arrow}
+### `arrow` {#mgr.arrow}
 
 <KeymapArrow />
 
-### `leave` {#manager.leave}
+### `leave` {#mgr.leave}
 
 Go back to the parent directory of the hovered file, or the parent of the current working directory if no file is hovered on.
 
-### `enter` {#manager.enter}
+### `enter` {#mgr.enter}
 
 Enter the child directory.
 
-### `back` {#manager.back}
+### `back` {#mgr.back}
 
 Go back to the previous directory.
 
-### `forward` {#manager.forward}
+### `forward` {#mgr.forward}
 
 Go forward to the next directory.
 
-### `seek` {#manager.seek}
+### `seek` {#mgr.seek}
 
 Scroll the contents in the preview panel.
 
@@ -188,11 +188,11 @@ Scroll the contents in the preview panel.
 | --------------- | ---------------------------------------------------------------- |
 | `[n]`           | Use negative values to seek up and positive values to seek down. |
 
-### `spot` {#manager.spot}
+### `spot` {#mgr.spot}
 
 Display file information with the preset or user-customized spotter.
 
-### `cd` {#manager.cd}
+### `cd` {#mgr.cd}
 
 Change the current directory.
 
@@ -204,12 +204,12 @@ Change the current directory.
 You can add your own `g` series keys to achieve a simple bookmark feature:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "d" ]
 run  = "cd ~/Downloads"
 desc = "Cd to ~/Downloads"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "p" ]
 run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
@@ -218,12 +218,12 @@ desc = "Cd to ~/Pictures"
 For Windows users, you can also switch drives using the `cd` command:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "d" ]
 run  = "cd D:"
 desc = "Switch to D drive"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "p" ]
 run  = 'cd "E:\\Pictures"'  # We need to escape the backslash
 desc = 'Cd to E:\Pictures'
@@ -231,7 +231,7 @@ desc = 'Cd to E:\Pictures'
 
 Check out the [resources page](/docs/resources) for a more comprehensive bookmark plugin.
 
-### `reveal` {#manager.reveal}
+### `reveal` {#mgr.reveal}
 
 Hover on the specified file.
 
@@ -241,7 +241,7 @@ If the file is not in the current directory, it will change the current director
 | --------------- | ------------------- |
 | `[path]`        | The path to reveal. |
 
-### `toggle` {#manager.toggle}
+### `toggle` {#mgr.toggle}
 
 Toggle the selection state of the hovered file.
 
@@ -251,7 +251,7 @@ Toggle the selection state of the hovered file.
 | `--state=on`    | Select the file.       |
 | `--state=off`   | Deselect the file.     |
 
-### `toggle_all` {#manager.toggle_all}
+### `toggle_all` {#mgr.toggle_all}
 
 Toggle the selection state of all files in the current working directory.
 
@@ -261,9 +261,9 @@ Toggle the selection state of all files in the current working directory.
 | `--state=on`    | Select the files.       |
 | `--state=off`   | Deselect the files.     |
 
-Note that `toggle_all --state=off` only deselect the files in CWD, if you have selected files across multiple directories, and want to deselect all of them, use [`escape --select`](#manager.escape).
+Note that `toggle_all --state=off` only deselect the files in CWD, if you have selected files across multiple directories, and want to deselect all of them, use [`escape --select`](#mgr.escape).
 
-### `visual_mode` {#manager.visual_mode}
+### `visual_mode` {#mgr.visual_mode}
 
 Enter visual mode.
 
@@ -272,7 +272,7 @@ Enter visual mode.
 | N/A             | Selection mode. |
 | `--unset`       | Unset mode.     |
 
-### `open` {#manager.open}
+### `open` {#mgr.open}
 
 Open the selected files using [the rules in `[open]`](/docs/configuration/yazi#open).
 
@@ -281,7 +281,7 @@ Open the selected files using [the rules in `[open]`](/docs/configuration/yazi#o
 | `--interactive` | Open the hovered/selected file(s) with an interactive UI to choose the opening method. |
 | `--hovered`     | Always open the hovered file regardless of the selection state.                        |
 
-### `yank` {#manager.yank}
+### `yank` {#mgr.yank}
 
 Yank the selected files.
 
@@ -290,11 +290,11 @@ Yank the selected files.
 | N/A             | Copy mode.  |
 | `--cut`         | Cut mode.   |
 
-### `unyank` {#manager.unyank}
+### `unyank` {#mgr.unyank}
 
 Cancel the yank status of files.
 
-### `paste` {#manager.paste}
+### `paste` {#mgr.paste}
 
 Paste the yanked files.
 
@@ -303,7 +303,7 @@ Paste the yanked files.
 | `--force`       | Overwrite the destination file if it exists.                                                               |
 | `--follow`      | Copy the file pointed to by a symbolic link, rather than the link itself. Only can be used during copying. |
 
-### `link` {#manager.link}
+### `link` {#mgr.link}
 
 Create a symbolic link to the yanked files. (This is a privileged action on Windows and must be run as an administrator.)
 
@@ -312,7 +312,7 @@ Create a symbolic link to the yanked files. (This is a privileged action on Wind
 | `--relative`    | Use a relative path for the symbolic link.   |
 | `--force`       | Overwrite the destination file if it exists. |
 
-### `hardlink` {#manager.hardlink}
+### `hardlink` {#mgr.hardlink}
 
 Hardlink the yanked files.
 
@@ -321,7 +321,7 @@ Hardlink the yanked files.
 | `--force`       | Overwrite the destination file if it exists.                             |
 | `--follow`      | Hardlink the file pointed to by a symbolic link, not the symlink itself. |
 
-### `remove` {#manager.remove}
+### `remove` {#mgr.remove}
 
 Move the files to the trash/recycle bin on macOS/Windows. For Linux, it will follow [The FreeDesktop.org Trash specification](https://specifications.freedesktop.org/trash-spec/1.0/).
 
@@ -333,7 +333,7 @@ In the Android platform, you can only use it with the `--permanently` option, si
 | `--permanently` | Permanently delete the files.                                        |
 | `--hovered`     | Always remove the hovered file regardless of the selection state.    |
 
-### `create` {#manager.create}
+### `create` {#mgr.create}
 
 Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directories.
 
@@ -342,7 +342,7 @@ Create a file or directory. Ends with `/` (Unix) or `\` (Windows) for directorie
 | `--dir`         | Always create directories, regardless of whether end with `/` or `\`.                          |
 | `--force`       | Overwrite the destination file directly if it exists, without showing the confirmation dialog. |
 
-### `rename` {#manager.rename}
+### `rename` {#mgr.rename}
 
 Rename a file or directory, or bulk rename if multiple files are selected (`$EDITOR` is used to edit the filenames by default, see [Specify a different editor for bulk renaming](/docs/tips#bulk-editor) for details).
 
@@ -362,7 +362,7 @@ You can also use `--cursor` with `--empty`, for example, `rename --empty=stem --
 
 Which causes the input box content for the filename `foo.jpg` to be `|.jpg`, where "|" represents the cursor position.
 
-### `copy` {#manager.copy}
+### `copy` {#mgr.copy}
 
 Copy the path of files or directories that are selected or hovered on.
 
@@ -388,7 +388,7 @@ Copy the path of files or directories that are selected or hovered on.
 | N/A      | Platform-specific separator, e.g. `\` for Windows and `/` for Unix. |
 | `"unix"` | Use `/` for all platforms.                                          |
 
-### `shell` {#manager.shell}
+### `shell` {#mgr.shell}
 
 Run a shell command.
 
@@ -409,7 +409,7 @@ You can use the following shell variables in `[run]`:
 You can use an end-of-options marker (`--`) to avoid any escaping - everything following the `--` will be treated as a raw string:
 
 ```diff
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "d"
 - run = "shell 'trash-put \"$@\"'"
 + run = 'shell -- trash-put "$@"'
@@ -418,7 +418,7 @@ desc = "Trash selected files"
 
 For complex shell scripts, you can use TOML's basic strings (`'''` or `"""`) to write them in multiple lines, as demonstrated in [this tip](/docs/tips#email-selected-files).
 
-### `hidden` {#manager.hidden}
+### `hidden` {#mgr.hidden}
 
 Set the visibility of hidden files.
 
@@ -428,20 +428,20 @@ Set the visibility of hidden files.
 | `"hide"`        | Hide hidden files.       |
 | `"toggle"`      | Toggle the hidden state. |
 
-### `linemode` {#manager.linemode}
+### `linemode` {#mgr.linemode}
 
-Set the [line mode](/docs/configuration/yazi#manager.linemode).
+Set the [line mode](/docs/configuration/yazi#mgr.linemode).
 
-| Argument/Option | Description                                                                                                                                                                                             |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"none"`        | No line mode.                                                                                                                                                                                           |
-| `"size"`        | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future. |
-| `"btime"`       | Display the birth time of the file.                                                                                                                                                                     |
-| `"mtime"`       | Display the last modified time of the file.                                                                                                                                                             |
-| `"permissions"` | Display the permissions of the file, only available on Unix-like systems.                                                                                                                               |
-| `"owner"`       | Display the owner of the file, only available on Unix-like systems.                                                                                                                                     |
+| Argument/Option | Description                                                                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"none"`        | No line mode.                                                                                                                                                                                       |
+| `"size"`        | Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#mgr.sort_by), and this might change in the future. |
+| `"btime"`       | Display the birth time of the file.                                                                                                                                                                 |
+| `"mtime"`       | Display the last modified time of the file.                                                                                                                                                         |
+| `"permissions"` | Display the permissions of the file, only available on Unix-like systems.                                                                                                                           |
+| `"owner"`       | Display the owner of the file, only available on Unix-like systems.                                                                                                                                 |
 
-### `search` {#manager.search}
+### `search` {#mgr.search}
 
 | Argument/Option | Description                                                                                       |
 | --------------- | ------------------------------------------------------------------------------------------------- |
@@ -459,7 +459,7 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 Or bind a key to the `search_do` command to quickly switch to the flat view:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "f" ]
 run  = 'search_do --via=fd --args="-d 3"'
 desc = "Switch to the flat view with a max depth of 3"
@@ -469,7 +469,7 @@ desc = "Switch to the flat view with a max depth of 3"
 [rg]: https://github.com/BurntSushi/ripgrep
 [rga]: https://github.com/phiresky/ripgrep-all
 
-### `find` {#manager.find}
+### `find` {#mgr.find}
 
 Find files in the current working directory interactively and incrementally.
 
@@ -479,7 +479,7 @@ Find files in the current working directory interactively and incrementally.
 | `--smart`       | Use smart-case when finding, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive` | Use case-insensitive find.                                                                                               |
 
-### `find_arrow` {#manager.find_arrow}
+### `find_arrow` {#mgr.find_arrow}
 
 Move the cursor to the next or previous occurrence.
 
@@ -487,7 +487,7 @@ Move the cursor to the next or previous occurrence.
 | --------------- | -------------------------------- |
 | `--previous`    | Move to the previous occurrence. |
 
-### `filter` {#manager.filter}
+### `filter` {#mgr.filter}
 
 | Argument/Option | Description                                                                                                                |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -495,7 +495,7 @@ Move the cursor to the next or previous occurrence.
 | `--smart`       | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
 | `--insensitive` | Use case-insensitive filter.                                                                                               |
 
-### `sort` {#manager.sort}
+### `sort` {#mgr.sort}
 
 - `[by]`: Optional, if not provided, the sort method will be kept unchanged.
   - `"none"`: Don't sort.
@@ -508,9 +508,9 @@ Move the cursor to the next or previous occurrence.
   - `"random"`: Sort randomly.
 - `--reverse`: Display files in reverse order. `--reverse` or `--reverse=yes` to enable, `--reverse=no` to disable.
 - `--dir-first`: Display directories first. `--dir-first` or `--dir-first=yes` to enable, `--dir-first=no` to disable.
-- `--translit`: Transliterate filenames for sorting, see [sort_translit](/docs/configuration/yazi#manager.sort_translit) for details. `--translit` or `--translit=yes` to enable, `--translit=no` to disable.
+- `--translit`: Transliterate filenames for sorting, see [sort_translit](/docs/configuration/yazi#mgr.sort_translit) for details. `--translit` or `--translit=yes` to enable, `--translit=no` to disable.
 
-### `tab_create` {#manager.tab_create}
+### `tab_create` {#mgr.tab_create}
 
 | Argument/Option | Description                                          |
 | --------------- | ---------------------------------------------------- |
@@ -519,43 +519,43 @@ Move the cursor to the next or previous occurrence.
 
 If neither `[path]` nor `--current` is specified, will use the startup directory to create the tab.
 
-### `tab_close` {#manager.tab_close}
+### `tab_close` {#mgr.tab_close}
 
 | Argument/Option | Description                                     |
 | --------------- | ----------------------------------------------- |
 | `[n]`           | Close the tab at position `n`, starting from 0. |
 
-If you want to close the current tab, use the [`close`](/docs/configuration/keymap/#manager.close) command instead.
+If you want to close the current tab, use the [`close`](/docs/configuration/keymap/#mgr.close) command instead.
 
-### `tab_switch` {#manager.tab_switch}
+### `tab_switch` {#mgr.tab_switch}
 
 | Argument/Option | Description                                                                                                              |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `[n]`           | Switch to the tab at position `n`, starting from 0.                                                                      |
 | `--relative`    | Switch to the tab at a position relative to the current tab. The value of `n` can be negative when using this parameter. |
 
-### `tab_swap` {#manager.tab_swap}
+### `tab_swap` {#mgr.tab_swap}
 
 | Argument/Option | Description                                                                                                                          |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `[n]`           | Swap the current tab with the tab at position `n`, where negative values move the tab forward, and positive values move it backward. |
 
-### `help` {#manager.help}
+### `help` {#mgr.help}
 
 Open the help menu.
 
-### `plugin` {#manager.plugin}
+### `plugin` {#mgr.plugin}
 
 See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
-### `noop` {#manager.noop}
+### `noop` {#mgr.noop}
 
 If you want to disable certain preset keybindings without rewriting the entire `keymap`, you can use the virtual `noop` command.
 
 For example, to disable the default keybinding of <kbd>g</kbd> ⇒ <kbd>c</kbd>, use:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = [ "g", "c" ]
 run = "noop"
 ```
@@ -563,7 +563,7 @@ run = "noop"
 Or, if you prefer an array style:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = [ "g", "c" ]
 run = [ "noop" ]  # The array can only have one element and must be "noop"
 ```
@@ -608,7 +608,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#tasks.noop}
 
-See [`noop` command](#manager.noop).
+See [`noop` command](#mgr.noop).
 
 ## [spot] {#spot}
 
@@ -640,7 +640,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#spot.noop}
 
-See [`noop` command](#manager.noop).
+See [`noop` command](#mgr.noop).
 
 ### `help` {#spot.help}
 
@@ -670,7 +670,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#pick.noop}
 
-See [`noop` command](#manager.noop).
+See [`noop` command](#mgr.noop).
 
 ## [input] {#input}
 
@@ -777,7 +777,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin). This command 
 
 ### `noop` {#input.noop}
 
-See [`noop` command](#manager.noop).
+See [`noop` command](#mgr.noop).
 
 ## [confirm] {#confirm}
 
@@ -821,7 +821,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#cmp.noop}
 
-See [`noop` command](#manager.noop).
+See [`noop` command](#mgr.noop).
 
 ## [help] {#help}
 
@@ -847,4 +847,4 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#help.noop}
 
-See [`noop` command](#manager.noop).
+See [`noop` command](#mgr.noop).

@@ -71,9 +71,9 @@ Flavor name used in light mode, e.g. `"gruvbox"`.
 | ---- | -------- |
 | Type | `string` |
 
-## [manager] {#manager}
+## [mgr] {#mgr}
 
-### `cwd` {#manager.cwd}
+### `cwd` {#mgr.cwd}
 
 CWD text style.
 
@@ -81,7 +81,7 @@ CWD text style.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `hovered` {#manager.hovered}
+### `hovered` {#mgr.hovered}
 
 Hovered file style.
 
@@ -89,7 +89,7 @@ Hovered file style.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `preview_hovered` {#manager.preview_hovered}
+### `preview_hovered` {#mgr.preview_hovered}
 
 Hovered file style, in the preview pane.
 
@@ -97,7 +97,7 @@ Hovered file style, in the preview pane.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `find_keyword` {#manager.find_keyword}
+### `find_keyword` {#mgr.find_keyword}
 
 Style of the highlighted portion in the filename.
 
@@ -105,7 +105,7 @@ Style of the highlighted portion in the filename.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `find_position` {#manager.find_position}
+### `find_position` {#mgr.find_position}
 
 Style of current file location in all found files to the right of the filename.
 
@@ -113,7 +113,7 @@ Style of current file location in all found files to the right of the filename.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `marker_copied` {#manager.marker_copied}
+### `marker_copied` {#mgr.marker_copied}
 
 Copied file marker style.
 
@@ -121,7 +121,7 @@ Copied file marker style.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `marker_cut` {#manager.marker_cut}
+### `marker_cut` {#mgr.marker_cut}
 
 Cut file marker style.
 
@@ -129,7 +129,7 @@ Cut file marker style.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `marker_marked` {#manager.marker_marked}
+### `marker_marked` {#mgr.marker_marked}
 
 Marker style of pre-selected file in visual mode.
 
@@ -137,7 +137,7 @@ Marker style of pre-selected file in visual mode.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `marker_selected` {#manager.marker_selected}
+### `marker_selected` {#mgr.marker_selected}
 
 Selected file marker style.
 
@@ -145,31 +145,7 @@ Selected file marker style.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `tab_active` {#manager.tab_active}
-
-Active tab style.
-
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
-
-### `tab_inactive` {#manager.tab_inactive}
-
-Inactive tab style.
-
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
-
-### `tab_width` {#manager.tab_width}
-
-Tab maximum width. When set to a value greater than 2, the remaining space will be filled with the tab name, which is current directory name.
-
-|      |           |
-| ---- | --------- |
-| Type | `integer` |
-
-### `count_copied` {#manager.count_copied}
+### `count_copied` {#mgr.count_copied}
 
 Style of copied file number.
 
@@ -177,7 +153,7 @@ Style of copied file number.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `count_cut` {#manager.count_cut}
+### `count_cut` {#mgr.count_cut}
 
 Style of cut file number.
 
@@ -185,7 +161,7 @@ Style of cut file number.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `count_selected` {#manager.count_selected}
+### `count_selected` {#mgr.count_selected}
 
 Style of selected file number.
 
@@ -193,7 +169,7 @@ Style of selected file number.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `border_symbol` {#manager.border_symbol}
+### `border_symbol` {#mgr.border_symbol}
 
 Border symbol, e.g. `"│"`.
 
@@ -201,7 +177,7 @@ Border symbol, e.g. `"│"`.
 | ---- | -------- |
 | Type | `string` |
 
-### `border_style` {#manager.border_style}
+### `border_style` {#mgr.border_style}
 
 Border style.
 
@@ -209,7 +185,7 @@ Border style.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-### `syntect_theme` {#manager.syntect_theme}
+### `syntect_theme` {#mgr.syntect_theme}
 
 Code preview highlighting themes, which are paths to `.tmTheme` files. You can find them on GitHub [using "tmTheme" as a keyword](https://github.com/search?q=tmTheme&type=repositories)
 

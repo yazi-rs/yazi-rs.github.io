@@ -163,17 +163,17 @@ or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 
 Further navigation commands can be found in the table below.
 
-| Key binding                 | Action                                                                     |
-| --------------------------- | -------------------------------------------------------------------------- |
-| <kbd>K</kbd>                | Seek up 5 units in the preview                                             |
-| <kbd>J</kbd>                | Seek down 5 units in the preview                                           |
-| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top                                                     |
-| <kbd>G</kbd>                | Move cursor to the bottom                                                  |
-| <kbd>z</kbd>                | [Cd][manager.cd] to a directory or [reveal][manager.reveal] a file via fzf |
-| <kbd>Z</kbd>                | [Cd][manager.cd] to a directory via zoxide                                 |
+| Key binding                 | Action                                                             |
+| --------------------------- | ------------------------------------------------------------------ |
+| <kbd>K</kbd>                | Seek up 5 units in the preview                                     |
+| <kbd>J</kbd>                | Seek down 5 units in the preview                                   |
+| <kbd>g</kbd> ⇒ <kbd>g</kbd> | Move cursor to the top                                             |
+| <kbd>G</kbd>                | Move cursor to the bottom                                          |
+| <kbd>z</kbd>                | [Cd][mgr.cd] to a directory or [reveal][mgr.reveal] a file via fzf |
+| <kbd>Z</kbd>                | [Cd][mgr.cd] to a directory via zoxide                             |
 
-[manager.cd]: /docs/configuration/keymap#manager.cd
-[manager.reveal]: /docs/configuration/keymap#manager.reveal
+[mgr.cd]: /docs/configuration/keymap#mgr.cd
+[mgr.reveal]: /docs/configuration/keymap#mgr.reveal
 
 ### Selection
 

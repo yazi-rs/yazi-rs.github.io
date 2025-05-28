@@ -29,7 +29,7 @@ Then [copy the required part](https://github.com/sxyazi/yazi/blob/shipped/yazi-c
 
 ```toml
 # yazi.toml
-[manager]
+[mgr]
 show_hidden = true
 ```
 
@@ -41,7 +41,7 @@ The options from your configuration file will be used to override the default. H
 
 ```toml
 # keymap.toml
-[manager]
+[mgr]
 keymap = [
 	# ...
 ]
@@ -51,7 +51,7 @@ And instead want to customize your keys upon the default, you can use `prepend_*
 
 ```toml
 # keymap.toml
-[manager]
+[mgr]
 prepend_keymap = [
 	# ...
 ]

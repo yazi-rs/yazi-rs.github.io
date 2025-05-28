@@ -27,7 +27,7 @@ User's terminal properties.
 
 ### `mgr` {#rt.mgr}
 
-User preferences under [`[manager]`](/docs/configuration/yazi#manager).
+User preferences under [`[mgr]`](/docs/configuration/yazi#mgr).
 
 |      |         |
 | ---- | ------- |
@@ -63,7 +63,7 @@ You can access the user's theme and flavor configuration through `th`.
 
 ### `mgr` {#th.mgr}
 
-See [`[manager]`](/docs/configuration/theme#manager).
+See [`[mgr]`](/docs/configuration/theme#mgr).
 
 |      |         |
 | ---- | ------- |

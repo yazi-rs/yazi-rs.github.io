@@ -22,8 +22,8 @@ How to invoke fzf:
 
 If you exit fzf with a single-selected file:
 
-- [`reveal`](/docs/configuration/keymap#manager.reveal) the file.
-- Or, [`cd`](/docs/configuration/keymap#manager.cd) to it if it's a directory.
+- [`reveal`](/docs/configuration/keymap#mgr.reveal) the file.
+- Or, [`cd`](/docs/configuration/keymap#mgr.cd) to it if it's a directory.
 
 If you exit fzf with multiple-selected files:
 

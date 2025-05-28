@@ -79,7 +79,7 @@ Make sure your `theme.toml` doesn't contain anything other than `[flavor]`, unle
 We recommend using the new flavor format instead of the old theme, because flavors:
 
 - More powerful - auto dark/light mode switching with the terminal
-- Easier to update - can be managed with the `ya pack` package manager
+- Easier to update - can be managed with the [`ya pkg` package manager](/docs/cli#pm)
 - Offers configuration merging - override some styles from `flavor.toml` in your own `theme.toml`
 
 ## Cooking a flavor {#cooking}

@@ -125,7 +125,7 @@ in {
 		'';
 
 		keymap = {
-			manager.prepend_keymap = [
+			mgr.prepend_keymap = [
 				{
 					on = "T";
 					run = "plugin toggle-pane max-preview";

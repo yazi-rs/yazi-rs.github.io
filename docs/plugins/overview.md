@@ -313,11 +313,11 @@ All [userdata](https://www.lua.org/pil/28.1.html) are native Rust types that hav
 
 - [Url](/docs/plugins/types#url)
 
-Passing these userdata to a cross-thread function like [`ya.mgr_emit()`](/docs/plugins/utils#ya.mgr_emit) transfers ownership. After transfer, the original userdata is no longer available, for example:
+Passing these userdata to a cross-thread function like [`ya.emit()`](/docs/plugins/utils#ya.emit) transfers ownership. After transfer, the original userdata is no longer available, for example:
 
 ```lua
 local target = Url("/tmp")
-ya.mgr_emit("cd", { target })  -- Ownership transferred
+ya.emit("cd", { target })  -- Ownership transferred
 
 ya.dbg(tostring(url)) -- Error: userdata has been destructed
 ```
@@ -325,8 +325,8 @@ ya.dbg(tostring(url)) -- Error: userdata has been destructed
 To keep the original, clone a new userdata and pass that instead, but this allocates extra memory - `Url()` constructor can accept a `Url` userdata and return a new clone of that `Url`:
 
 ```diff
-- ya.mgr_emit("cd", { target })
-+ ya.mgr_emit("cd", { Url(target) })
+- ya.emit("cd", { target })
++ ya.emit("cd", { Url(target) })
 ```
 
 A smarter way is to reverse the order of execution, use the `target` before it's transferred, to avoid the need for cloning:
@@ -335,7 +335,7 @@ A smarter way is to reverse the order of execution, use the `target` before it's
 local target = Url("/tmp")
 local target_str = tostring(target)
 
-ya.mgr_emit("cd", { target })  -- Ownership transferred
+ya.emit("cd", { target })  -- Ownership transferred
 ya.dbg(target_str) -- No error
 ```
 

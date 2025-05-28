@@ -9,9 +9,9 @@ description: Learn how to configure Yazi's basic functionality.
 If you want to fine-tune the default settings, the first step is to [create your own configuration file](/docs/configuration/overview).
 :::
 
-## [manager] {#manager}
+## [manager] {#mgr}
 
-### `ratio` {#manager.ratio}
+### `ratio` {#mgr.ratio}
 
 Manager layout by ratio, 3-element array. For example:
 
@@ -19,7 +19,7 @@ Manager layout by ratio, 3-element array. For example:
 
 Set the value to `0` to hide the corresponding panel, but at least one panel must be visible (non-zero).
 
-### `sort_by` {#manager.sort_by}
+### `sort_by` {#mgr.sort_by}
 
 File sorting method.
 
@@ -32,42 +32,42 @@ File sorting method.
 - `"size"`: Sort by file size.
 - `"random"`: Sort randomly.
 
-### `sort_sensitive` {#manager.sort_sensitive}
+### `sort_sensitive` {#mgr.sort_sensitive}
 
 Sort case-sensitively.
 
 - `true`: Case-sensitive
 - `false`: Case-insensitive
 
-### `sort_reverse` {#manager.sort_reverse}
+### `sort_reverse` {#mgr.sort_reverse}
 
 Display files in reverse order.
 
 - `true`: Reverse order
 - `false`: Normal order
 
-### `sort_dir_first` {#manager.sort_dir_first}
+### `sort_dir_first` {#mgr.sort_dir_first}
 
 Display directories first.
 
 - `true`: Directories first
 - `false`: Normal order
 
-### `sort_translit` {#manager.sort_translit}
+### `sort_translit` {#mgr.sort_translit}
 
-Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if [`sort_by = "natural"`](#manager.sort_by).
+Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if [`sort_by = "natural"`](#mgr.sort_by).
 
 This is useful for files that contain Hungarian characters.
 
 - `true`: Enabled
 - `false`: Disabled
 
-### `linemode` {#manager.linemode}
+### `linemode` {#mgr.linemode}
 
 Line mode: display information associated with the file on the right side of the file list row.
 
 - `"none"`: No line mode.
-- `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#manager.sort_by), and this might change in the future.
+- `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#mgr.sort_by), and this might change in the future.
 - `"btime"`: Display the birth time of the file.
 - `"mtime"`: Display the last modified time of the file.
 - `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
@@ -77,7 +77,7 @@ You can also specify any 1 to 20 characters, and extend it within a UI plugin, w
 
 ```toml
 # ~/.config/yazi/yazi.toml
-[manager]
+[mgr]
 linemode = "size_and_mtime"
 ```
 
@@ -98,27 +98,27 @@ function Linemode:size_and_mtime()
 end
 ```
 
-### `show_hidden` {#manager.show_hidden}
+### `show_hidden` {#mgr.show_hidden}
 
 Show hidden files.
 
 - `true`: Show
 - `false`: Do not show
 
-### `show_symlink` {#manager.show_symlink}
+### `show_symlink` {#mgr.show_symlink}
 
 Show the path of the symlink file point to, after the filename.
 
 - `true`: Show
 - `false`: Do not show
 
-### `scrolloff` {#manager.scrolloff}
+### `scrolloff` {#mgr.scrolloff}
 
 The number of files to keep above and below the cursor when moving through the file list.
 
 If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
 
-### `mouse_events` {#manager.mouse_events}
+### `mouse_events` {#mgr.mouse_events}
 
 Array of strings, the types of mouse events can be received by the plugin system, available values:
 
@@ -130,7 +130,7 @@ Array of strings, the types of mouse events can be received by the plugin system
 
 Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
 
-### `title_format` {#manager.title_format}
+### `title_format` {#mgr.title_format}
 
 The terminal title format, which is a string with the following placeholders available:
 
@@ -294,8 +294,8 @@ Available rule options are as follows:
 
 With that:
 
-- You can [`spot`](/docs/configuration/keymap#manager.spot) on a file to check it's mime-type with the default <kbd>Tab</kbd> key.
-- If `use` is an array containing multiple openers, all commands in these openers will be merged. [`open`](/docs/configuration/keymap#manager.open) will run the first of these commands; [`open --interactive`](/docs/configuration/keymap#manager.open) will list all of these commands in the "open with" menu.
+- You can [`spot`](/docs/configuration/keymap#mgr.spot) on a file to check it's mime-type with the default <kbd>Tab</kbd> key.
+- If `use` is an array containing multiple openers, all commands in these openers will be merged. [`open`](/docs/configuration/keymap#mgr.open) will run the first of these commands; [`open --interactive`](/docs/configuration/keymap#mgr.open) will list all of these commands in the "open with" menu.
 
 ## [tasks] {#tasks}
 
@@ -446,31 +446,31 @@ Some inputs have special placeholders that will be replaced with actual content 
 
 - cd_title: String
 
-  Title of the [`cd --interactive`](/docs/configuration/keymap/#manager.cd) input used to enter the target path.
+  Title of the [`cd --interactive`](/docs/configuration/keymap/#mgr.cd) input used to enter the target path.
 
 - create_title: [String, String]
 
-  It's a tuple of 2-element: first for [`create`](/docs/configuration/keymap/#manager.create) input title, second for `create --dir` command.
+  It's a tuple of 2-element: first for [`create`](/docs/configuration/keymap/#mgr.create) input title, second for `create --dir` command.
 
 - rename_title: String
 
-  Title of the [`rename`](/docs/configuration/keymap/#manager.rename) input used to enter the new name.
+  Title of the [`rename`](/docs/configuration/keymap/#mgr.rename) input used to enter the new name.
 
 - filter_title: String
 
-  Title of the [`filter`](/docs/configuration/keymap/#manager.filter) input used to enter the keyword.
+  Title of the [`filter`](/docs/configuration/keymap/#mgr.filter) input used to enter the keyword.
 
 - find_title: [String, String]
 
-  It's a tuple of 2-element: first for [`find`](/docs/configuration/keymap/#manager.find), second for `find --previous`.
+  It's a tuple of 2-element: first for [`find`](/docs/configuration/keymap/#mgr.find), second for `find --previous`.
 
 - search_title: String
 
-  - `{n}`: Name of the current [`search`](/docs/configuration/keymap/#manager.search) engine.
+  - `{n}`: Name of the current [`search`](/docs/configuration/keymap/#mgr.search) engine.
 
 - shell_title: [String, String]
 
-  It's a tuple of 2-element: first for [`shell --interactive`](/docs/configuration/keymap/#manager.shell), second for `shell --interactive --block`.
+  It's a tuple of 2-element: first for [`shell --interactive`](/docs/configuration/keymap/#mgr.shell), second for `shell --interactive --block`.
 
 ## [confirm] {#confirm}
 

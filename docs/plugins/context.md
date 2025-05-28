@@ -84,7 +84,7 @@ Tab-specific user preferences.
 
 ### `sort_by` {#tab-pref.sort_by}
 
-File sorting method. See [`sort_by`](/docs/configuration/yazi#manager.sort_by) for details.
+File sorting method. See [`sort_by`](/docs/configuration/yazi#mgr.sort_by) for details.
 
 |      |                                                                                                                  |
 | ---- | ---------------------------------------------------------------------------------------------------------------- |
@@ -92,7 +92,7 @@ File sorting method. See [`sort_by`](/docs/configuration/yazi#manager.sort_by) f
 
 ### `sort_sensitive` {#tab-pref.sort_sensitive}
 
-Sort case-sensitively. See [`sort_sensitive`](/docs/configuration/yazi#manager.sort_sensitive) for details.
+Sort case-sensitively. See [`sort_sensitive`](/docs/configuration/yazi#mgr.sort_sensitive) for details.
 
 |      |           |
 | ---- | --------- |
@@ -100,7 +100,7 @@ Sort case-sensitively. See [`sort_sensitive`](/docs/configuration/yazi#manager.s
 
 ### `sort_reverse` {#tab-pref.sort_reverse}
 
-Display files in reverse order. See [`sort_reverse`](/docs/configuration/yazi#manager.sort_reverse) for details.
+Display files in reverse order. See [`sort_reverse`](/docs/configuration/yazi#mgr.sort_reverse) for details.
 
 |      |           |
 | ---- | --------- |
@@ -108,7 +108,7 @@ Display files in reverse order. See [`sort_reverse`](/docs/configuration/yazi#ma
 
 ### `sort_dir_first` {#tab-pref.sort_dir_first}
 
-Display directories first. See [`sort_dir_first`](/docs/configuration/yazi#manager.sort_dir_first) for details.
+Display directories first. See [`sort_dir_first`](/docs/configuration/yazi#mgr.sort_dir_first) for details.
 
 |      |           |
 | ---- | --------- |
@@ -116,7 +116,7 @@ Display directories first. See [`sort_dir_first`](/docs/configuration/yazi#manag
 
 ### `sort_translit` {#tab-pref.sort_translit}
 
-Transliterate filenames for sorting. See [`sort_translit`](/docs/configuration/yazi#manager.sort_translit) for details.
+Transliterate filenames for sorting. See [`sort_translit`](/docs/configuration/yazi#mgr.sort_translit) for details.
 
 |      |           |
 | ---- | --------- |
@@ -124,7 +124,7 @@ Transliterate filenames for sorting. See [`sort_translit`](/docs/configuration/y
 
 ### `linemode` {#tab-pref.linemode}
 
-Line mode. See [`linemode`](/docs/configuration/yazi#manager.linemode) for details.
+Line mode. See [`linemode`](/docs/configuration/yazi#mgr.linemode) for details.
 
 |      |                                                                                            |
 | ---- | ------------------------------------------------------------------------------------------ |
@@ -132,7 +132,7 @@ Line mode. See [`linemode`](/docs/configuration/yazi#manager.linemode) for detai
 
 ### `show_hidden` {#tab-pref.show_hidden}
 
-Show hidden files. See [`show_hidden`](/docs/configuration/yazi#manager.show_hidden) for details.
+Show hidden files. See [`show_hidden`](/docs/configuration/yazi#mgr.show_hidden) for details.
 
 |      |           |
 | ---- | --------- |
@@ -358,7 +358,7 @@ Whether the file is selected.
 
 File find status:
 
-- `nil` if if the user not in [`find`](/docs/configuration/keymap#manager.find) mode.
+- `nil` if if the user not in [`find`](/docs/configuration/keymap#mgr.find) mode.
 - `nil` if current file is not related to the keyword entered by the user.
 - `integer, integer` if current file is one of the files found, where first is its index among the results and second is the total count of files found.
 

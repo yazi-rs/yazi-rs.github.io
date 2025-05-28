@@ -24,14 +24,14 @@ Moved to: https://github.com/yazi-rs/plugins/tree/main/full-border.yazi
 Add this keybinding to your `keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "!"
 for  = "unix"
 run  = 'shell "$SHELL" --block'
 desc = "Open $SHELL here"
 
 # If you also using Yazi on Windows:
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "!"
 for  = "windows"
 run  = 'shell "powershell.exe" --block'
@@ -68,7 +68,7 @@ Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/main.lua`:
 return {
 	entry = function()
 		local h = cx.active.current.hovered
-		ya.mgr_emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
+		ya.emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
 	end,
 }
 ```
@@ -76,7 +76,7 @@ return {
 Then bind it to the <kbd>t</kbd> key, in your `keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "t"
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
@@ -91,12 +91,12 @@ Save these lines as `~/.config/yazi/plugins/smart-switch.yazi/main.lua`:
 local function entry(_, job)
 	local cur = cx.active.current
 	for _ = #cx.tabs, job.args[1] do
-		ya.mgr_emit("tab_create", { cur.cwd })
+		ya.emit("tab_create", { cur.cwd })
 		if cur.hovered then
-			ya.mgr_emit("reveal", { cur.hovered.url })
+			ya.emit("reveal", { cur.hovered.url })
 		end
 	end
-	ya.mgr_emit("tab_switch", { job.args[1] })
+	ya.emit("tab_switch", { job.args[1] })
 end
 
 return { entry = entry }
@@ -105,7 +105,7 @@ return { entry = entry }
 Then bind it to the <kbd>2</kbd> key, in your `keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "2"
 run  = "plugin smart-switch 1"
 desc = "Switch or create tab 2"
@@ -122,9 +122,9 @@ local function setup()
 	ps.sub("cd", function()
 		local cwd = cx.active.current.cwd
 		if cwd:ends_with("Downloads") then
-			ya.mgr_emit("sort", { "mtime", reverse = true, dir_first = false })
+			ya.emit("sort", { "mtime", reverse = true, dir_first = false })
 		else
-			ya.mgr_emit("sort", { "alphabetical", reverse = false, dir_first = true })
+			ya.emit("sort", { "alphabetical", reverse = false, dir_first = true })
 		end
 	end)
 end
@@ -168,7 +168,7 @@ previewers = []
 Original post: https://github.com/sxyazi/yazi/discussions/327
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "<C-n>"
 run = 'shell -- dragon -x -i -T "$1"'
 ```
@@ -178,7 +178,7 @@ run = 'shell -- dragon -x -i -T "$1"'
 Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [ 'shell -- echo "$@" | xclip -i -selection clipboard -t text/uri-list', "yank" ]
 ```
@@ -186,7 +186,7 @@ run = [ 'shell -- echo "$@" | xclip -i -selection clipboard -t text/uri-list', "
 The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
 ```
@@ -194,7 +194,7 @@ run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t te
 ## `cd` back to the root of the current Git repository {#cd-to-git-root}
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "r" ]
 run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
 ```
@@ -247,7 +247,7 @@ local function entry(_, job)
 
 	local target = parent.files[parent.cursor + 1 + job.args[1]]
 	if target and target.cha.is_dir then
-		ya.mgr_emit("cd", { target.url })
+		ya.emit("cd", { target.url })
 	end
 end
 
@@ -272,7 +272,7 @@ local function entry(_, job)
 	for i = start, end_, step do
 		local target = parent.files[i]
 		if target and target.cha.is_dir then
-			return ya.mgr_emit("cd", { target.url })
+			return ya.emit("cd", { target.url })
 		end
 	end
 end
@@ -286,11 +286,11 @@ return { entry = entry }
 Then bind it for <kbd>K</kbd> and <kbd>J</kbd> key, in your `keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "K"
 run = "plugin parent-arrow -1"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "J"
 run = "plugin parent-arrow 1"
 ```
@@ -304,16 +304,16 @@ local count = ya.sync(function() return #cx.tabs end)
 
 local function entry()
 	if count() < 2 then
-		return ya.mgr_emit("quit", {})
+		return ya.emit("quit", {})
 	end
 
 	local yes = ya.confirm {
 		pos = { "center", w = 60, h = 10 },
 		title = "Quit?",
-		content = ui.Text("There are multiple tabs open. Are you sure you want to quit?"):wrap(ui.Text.WRAP),
+		content = ui.Text("There are multiple tabs open. Are you sure you want to quit?"):wrap(ui.Wrap.YES),
 	}
 	if yes then
-		ya.mgr_emit("quit", {})
+		ya.emit("quit", {})
 	end
 end
 
@@ -323,7 +323,7 @@ return { entry = entry }
 Next, bind it to the <kbd>q</kbd> key in your `keymap.toml`:
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "q"
 run = "plugin confirm-quit"
 ```
@@ -393,7 +393,7 @@ end, 500, Header.LEFT)
 ## macOS: Preview files with the system Quick Look {#macos-quick-look}
 
 ```toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<C-p>"
 run = 'shell -- qlmanage -p "$@"'
 ```
@@ -565,7 +565,7 @@ To send selected files using [Thunderbird](https://www.thunderbird.net), with a 
 
 ```toml
 # ~/.config/yazi/keymap.toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "<C-m>"
 run = '''shell --
 	paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
@@ -577,7 +577,7 @@ Or, use the [NeoMutt](https://neomutt.org) command-line mail client:
 
 ```toml
 # ~/.config/yazi/keymap.toml
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "<C-m>"
 run = 'shell --block -- neomutt -a "$@"'
 ```

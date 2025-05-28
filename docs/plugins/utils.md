@@ -65,12 +65,12 @@ end)
 | Return    | `unknown`         |
 | Available | Sync context only |
 
-### `mgr_emit(cmd, args)` {#ya.mgr_emit}
+### `emit(cmd, args)` {#ya.emit}
 
-Send a command to the [`[manager]`](/docs/configuration/keymap#manager) without waiting for the executor to execute:
+Send a command to the [`[mgr]`](/docs/configuration/keymap#mgr) without waiting for the executor to execute:
 
 ```lua
-ya.mgr_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
+ya.emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 
 -- Equivalent to:
 -- my-cmd "hello" "123" --foo --bar-baz="world"
@@ -273,28 +273,35 @@ Returns `(err, upper_bound)`:
 | Return    | `Error?, integer?`                                        |
 | Available | Async context only                                        |
 
-### `preview_widgets(opts, widgets)` {#ya.preview_widgets}
+### `preview_widget(opts, widget)` {#ya.preview_widget}
 
 ```lua
-ya.preview_widgets({
+local opts = {
 	-- Available preview area.
-  area = area,
+	area = area,
 	-- File to be previewed.
-  file = file,
+	file = file,
 	-- Mimetype of the file.
-  mime = "text/plain",
+	mime = "text/plain",
 	-- Number of units to skip. The units depend on your previewer,
 	-- such as lines for code and percentages for videos.
-  skip = 1,
-}, {
-	ui.Text("Hello, World!"):area(area),
+	skip = 1,
+}
+
+-- Preview a widget in the specified area.
+ya.preview_widget(opts, ui.Line("Hello world"):area(area))
+
+-- Preview multiple widgets in the specified area.
+ya.preview_widget(opts, {
+	ui.Line("Hello"):area(area1),
+	ui.Line("world"):area(area2),
 })
 ```
 
 | In/Out    | Type                                                      |
 | --------- | --------------------------------------------------------- |
 | `opts`    | `{ area: Rect, file: File, mime: string, skip: integer }` |
-| `widgets` | `Renderable[]`                                            |
+| `widget`  | `Renderable` \| `Renderable[]`                            |
 | Return    | `unknown`                                                 |
 | Available | Async context only                                        |
 
@@ -738,31 +745,19 @@ It takes better advantage of the benefits of concurrent scheduling. However, it 
 
 ### `arg(self, arg)` {#Command.arg}
 
-Append an argument to the command:
+Append one or more arguments to the command:
 
 ```lua
 local cmd = Command("ls"):arg("-a"):arg("-l")
+-- Equivalent to:
+local cmd = Command("ls"):arg { "-a", "-l" }
 ```
 
-| In/Out | Type     |
-| ------ | -------- |
-| `self` | `Self`   |
-| `arg`  | `string` |
-| Return | `self`   |
-
-### `args(self, args)` {#Command.args}
-
-Append multiple arguments to the command:
-
-```lua
-local cmd = Command("ls"):args({ "-a", "-l" }):args({ "-h" })
-```
-
-| In/Out | Type       |
-| ------ | ---------- |
-| `self` | `Self`     |
-| `args` | `string[]` |
-| Return | `self`     |
+| In/Out | Type                   |
+| ------ | ---------------------- |
+| `self` | `Self`                 |
+| `arg`  | `string` \| `string[]` |
+| Return | `self`                 |
 
 ### `cwd(self, dir)` {#Command.cwd}
 
