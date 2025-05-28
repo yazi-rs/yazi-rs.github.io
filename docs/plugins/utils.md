@@ -712,7 +712,7 @@ local files, err = fs.read_dir(url, {
 | Return    | `File[]?, Error?`                                       |
 | Available | Async context only                                      |
 
-### `unique_name(url)`
+### `unique_name(url)` {#fs.unique_name}
 
 Get a unique name from the given `url` to ensure it's unique in the filesystem:
 

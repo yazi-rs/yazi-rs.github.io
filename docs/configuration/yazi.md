@@ -196,12 +196,6 @@ Quality on pre-caching images, range 50-90.
 
 The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
 
-### `sixel_fraction` {#preview.sixel_fraction}
-
-Sixel is a very old image format that only supports 256 colors. For better image preview, Yazi trains a neural network for each image to find the most representative colors.
-
-This value determines the number of samples used during the training, range 10-20. A smaller value produces better results but is also slower.
-
 ### `ueberzug_scale` / `ueberzug_offset` {#preview.ueberzug_scale}
 
 - ueberzug_scale (Float): Ueberzug image scaling ratio, `scale>1` for enlargement, `scale<1` for reduction. For example, `0.5` indicates a reduction to half.
