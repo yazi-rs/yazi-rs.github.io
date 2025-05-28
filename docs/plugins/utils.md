@@ -62,7 +62,7 @@ end)
 
 | In/Out    | Type              |
 | --------- | ----------------- |
-| Return    | `undefined`       |
+| Return    | `unknown`         |
 | Available | Sync context only |
 
 ### `mgr_emit(cmd, args)` {#ya.mgr_emit}
@@ -80,7 +80,7 @@ ya.mgr_emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
 | ------ | --------------------------------- | --------------------------------------------------------------------------------------- |
 | `cmd`  | `string`                          | -                                                                                       |
 | `args` | `{ [integer\|string]: Sendable }` | Table values are [Sendable][sendable] that follow [Ownership transfer rules][ownership] |
-| Return | `undefined`                       | -                                                                                       |
+| Return | `unknown`                         | -                                                                                       |
 
 ### `image_show(url, rect)` {#ya.image_show}
 
@@ -90,7 +90,7 @@ Display the image of `url` within the `rect`, and the image will downscale to fi
 | --------- | ------------------ |
 | `url`     | `Url`              |
 | `rect`    | `Rect`             |
-| Return    | `undefined`        |
+| Return    | `unknown`          |
 | Available | Async context only |
 
 ### `image_precache(src, dist)` {#ya.image_precache}
@@ -101,7 +101,7 @@ Pre-cache the image of `src` as `dist` based on user-configured [`max_width` and
 | --------- | ------------------ |
 | `src`     | `Url`              |
 | `dist`    | `Url`              |
-| Return    | `undefined`        |
+| Return    | `unknown`          |
 | Available | Async context only |
 
 ### `which(opts)` {#ya.which}
@@ -212,7 +212,7 @@ ya.notify {
 | In/Out | Type                                                                   |
 | ------ | ---------------------------------------------------------------------- |
 | `opts` | `{ title: string, content: string, timeout: number?, level: string? }` |
-| Return | `undefined`                                                            |
+| Return | `unknown`                                                              |
 
 ### `dbg(msg, ...)` {#ya.dbg}
 
@@ -223,11 +223,11 @@ ya.dbg("Hello", "World!")                       -- Multiple arguments are suppor
 ya.dbg({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-| In/Out | Type        |
-| ------ | ----------- |
-| `msg`  | `any`       |
-| `...`  | `any`       |
-| Return | `undefined` |
+| In/Out | Type      |
+| ------ | --------- |
+| `msg`  | `any`     |
+| `...`  | `any`     |
+| Return | `unknown` |
 
 ### `err(msg, ...)` {#ya.err}
 
@@ -238,11 +238,11 @@ ya.err("Hello", "World!")                       -- Multiple arguments are suppor
 ya.err({ foo = "bar", baz = 123, qux = true })  -- Any type of data is supported
 ```
 
-| In/Out | Type        |
-| ------ | ----------- |
-| `msg`  | `any`       |
-| `...`  | `any`       |
-| Return | `undefined` |
+| In/Out | Type      |
+| ------ | --------- |
+| `msg`  | `any`     |
+| `...`  | `any`     |
+| Return | `unknown` |
 
 ### `preview_code(opts)` {#ya.preview_code}
 
@@ -295,7 +295,7 @@ ya.preview_widgets({
 | --------- | --------------------------------------------------------- |
 | `opts`    | `{ area: Rect, file: File, mime: string, skip: integer }` |
 | `widgets` | `Renderable[]`                                            |
-| Return    | `undefined`                                               |
+| Return    | `unknown`                                                 |
 | Available | Async context only                                        |
 
 ### `sync(fn)` {#ya.sync}
@@ -410,7 +410,7 @@ ya.sleep(0.5)  -- Sleep for 500 milliseconds
 | In/Out    | Type               |
 | --------- | ------------------ |
 | `secs`    | `number`           |
-| Return    | `undefined`        |
+| Return    | `unknown`          |
 | Available | Async context only |
 
 ### `uid()` {#ya.uid}
@@ -493,11 +493,11 @@ ps.pub("greeting", "Hello, World!")
 Since the `kind` is used globally, to add the plugin name as the prefix is a best practice.
 For example, the combination of the plugin `my-plugin` and the kind `event1` would be `my-plugin-event1`.
 
-| In/Out  | Type        | Note                                                                            |
-| ------- | ----------- | ------------------------------------------------------------------------------- |
-| `kind`  | `string`    | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds)           |
-| `value` | `Sendable`  | A [Sendable value][sendable] that follows [Ownership transfer rules][ownership] |
-| Return  | `undefined` | -                                                                               |
+| In/Out  | Type       | Note                                                                            |
+| ------- | ---------- | ------------------------------------------------------------------------------- |
+| `kind`  | `string`   | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds)           |
+| `value` | `Sendable` | A [Sendable value][sendable] that follows [Ownership transfer rules][ownership] |
+| Return  | `unknown`  | -                                                                               |
 
 ### `pub_to(receiver, kind, value)` {#ps.pub_to}
 
@@ -513,12 +513,12 @@ Where:
 - Remote - `receiver` isn't the current instance, and is subscribed to this `kind` via `sub_remote()`, it will receive the message.
 - Broadcast - `receiver` is `0`, all remote instances subscribed to this `kind` via `sub_remote()` will receive the message.
 
-| In/Out     | Type        | Note                                                                            |
-| ---------- | ----------- | ------------------------------------------------------------------------------- |
-| `receiver` | `integer`   | -                                                                               |
-| `kind`     | `string`    | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds)           |
-| `value`    | `Sendable`  | A [Sendable value][sendable] that follows [Ownership transfer rules][ownership] |
-| Return     | `undefined` | -                                                                               |
+| In/Out     | Type       | Note                                                                            |
+| ---------- | ---------- | ------------------------------------------------------------------------------- |
+| `receiver` | `integer`  | -                                                                               |
+| `kind`     | `string`   | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds)           |
+| `value`    | `Sendable` | A [Sendable value][sendable] that follows [Ownership transfer rules][ownership] |
+| Return     | `unknown`  | -                                                                               |
 
 ### `sub(kind, callback)` {#ps.sub}
 
@@ -538,7 +538,7 @@ It runs in a sync context, so you can access all states via `cx` for the data of
 | ---------- | --------------------- | --------------------------------------------------------------------- |
 | `kind`     | `string`              | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds) |
 | `callback` | `fun(body: Sendable)` | No time-consuming work should be done in the callback                 |
-| Return     | `undefined`           | -                                                                     |
+| Return     | `unknown`             | -                                                                     |
 
 ### `sub_remote(kind, callback)` {#ps.sub_remote}
 
@@ -548,7 +548,7 @@ Same as `sub()`, except it subscribes to remote messages of this `kind` instead 
 | ---------- | --------------------- | --------------- |
 | `kind`     | `string`              | Same as `sub()` |
 | `callback` | `fun(body: Sendable)` | Same as `sub()` |
-| Return     | `undefined`           | -               |
+| Return     | `unknown`             | -               |
 
 ### `unsub(kind)` {#ps.unsub}
 
@@ -558,10 +558,10 @@ Unsubscribe from local messages of this `kind`:
 ps.unsub("my-message")
 ```
 
-| In/Out | Type        | Note                                                                  |
-| ------ | ----------- | --------------------------------------------------------------------- |
-| `kind` | `string`    | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds) |
-| Return | `undefined` | -                                                                     |
+| In/Out | Type      | Note                                                                  |
+| ------ | --------- | --------------------------------------------------------------------- |
+| `kind` | `string`  | Alphanumeric with dashes, cannot be [built-in kinds](/docs/dds#kinds) |
+| Return | `unknown` | -                                                                     |
 
 ### `unsub_remote(kind)` {#ps.unsub_remote}
 
@@ -571,10 +571,10 @@ Unsubscribe from remote messages of this `kind`:
 ps.unsub_remote("my-message")
 ```
 
-| In/Out | Type        | Note              |
-| ------ | ----------- | ----------------- |
-| `kind` | `string`    | Same as `unsub()` |
-| Return | `undefined` | -                 |
+| In/Out | Type      | Note              |
+| ------ | --------- | ----------------- |
+| `kind` | `string`  | Same as `unsub()` |
+| Return | `unknown` | -                 |
 
 ## fs {#fs}
 

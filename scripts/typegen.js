@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs"
 const STUBS = `
 -- luacheck: globals Command Url cx fs ps rt th ui ya
 
----@alias undefined any
+---@alias unknown any
 
 ---@alias Color string
 ---@alias Direction integer
@@ -215,7 +215,7 @@ function normalizeDesc(s) {
 }
 
 function normalizeType(s) {
-	const re = /(?<!ui\.)(Bar|Border|Clear|Constraint|Gauge|Layout|Line|List|Pad|Rect|Span|Style|Text)/g
+	const re = /(?<!ui\.)(Align|Bar|Border|Clear|Constraint|Edge|Gauge|Layout|Line|List|Pad|Rect|Span|Style|Text|Wrap)/g
 	return s.replaceAll("::", "__").replaceAll("Self", "self").replaceAll(re, m => `ui.${m}`)
 }
 

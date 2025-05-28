@@ -1148,25 +1148,25 @@ Align is used to set the alignment of an element, such as a [Line](#line) or [Te
 
 Align to the left.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `CENTER` {#align.CENTER}
 
 Align to the center.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `RIGHT` {#align.RIGHT}
 
 Align to the right.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ## Wrap {#wrap}
 
@@ -1174,25 +1174,25 @@ Align to the right.
 
 Disables wrapping.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `YES` {#wrap.YES}
 
 Enables wrapping.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `TRIM` {#wrap.TRIM}
 
 Enables wrapping and trims the leading whitespace.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ## Edge {#edge}
 
@@ -1200,46 +1200,46 @@ Enables wrapping and trims the leading whitespace.
 
 No edge is applied.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `TOP` {#edge.TOP}
 
 Applies the top edge.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `RIGHT` {#edge.RIGHT}
 
 Applies the right edge.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `BOTTOM` {#edge.BOTTOM}
 
 Applies the bottom edge.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `LEFT` {#edge.LEFT}
 
 Applies the left edge.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
 
 ### `ALL` {#edge.ALL}
 
 Applies all edges.
 
-|      |             |
-| ---- | ----------- |
-| Type | `undefined` |
+|      |           |
+| ---- | --------- |
+| Type | `unknown` |
