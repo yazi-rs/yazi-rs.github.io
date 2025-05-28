@@ -959,14 +959,14 @@ Set the style of the bar.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
-### `__new(value)` {#bar.\_\_new}
+### `__new(edge)` {#bar.\_\_new}
 
 Make a new bar.
 
-| In/Out  | Type        |
-| ------- | ----------- |
-| `value` | `Direction` |
-| Return  | `Self`      |
+| In/Out | Type            |
+| ------ | --------------- |
+| `edge` | [`Edge`](#edge) |
+| Return | `Self`          |
 
 ## Border {#border}
 
@@ -1131,7 +1131,7 @@ Set the area of the clear.
 
 If `rect` is not specified, it returns the current area.
 
-### `__new()` {#clear.\_\_new}
+### `__new(rect)` {#clear.\_\_new}
 
 Make a new clear.
 
@@ -1148,25 +1148,25 @@ Align is used to set the alignment of an element, such as a [Line](#line) or [Te
 
 Align to the left.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `CENTER` {#align.CENTER}
 
 Align to the center.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `RIGHT` {#align.RIGHT}
 
 Align to the right.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ## Wrap {#wrap}
 
@@ -1174,25 +1174,25 @@ Align to the right.
 
 Disables wrapping.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `YES` {#wrap.YES}
 
 Enables wrapping.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `TRIM` {#wrap.TRIM}
 
 Enables wrapping and trims the leading whitespace.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ## Edge {#edge}
 
@@ -1200,46 +1200,46 @@ Enables wrapping and trims the leading whitespace.
 
 No edge is applied.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `TOP` {#edge.TOP}
 
 Applies the top edge.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `RIGHT` {#edge.RIGHT}
 
 Applies the right edge.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `BOTTOM` {#edge.BOTTOM}
 
 Applies the bottom edge.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `LEFT` {#edge.LEFT}
 
 Applies the left edge.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
 
 ### `ALL` {#edge.ALL}
 
 Applies all edges.
 
-|      |           |
-| ---- | --------- |
-| Type | `unknown` |
+|      |        |
+| ---- | ------ |
+| Type | `Self` |
