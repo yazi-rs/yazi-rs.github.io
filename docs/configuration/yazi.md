@@ -9,7 +9,7 @@ description: Learn how to configure Yazi's basic functionality.
 If you want to fine-tune the default settings, the first step is to [create your own configuration file](/docs/configuration/overview).
 :::
 
-## [manager] {#mgr}
+## [mgr] {#mgr}
 
 ### `ratio` {#mgr.ratio}
 

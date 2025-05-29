@@ -1,5 +1,5 @@
 ---
-sidebar_position: 11
+sidebar_position: 12
 description: Answers to some frequently asked questions about Yazi.
 ---
 
