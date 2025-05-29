@@ -4,7 +4,6 @@ const STUBS = `
 -- luacheck: globals Command Url cx fs ps rt th ui ya
 
 ---@alias Color "reset"|"black"|"white"|"red"|"lightred"|"green"|"lightgreen"|"yellow"|"lightyellow"|"blue"|"lightblue"|"magenta"|"lightmagenta"|"cyan"|"lightcyan"|"gray"|"darkgray"|string
----@alias Position integer
 ---@alias Stdio integer
 
 ---@alias Sendable nil|boolean|number|string|Url|{ [Sendable]: Sendable }
@@ -143,13 +142,14 @@ function stubUi(headers) {
 			children.push({
 				...constructor,
 				name,
+				desc  : header.desc,
 				return: constructor.return.map(t => t === "self" ? type : t),
 			})
 		} else {
 			children.push({
 				name,
 				type: [type],
-				desc: "",
+				desc: header.desc,
 			})
 		}
 	}
@@ -193,7 +193,8 @@ function gen(headers) {
 		// Constructor
 		const constructor = header.children.find(c => c.return && c.name === "__new")
 		if (constructor) {
-			s += `---@overload fun(`
+			s += constructor.desc.split("\n").map(s => `-- ${s}`).join("\n")
+			s += `\n---@overload fun(`
 			for (const param of constructor.params) {
 				s += `${param}: `
 				s += (constructor.args[param] || []).join("|")
@@ -230,6 +231,6 @@ const combined = [
 	gen(runtime),
 	gen(utils),
 	gen(stubUi(layout)),
-].join("\n")
+]
 
-console.log(combined)
+console.log(combined.join("\n").trim())

@@ -1134,7 +1134,7 @@ Make a new clear.
 
 ## Align {#align}
 
-Align is used to set the alignment of an element, such as a [Line](#line) or [Text](#text).
+Alignment of an element such as [`Text`](#text) or [`Line`](#line).
 
 ### `LEFT` {#align.LEFT}
 
@@ -1162,6 +1162,8 @@ Align to the right.
 
 ## Wrap {#wrap}
 
+Wrapping behavior of a [`Text`](#text).
+
 ### `NO` {#wrap.NO}
 
 Disables wrapping.
@@ -1187,6 +1189,8 @@ Enables wrapping and trims the leading whitespace.
 | Type | `Self` |
 
 ## Edge {#edge}
+
+Which edges of elements such as [`Bar`](#bar) or [`Border`](#border) should be applied.
 
 ### `NONE` {#edge.NONE}
 
