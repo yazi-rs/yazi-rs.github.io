@@ -171,7 +171,7 @@ Make a new url.
 
 ## Cha {#cha}
 
-Cha means one file's characteristics.
+One file's characteristics.
 
 ### `is_dir` {#cha.is_dir}
 
@@ -333,6 +333,8 @@ Unix permission representation, such as `drwxr-xr-x`.
 
 ## File {#file}
 
+A bare file without any context information. See also [`fs::File`](/docs/plugins/context#fs-file).
+
 ### `url` {#file.url}
 
 Url of the file.
@@ -367,6 +369,8 @@ Name of the file.
 
 ## Icon {#icon}
 
+An icon.
+
 ### `text` {#icon.text}
 
 Text of the icon.
@@ -384,6 +388,8 @@ Text of the icon.
 | Type | `Style` |
 
 ## Error {#error}
+
+An error.
 
 ### `code` {#error.code}
 

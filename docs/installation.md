@@ -34,7 +34,7 @@ If the functions are not working properly, please try upgrading them to the late
 Most packages on this page are maintained by the community, and they **_may not always be the latest_**. Please check their versions before installation:
 
 <a alt="Yazi packaging status" href="https://repology.org/project/yazi/versions">
-	<img alt="Yazi packaging status" height="685" src="https://repology.org/badge/vertical-allrepos/yazi.svg" />
+	<img alt="Yazi packaging status" height="785" src="https://repology.org/badge/vertical-allrepos/yazi.svg" />
 </a>
 
 ## Arch Linux {#arch}

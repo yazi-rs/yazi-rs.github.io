@@ -19,7 +19,7 @@ Command-line arguments passed by the user when launching Yazi.
 
 ### `term` {#rt.term}
 
-User's terminal properties.
+User's terminal emulator properties.
 
 |      |                        |
 | ---- | ---------------------- |
@@ -180,6 +180,8 @@ TODO
 TODO
 
 ## rt::Term {#rt-term}
+
+User's terminal emulator properties.
 
 ### `light` {#rt-term.light}
 

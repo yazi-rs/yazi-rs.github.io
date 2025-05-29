@@ -35,7 +35,7 @@ All of tasks.
 
 ### `yanked` {#cx.yanked}
 
-The yanked files.
+Yanked files.
 
 |      |                              |
 | ---- | ---------------------------- |
@@ -140,6 +140,8 @@ Show hidden files. See [`show_hidden`](/docs/configuration/yazi#mgr.show_hidden)
 
 ## tab::Selected {#tab-selected}
 
+[Url](#url)s of the selected files.
+
 ### `__len(self)` {#tab-selected.\_\_len}
 
 Returns the number of selected [Url](#url)s.
@@ -160,6 +162,8 @@ Iterate over the selected [Url](#url)s.
 
 ## tab::Preview {#tab-preview}
 
+State of the preview pane.
+
 ### `skip` {#tab-preview.skip}
 
 Number of units to skip. The units largely depend on your previewer, such as lines for code and percentages for videos.
@@ -177,6 +181,8 @@ The folder being previewed, or `nil` if this preview is not for a folder.
 | Type | [`tab::Folder?`](#tab-folder) |
 
 ## tab::Folder {#tab-folder}
+
+A folder.
 
 ### `cwd` {#tab-folder.cwd}
 
@@ -228,6 +234,8 @@ Hovered file, or `nil` if no file is hovered.
 
 ## fs::Files {#fs-files}
 
+Files in a [`tab::Folder`](#tab-folder).
+
 ### `__len(self)` {#fs-files.\_\_len}
 
 Returns the number of files in this folder.
@@ -248,6 +256,8 @@ Access each file by index.
 | Return | [`fs::File?`](#fs-file) |
 
 ## fs::File {#fs-file}
+
+A file lives in the current context, which has many more context-specific properties and methods compared to [`File`](/docs/plugins/types#file).
 
 ### `url` {#fs-file.url}
 
@@ -369,6 +379,8 @@ File find status:
 
 ## mgr::Tabs {#mgr-tabs}
 
+All of tabs.
+
 ### `idx` {#mgr-tabs.idx}
 
 Index of the active tab.
@@ -397,6 +409,8 @@ Access each tab by index.
 | Return | [`tab::Tab?`](#tab-tab) |
 
 ## tab::Tab {#tab-tab}
+
+A tab.
 
 ### `name` {#tab-tab.name}
 
@@ -478,6 +492,8 @@ Progress of all tasks:
 | Type | `{ total: integer, succ: integer, fail: integer, found: integer, processed: integer }` |
 
 ## mgr::Yanked {#mgr-yanked}
+
+Yanked files.
 
 ### `is_cut` {#mgr-yanked.is_cut}
 
