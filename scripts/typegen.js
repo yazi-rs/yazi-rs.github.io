@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs"
 const STUBS = `
 -- luacheck: globals Command Url cx fs ps rt th ui ya
 
----@alias Color string
+---@alias Color "reset"|"black"|"white"|"red"|"lightred"|"green"|"lightgreen"|"yellow"|"lightyellow"|"blue"|"lightblue"|"magenta"|"lightmagenta"|"cyan"|"lightcyan"|"gray"|"darkgray"|string
 ---@alias Position integer
 ---@alias Stdio integer
 
@@ -24,9 +24,9 @@ const STUBS = `
 ---@class (exact) Recv
 ---@field recv fun(self: self): string
 
----@type Command
+---@type Command | fun(command: string): Command
 Command = Command
----@type Url
+---@type fun(path: string): Url
 Url = Url
 ---@type cx
 cx = cx
