@@ -31,6 +31,7 @@ Yazi adopts a layered architectural design, with each layer having clear respons
 - `rect`: A rectangular area.
 - `area`: Parameters of a area with a rect type.
 - `pad`: Padding.
+- `pos`: Relative position of a layout element.
 - `constraint`: Layout constraints that define the size of a layout element.
 
 ## Plugin System
