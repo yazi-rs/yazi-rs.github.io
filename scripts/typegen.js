@@ -24,9 +24,9 @@ const STUBS = `
 ---@class (exact) Recv
 ---@field recv fun(self: self): string
 
----@type Command | fun(command: string): Command
+---@type Command
 Command = Command
----@type fun(path: string): Url
+---@type Url
 Url = Url
 ---@type cx
 cx = cx
