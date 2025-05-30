@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs"
 const STUBS = `
 -- luacheck: globals Command Url cx fs ps rt th ui ya
 
----@alias Color string
+---@alias Color string|"reset"|"black"|"white"|"red"|"lightred"|"green"|"lightgreen"|"yellow"|"lightyellow"|"blue"|"lightblue"|"magenta"|"lightmagenta"|"cyan"|"lightcyan"|"gray"|"darkgray"
 ---@alias Stdio integer
 
 ---@alias Sendable nil|boolean|number|string|Url|{ [Sendable]: Sendable }
