@@ -15,7 +15,7 @@ If you're looking for ready-made themes and don't want to create one yourself, c
 
 ### Color {#types.color}
 
-A color. It can be in Hex format with RGB values, such as `"#484D66"`. Or can be one of the following 17 values:
+A color. It can be in Hex format with RGB values, such as `"#484D66"`, or a value from 0-255 for one of the [256 ANSI colors](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit), such as `"129"`. Or can be one of the following 17 values:
 
 - `"reset"`
 - `"black"`
