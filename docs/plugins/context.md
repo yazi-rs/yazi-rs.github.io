@@ -257,39 +257,11 @@ Access each file by index.
 
 ## fs::File {#fs-file}
 
-A file lives in the current context, which has many more context-specific properties and methods compared to [`File`](/docs/plugins/types#file).
+A file lives in the current context, which inherits from [`File`](/docs/plugins/types#file) but has many more context-specific properties and methods.
 
-### `url` {#fs-file.url}
-
-Url of the file.
-
-|      |       |
-| ---- | ----- |
-| Type | `Url` |
-
-### `cha` {#fs-file.cha}
-
-Cha of the file.
-
-|      |       |
-| ---- | ----- |
-| Type | `Cha` |
-
-### `link_to` {#fs-file.link_to}
-
-Url of the file points to, if it's a symlink.
-
-|      |        |
-| ---- | ------ |
-| Type | `Url?` |
-
-### `name` {#fs-file.name}
-
-Name of the file.
-
-|      |          |
-| ---- | -------- |
-| Type | `string` |
+|         |                                    |                                  |
+| ------- | ---------------------------------- | -------------------------------- |
+| Inherit | [`File`](/docs/plugins/types#file) | To access basic file attributes. |
 
 ### `is_hovered` {#fs-file.is_hovered}
 

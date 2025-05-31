@@ -350,11 +350,12 @@ Apply a reset style.
 
 Patch the style with `another`.
 
-| In/Out    | Type   |
-| --------- | ------ |
-| `self`    | `Self` |
-| `another` | `Self` |
-| Return    | `self` |
+| In/Out    | Type                            |
+| --------- | ------------------------------- |
+| `self`    | `Self`                          |
+| `another` | `Self`                          |
+| Return    | `self`                          |
+| Private   | This method can't be inherited. |
 
 ### `__new()` {#style.\_\_new}
 
@@ -378,6 +379,10 @@ For convenience, `ui.Span` can also accept itself as a argument:
 ui.Span(ui.Span("bar"))
 ```
 
+|         |                   |                                                  |
+| ------- | ----------------- | ------------------------------------------------ |
+| Inherit | [`Style`](#style) | To call [`Style`](#style) methods on it directly |
+
 ### `visible(self)` {#span.visible}
 
 Whether the span is visible, i.e. includes any printable characters.
@@ -397,7 +402,7 @@ Set the style of the span.
 | `style` | [`Style`](#style) |
 | Return  | `self`            |
 
-Besides applying the whole `Style`, you can also call those methods of `Style` directly on it, which means:
+Span inherits from `Style`, besides applying a whole `Style`, you can also call those methods of `Style` directly on it, which means:
 
 ```lua
 local style = ui.Style():fg("white"):bg("black"):bold()
@@ -442,6 +447,10 @@ ui.Line(ui.Line("baz"))
 -- Mixed table of string, ui.Span, ui.Line
 ui.Line { "foo", ui.Span("bar"), ui.Line("baz") }
 ```
+
+|         |                   |                                                  |
+| ------- | ----------------- | ------------------------------------------------ |
+| Inherit | [`Style`](#style) | To call [`Style`](#style) methods on it directly |
 
 ### `area(self, rect)` {#line.area}
 
@@ -533,6 +542,10 @@ ui.Text { "foo", ui.Line("bar"), ui.Span("baz") }
 ```
 
 You can also use `ui.Text.parse(code)` to parse an [ANSI escape sequence](https://en.wikipedia.org/wiki/ANSI_escape_code) string into a text.
+
+|         |                   |                                                  |
+| ------- | ----------------- | ------------------------------------------------ |
+| Inherit | [`Style`](#style) | To call [`Style`](#style) methods on it directly |
 
 ### `area(self, rect)` {#text.area}
 

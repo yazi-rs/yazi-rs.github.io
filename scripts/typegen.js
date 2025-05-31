@@ -45,12 +45,14 @@ ya = ya
 
 function matchHeaders2(s) {
 	const re = /## ([:A-Za-z]+) {#[a-z-]+}$([\S\s]+?)(?=^##[^#]|$(?![\n\r]))/gm
-	const result = {}
+	const result = []
 	for (const m of s.matchAll(re)) {
-		result[normalizeType(m[1])] = {
-			children: matchHeaders3(m[2]),
-			desc    : normalizeDesc(m[2].match(/[\S\s]+?(?=^#+ |$(?![\n\r]))/m)[0]),
-		}
+		const beforeH3 = m[2].match(/[\S\s]+?(?=^#+ |$(?![\n\r]))/m)[0]
+		const tbl = matchTable(beforeH3)
+		tbl.name = normalizeType(m[1])
+		tbl.children = matchHeaders3(m[2])
+		tbl.desc = normalizeDesc(beforeH3)
+		result.push(tbl)
 	}
 	return result
 }
@@ -59,11 +61,11 @@ function matchHeaders3(s) {
 	const re = /^### `([A-Z_a-z]+)(\([^()]*\))?` {#([A-Za-z-]+)\.[A-Z\\_a-z]+}$([\S\s]+?)(?=^#|$(?![\n\r]))/gm
 	const result = []
 	for (const m of s.matchAll(re)) {
-		const table = matchTable(m[4])
-		table.name = m[1]
-		table.params = matchParams(m[2] || "")
-		table.desc = normalizeDesc(m[4])
-		result.push(table)
+		const tbl = matchTable(m[4])
+		tbl.name = m[1]
+		tbl.params = matchParams(m[2] || "")
+		tbl.desc = normalizeDesc(m[4])
+		result.push(tbl)
 	}
 	return result
 }
@@ -92,6 +94,12 @@ function matchTable(s) {
 			break
 		case "Return":
 			result.return = matchTypes(columns[1])
+			break
+		case "Inherit":
+			result.inherit = matchTypes(columns[1])
+			break
+		case "Private":
+			result.private = true
 			break
 		default:
 			if (columns[0].startsWith("`") && columns[0].endsWith("`")) {
@@ -129,31 +137,40 @@ function matchTypes(s) {
 	return result
 }
 
+function linkExternal(headers) {
+	for (const header of headers) {
+		for (const name of header.inherit || []) {
+			const children = headers.find(h => h.name === name)?.children || []
+			header.children.push(...children.filter(c => !c.private))
+		}
+	}
+}
+
 function stubUi(headers) {
 	const children = []
-	for (const [type, header] of Object.entries(headers)) {
-		if (!type.startsWith("ui.")) {
+	for (const header of headers) {
+		if (!header.name.startsWith("ui.")) {
 			continue
 		}
 
-		const name = type.replace(/^ui\./, "")
+		const shortName = header.name.replace(/^ui\./, "")
 		const constructor = header.children.find(c => c.name === "__new")
 		if (constructor) {
 			children.push({
 				...constructor,
-				name,
+				name  : shortName,
 				desc  : header.desc,
-				return: constructor.return.map(t => t === "self" ? type : t),
+				return: constructor.return.map(t => t === "self" ? header.name : t),
 			})
 		} else {
 			children.push({
-				name,
-				type: [type],
+				name: shortName,
+				type: [header.name],
 				desc: header.desc,
 			})
 		}
 	}
-	return { ui: { children, desc: "" } }
+	return [{ name: "ui", children, desc: "" }]
 }
 
 // TODO
@@ -164,9 +181,9 @@ function stubTh(headers) {}
 
 function gen(headers) {
 	let s = ""
-	for (const [name, header] of Object.entries(headers)) {
+	for (const header of headers) {
 		s += header.desc.split("\n").map(s => `-- ${s}`).join("\n")
-		s += `\n---@class (exact) ${name}\n`
+		s += `\n---@class (exact) ${header.name}\n`
 
 		// Properties
 		for (const child of header.children) {
@@ -200,7 +217,7 @@ function gen(headers) {
 				s += (constructor.args[param] || []).join("|")
 				s += ", "
 			}
-			s = `${s.replace(/, $/, "")}): ${name}\n`
+			s = `${s.replace(/, $/, "")}): ${header.name}\n`
 		}
 
 		s += `\n`
@@ -222,6 +239,7 @@ const layout = matchHeaders2(readFileSync("../docs/plugins/layout.md", { encodin
 const context = matchHeaders2(readFileSync("../docs/plugins/context.md", { encoding: "utf8" }))
 const runtime = matchHeaders2(readFileSync("../docs/plugins/runtime.md", { encoding: "utf8" }))
 const utils = matchHeaders2(readFileSync("../docs/plugins/utils.md", { encoding: "utf8" }))
+linkExternal([...types, ...layout, ...context, ...runtime, ...utils])
 
 const combined = [
 	STUBS,
