@@ -362,7 +362,7 @@ Add the following code to your `~/.config/yazi/init.lua`:
 ```lua
 Status:children_add(function()
 	local h = cx.active.current.hovered
-	if h == nil or ya.target_family() ~= "unix" then
+	if not h or ya.target_family() ~= "unix" then
 		return ""
 	end
 
