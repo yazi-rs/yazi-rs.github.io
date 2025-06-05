@@ -195,6 +195,45 @@ For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor
 | ---- | -------- |
 | Type | `string` |
 
+## [tabs] {#tabs}
+
+<details>
+	<summary>Explanation of `active` and `inactive`</summary>
+	<img src="/webp/tabs-active-explain.webp" loading="lazy" />
+</details>
+
+### `active` {#tabs.active}
+
+Active tab style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `inactive` {#tabs.inactive}
+
+Inactive tab style.
+
+|      |                   |
+| ---- | ----------------- |
+| Type | [`Style`](#style) |
+
+### `sep_inner` {#tabs.sep_inner}
+
+Inner separator symbol, e.g. `{ open = "[", close = "]" }`.
+
+|      |                                   |
+| ---- | --------------------------------- |
+| Type | `{ open: string, close: string }` |
+
+### `sep_outer` {#tabs.sep_outer}
+
+Outer separator symbol, e.g. `{ open = "", close = "" }`.
+
+|      |                                   |
+| ---- | --------------------------------- |
+| Type | `{ open: string, close: string }` |
+
 ## [mode] {#mode}
 
 ### `normal_main` {#mode.normal_main}
@@ -247,6 +286,11 @@ Unset mode alternative style.
 
 ## [status] {#status}
 
+<details>
+	<summary>Explanation of `sep_left` and `sep_right`</summary>
+	<img src="/webp/status-sep-explain.webp" loading="lazy" />
+</details>
+
 ### `overall` {#status.overall}
 
 Overall status bar style.
@@ -263,11 +307,6 @@ Left separator symbol, e.g. `{ open = "", close = "]" }`.
 | ---- | --------------------------------- |
 | Type | `{ open: string, close: string }` |
 
-<details>
-	<summary>Explanation of `sep_left` and `sep_right`</summary>
-	<img src="/webp/status-sep-explain.webp" loading="lazy" />
-</details>
-
 ### `sep_right` {#status.sep_right}
 
 Right separator symbol, e.g. `{ open = "[", close = "" }`.
@@ -275,11 +314,6 @@ Right separator symbol, e.g. `{ open = "[", close = "" }`.
 |      |                                   |
 | ---- | --------------------------------- |
 | Type | `{ open: string, close: string }` |
-
-<details>
-	<summary>Explanation of `sep_left` and `sep_right`</summary>
-	<img src="/webp/status-sep-explain.webp" loading="lazy" />
-</details>
 
 ### `perm_type` {#status.perm_type}
 
@@ -465,6 +499,11 @@ The first string is the label for the yes button and the second is the label for
 
 ## [spot] {#spot}
 
+<details>
+	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
+	<img src="/webp/spot-tbl-explain.webp" loading="lazy" />
+</details>
+
 ### `border` {#spot.border}
 
 Border style.
@@ -489,11 +528,6 @@ The style of the selected column in the table.
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
 
-<details>
-	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
-	<img src="/webp/spot-tbl-explain.webp" loading="lazy" />
-</details>
-
 ### `tbl_cell` {#spot.tbl_cell}
 
 The style of the selected cell in the table.
@@ -501,11 +535,6 @@ The style of the selected cell in the table.
 |      |                   |
 | ---- | ----------------- |
 | Type | [`Style`](#style) |
-
-<details>
-	<summary>Explanation of `tbl_col` and `tbl_cell`</summary>
-	<img src="/webp/spot-tbl-explain.webp" loading="lazy" />
-</details>
 
 ## [notify] {#notify}
 
