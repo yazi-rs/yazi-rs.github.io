@@ -13,6 +13,10 @@ Please make sure that both your Yazi and plugins are on the `HEAD` to ensure pro
 
 ## 🖼️ Previewers {#previewers}
 
+General:
+
+- [piper.yazi](https://github.com/yazi-rs/plugins/tree/main/piper.yazi) - Pipe any shell command as a previewer.
+
 Markdown:
 
 - [glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files using [glow](https://github.com/charmbracelet/glow).
@@ -47,7 +51,6 @@ Jupyter notebooks:
 
 Misc:
 
-- [piper.yazi](https://github.com/yazi-rs/plugins/tree/main/piper.yazi) - Pipe any shell command as a previewer.
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 
 ## 🧩 Functional plugins {#functional}
@@ -86,8 +89,9 @@ File actions:
 - [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
 - [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
 - [restore.yazi](https://github.com/boydaihungst/restore.yazi) - Restore/recover latest deleted files/folders using `trash-cli`.
-- [gvfs.yazi](https://github.com/boydaihungst/gvfs.yazi) - Mount and manage MTP, GPhoto2 (PTP) devices (Android, Cameras, etc), SMB, SFTP, NFS, FTP, Google Drive, DNS-SD, DAV (WebDAV), AFP, AFC (Linux only). List of [supported protocals](https://wiki.gnome.org/Projects(2f)gvfs(2f)schemes.html).
+- [gvfs.yazi](https://github.com/boydaihungst/gvfs.yazi) - Mount and manage MTP, GPhoto2 (PTP) devices (Android, Cameras, etc), SMB, SFTP, NFS, FTP, Google Drive, DNS-SD, DAV (WebDAV), AFP, AFC (Linux only). List of [supported protocals](<https://wiki.gnome.org/Projects(2f)gvfs(2f)schemes.html>).
 - [kdeconnect-send.yazi](https://github.com/Deepak22903/kdeconnect-send.yazi) - Send selected files to your smartphone or other devices using KDE Connect.
+- [zoom.yazi](https://github.com/yazi-rs/plugins/tree/main/zoom.yazi) - Zoom in or out of the preview image.
 
 Clipboard:
 
@@ -102,6 +106,7 @@ Clipboard:
 
 `enter` enhancements:
 
+- [smart-enter.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi) - `Open` files or `enter` directories all in one key!
 - [bypass.yazi](https://github.com/Rolv-Apneseth/bypass.yazi) - Yazi plugin for skipping directories with only a single sub-directory.
 - [fast-enter.yazi](https://github.com/ourongxing/fast-enter.yazi) - Auto-decompress archives and enter them, or enter the deepest directory until it's not the only subdirectory.
 
@@ -112,6 +117,10 @@ Clipboard:
 `search` enhancements:
 
 - [vcs-files.yazi](https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi) - Show Git file changes.
+
+`paste` enhancements:
+
+- [smart-paste.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-paste.yazi) - Paste files into the hovered directory or to the CWD if hovering over a file.
 
 General command enhancements:
 
@@ -141,6 +150,10 @@ Images:
 Mime-type:
 
 - [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) - A mime-type provider based on a file extension database, replacing the builtin `file(1)` to speed up mime-type retrieval at the expense of accuracy.
+
+## 🧑‍💻 Devtools {#devtools}
+
+[types.yazi](https://github.com/yazi-rs/plugins/tree/main/types.yazi) - Type definitions for Yazi's Lua API, empowering an efficient plugin development experience.
 
 ## 📝 (Neo)vim plugins {#vim}
 
