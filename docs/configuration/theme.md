@@ -77,97 +77,97 @@ Flavor name used in light mode, e.g. `"gruvbox"`.
 
 CWD text style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `hovered` {#mgr.hovered}
 
 Hovered file style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `preview_hovered` {#mgr.preview_hovered}
 
 Hovered file style, in the preview pane.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `find_keyword` {#mgr.find_keyword}
 
 Style of the highlighted portion in the filename.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `find_position` {#mgr.find_position}
 
 Style of current file location in all found files to the right of the filename.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `marker_copied` {#mgr.marker_copied}
 
 Copied file marker style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `marker_cut` {#mgr.marker_cut}
 
 Cut file marker style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `marker_marked` {#mgr.marker_marked}
 
 Marker style of pre-selected file in visual mode.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `marker_selected` {#mgr.marker_selected}
 
 Selected file marker style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `count_copied` {#mgr.count_copied}
 
 Style of copied file number.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `count_cut` {#mgr.count_cut}
 
 Style of cut file number.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `count_selected` {#mgr.count_selected}
 
 Style of selected file number.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `border_symbol` {#mgr.border_symbol}
 
@@ -181,9 +181,9 @@ Border symbol, e.g. `"│"`.
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `syntect_theme` {#mgr.syntect_theme}
 
@@ -206,17 +206,17 @@ For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor
 
 Active tab style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `inactive` {#tabs.inactive}
 
 Inactive tab style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `sep_inner` {#tabs.sep_inner}
 
@@ -240,49 +240,49 @@ Outer separator symbol, e.g. `{ open = "", close = "" }`.
 
 Normal mode main style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `normal_alt` {#mode.normal_alt}
 
 Normal mode alternative style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `select_main` {#mode.select_main}
 
 Select mode main style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `select_alt` {#mode.select_alt}
 
 Select mode alternative style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `unset_main` {#mode.unset_main}
 
 Unset mode main style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `unset_alt` {#mode.unset_alt}
 
 Unset mode alternative style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [status] {#status}
 
@@ -295,9 +295,9 @@ Unset mode alternative style.
 
 Overall status bar style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `sep_left` {#status.sep_left}
 
@@ -319,65 +319,65 @@ Right separator symbol, e.g. `{ open = "[", close = "" }`.
 
 Style of the file type symbol, such as `d` for directory, `-` for file, `l` for symlink, etc.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `perm_read` {#status.perm_read}
 
 Style of the read permission symbol (`r`).
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `perm_write` {#status.perm_write}
 
 Style of the write permission symbol (`w`).
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `perm_exec` {#status.perm_exec}
 
 Style of the execute permission symbol (`x`).
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `perm_sep` {#status.perm_sep}
 
 Style of the permission separator symbol (`-`).
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `progress_label` {#status.progress_label}
 
 Progress label style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `progress_normal` {#status.progress_normal}
 
 Style of the progress bar when it is not in an error state.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `progress_error` {#status.progress_error}
 
 Style of the progress bar when an error occurs.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [which] {#which}
 
@@ -393,33 +393,33 @@ Number of columns.
 
 Mask style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `cand` {#which.cand}
 
 Candidate key style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `rest` {#which.rest}
 
 Rest key style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `desc` {#which.desc}
 
 Description style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `separator` {#which.separator}
 
@@ -433,9 +433,9 @@ Separator symbol, e.g. `" -> "`.
 
 Separator style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [confirm] {#confirm}
 
@@ -443,49 +443,49 @@ Separator style.
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `title` {#confirm.title}
 
 Title style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `content` {#confirm.content}
 
 Content style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `list` {#confirm.list}
 
 List style, which is the style of the list of items below the content.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `btn_yes` {#confirm.btn_yes}
 
 The style of the yes button.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `btn_no` {#confirm.btn_no}
 
 The style of the no button.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `btn_labels` {#confirm.btn_labels}
 
@@ -508,33 +508,33 @@ The first string is the label for the yes button and the second is the label for
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `title` {#spot.title}
 
 Title style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `tbl_col` {#spot.tbl_col}
 
 The style of the selected column in the table.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `tbl_cell` {#spot.tbl_cell}
 
 The style of the selected cell in the table.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [notify] {#notify}
 
@@ -542,25 +542,25 @@ The style of the selected cell in the table.
 
 Style of the info title.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `title_warn` {#notify.title_warn}
 
 Style of the warning title.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `title_error` {#notify.title_error}
 
 Style of the error title.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [pick] {#pick}
 
@@ -568,25 +568,25 @@ Style of the error title.
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `active` {#pick.active}
 
 Selected item style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `inactive` {#pick.inactive}
 
 Unselected item style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [input] {#input}
 
@@ -594,33 +594,33 @@ Unselected item style.
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `title` {#input.title}
 
 Title style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `value` {#input.value}
 
 Value style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `selected` {#input.selected}
 
 Selected value style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [cmp] {#cmp}
 
@@ -628,25 +628,25 @@ Selected value style.
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `active` {#cmp.active}
 
 Selected item style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `inactive` {#cmp.inactive}
 
 Unselected item style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `icon_file` {#cmp.icon_file}
 
@@ -678,25 +678,25 @@ Command icon.
 
 Border style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `title` {#tasks.title}
 
 Title style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `hovered` {#tasks.hovered}
 
 Hovered item style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ## [help] {#help}
 
@@ -704,41 +704,41 @@ Hovered item style.
 
 Key column style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `run` {#help.run}
 
 Command column style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `desc` {#help.desc}
 
 Description column style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `hovered` {#help.hovered}
 
 Hovered item style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `footer` {#help.footer}
 
 Footer style.
 
-|      |                   |
-| ---- | ----------------- |
-| Type | [`Style`](#style) |
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
 
 ### `icon_info` {#help.icon_info}
 
