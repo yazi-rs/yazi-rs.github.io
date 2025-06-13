@@ -57,6 +57,7 @@ it will automatically use the "Window system protocol" to display images - this 
 To enable Yazi's image preview to work correctly in tmux, add the following 4 options to your `tmux.conf`:
 
 ```sh
+set -g default-terminal "tmux-256color"
 set -g allow-passthrough on
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
