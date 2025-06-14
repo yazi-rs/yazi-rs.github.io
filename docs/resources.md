@@ -117,6 +117,7 @@ Clipboard:
 `search` enhancements:
 
 - [vcs-files.yazi](https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi) - Show Git file changes.
+- [git-files.yazi](https://github.com/ktunprasert/git-files.yazi) - Show Git file changes (with untracked, via `git status --porcelain`)
 
 `paste` enhancements:
 
