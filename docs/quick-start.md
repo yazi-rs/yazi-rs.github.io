@@ -86,14 +86,14 @@ edit:add-var y~ {|@argv|
 
 ```powershell
 function y {
-  $tmp = New-TemporaryFile | foreach FullName
-  yazi $args --cwd-file="$tmp"
-  $cwd = Get-Content -Path $tmp -Encoding UTF8
-  if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-    $path = Get-Item -LiteralPath $cwd -ea Stop
-    Set-Location -LiteralPath $path.FullName
-  }
-  Remove-Item -Path $tmp
+    $tmp = New-TemporaryFile | foreach FullName
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp -Encoding UTF8
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        $path = Get-Item -LiteralPath $cwd -ea Stop
+        Set-Location -LiteralPath $path.FullName
+    }
+    Remove-Item -Path $tmp
 }
 ```
 
