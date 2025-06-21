@@ -282,7 +282,7 @@ It receives a `job` parameter, which is a table:
 
 And returns a `(complete, err)`:
 
-- `complete`: Required, Whether the preloading is complete, which is a boolean.
+- `complete`: Required, whether the preloading is complete, which is a boolean.
   - `true`: Marks the task as complete, and the task will not be called again.
   - `false`: Marks the task as incomplete, and the task will be retried until it's complete (returns `true`).
 - `err`: Optional, the error to be logged.

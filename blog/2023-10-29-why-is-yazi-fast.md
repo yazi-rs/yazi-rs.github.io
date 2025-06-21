@@ -65,7 +65,7 @@ Besides being fast, Yazi's built-in Kitty graphics protocol, Inline images proto
 
 This ensures that in Yazi, there won't be issues, like images stacking on top of each other, or image escape code breaking the entire screen, when navigating through images quickly, as `stdout` is locked while outputting these escape codes. This locking happens after all image data is prepared, so it has no impact on performance.
 
-Yazi even supports partially erasing content in preview images, which is useful for pop-up components (Input, Select). The image won't overlap the input, and when the pop-up disappears, Yazi redraws the image to complete the erased portion automatically.
+Yazi even supports partially erasing content in preview images, which is useful for popup components (input, pick, confirm, etc.). The image won't overlap the input, and when the pop-up disappears, Yazi redraws the image to complete the erased portion automatically.
 
 ## Async Task Scheduling
 

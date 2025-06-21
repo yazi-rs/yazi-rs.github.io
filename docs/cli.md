@@ -7,7 +7,7 @@ description: Command-line interface for Yazi
 
 Yazi provides a command-line tool called `ya`, which is used to assist with tasks like plugin management, flavor management, DDS message publishing and subscribing, among other features.
 
-It is an essential component of Yazi. Most distributions include it by default when installing Yazi, but if yours doesn't, you'll need to build it from source. Just be sure that the versions of both `ya` and `yazi` are exactly the same.
+It is an essential component of Yazi. Most distributions include it by default when installing Yazi, but if yours doesn't, you'll need to [build it from source](/docs/installation#source). Just be sure that the versions of both `ya` and `yazi` are exactly the same.
 
 ## Package Manager {#pm}
 
