@@ -158,9 +158,10 @@ function stubUi(headers) {
 		if (constructor) {
 			children.push({
 				...constructor,
+				args  : bindSelf(constructor.args, header.name),
 				name  : shortName,
 				desc  : header.desc,
-				return: constructor.return.map(t => t === "self" ? header.name : t),
+				return: bindSelf(constructor.return, header.name),
 			})
 		} else {
 			children.push({
@@ -232,6 +233,17 @@ function normalizeDesc(s) {
 function normalizeType(s) {
 	const re = /(?<!ui\.)(Align|Bar|Border|Clear|Constraint|Edge|Gauge|Layout|Line|List|Pad|Rect|Span|Style|Text|Wrap)/g
 	return s.replaceAll("::", "__").replaceAll("Self", "self").replaceAll(re, m => `ui.${m}`)
+}
+
+function bindSelf(v, to) {
+	if (typeof v === "string") {
+		v = v.replaceAll(/\bself\b/g, to)
+	} else if (v) {
+		for (const k in v) {
+			v[k] = bindSelf(v[k], to)
+		}
+	}
+	return v
 }
 
 const types = matchHeaders2(readFileSync("../docs/plugins/types.md", { encoding: "utf8" }))
