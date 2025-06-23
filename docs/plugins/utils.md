@@ -209,10 +209,10 @@ ya.notify {
 }
 ```
 
-| In/Out | Type                                                                   |
-| ------ | ---------------------------------------------------------------------- |
-| `opts` | `{ title: string, content: string, timeout: number?, level: string? }` |
-| Return | `unknown`                                                              |
+| In/Out | Type                                                                                     |
+| ------ | ---------------------------------------------------------------------------------------- |
+| `opts` | `{ title: string, content: string, timeout: number?, level: "info"|"warn"|"error"|nil }` |
+| Return | `unknown`                                                                                |
 
 ### `dbg(msg, ...)` {#ya.dbg}
 
