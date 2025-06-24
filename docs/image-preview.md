@@ -92,8 +92,8 @@ TERM=xterm-kitty yazi
 
 Currently, only the following 3 terminals support displaying images on Windows:
 
-- WezTerm
-- [Windows Terminal Preview v1.22.2702.0](https://github.com/microsoft/terminal/releases/tag/v1.22.2702.0)
+- [WezTerm](https://wezterm.org/install/windows.html) (latest nightly)
+- [Windows Terminal](https://github.com/microsoft/terminal/releases) (>= v1.22.10352.0)
 - [Bobcat v0.9.0](https://github.com/ismail-yilmaz/Bobcat/releases/tag/0.9.0)
 
 ## Windows with WSL users {#wsl}
