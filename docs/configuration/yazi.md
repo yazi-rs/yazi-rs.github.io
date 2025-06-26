@@ -419,16 +419,7 @@ The origin is the top-left corner of the input, and the offset is the increment 
 
 ### Origin {#input.origin}
 
-For the origin, the following values are available:
-
-- top-left
-- top-center
-- top-right
-- bottom-left
-- bottom-center
-- bottom-right
-- center
-- hovered (the cursor position of hovered file)
+See [`Origin`](/docs/plugins/aliases#origin) for available values.
 
 ### Offset {#input.offset}
 

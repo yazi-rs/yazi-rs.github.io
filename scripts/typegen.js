@@ -9,17 +9,6 @@ const STUBS = `
 ---@alias Sendable nil|boolean|number|string|Url|{ [Sendable]: Sendable }
 ---@alias Renderable ui.Bar|ui.Border|ui.Clear|ui.Gauge|ui.Line|ui.List|ui.Text
 
----@class (exact) Pos
----@field [1] "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered"
----@field x integer
----@field y integer
----@field w integer
----@field h integer
----@overload fun(value: {
----  [1]: "top-left"|"top-center"|"top-right"|"bottom-left"|"bottom-center"|"bottom-right"|"center"|"hovered",
----  x: integer?, y: integer?, w: integer?, h: integer?,
----}): self
-
 ---@class (exact) Recv
 ---@field recv fun(self: self): string
 
@@ -94,6 +83,9 @@ function matchTable(s) {
 			break
 		case "Return":
 			result.return = matchTypes(columns[1])
+			break
+		case "Alias":
+			result.alias = matchTypes(columns[1])
 			break
 		case "Inherit":
 			result.inherit = matchTypes(columns[1])
@@ -184,7 +176,13 @@ function gen(headers) {
 	let s = ""
 	for (const header of headers) {
 		s += header.desc.split("\n").map(s => `-- ${s}`).join("\n")
-		s += `\n---@class (exact) ${header.name}\n`
+
+		if (header.alias) {
+			s += `\n---@alias ${header.name} ${header.alias.join("|")}\n`
+			continue
+		} else {
+			s += `\n---@class (exact) ${header.name}\n`
+		}
 
 		// Properties
 		for (const child of header.children) {
@@ -231,7 +229,7 @@ function normalizeDesc(s) {
 }
 
 function normalizeType(s) {
-	const re = /(?<!ui\.)(Align|Bar|Border|Clear|Constraint|Edge|Gauge|Layout|Line|List|Pad|Rect|Span|Style|Text|Wrap)/g
+	const re = /\b(?<!ui\.)(Align|Bar|Border|Clear|Constraint|Edge|Gauge|Layout|Line|List|Pad|Pos|Rect|Span|Style|Text|Wrap)\b/g
 	return s.replaceAll("::", "__").replaceAll("Self", "self").replaceAll(re, m => `ui.${m}`)
 }
 
@@ -246,6 +244,7 @@ function bindSelf(v, to) {
 	return v
 }
 
+const aliases = matchHeaders2(readFileSync("../docs/plugins/aliases.md", { encoding: "utf8" }))
 const types = matchHeaders2(readFileSync("../docs/plugins/types.md", { encoding: "utf8" }))
 const layout = matchHeaders2(readFileSync("../docs/plugins/layout.md", { encoding: "utf8" }))
 const context = matchHeaders2(readFileSync("../docs/plugins/context.md", { encoding: "utf8" }))
@@ -255,6 +254,7 @@ linkExternal([...types, ...layout, ...context, ...runtime, ...utils])
 
 const combined = [
 	STUBS,
+	gen(aliases),
 	gen(types),
 	gen(layout),
 	gen(context),

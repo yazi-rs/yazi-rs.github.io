@@ -224,6 +224,71 @@ Make a new padding.
 | `left`   | `integer` |
 | Return   | `Self`    |
 
+## Pos {#pos}
+
+`Pod` represents a position, which is composed of an origin and an offset relative to that origin:
+
+```lua
+ui.Pod { "center", x = 5, y = 3, w = 20, h = 10 }
+```
+
+Its only parameter is a table containing the following keys:
+
+- `[1]`: [Origin](/docs/plugins/aliases#origin) of the position.
+- `x`: X-offset relative to the origin, default is 0.
+- `y`: Y-offset relative to the origin, default is 0.
+- `w`: Width, default is 0.
+- `h`: Weight, default is 0.
+
+### `[1]` {#pos.[1]}
+
+Origin of the position.
+
+|      |                                          |
+| ---- | ---------------------------------------- |
+| Type | [`Origin`](/docs/plugins/aliases#origin) |
+
+### `x` {#pos.x}
+
+X-offset relative to the origin.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `y` {#pos.y}
+
+Y-offset relative to the origin.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `w` {#pos.w}
+
+Width of the position.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `h` {#pos.h}
+
+Height of the position.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `__new(value)` {#pos.\_\_new}
+
+Make a new position.
+
+| In/Out  | Type                                                                  |
+| ------- | --------------------------------------------------------------------- |
+| `value` | `{ [1]: Origin, x?: integer, y?: integer, w?: integer, h?: integer }` |
+| Return  | `Self`                                                                |
+
 ## Style {#style}
 
 Create a style:
@@ -419,10 +484,10 @@ ui.Span("Hello world"):fg("white"):bg("black"):bold()
 
 Make a new span.
 
-| In/Out  | Type               |
-| ------- | ------------------ |
-| `value` | `string` \| `Self` |
-| Return  | `Self`             |
+| In/Out  | Type                                      |
+| ------- | ----------------------------------------- |
+| `value` | [`AsSpan`](/docs/plugins/aliases#as-span) |
+| Return  | `Self`                                    |
 
 ## Line {#line}
 
@@ -512,10 +577,10 @@ ui.Line("Hello world"):fg("white"):bg("black"):bold()
 
 Make a new line.
 
-| In/Out  | Type                                                     |
-| ------- | -------------------------------------------------------- |
-| `value` | `string` \| `Span` \| `Self` \| `(string\|Span\|Self)[]` |
-| Return  | `Self`                                                   |
+| In/Out  | Type                                      |
+| ------- | ----------------------------------------- |
+| `value` | [`AsLine`](/docs/plugins/aliases#as-line) |
+| Return  | `Self`                                    |
 
 ## Text {#text}
 
@@ -608,10 +673,10 @@ ui.Text("Hello world"):fg("white"):bg("black"):bold()
 
 Make a new text.
 
-| In/Out  | Type                                                     |
-| ------- | -------------------------------------------------------- |
-| `value` | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
-| Return  | `Self`                                                   |
+| In/Out  | Type                                      |
+| ------- | ----------------------------------------- |
+| `value` | [`AsText`](/docs/plugins/aliases#as-text) |
+| Return  | `Self`                                    |
 
 ## Layout {#layout}
 

@@ -27,7 +27,7 @@ User's terminal emulator properties.
 
 ### `mgr` {#rt.mgr}
 
-User preferences under [`[mgr]`](/docs/configuration/yazi#mgr).
+User preferences under [\[mgr\]](/docs/configuration/yazi#mgr).
 
 |      |         |
 | ---- | ------- |
@@ -35,7 +35,7 @@ User preferences under [`[mgr]`](/docs/configuration/yazi#mgr).
 
 ### `plugin` {#rt.plugin}
 
-User preferences under [`[plugin]`](/docs/configuration/yazi#plugin).
+User preferences under [\[plugin\]](/docs/configuration/yazi#plugin).
 
 |      |                            |
 | ---- | -------------------------- |
@@ -43,7 +43,7 @@ User preferences under [`[plugin]`](/docs/configuration/yazi#plugin).
 
 ### `preview` {#rt.preview}
 
-User preferences under [`[preview]`](/docs/configuration/yazi#preview).
+User preferences under [\[preview\]](/docs/configuration/yazi#preview).
 
 |      |         |
 | ---- | ------- |
@@ -51,7 +51,7 @@ User preferences under [`[preview]`](/docs/configuration/yazi#preview).
 
 ### `tasks` {#rt.tasks}
 
-User preferences under [`[tasks]`](/docs/configuration/yazi#tasks).
+User preferences under [\[tasks\]](/docs/configuration/yazi#tasks).
 
 |      |         |
 | ---- | ------- |
@@ -63,7 +63,7 @@ You can access the user's theme and flavor configuration through `th`.
 
 ### `mgr` {#th.mgr}
 
-See [`[mgr]`](/docs/configuration/theme#mgr).
+See [\[mgr\]](/docs/configuration/theme#mgr).
 
 |      |         |
 | ---- | ------- |
@@ -71,7 +71,7 @@ See [`[mgr]`](/docs/configuration/theme#mgr).
 
 ### `tabs` {#th.tabs}
 
-See [`[tabs]`](/docs/configuration/theme#tabs).
+See [\[tabs\]](/docs/configuration/theme#tabs).
 
 |      |         |
 | ---- | ------- |
@@ -79,7 +79,7 @@ See [`[tabs]`](/docs/configuration/theme#tabs).
 
 ### `mode` {#th.mode}
 
-See [`[mode]`](/docs/configuration/theme#mode).
+See [\[mode\]](/docs/configuration/theme#mode).
 
 |      |         |
 | ---- | ------- |
@@ -87,7 +87,7 @@ See [`[mode]`](/docs/configuration/theme#mode).
 
 ### `status` {#th.status}
 
-See [`[status]`](/docs/configuration/theme#status).
+See [\[status\]](/docs/configuration/theme#status).
 
 |      |         |
 | ---- | ------- |
@@ -95,7 +95,7 @@ See [`[status]`](/docs/configuration/theme#status).
 
 ### `which` {#th.which}
 
-See [`[which]`](/docs/configuration/theme#which).
+See [\[which\]](/docs/configuration/theme#which).
 
 |      |         |
 | ---- | ------- |
@@ -103,7 +103,7 @@ See [`[which]`](/docs/configuration/theme#which).
 
 ### `confirm` {#th.confirm}
 
-See [`[confirm]`](/docs/configuration/theme#confirm).
+See [\[confirm\]](/docs/configuration/theme#confirm).
 
 |      |         |
 | ---- | ------- |
@@ -111,7 +111,7 @@ See [`[confirm]`](/docs/configuration/theme#confirm).
 
 ### `spot` {#th.spot}
 
-See [`[spot]`](/docs/configuration/theme#spot).
+See [\[spot\]](/docs/configuration/theme#spot).
 
 |      |         |
 | ---- | ------- |
@@ -119,7 +119,7 @@ See [`[spot]`](/docs/configuration/theme#spot).
 
 ### `notify` {#th.notify}
 
-See [`[notify]`](/docs/configuration/theme#notify).
+See [\[notify\]](/docs/configuration/theme#notify).
 
 |      |         |
 | ---- | ------- |
@@ -127,7 +127,7 @@ See [`[notify]`](/docs/configuration/theme#notify).
 
 ### `pick` {#th.pick}
 
-See [`[pick]`](/docs/configuration/theme#pick).
+See [\[pick\]](/docs/configuration/theme#pick).
 
 |      |         |
 | ---- | ------- |
@@ -135,7 +135,7 @@ See [`[pick]`](/docs/configuration/theme#pick).
 
 ### `input` {#th.input}
 
-See [`[input]`](/docs/configuration/theme#input).
+See [\[input\]](/docs/configuration/theme#input).
 
 |      |         |
 | ---- | ------- |
@@ -143,7 +143,7 @@ See [`[input]`](/docs/configuration/theme#input).
 
 ### `cmp` {#th.cmp}
 
-See [`[cmp]`](/docs/configuration/theme#cmp).
+See [\[cmp\]](/docs/configuration/theme#cmp).
 
 |      |         |
 | ---- | ------- |
@@ -151,7 +151,7 @@ See [`[cmp]`](/docs/configuration/theme#cmp).
 
 ### `tasks` {#th.tasks}
 
-See [`[tasks]`](/docs/configuration/theme#tasks).
+See [\[tasks\]](/docs/configuration/theme#tasks).
 
 |      |         |
 | ---- | ------- |
@@ -159,7 +159,7 @@ See [`[tasks]`](/docs/configuration/theme#tasks).
 
 ### `help` {#th.help}
 
-See [`[help]`](/docs/configuration/theme#help).
+See [\[help\]](/docs/configuration/theme#help).
 
 |      |         |
 | ---- | ------- |

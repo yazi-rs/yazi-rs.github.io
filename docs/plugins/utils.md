@@ -143,13 +143,7 @@ local value, event = ya.input {
 	title = "Archive name:",
 	-- Default value
 	value = "",
-	-- Position, which is a table:
-	-- 	`1`: Origin position, available values: "top-left", "top-center", "top-right",
-	-- 	     "bottom-left", "bottom-center", "bottom-right", "center", and "hovered".
-	-- 	`x`: X offset from the origin position.
-	-- 	`y`: Y offset from the origin position.
-	-- 	`w`: Width of the input.
-	-- 	`h`: Height of the input.
+	-- Position
 	position = { "top-center", y = 3, w = 40 },
 	-- Whether to report user input in real time.
 	realtime = false,
@@ -186,11 +180,11 @@ while true do
 end
 ```
 
-| In/Out    | Type                                                                                      |
-| --------- | ----------------------------------------------------------------------------------------- |
-| `opts`    | `{ title: string, value: string?, position: Pos, realtime: boolean?, debounce: number? }` |
-| Return    | `(string?, integer)` \| `Recv`                                                            |
-| Available | Async context only                                                                        |
+| In/Out    | Type                                                                                        |
+| --------- | ------------------------------------------------------------------------------------------- |
+| `opts`    | `{ title: string, value: string?, position: AsPos, realtime: boolean?, debounce: number? }` |
+| Return    | `(string?, integer)` \| `Recv`                                                              |
+| Available | Async context only                                                                          |
 
 ### `notify(opts)` {#ya.notify}
 
@@ -213,6 +207,27 @@ ya.notify {
 | ------ | ------------------------------------------------------------------------------------------ |
 | `opts` | `{ title: string, content: string, timeout: number, level: "info"\|"warn"\|"error"\|nil }` |
 | Return | `unknown`                                                                                  |
+
+### `confirm(opts)` {#ya.confirm}
+
+Request user confirmation:
+
+```lua
+local answer = ya.confirm {
+	-- Position
+  pos = { "center", w = 40, h = 10 },
+	-- Title
+  title = "Test",
+	-- Body
+  body = "Hello, World!",
+}
+```
+
+| In/Out    | Type                                          |
+| --------- | --------------------------------------------- |
+| `opts`    | `{ pos: AsPos, title: AsLine, body: AsText }` |
+| Return    | `boolean`                                     |
+| Available | Async context only                            |
 
 ### `dbg(msg, ...)` {#ya.dbg}
 
@@ -1100,11 +1115,11 @@ otherwise, it returns `nil`.
 
 ### `status` {#output.status}
 
-[Status](#status) of the child process.
+Status of the child process.
 
-|      |          |
-| ---- | -------- |
-| Type | `Status` |
+|      |                     |
+| ---- | ------------------- |
+| Type | [`Status`](#status) |
 
 ### `stdout` {#output.stdout}
 
