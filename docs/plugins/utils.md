@@ -143,6 +143,8 @@ local value, event = ya.input {
 	title = "Archive name:",
 	-- Default value
 	value = "",
+	-- Whether to obscure the input.
+	obscure = false,
 	-- Position
 	position = { "top-center", y = 3, w = 40 },
 	-- Whether to report user input in real time.
@@ -180,11 +182,11 @@ while true do
 end
 ```
 
-| In/Out    | Type                                                                                        |
-| --------- | ------------------------------------------------------------------------------------------- |
-| `opts`    | `{ title: string, value: string?, position: AsPos, realtime: boolean?, debounce: number? }` |
-| Return    | `(string?, integer)` \| `Recv`                                                              |
-| Available | Async context only                                                                          |
+| In/Out    | Type                                                                                                           |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| `opts`    | `{ title: string, value: string?, obscure: boolean?, position: AsPos, realtime: boolean?, debounce: number? }` |
+| Return    | `(string?, integer)` \| `Recv`                                                                                 |
+| Available | Async context only                                                                                             |
 
 ### `notify(opts)` {#ya.notify}
 
