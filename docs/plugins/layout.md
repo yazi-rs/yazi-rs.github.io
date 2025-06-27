@@ -238,7 +238,7 @@ Its only parameter is a table containing the following keys:
 - `x`: X-offset relative to the origin, default is 0.
 - `y`: Y-offset relative to the origin, default is 0.
 - `w`: Width, default is 0.
-- `h`: Weight, default is 0.
+- `h`: Height, default is 0.
 
 ### `[1]` {#pos.[1]}
 
