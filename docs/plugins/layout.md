@@ -301,21 +301,21 @@ ui.Style()
 
 Apply a foreground color.
 
-| In/Out  | Type                                             |
-| ------- | ------------------------------------------------ |
-| `self`  | `Self`                                           |
-| `color` | [`Color`](/docs/configuration/theme#types.color) |
-| Return  | `self`                                           |
+| In/Out  | Type                                        |
+| ------- | ------------------------------------------- |
+| `self`  | `Self`                                      |
+| `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+| Return  | `self`                                      |
 
 ### `bg(self, color)` {#style.bg}
 
 Apply a background color.
 
-| In/Out  | Type                                             |
-| ------- | ------------------------------------------------ |
-| `self`  | `Self`                                           |
-| `color` | [`Color`](/docs/configuration/theme#types.color) |
-| Return  | `self`                                           |
+| In/Out  | Type                                        |
+| ------- | ------------------------------------------- |
+| `self`  | `Self`                                      |
+| `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
+| Return  | `self`                                      |
 
 ### `bold(self)` {#style.bold}
 

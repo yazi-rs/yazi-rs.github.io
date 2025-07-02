@@ -5,6 +5,30 @@ description: Learn how to use Yazi's Lua API.
 
 # Aliases
 
+## Origin {#origin}
+
+A set of constants representing the origin of a position.
+
+|       |                                                                                                                                          |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Alias | `"top-left"` \| `"top-center"` \| `"top-right"` \| `"bottom-left"` \| `"bottom-center"` \| `"bottom-right"` \| `"center"` \| `"hovered"` |
+
+## Sendable {#sendable}
+
+A value that can be sent across threads. See [Sendable value](/docs/plugins/overview#sendable) for more details.
+
+|       |                                                                                   |
+| ----- | --------------------------------------------------------------------------------- |
+| Alias | `nil` \| `boolean` \| `number` \| `string` \| `Url` \| `{ [Sendable]: Sendable }` |
+
+## Renderable {#renderable}
+
+An element that can be rendered.
+
+|       |                                                                       |
+| ----- | --------------------------------------------------------------------- |
+| Alias | `Bar` \| `Border` \| `Clear` \| `Gauge` \| `Line` \| `List` \| `Text` |
+
 ## AsPos {#as-pos}
 
 A value that can be covariantly treated as a [`Pos`](/docs/plugins/layout#pos).
@@ -37,10 +61,10 @@ A value that can be covariantly treated as a [`Text`](/docs/plugins/layout#text)
 | ----- | -------------------------------------------------------- |
 | Alias | `string` \| `Span` \| `Line` \| `(string\|Span\|Line)[]` |
 
-## Origin {#origin}
+## AsColor {#as-color}
 
-Origin is a set of constants representing the origin of a position.
+A set of constants representing colors.
 
-|       |                                                                                                                                          |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Alias | `"top-left"` \| `"top-center"` \| `"top-right"` \| `"bottom-left"` \| `"bottom-center"` \| `"bottom-right"` \| `"center"` \| `"hovered"` |
+|       |                                                                                                                                                                                                                                                                     |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Alias | `"black"` \| `"white"` \| `"red"` \| `"lightred"` \| `"green"` \| `"lightgreen"` \| `"yellow"` \| `"lightyellow"` \| `"blue"` \| `"lightblue"` \| `"magenta"` \| `"lightmagenta"` \| `"cyan"` \| `"lightcyan"` \| `"gray"` \| `"darkgray"` \| `"reset"` \| `string` |
