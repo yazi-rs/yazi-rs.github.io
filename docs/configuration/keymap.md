@@ -400,11 +400,12 @@ Run a shell command.
 | `--interactive` | Request the user to input the command to be run interactively                                                                                                                                                                            |
 | `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip "$0"' --cursor=7 --interactive` places the cursor before `.zip`.                                                           |
 
-You can use the following shell variables in `[run]`:
+You can use the following shell variables in `[template]`:
 
 - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
 - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
 - `$0` (Unix) / `%0` (Windows): The hovered file.
+- Note that, these variables follow platform-specific differences. For example, Unix shell requires wrapping `$` with quotes, while `%` in Windows batch scripts doesn't. Refer to the documentation of `sh` and `cmd.exe` for details.
 
 You can use an end-of-options marker (`--`) to avoid any escaping - everything following the `--` will be treated as a raw string:
 

@@ -51,6 +51,12 @@ ya pub-to <receiver> <kind> --json '{"key":"json body"}'
 # If you're in a Yazi subshell,
 # you can obtain the ID of the current instance through `$YAZI_ID`.
 ya pub-to "$YAZI_ID" my-event --str "Hello world!"
+
+# If you are not in a Yazi subshell, i.e., communicating with Yazi externally,
+# you can start with `yazi --client-id <globally-unique-id>`, and pass that ID to `ya pub-to`.
+MY_UNIQUE_ID="$(date +%s)$RANDOM"
+yazi --client-id "$MY_UNIQUE_ID"
+ya pub-to "$MY_UNIQUE_ID" my-event --str "Hello world!"
 ```
 
 For greater convenience in integrating within the command-line environment, they support two body formats:

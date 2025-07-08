@@ -74,13 +74,31 @@ light = "bar"
 
 Make sure your `theme.toml` doesn't contain anything other than `[flavor]`, unless you want to override certain styles of the `bar.yazi` flavor.
 
-## Why flavors over themes? {#why}
+## Why flavors over themes? {#why-flavor}
 
 We recommend using the new flavor format instead of the old theme, because flavors:
 
 - More powerful - auto dark/light mode switching with the terminal
 - Easier to update - can be managed with the [`ya pkg` package manager](/docs/cli#pm)
 - Offers configuration merging - override some styles from `flavor.toml` in your own `theme.toml`
+
+## Why is my flavor/theme not working? {#why-not-working}
+
+This is usually because the flavor or theme contains outdated color configurations. Please ensure that your flavor or theme is compatible with your Yazi version:
+
+1. **No invalid fields**
+
+   You can use a TOML linter like [taplo](https://taplo.tamasfe.dev) to check if your `theme.toml` or `flavor.toml` contains any invalid fields:
+
+   ```sh
+   taplo check --schema https://yazi-rs.github.io/schemas/theme.json flavor.toml
+   ```
+
+2. **Includes fields for components you want to stylize**
+
+   A Yazi theme or flavor can optionally stylize only certain components, i.e., it doesn't necessarily style everything. For components without a specified style, the [preset configuration](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset) will be applied.
+
+   See [theme.toml](/docs/configuration/theme) for a complete list of available fields, and make sure your `theme.toml` or `flavor.toml` includes them.
 
 ## Cooking a flavor {#cooking}
 
