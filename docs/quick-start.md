@@ -86,7 +86,7 @@ edit:add-var y~ {|@argv|
 
 ```powershell
 function y {
-    $tmp = New-TemporaryFile | foreach FullName
+    $tmp = (New-TemporaryFile).FullName
     yazi $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp -Encoding UTF8
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
