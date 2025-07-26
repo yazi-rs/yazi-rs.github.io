@@ -40,8 +40,7 @@ Most packages on this page are maintained by the community, and they **_may not 
 ## Arch Linux {#arch}
 
 ```sh
-sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide imagemagick
-paru -S resvg
+sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 ```
 
 If you want to use the latest Git version, you can install it from [AUR](https://aur.archlinux.org/packages/yazi-git/) or [Arch Linux CN](https://github.com/archlinuxcn/repo/):
