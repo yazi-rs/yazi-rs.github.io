@@ -74,6 +74,7 @@ Or add the following to your configuration:
 # configuration.nix
 environment.systemPackages = with pkgs; [
 	yazi
+	# (yazi.override {_7zz = _7zz-rar; }) # use this to enable rar support in yazi
 ];
 ```
 
@@ -166,7 +167,11 @@ The upstream repository provides a flake so that Nix users can easily keep up wi
 			nixos = nixpkgs.lib.nixosSystem {
 				modules = [
 					({ pkgs, ... }: {
-						environment.systemPackages = [ yazi.packages.${pkgs.system}.default ];
+						environment.systemPackages = [
+							yazi.packages.${pkgs.system}.default
+							# (yazi.packages.${pkgs.system}.default.override {_7zz = pkgs._7zz-rar; })
+							# use this to enable rar support in yazi
+						];
 					})
 				];
 			};
@@ -178,7 +183,11 @@ The upstream repository provides a flake so that Nix users can easily keep up wi
 				pkgs = nixpkgs.legacyPackages.x86_64-linux;
 				modules = [
 					({ pkgs, ... }: {
-						home.packages = [ yazi.packages.${pkgs.system}.default ];
+						home.packages = [
+							yazi.packages.${pkgs.system}.default
+							# (yazi.packages.${pkgs.system}.default.override {_7zz = pkgs._7zz-rar; })
+							# use this to enable rar support in yazi
+						];
 					})
 				];
 			};
@@ -199,16 +208,8 @@ A module is also available for both NixOS and home-manager:
 programs.yazi = {
 	enable = true;
 	package = yazi.packages.${pkgs.system}.default; # if you use overlays, you can omit this
+	# package = (yazi.packages.${pkgs.system}.default.override {_7zz = pkgs._7zz-rar; }) # use this to enable rar support in yazi
 };
-```
-
-To enable RAR support from 7z, you can override the 7z dependency in the package:
-
-```nix
-environment.systemPackages = with pkgs; [
-	(yazi.override {_7zz = _7zz-rar; })
-];
-
 ```
 
 ### Cache
