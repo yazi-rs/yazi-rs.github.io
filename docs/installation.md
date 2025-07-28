@@ -202,6 +202,15 @@ programs.yazi = {
 };
 ```
 
+To enable RAR support from 7z, you can override the 7z dependency in the package:
+
+```nix
+environment.systemPackages = with pkgs; [
+	(yazi.override {_7zz = _7zz-rar; })
+];
+
+```
+
 ### Cache
 
 Pre-built artifacts are served at https://yazi.cachix.org, so that Nix users don't have to build Yazi on their machine.
