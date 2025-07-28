@@ -170,7 +170,6 @@ Vim:
 ## 📝 Helix {#helix}
 
 - [Yazelix](https://github.com/luccahuguet/yazelix) - Adding a file tree to Helix & helix-friendly keybindings for Zellij
-- [Zide](https://github.com/josephschmitt/zide) - Group of configuration files and scripts to create an IDE-like experience in zellij
 
 ## 🐚 Shell plugins {#shell}
 
