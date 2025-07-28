@@ -73,7 +73,9 @@ Or add the following to your configuration:
 ```nix
 # configuration.nix
 environment.systemPackages = with pkgs; [
-	yazi
+	(yazi.override {
+		_7zz = _7zz-rar;  # Support for RAR extraction
+	})
 ];
 ```
 
@@ -166,7 +168,11 @@ The upstream repository provides a flake so that Nix users can easily keep up wi
 			nixos = nixpkgs.lib.nixosSystem {
 				modules = [
 					({ pkgs, ... }: {
-						environment.systemPackages = [ yazi.packages.${pkgs.system}.default ];
+						environment.systemPackages = [
+							(yazi.packages.${pkgs.system}.default.override {
+								_7zz = pkgs._7zz-rar;  # Support for RAR extraction
+							})
+						];
 					})
 				];
 			};
@@ -178,7 +184,11 @@ The upstream repository provides a flake so that Nix users can easily keep up wi
 				pkgs = nixpkgs.legacyPackages.x86_64-linux;
 				modules = [
 					({ pkgs, ... }: {
-						home.packages = [ yazi.packages.${pkgs.system}.default ];
+						home.packages = [
+							(yazi.packages.${pkgs.system}.default.override {
+								_7zz = pkgs._7zz-rar;  # Support for RAR extraction
+							})
+						];
 					})
 				];
 			};
@@ -198,7 +208,10 @@ A module is also available for both NixOS and home-manager:
 ```nix
 programs.yazi = {
 	enable = true;
-	package = yazi.packages.${pkgs.system}.default; # if you use overlays, you can omit this
+	# You can omit this if you use overlays
+	package = yazi.packages.${pkgs.system}.default.override {
+		_7zz = pkgs._7zz-rar;  # Support for RAR extraction
+	};
 };
 ```
 
