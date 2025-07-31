@@ -39,6 +39,7 @@ Archives:
 
 - [ouch.yazi](https://github.com/ndtoan96/ouch.yazi) - An [ouch](https://github.com/ouch-org/ouch) plugin for Yazi, supporting preview and compression.
 - [zless-preview.yazi](https://github.com/vmikk/zless-preview.yazi) - Preview compressed text files using `zless`.
+- [comicthumb.yazi](https://github.com/navysky12/comicthumb.yazi) - Preview for comicbook archive files using p7zip on Linux.
 
 BitTorrent:
 
