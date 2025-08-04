@@ -86,6 +86,7 @@ File actions:
 - [archivemount.yazi](https://github.com/AnirudhG07/archivemount.yazi) - Mounting and unmounting archives in yazi using [archivemount](https://github.com/cybernoid/archivemount).
 - [reflink.yazi](https://github.com/Ape/reflink.yazi) - Create reflinks to files.
 - [rsync.yazi](https://github.com/GianniBYoung/rsync.yazi) - Simple rsync copying locally and to remote servers.
+- [sshfs.yazi](https://github.com/uhs-robert/sshfs.yazi) - Mount and manage remote directories over SSH using SSHFS. Supports hosts from `~/.ssh/config` or custom-defined connections. Includes key/password auth.
 - [what-size.yazi](https://github.com/pirafrank/what-size.yazi) - Calculate total size of current selection or of current working directory.
 - [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
 - [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
