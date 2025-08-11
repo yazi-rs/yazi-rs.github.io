@@ -173,6 +173,54 @@ on  = "<C-n>"
 run = 'shell -- dragon -x -i -T "$1"'
 ```
 
+## Set a wallpaper
+
+To set a wallpaper with the "Open with" menu (<kbd>O</kbd> key by default), add a `set-wallpaper` opener in your `yazi.toml` by choosing the appropriate command for your desktop environment:
+
+```toml
+# Linux: Hyprland + Hyprpaper
+[[opener.set-wallpaper]]
+run  = 'cp "$0" "$HOME/.config/hypr/wallpaper" && systemctl restart --user hyprpaper.service'
+for  = "linux"
+desc = "Set as wallpaper"
+
+# Linux: Sway + Swaybg
+[[opener.set-wallpaper]]
+run  = 'cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg "exec swaybg -i $HOME/.config/sway/wallpaper'
+for  = "linux"
+desc = "Set as wallpaper"
+
+# macOS
+[[opener.set-wallpaper]]
+run = '''
+	osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' "$0"
+'''
+for  = "macos"
+desc = "Set as wallpaper"
+```
+
+Then apply the `set-wallpaper` opener to the image files:
+
+```toml
+# yazi.toml
+[[open.prepend_rules]]
+mime = "image/*"
+use  = [ "set-wallpaper", "open" ]
+```
+
+Alternatively, you can also change the wallpaper with a keybinding, for example <kbd>Ctrl</kbd> + <kbd>w</kbd>:
+
+```toml
+# keymap.toml
+[[mgr.prepend_keymap]]
+on   = "<C-w>"
+for  = "linux"
+run  = 'shell -- cp "$0" "$HOME/.config/hypr/wallpaper" && systemctl restart --user hyprpaper.service'
+desc = "Set hovered file as wallpaper"
+```
+
+The above example is for Hyprland + Hyprpaper, adapt to the command of your respective DE as needed.
+
 ## Linux: Copy selected files to the system clipboard while yanking {#selected-files-to-clipboard}
 
 Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
