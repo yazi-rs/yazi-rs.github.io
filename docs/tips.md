@@ -582,6 +582,48 @@ on  = "<C-m>"
 run = 'shell --block -- neomutt -a "$@"'
 ```
 
+## Set a wallpaper
+
+To set a wallpaper using opener:
+
+```toml
+# yazi.toml
+
+# Linux: Hyperland + Hyperpaper
+[[opener.set-wallpaper]]
+run  = 'cp "$0" "$HOME/.config/hypr/wallpaper" && systemctl restart --user hyprpaper.service'
+desc = "Set hovered file as wallpaper"
+for = "linux"
+
+# Linux: Sway + Swaybg
+[[opener.set-wallpaper]]
+run  = 'cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg "exec swaybg -i $HOME/.config/sway/wallpaper'
+desc = "Set hovered file as wallpaper"
+for = "linux"
+
+[[open.prepend_rules]]
+mime = "image/*"
+use  = [ "set-wallpaper", "edit" ]
+```
+
+To set a wallpaper with a keybinding <kbd>Ctrl</kbd> + <kbd>w</kbd>:
+
+```toml
+# keymap.toml
+
+# Linux: Hyperland + Hyperpaper
+[[mgr.prepend_keymap]]
+on  = "<C-w>"
+run = 'shell --orphan -- cp "$0" "$HOME/.config/hypr/wallpaper" && systemctl restart --user hyprpaper.service'
+desc = "Set hovered file as wallpaper"
+
+# Linux: Sway + Swaybg
+[[mgr.prepend_keymap]]
+on  = "<C-w>"
+run = 'cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg "exec swaybg -i $HOME/.config/sway/wallpaper'
+desc = "Set hovered file as wallpaper"
+```
+
 ## Make Yazi even faster than fast {#make-yazi-even-faster}
 
 While Yazi is already fast, there is still plenty of room for optimization for specific users or under certain conditions:
