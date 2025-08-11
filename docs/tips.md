@@ -180,7 +180,7 @@ To set a wallpaper with the "Open with" menu (<kbd>O</kbd> key by default), add 
 ```toml
 # Linux: Hyprland + Hyprpaper
 [[opener.set-wallpaper]]
-run  = 'cp "$0" "$HOME/.config/hypr/wallpaper" && systemctl restart --user hyprpaper.service'
+run  = 'hyprctl hyprpaper reload ,"$1"'
 for  = "linux"
 desc = "Set as wallpaper"
 
@@ -215,7 +215,7 @@ Alternatively, you can also change the wallpaper with a keybinding, for example 
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run  = 'shell -- cp "$0" "$HOME/.config/hypr/wallpaper" && systemctl restart --user hyprpaper.service'
+run  = 'shell -- hyprctl hyprpaper reload ,"$0"'
 desc = "Set hovered file as wallpaper"
 ```
 
