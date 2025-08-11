@@ -620,7 +620,7 @@ desc = "Set hovered file as wallpaper"
 # Linux: Sway + Swaybg
 [[mgr.prepend_keymap]]
 on  = "<C-w>"
-run = 'cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg "exec swaybg -i $HOME/.config/sway/wallpaper'
+run = 'shell --orphan -- cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg "exec swaybg -i $HOME/.config/sway/wallpaper'
 desc = "Set hovered file as wallpaper"
 ```
 
