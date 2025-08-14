@@ -389,52 +389,26 @@ This page also includes a [nightly release](https://github.com/sxyazi/yazi/relea
 
 ## crates.io {#crates}
 
-Yazi is available as [`yazi-fm`](https://crates.io/crates/yazi-fm) and [`yazi-cli`](https://crates.io/crates/yazi-cli) on [crates.io](https://crates.io/).
+Yazi is available as [`yazi-fm`](https://crates.io/crates/yazi-fm) and [`yazi-cli`](https://crates.io/crates/yazi-cli) on [crates.io](https://crates.io/). Due to [Cargo's limitations](https://github.com/rust-lang/cargo/issues/11599), they must be installed via [`yazi-build`](https://crates.io/crates/yazi-build).
 
-To install them, setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
+To install Yazi, setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
-Now you can install Yazi via `cargo`:
-
-<Tabs>
-  <TabItem value="non-windows" label="non-Windows" default>
+Now you can install `yazi-build` via `cargo`, which will in turn install `yazi-fm` and `yazi-cli`:
 
 ```sh
-cargo install --locked yazi-fm yazi-cli
+cargo install --force yazi-build
 ```
 
-  </TabItem>
-  <TabItem value="windows" label="Windows">
+Or install the latest Git version of Yazi:
 
 ```sh
-cargo install --locked --profile release-windows yazi-fm yazi-cli
+cargo install --force --git https://github.com/sxyazi/yazi.git yazi-build
 ```
-
-  </TabItem>
-</Tabs>
-
-Or install the latest Git version:
-
-<Tabs>
-  <TabItem value="non-windows" label="non-Windows" default>
-
-```sh
-cargo install --locked --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
-```
-
-  </TabItem>
-  <TabItem value="windows" label="Windows">
-
-```sh
-cargo install --locked --profile release-windows --git https://github.com/sxyazi/yazi.git yazi-fm yazi-cli
-```
-
-  </TabItem>
-</Tabs>
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
 
