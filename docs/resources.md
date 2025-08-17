@@ -17,13 +17,8 @@ General:
 
 - [piper.yazi](https://github.com/yazi-rs/plugins/tree/main/piper.yazi) - Pipe any shell command as a previewer.
 
-Markdown:
-
-- [mdcat.yazi](https://github.com/GrzegorzKozub/mdcat.yazi) - Preview markdown files using [mdcat](https://github.com/swsnr/mdcat).
-
 Data Files:
 
-- [miller.yazi](https://github.com/Reledia/miller.yazi) - Preview CSV files (and other supported formats) using [miller](https://github.com/johnkerl/miller).
 - [duckdb.yazi](https://github.com/wylie102/duckdb.yazi) - Preview CSV/TSV, JSON, and Parquet files using [duckdb](https://github.com/duckdb/duckdb). View the raw data, or a summarized view with data-types, min, max, avg etc. for all columns.
 
 Binary:
@@ -59,7 +54,6 @@ Jumping:
 
 - [relative-motions.yazi](https://github.com/dedukun/relative-motions.yazi) - A Yazi plugin based about vim motions.
 - [jump-to-char.yazi](https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi) - Vim-like `f<char>`, jump to the next file whose name starts with `<char>`.
-- [first-non-directory.yazi](https://github.com/lpanebr/yazi-plugins/tree/main/first-non-directory.yazi) - Skip directories and jump to the first file with one keypress.
 - [time-travel.yazi](https://github.com/iynaix/time-travel.yazi) - Browse forwards and backwards in time via BTRFS / ZFS snapshots.
 - [cdhist.yazi](https://github.com/bulletmark/cdhist.yazi) - Use cdhist to fuzzy select and navigate within Yazi from your directory history.
 - [cd-git-root.yazi](https://github.com/ciarandg/cd-git-root.yazi) - Changes directory to the root of the git repository you are currently in.
@@ -170,6 +164,7 @@ Neovim:
 
 Vim:
 
+- [vim-yazi](https://github.com/yukimura1227/vim-yazi) - Vim plugin integrating Yazi for seamless in-editor file browsing and navigation.
 - [yazi.vim](https://github.com/chriszarate/yazi.vim) - Vim plugin for Yazi.
 
 ## 📝 Helix {#helix}
