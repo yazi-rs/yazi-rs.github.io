@@ -284,7 +284,7 @@ scoop install ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
 ```sh
 winget install sxyazi.yazi
 # Install the optional dependencies (recommended):
-winget install Gyan.FFmpeg 7zip.7zip jqlang.jq sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick oschwartz10612.Poppler
+winget install Gyan.FFmpeg 7zip.7zip jqlang.jq oschwartz10612.Poppler sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick
 ```
 
 resvg is not yet on WinGet, install with Scoop or manually download from [resvg](https://github.com/linebender/resvg/releases).
