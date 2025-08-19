@@ -48,6 +48,9 @@ Misc:
 
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 
+Documents:
+- [djvu-view.yazi](https://github.com/Shallow-Seek/djvu-view.yazi) - Preview Djvu using `ddjvu` from [djvulibre](https://github.com/DjvuNet/DjVuLibre)
+
 ## 🧩 Functional plugins {#functional}
 
 Jumping:
