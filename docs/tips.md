@@ -180,13 +180,13 @@ To set a wallpaper with the "Open with" menu (<kbd>O</kbd> key by default), add 
 ```toml
 # Linux: Hyprland + Hyprpaper
 [[opener.set-wallpaper]]
-run  = 'hyprctl hyprpaper reload ,"$1"'
+run  = 'hyprctl hyprpaper reload ,"$0"'
 for  = "linux"
 desc = "Set as wallpaper"
 
 # Linux: Sway + Swaybg
 [[opener.set-wallpaper]]
-run  = 'cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg "exec swaybg -i $HOME/.config/sway/wallpaper'
+run  = 'cp "$0" "$HOME/.config/sway/wallpaper" && killall swaybg && swaymsg exec "swaybg -i $HOME/.config/sway/wallpaper"'
 for  = "linux"
 desc = "Set as wallpaper"
 
