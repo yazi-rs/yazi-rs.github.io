@@ -490,11 +490,10 @@ Move the cursor to the next or previous occurrence.
 
 ### `filter` {#mgr.filter}
 
-| Argument/Option | Description                                                                                                                |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `[query]`       | Optional, the query to filter for. If not provided, an interactive UI will be used to input with.                          |
-| `--smart`       | Use smart-case when filtering, i.e. case-sensitive if the query contains uppercase characters, otherwise case-insensitive. |
-| `--insensitive` | Use case-insensitive filter.                                                                                               |
+| Argument/Option | Description                                                                                                           |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `--smart`       | Filter with smart-case, i.e. case-sensitive if the keyword contains uppercase characters, otherwise case-insensitive. |
+| `--insensitive` | Use case-insensitive filter.                                                                                          |
 
 ### `sort` {#mgr.sort}
 
