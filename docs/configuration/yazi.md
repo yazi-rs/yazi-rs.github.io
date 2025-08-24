@@ -130,6 +130,8 @@ Array of strings, the types of mouse events can be received by the plugin system
 
 Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
 
+If you want to completely disable mouse input, change it to `mouse_events = []` in your configuration. 
+
 ### `title_format` {#mgr.title_format}
 
 The terminal title format, which is a string with the following placeholders available:
