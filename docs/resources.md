@@ -181,6 +181,7 @@ Vim:
 
 - [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
 - [lsColorsToToml](https://github.com/Mellbourn/lsColorsToToml) - Generate the color rules for the `[filetype]` section in `theme.toml` based on your `$LS_COLORS`.
+- [fazif.yazi](https://github.com/Shallow-Seek/fazif.yazi): search over selected item with `fd`, `rg` `rga` and spawn any FZF configurations in Yazi.
 
 ## 💖 Add yours {#add-yours}
 
