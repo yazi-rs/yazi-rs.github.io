@@ -97,6 +97,7 @@ Clipboard:
 - [system-clipboard.yazi](https://github.com/orhnk/system-clipboard.yazi) - Cross platform implementation of a simple system clipboard.
 - [wl-clipboard.yazi](https://github.com/grappas/wl-clipboard.yazi) - Wayland implementation of a simple system clipboard.
 - [path-from-root.yazi](https://github.com/aresler/path-from-root.yazi) - Copy file path relative to git root
+- [clippy.yazi](https://github.com/gallardo994/clippy.yazi) - Copy files to clipboard with Clippy on macOS
 
 `filter` enhancements:
 
