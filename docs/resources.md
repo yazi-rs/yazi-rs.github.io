@@ -57,6 +57,7 @@ Jumping:
 - [time-travel.yazi](https://github.com/iynaix/time-travel.yazi) - Browse forwards and backwards in time via BTRFS / ZFS snapshots.
 - [cdhist.yazi](https://github.com/bulletmark/cdhist.yazi) - Use cdhist to fuzzy select and navigate within Yazi from your directory history.
 - [cd-git-root.yazi](https://github.com/ciarandg/cd-git-root.yazi) - Changes directory to the root of the git repository you are currently in.
+- [fazif.yazi](https://github.com/Shallow-Seek/fazif.yazi) - Search over selected item with `fd`, `rg` `rga` and spawn any FZF configurations in Yazi.
 
 Bookmarks:
 
