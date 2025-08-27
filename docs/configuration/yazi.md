@@ -128,9 +128,9 @@ Array of strings, the types of mouse events can be received by the plugin system
 - `"move"`: Mouse move
 - `"drag"`: Mouse drag (Some terminals do not support this)
 
-Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
+If the array is empty, disable the mouse.
 
-If you want to completely disable mouse input, change it to `mouse_events = []` in your configuration. 
+Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
 
 ### `title_format` {#mgr.title_format}
 
