@@ -270,6 +270,7 @@ Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest an
 This is **the ONLY way we recommend**. We do not recommend install `file` via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
 
 Most users already have Git installed, and Yazi is also hosted via Git, so this usually isn't an issue. But if you really don't have/want to install it, the [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) plugin can help, which use a extension database instead of relying on the `file(1)` binary.
+Be aware that the mime-type output of `file` may have `vnd.` in it. Yazi's mime-type doesn't have it. For example, `image/vnd.djvu` should be referred to as `image/djvu` in your configuration.
 
 ### Install with Scoop
 
