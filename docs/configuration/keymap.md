@@ -773,7 +773,7 @@ Kill the specified range of characters. This command is only available in insert
 
 ### `plugin` {#input.plugin}
 
-See [Functional plugin](/docs/plugins/overview#functional-plugin). This command is only available in insert mode.
+See [Functional plugin](/docs/plugins/overview#functional-plugin). This command is only available in normal mode.
 
 ### `noop` {#input.noop}
 
