@@ -75,6 +75,7 @@ Tabs:
 
 File actions:
 
+- [image-minify](https://github.com/hughfenghen/image-minify.yazi) - A Yazi plugin for compressing and resizing images.
 - [chmod.yazi](https://github.com/yazi-rs/plugins/tree/main/chmod.yazi) - Execute `chmod` on the selected files to change their mode.
 - [diff.yazi](https://github.com/yazi-rs/plugins/tree/main/diff.yazi) - Diff the selected file with the hovered file, create a living patch, and copy it to the clipboard.
 - [compress.yazi](https://github.com/KKV9/compress.yazi) - A Yazi plugin that compresses selected files to an archive.
