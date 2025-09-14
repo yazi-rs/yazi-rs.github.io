@@ -12,7 +12,7 @@ See [Why is Yazi fast?](/blog/why-is-yazi-fast).
 ## Why can't I edit text files? {#why-cant-edit}
 
 Yazi defaults to using `$EDITOR` as the text editor for Linux/macOS.
-If you are unable to edit files, please check your Bash/Zsh/Fish configuration file for settings like `export EDITOR=vim`. You can also [change Yazi's text opener](/docs/configuration/yazi#opener) from `$EDITOR` to vim/nvim/nano.
+If you are unable to edit files, please check your Bash/Zsh/Fish configuration file for settings like `export EDITOR=vim`. You can also [change Yazi's text opener](/docs/configuration/yazi#opener) from `$EDITOR` to vim/nvim/nano, etc.
 
 For Windows, there is no concept of `$EDITOR`, so users need to modify the text opener as needed.
 
