@@ -16,6 +16,7 @@ Please make sure that both your Yazi and plugins are on the `HEAD` to ensure pro
 General:
 
 - [piper.yazi](https://github.com/yazi-rs/plugins/tree/main/piper.yazi) - Pipe any shell command as a previewer.
+- [mux.yazi](https://github.com/peterfication/mux.yazi) - Plugin multiplexer. Define and cycle through previewers for the same file.
 
 Media:
 
