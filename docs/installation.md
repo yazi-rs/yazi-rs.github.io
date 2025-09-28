@@ -382,7 +382,7 @@ x env use yazi ffmpeg 7zz jq fd rg fzf zoxide magick
 ## Void Linux
 
 ```sh
-sudo xbps-install -S ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg ImageMagick
+sudo xbps-install -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg ImageMagick
 ```
 
 ## Official binaries {#binaries}
