@@ -12,7 +12,7 @@ To use Yazi, you must have the following prerequisites installed:
 
 - [`file`](https://github.com/file/file) (for file type detection)
 
-Yazi can be **optionally** extended with other command line tools to enable additional features.
+Yazi can be **optionally** extended with other command-line tools to enable additional features.
 
 - [nerd-fonts](https://www.nerdfonts.com/) ([_recommended_](/docs/faq#dont-like-nerd-fonts))
 - [`ffmpeg`](https://www.ffmpeg.org/) (for video thumbnails)
@@ -27,7 +27,7 @@ Yazi can be **optionally** extended with other command line tools to enable addi
 - [ImageMagick](https://imagemagick.org/) (for Font, HEIC, and JPEG XL preview, >= 7.1.1)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for Linux clipboard support)
 
-If the functions are not working properly, please try upgrading them to the latest version.
+Upgrading these dependencies to the latest version if certain functionality is not working as expected.
 
 ## Packaging status {#packaging}
 
@@ -251,6 +251,12 @@ brew install yazi --HEAD
 sudo port install yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
+## Void Linux
+
+```sh
+sudo xbps-install -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg ImageMagick
+```
+
 ## NetBSD {#netbsd}
 
 ```sh
@@ -377,12 +383,6 @@ sudo oma install yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 
 ```sh
 x env use yazi ffmpeg 7zz jq fd rg fzf zoxide magick
-```
-
-## Void Linux
-
-```sh
-sudo xbps-install -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg ImageMagick
 ```
 
 ## Official binaries {#binaries}
