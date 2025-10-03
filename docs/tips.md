@@ -170,7 +170,7 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 ```toml
 [[mgr.prepend_keymap]]
 on  = "<C-n>"
-run = 'shell -- dragon -x -i -T "$1"'
+run = 'shell -- dragon -x -i -T "$0"'
 ```
 
 ## Set a wallpaper
@@ -180,13 +180,13 @@ To set a wallpaper with the "Open with" menu (<kbd>O</kbd> key by default), add 
 ```toml
 # Linux: Hyprland + Hyprpaper
 [[opener.set-wallpaper]]
-run  = 'hyprctl hyprpaper reload ,"$0"'
+run  = 'hyprctl hyprpaper reload ,"$1"'
 for  = "linux"
 desc = "Set as wallpaper"
 
 # Linux: Swaybg
 [[opener.set-wallpaper]]
-run  = 'killall swaybg; swaybg -m fill -i "$0"'
+run  = 'killall swaybg; swaybg -m fill -i "$1"'
 for  = "linux"
 desc = "Set as wallpaper"
 orphan = true
@@ -194,7 +194,7 @@ orphan = true
 # macOS
 [[opener.set-wallpaper]]
 run = '''
-	osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' "$0"
+	osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' "$1"
 '''
 for  = "macos"
 desc = "Set as wallpaper"
@@ -256,7 +256,7 @@ Add these lines to your `~/.config/yazi/yazi.toml`:
 
 ```toml
 [[opener.add-sub]]
-run  = ''' echo sub-add "'$0'" | socat - /tmp/mpv.sock '''
+run  = ''' echo sub-add "'$1'" | socat - /tmp/mpv.sock '''
 desc = "Add sub to MPV"
 
 [[open.prepend_rules]]

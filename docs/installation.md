@@ -27,7 +27,7 @@ Yazi can be **optionally** extended with other command-line tools to enable addi
 - [ImageMagick](https://imagemagick.org/) (for Font, HEIC, and JPEG XL preview, >= 7.1.1)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for Linux clipboard support)
 
-Upgrading these dependencies to the latest version if certain functionality is not working as expected.
+Upgrade these dependencies to their newest version if certain functionality is not working as expected.
 
 ## Packaging status {#packaging}
 
