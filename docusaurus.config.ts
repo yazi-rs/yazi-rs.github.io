@@ -31,6 +31,11 @@ const config: Config = {
 					sidebarPath  : "./sidebars.ts",
 					// Remove this to remove the "edit this page" links.
 					editUrl      : "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
+					versions: {
+						current: {
+							label: `nightly`,
+						},
+					},
 				},
 				blog: {
 					showReadingTime: true,
@@ -62,6 +67,10 @@ const config: Config = {
 				},
 				{ to: "/features", label: "Features", position: "left" },
 				{ to: "/blog", label: "Blog", position: "left" },
+				{
+					type: 'docsVersionDropdown',
+					position: 'right',
+				},
 				{
 					href    : "https://github.com/sxyazi/yazi",
 					label   : "GitHub",
