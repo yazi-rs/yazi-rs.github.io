@@ -140,6 +140,29 @@ The terminal title format, which is a string with the following placeholders ava
 
 If you don't want Yazi to automatically update the title, set it to an empty string (`""`).
 
+### `gitignore_enable` {#mgr.gitignore_enable}
+
+Enable or disable gitignore support. Enabling it will make Yazi ignore files and directories specified in `.gitignore` for the current repository.
+
+- `true`: Enabled
+- `false`: Disabled
+
+### `ignore_override` {#mgr.ignore_override}
+
+Add ignore rules that override `.gitignore`'d files and directories, specified as an array of glob expressions. For example:
+
+```toml
+ignore_override = [
+    "*.log",              # Additional ignore pattern - hide all .log files
+    "tmp/",               # Hide tmp directory
+    "!target/",           # Negation - show target/ even if git ignores it
+]
+```
+
+This can be used alone or in combination with [`gitignore_enable`](#mgr.gitignore_enable). The rules defined in this option take precedence over those from the git repository. If `gitignore_enable` is disabled, only these rules will be applied.
+
+The syntax for the glob expressions follows the same rules as in `.gitignore` files. See [Git documentation](https://git-scm.com/docs/gitignore) for details.
+
 ## [preview] {#preview}
 
 ### `wrap` {#preview.wrap}
@@ -177,7 +200,7 @@ Wait for at least the specified milliseconds before starting to send image previ
 
 This is to alleviate lag caused by some terminal emulators struggling to render images Yazi sent in time, when users scroll through the file list quickly.
 
-See https://github.com/sxyazi/yazi/pull/1512 for more information.
+See <https://github.com/sxyazi/yazi/pull/1512> for more information.
 
 ### `image_filter` {#preview.image_filter}
 
@@ -190,7 +213,7 @@ The filter used on image downscaling, available values:
 
 They are arranged in order from fast to slow, and from poor to good quality - Lanczos3 provides the highest quality but is also the slowest.
 
-See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples
+See the example and benchmark here: <https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples>
 
 ### `image_quality` {#preview.image_quality}
 
