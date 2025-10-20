@@ -140,26 +140,44 @@ The terminal title format, which is a string with the following placeholders ava
 
 If you don't want Yazi to automatically update the title, set it to an empty string (`""`).
 
-### `gitignore_enable` {#mgr.gitignore_enable}
 
-Enable or disable gitignore support. Enabling it will make Yazi ignore files and directories specified in `.gitignore` for the current repository.
+## [files] {#files}
+
+The configuration related to file exclusion.
+
+### `gitignores` {#files.gitignores}
+
+Enable or disable gitignore support. Enabling it will make Yazi ignore files and directories specified in `.gitignore` for the current git repository.
 
 - `true`: Enabled
 - `false`: Disabled
 
-### `ignore_override` {#mgr.ignore_override}
+```toml
+gitignores = true
+```
 
-Add ignore rules that override `.gitignore`'d files and directories, specified as an array of glob expressions. For example:
+### `excludes` {#files.excludes }
+
+Add ignore rules that override `.gitignore`'d files and directories, specified as an array of glob expressions containing `urn` and `in` where `urn` is the file pattern to match and `in` is the context to apply the rule. The parameter `urn` can be a single string or an array of strings containing patterns. For example:
 
 ```toml
-ignore_override = [
-    "*.log",              # Additional ignore pattern - hide all .log files
-    "tmp/",               # Hide tmp directory
-    "!target/",           # Negation - show target/ even if git ignores it
+excludes = [
+  # SFTP temporary files
+  { urn = "*.tmp", in = "sftp://**" },
+  # Python cache in search results
+  { urn = "/root/**/*.pyc", in = "search://**" },
+  # Multiple patterns for /code directory (supports arrays)
+  { urn = [".git", ".DS_Store", "__pycache__"], in = "/code/**" },
+  # Negation: show target/ even if previously ignored
+  { urn = "!target/", in = "*" },
+  # Ignore debug/ only inside target/ directories
+  { urn = "debug", in = "/target/**" },
+  #Fallback rule for all contexts
+  { urn = ".DS_Store", in = "*" }
 ]
 ```
 
-This can be used alone or in combination with [`gitignore_enable`](#mgr.gitignore_enable). The rules defined in this option take precedence over those from the git repository. If `gitignore_enable` is disabled, only these rules will be applied.
+The `excludes` configuration can be used alone or in combination with [`gitignores`](#files.gitignores). The rules defined in this config take precedence over those from the git repository. If `gitignores` is disabled, only these rules will be applied.
 
 The syntax for the glob expressions follows the same rules as in `.gitignore` files. See [Git documentation](https://git-scm.com/docs/gitignore) for details.
 
