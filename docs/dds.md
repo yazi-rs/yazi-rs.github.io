@@ -62,7 +62,7 @@ ya pub-to "$MY_UNIQUE_ID" my-event --str "Hello world!"
 For greater convenience in integrating within the command-line environment, they support two body formats:
 
 - String: a straightforward format, suitable for most scenarios, without the need for additional tools for encoding
-- List: An array of strings, it is useful for carrying a file list to the message, through `$@` in your shell
+- List: An array of strings, it is useful for carrying a file list to the message
 - JSON: for advanced needs, support for types and more complex data can be represented through the JSON format
 
 ### `ya emit` and `ya emit-to` {#ya-emit}
@@ -253,15 +253,14 @@ bulk,0,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
 `sub_remote()` callback body:
 
 ```lua
--- Since `Iterator` implementing `__index()`, you can access the yanked URLs by index,
--- such as `body[1]`, or iterate over all URLs using `ipairs(body)`
+-- The `Iterator` implements `__pairs()`, so you can iterate over all URLs with `pairs()`
 Iterator {
 	cut = false,
 	__len = function(self)
 		-- Returns the number of URLs yanked
 	end,
-	__index = function(self, idx)
-		-- Returns the URL at the given index
+	__pairs = function(self)
+		-- Returns next URL
 	end
 }
 ```
@@ -463,8 +462,7 @@ This plugin provides an `extract` event kind for archive extraction, which accep
 # ~/.config/yazi/yazi.toml
 [opener]
 extract = [
-	{ run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
-	{ run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+	{ run = "ya pub extract --list %s", desc = "Extract here" },
 ]
 ```
 

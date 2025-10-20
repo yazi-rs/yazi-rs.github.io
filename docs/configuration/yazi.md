@@ -214,35 +214,40 @@ Configure available openers that can be used in [`[open]`](#open), for example:
 ```toml
 [opener]
 play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
-	{ run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
+	{ run = "mpv %s", orphan = true, for = "unix" },
+	{ run = '"C:\Program Files\mpv.exe" %s', orphan = true, for = "windows" }
 ]
 edit = [
-	{ run = '$EDITOR "$@"', block = true, for = "unix" },
-	{ run = "%EDITOR% %*",  block = true, for = "windows" },
+	{ run = "$EDITOR %s", block = true, for = "unix" },
+	{ run = "%EDITOR% %s",  block = true, for = "windows" },
 ]
 open = [
-	{ run = 'xdg-open "$@"', desc = "Open" },
+	{ run = "xdg-open %s", desc = "Open" },
 ]
 # ...
 ```
 
 Available options are as follows:
 
-- `run`: The command to open the selected files, with the following variables available:
-  - `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
-  - `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
-  - `$0` (Unix) / `%0` (Windows): The hovered file.
-  - Note that, these variables follow platform-specific differences. For example, Unix shell requires wrapping `$` with quotes, while `%` in Windows batch scripts doesn't. Refer to the documentation of `sh` and `cmd.exe` for details.
+- `run`: The command to open the selected files, with the following formatting parameters available:
+  - `%s`: Paths of all selected files
+  - `%S`: URLs of all selected files
+  - `%sN`: Path of the N-th selected file, e.g. `%s1`, `%s2`, etc.
+  - `%SN`: URL of the N-th selected file, e.g. `%S1`, `%S2`, etc.
+  - `%d`: Dirnames of all selected files
+  - `%D`: Dirnames of all selected files, as URLs
+  - `%dN`: Dirname of the N-th selected file, e.g. `%d1`, `%d2`, etc.
+  - `%DN`: Dirname of the N-th selected file as URL, e.g. `%D1`, `%D2`, etc.
+  - `%%`: Escape form of the `%` character itself
 - `block`: Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - `orphan`: Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.
 - `desc`: Description of the opener, display in interactive components, such as "Open with" and help menu.
 - `for`: The opener is only available on this system; if not specified, it's available on all systems. Available values:
-  - `unix`: Linux and macOS
-  - `windows`: Windows
   - `linux`: Linux
   - `macos`: macOS
+  - `windows`: Windows
   - `android`: Android (Termux)
+  - `unix`: Linux, macOS, and Android
 
 ## [open] {#open}
 
@@ -251,13 +256,13 @@ Set rules for opening specific files. You can prepend or append rules to the def
 ```toml
 [open]
 prepend_rules = [
-	{ name = "*.json", use = "edit" },
+	{ url = "*.json", use = "edit" },
 
 	# Multiple openers for a single rule
-	{ name = "*.html", use = [ "open", "edit" ] },
+	{ url = "*.html", use = [ "open", "edit" ] },
 ]
 append_rules = [
-	{ name = "*", use = "my-fallback" },
+	{ url = "*", use = "my-fallback" },
 ]
 ```
 
@@ -272,16 +277,16 @@ rules = [
 	{ mime = "video/*", use = "play" },
 
 	# { mime = "application/json", use = "edit" },
-	{ name = "*.json", use = "edit" },
+	{ url = "*.json", use = "edit" },
 
 	# Multiple openers for a single rule
-	{ name = "*.html", use = [ "open", "edit" ] },
+	{ url = "*.html", use = [ "open", "edit" ] },
 ]
 ```
 
 Available rule options are as follows:
 
-- `name`: Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `url`: Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime`: Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `use`: Opener name corresponding to the names in the [`[opener]` section](#opener).
 
@@ -330,7 +335,7 @@ You can prepend or append new fetchers to the default `fetchers` under `[plugin]
 Here are the available options for a single rule:
 
 - `id` (String): Fetcher's ID.
-- `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `url` (String): Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `run` (String): The name of the Lua plugin to be run.
 - `if` (String): Execute the fetcher based on this condition.
 - `prio` (String): The priority of the task. One of `high`, `normal` or `low`.
@@ -340,7 +345,7 @@ Here are the available options for a single rule:
 You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `url` (String): Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `run` (String): The name of the Lua plugin to be run.
 
@@ -350,16 +355,16 @@ prepend_previewers = [
 	# HEIC previewer
 	{ mime = "image/heic", run = "heic" },
 	# RAF previewer
-	{ name = "*.raf", run = "raf" },
+	{ url = "*.raf", run = "raf" },
 ]
 
 append_previewers = [
 	# My fallback previewer
-	{ name = "*", run = "binary" },
+	{ url = "*", run = "binary" },
 ]
 ```
 
-If your `append_previewers` contains wildcard `name` rules (`"*"` or `"*/"`), they will always take precedence over the default wildcard rules as the fallback.
+If your `append_previewers` contains wildcard `url` rules (`"*"` or `"*/"`), they will always take precedence over the default wildcard rules as the fallback.
 
 Yazi comes with the these previewer plugins:
 
@@ -379,9 +384,9 @@ If you want to create your own previewer, see [Previewer API](/docs/plugins/over
 You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `name` (String): Glob expression for matching the file name. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `url` (String): Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
 - `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
-- `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `name` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
+- `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `url` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
   - `mime`: This file has a mime-type.
 - `run` (String): The name of the Lua plugin to be run.
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.

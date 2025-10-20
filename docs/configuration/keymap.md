@@ -398,22 +398,32 @@ Run a shell command.
 | `--block`       | Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs. |
 | `--orphan`      | Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.                                                                                                          |
 | `--interactive` | Request the user to input the command to be run interactively                                                                                                                                                                            |
-| `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip "$0"' --cursor=7 --interactive` places the cursor before `.zip`.                                                           |
+| `--cursor`      | Set the initial position of the cursor in the interactive command input box. For example, `shell 'zip -r .zip %h' --cursor=7 --interactive` places the cursor before `.zip`.                                                             |
 
-You can use the following shell variables in `[template]`:
+You can use the following formatting parameters in `[template]`:
 
-- `$n` (Unix) / `%n` (Windows): The N-th selected file, starting from `1`. e.g. `$2` represents the second selected file.
-- `$@` (Unix) / `%*` (Windows): All selected files, i.e. `$1`, `$2`, ..., `$n`.
-- `$0` (Unix) / `%0` (Windows): The hovered file.
-- Note that, these variables follow platform-specific differences. For example, Unix shell requires wrapping `$` with quotes, while `%` in Windows batch scripts doesn't. Refer to the documentation of `sh` and `cmd.exe` for details.
+- `%h`: Path of hovered file, or empty if under an empty directory where no file is hovered on
+- `%s`: Paths of all selected files
+- `%sN`: Path of the N-th selected file, e.g. `%s1`, `%s2`, etc.
+- `%d`: Dirnames of all selected files
+- `%dN`: Dirname of the N-th selected file, e.g. `%d1`, `%d2`, etc.
+- `%%`: Escape form of the `%` character itself
+
+And their URL versions:
+
+- `%H`: URL of hovered file, or empty if under an empty directory where no file is hovered on
+- `%S`: URLs of all selected files
+- `%SN`: URL of the N-th selected file, e.g. `%S1`, `%S2`, etc.
+- `%D`: Dirnames of all selected files, as URLs
+- `%DN`: Dirname of the N-th selected file as URL, e.g. `%D1`, `%D2`, etc.
 
 You can use an end-of-options marker (`--`) to avoid any escaping - everything following the `--` will be treated as a raw string:
 
 ```diff
 [[mgr.prepend_keymap]]
 on = "d"
-- run = "shell 'trash-put \"$@\"'"
-+ run = 'shell -- trash-put "$@"'
+- run = "shell \"trash-put %s\""
++ run = "shell -- trash-put %s"
 desc = "Trash selected files"
 ```
 

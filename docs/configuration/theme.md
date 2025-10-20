@@ -455,9 +455,9 @@ Title style.
 | ---- | ----------------------- |
 | Type | [`Style`](#types.style) |
 
-### `content` {#confirm.content}
+### `body` {#confirm.body}
 
-Content style.
+Body style.
 
 |      |                         |
 | ---- | ----------------------- |
@@ -771,33 +771,26 @@ Set file list item display styles for specific file types, supporting matching b
 ```toml
 [filetype]
 rules = [
-	# Images
+	# Image
 	{ mime = "image/*", fg = "yellow" },
-
-	# Videos
-	{ mime = "video/*", fg = "magenta" },
-	{ mime = "audio/*", fg = "magenta" },
-
-	# Empty files
+	# Video
+	{ mime = "{audio,video}/*", fg = "magenta" },
+	# Empty file
 	{ mime = "inode/empty", fg = "cyan" },
-
 	# Orphan symbolic links
-	{ name = "*", is = "orphan", fg = "red" },
-
-	# ...
-
+	{ url = "*", is = "orphan", fg = "red" },
 	# Fallback
-	# { name = "*", fg = "white" },
-	{ name = "*/", fg = "blue" }
+	# { url = "*", fg = "white" },
+	{ url = "*/", fg = "blue" }
 ]
 ```
 
 Each rule supports complete [Style properties](#types.style). There are two special rule:
 
-- `name = "*"` matches all files.
-- `name = "*/"` matches all directories.
+- `url = "*"` matches all files.
+- `url = "*/"` matches all directories.
 
-You can restrict the specific type of files through `is`, noting that it must be used with either `name` or `mime`. It accepts the following values:
+You can restrict the specific type of files through `is`, noting that it must be used with either `url` or `mime`. It accepts the following values:
 
 - `block`: Block device
 - `char`: Char device
@@ -849,7 +842,7 @@ Each icon rule contains the following properties:
 
 Icons are matched according to the following priority:
 
-1. globs: glob expressions, e.g., `{ name = "**/Downloads/*.zip", ... }`
+1. globs: glob expressions, e.g., `{ url = "**/Downloads/*.zip", ... }`
 2. dirs: directory names, e.g., `{ name = "Desktop", ... }`
 3. files: file names, e.g., `{ name = ".bashrc", ... }`
 4. exts: extensions, e.g., `{ name = "mp3", ... }`
