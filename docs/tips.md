@@ -150,8 +150,8 @@ For example, you can use the `noop` builtin preloader for a remote mount point l
 ```toml
 # yazi.toml
 [[plugin.prepend_preloaders]]
-name = "/remote/**"
-run  = "noop"
+url = "/remote/**"
+run = "noop"
 ```
 
 If you want to disable all the preset previewers, preloaders:
@@ -170,7 +170,7 @@ Original post: https://github.com/sxyazi/yazi/discussions/327
 ```toml
 [[mgr.prepend_keymap]]
 on  = "<C-n>"
-run = 'shell -- dragon -x -i -T "$0"'
+run = "shell -- dragon -x -i -T %h"
 ```
 
 ## Set a wallpaper
@@ -180,13 +180,13 @@ To set a wallpaper with the "Open with" menu (<kbd>O</kbd> key by default), add 
 ```toml
 # Linux: Hyprland + Hyprpaper
 [[opener.set-wallpaper]]
-run  = 'hyprctl hyprpaper reload ,"$1"'
+run  = "hyprctl hyprpaper reload ,%s1"
 for  = "linux"
 desc = "Set as wallpaper"
 
 # Linux: Swaybg
 [[opener.set-wallpaper]]
-run  = 'killall swaybg; swaybg -m fill -i "$1"'
+run  = "killall swaybg; swaybg -m fill -i %s1"
 for  = "linux"
 desc = "Set as wallpaper"
 orphan = true
@@ -194,7 +194,7 @@ orphan = true
 # macOS
 [[opener.set-wallpaper]]
 run = '''
-	osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' "$1"
+	osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' %s1
 '''
 for  = "macos"
 desc = "Set as wallpaper"
@@ -216,7 +216,7 @@ Alternatively, you can also change the wallpaper with a keybinding, for example 
 [[mgr.prepend_keymap]]
 on   = "<C-w>"
 for  = "linux"
-run  = 'shell -- hyprctl hyprpaper reload ,"$0"'
+run  = "shell -- hyprctl hyprpaper reload ,%h"
 desc = "Set hovered file as wallpaper"
 ```
 
@@ -229,7 +229,7 @@ Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y
 ```toml
 [[mgr.prepend_keymap]]
 on  = "y"
-run = [ 'shell -- echo "$@" | xclip -i -selection clipboard -t text/uri-list', "yank" ]
+run = [ "shell -- echo %s | xclip -i -selection clipboard -t text/uri-list", "yank" ]
 ```
 
 The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
@@ -237,7 +237,7 @@ The above is available on X11, there is also a Wayland version (Thanks [@hurutpa
 ```toml
 [[mgr.prepend_keymap]]
 on  = "y"
-run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
+run = [ 'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
 ```
 
 ## `cd` back to the root of the current Git repository {#cd-to-git-root}
@@ -256,12 +256,12 @@ Add these lines to your `~/.config/yazi/yazi.toml`:
 
 ```toml
 [[opener.add-sub]]
-run  = ''' echo sub-add "'$1'" | socat - /tmp/mpv.sock '''
+run  = 'echo sub-add "%s1" | socat - /tmp/mpv.sock'
 desc = "Add sub to MPV"
 
 [[open.prepend_rules]]
-name = "*.{ass,srt,ssa,sty,sup,vtt}"
-use  = [ "add-sub", "edit" ]
+url = "*.{ass,srt,ssa,sty,sup,vtt}"
+use = [ "add-sub", "edit" ]
 ```
 
 To make it work, make sure you've:
@@ -444,7 +444,7 @@ end, 500, Header.LEFT)
 ```toml
 [[mgr.prepend_keymap]]
 on = "<C-p>"
-run = 'shell -- qlmanage -p "$@"'
+run = "shell -- qlmanage -p %s"
 ```
 
 Credits to [@UncleGravity for sharing it](https://discord.com/channels/1136203602898194542/1146658361740369960/1293471643959558156) in Yazi's discord server.
@@ -466,12 +466,12 @@ By default, this matches your editor used for opening normal text files, if you 
 ```toml
 # ~/.config/yazi/yazi.toml
 [[opener.bulk-rename]]
-run   = 'hx "$@"'
+run   = "hx %s"
 block = true
 
 [[open.prepend_rules]]
-name = "bulk-rename.txt"
-use  = "bulk-rename"
+url = "bulk-rename.txt"
+use = "bulk-rename"
 ```
 
 ## Linux: Yazi as your system file chooser {#system-chooser}
@@ -617,7 +617,7 @@ To send selected files using [Thunderbird](https://www.thunderbird.net), with a 
 [[mgr.prepend_keymap]]
 on  = "<C-m>"
 run = '''shell --
-	paths=$(for p in "$@"; do echo "$p"; done | paste -s -d,)
+	paths=$(for p in %s; do echo "$p"; done | paste -s -d,)
 	thunderbird -compose "attachment='$paths'"
 '''
 ```
@@ -628,7 +628,7 @@ Or, use the [NeoMutt](https://neomutt.org) command-line mail client:
 # ~/.config/yazi/keymap.toml
 [[mgr.prepend_keymap]]
 on  = "<C-m>"
-run = 'shell --block -- neomutt -a "$@"'
+run = "shell --block -- neomutt -a %s"
 ```
 
 ## Make Yazi even faster than fast {#make-yazi-even-faster}

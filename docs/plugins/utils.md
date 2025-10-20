@@ -139,14 +139,14 @@ Request user input:
 
 ```lua
 local value, event = ya.input {
+	-- Position
+	pos = { "top-center", y = 3, w = 40 },
 	-- Title
 	title = "Archive name:",
 	-- Default value
 	value = "",
 	-- Whether to obscure the input.
 	obscure = false,
-	-- Position
-	position = { "top-center", y = 3, w = 40 },
 	-- Whether to report user input in real time.
 	realtime = false,
 	-- Number of seconds to wait for the user to stop typing, available if `realtime = true`.
@@ -167,8 +167,8 @@ When `realtime = true` specified, `ya.input()` returns a receiver, which has a `
 
 ```lua
 local input = ya.input {
+	pos = { "center", w = 50 },
 	title = "Input in realtime:",
-	position = { "center", w = 50 },
 	realtime = true,
 }
 
@@ -182,11 +182,11 @@ while true do
 end
 ```
 
-| In/Out    | Type                                                                                                           |
-| --------- | -------------------------------------------------------------------------------------------------------------- |
-| `opts`    | `{ title: string, value: string?, obscure: boolean?, position: AsPos, realtime: boolean?, debounce: number? }` |
-| Return    | `(string?, integer)` \| `Recv`                                                                                 |
-| Available | Async context only                                                                                             |
+| In/Out    | Type                                                                                                      |
+| --------- | --------------------------------------------------------------------------------------------------------- |
+| `opts`    | `{ pos: AsPos, title: string, value: string?, obscure: boolean?, realtime: boolean?, debounce: number? }` |
+| Return    | `(string?, integer)` \| `Recv`                                                                            |
+| Available | Async context only                                                                                        |
 
 ### `notify(opts)` {#ya.notify}
 
