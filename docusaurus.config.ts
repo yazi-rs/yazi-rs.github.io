@@ -3,22 +3,21 @@ import type { Config } from "@docusaurus/types"
 import type * as Preset from "@docusaurus/preset-classic"
 
 const config: Config = {
-	title  : "Yazi",
+	title: "Yazi",
 	tagline: "⚡️ Blazing fast terminal file manager written in Rust, based on async I/O.",
 	favicon: "webp/logo.webp",
 
-	url    : "https://yazi-rs.github.io",
+	url: "https://yazi-rs.github.io",
 	baseUrl: "/",
 
 	organizationName: "yazi-rs",
-	projectName     : "yazi-rs.github.io",
+	projectName: "yazi-rs.github.io",
 
-	onBrokenLinks        : "throw",
-	onBrokenMarkdownLinks: "warn",
+	onBrokenLinks: "throw",
 
 	i18n: {
 		defaultLocale: "en",
-		locales      : ["en"],
+		locales: ["en"],
 	},
 
 	presets: [
@@ -26,21 +25,21 @@ const config: Config = {
 			"classic",
 			{
 				docs: {
-					path         : "docs",
+					path: "docs",
 					routeBasePath: "docs",
-					sidebarPath  : "./sidebars.ts",
+					sidebarPath: "./sidebars.ts",
 					// Remove this to remove the "edit this page" links.
-					editUrl      : "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
+					editUrl: "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
 					versions: {
 						current: {
-							label: `nightly`,
+							label: "nightly",
 						},
 					},
 				},
 				blog: {
 					showReadingTime: true,
 					// Remove this to remove the "edit this page" links.
-					editUrl        : "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
+					editUrl: "https://github.com/yazi-rs/yazi-rs.github.io/edit/main/",
 				},
 				theme: {
 					customCss: "./src/css/custom.css",
@@ -51,29 +50,29 @@ const config: Config = {
 
 	themeConfig: {
 		// Replace with your project's social card
-		image : "webp/docusaurus-social-card.wbep",
+		image: "webp/docusaurus-social-card.wbep",
 		navbar: {
 			title: "Yazi",
-			logo : {
+			logo: {
 				alt: "Yazi file manager",
 				src: "webp/logo.webp",
 			},
 			items: [
 				{
-					type     : "docSidebar",
+					type: "docSidebar",
 					sidebarId: "docsSidebar",
-					position : "left",
-					label    : "Docs",
+					position: "left",
+					label: "Docs",
 				},
 				{ to: "/features", label: "Features", position: "left" },
 				{ to: "/blog", label: "Blog", position: "left" },
 				{
-					type: 'docsVersionDropdown',
-					position: 'right',
+					type: "docsVersionDropdown",
+					position: "right",
 				},
 				{
-					href    : "https://github.com/sxyazi/yazi",
-					label   : "GitHub",
+					href: "https://github.com/sxyazi/yazi",
+					label: "GitHub",
 					position: "right",
 				},
 			],
@@ -86,15 +85,15 @@ const config: Config = {
 					items: [
 						{
 							label: "Docs",
-							to   : "/docs/installation",
+							to: "/docs/installation",
 						},
 						{
 							label: "Features",
-							to   : "/features",
+							to: "/features",
 						},
 						{
 							label: "Blog",
-							to   : "/blog",
+							to: "/blog",
 						},
 					],
 				},
@@ -103,11 +102,11 @@ const config: Config = {
 					items: [
 						{
 							label: "Discord (English mainly)",
-							href : "https://discord.gg/qfADduSdJu",
+							href: "https://discord.gg/qfADduSdJu",
 						},
 						{
 							label: "Telegram (Chinese mainly)",
-							href : "https://t.me/yazi_rs",
+							href: "https://t.me/yazi_rs",
 						},
 					],
 				},
@@ -116,7 +115,7 @@ const config: Config = {
 					items: [
 						{
 							label: "GitHub",
-							href : "https://github.com/sxyazi/yazi",
+							href: "https://github.com/sxyazi/yazi",
 						},
 					],
 				},
@@ -124,14 +123,14 @@ const config: Config = {
 			copyright: `Copyright © ${new Date().getFullYear()} Yazi. Built with ❤️️.`,
 		},
 		prism: {
-			theme              : prismThemes.github,
-			darkTheme          : prismThemes.dracula,
+			theme: prismThemes.github,
+			darkTheme: prismThemes.dracula,
 			additionalLanguages: ["bash", "diff", "lua", "nix", "powershell", "toml"],
 		},
 		algolia: {
-			appId           : "MS4XF9Z1OE",
-			apiKey          : "d88c4dc9a8ebab02a753d7d950c61246",
-			indexName       : "yazi-rsio",
+			appId: "MS4XF9Z1OE",
+			apiKey: "d88c4dc9a8ebab02a753d7d950c61246",
+			indexName: "yazi-rsio",
 			contextualSearch: true,
 		},
 		announcementBar: {

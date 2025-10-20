@@ -219,7 +219,7 @@ play = [
 ]
 edit = [
 	{ run = "$EDITOR %s", block = true, for = "unix" },
-	{ run = "%EDITOR% %s",  block = true, for = "windows" },
+	{ run = "%EDITOR% %s", block = true, for = "windows" },
 ]
 open = [
 	{ run = "xdg-open %s", desc = "Open" },
