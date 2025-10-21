@@ -63,7 +63,7 @@ def --env y [...args] {
 ```
 
   </TabItem>
-	<TabItem value="posix" label="POSIX" default>
+  <TabItem value="posix" label="POSIX">
 
 ```sh
 y() {
