@@ -21,20 +21,6 @@ Press <kbd>q</kbd> to quit, <kbd>F1</kbd> or <kbd>~</kbd> to open the help menu.
 We suggest using this `y` shell wrapper that provides the ability to change the current working directory when exiting Yazi.
 
 <Tabs>
-  <TabItem value="posix" label="Posix Shell" default>
-
-```sh
-y() {
-	set -- "${@}" --cwd-file "$(mktemp -t yazi-cwd.XXXXXX)"
-	command yazi "${@}"
-	shift $((${#} - 1))
-	set -- "$(cat <"${1}"; printf .; rm -f -- "${1}")"
-	set -- "${1%.}"
-	[ -n "${1}" ] && [ "${1}" != "${PWD}" ] && command cd -- "${1}"
-}
-```
-
-  </TabItem>
   <TabItem value="bash-zsh" label="Bash / Zsh" default>
 
 ```bash
@@ -73,6 +59,20 @@ def --env y [...args] {
 		cd $cwd
 	}
 	rm -fp $tmp
+}
+```
+
+  </TabItem>
+	<TabItem value="posix" label="POSIX" default>
+
+```sh
+y() {
+	set -- "$@" --cwd-file "$(mktemp -t yazi-cwd.XXXXXX)"
+	command yazi "$@"
+	shift $(($# - 1))
+	set -- "$(command cat < "$1"; printf .; rm -f -- "$1")"
+	set -- "${1%.}"
+	[ -n "$1" ] && [ "$1" != "$PWD" ] && command cd -- "$1"
 }
 ```
 
