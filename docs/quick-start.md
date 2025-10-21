@@ -26,7 +26,7 @@ We suggest using this `y` shell wrapper that provides the ability to change the 
 ```bash
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
+	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
@@ -39,7 +39,7 @@ function y() {
 ```sh
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
-	yazi $argv --cwd-file="$tmp"
+	command yazi $argv --cwd-file="$tmp"
 	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		builtin cd -- "$cwd"
 	end
@@ -53,7 +53,7 @@ end
 ```sh
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-	yazi ...$args --cwd-file $tmp
+	^yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
 	if $cwd != "" and $cwd != $env.PWD {
 		cd $cwd
@@ -85,7 +85,7 @@ edit:add-var y~ {|@argv|
 	use os
 	use file
 	var tmp = (os:temp-file)
-	yazi $@argv --cwd-file=$tmp[name]
+	e:yazi $@argv --cwd-file=$tmp[name]
 	var cwd = (slurp < $tmp)
 	file:close $tmp
 	os:remove $tmp[name]
@@ -101,7 +101,7 @@ edit:add-var y~ {|@argv|
 ```powershell
 function y {
     $tmp = (New-TemporaryFile).FullName
-    yazi $args --cwd-file="$tmp"
+    yazi.exe $args --cwd-file="$tmp"
     $cwd = Get-Content -Path $tmp -Encoding UTF8
     if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
         Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
@@ -120,7 +120,7 @@ Create the file `y.cmd` and place it in your `%PATH%`.
 
 set tmpfile=%TEMP%\yazi-cwd.%random%
 
-yazi %* --cwd-file="%tmpfile%"
+yazi.exe %* --cwd-file="%tmpfile%"
 
 :: If the file does not exist, then exit
 if not exist "%tmpfile%" exit /b 0
@@ -140,7 +140,7 @@ del "%tmpfile%"
 def _y(args):
     tmp = $(mktemp -t "yazi-cwd.XXXXXX")
     args.append(f"--cwd-file={tmp}")
-    $[yazi @(args)]
+    $[!yazi @(args)]
     with open(tmp) as f:
         cwd = f.read()
     if cwd != $PWD:
