@@ -63,6 +63,20 @@ def --env y [...args] {
 ```
 
   </TabItem>
+  <TabItem value="posix" label="POSIX">
+
+```sh
+y() {
+	set -- "$@" --cwd-file "$(mktemp -t yazi-cwd.XXXXXX)"
+	command yazi "$@"
+	shift $(($# - 1))
+	set -- "$(command cat < "$1"; printf .; rm -f -- "$1")"
+	set -- "${1%.}"
+	[ -n "$1" ] && [ "$1" != "$PWD" ] && command cd -- "$1"
+}
+```
+
+  </TabItem>
   <TabItem value="elvish" label="Elvish">
 
 ```elvish
