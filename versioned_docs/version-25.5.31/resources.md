@@ -47,6 +47,7 @@ Jupyter notebooks:
 
 Misc:
 
+- [mdv-previewer](https://github.com/WhoSowSee/mdv-previewer.yazi) - A preview plugin for Text and Markdown files that uses [mdv](https://github.com/WhoSowSee/mdv) to render content
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 
 ## 🧩 Functional plugins {#functional}
