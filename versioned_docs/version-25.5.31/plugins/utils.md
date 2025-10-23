@@ -36,7 +36,7 @@ Calculate the cached [Url](/docs/plugins/types#url) corresponding to the given f
 ya.file_cache {
 	-- File to be cached.
 	file = file,
-	-- Number of units to skip. It's units largely depend on your previewer,
+	-- Number of units to skip. Its units largely depend on your previewer,
 	-- such as lines for code, and percentages for videos.
 	skip = 1,
 }

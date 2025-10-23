@@ -256,7 +256,7 @@ Add these lines to your `~/.config/yazi/yazi.toml`:
 
 ```toml
 [[opener.add-sub]]
-run  = 'echo sub-add "%s1" | socat - /tmp/mpv.sock'
+run  = ''' printf "sub-add '%%s'" %s1 | socat - /tmp/mpv.sock '''
 desc = "Add sub to MPV"
 
 [[open.prepend_rules]]
@@ -486,45 +486,13 @@ Yazi can be used as a file picker to browse and open file(s) in your current Hel
 
 Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 
-<Tabs>
-  <TabItem value="helix-stable" label="Helix <= 25.01.1" default>
-
-```toml
-# ~/.config/helix/config.toml
-[keys.normal]
-C-y = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
-```
-
-  </TabItem>
-  <TabItem value="helix-nightly" label="Helix Nightly (> 25.01.1)">
-
 ```toml
 # ~/.config/helix/config.toml
 [keys.normal]
 C-y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
 ```
 
-  </TabItem>
-</Tabs>
-
 If you also want the ability to open files in split panes, you can define additional keybindings:
-
-<Tabs>
-  <TabItem value="helix-stable" label="Helix <= 25.01.1" default>
-
-```toml
-# ~/.config/helix/config.toml
-[keys.normal.C-y]
-# Open the file(s) in the current window
-y = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open"
-# Open the file(s) in a vertical split
-v = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit"
-# Open the file(s) in a horizontal split
-h = ":sh zellij run -n Yazi -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit"
-```
-
-  </TabItem>
-  <TabItem value="helix-nightly" label="Helix Nightly (> 25.01.1)">
 
 ```toml
 # ~/.config/helix/config.toml
@@ -536,9 +504,6 @@ v = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- 
 # Open the file(s) in a horizontal split
 h = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh hsplit %{buffer_name}"
 ```
-
-  </TabItem>
-</Tabs>
 
 Then save the following script as `~/.config/helix/yazi-picker.sh`:
 
