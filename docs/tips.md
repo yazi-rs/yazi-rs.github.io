@@ -256,7 +256,7 @@ Add these lines to your `~/.config/yazi/yazi.toml`:
 
 ```toml
 [[opener.add-sub]]
-run  = ''' printf "sub-add '%%s'" %s1 | socat - /tmp/mpv.sock '''
+run  = ''' printf "sub-add '%%s'\n" %s1 | socat - /tmp/mpv.sock '''
 desc = "Add sub to MPV"
 
 [[open.prepend_rules]]
