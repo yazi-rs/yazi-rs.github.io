@@ -751,7 +751,7 @@ You can invoke external programs through:
 
 ```lua
 local child, err = Command("ls")
-	:args({ "-a", "-l" })
+	:arg { "-a", "-l" }
 	:stdout(Command.PIPED)
 	:spawn()
 ```
