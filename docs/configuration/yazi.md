@@ -145,20 +145,9 @@ If you don't want Yazi to automatically update the title, set it to an empty str
 
 The configuration related to file exclusion.
 
-### `gitignores` {#files.gitignores}
-
-Enable or disable gitignore support. Enabling it will make Yazi ignore files and directories specified in `.gitignore` for the current git repository.
-
-- `true`: Enabled
-- `false`: Disabled
-
-```toml
-gitignores = true
-```
-
 ### `excludes` {#files.excludes }
 
-Add ignore rules that override `.gitignore`'d files and directories, specified as an array of glob expressions containing `urn` and `in` where `urn` is the file pattern to match and `in` is the context to apply the rule. The parameter `urn` can be a single string or an array of strings containing patterns. For example:
+Add exclude rules for files and directories specified as an array of glob expressions containing `urn` and `in` where `urn` is the file pattern to match and `in` is the context to apply the rule. The parameter `urn` can be a single string or an array of strings containing patterns. For example:
 
 ```toml
 excludes = [
@@ -177,7 +166,7 @@ excludes = [
 ]
 ```
 
-The `excludes` configuration can be used alone or in combination with [`gitignores`](#files.gitignores). The rules defined in this config take precedence over those from the git repository. If `gitignores` is disabled, only these rules will be applied.
+The `excludes` configuration can be used alone or in combination with plugins which add exclude patterns like the [`gitignores` Lua plugin](https://github.com/carlosedp/gitignore.yazi). The rules defined in the excludes config take precedence over those from the plugin. 
 
 The syntax for the glob expressions follows the same rules as in `.gitignore` files. See [Git documentation](https://git-scm.com/docs/gitignore) for details.
 
