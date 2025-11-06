@@ -142,7 +142,7 @@ Credits to [@tianze0926 for sharing it](https://github.com/sxyazi/yazi/issues/62
 
 ## Folder-specific previewer and preloader {#folder-previewer}
 
-In addition to the `mime` rules, Yazi also has `name` rules for pre\{viewer,loader}, which accept a glob expression.
+In addition to the `mime` rules, Yazi also has `url` rules for pre\{viewer,loader}, which accept a URL pattern.
 This allows for flexible creation of different pre\{viewer,loader} rules for various directories.
 
 For example, you can use the `noop` builtin preloader for a remote mount point like `/remote`, disabling preloads in that directory:
@@ -456,7 +456,7 @@ For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs
 |         | Value               |
 | ------- | ------------------- |
 | `block` | `true`              |
-| `name`  | `"bulk-rename.txt"` |
+| `url`   | `"bulk-rename.txt"` |
 | `mime`  | `"text/plain"`      |
 
 to use as the editor for editing the file list.
