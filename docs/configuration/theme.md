@@ -71,6 +71,22 @@ Flavor name used in light mode, e.g. `"gruvbox"`.
 | ---- | -------- |
 | Type | `string` |
 
+## [app] {#app}
+
+### `overall` {#app.overall}
+
+The app's overall style.
+
+Only the `bg` property is available to set the terminal background color, which requires your terminal to support OSC 11, for example:
+
+```toml
+overall = { bg = "#1e1e2e" }
+```
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
 ## [mgr] {#mgr}
 
 ### `cwd` {#mgr.cwd}
