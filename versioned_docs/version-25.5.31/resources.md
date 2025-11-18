@@ -126,6 +126,7 @@ Clipboard:
 `paste` enhancements:
 
 - [smart-paste.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-paste.yazi) - Paste files into the hovered directory or to the CWD if hovering over a file.
+- [hover-paste.yazi](https://github.com/Colburse/hover-paste.yazi) - Paste and hover the yanked file.
 
 General command enhancements:
 
