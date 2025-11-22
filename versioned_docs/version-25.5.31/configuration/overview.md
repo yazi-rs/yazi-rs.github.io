@@ -13,7 +13,7 @@ There are three configuration files for Yazi:
 - [`keymap.toml`](/docs/configuration/keymap) - Keybindings configuration.
 - [`theme.toml`](/docs/configuration/theme) - Color scheme configuration.
 
-You can find the default configuration files on the **_`shipped`_** tag [https://github.com/sxyazi/yazi/tree/**_shipped_**/yazi-config/preset](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset).
+You can find the default configuration files on the **_`shipped`_** tag, [https://github.com/sxyazi/yazi/tree/**_shipped_**/yazi-config/preset](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset).
 
 To override any of the defaults, begin by creating the corresponding file (from the directory linked above) to:
 
