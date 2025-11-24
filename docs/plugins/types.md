@@ -7,7 +7,7 @@ description: Learn how to use Yazi's Lua API.
 
 ## Url {#url}
 
-Create a Url:
+Create a URL:
 
 ```lua
 -- regular file
@@ -19,7 +19,7 @@ local url = Url("archive:///root/ost.zip#bgm.mp3")
 
 ### `name` {#url.name}
 
-Filename of the url.
+Filename of the URL.
 
 |      |           |
 | ---- | --------- |
@@ -28,16 +28,6 @@ Filename of the url.
 ### `stem` {#url.stem}
 
 Filename without the extension.
-
-|      |           |
-| ---- | --------- |
-| Type | `string?` |
-
-### `frag` {#url.frag}
-
-Url fragment.
-
-Let's say the url `archive:///root/my-archive.zip#1.jpg`, the fragment `1.jpg`.
 
 |      |           |
 | ---- | --------- |
@@ -53,7 +43,7 @@ Parent directory.
 
 ### `is_regular` {#url.is_regular}
 
-Whether the file represented by the url is a regular file.
+Whether the file represented by the URL is a regular file.
 
 |      |           |
 | ---- | --------- |
@@ -61,7 +51,7 @@ Whether the file represented by the url is a regular file.
 
 ### `is_search`
 
-Whether the file represented by the url is from a search result.
+Whether the file represented by the URL is from a search result.
 
 |      |           |
 | ---- | --------- |
@@ -69,7 +59,7 @@ Whether the file represented by the url is from a search result.
 
 ### `is_archive` {#url.is_archive}
 
-Whether the file represented by the url is from an archive.
+Whether the file represented by the URL is from an archive.
 
 |      |           |
 | ---- | --------- |
@@ -77,7 +67,7 @@ Whether the file represented by the url is from an archive.
 
 ### `is_absolute`
 
-Whether the path represented by the url is absolute.
+Whether the path represented by the URL is absolute.
 
 |      |           |
 | ---- | --------- |
@@ -85,89 +75,204 @@ Whether the path represented by the url is absolute.
 
 ### `has_root` {#url.has_root}
 
-Whether the path represented by the url has a root.
+Whether the path represented by the URL has a root.
 
 |      |           |
 | ---- | --------- |
 | Type | `boolean` |
 
-### `join(self, another)` {#url.join}
+### `join(self, other)` {#url.join}
 
-Join with `another` to create a new url.
+Join with `other` to create a new URL.
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `another` | `Self` \| `string` |
-| Return    | `Self`             |
+| In/Out  | Type               |
+| ------- | ------------------ |
+| `self`  | `Self`             |
+| `other` | `Self` \| `string` |
+| Return  | `Self`             |
 
-### `starts_with(self, another)` {#url.starts_with}
+### `starts_with(self, base)` {#url.starts_with}
 
-Whether the url starts with `another`.
+Whether the URL starts with `base`.
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `another` | `Self` \| `string` |
-| Return    | `boolean`          |
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `base` | `Self` \| `string` |
+| Return | `boolean`          |
 
-### `ends_with(self, another)` {#url.ends_with}
+### `ends_with(self, base)` {#url.ends_with}
 
-Whether the url ends with `another`.
+Whether the URL ends with `base`.
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `another` | `Self` \| `string` |
-| Return    | `boolean`          |
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `base` | `Self` \| `string` |
+| Return | `boolean`          |
 
-### `strip_prefix(self, another)` {#url.strip_prefix}
+### `strip_prefix(self, base)` {#url.strip_prefix}
 
-Strips the prefix of `another`.
+Strips the prefix of `base`.
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `another` | `Self` \| `string` |
-| Return    | `Self`             |
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `base` | `Self` \| `string` |
+| Return | `Self`             |
 
-### `__eq(self, another)` {#url.\_\_eq}
+### `__eq(self, other)` {#url.\_\_eq}
 
-Whether the url is equal to `another`.
+Whether the URL is equal to `other`.
 
-| In/Out    | Type      |
-| --------- | --------- |
-| `self`    | `Self`    |
-| `another` | `Self`    |
-| Return    | `boolean` |
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Self`    |
+| `other` | `Self`    |
+| Return  | `boolean` |
 
 ### `__tostring(self)` {#url.\_\_tostring}
 
-Convert the url to string.
+Convert the URL to string.
 
 | In/Out | Type     |
 | ------ | -------- |
 | `self` | `Self`   |
 | Return | `string` |
 
-### `__concat(self, another)` {#url.\_\_concat}
+### `__concat(self, other)` {#url.\_\_concat}
 
-Concatenate the url with `another`.
+Concatenate the URL with `other`.
 
-| In/Out    | Type     |
-| --------- | -------- |
-| `self`    | `Self`   |
-| `another` | `string` |
-| Return    | `Self`   |
+| In/Out  | Type     |
+| ------- | -------- |
+| `self`  | `Self`   |
+| `other` | `string` |
+| Return  | `Self`   |
 
 ### `__new(value)` {#url.\_\_new}
 
-Make a new url.
+Make a new URL.
 
 | In/Out  | Type               |
 | ------- | ------------------ |
 | `value` | `string` \| `Self` |
 | Return  | `Self`             |
+
+## Path {#path}
+
+`Path` is the path portion of a [`Url`](#url).
+
+For the URL `sftp://my-server//path/to/file`, the path is `/path/to/file`.
+
+### `name` {#path.name}
+
+Filename of the path.
+
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
+
+### `stem` {#path.stem}
+
+Filename without the extension.
+
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
+
+### `parent` {#path.parent}
+
+Parent directory.
+
+|      |         |
+| ---- | ------- |
+| Type | `Self?` |
+
+### `is_absolute`
+
+Whether the path is absolute.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `has_root` {#path.has_root}
+
+Whether the path has a root.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `join(self, other)` {#path.join}
+
+Join with `other` to create a new path.
+
+| In/Out  | Type               |
+| ------- | ------------------ |
+| `self`  | `Self`             |
+| `other` | `Self` \| `string` |
+| Return  | `Self`             |
+
+### `starts_with(self, base)` {#path.starts_with}
+
+Whether the path starts with `base`.
+
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `base` | `Self` \| `string` |
+| Return | `boolean`          |
+
+### `ends_with(self, base)` {#path.ends_with}
+
+Whether the path ends with `base`.
+
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `base` | `Self` \| `string` |
+| Return | `boolean`          |
+
+### `strip_prefix(self, base)` {#path.strip_prefix}
+
+Strips the prefix of `base`.
+
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `base` | `Self` \| `string` |
+| Return | `Self`             |
+
+### `__eq(self, other)` {#path.\_\_eq}
+
+Whether the path is equal to `other`.
+
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Self`    |
+| `other` | `Self`    |
+| Return  | `boolean` |
+
+### `__tostring(self)` {#path.\_\_tostring}
+
+Convert the path to string.
+
+| In/Out | Type     |
+| ------ | -------- |
+| `self` | `Self`   |
+| Return | `string` |
+
+### `__concat(self, other)` {#path.\_\_concat}
+
+Concatenate the path with `other`.
+
+| In/Out  | Type     |
+| ------- | -------- |
+| `self`  | `Self`   |
+| `other` | `string` |
+| Return  | `Self`   |
 
 ## Cha {#cha}
 
@@ -337,7 +442,7 @@ A bare file without any context information. See also [`fs::File`](/docs/plugins
 
 ### `url` {#file.url}
 
-Url of the file.
+URL of the file.
 
 |      |       |
 | ---- | ----- |
@@ -353,7 +458,7 @@ Cha of the file.
 
 ### `link_to` {#file.link_to}
 
-Url of the file points to, if it's a symlink.
+URL of the file points to, if it's a symlink.
 
 |      |        |
 | ---- | ------ |
@@ -408,15 +513,15 @@ Convert the error to string.
 | `self` | `Self`   |
 | Return | `string` |
 
-### `__concat(self, another)` {#error.\_\_concat}
+### `__concat(self, other)` {#error.\_\_concat}
 
-Concatenate the error with `another`.
+Concatenate the error with `other`.
 
-| In/Out    | Type     |
-| --------- | -------- |
-| `self`    | `Self`   |
-| `another` | `string` |
-| Return    | `Error`  |
+| In/Out  | Type     |
+| ------- | -------- |
+| `self`  | `Self`   |
+| `other` | `string` |
+| Return  | `Error`  |
 
 ## Window {#window}
 
