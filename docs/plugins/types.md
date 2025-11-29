@@ -119,7 +119,7 @@ Strips the prefix of `base`.
 | ------ | ------------------ |
 | `self` | `Self`             |
 | `base` | `Self` \| `string` |
-| Return | `Self`             |
+| Return | `Path`             |
 
 ### `__eq(self, other)` {#url.\_\_eq}
 
