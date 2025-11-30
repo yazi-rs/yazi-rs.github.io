@@ -458,11 +458,11 @@ Cha of the file.
 
 ### `link_to` {#file.link_to}
 
-URL of the file points to, if it's a symlink.
+Path of the file points to, if it's a symlink.
 
-|      |        |
-| ---- | ------ |
-| Type | `Url?` |
+|      |         |
+| ---- | ------- |
+| Type | `Path?` |
 
 ### `name` {#file.name}
 
