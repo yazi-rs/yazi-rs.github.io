@@ -79,7 +79,7 @@ port     = 22
 password = "my_password"
 ```
 
-If you want to use an agent socket other than `$SSH_AUTH_SOCK`, for example, if you manage SSH keys with 1Password, specify it with `identity_agent`:
+If you want to use an agent socket other than `$SSH_AUTH_SOCK`, for example, if you [manage SSH keys with 1Password](https://developer.1password.com/docs/ssh/manage-keys/), specify it with `identity_agent`:
 
 ```toml
 [providers.my-server]
