@@ -19,7 +19,7 @@ You can change Yazi's keybindings in your `keymap.toml` file, which consists of 
 - [\[pick\]](#pick) - Pick component. e.g. "open with" for files.
 - [\[input\]](#input) - Input component. e.g. create, rename, etc.
 - [\[confirm\]](#confirm) - Confirmation dialog. e.g. remove, overwrite, etc.
-- [\[cmp\]](#cmp) - Completion component. e.g. "cd" path completion.
+- [\[cmp\]](#cmp) - Completion component. e.g. "cd" URL completion.
 - [\[help\]](#help) - Help menu.
 
 In each layer, there are two attributes: `prepend_keymap` and `append_keymap`.
@@ -196,10 +196,10 @@ Display file information with the preset or user-customized spotter.
 
 Change the current directory.
 
-| Argument/Option | Description                              |
-| --------------- | ---------------------------------------- |
-| `[path]`        | The path to change to.                   |
-| `--interactive` | Use an interactive UI to input the path. |
+| Argument/Option | Description                             |
+| --------------- | --------------------------------------- |
+| `[url]`         | The URL to change to.                   |
+| `--interactive` | Use an interactive UI to input the URL. |
 
 You can add your own `g` series keys to achieve a simple bookmark feature:
 
@@ -237,9 +237,9 @@ Hover on the specified file.
 
 If the file is not in the current directory, it will change the current directory to the file's parent.
 
-| Argument/Option | Description         |
-| --------------- | ------------------- |
-| `[path]`        | The path to reveal. |
+| Argument/Option | Description        |
+| --------------- | ------------------ |
+| `[url]`         | The URL to reveal. |
 
 ### `toggle` {#mgr.toggle}
 
@@ -364,7 +364,7 @@ Which causes the input box content for the filename `foo.jpg` to be `|.jpg`, whe
 
 ### `copy` {#mgr.copy}
 
-Copy the path of files or directories that are selected or hovered on.
+Copy the URL of files or directories that are selected or hovered on.
 
 | Argument/Option | Description                                                     |
 | --------------- | --------------------------------------------------------------- |
@@ -376,8 +376,8 @@ Copy the path of files or directories that are selected or hovered on.
 
 | Value                | Description                             |
 | -------------------- | --------------------------------------- |
-| `"path"`             | Absolute path.                          |
-| `"dirname"`          | Path of the parent directory.           |
+| `"path"`             | URL of the file.                        |
+| `"dirname"`          | URL of the parent directory.            |
 | `"filename"`         | Name of the file.                       |
 | `"name_without_ext"` | Name of the file without the extension. |
 
@@ -522,12 +522,12 @@ Move the cursor to the next or previous occurrence.
 
 ### `tab_create` {#mgr.tab_create}
 
-| Argument/Option | Description                                          |
-| --------------- | ---------------------------------------------------- |
-| `[path]`        | Optional, create a new tab using the specified path. |
-| `--current`     | Optional, create a new tab using the current path.   |
+| Argument/Option | Description                                         |
+| --------------- | --------------------------------------------------- |
+| `[url]`         | Optional, create a new tab using the specified URL. |
+| `--current`     | Optional, create a new tab using the current URL.   |
 
-If neither `[path]` nor `--current` is specified, will use the startup directory to create the tab.
+If neither `[url]` nor `--current` is specified, will use the startup directory to create the tab.
 
 ### `tab_close` {#mgr.tab_close}
 
