@@ -21,7 +21,7 @@ user = "root"
 port = 22
 ```
 
-The provider here is `my-server`, you can use any other name you like in kebab-case, up to 20 characters.
+The provider here is `my-server`, you can use any other name you like in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case), up to 20 characters.
 
 Once registered, you can access them by the combination of provider type and name, for example, to start Yazi with the SFTP provider `my-server` as the working directory:
 
