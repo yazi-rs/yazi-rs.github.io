@@ -11,7 +11,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 If you want to fine-tune the default settings, the first step is to [create your own configuration file](/docs/configuration/overview).
 :::
 
-You can register any supported virtual file service in your `vfs.toml`.
+You can register any supported virtual file service in your `vfs.toml`, for example:
+
+```toml
+[providers.my-server]
+type = "sftp"
+host = "1.2.3.4"
+user = "root"
+port = 22
+```
+
+The provider here is `my-server`, you can use any other name you like in kebab-case, up to 20 characters.
 
 Once registered, you can access them by the combination of provider type and name, for example, to start Yazi with the SFTP provider `my-server` as the working directory:
 
