@@ -97,22 +97,6 @@ CWD text style.
 | ---- | ----------------------- |
 | Type | [`Style`](#types.style) |
 
-### `hovered` {#mgr.hovered}
-
-Hovered file style.
-
-|      |                         |
-| ---- | ----------------------- |
-| Type | [`Style`](#types.style) |
-
-### `preview_hovered` {#mgr.preview_hovered}
-
-Hovered file style, in the preview pane.
-
-|      |                         |
-| ---- | ----------------------- |
-| Type | [`Style`](#types.style) |
-
 ### `find_keyword` {#mgr.find_keyword}
 
 Style of the highlighted portion in the filename.
@@ -210,6 +194,40 @@ For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor
 |      |          |
 | ---- | -------- |
 | Type | `string` |
+
+## [indicator]
+
+### `parent` {#indicator.parent}
+
+Indicator bar style, in the parent pane.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
+### `current` {#indicator.current}
+
+Indicator bar style, in the current pane.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
+### `preview` {#indicator.preview}
+
+Indicator bar style, in the preview pane.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
+### `padding` {#indicator.padding}
+
+Padding around indicator bar, e.g. `{ open: "[", close: "]" }`.
+
+|      |                                   |
+| ---- | --------------------------------- |
+| Type | `{ open: string, close: string }` |
 
 ## [tabs] {#tabs}
 
