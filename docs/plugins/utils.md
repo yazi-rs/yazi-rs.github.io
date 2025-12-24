@@ -880,11 +880,13 @@ local child, err = Command("ls"):spawn()
 
 ### `output(self)` {#Command.output}
 
-Spawn the command and wait for it to finish:
+Executes the command as a child process, waiting for it to finish and collecting all of its output:
 
 ```lua
 local output, err = Command("ls"):output()
 ```
+
+This method sets both stdout and stderr to `Command.PIPED` and closes the stdin stream.
 
 | In/Out | Type              |
 | ------ | ----------------- |
@@ -898,6 +900,8 @@ Executes the command as a child process, waiting for it to finish and collecting
 ```lua
 local status, err = Command("ls"):status()
 ```
+
+This method closes the stdin, stdout, and stderr streams if they were set to `Command.PIPED`.
 
 | In/Out | Type              |
 | ------ | ----------------- |
