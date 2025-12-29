@@ -13,8 +13,8 @@ Create a URL:
 -- regular file
 local url = Url("/root/Downloads/logo.png")
 
--- `bgm.mp3` from the archive `ost.zip`
-local url = Url("archive:///root/ost.zip#bgm.mp3")
+-- `/root/dog.jpg` on `my-server` via SFTP
+local url = Url("sftp://my-server//root/dog.jpg")
 ```
 
 ### `name` {#url.name}
