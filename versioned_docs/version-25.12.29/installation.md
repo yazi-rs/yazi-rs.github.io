@@ -251,6 +251,12 @@ brew install yazi --HEAD
 sudo port install yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
+## Solus Linux
+
+```sh
+sudo eopkg install yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+```
+
 ## Void Linux
 
 ```sh

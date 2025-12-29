@@ -164,7 +164,7 @@ which indicates the image protocol detected and used by Yazi:
 
 ## Why can't I preview images via Überzug++? {#debug-ueberzug}
 
-This may be a problem with Überzug++ itself. Please [run Yazi in debug mode](/docs/plugins/overview#logging), then hover on the image that's causing the issue.
+This may be a problem with Überzug++ itself. Please [run Yazi in debug mode](/docs/plugins/overview#logging), then hover over the image that's causing the issue.
 
 Then find the last Überzug++ command in your log file sorted by time, it is usually at the very end of the file and looks like:
 

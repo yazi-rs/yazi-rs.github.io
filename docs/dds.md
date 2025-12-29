@@ -158,7 +158,7 @@ cd,1711957542289249,1711957542289249,{"tab":0,"url":"/root/Downloads"}
 cd,0,100,{"tab":0,"url":"/root/Downloads"}
 ```
 
-### `hover` - hover on a file {#hover}
+### `hover` - hover over a file {#hover}
 
 `sub()` callback body:
 
@@ -242,7 +242,7 @@ bulk,1711957542289249,1711957542289249,{"changes":{"/path/from.txt":"/path/to.tx
 bulk,0,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
 ```
 
-### `yank` - yank files {#yank}
+### `@yank` - yank files {#@yank}
 
 `sub()` callback body:
 
@@ -268,13 +268,13 @@ Iterator {
 `--local-events` stdout payload:
 
 ```sh
-yank,1711960311454247,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
+@yank,1711960311454247,1711960311454247,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-yank,0,300,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
+@yank,0,300,{"cut":false,"urls":["/root/foo.txt","/root/bar.txt"]}
 ```
 
 ### `move` - move files {#move}
