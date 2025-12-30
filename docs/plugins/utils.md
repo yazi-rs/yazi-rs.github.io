@@ -760,6 +760,30 @@ Compared to Lua's `os.execute`, it provides many comprehensive and convenient me
 
 It takes better advantage of the benefits of concurrent scheduling. However, it can only be used in async contexts, such as preloaders, previewers, and async functional plugins.
 
+### `NULL` {#Command.null}
+
+An enum value to indicate the standard I/O should be discarded.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `PIPED` {#Command.piped}
+
+An enum value to indicate the standard I/O should be piped to Yazi.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
+### `INHERIT` {#Command.inherit}
+
+An enum value to indicate the standard I/O should be inherited by Yazi.
+
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
+
 ### `arg(self, arg)` {#Command.arg}
 
 Append one or more arguments to the command:
