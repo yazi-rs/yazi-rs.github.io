@@ -324,12 +324,25 @@ ya.preview_widget(opts, {
 
 ### `sync(fn)` {#ya.sync}
 
+Create a synchronous function.
+
 See [Async context](/docs/plugins/overview#async-context).
 
 | In/Out | Type                 |
 | ------ | -------------------- |
 | `fn`   | `fun(...: any): any` |
 | Return | `fun(...: any): any` |
+
+### `async(fn)` {#ya.async}
+
+Execute an asynchronous function in an asynchronous context while in a synchronous context and return its return value.
+
+See [Async context](/docs/plugins/overview#async-context).
+
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `fn`   | `fun(...: any): any` |
+| Return | `any`                |
 
 ### `target_os()` {#ya.target_os}
 
@@ -616,7 +629,7 @@ local url, err = fs.cwd()
 
 You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-cwd], which is the current directory where the user is working.
 
-Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
+Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the file system via `chdir` involves I/O operations, such as checking if the directory is valid.
 
 So, there may be some delay, which is particularly noticeable on slow devices. For example, when an HDD wakes up from sleep, it typically takes 3~4 seconds.
 
@@ -695,7 +708,7 @@ local ok, err = fs.remove("file", Url("/tmp/test.txt"))
 
 Where `type` can be one of the following:
 
-- `"file"`: Removes a file from the filesystem.
+- `"file"`: Removes a file from the file system.
 - `"dir"`: Removes an existing, empty directory.
 - `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
 - `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
@@ -729,9 +742,60 @@ local files, err = fs.read_dir(url, {
 | Return    | `File[]?, Error?`                                       |
 | Available | Async context only                                      |
 
+### `copy(from, to)` {#fs.copy}
+
+Copy a file from the source file URL, `from` to the destination file URL `to`:
+
+```lua
+local len, err = fs.copy(Url("/tmp/example.txt"), Url("/tmp/example-1.txt"))
+```
+
+Note that:
+
+- This function will overwrite the destination file.
+- If `from` and `to` are the same file, the file will likely be truncated by this function.
+- This function follows symlinks for both `from` and `to`.
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `from`    | `Url`              |
+| `to`      | `Url`              |
+| Return    | `integer?, Error?` |
+| Available | Async context only |
+
+### `rename(from, to)` {#fs.rename}
+
+Rename a file from the source file URL, `from` to the destination file URL `to`. This function is essentially a move operation.
+
+```lua
+local ok, err = fs.rename(Url("/tmp/test.txt"), Url("/tmp/example.txt"))
+```
+
+Note that this function will overwrite the destination file. It also does not work if `from` and `to` are on different file systems. To move files across file systems, use a combination of [`fs.copy`](#fs.copy) and [`fs.remove`](#fs.remove):
+
+```lua
+local from = Url("/mnt/dev1/a")
+local to = Url("/mnt/dev2/b")
+
+local ok, err = fs.rename(from, to)
+if not ok and err.kind == "CrossesDevices" then
+	local len, err = fs.copy(from, to)
+	if len and not err then
+	fs.remove("file", from)
+	end
+end
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `from`    | `Url`              |
+| `to`      | `Url`              |
+| Return    | `integer?, Error?` |
+| Available | Async context only |
+
 ### `unique_name(url)` {#fs.unique_name}
 
-Get a unique name from the given `url` to ensure it's unique in the filesystem:
+Get a unique name from the given `url` to ensure it's unique in the file system:
 
 ```lua
 local url, err = fs.unique_name(Url("/tmp/test.txt"))

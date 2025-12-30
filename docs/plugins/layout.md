@@ -422,13 +422,14 @@ Patch the style with `another`.
 | Return    | `self`                          |
 | Private   | This method can't be inherited. |
 
-### `__new()` {#style.\_\_new}
+### `__new(style)` {#style.\_\_new}
 
 Make a new style.
 
-| In/Out | Type   |
-| ------ | ------ |
-| Return | `Self` |
+| In/Out  | Type    |
+| ------- | ------- |
+| `style` | `Self?` |
+| Return  | `Self`  |
 
 ## Span {#span}
 

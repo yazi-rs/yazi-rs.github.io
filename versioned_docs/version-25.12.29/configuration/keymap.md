@@ -144,6 +144,7 @@ Exit the process.
 
 | Argument/Option | Description                                                                    |
 | --------------- | ------------------------------------------------------------------------------ |
+| `--code=n`      | Return with a custom exit code `n`, which is an integer.                       |
 | `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file`. |
 
 ### `close` {#mgr.close}
@@ -152,6 +153,7 @@ Close the current tab; if it's the last tab, exit the process instead.
 
 | Argument/Option | Description                                                                            |
 | --------------- | -------------------------------------------------------------------------------------- |
+| `--code=n`      | Return with a custom exit code `n`, which is an integer, on exit.                      |
 | `--no-cwd-file` | Don't output the current directory to the file specified by `yazi --cwd-file` on exit. |
 
 ### `suspend` {#mgr.suspend}
