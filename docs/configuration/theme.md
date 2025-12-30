@@ -223,7 +223,7 @@ Indicator bar style, in the preview pane.
 
 ### `padding` {#indicator.padding}
 
-Padding around indicator bar, e.g. `{ open: "[", close: "]" }`.
+Padding around indicator bar, e.g. `{ open: "█", close: "█" }`, which makes a square indicator.
 
 |      |                                   |
 | ---- | --------------------------------- |
