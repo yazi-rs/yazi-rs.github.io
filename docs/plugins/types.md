@@ -19,11 +19,13 @@ local url = Url("sftp://my-server//root/dog.jpg")
 
 ### `path` {#url.path}
 
-Get a [`Path`](#path) from the URL.
+[`Path`](#path) portion of the URL.
 
-|      |         |
-| ---- | ------- |
-| Type | `Path?` |
+For the URL `sftp://my-server//path/to/file`, the path is `/path/to/file`.
+
+|      |        |
+| ---- | ------ |
+| Type | `Path` |
 
 ### `name` {#url.name}
 
