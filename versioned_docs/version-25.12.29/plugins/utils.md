@@ -765,7 +765,7 @@ Note that:
 
 ### `rename(from, to)` {#fs.rename}
 
-Rename a file from the source file URL, `from` to the destination file URL `to`. This function is essentially a move operation.
+Rename a file from the source file URL, `from` to the destination file URL `to`.
 
 ```lua
 local ok, err = fs.rename(Url("/tmp/test.txt"), Url("/tmp/example.txt"))
