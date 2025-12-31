@@ -760,6 +760,30 @@ Compared to Lua's `os.execute`, it provides many comprehensive and convenient me
 
 It takes better advantage of the benefits of concurrent scheduling. However, it can only be used in async contexts, such as preloaders, previewers, and async functional plugins.
 
+### `NULL` {#Command.NULL}
+
+A `Stdio` indicating that the stream will be ignored, which is the equivalent of attaching the stream to `/dev/null`.
+
+|      |         |
+| ---- | ------- |
+| Type | `Stdio` |
+
+### `PIPED` {#Command.PIPED}
+
+A `Stdio` indicating that a new pipe should be arranged to connect the parent and child processes.
+
+|      |         |
+| ---- | ------- |
+| Type | `Stdio` |
+
+### `INHERIT` {#Command.INHERIT}
+
+A `Stdio` indicating that the child inherits from the corresponding parent descriptor.
+
+|      |         |
+| ---- | ------- |
+| Type | `Stdio` |
+
 ### `arg(self, arg)` {#Command.arg}
 
 Append one or more arguments to the command:
