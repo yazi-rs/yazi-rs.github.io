@@ -17,6 +17,16 @@ local url = Url("/root/Downloads/logo.png")
 local url = Url("sftp://my-server//root/dog.jpg")
 ```
 
+### `path` {#url.path}
+
+[`Path`](#path) portion of the URL.
+
+For the URL `sftp://my-server//path/to/file`, the path is `/path/to/file`.
+
+|      |        |
+| ---- | ------ |
+| Type | `Path` |
+
 ### `name` {#url.name}
 
 Filename of the URL.
@@ -33,6 +43,14 @@ Filename without the extension.
 | ---- | --------- |
 | Type | `string?` |
 
+### `ext` {#url.ext}
+
+Extension of the file.
+
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
+
 ### `parent` {#url.parent}
 
 Parent directory.
@@ -40,6 +58,16 @@ Parent directory.
 |      |         |
 | ---- | ------- |
 | Type | `Self?` |
+
+### `domain` {#url.domain}
+
+Domain of the URL.
+
+For the URL `sftp://my-server//root/dog.jpg`, the domain is `my-server`.
+
+|      |           |
+| ---- | --------- |
+| Type | `string?` |
 
 ### `is_regular` {#url.is_regular}
 
@@ -312,7 +340,7 @@ Whether the file is a bad symlink, which points to a non-existent file.
 
 ### `is_dummy` {#cha.is_dummy}
 
-Whether the file is dummy, which fails to load complete metadata, possibly the filesystem doesn't support it, such as FUSE.
+Whether the file is dummy, which fails to load complete metadata. It could be due to the file system not supporting it, such as FUSE.
 
 |      |           |
 | ---- | --------- |

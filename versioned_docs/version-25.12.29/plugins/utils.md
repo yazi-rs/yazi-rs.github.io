@@ -324,12 +324,45 @@ ya.preview_widget(opts, {
 
 ### `sync(fn)` {#ya.sync}
 
+Make a function synchronous.
+
 See [Async context](/docs/plugins/overview#async-context).
 
 | In/Out | Type                 |
 | ------ | -------------------- |
 | `fn`   | `fun(...: any): any` |
 | Return | `fun(...: any): any` |
+
+### `async(fn)` {#ya.async}
+
+:::warning
+This API is highly experimental at the moment, and its behavior may change in the future.
+:::
+
+Run a function asynchronously on the main thread.
+
+`fn` should contain only async I/O operations, i.g., calls to other async APIs, and should not include any sync I/O, or blocking tasks, such as Lua's `io.open()`, `os.system()`.
+
+`fn` runs in an asynchronous context but can access any [Sendable values](/docs/plugins/overview#sendable) from the outer synchronous context, for example:
+
+```lua
+--- @sync entry
+local function entry()
+	local cwd = cx.active.current.cwd
+	ya.async(function ()
+		ya.dbg(cwd)    -- `cwd` is a Url, which is sendable
+	end)
+end
+
+return { entry }
+```
+
+See [Async context](/docs/plugins/overview#async-context).
+
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `fn`   | `fun(...: any): any` |
+| Return | `any`                |
 
 ### `target_os()` {#ya.target_os}
 
@@ -616,7 +649,7 @@ local url, err = fs.cwd()
 
 You probably will never need it, and more likely, you'll need [`cx.active.current.cwd`][folder-cwd], which is the current directory where the user is working.
 
-Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the filesystem via `chdir` involves I/O operations, such as checking if the directory is valid.
+Specifically, when the user changes the directory, `cx.active.current.cwd` gets updated immediately, while synchronizing this update with the file system via `chdir` involves I/O operations, such as checking if the directory is valid.
 
 So, there may be some delay, which is particularly noticeable on slow devices. For example, when an HDD wakes up from sleep, it typically takes 3~4 seconds.
 
@@ -633,7 +666,7 @@ It is useful if you just need a valid directory as the CWD of a process to start
 
 ### `cha(url, follow)` {#fs.cha}
 
-Get the [Cha](/docs/plugins/types#cha) of the specified `url`:
+Get the [Cha][cha] of the specified `url`:
 
 ```lua
 -- Not following symbolic links
@@ -642,6 +675,11 @@ local cha, err = fs.cha(url)
 -- Follow symbolic links
 local cha, err = fs.cha(url, true)
 ```
+
+Returns `(cha, err)`:
+
+- `cha`: The [Cha][cha] of the specified `url` if the operation succeeds.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
@@ -678,6 +716,11 @@ Where `type` can be one of the following:
 - `"dir"`: Creates a new, empty directory.
 - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
 
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
+
 | In/Out    | Type                               |
 | --------- | ---------------------------------- |
 | `type`    | `string` \| `"dir"` \| `"dir_all"` |
@@ -695,10 +738,15 @@ local ok, err = fs.remove("file", Url("/tmp/test.txt"))
 
 Where `type` can be one of the following:
 
-- `"file"`: Removes a file from the filesystem.
+- `"file"`: Removes a file from the file system.
 - `"dir"`: Removes an existing, empty directory.
 - `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
 - `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type                                                            |
 | --------- | --------------------------------------------------------------- |
@@ -729,15 +777,85 @@ local files, err = fs.read_dir(url, {
 | Return    | `File[]?, Error?`                                       |
 | Available | Async context only                                      |
 
+### `copy(from, to)` {#fs.copy}
+
+Copy a file from the source `from`, to the destination `to`:
+
+```lua
+local len, err = fs.copy(Url("/tmp/src.txt"), Url("/tmp/dest.txt"))
+```
+
+Returns `(len, err)`:
+
+- `len`: Length of the copied content, which is an `integer`, or `nil` if the operation fails.
+- `err`: [`Error`][error] of the failure.
+
+Note that:
+
+- This function will overwrite the destination file.
+- If `from` and `to` are the same file, the file will likely be truncated by this function.
+- This function follows symlinks for both `from` and `to`.
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `from`    | `Url`              |
+| `to`      | `Url`              |
+| Return    | `integer?, Error?` |
+| Available | Async context only |
+
+### `rename(from, to)` {#fs.rename}
+
+Rename a file from the source `from`, to the destination `to`.
+
+```lua
+local ok, err = fs.rename(Url("/tmp/old.txt"), Url("/tmp/new.txt"))
+```
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
+
+Note that:
+
+- This function will overwrite the destination file.
+- This function does not work if `from` and `to` are on different file systems.
+  To move files across file systems, use a combination of [`fs.copy()`](#fs.copy) and [`fs.remove()`](#fs.remove):
+
+```lua
+local from = Url("/mnt/dev1/a")
+local to = Url("/mnt/dev2/b")
+
+local ok, err = fs.rename(from, to)
+if not ok and err.kind == "CrossesDevices" then
+	local len, err = fs.copy(from, to)
+	if len and not err then
+	fs.remove("file", from)
+	end
+end
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `from`    | `Url`              |
+| `to`      | `Url`              |
+| Return    | `integer?, Error?` |
+| Available | Async context only |
+
 ### `unique_name(url)` {#fs.unique_name}
 
-Get a unique name from the given `url` to ensure it's unique in the filesystem:
+Get a unique name from the given `url` to ensure it's unique in the file system:
 
 ```lua
 local url, err = fs.unique_name(Url("/tmp/test.txt"))
 ```
 
 If the file already exists, it will append `_n` to the filename, where `n` is a number, and keep incrementing until the first available name is found.
+
+Returns `(url, err)`:
+
+- `url`: The [`Url`][url] with the unique filename.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
@@ -1191,3 +1309,6 @@ Exit code of the child process.
 
 [sendable]: /docs/plugins/overview#sendable
 [ownership]: /docs/plugins/overview#ownership
+[url]: /docs/plugins/types#url
+[cha]: /docs/plugins/types#cha
+[error]: /docs/plugins/types#error

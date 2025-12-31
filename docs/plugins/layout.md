@@ -426,9 +426,9 @@ Patch the style with `another`.
 
 Make a new style.
 
-| In/Out | Type   |
-| ------ | ------ |
-| Return | `Self` |
+| In/Out  | Type    |
+| ------- | ------- |
+| Return  | `Self`  |
 
 ## Span {#span}
 
