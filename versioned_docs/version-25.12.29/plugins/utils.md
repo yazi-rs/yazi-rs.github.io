@@ -764,25 +764,25 @@ It takes better advantage of the benefits of concurrent scheduling. However, it 
 
 An enum value to indicate the standard I/O should be discarded.
 
-|      |           |
-| ---- | --------- |
-| Type | `integer` |
+|      |         |
+| ---- | ------- |
+| Type | `Stdio` |
 
 ### `PIPED` {#Command.PIPED}
 
 An enum value to indicate the standard I/O should be piped to Yazi.
 
-|      |           |
-| ---- | --------- |
-| Type | `integer` |
+|      |         |
+| ---- | ------- |
+| Type | `Stdio` |
 
 ### `INHERIT` {#Command.INHERIT}
 
 An enum value to indicate the standard I/O should be inherited by Yazi.
 
-|      |           |
-| ---- | --------- |
-| Type | `integer` |
+|      |         |
+| ---- | ------- |
+| Type | `Stdio` |
 
 ### `arg(self, arg)` {#Command.arg}
 
