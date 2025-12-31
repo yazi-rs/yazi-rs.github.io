@@ -45,7 +45,7 @@ Filename without the extension.
 
 ### `ext` {#url.ext}
 
-The extension of the file.
+Extension of the file.
 
 |      |           |
 | ---- | --------- |
@@ -59,17 +59,11 @@ Parent directory.
 | ---- | ------- |
 | Type | `Self?` |
 
-### `base` {#url.base}
-
-The base directory of the URL.
-
-|      |         |
-| ---- | ------- |
-| Type | `Self?` |
-
 ### `domain` {#url.domain}
 
-The domain of the URL, most relevant for remote and virtual file systems.
+The domain of the URL.
+
+For the URL `sftp://my-server//root/dog.jpg`, the domain is `my-server`.
 
 |      |           |
 | ---- | --------- |

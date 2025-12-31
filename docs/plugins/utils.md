@@ -324,7 +324,7 @@ ya.preview_widget(opts, {
 
 ### `sync(fn)` {#ya.sync}
 
-Create a synchronous function.
+Make a function synchronous.
 
 See [Async context](/docs/plugins/overview#async-context).
 
@@ -335,7 +335,7 @@ See [Async context](/docs/plugins/overview#async-context).
 
 ### `async(fn)` {#ya.async}
 
-Execute an asynchronous function in an asynchronous context while in a synchronous context and return its return value.
+Execute a function in an asynchronous context while in a synchronous context and return its value.
 
 See [Async context](/docs/plugins/overview#async-context).
 
@@ -646,7 +646,7 @@ It is useful if you just need a valid directory as the CWD of a process to start
 
 ### `cha(url, follow)` {#fs.cha}
 
-Get the [Cha](/docs/plugins/types#cha) of the specified `url`:
+Get the [Cha][cha] of the specified `url`:
 
 ```lua
 -- Not following symbolic links
@@ -655,6 +655,11 @@ local cha, err = fs.cha(url)
 -- Follow symbolic links
 local cha, err = fs.cha(url, true)
 ```
+
+Returns `(cha, err)`:
+
+- `cha`: The [Cha][cha] of the specified `url` if the operation succeeds.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
@@ -691,6 +696,11 @@ Where `type` can be one of the following:
 - `"dir"`: Creates a new, empty directory.
 - `"dir_all"`: Recursively create a directory and all of its parents if they are missing.
 
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
+
 | In/Out    | Type                               |
 | --------- | ---------------------------------- |
 | `type`    | `string` \| `"dir"` \| `"dir_all"` |
@@ -712,6 +722,11 @@ Where `type` can be one of the following:
 - `"dir"`: Removes an existing, empty directory.
 - `"dir_all"`: Removes a directory at this url, after removing all its contents. Use carefully!
 - `"dir_clean"`: Remove all empty directories under it, and if the directory itself is empty afterward, remove it as well.
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type                                                            |
 | --------- | --------------------------------------------------------------- |
@@ -744,11 +759,16 @@ local files, err = fs.read_dir(url, {
 
 ### `copy(from, to)` {#fs.copy}
 
-Copy a file from the source file URL, `from` to the destination file URL `to`:
+Copy a file from the source `from`, to the destination `to`:
 
 ```lua
-local len, err = fs.copy(Url("/tmp/example.txt"), Url("/tmp/example-1.txt"))
+local len, err = fs.copy(Url("/tmp/src.txt"), Url("/tmp/dest.txt"))
 ```
+
+Returns `(len, err)`:
+
+- `len`: Length of the copied content, which is an `integer`, or `nil` if the operation fails.
+- `err`: [`Error`][error] of the failure.
 
 Note that:
 
@@ -765,11 +785,16 @@ Note that:
 
 ### `rename(from, to)` {#fs.rename}
 
-Rename a file from the source file URL, `from` to the destination file URL `to`.
+Rename a file from the source `from`, to the destination `to`.
 
 ```lua
-local ok, err = fs.rename(Url("/tmp/test.txt"), Url("/tmp/example.txt"))
+local ok, err = fs.rename(Url("/tmp/old.txt"), Url("/tmp/new.txt"))
 ```
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
 
 Note that this function will overwrite the destination file. It also does not work if `from` and `to` are on different file systems. To move files across file systems, use a combination of [`fs.copy`](#fs.copy) and [`fs.remove`](#fs.remove):
 
@@ -802,6 +827,11 @@ local url, err = fs.unique_name(Url("/tmp/test.txt"))
 ```
 
 If the file already exists, it will append `_n` to the filename, where `n` is a number, and keep incrementing until the first available name is found.
+
+Returns `(url, err)`:
+
+- `url`: The [URL][url] of the new filename if the operation succeeds.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
@@ -1231,3 +1261,6 @@ Exit code of the child process.
 
 [sendable]: /docs/plugins/overview#sendable
 [ownership]: /docs/plugins/overview#ownership
+[url]: /docs/plugins/types#url
+[cha]: /docs/plugins/types#cha
+[error]: /docs/plugins/types#error
