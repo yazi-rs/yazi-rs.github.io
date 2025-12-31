@@ -764,25 +764,25 @@ It takes better advantage of the benefits of concurrent scheduling. However, it 
 
 An enum value to indicate the standard I/O should be discarded.
 
-|      |        |
-| ---- | ------ |
-| Type | `Self` |
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
 
 ### `PIPED` {#Command.PIPED}
 
 An enum value to indicate the standard I/O should be piped to Yazi.
 
-|      |        |
-| ---- | ------ |
-| Type | `Self` |
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
 
 ### `INHERIT` {#Command.INHERIT}
 
 An enum value to indicate the standard I/O should be inherited by Yazi.
 
-|      |        |
-| ---- | ------ |
-| Type | `Self` |
+|      |           |
+| ---- | --------- |
+| Type | `integer` |
 
 ### `arg(self, arg)` {#Command.arg}
 
@@ -843,11 +843,11 @@ Where `stdio` can be one of the following:
 - `Command.NULL`: Discard the stdin (default).
 - `Command.INHERIT`: Inherit the stdin.
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Self`    |
-| `stdio` | `Command` |
-| Return  | `self`    |
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Self`  |
+| `stdio` | `Stdio` |
+| Return  | `self`  |
 
 ### `stdout(self, stdio)` {#Command.stdout}
 
@@ -863,11 +863,11 @@ Where `stdio` can be one of the following:
 - `Command.NULL`: Discard the stdout (default).
 - `Command.INHERIT`: Inherit the stdout.
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Self`    |
-| `stdio` | `Command` |
-| Return  | `self`    |
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Self`  |
+| `stdio` | `Stdio` |
+| Return  | `self`  |
 
 ### `stderr(self, stdio)` {#Command.stderr}
 
@@ -883,11 +883,11 @@ Where `stdio` can be one of the following:
 - `Command.NULL`: Discard the stderr (default).
 - `Command.INHERIT`: Inherit the stderr.
 
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Self`    |
-| `stdio` | `Command` |
-| Return  | `self`    |
+| In/Out  | Type    |
+| ------- | ------- |
+| `self`  | `Self`  |
+| `stdio` | `Stdio` |
+| Return  | `self`  |
 
 ### `spawn(self)` {#Command.spawn}
 

@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs"
 const STUBS = `
 -- luacheck: globals Command Url cx fs ps rt th ui ya
 
+---@alias Stdio integer
+
 ---@class (exact) Recv
 ---@field recv fun(self: self): string
 
