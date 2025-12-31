@@ -335,7 +335,27 @@ See [Async context](/docs/plugins/overview#async-context).
 
 ### `async(fn)` {#ya.async}
 
-Execute a function in an asynchronous context while in a synchronous context and return its value.
+:::warning
+This API is highly experimental at the moment, and its behavior may change in the future.
+:::
+
+Run a function asynchronously on the main thread.
+
+`fn` should contain only async I/O operations, i.g., calls to other async APIs, and should not include any sync I/O, or blocking tasks, such as Lua's `io.open()`, `os.system()`.
+
+`fn` runs in an asynchronous context but can access any [Sendable values](/docs/plugins/overview#sendable) from the outer synchronous context, for example:
+
+```lua
+--- @sync entry
+local function entry()
+	local cwd = cx.active.current.cwd
+	ya.async(function ()
+		ya.dbg(cwd)    -- `cwd` is a Url, which is sendable
+	end)
+end
+
+return { entry }
+```
 
 See [Async context](/docs/plugins/overview#async-context).
 
