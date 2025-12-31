@@ -762,7 +762,7 @@ It takes better advantage of the benefits of concurrent scheduling. However, it 
 
 ### `NULL` {#Command.NULL}
 
-An enum value to indicate the standard I/O should be discarded.
+A `Stdio` indicating that the stream will be ignored, which is the equivalent of attaching the stream to `/dev/null`.
 
 |      |         |
 | ---- | ------- |
@@ -770,7 +770,7 @@ An enum value to indicate the standard I/O should be discarded.
 
 ### `PIPED` {#Command.PIPED}
 
-An enum value to indicate the standard I/O should be piped to Yazi.
+A `Stdio` indicating that a new pipe should be arranged to connect the parent and child processes.
 
 |      |         |
 | ---- | ------- |
@@ -778,7 +778,7 @@ An enum value to indicate the standard I/O should be piped to Yazi.
 
 ### `INHERIT` {#Command.INHERIT}
 
-An enum value to indicate the standard I/O should be inherited by Yazi.
+A `Stdio` indicating that the child inherits from the corresponding parent descriptor.
 
 |      |         |
 | ---- | ------- |
