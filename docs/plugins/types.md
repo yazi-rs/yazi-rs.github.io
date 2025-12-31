@@ -61,7 +61,7 @@ Parent directory.
 
 ### `domain` {#url.domain}
 
-The domain of the URL.
+Domain of the URL.
 
 For the URL `sftp://my-server//root/dog.jpg`, the domain is `my-server`.
 

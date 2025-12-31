@@ -796,7 +796,11 @@ Returns `(ok, err)`:
 - `ok`: Whether the operation succeeds, which is a `boolean`.
 - `err`: [`Error`][error] of the failure.
 
-Note that this function will overwrite the destination file. It also does not work if `from` and `to` are on different file systems. To move files across file systems, use a combination of [`fs.copy`](#fs.copy) and [`fs.remove`](#fs.remove):
+Note that:
+
+- This function will overwrite the destination file.
+- This function does not work if `from` and `to` are on different file systems.
+  To move files across file systems, use a combination of [`fs.copy()`](#fs.copy) and [`fs.remove()`](#fs.remove):
 
 ```lua
 local from = Url("/mnt/dev1/a")
@@ -830,7 +834,7 @@ If the file already exists, it will append `_n` to the filename, where `n` is a 
 
 Returns `(url, err)`:
 
-- `url`: The [URL][url] of the new filename if the operation succeeds.
+- `url`: The [`Url`][url] with the unique filename.
 - `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
