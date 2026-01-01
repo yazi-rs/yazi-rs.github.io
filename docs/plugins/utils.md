@@ -793,8 +793,8 @@ Returns `(len, err)`:
 Note that:
 
 - This function will overwrite the destination file.
-- If `from` and `to` are the same file, the file will likely be truncated by this function.
-- This function follows symlinks for both `from` and `to`.
+- This function follows symbolic links for both `from` and `to`.
+- If `from` and `to` are the same file, the file will likely be truncated by this operation.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
@@ -820,7 +820,8 @@ Note that:
 
 - This function will overwrite the destination file.
 - This function does not work if `from` and `to` are on different file systems.
-  To move files across file systems, use a combination of [`fs.copy()`](#fs.copy) and [`fs.remove()`](#fs.remove):
+
+To move files across file systems, use a combination of [`fs.copy()`](#fs.copy) and [`fs.remove()`](#fs.remove):
 
 ```lua
 local from = Url("/mnt/dev1/a")
