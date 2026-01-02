@@ -511,16 +511,30 @@ Then save the following script as `~/.config/helix/yazi-picker.sh`:
 ```sh
 #!/usr/bin/env bash
 
-paths=$(yazi "$2" --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
+TEMP_FILE=$(mktemp)                  # Create temporary file to store selected paths
+yazi "$2" --chooser-file="$TEMP_FILE"
 
-if [[ -n "$paths" ]]; then
-	zellij action toggle-floating-panes
-	zellij action write 27 # send <Escape> key
-	zellij action write-chars ":$1 $paths"
-	zellij action write 13 # send <Enter> key
+paths=()                             # Read all selected paths into an array
+while IFS= read -r line || [[ -n "$line" ]]; do
+    [[ -n "$line" ]] && paths+=("$line")
+done < "$TEMP_FILE"
+
+if [[ ${#paths[@]} -gt 0 ]]; then
+    zellij action toggle-floating-panes
+    zellij action write 27           # Escape key
+
+    cmd=":$1"                        # Quote paths
+    for path in "${paths[@]}"; do
+        cmd="$cmd \"$path\""
+    done
+
+    zellij action write-chars "$cmd" # Send the command to zellij
+    zellij action write 13           # Enter key
 else
-	zellij action toggle-floating-panes
+    zellij action toggle-floating-panes
 fi
+
+rm -f "$TEMP_FILE"
 ```
 
 Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
