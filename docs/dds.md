@@ -462,7 +462,7 @@ This plugin provides an `extract` event kind for archive extraction, which accep
 # ~/.config/yazi/yazi.toml
 [opener]
 extract = [
-	{ run = "ya pub extract --list %s", desc = "Extract here" },
+	{ run = "ya pub extract --list %s", orphan = true, desc = "Extract here" },
 ]
 ```
 
