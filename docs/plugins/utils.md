@@ -1080,11 +1080,11 @@ local data, event = child:read(1024)
 - Data comes from stderr, if event is 1.
 - No data to read from both stdout and stderr, if event is 2.
 
-| In/Out | Type              |
-| ------ | ----------------- |
-| `self` | `Self`            |
-| `len`  | `integer`         |
-| Return | `string, integer` |
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| `len`  | `integer`          |
+| Return | `string?, integer` |
 
 ### `read_line(self)` {#Child.read_line}
 
@@ -1094,10 +1094,10 @@ Same as [`read()`](#Child.read), except it reads data line by line:
 local line, event = child:read_line()
 ```
 
-| In/Out | Type              |
-| ------ | ----------------- |
-| `self` | `Self`            |
-| Return | `string, integer` |
+| In/Out | Type               |
+| ------ | ------------------ |
+| `self` | `Self`             |
+| Return | `string?, integer` |
 
 ### `read_line_with(self, opts)` {#Child.read_line_with}
 
@@ -1118,7 +1118,7 @@ It has a extra event:
 | ------ | ---------------------- |
 | `self` | `Self`                 |
 | `opts` | `{ timeout: integer }` |
-| Return | `string, integer`      |
+| Return | `string?, integer`     |
 
 ### `write_all(self, src)` {#Child.write_all}
 
