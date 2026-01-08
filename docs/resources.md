@@ -94,6 +94,7 @@ File actions:
 - [gvfs.yazi](https://github.com/boydaihungst/gvfs.yazi) - Mount and manage MTP, GPhoto2 (PTP) devices (Android, Cameras, etc), SMB, SFTP, NFS, FTP, Google Drive, DNS-SD, DAV (WebDAV), AFP, AFC (Linux only). List of [supported protocals](<https://wiki.gnome.org/Projects(2f)gvfs(2f)schemes.html>).
 - [kdeconnect-send.yazi](https://github.com/Deepak22903/kdeconnect-send.yazi) - Send selected files to your smartphone or other devices using KDE Connect.
 - [zoom.yazi](https://github.com/yazi-rs/plugins/tree/main/zoom.yazi) - Zoom in or out of the preview image.
+- [pandoc.yazi](https://github.com/lmnek/pandoc.yazi) - Convert markup files to different formats via Pandoc.
 
 Clipboard:
 
