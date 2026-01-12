@@ -831,7 +831,7 @@ local ok, err = fs.rename(from, to)
 if not ok and err.kind == "CrossesDevices" then
 	local len, err = fs.copy(from, to)
 	if len and not err then
-	fs.remove("file", from)
+		fs.remove("file", from)
 	end
 end
 ```

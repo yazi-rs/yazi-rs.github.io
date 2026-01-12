@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs"
 
 const STUBS = `
--- luacheck: globals Command Url cx fs ps rt th ui ya
+-- luacheck: globals Command Url Path cx fs ps rt th ui ya
 
 ---@alias Stdio integer
 
@@ -12,6 +12,8 @@ const STUBS = `
 Command = Command
 ---@type Url
 Url = Url
+---@type Path
+Path = Path
 ---@type cx
 cx = cx
 ---@type fs
@@ -74,26 +76,26 @@ function matchTable(s) {
 		}
 
 		switch (columns[0]) {
-		case "Type":
-			result.type = matchTypes(columns[1])
-			break
-		case "Return":
-			result.return = matchTypes(columns[1])
-			break
-		case "Alias":
-			result.alias = matchTypes(columns[1])
-			break
-		case "Inherit":
-			result.inherit = matchTypes(columns[1])
-			break
-		case "Private":
-			result.private = true
-			break
-		default:
-			if (columns[0].startsWith("`") && columns[0].endsWith("`")) {
-				result.args ||= {}
-				result.args[columns[0].slice(1, -1)] = matchTypes(columns[1])
-			}
+			case "Type":
+				result.type = matchTypes(columns[1])
+				break
+			case "Return":
+				result.return = matchTypes(columns[1])
+				break
+			case "Alias":
+				result.alias = matchTypes(columns[1])
+				break
+			case "Inherit":
+				result.inherit = matchTypes(columns[1])
+				break
+			case "Private":
+				result.private = true
+				break
+			default:
+				if (columns[0].startsWith("`") && columns[0].endsWith("`")) {
+					result.args ||= {}
+					result.args[columns[0].slice(1, -1)] = matchTypes(columns[1])
+				}
 		}
 	}
 	return result
@@ -146,9 +148,9 @@ function stubUi(headers) {
 		if (constructor) {
 			children.push({
 				...constructor,
-				args  : bindSelf(constructor.args, header.name),
-				name  : shortName,
-				desc  : header.desc,
+				args: bindSelf(constructor.args, header.name),
+				name: shortName,
+				desc: header.desc,
 				return: bindSelf(constructor.return, header.name),
 			})
 		} else {
@@ -163,10 +165,10 @@ function stubUi(headers) {
 }
 
 // TODO
-function stubRt(headers) {}
+function stubRt(headers) { }
 
 // TODO
-function stubTh(headers) {}
+function stubTh(headers) { }
 
 function gen(headers) {
 	let s = ""
