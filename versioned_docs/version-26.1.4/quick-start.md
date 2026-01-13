@@ -29,7 +29,7 @@ function y() {
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+	command rm -f -- "$tmp"
 }
 ```
 
@@ -43,7 +43,7 @@ function y
 	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
 		builtin cd -- "$cwd"
 	end
-	rm -f -- "$tmp"
+	command rm -f -- "$tmp"
 end
 ```
 
@@ -58,7 +58,7 @@ def --env y [...args] {
 	if $cwd != "" and $cwd != $env.PWD {
 		cd $cwd
 	}
-	rm -fp $tmp
+	command rm -fp $tmp
 }
 ```
 
@@ -145,7 +145,7 @@ def _y(args):
         cwd = f.read()
     if cwd != $PWD:
         cd @(cwd)
-    rm -f -- @(tmp)
+    command rm -f -- @(tmp)
 
 aliases["y"] = _y
 ```

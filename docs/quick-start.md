@@ -145,7 +145,7 @@ def _y(args):
         cwd = f.read()
     if cwd != $PWD:
         cd @(cwd)
-    rm -f -- @(tmp)
+    command rm -f -- @(tmp)
 
 aliases["y"] = _y
 ```
