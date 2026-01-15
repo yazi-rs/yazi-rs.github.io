@@ -28,7 +28,7 @@ function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
 ```
@@ -40,7 +40,7 @@ function y() {
 function y
 	set tmp (mktemp -t "yazi-cwd.XXXXXX")
 	command yazi $argv --cwd-file="$tmp"
-	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+	if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
 		builtin cd -- "$cwd"
 	end
 	rm -f -- "$tmp"
@@ -55,7 +55,7 @@ def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	^yazi ...$args --cwd-file $tmp
 	let cwd = (open $tmp)
-	if $cwd != "" and $cwd != $env.PWD {
+	if $cwd != $env.PWD and (path exists $cwd) {
 		cd $cwd
 	}
 	rm -fp $tmp
@@ -72,7 +72,7 @@ y() {
 	shift $(($# - 1))
 	set -- "$(command cat < "$1"; printf .; rm -f -- "$1")"
 	set -- "${1%.}"
-	[ -n "$1" ] && [ "$1" != "$PWD" ] && command cd -- "$1"
+	[ "$1" != "$PWD" ] && [ -d "$1" ] && command cd -- "$1"
 }
 ```
 
@@ -89,9 +89,9 @@ edit:add-var y~ {|@argv|
 	var cwd = (slurp < $tmp)
 	file:close $tmp
 	os:remove $tmp[name]
-	if (and (not-eq $cwd '') (not-eq $cwd $pwd)) {
-		cd $cwd
-	}
+ 	if (and (not-eq $cwd $pwd) (file:is-dir $cwd)) {
+ 		cd $cwd
+ 	}
 }
 ```
 
@@ -100,13 +100,13 @@ edit:add-var y~ {|@argv|
 
 ```powershell
 function y {
-    $tmp = (New-TemporaryFile).FullName
-    yazi.exe $args --cwd-file="$tmp"
-    $cwd = Get-Content -Path $tmp -Encoding UTF8
-    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
-        Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
-    }
-    Remove-Item -Path $tmp
+	$tmp = (New-TemporaryFile).FullName
+	yazi.exe $args --cwd-file="$tmp"
+	$cwd = Get-Content -Path $tmp -Encoding UTF8
+	if ($cwd -ne $PWD.Path -and (Test-Path -LiteralPath $cwd -PathType Container)) {
+		Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+	}
+	Remove-Item -Path $tmp
 }
 ```
 
@@ -127,8 +127,8 @@ if not exist "%tmpfile%" exit /b 0
 
 :: If the file exist, then read the content and change the directory
 set /p cwd=<"%tmpfile%"
-if not "%cwd%"=="" (
-    cd /d "%cwd%"
+if not "%cwd%"=="" if exist "%cwd%\NUL" (
+	cd /d "%cwd%"
 )
 del "%tmpfile%"
 ```
@@ -138,14 +138,15 @@ del "%tmpfile%"
 
 ```xonsh
 def _y(args):
-    tmp = $(mktemp -t "yazi-cwd.XXXXXX")
-    args.append(f"--cwd-file={tmp}")
-    $[!yazi @(args)]
-    with open(tmp) as f:
-        cwd = f.read()
-    if cwd != $PWD:
-        cd @(cwd)
-    rm -f -- @(tmp)
+	tmp = $(mktemp -t "yazi-cwd.XXXXXX")
+	args.append(f"--cwd-file={tmp}")
+	$[!yazi @(args)]
+	with open(tmp) as f:
+		cwd = f.read()
+	import os
+	if cwd != $PWD and os.path.isdir(cwd):
+		cd @(cwd)
+	rm -f -- @(tmp)
 
 aliases["y"] = _y
 ```
