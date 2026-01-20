@@ -140,6 +140,36 @@ The terminal title format, which is a string with the following placeholders ava
 
 If you don't want Yazi to automatically update the title, set it to an empty string (`""`).
 
+
+## [files] {#files}
+
+The configuration related to file exclusion.
+
+### `excludes` {#files.excludes }
+
+Add exclude rules for files and directories specified as an array of glob expressions containing `urn` and `in` where `urn` is the file pattern to match and `in` is the context to apply the rule. The parameter `urn` can be a single string or an array of strings containing patterns. For example:
+
+```toml
+excludes = [
+  # SFTP temporary files
+  { urn = "*.tmp", in = "sftp://**" },
+  # Python cache in search results
+  { urn = "/root/**/*.pyc", in = "search://**" },
+  # Multiple patterns for /code directory (supports arrays)
+  { urn = [".git", ".DS_Store", "__pycache__"], in = "/code/**" },
+  # Negation: show target/ even if previously ignored
+  { urn = "!target/", in = "*" },
+  # Ignore debug/ only inside target/ directories
+  { urn = "debug", in = "/target/**" },
+  #Fallback rule for all contexts
+  { urn = ".DS_Store", in = "*" }
+]
+```
+
+The `excludes` configuration can be used alone or in combination with plugins which add exclude patterns like the [`gitignores` Lua plugin](https://github.com/carlosedp/gitignore.yazi). The rules defined in the excludes config take precedence over those from the plugin. 
+
+The syntax for the glob expressions follows the same rules as in `.gitignore` files. See [Git documentation](https://git-scm.com/docs/gitignore) for details.
+
 ## [preview] {#preview}
 
 ### `wrap` {#preview.wrap}
@@ -177,7 +207,7 @@ Wait for at least the specified milliseconds before starting to send image previ
 
 This is to alleviate lag caused by some terminal emulators struggling to render images Yazi sent in time, when users scroll through the file list quickly.
 
-See https://github.com/sxyazi/yazi/pull/1512 for more information.
+See <https://github.com/sxyazi/yazi/pull/1512> for more information.
 
 ### `image_filter` {#preview.image_filter}
 
@@ -190,7 +220,7 @@ The filter used on image downscaling, available values:
 
 They are arranged in order from fast to slow, and from poor to good quality - Lanczos3 provides the highest quality but is also the slowest.
 
-See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples
+See the example and benchmark here: <https://docs.rs/image/0.24.8/image/imageops/enum.FilterType.html#examples>
 
 ### `image_quality` {#preview.image_quality}
 
