@@ -42,6 +42,8 @@ function y
 	command yazi $argv --cwd-file="$tmp"
 	if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
 		builtin cd -- "$cwd"
+		#uncomment the following line if using a keybind to redraw the prompt 
+		#commandline -f repaint
 	end
 	rm -f -- "$tmp"
 end
