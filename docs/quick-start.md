@@ -89,7 +89,7 @@ edit:add-var y~ {|@argv|
 	var cwd = (slurp < $tmp)
 	file:close $tmp
 	os:remove $tmp[name]
- 	if (and (not-eq $cwd $pwd) (file:is-dir $cwd)) {
+ 	if (and (not-eq $cwd $pwd) (os:is-dir $cwd)) {
  		cd $cwd
  	}
 }
