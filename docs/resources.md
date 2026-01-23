@@ -189,6 +189,7 @@ Vim:
 
 - [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
 - [lsColorsToToml](https://github.com/Mellbourn/lsColorsToToml) - Generate the color rules for the `[filetype]` section in `theme.toml` based on your `$LS_COLORS`.
+- [osc7.yazi](https://github.com/coder0x6675/osc7.yazi) - Synchronize the terminal's working directory to Yazi.
 
 ## 💖 Add yours {#add-yours}
 
