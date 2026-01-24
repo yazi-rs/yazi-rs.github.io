@@ -684,7 +684,7 @@ end
 | --------- | ------------------ |
 | `from`    | `Url`              |
 | `to`      | `Url`              |
-| Return    | `integer?, Error?` |
+| Return    | `boolean, Error?`  |
 | Available | Async context only |
 
 ### `unique_name(url)` {#fs.unique_name}
