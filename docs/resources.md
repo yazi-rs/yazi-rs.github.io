@@ -115,6 +115,7 @@ Clipboard:
 - [smart-enter.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi) - `Open` files or `enter` directories all in one key!
 - [bypass.yazi](https://github.com/Rolv-Apneseth/bypass.yazi) - Yazi plugin for skipping directories with only a single sub-directory.
 - [fast-enter.yazi](https://github.com/ourongxing/fast-enter.yazi) - Auto-decompress archives and enter them, or enter the deepest directory until it's not the only subdirectory.
+- [nav-parent-panel.yazi](https://github.com/yaqihou/nav-parent-panel.yazi) - Navigate through directories in parent panel
 
 `shell` enhancements:
 
