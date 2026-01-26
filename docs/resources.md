@@ -74,6 +74,7 @@ Tabs:
 
 - [projects.yazi](https://github.com/MasouShizuka/projects.yazi) - Save all tabs and their states as a project, and restore them at any time.
 - [close-and-restore-tab.yazi](https://github.com/MasouShizuka/close-and-restore-tab.yazi) - Restore closed tabs.
+- [autosession.yazi](https://github.com/barbanevosa/autosession.yazi) - Automatic session persistence that saves the current state on exit and restores the last saved state on startup.
 
 File actions:
 
