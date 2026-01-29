@@ -26,6 +26,7 @@ Yazi can be **optionally** extended with other command-line tools to enable addi
 - [`resvg`](https://github.com/linebender/resvg) (for SVG preview)
 - [ImageMagick](https://imagemagick.org/) (for Font, HEIC, and JPEG XL preview, >= 7.1.1)
 - [`xclip`](https://github.com/astrand/xclip) / [`wl-clipboard`](https://github.com/bugaevc/wl-clipboard) / [`xsel`](https://github.com/kfish/xsel) (for Linux clipboard support)
+- [`edir`](https://github.com/bulletmark/edir?tab=readme-ov-file#use-with-yazi-file-manager) (for deleting, renaming, and copying files via your editor).
 
 Upgrade these dependencies to their newest version if certain functionality is not working as expected.
 
