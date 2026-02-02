@@ -478,7 +478,7 @@ URL of the file.
 
 ### `cha` {#file.cha}
 
-Cha of the file.
+[`Cha`](#cha) of the file.
 
 |      |       |
 | ---- | ----- |
