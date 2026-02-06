@@ -52,15 +52,20 @@ So it inherits the default terminal font color. This causes the icon size issue,
 
 ## How to troubleshoot terminal response timeout errors? {#trt}
 
-The error happens when running Yazi within tmux - tmux interferes with the communication between Yazi and the actual terminal in various ways.
+Yazi sends [`DA1`](https://vt100.net/docs/vt510-rm/DA1.html) and [`DSR`](https://vt100.net/docs/vt510-rm/DSR.html)-based requests at startup to detect and enable some modern terminal features. This error means the terminal didn't respond within the timeout, which can happen because:
 
-To avoid any interference from tmux, Yazi has to implement a lot of hacks, most of which work fine in most cases. If it doesn't work for you, please check:
+1. Your terminal is having performance issues and can't reply fast enough. You may check if it happens on other terminals to rule out a terminal-specific problem.
+2. You're using an older version of `st` that doesn't support DSR. Make sure your `st` or its fork has incorporated [this fix](https://git.suckless.org/st/commit/f17abd25b376c292f783062ecf821453eaa9cc4c.html).
+3. You're on a high-latency / slow SSH connection and the request timed out.
+
+If you don't see any weird behavior besides this error being printed, just ignore it.
+
+If you use tmux: tmux tends to interfere with communication between CLI apps and the terminal, to avoid the interference, Yazi has to implement a bunch of hacks, most of which work fine in most cases, if it doesn't work for you, please check:
 
 1. Is your tmux up-to-date?
 2. Have you [enabled passthrough for tmux](/docs/image-preview#tmux)?
-3. Have you bound `Alt+Shift+p` to tmux? [tmux currently doesn't support `DECRQSS`](https://github.com/tmux/tmux/issues/4034), and [its response](https://vt100.net/docs/vt510-rm/DECRQSS.html) overlaps partially with the <kbd>Alt</kbd> sequence, causing tmux mistakenly interpret it as a key event.
-4. If you are using `st` terminal, is it up-to-date? The older version of `st` didn't support the [Device Status Report (DSR)](https://vt100.net/docs/vt510-rm/DSR.html) correctly until [f17abd25](https://git.suckless.org/st/commit/f17abd25b376c292f783062ecf821453eaa9cc4c.html) was fixed. Make sure that your `st` or its fork has incorporated that patch.
-5. Comment out all custom configurations _except_ [passthrough](/docs/image-preview#tmux) to check if the issue is caused by your settings. If so, add them back piece by piece to identify the cause.
+3. Have you bound `M-[` to tmux? `Alt+[` is `ESC [` which is the [CSI introducer](https://en.wikipedia.org/wiki/ANSI_escape_code#Control_Sequence_Introducer_commands), tmux might interpret terminal responses that include it as key events.
+4. Comment out all custom configurations _except_ [passthrough](/docs/image-preview#tmux) to see if your settings are causing the issue. If so, add them back piece by piece to find the culprit.
 
 ## Why is "orphan" set to false by default? {#why-orphan-false}
 
