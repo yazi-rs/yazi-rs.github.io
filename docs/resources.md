@@ -81,6 +81,7 @@ File actions:
 - [chmod.yazi](https://github.com/yazi-rs/plugins/tree/main/chmod.yazi) - Execute `chmod` on the selected files to change their mode.
 - [diff.yazi](https://github.com/yazi-rs/plugins/tree/main/diff.yazi) - Diff the selected file with the hovered file, create a living patch, and copy it to the clipboard.
 - [compress.yazi](https://github.com/KKV9/compress.yazi) - A Yazi plugin that compresses selected files to an archive.
+- [lin-decompress.yazi](https://github.com/ZimCodes/lin-decompress.yazi) - **(Linux-only)** Extract each archive using a specified tool
 - [ouch.yazi](https://github.com/ndtoan96/ouch.yazi) - An [ouch](https://github.com/ouch-org/ouch) plugin for Yazi, supporting preview and compression.
 - [archivemount.yazi](https://github.com/AnirudhG07/archivemount.yazi) - Mounting and unmounting archives in yazi using [archivemount](https://github.com/cybernoid/archivemount).
 - [reflink.yazi](https://github.com/Ape/reflink.yazi) - Create reflinks to files.
@@ -88,7 +89,7 @@ File actions:
 - [sshfs.yazi](https://github.com/uhs-robert/sshfs.yazi) - Mount and manage remote directories over SSH using SSHFS. Supports hosts from `~/.ssh/config` or custom-defined connections. Includes key/password auth.
 - [what-size.yazi](https://github.com/pirafrank/what-size.yazi) - Calculate total size of current selection or of current working directory.
 - [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
-- [open-git-remote.yazi](https://github.com/larry-oates/open-git-remote.yazi) - Shortcut to open a git remote's webpage for the current yazi directory 
+- [open-git-remote.yazi](https://github.com/larry-oates/open-git-remote.yazi) - Shortcut to open a git remote's webpage for the current yazi directory
 - [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
 - [restore.yazi](https://github.com/boydaihungst/restore.yazi) - Restore/recover latest deleted files/folders using `trash-cli`.
 - [recycle-bin.yazi](https://github.com/uhs-robert/recycle-bin.yazi) - Manage your Trash from Yazi: browse contents, restore or delete selected items, empty by age, or empty completely using `trash-cli`.
