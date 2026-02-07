@@ -195,6 +195,16 @@ For example, `"~/Downloads/Dracula.tmTheme"`, not available after using a flavor
 | ---- | -------- |
 | Type | `string` |
 
+### symlink_target {#mgr.symlink_target}
+
+Style for the path that a symbolic link points to.
+
+For example, `my_symbolic_file -> /path/to/target`
+
+| | |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
 ## [indicator]
 
 ### `parent` {#indicator.parent}
