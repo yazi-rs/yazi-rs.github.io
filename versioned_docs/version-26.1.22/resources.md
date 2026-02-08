@@ -191,6 +191,7 @@ Vim:
 
 - [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
 - [lsColorsToToml](https://github.com/Mellbourn/lsColorsToToml) - Generate the color rules for the `[filetype]` section in `theme.toml` based on your `$LS_COLORS`.
+- [edir](https://github.com/bulletmark/edir#use-with-yazi-file-manager) - Remap Yazi `r` key to rename, delete, or copy selected files using your `$EDITOR`.
 
 ## 💖 Add yours {#add-yours}
 
