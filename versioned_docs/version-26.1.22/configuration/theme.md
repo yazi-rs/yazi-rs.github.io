@@ -113,6 +113,14 @@ Style of current file location in all found files to the right of the filename.
 | ---- | ----------------------- |
 | Type | [`Style`](#types.style) |
 
+### `symlink_target` {#mgr.symlink_target}
+
+Style for the path that a symbolic link points to, e.g., the ` -> /path/to/target` part in `my_symbolic_file -> /path/to/target`.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
 ### `marker_copied` {#mgr.marker_copied}
 
 Copied file marker style.
