@@ -441,6 +441,16 @@ Set the visibility of hidden files.
 | `"hide"`        | Hide hidden files.       |
 | `"toggle"`      | Toggle the hidden state. |
 
+### `excluded` {#mgr.excluded}
+
+Set the visibility of excluded files.
+
+| Argument/Option | Description                |
+| --------------- | -------------------------- |
+| `"show"`        | Show excluded files.       |
+| `"hide"`        | Hide excluded files.       |
+| `"toggle"`      | Toggle the excluded state. |
+
 ### `linemode` {#mgr.linemode}
 
 Set the [line mode](/docs/configuration/yazi#mgr.linemode).
