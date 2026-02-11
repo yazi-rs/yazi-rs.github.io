@@ -26,7 +26,7 @@ This is by no means a simple task, to reduce maintenance costs, we only guarante
 | [Black Box](https://gitlab.gnome.org/raggesilver/blackbox)                   | [Sixel graphics format][sixel]         | ✅ Built-in                              |
 | [Bobcat](https://github.com/ismail-yilmaz/Bobcat)                            | [Inline images protocol][iip]          | ✅ Built-in                              |
 | X11 / Wayland                                                                | Window system protocol                 | ☑️ [Überzug++][ueberzug] required        |
-| Fallback                                                                     | [ASCII art (Unicode block)][ascii-art] | ☑️ [Chafa][chafa] required               |
+| Fallback                                                                     | [ASCII art (Unicode block)][ascii-art] | ☑️ [Chafa][chafa] required (>= 1.16.0)   |
 
 Yazi automatically selects the appropriate preview method for you, based on the priority from top to bottom.
 That's relying on the `$TERM`, `$TERM_PROGRAM`, and `$XDG_SESSION_TYPE` variables, make sure you don't overwrite them by mistake!

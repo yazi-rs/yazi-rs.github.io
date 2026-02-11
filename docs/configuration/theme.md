@@ -851,7 +851,7 @@ If you want to add your own rules to this set, you can use `prepend_*` and `appe
 ```toml
 [icon]
 prepend_dirs = [
-	{ name = "desktop", text = "", fg = "#563d7c" },
+	{ name = "Desktop", text = "", fg = "#563d7c" },
 	# ...
 ]
 append_exts = [
@@ -866,7 +866,7 @@ If you want to completely override the default rules, you can do so with:
 ```toml
 [icon]
 dirs = [
-	{ name = "desktop", text = "", fg = "#563d7c" },
+	{ name = "Desktop", text = "", fg = "#563d7c" },
 	# ...
 ]
 exts = [
