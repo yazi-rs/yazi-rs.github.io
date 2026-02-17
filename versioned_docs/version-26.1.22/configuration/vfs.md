@@ -33,7 +33,7 @@ Once registered, you can access them by the combination of provider type and nam
 yazi sftp://my-server
 ```
 
-You can also reference them from Yazi's [built-in commands](/docs/configuration/keymap), for example the [`cd`](/docs/configuration/keymap#mgr.cd) command:
+You can also reference them from Yazi's [built-in actions](/docs/configuration/keymap) in `keymap.toml`, for example the [`cd`](/docs/configuration/keymap#mgr.cd) action:
 
 ```toml
 [[mgr.prepend_keymap]]
@@ -42,7 +42,7 @@ run  = "cd sftp://my-server"
 desc = "Go to my-server"
 ```
 
-Or the [`reveal`](/docs/configuration/keymap#mgr.reveal) command:
+Or the [`reveal`](/docs/configuration/keymap#mgr.reveal) action:
 
 ```toml
 [[mgr.prepend_keymap]]

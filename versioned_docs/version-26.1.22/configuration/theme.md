@@ -752,7 +752,7 @@ Key column style.
 
 ### `run` {#help.run}
 
-Command column style.
+Action column style.
 
 |      |                         |
 | ---- | ----------------------- |

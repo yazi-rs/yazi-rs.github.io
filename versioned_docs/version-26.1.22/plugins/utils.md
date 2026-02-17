@@ -28,22 +28,22 @@ If the file is not allowed to be cached, such as it's ignored in the user config
 | `opts` | `{ file: File, skip: integer }` |
 | Return | `Url?`                          |
 
-### `emit(cmd, args)` {#ya.emit}
+### `emit(action, args)` {#ya.emit}
 
-Send a command to the [`[mgr]`](/docs/configuration/keymap#mgr) without waiting for the executor to execute:
+Send an action to the [`[mgr]`](/docs/configuration/keymap#mgr) without waiting for the executor to execute:
 
 ```lua
-ya.emit("my-cmd", { "hello", 123, foo = true, bar_baz = "world" })
+ya.emit("action", { "hello", 123, foo = true, bar_baz = "world" })
 
 -- Equivalent to:
--- my-cmd "hello" "123" --foo --bar-baz="world"
+-- action "hello" "123" --foo --bar-baz="world"
 ```
 
-| In/Out | Type                              | Note                                                                                    |
-| ------ | --------------------------------- | --------------------------------------------------------------------------------------- |
-| `cmd`  | `string`                          | -                                                                                       |
-| `args` | `{ [integer\|string]: Sendable }` | Table values are [Sendable][sendable] that follow [Ownership transfer rules][ownership] |
-| Return | `unknown`                         | -                                                                                       |
+| In/Out   | Type                              | Note                                                                                    |
+| -------- | --------------------------------- | --------------------------------------------------------------------------------------- |
+| `action` | `string`                          | -                                                                                       |
+| `args`   | `{ [integer\|string]: Sendable }` | Table values are [Sendable][sendable] that follow [Ownership transfer rules][ownership] |
+| Return   | `unknown`                         | -                                                                                       |
 
 ### `image_show(url, rect)` {#ya.image_show}
 

@@ -43,12 +43,12 @@ Where:
 
 A plugin has two usages:
 
-- [Functional plugin](#functional-plugin): Bind the `plugin` command to a key in `keymap.toml`, and activate it by pressing the key.
+- [Functional plugin](#functional-plugin): Bind the `plugin` action to a key in `keymap.toml`, and activate it by pressing the key.
 - [Custom previewers, preloaders](/docs/configuration/yazi#plugin): Configure them as previewers or preloaders under `[plugin]` of your `yazi.toml`.
 
 ### Functional plugin {#functional-plugin}
 
-You can bind a `plugin` command to a specific key in your `keymap.toml` with:
+You can bind a `plugin` action to a specific key in your `keymap.toml` with:
 
 | Argument/Option | Description                                           |
 | --------------- | ----------------------------------------------------- |

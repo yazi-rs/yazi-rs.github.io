@@ -89,7 +89,7 @@ The above optimizations are the most noticeable to users, but behind the scenes,
 - The re-implemented highly optimized natural sorting algorithm is [~6 times faster than the `natord`](https://github.com/sxyazi/yazi/pull/237) that `eza` uses in case-insensitive sorting.
 - Yazi caches the directory state that has already been read, avoiding any unnecessary IO operations.
 - When a file in a directory changes, it only updates the changed files rather than re-reading the entire directory list.
-- Merges multiple renders triggered by multiple commands into a single render, avoiding unnecessary CPU consumption.
+- Merges multiple renders triggered by multiple actions into a single render, avoiding unnecessary CPU consumption.
 - Frequent updates to components, such as progress bars, are rendered independently, which is no cost compared to a complete render.
 - The entire plugin system is designed with an asynchronous-first philosophy to avoid blocking the main thread with time-consuming tasks.
 
