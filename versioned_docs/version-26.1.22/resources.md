@@ -131,9 +131,9 @@ Clipboard:
 
 - [smart-paste.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-paste.yazi) - Paste files into the hovered directory or to the CWD if hovering over a file.
 
-General command enhancements:
+General action enhancements:
 
-- [augment-command.yazi](https://github.com/hankertrix/augment-command.yazi) - Enhances a few Yazi commands with better handling of the choice between selected items and the hovered item.
+- [augment-command.yazi](https://github.com/hankertrix/augment-command.yazi) - Enhances a few Yazi actions with better handling of the choice between selected items and the hovered item.
 
 UI enhancements:
 
@@ -185,7 +185,7 @@ Vim:
 
 - [yazi-prompt.sh](https://github.com/Sonico98/yazi-prompt.sh) - Display an indicator in your prompt when running inside a yazi subshell.
 - [custom-shell.yazi](https://github.com/AnirudhG07/custom-shell.yazi) - Run any commands through your default system shell.
-- [command.yazi](https://github.com/KKV9/command.yazi) - Display a prompt for executing yazi commands.
+- [command.yazi](https://github.com/KKV9/command.yazi) - Display a prompt for executing yazi actions.
 
 ## 🛠️ Utilities {#utilities}
 

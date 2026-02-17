@@ -30,9 +30,9 @@ Unfortunately, this cannot cater to all users, and even the colors needed by the
 
 So, please [use a Yazi flavor](https://github.com/yazi-rs/flavors) that matches your terminal theme. Of course, if you find a color that better covers most terminals, feel free to create a PR!
 
-## Why can't "Open" and "Enter" be a single command? {#why-separate-open-enter}
+## Why can't "Open" and "Enter" be a single action? {#why-separate-open-enter}
 
-The decision to separate `enter` and `open` commands was intentional.
+The decision to separate `enter` and `open` actions was intentional.
 
 Yazi will be adding the ability to treat an archive as a directory in the future, allowing direct operations on the files inside.
 

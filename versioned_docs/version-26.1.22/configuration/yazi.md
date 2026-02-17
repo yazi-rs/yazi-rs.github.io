@@ -441,7 +441,7 @@ Some inputs have special placeholders that will be replaced with actual content 
 
 - create_title: [String, String]
 
-  It's a tuple of 2-element: first for [`create`](/docs/configuration/keymap/#mgr.create) input title, second for `create --dir` command.
+  It's a tuple of 2-element: first for [`create`](/docs/configuration/keymap/#mgr.create) input title, second for `create --dir` action.
 
 - rename_title: String
 

@@ -40,7 +40,7 @@ desc = "Open PowerShell here"
 
 ## Close input by once <kbd>Esc</kbd> press {#close-input-by-esc}
 
-You can change the <kbd>Esc</kbd> of input component from the default `escape` to `close` command, in your `keymap.toml`:
+You can change the <kbd>Esc</kbd> of input component from the default `escape` to `close` action, in your `keymap.toml`:
 
 ```toml
 [[input.prepend_keymap]]
@@ -77,7 +77,7 @@ Then bind it to the <kbd>t</kbd> key, in your `keymap.toml`:
 
 ```toml
 [[mgr.prepend_keymap]]
-on   = "t"
+on   = [ "t", "t" ]
 run  = "plugin smart-tab"
 desc = "Create a tab and enter the hovered directory"
 ```
@@ -225,7 +225,7 @@ The above example is for Hyprland + Hyprpaper, adapt to the command of your resp
 
 ## Linux: Copy selected files to the system clipboard while yanking {#selected-files-to-clipboard}
 
-Yazi allows multiple commands to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
+Yazi allows multiple actions to be bound to a single key, so you can set <kbd>y</kbd> to not only do the `yank` but also run a shell script:
 
 ```toml
 [[mgr.prepend_keymap]]

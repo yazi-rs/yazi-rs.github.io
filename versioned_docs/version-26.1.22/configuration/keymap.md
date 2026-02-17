@@ -30,11 +30,11 @@ Since Yazi selects the first matching key to run, prepend always has a higher pr
 ```toml
 [mgr]
 prepend_keymap = [
-	{ on = "<C-a>", run = "my-cmd1", desc = "Single command with `Ctrl + a`" },
+	{ on = "<C-a>", run = "act1", desc = "Single action with `Ctrl + a`" },
 ]
 append_keymap = [
-	{ on = [ "g", "b" ], run = "my-cmd2",          desc = "Single command with `g => b`" },
-	{ on = "c",          run = [ "cmd1", "cmd2" ], desc = "Multiple commands with `c`" }
+	{ on = [ "g", "b" ], run = "act2",             desc = "Single action with `g ⇒ b`" },
+	{ on = "c",          run = [ "act1", "act2" ], desc = "Multiple actions with `c`" }
 ]
 ```
 
@@ -43,18 +43,18 @@ Or in another different style:
 ```toml
 [[mgr.prepend_keymap]]
 on   = "<C-a>"
-run  = "my-cmd1"
-desc = "Single command with `Ctrl + a`"
+run  = "act1"
+desc = "Single action with `Ctrl + a`"
 
 [[mgr.append_keymap]]
 on  = [ "g", "b" ]
-run = "my-cmd2"
-desc = "Single command with `g => b`"
+run = "act2"
+desc = "Single action with `g ⇒ b`"
 
 [[mgr.append_keymap]]
 on  = "c"
-run = [ "my-cmd1", "my-cmd2" ]
-desc = "Multiple commands with `c`"
+run = [ "act1", "act2" ]
+desc = "Multiple actions with `c`"
 ```
 
 But keep in mind that you can only choose one of them, and it cannot be a combination of the two, as TOML language does not allow this:
@@ -62,12 +62,12 @@ But keep in mind that you can only choose one of them, and it cannot be a combin
 ```toml
 [mgr]
 prepend_keymap = [
-	{ on = "<C-a>", run = "my-cmd1" },
+	{ on = "<C-a>", run = "act1" },
 ]
 
 [[mgr.append_keymap]]
 on  = [ "g", "b" ]
-run = "my-cmd2"
+run = "act2"
 ```
 
 When you don't need any default and want to fully customize your keybindings, use `keymap`, for example:
@@ -76,8 +76,8 @@ When you don't need any default and want to fully customize your keybindings, us
 [mgr]
 keymap = [
 	# This will override all default keybindings, and just keep the two below.
-	{ on = "<C-a>",      run = "my-cmd1" },
-	{ on = [ "g", "b" ], run = "my-cmd2" },
+	{ on = "<C-a>",      run = "act1" },
+	{ on = [ "g", "b" ], run = "act2" },
 ]
 ```
 
@@ -217,7 +217,7 @@ run  = "cd ~/Pictures"
 desc = "Cd to ~/Pictures"
 ```
 
-For Windows users, you can also switch drives using the `cd` command:
+For Windows users, you can also switch drives using the `cd` action:
 
 ```toml
 [[mgr.prepend_keymap]]
@@ -469,7 +469,7 @@ You can search with an empty keyword (`""`) via `fd` to achieve flat view.
 	<video src="https://github.com/sxyazi/yazi/assets/17523360/d2c9df9b-b7ef-41ec-889f-26b2f1117cd0" width="100%" controls muted></video>
 </details>
 
-Or bind a key to the `search_do` command to quickly switch to the flat view:
+Or bind a key to the `search_do` action to quickly switch to the flat view:
 
 ```toml
 [[mgr.prepend_keymap]]
@@ -537,7 +537,7 @@ If neither `[url]` nor `--current` is specified, will use the startup directory 
 | --------------- | ----------------------------------------------- |
 | `[n]`           | Close the tab at position `n`, starting from 0. |
 
-If you want to close the current tab, use the [`close`](/docs/configuration/keymap/#mgr.close) command instead.
+If you want to close the current tab, use the [`close`](/docs/configuration/keymap/#mgr.close) action instead.
 
 ### `tab_switch` {#mgr.tab_switch}
 
@@ -562,7 +562,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#mgr.noop}
 
-If you want to disable certain preset keybindings without rewriting the entire `keymap`, you can use the virtual `noop` command.
+If you want to disable certain preset keybindings without rewriting the entire `keymap`, you can use the virtual `noop` action.
 
 For example, to disable the default keybinding of <kbd>g</kbd> ⇒ <kbd>c</kbd>, use:
 
@@ -620,7 +620,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#tasks.noop}
 
-See [`noop` command](#mgr.noop).
+See [`noop` action](#mgr.noop).
 
 ## [spot] {#spot}
 
@@ -652,7 +652,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#spot.noop}
 
-See [`noop` command](#mgr.noop).
+See [`noop` action](#mgr.noop).
 
 ### `help` {#spot.help}
 
@@ -682,7 +682,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#pick.noop}
 
-See [`noop` command](#mgr.noop).
+See [`noop` action](#mgr.noop).
 
 ## [input] {#input}
 
@@ -721,7 +721,7 @@ Move forward to the start of the next word.
 
 ### `insert` {#input.insert}
 
-Enter insert mode. This command is only available in normal mode.
+Enter insert mode. This action is only available in normal mode.
 
 | Argument/Option | Description              |
 | --------------- | ------------------------ |
@@ -729,11 +729,11 @@ Enter insert mode. This command is only available in normal mode.
 
 ### `visual` {#input.visual}
 
-Enter visual mode. This command is only available in normal mode.
+Enter visual mode. This action is only available in normal mode.
 
 ### `delete` {#input.delete}
 
-Delete the selected characters. This command is only available in normal mode.
+Delete the selected characters. This action is only available in normal mode.
 
 | Argument/Option | Description                                                                |
 | --------------- | -------------------------------------------------------------------------- |
@@ -742,11 +742,11 @@ Delete the selected characters. This command is only available in normal mode.
 
 ### `yank` {#input.yank}
 
-Copy the selected characters. This command is only available in normal mode.
+Copy the selected characters. This action is only available in normal mode.
 
 ### `paste` {#input.paste}
 
-Paste the copied characters after the cursor. This command is only available in normal mode.
+Paste the copied characters after the cursor. This action is only available in normal mode.
 
 | Argument/Option | Description                                    |
 | --------------- | ---------------------------------------------- |
@@ -754,19 +754,19 @@ Paste the copied characters after the cursor. This command is only available in 
 
 ### `undo` {#input.undo}
 
-Undo the last operation. This command is only available in normal mode.
+Undo the last operation. This action is only available in normal mode.
 
 ### `redo` {#input.redo}
 
-Redo the last operation. This command is only available in normal mode.
+Redo the last operation. This action is only available in normal mode.
 
 ### `help` {#input.help}
 
-Open the help menu. This command is only available in normal mode.
+Open the help menu. This action is only available in normal mode.
 
 ### `backspace` {#input.backspace}
 
-Delete the character before the cursor. This command is only available in insert mode.
+Delete the character before the cursor. This action is only available in insert mode.
 
 | Argument/Option | Description                            |
 | --------------- | -------------------------------------- |
@@ -774,7 +774,7 @@ Delete the character before the cursor. This command is only available in insert
 
 ### `kill` {#input.kill}
 
-Kill the specified range of characters. This command is only available in insert mode.
+Kill the specified range of characters. This action is only available in insert mode.
 
 | Argument/Option | Description                                      |
 | --------------- | ------------------------------------------------ |
@@ -785,11 +785,11 @@ Kill the specified range of characters. This command is only available in insert
 
 ### `plugin` {#input.plugin}
 
-See [Functional plugin](/docs/plugins/overview#functional-plugin). This command is only available in normal mode.
+See [Functional plugin](/docs/plugins/overview#functional-plugin). This action is only available in normal mode.
 
 ### `noop` {#input.noop}
 
-See [`noop` command](#mgr.noop).
+See [`noop` action](#mgr.noop).
 
 ## [confirm] {#confirm}
 
@@ -833,7 +833,7 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#cmp.noop}
 
-See [`noop` command](#mgr.noop).
+See [`noop` action](#mgr.noop).
 
 ## [help] {#help}
 
@@ -859,4 +859,4 @@ See [Functional plugin](/docs/plugins/overview#functional-plugin).
 
 ### `noop` {#help.noop}
 
-See [`noop` command](#mgr.noop).
+See [`noop` action](#mgr.noop).

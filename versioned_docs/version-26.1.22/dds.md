@@ -24,7 +24,7 @@ The DDS has three usage:
 
 - [Plugin API](/docs/plugins/utils#ps): Using Lua-based publish-subscribe model as the message carrier.
 - [`ya pub` and `ya pub-to`](#ya-pub): Using [`ya` CLI tool](/docs/cli) as the message carrier.
-- [`ya emit` and `ya emit-to`](#ya-emit): Using [`ya` CLI tool](/docs/cli) as the command carrier.
+- [`ya emit` and `ya emit-to`](#ya-emit): Using [`ya` CLI tool](/docs/cli) as the action carrier.
 - [Real-time `stdout` reporting](#stdout-reporting): Using `stdout` as the carrier.
 
 ### `ya pub` and `ya pub-to` {#ya-pub}
@@ -67,12 +67,12 @@ For greater convenience in integrating within the command-line environment, they
 
 ### `ya emit` and `ya emit-to` {#ya-emit}
 
-If you're in a Yazi subshell where the `$YAZI_ID` environment variable is set, you can use `ya emit` to send a command to the current instance for execution.
+If you're in a Yazi subshell where the `$YAZI_ID` environment variable is set, you can use `ya emit` to send an action to the current instance for execution.
 
-The command format is the same as what you'd write in the [`keymap.toml`](/docs/configuration/keymap):
+The action format is the same as what you'd write in the [`keymap.toml`](/docs/configuration/keymap):
 
 ```sh
-ya emit <command> <args>
+ya emit <action> <args>
 ```
 
 For example:
@@ -82,10 +82,10 @@ ya emit cd /tmp
 ya emit reveal /tmp/foo
 ```
 
-You can also send commands to a specific remote instance using `ya emit-to`:
+You can also send actions to a specific remote instance using `ya emit-to`:
 
 ```sh
-ya emit-to <receiver> <command> <args>
+ya emit-to <receiver> <action> <args>
 ```
 
 For example:
@@ -401,7 +401,7 @@ System reserves kind.
 
 ### `dds.lua` {#dds.lua}
 
-This plugin provides a `dds-emit` event kind, which is used for the implementation of the `ya emit` subcommand — `ya emit` is a shorthand for `ya pub`, and the emitted command will be converted into an equivalent `ya pub` event message.
+This plugin provides a `dds-emit` event kind, which is used for the implementation of the `ya emit` subcommand — `ya emit` is a shorthand for `ya pub`, and the emitted action will be converted into an equivalent `ya pub` event message.
 
 With `ya emit`, you can implement many interesting features, such as synchronizing the CWD of the current Yazi instance when exiting from a subshell:
 

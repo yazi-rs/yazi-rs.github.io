@@ -176,7 +176,7 @@ or Vim-like keys such as <kbd>h</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
 | <kbd>l</kbd> | <kbd>→</kbd>  | Enter hovered directory                         |
 | <kbd>h</kbd> | <kbd>←</kbd>  | Leave the current directory and into its parent |
 
-Further navigation commands can be found in the table below.
+Further navigation actions can be found in the table below.
 
 | Key binding                     | Action                                                                            |
 | ------------------------------- | --------------------------------------------------------------------------------- |
@@ -193,7 +193,7 @@ Further navigation commands can be found in the table below.
 
 ### Selection
 
-To select files and directories, the following commands are available.
+To select files and directories, the following actions are available.
 
 | Key binding                    | Action                                     |
 | ------------------------------ | ------------------------------------------ |
@@ -206,7 +206,7 @@ To select files and directories, the following commands are available.
 
 ### File operations
 
-To interact with selected files/directories use any of the commands below.
+To interact with selected files/directories use any of the actions below.
 
 | Key binding                         | Action                                                                  |
 | ----------------------------------- | ----------------------------------------------------------------------- |
@@ -226,7 +226,7 @@ To interact with selected files/directories use any of the commands below.
 | <kbd>r</kbd>                        | Rename selected file(s)                                                 |
 | <kbd>.</kbd>                        | Toggle the visibility of hidden files                                   |
 
-Further file operation commands can be found in the table below.
+Further file operation actions can be found in the table below.
 
 | Key binding                    | Action                                     |
 | ------------------------------ | ------------------------------------------ |
@@ -238,7 +238,7 @@ Further file operation commands can be found in the table below.
 
 ### Copy paths
 
-To copy paths, use any of the following commands below.
+To copy paths, use any of the following actions below.
 
 _Observation: <kbd>c</kbd> ⇒ <kbd>d</kbd> indicates pressing the <kbd>c</kbd> key followed by pressing the <kbd>d</kbd> key._
 
@@ -274,7 +274,7 @@ _Observation: <kbd>c</kbd> ⇒ <kbd>d</kbd> indicates pressing the <kbd>c</kbd> 
 
 ### Sorting
 
-To sort files/directories use the following commands.
+To sort files/directories use the following actions.
 
 _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> key followed by pressing the <kbd>a</kbd> key._
 
@@ -298,7 +298,7 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 
 | Key binding                                   | Action                             |
 | --------------------------------------------- | ---------------------------------- |
-| <kbd>t</kbd>                                  | Create a new tab with CWD          |
+| <kbd>t</kbd> ⇒ <kbd>t</kbd>                   | Create a new tab in CWD            |
 | <kbd>1</kbd>, <kbd>2</kbd>, ..., <kbd>9</kbd> | Switch to the N-th tab             |
 | <kbd>[</kbd>                                  | Switch to the previous tab         |
 | <kbd>]</kbd>                                  | Switch to the next tab             |
