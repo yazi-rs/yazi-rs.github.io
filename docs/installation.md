@@ -303,15 +303,13 @@ resvg is not yet on WinGet, install with Scoop or manually download from [resvg]
 
 ## Debian based Linux {#debian}
 
-In Debian/Ubuntu, you currently need to [manually build Yazi](/docs/installation#source) or [download our official binary release](/docs/installation#binaries).
+In Debian/Ubuntu, 
 
-You can install the optional dependencies with:
+:::info
+This uses an [unofficial deb repository](https://debian.griffo.io/)) maintained by [Dario Griffo](https://github.com/dariogriffo).
+:::
 
-```sh
-apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
-```
-
-Note that these dependencies are quite old on some Debian/Ubuntu versions and may cause Yazi to malfunction. In that case, you will need to manually build them from the latest source.
+Some package dependencies are quite old on some Debian/Ubuntu versions and may cause Yazi to malfunction. In that case, you will need to manually build them from the latest source.
 
 If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
 
