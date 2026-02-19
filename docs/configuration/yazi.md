@@ -13,7 +13,9 @@ If you want to fine-tune the default settings, the first step is to [create your
 
 ### `ratio` {#mgr.ratio}
 
-Manager layout by ratio, 3-element array. For example:
+Manager layout by ratio, 3-element array. Default: `[1, 4, 3]`
+
+For example:
 
 - `[1, 4, 3]`: 1/8 width for parent, 4/8 width for current, 3/8 width for preview
 
@@ -21,7 +23,7 @@ Set the value to `0` to hide the corresponding panel, but at least one panel mus
 
 ### `sort_by` {#mgr.sort_by}
 
-File sorting method.
+File sorting method. Default: `"alphabetical"`
 
 - `"none"`: Don't sort.
 - `"mtime"`: Sort by last modified time.
@@ -34,28 +36,28 @@ File sorting method.
 
 ### `sort_sensitive` {#mgr.sort_sensitive}
 
-Sort case-sensitively.
+Sort case-sensitively. Default: `false`
 
 - `true`: Case-sensitive
 - `false`: Case-insensitive
 
 ### `sort_reverse` {#mgr.sort_reverse}
 
-Display files in reverse order.
+Display files in reverse order. Default: `false`
 
 - `true`: Reverse order
 - `false`: Normal order
 
 ### `sort_dir_first` {#mgr.sort_dir_first}
 
-Display directories first.
+Display directories first. Default: `true`
 
 - `true`: Directories first
 - `false`: Normal order
 
 ### `sort_translit` {#mgr.sort_translit}
 
-Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if [`sort_by = "natural"`](#mgr.sort_by).
+Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if [`sort_by = "natural"`](#mgr.sort_by). Default: `false`
 
 This is useful for files that contain Hungarian characters.
 
@@ -64,7 +66,7 @@ This is useful for files that contain Hungarian characters.
 
 ### `linemode` {#mgr.linemode}
 
-Line mode: display information associated with the file on the right side of the file list row.
+Line mode: display information associated with the file on the right side of the file list row. Default: `"none"`
 
 - `"none"`: No line mode.
 - `"size"`: Display the size in bytes of the file. Note that currently directory sizes are only evaluated when [`sort_by = "size"`](/docs/configuration/yazi#mgr.sort_by), and this might change in the future.
@@ -100,27 +102,29 @@ end
 
 ### `show_hidden` {#mgr.show_hidden}
 
-Show hidden files.
+Show hidden files. Default: `false`
 
 - `true`: Show
 - `false`: Do not show
 
 ### `show_symlink` {#mgr.show_symlink}
 
-Show the path of the symlink file point to, after the filename.
+Show the path of the symlink file point to, after the filename. Default: `true`
 
 - `true`: Show
 - `false`: Do not show
 
 ### `scrolloff` {#mgr.scrolloff}
 
-The number of files to keep above and below the cursor when moving through the file list.
+The number of files to keep above and below the cursor when moving through the file list. Default: `5`
 
 If the value is larger than half the screen height (e.g. `200`), the cursor will be centered.
 
 ### `mouse_events` {#mgr.mouse_events}
 
-Array of strings, the types of mouse events can be received by the plugin system, available values:
+Array of strings, the types of mouse events can be received by the plugin system. Default: `["click", "scroll"]`
+
+Available values:
 
 - `"click"`: Mouse click
 - `"scroll"`: Mouse vertical scroll
@@ -144,24 +148,28 @@ If you don't want Yazi to automatically update the title, set it to an empty str
 
 ### `wrap` {#preview.wrap}
 
-Wrap long lines in the code preview.
+Wrap long lines in the code preview. Default: `"no"`
 
 - `"yes"`: Enable word wrap
 - `"no"`: Disable word wrap
 
 ### `tab_size` {#preview.tab_size}
 
-The width of a tab character (`\t`) in spaces.
+The width of a tab character (`\t`) in spaces. Default: `2`
 
 ### `max_width` {#preview.max_width}
 
-Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
+Maximum preview width for images. Default: `600`
+
+Do a `yazi --clear-cache` to take effect after changing this.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
 ### `max_height` {#preview.max_height}
 
-Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
+Maximum preview height for images. Default: `900`
+
+Do a `yazi --clear-cache` to take effect after changing this.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
@@ -173,7 +181,7 @@ If you want to make it more persistent, you can specify the cache directory manu
 
 ### `image_delay` {#preview.image_delay}
 
-Wait for at least the specified milliseconds before starting to send image preview data to the terminal.
+Wait for at least the specified milliseconds before starting to send image preview data to the terminal. Default: `30`
 
 This is to alleviate lag caused by some terminal emulators struggling to render images Yazi sent in time, when users scroll through the file list quickly.
 
@@ -181,7 +189,9 @@ See https://github.com/sxyazi/yazi/pull/1512 for more information.
 
 ### `image_filter` {#preview.image_filter}
 
-The filter used on image downscaling, available values:
+The filter used on image downscaling. Default: `"triangle"`
+
+Available values:
 
 - `"nearest"` - Nearest Neighbor
 - `"triangle"` - Linear Triangle
@@ -194,14 +204,14 @@ See the example and benchmark here: https://docs.rs/image/0.24.8/image/imageops/
 
 ### `image_quality` {#preview.image_quality}
 
-Quality on pre-caching images, range 50-90.
+Quality on pre-caching images, range 50-90. Default: `75`
 
 The larger value, the better image quality, but slower with more CPU consumption, and generates larger cache files that occupy more storage space.
 
 ### `ueberzug_scale` / `ueberzug_offset` {#preview.ueberzug_scale}
 
-- ueberzug_scale (Float): Ueberzug image scaling ratio, `scale>1` for enlargement, `scale<1` for reduction. For example, `0.5` indicates a reduction to half.
-- ueberzug_offset (`[x, y, width, height]`): Ueberzug image offset, in cell units. For example, `[0.5, 0.5, -0.5, -0.5]` indicates that the image is offset by half a cell in both directions, and the width and height are reduced by half a cell.
+- ueberzug_scale (Float): Ueberzug image scaling ratio, `scale>1` for enlargement, `scale<1` for reduction. For example, `0.5` indicates a reduction to half. Default: `1`
+- ueberzug_offset (`[x, y, width, height]`): Ueberzug image offset, in cell units. For example, `[0.5, 0.5, -0.5, -0.5]` indicates that the image is offset by half a cell in both directions, and the width and height are reduced by half a cell. Default: `[0, 0, 0, 0]`
 
 This is useful for solving [a bug of Überzug++ image size calculation](https://github.com/jstkdng/ueberzugpp/issues/122).
 
@@ -299,27 +309,27 @@ With that:
 
 ### `micro_workers` {#tasks.micro_workers}
 
-Maximum number of concurrent micro-tasks.
+Maximum number of concurrent micro-tasks. Default: `5`
 
 ### `macro_workers` {#tasks.macro_workers}
 
-Maximum number of concurrent macro-tasks.
+Maximum number of concurrent macro-tasks. Default: `3`
 
 ### `bizarre_retry` {#tasks.bizarre_retry}
 
-Maximum number of retries when a bizarre failure occurs.
+Maximum number of retries when a bizarre failure occurs. Default: `3`
 
 ### `suppress_preload` {#tasks.suppress_preload}
 
-Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming.
+Exclude the preload tasks created by the system from the task list, do not report their progress, and do not consider them on app exit confirming. Default: `false`
 
 ### `image_alloc` {#tasks.image_alloc}
 
-Maximum memory allocation limit in bytes for decoding a single image, `0` for unlimited.
+Maximum memory allocation limit in bytes for decoding a single image, `0` for unlimited. Default: `536870912` (512MB)
 
 ### `image_bound` {#tasks.image_bound}
 
-An array of `[width, height]`, maximum image size (in pixels) for decoding a single image, and `0` for unlimited.
+An array of `[width, height]`, maximum image size (in pixels) for decoding a single image, and `0` for unlimited. Default: `[10000, 10000]`
 
 ## [plugin] {#plugin}
 
@@ -413,7 +423,7 @@ If you want to create your own preloader, see [Preloader API](/docs/plugins/over
 
 ### `cursor_blink` {#input.cursor_blink}
 
-Control the cursor blinking.
+Control the cursor blinking. Default: `false`
 
 - `true`: Blink.
 - `false`: Do not blink.
@@ -475,7 +485,7 @@ Same as the [`[input]`](#input) section. Available selectors: `open`.
 
 ### `sort_by` {#which.sort_by}
 
-Candidate sorting method.
+Candidate sorting method. Default: `"none"`
 
 - `"none"`: Don't sort.
 - `"key"`: Sort by key.
@@ -483,21 +493,21 @@ Candidate sorting method.
 
 ### `sort_sensitive` {#which.sort_sensitive}
 
-Sort case-sensitively.
+Sort case-sensitively. Default: `false`
 
 - `true`: Case-sensitive
 - `false`: Case-insensitive
 
 ### `sort_reverse` {#which.sort_reverse}
 
-Display candidates in reverse order.
+Display candidates in reverse order. Default: `false`
 
 - `true`: Reverse order
 - `false`: Normal order
 
 ### `sort_translit` {#which.sort_translit}
 
-Transliterate filenames for sorting, i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.
+Transliterate filenames for sorting, i.e. replaces `Â` as `A`, `Æ` as `AE`, etc. Default: `false`
 
 This is useful for files that contain Hungarian characters.
 
