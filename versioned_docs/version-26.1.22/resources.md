@@ -198,7 +198,8 @@ We are so happy to add your plugin to this page!
 
 If your plugin meets the following requirements, please click "Edit this page" below to add it:
 
-- **Functional** - we will install and test it, since we want all links included on this page to be valid. If it's available only on a specific platform, a note should be added in the README.
+- **Functional** - we will install and test to make sure all links included on this page are valid. If it's available only on a specific platform, a note should be added in the README.
 - **Follow conventions** - it should be a directory/repository ending with `.yazi`, and include the files listed in the [plugin documentation](/docs/plugins/overview).
+- **i18n** - the README should be in English, or at least include an English README if there are multiple languages available.
 
 If it's a Neovim or shell plugin, appending `.nvim` or `.sh` to the name to make it distinguishable is a best practice, but it's not required.
