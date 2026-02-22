@@ -303,22 +303,18 @@ resvg is not yet on WinGet, install with Scoop or manually download from [resvg]
 
 ## Debian based Linux {#debian}
 
-In Debian/Ubuntu, 
-
 :::info
-This uses an [unofficial deb repository](https://debian.griffo.io/)) maintained by [Dario Griffo](https://github.com/dariogriffo).
+This uses an [unofficial deb repository](https://github.com/dariogriffo/yazi-debian) maintained by [Dario Griffo](https://github.com/dariogriffo).
 :::
-
 
 ```sh
 curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
 echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
 sudo apt update
-sudo apt install -y yazi
+sudo apt install yazi
 ```
 
-The deb package already references required dependencies.
-
+This will install Yazi and its dependencies. Note that, some deps are pretty outdated and might cause Yazi to malfunction, in that case you'll need to build them from the latest source manually.
 
 ## Fedora/Centos Stream 9+/RHEL 9+ {#copr}
 
