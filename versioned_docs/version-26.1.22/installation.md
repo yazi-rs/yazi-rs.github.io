@@ -236,7 +236,7 @@ First, make sure that Homebrew is fully up-to-date with `brew update`.
 Then you can install Yazi (and the optional dependencies):
 
 ```sh
-brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
+brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
