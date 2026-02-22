@@ -309,9 +309,16 @@ In Debian/Ubuntu,
 This uses an [unofficial deb repository](https://debian.griffo.io/)) maintained by [Dario Griffo](https://github.com/dariogriffo).
 :::
 
-Some package dependencies are quite old on some Debian/Ubuntu versions and may cause Yazi to malfunction. In that case, you will need to manually build them from the latest source.
 
-If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
+```sh
+curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
+echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
+sudo apt update
+sudo apt install -y yazi
+```
+
+The deb package already references required dependencies.
+
 
 ## Fedora/Centos Stream 9+/RHEL 9+ {#copr}
 
