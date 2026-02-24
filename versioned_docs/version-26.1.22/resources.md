@@ -147,6 +147,7 @@ UI enhancements:
 - [simple-status.yazi](https://github.com/Ape/simple-status.yazi) - Minimalistic status line with useful file attribute information.
 - [no-status.yazi](https://github.com/yazi-rs/plugins/tree/main/no-status.yazi) - Remove the status bar.
 - [pref-by-location.yazi](https://github.com/boydaihungst/pref-by-location.yazi) - Save and restore linemode/sorting/hidden preferences based on directory location.
+- [linemode-plus.yazi](https://github.com/barbanevosa/linemode-plus.yazi) - Advanced linemode customization with configurable date format and combined size+mtime view.
 
 ## 🚀 Preloaders {#preloaders}
 
