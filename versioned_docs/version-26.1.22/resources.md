@@ -60,6 +60,7 @@ Jumping:
 - [cd-git-root.yazi](https://github.com/ciarandg/cd-git-root.yazi) - Changes directory to the root of the git repository you are currently in.
 - [fazif.yazi](https://github.com/Shallow-Seek/fazif.yazi) - Search over selected item with `fd`, `rg` `rga` and spawn any FZF configurations in Yazi.
 - [yafg.yazi](https://github.com/XYenon/yafg.yazi) - Fuzzy find and grep in Yazi with ripgrep and fzf, opening selected matches in your editor at the matched line.
+- [zoxide-add.yazi](https://github.com/mihem/zoxide-add.yazi) - Automatically add visited directories in yazi to zoxide
 
 Bookmarks:
 
