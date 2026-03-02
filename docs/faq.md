@@ -76,6 +76,19 @@ However, with `orphan=true`, you can only return to the shell to terminate it.
 
 On the other hand, tasks with `orphan=false` are scheduled through the Yazi task system. It can limit the number of concurrent tasks (configurable by the user), to prevent system resource depletion, such as when you're extracting 100 files.
 
+## Why are the icons not displayed properly? {#icons-incorrect-display} 
+  
+ If your terminal font does not support the required icon glyphs (for example, Nerd Font symbols or other patched characters), the icons will not render correctly. Instead, you may see empty squares, question marks, or other placeholder characters. 
+  
+ You can try to: 
+  
+ 1. Install a compatible font (for example, a Nerd Font). 
+ 2. Configure your terminal to use that font. 
+ 3. Restart your terminal. 
+  
+ After switching to a font that includes the necessary glyphs, the icons should display correctly. 
+
+
 ## I don't like nerd‐fonts! {#dont-like-nerd-fonts}
 
 Yazi has `nerd-fonts` icons enabled by default, it looks really cool!
