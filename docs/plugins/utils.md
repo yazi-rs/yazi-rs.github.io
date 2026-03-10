@@ -846,18 +846,19 @@ Writes all `bytes` to the file descriptor.
 
 ```lua
 local url = Url("/tmp/test.txt")
-local fd, err = fs.access():write(true):open(url)
 
-if fd then
-	fd:write_all("Hello, World!")
-end
+local fd, err = fs.access():write(true):open(url)
+assert(fd, err)
+
+local ok, err = fd:write_all("Hello, World!")
+assert(ok, err)
 ```
 
 | In/Out    | Type               |
 | --------- | ------------------ |
 | `self`    | `Self`             |
 | `bytes`   | `string`           |
-| Return    | `Error?`           |
+| Return    | `boolean, Error?`  |
 | Available | Async context only |
 
 ### `flush(self)`
@@ -866,18 +867,18 @@ Flushes the file descriptor, making sure all data gets written to the underlying
 
 ```lua
 local url = Url("/tmp/test.txt")
-local fd, err = fs.access():write(true):open(url)
 
-if fd then
-	fd:write_all("Hello, World!")
-	fd:flush()
-end
+local fd, err = fs.access():write(true):open(url)
+assert(fd, err)
+
+local ok, err = fd:flush()
+assert(ok, err)
 ```
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
-| Return    | `Error?`           |
+| `self`    | `Self`             |
+| Return    | `boolean, Error?`  |
 | Available | Async context only |
 
 ## ui {#ui}
