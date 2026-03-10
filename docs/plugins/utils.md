@@ -731,7 +731,7 @@ Returns `(url, err)`:
 
 This object is created by [`fs.access()`](#fs.access) and represents the options for interacting with a file.
 
-### `read(self, read)` {#access.read}
+### `read(self, read)` {#Access.read}
 
 Sets the operation for read access.
 
@@ -745,7 +745,7 @@ local access = fs.access():read(true)
 | `read` | `boolean` |
 | Return | `self`    |
 
-### `write(self, write)` {#access.write}
+### `write(self, write)` {#Access.write}
 
 Sets the operation for write access.
 
@@ -759,7 +759,7 @@ local access = fs.access():write(true)
 | `write` | `boolean` |
 | Return  | `self`    |
 
-### `append(self, append)` {#access.append}
+### `append(self, append)` {#Access.append}
 
 Sets the operation for the append mode.
 
@@ -773,7 +773,7 @@ local access = fs.access():append(true)
 | `append` | `boolean` |
 | Return   | `self`    |
 
-### `truncate(self, truncate)` {#access.truncate}
+### `truncate(self, truncate)` {#Access.truncate}
 
 Sets the operation for truncating a previous file.
 
@@ -787,7 +787,7 @@ local access = fs.access():truncate(true)
 | `truncate` | `boolean` |
 | Return     | `self`    |
 
-### `create(self, create)` {#access.create}
+### `create(self, create)` {#Access.create}
 
 Sets the operation to create a new file, or open it if it already exists.
 
@@ -801,7 +801,7 @@ local access = fs.access():create(true)
 | `create` | `boolean` |
 | Return   | `self`    |
 
-### `create_new(self, create_new)` {#access.create_new}
+### `create_new(self, create_new)` {#Access.create_new}
 
 Sets the operation to create a new file, failing if it already exists.
 
@@ -815,7 +815,7 @@ local access = fs.access():create_new(true)
 | `create_new` | `boolean` |
 | Return       | `self`    |
 
-### `open(self, url)` {#access.open}
+### `open(self, url)` {#Access.open}
 
 Opens a file at `url` with the mode specified.
 
@@ -1000,7 +1000,7 @@ ps.unsub_remote("my-message")
 
 This object is created by [`Access:open()`](#access.open) and contains the methods for working with the opened file.
 
-### `write_all(self, bytes)` {#fd.write_all}
+### `write_all(self, bytes)` {#Fd.write_all}
 
 Writes all `bytes` to the file descriptor.
 
@@ -1026,7 +1026,7 @@ Returns `(ok, err)`:
 | Return    | `boolean, Error?`  |
 | Available | Async context only |
 
-### `flush(self)` {#fd.flush}
+### `flush(self)` {#Fd.flush}
 
 Flushes the file descriptor, making sure all data gets written to the underlying storage.
 
