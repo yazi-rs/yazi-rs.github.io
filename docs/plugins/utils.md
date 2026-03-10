@@ -720,12 +720,12 @@ Returns `(url, err)`:
 - `url`: The [`Url`][url] with the unique filename.
 - `err`: [`Error`][error] of the failure.
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `type`    | `"file"` \| `"dir"`|
-| `url`     | `Url`              |
-| Return    | `Url?, Error?`     |
-| Available | Async context only |
+| In/Out    | Type                |
+| --------- | ------------------- |
+| `type`    | `"file"` \| `"dir"` |
+| `url`     | `Url`               |
+| Return    | `Url?, Error?`      |
+| Available | Async context only  |
 
 ## Access {#access}
 
