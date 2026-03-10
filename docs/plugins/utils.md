@@ -727,115 +727,6 @@ Returns `(url, err)`:
 | Return    | `Url?, Error?`      |
 | Available | Async context only  |
 
-## Access {#access}
-
-This object is created by [`fs.access()`](#fs.access) and represents the options for interacting with a file.
-
-### `read(self, read)` {#Access.read}
-
-Sets the operation for read access.
-
-```lua
-local access = fs.access():read(true)
-```
-
-| In/Out | Type      |
-| ------ | --------- |
-| `self` | `Self`    |
-| `read` | `boolean` |
-| Return | `self`    |
-
-### `write(self, write)` {#Access.write}
-
-Sets the operation for write access.
-
-```lua
-local access = fs.access():write(true)
-```
-
-| In/Out  | Type      |
-| ------- | --------- |
-| `self`  | `Self`    |
-| `write` | `boolean` |
-| Return  | `self`    |
-
-### `append(self, append)` {#Access.append}
-
-Sets the operation for the append mode.
-
-```lua
-local access = fs.access():append(true)
-```
-
-| In/Out   | Type      |
-| -------- | --------- |
-| `self`   | `Self`    |
-| `append` | `boolean` |
-| Return   | `self`    |
-
-### `truncate(self, truncate)` {#Access.truncate}
-
-Sets the operation for truncating a previous file.
-
-```lua
-local access = fs.access():truncate(true)
-```
-
-| In/Out     | Type      |
-| ---------- | --------- |
-| `self`     | `Self`    |
-| `truncate` | `boolean` |
-| Return     | `self`    |
-
-### `create(self, create)` {#Access.create}
-
-Sets the operation to create a new file, or open it if it already exists.
-
-```lua
-local access = fs.access():create(true)
-```
-
-| In/Out   | Type      |
-| -------- | --------- |
-| `self`   | `Self`    |
-| `create` | `boolean` |
-| Return   | `self`    |
-
-### `create_new(self, create_new)` {#Access.create_new}
-
-Sets the operation to create a new file, failing if it already exists.
-
-```lua
-local access = fs.access():create_new(true)
-```
-
-| In/Out       | Type      |
-| ------------ | --------- |
-| `self`       | `Self`    |
-| `create_new` | `boolean` |
-| Return       | `self`    |
-
-### `open(self, url)` {#Access.open}
-
-Opens a file at `url` with the mode specified.
-
-```lua
-local url = Url("/tmp/test.txt")
-local fd, err = fs.access():read(true):open(url)
-```
-
-Returns `(fd, err)`:
-
-- `fd`: [Fd](#fd) (file descriptor) if the operation succeeds; otherwise, `nil`.
-- `err`: [`Error`][error] of the failure.
-
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `url`     | `Url`              |
-| Return    | `Fd?, Error?`      |
-| Available | Async context only |
-
 ## ui {#ui}
 
 APIs related to the user interface.
@@ -995,6 +886,115 @@ ps.unsub_remote("my-message")
 | ------ | --------- | ----------------- |
 | `kind` | `string`  | Same as `unsub()` |
 | Return | `unknown` | -                 |
+
+## Access {#access}
+
+This object is created by [`fs.access()`](#fs.access) and represents the options for interacting with a file.
+
+### `read(self, read)` {#Access.read}
+
+Sets the operation for read access.
+
+```lua
+local access = fs.access():read(true)
+```
+
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| `read` | `boolean` |
+| Return | `self`    |
+
+### `write(self, write)` {#Access.write}
+
+Sets the operation for write access.
+
+```lua
+local access = fs.access():write(true)
+```
+
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Self`    |
+| `write` | `boolean` |
+| Return  | `self`    |
+
+### `append(self, append)` {#Access.append}
+
+Sets the operation for the append mode.
+
+```lua
+local access = fs.access():append(true)
+```
+
+| In/Out   | Type      |
+| -------- | --------- |
+| `self`   | `Self`    |
+| `append` | `boolean` |
+| Return   | `self`    |
+
+### `truncate(self, truncate)` {#Access.truncate}
+
+Sets the operation for truncating a previous file.
+
+```lua
+local access = fs.access():truncate(true)
+```
+
+| In/Out     | Type      |
+| ---------- | --------- |
+| `self`     | `Self`    |
+| `truncate` | `boolean` |
+| Return     | `self`    |
+
+### `create(self, create)` {#Access.create}
+
+Sets the operation to create a new file, or open it if it already exists.
+
+```lua
+local access = fs.access():create(true)
+```
+
+| In/Out   | Type      |
+| -------- | --------- |
+| `self`   | `Self`    |
+| `create` | `boolean` |
+| Return   | `self`    |
+
+### `create_new(self, create_new)` {#Access.create_new}
+
+Sets the operation to create a new file, failing if it already exists.
+
+```lua
+local access = fs.access():create_new(true)
+```
+
+| In/Out       | Type      |
+| ------------ | --------- |
+| `self`       | `Self`    |
+| `create_new` | `boolean` |
+| Return       | `self`    |
+
+### `open(self, url)` {#Access.open}
+
+Opens a file at `url` with the mode specified.
+
+```lua
+local url = Url("/tmp/test.txt")
+local fd, err = fs.access():read(true):open(url)
+```
+
+Returns `(fd, err)`:
+
+- `fd`: [Fd](#fd) (file descriptor) if the operation succeeds; otherwise, `nil`.
+- `err`: [`Error`][error] of the failure.
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| `url`     | `Url`              |
+| Return    | `Fd?, Error?`      |
+| Available | Async context only |
 
 ## Fd {#fd}
 
