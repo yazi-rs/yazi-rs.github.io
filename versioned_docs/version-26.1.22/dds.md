@@ -444,7 +444,7 @@ Source code: https://github.com/sxyazi/yazi/blob/main/yazi-plugin/preset/plugins
 
 This plugin provides cross-instance yank ability, which means you can yank files in one instance, and then paste them in another instance.
 
-To enable it, add these lines to your `init.lua`, then restart **_all_** Yazi instances to apply the changes:
+To enable it, add these lines to your `init.lua`, then restart _all_ Yazi instances to apply the changes:
 
 ```lua
 require("session"):setup {
