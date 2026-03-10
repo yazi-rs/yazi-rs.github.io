@@ -549,7 +549,7 @@ local ok, err = fs.write(url, "hello world")
 
 ### `access()` {#fs.access}
 
-Access the file system by returning an [Access](#access) object.
+Create an [`Access`](#access) with which to access the filesystem.
 
 ```lua
 local access = fs.access()
@@ -705,14 +705,13 @@ end
 Create a file or a directory with the unique name from the given `url` to ensure it's unique in the file system:
 
 ```lua
-local file_url, err1 = fs.unique("file", Url("/tmp/test.txt"))
-local dir_url, err2 = fs.unique("dir", Url("/tmp/temp"))
+local url, err = fs.unique("file", Url("/tmp/test.txt"))
 ```
 
 Where `type` can be one of the following:
 
-- `"file"`: Creates a file with the unique name in the file system.
-- `"dir"`: Creates a directory with the unique name in the file system.
+- `"file"`: Creates a file with the unique name.
+- `"dir"`: Creates a directory with the unique name.
 
 If the file already exists, it will append `_n` to the filename, where `n` is a number, and keep incrementing until the first available name is found.
 
@@ -742,7 +741,7 @@ local access = fs.access():read(true)
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
+| `self`    | `Self`             |
 | `read`    | `boolean`          |
 | Return    | `self`             |
 | Available | Async context only |
@@ -757,7 +756,7 @@ local access = fs.access():write(true)
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
+| `self`    | `Self`             |
 | `write`   | `boolean`          |
 | Return    | `self`             |
 | Available | Async context only |
@@ -772,7 +771,7 @@ local access = fs.access():append(true)
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
+| `self`    | `Self`             |
 | `append`  | `boolean`          |
 | Return    | `self`             |
 | Available | Async context only |
@@ -787,7 +786,7 @@ local access = fs.access():truncate(true)
 
 | In/Out     | Type               |
 | ---------- | ------------------ |
-| `self`     | `self`             |
+| `self`     | `Self`             |
 | `truncate` | `boolean`          |
 | Return     | `self`             |
 | Available  | Async context only |
@@ -802,7 +801,7 @@ local access = fs.access():create(true)
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
+| `self`    | `Self`             |
 | `create`  | `boolean`          |
 | Return    | `self`             |
 | Available | Async context only |
@@ -817,7 +816,7 @@ local access = fs.access():create_new(true)
 
 | In/Out       | Type               |
 | ------------ | ------------------ |
-| `self`       | `self`             |
+| `self`       | `Self`             |
 | `create_new` | `boolean`          |
 | Return       | `self`             |
 | Available    | Async context only |
@@ -827,17 +826,18 @@ local access = fs.access():create_new(true)
 Opens a file at `url` with the mode specified.
 
 ```lua
-local fd, err = fs.access():read(true):open(Url("/tmp/test.txt"))
+local url = Url("/tmp/test.txt")
+local fd, err = fs.access():read(true):open(url)
 ```
 
 Returns `(fd, err)`:
 
-- `fd`: The [Fd](#fd) (file descriptor) object to work with the file.
+- `fd`: [Fd](#fd) (file descriptor) if the operation succeeds; otherwise, `nil`.
 - `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
+| `self`    | `Self`             |
 | `url`     | `Url`              |
 | Return    | `Fd?, Error?`      |
 | Available | Async context only |
@@ -852,20 +852,16 @@ Writes all `bytes` to the file descriptor.
 
 ```lua
 local url = Url("/tmp/test.txt")
-local fd, err = fs.access():read(true):open(url)
+local fd, err = fs.access():write(true):open(url)
 
 if fd then
 	fd:write_all("Hello, World!")
-	fd:flush()
-
-	-- Calling ya.drop after flush closes the file immediately
-	ya.drop(fd)
 end
 ```
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `self`    | `self`             |
+| `self`    | `Self`             |
 | `bytes`   | `string`           |
 | Return    | `Error?`           |
 | Available | Async context only |
@@ -876,14 +872,11 @@ Flushes the file descriptor, making sure all data gets written to the underlying
 
 ```lua
 local url = Url("/tmp/test.txt")
-local fd, err = fs.access():read(true):open(url)
+local fd, err = fs.access():write(true):open(url)
 
 if fd then
 	fd:write_all("Hello, World!")
 	fd:flush()
-
-	-- Calling ya.drop after flush closes the file immediately
-	ya.drop(fd)
 end
 ```
 
