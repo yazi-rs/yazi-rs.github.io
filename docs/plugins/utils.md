@@ -854,6 +854,11 @@ local ok, err = fd:write_all("Hello, World!")
 assert(ok, err)
 ```
 
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
+
 | In/Out    | Type               |
 | --------- | ------------------ |
 | `self`    | `Self`             |
@@ -874,6 +879,11 @@ assert(fd, err)
 local ok, err = fd:flush()
 assert(ok, err)
 ```
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
 
 | In/Out    | Type               |
 | --------- | ------------------ |
