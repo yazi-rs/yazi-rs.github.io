@@ -425,6 +425,14 @@ cargo install --force --git https://github.com/sxyazi/yazi.git yazi-build
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
 
+## Cargo Binstall {#cargo-binstall}
+
+To install Yazi's binary release with [`cargo-binstall`](https://github.com/cargo-bins/cargo-binstall):
+
+```sh
+cargo binstall yazi-fm
+```
+
 ## Build from source {#source}
 
 Setup the latest stable Rust toolchain via [rustup](https://rustup.rs/):
