@@ -116,7 +116,10 @@ function matchColumns(s) {
 }
 
 function matchParams(s) {
-	return s.split(",").map(s => s.trim().replace(/^\(/, "").replace(/\)$/, "")).filter(s => s !== "")
+	return s
+		.split(",")
+		.map(s => s.trim().replace(/^\(/, "").replace(/\)$/, ""))
+		.filter(s => s !== "")
 }
 
 function matchTypes(s) {
@@ -165,15 +168,18 @@ function stubUi(headers) {
 }
 
 // TODO
-function stubRt(headers) { }
+function stubRt(headers) {}
 
 // TODO
-function stubTh(headers) { }
+function stubTh(headers) {}
 
 function gen(headers) {
 	let s = ""
 	for (const header of headers) {
-		s += header.desc.split("\n").map(s => `-- ${s}`).join("\n")
+		s += header.desc
+			.split("\n")
+			.map(s => `-- ${s}`)
+			.join("\n")
 
 		if (header.alias) {
 			s += `\n---@alias ${header.name} ${header.alias.join("|")}\n`
@@ -185,7 +191,10 @@ function gen(headers) {
 		// Properties
 		for (const child of header.children) {
 			if (child.type) {
-				s += child.desc.split("\n").map(s => `-- ${s}`).join("\n")
+				s += child.desc
+					.split("\n")
+					.map(s => `-- ${s}`)
+					.join("\n")
 				s += `\n---@field ${child.name} ${child.type.join("|")}\n`
 			}
 		}
@@ -193,7 +202,10 @@ function gen(headers) {
 		// Methods
 		for (const child of header.children) {
 			if (child.return && child.name !== "__new") {
-				s += child.desc.split("\n").map(s => `-- ${s}`).join("\n")
+				s += child.desc
+					.split("\n")
+					.map(s => `-- ${s}`)
+					.join("\n")
 				s += `\n---@field ${child.name} fun(`
 				for (const param of child.params) {
 					s += `${param}: `
@@ -207,7 +219,10 @@ function gen(headers) {
 		// Constructor
 		const constructor = header.children.find(c => c.return && c.name === "__new")
 		if (constructor) {
-			s += constructor.desc.split("\n").map(s => `-- ${s}`).join("\n")
+			s += constructor.desc
+				.split("\n")
+				.map(s => `-- ${s}`)
+				.join("\n")
 			s += `\n---@overload fun(`
 			for (const param of constructor.params) {
 				s += `${param}: `
@@ -223,12 +238,19 @@ function gen(headers) {
 }
 
 function normalizeDesc(s) {
-	return s.replaceAll(/[\n\r]+/g, "\n").replaceAll("\t", "  ").trim()
+	return s
+		.replaceAll(/[\n\r]+/g, "\n")
+		.replaceAll("\t", "  ")
+		.trim()
 }
 
 function normalizeType(s) {
-	const re = /\b(?<!ui\.)(Align|Bar|Border|Clear|Constraint|Edge|Gauge|Layout|Line|List|Pad|Pos|Rect|Span|Style|Text|Wrap)\b/g
-	return s.replaceAll("::", "__").replaceAll("Self", "self").replaceAll(re, m => `ui.${m}`)
+	const re =
+		/\b(?<!ui\.)(Align|Bar|Border|Clear|Constraint|Edge|Gauge|Layout|Line|List|Pad|Pos|Rect|Span|Style|Text|Wrap)\b/g
+	return s
+		.replaceAll("::", "__")
+		.replaceAll("Self", "self")
+		.replaceAll(re, m => `ui.${m}`)
 }
 
 function bindSelf(v, to) {
