@@ -115,7 +115,7 @@ Style of current file location in all found files to the right of the filename.
 
 ### `symlink_target` {#mgr.symlink_target}
 
-Style for the path that a symbolic link points to, e.g., the ` -> /path/to/target` part in `my_symbolic_file -> /path/to/target`.
+Style for the path that a symbolic link points to, e.g., the `-> /path/to/target` part in `my_symbolic_file -> /path/to/target`.
 
 |      |                         |
 | ---- | ----------------------- |
