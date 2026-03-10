@@ -836,61 +836,6 @@ Returns `(fd, err)`:
 | Return    | `Fd?, Error?`      |
 | Available | Async context only |
 
-## Fd {#fd}
-
-This object is created by [`Access:open()`](#access.open) and contains the methods for working with the opened file.
-
-### `write_all(self, bytes)` {#fd.write_all}
-
-Writes all `bytes` to the file descriptor.
-
-```lua
-local url = Url("/tmp/test.txt")
-
-local fd, err = fs.access():write(true):open(url)
-assert(fd, err)
-
-local ok, err = fd:write_all("Hello, World!")
-assert(ok, err)
-```
-
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation succeeds, which is a `boolean`.
-- `err`: [`Error`][error] of the failure.
-
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `bytes`   | `string`           |
-| Return    | `boolean, Error?`  |
-| Available | Async context only |
-
-### `flush(self)` {#fd.flush}
-
-Flushes the file descriptor, making sure all data gets written to the underlying storage.
-
-```lua
-local url = Url("/tmp/test.txt")
-
-local fd, err = fs.access():write(true):open(url)
-assert(fd, err)
-
-local ok, err = fd:flush()
-assert(ok, err)
-```
-
-Returns `(ok, err)`:
-
-- `ok`: Whether the operation succeeds, which is a `boolean`.
-- `err`: [`Error`][error] of the failure.
-
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| Return    | `boolean, Error?`  |
-| Available | Async context only |
-
 ## ui {#ui}
 
 APIs related to the user interface.
@@ -1050,6 +995,61 @@ ps.unsub_remote("my-message")
 | ------ | --------- | ----------------- |
 | `kind` | `string`  | Same as `unsub()` |
 | Return | `unknown` | -                 |
+
+## Fd {#fd}
+
+This object is created by [`Access:open()`](#access.open) and contains the methods for working with the opened file.
+
+### `write_all(self, bytes)` {#fd.write_all}
+
+Writes all `bytes` to the file descriptor.
+
+```lua
+local url = Url("/tmp/test.txt")
+
+local fd, err = fs.access():write(true):open(url)
+assert(fd, err)
+
+local ok, err = fd:write_all("Hello, World!")
+assert(ok, err)
+```
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| `bytes`   | `string`           |
+| Return    | `boolean, Error?`  |
+| Available | Async context only |
+
+### `flush(self)` {#fd.flush}
+
+Flushes the file descriptor, making sure all data gets written to the underlying storage.
+
+```lua
+local url = Url("/tmp/test.txt")
+
+local fd, err = fs.access():write(true):open(url)
+assert(fd, err)
+
+local ok, err = fd:flush()
+assert(ok, err)
+```
+
+Returns `(ok, err)`:
+
+- `ok`: Whether the operation succeeds, which is a `boolean`.
+- `err`: [`Error`][error] of the failure.
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `Self`             |
+| Return    | `boolean, Error?`  |
+| Available | Async context only |
 
 ## Command {#command}
 
