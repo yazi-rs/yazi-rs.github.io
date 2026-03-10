@@ -840,7 +840,7 @@ Returns `(fd, err)`:
 
 This object is created by [`Access:open()`](#access.open) and contains the methods for working with the opened file.
 
-### `write_all(self, bytes)`
+### `write_all(self, bytes)` {#fd.write_all}
 
 Writes all `bytes` to the file descriptor.
 
