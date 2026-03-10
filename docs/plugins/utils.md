@@ -866,7 +866,7 @@ Returns `(ok, err)`:
 | Return    | `boolean, Error?`  |
 | Available | Async context only |
 
-### `flush(self)`
+### `flush(self)` {#fd.flush}
 
 Flushes the file descriptor, making sure all data gets written to the underlying storage.
 
