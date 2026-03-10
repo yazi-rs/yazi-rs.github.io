@@ -562,7 +562,7 @@ local access = fs.access()
 
 ### `create(type, url)` {#fs.create}
 
-Create directory/directories at the `url` of the file system:
+Create directories at the given filesystem `url`:
 
 ```lua
 local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
