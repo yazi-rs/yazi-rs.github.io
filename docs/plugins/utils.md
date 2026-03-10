@@ -547,9 +547,22 @@ local ok, err = fs.write(url, "hello world")
 | Return    | `boolean, Error?`  |
 | Available | Async context only |
 
+### `access()` {#fs.access}
+
+Access the file system by returning an [Access](#access) object.
+
+```lua
+local access = fs.access()
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| Return    | `Access`           |
+| Available | Async context only |
+
 ### `create(type, url)` {#fs.create}
 
-Create file(s) at the `url` of the file system:
+Create directory/directories at the `url` of the file system:
 
 ```lua
 local ok, err = fs.create("dir_all", Url("/tmp/test/nest/nested"))
@@ -687,13 +700,19 @@ end
 | Return    | `boolean, Error?`  |
 | Available | Async context only |
 
-### `unique_name(url)` {#fs.unique_name}
+### `unique(type, url)` {#fs.unique}
 
-Get a unique name from the given `url` to ensure it's unique in the file system:
+Create a file or a directory with the unique name from the given `url` to ensure it's unique in the file system:
 
 ```lua
-local url, err = fs.unique_name(Url("/tmp/test.txt"))
+local file_url, err1 = fs.unique("file", Url("/tmp/test.txt"))
+local dir_url, err2 = fs.unique("dir", Url("/tmp/temp"))
 ```
+
+Where `type` can be one of the following:
+
+- `"file"`: Creates a file with the unique name in the file system.
+- `"dir"`: Creates a directory with the unique name in the file system.
 
 If the file already exists, it will append `_n` to the filename, where `n` is a number, and keep incrementing until the first available name is found.
 
@@ -704,8 +723,174 @@ Returns `(url, err)`:
 
 | In/Out    | Type               |
 | --------- | ------------------ |
+| `type`    | `"file"\|"dir"`    |
 | `url`     | `Url`              |
 | Return    | `Url?, Error?`     |
+| Available | Async context only |
+
+## Access {#access}
+
+This object is created by [`fs.access()`](#fs.access) and represents the options for interacting with a file.
+
+### `read(self, read)` {#access.read}
+
+Sets the operation for read access.
+
+```lua
+local access = fs.access():read(true)
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| `read`    | `boolean`          |
+| Return    | `self`             |
+| Available | Async context only |
+
+### `write(self, write)` {#access.write}
+
+Sets the operation for write access.
+
+```lua
+local access = fs.access():write(true)
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| `write`   | `boolean`          |
+| Return    | `self`             |
+| Available | Async context only |
+
+### `append(self, append)` {#access.append}
+
+Sets the operation for the append mode.
+
+```lua
+local access = fs.access():append(true)
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| `append`  | `boolean`          |
+| Return    | `self`             |
+| Available | Async context only |
+
+### `truncate(self, truncate)` {#access.truncate}
+
+Sets the operation for truncating a previous file.
+
+```lua
+local access = fs.access():truncate(true)
+```
+
+| In/Out     | Type               |
+| ---------- | ------------------ |
+| `self`     | `self`             |
+| `truncate` | `boolean`          |
+| Return     | `self`             |
+| Available  | Async context only |
+
+### `create(self, create)` {#access.create}
+
+Sets the operation to create a new file, or open it if it already exists.
+
+```lua
+local access = fs.access():create(true)
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| `create`  | `boolean`          |
+| Return    | `self`             |
+| Available | Async context only |
+
+### `create_new(self, create_new)` {#access.create_new}
+
+Sets the operation to create a new file, failing if it already exists.
+
+```lua
+local access = fs.access():create_new(true)
+```
+
+| In/Out       | Type               |
+| ------------ | ------------------ |
+| `self`       | `self`             |
+| `create_new` | `boolean`          |
+| Return       | `self`             |
+| Available    | Async context only |
+
+### `open(self, url)` {#access.open}
+
+Opens a file at `url` with the mode specified.
+
+```lua
+local fd, err = fs.access():read(true):open(Url("/tmp/test.txt"))
+```
+
+Returns `(fd, err)`:
+
+- `fd`: The [Fd](#fd) (file descriptor) object to work with the file.
+- `err`: [`Error`][error] of the failure.
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| `url`     | `Url`              |
+| Return    | `Fd?, Error?`      |
+| Available | Async context only |
+
+## Fd {#fd}
+
+This object is created by [`Access:open()`](#access.open) and contains the methods for working with the opened file.
+
+### `write_all(self, bytes)`
+
+Writes all `bytes` to the file descriptor.
+
+```lua
+local url = Url("/tmp/test.txt")
+local fd, err = fs.access():read(true):open(url)
+
+if fd then
+	fd:write_all("Hello, World!")
+	fd:flush()
+
+	-- Calling ya.drop after flush closes the file immediately
+	ya.drop(fd)
+end
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| `bytes`   | `string`           |
+| Return    | `Error?`           |
+| Available | Async context only |
+
+### `flush(self)`
+
+Flushes the file descriptor, making sure all data gets written to the underlying storage.
+
+```lua
+local url = Url("/tmp/test.txt")
+local fd, err = fs.access():read(true):open(url)
+
+if fd then
+	fd:write_all("Hello, World!")
+	fd:flush()
+
+	-- Calling ya.drop after flush closes the file immediately
+	ya.drop(fd)
+end
+```
+
+| In/Out    | Type               |
+| --------- | ------------------ |
+| `self`    | `self`             |
+| Return    | `Error?`           |
 | Available | Async context only |
 
 ## ui {#ui}
