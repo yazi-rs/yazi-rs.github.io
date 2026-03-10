@@ -410,7 +410,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
-You can install `yazi-build` via `cargo install`, which will in turn install `yazi-fm` and `yazi-cli`:
+Now you can install `yazi-build` via `cargo`, which will in turn install `yazi-fm` and `yazi-cli`:
 
 ```sh
 cargo install --force yazi-build
