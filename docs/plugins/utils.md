@@ -739,12 +739,11 @@ Sets the operation for read access.
 local access = fs.access():read(true)
 ```
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `read`    | `boolean`          |
-| Return    | `self`             |
-| Available | Async context only |
+| In/Out | Type      |
+| ------ | --------- |
+| `self` | `Self`    |
+| `read` | `boolean` |
+| Return | `self`    |
 
 ### `write(self, write)` {#access.write}
 
@@ -754,12 +753,11 @@ Sets the operation for write access.
 local access = fs.access():write(true)
 ```
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `write`   | `boolean`          |
-| Return    | `self`             |
-| Available | Async context only |
+| In/Out  | Type      |
+| ------- | --------- |
+| `self`  | `Self`    |
+| `write` | `boolean` |
+| Return  | `self`    |
 
 ### `append(self, append)` {#access.append}
 
@@ -769,12 +767,11 @@ Sets the operation for the append mode.
 local access = fs.access():append(true)
 ```
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `append`  | `boolean`          |
-| Return    | `self`             |
-| Available | Async context only |
+| In/Out   | Type      |
+| -------- | --------- |
+| `self`   | `Self`    |
+| `append` | `boolean` |
+| Return   | `self`    |
 
 ### `truncate(self, truncate)` {#access.truncate}
 
@@ -784,12 +781,11 @@ Sets the operation for truncating a previous file.
 local access = fs.access():truncate(true)
 ```
 
-| In/Out     | Type               |
-| ---------- | ------------------ |
-| `self`     | `Self`             |
-| `truncate` | `boolean`          |
-| Return     | `self`             |
-| Available  | Async context only |
+| In/Out     | Type      |
+| ---------- | --------- |
+| `self`     | `Self`    |
+| `truncate` | `boolean` |
+| Return     | `self`    |
 
 ### `create(self, create)` {#access.create}
 
@@ -799,12 +795,11 @@ Sets the operation to create a new file, or open it if it already exists.
 local access = fs.access():create(true)
 ```
 
-| In/Out    | Type               |
-| --------- | ------------------ |
-| `self`    | `Self`             |
-| `create`  | `boolean`          |
-| Return    | `self`             |
-| Available | Async context only |
+| In/Out   | Type      |
+| -------- | --------- |
+| `self`   | `Self`    |
+| `create` | `boolean` |
+| Return   | `self`    |
 
 ### `create_new(self, create_new)` {#access.create_new}
 
@@ -814,12 +809,11 @@ Sets the operation to create a new file, failing if it already exists.
 local access = fs.access():create_new(true)
 ```
 
-| In/Out       | Type               |
-| ------------ | ------------------ |
-| `self`       | `Self`             |
-| `create_new` | `boolean`          |
-| Return       | `self`             |
-| Available    | Async context only |
+| In/Out       | Type      |
+| ------------ | --------- |
+| `self`       | `Self`    |
+| `create_new` | `boolean` |
+| Return       | `self`    |
 
 ### `open(self, url)` {#access.open}
 
