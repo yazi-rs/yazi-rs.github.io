@@ -722,7 +722,7 @@ Returns `(url, err)`:
 
 | In/Out    | Type               |
 | --------- | ------------------ |
-| `type`    | `"file"\|"dir"`    |
+| `type`    | `"file"` \| `"dir"`|
 | `url`     | `Url`              |
 | Return    | `Url?, Error?`     |
 | Available | Async context only |
