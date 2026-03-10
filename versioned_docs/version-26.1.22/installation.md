@@ -410,7 +410,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup update
 ```
 
-Now you can install `yazi-build` via `cargo`, which will in turn install `yazi-fm` and `yazi-cli`:
+### `cargo install` {#cargo-install}
+
+You can install `yazi-build` via `cargo install`, which will in turn install `yazi-fm` and `yazi-cli`:
 
 ```sh
 cargo install --force yazi-build
@@ -423,6 +425,14 @@ cargo install --force --git https://github.com/sxyazi/yazi.git yazi-build
 ```
 
 If it fails to build, please check if `make` and `gcc` is installed on your system.
+
+### `cargo binstall` {#cargo-binstall}
+
+Alternatively, you can install `yazi-fm` via `cargo binstall`, which will install both `yazi-fm` and `yazi-cli` automatically:
+
+```sh
+cargo binstall yazi-fm
+```
 
 ## Build from source {#source}
 
