@@ -22,6 +22,15 @@ Yazi relies on `file(1)` to obtain the file mimetype to run the corresponding op
 
 For Windows, please make sure you have set the `YAZI_FILE_ONE` environment variable as per the [Windows Requirements](/docs/installation#windows).
 
+## Why are the icons not displayed properly? {#icons-incorrect-display}
+
+If your terminal doesn't have Nerd Font support built in, it will render the icons as placeholder characters like squares or question marks, in that case you'll need to manually set your terminal up:
+
+1. Download a Nerd Font from https://www.nerdfonts.com/font-downloads
+   - If your terminal lets you specify a fallback font in addition to the main font, download the `Symbols Nerd Font` and set that as the fallback.
+   - If your terminal only lets you use a single font, choose any patched Nerd Font you like, e.g. `JetBrainsMono Nerd Font`, and set your terminal font to that.
+2. Restart your terminal.
+
 ## Why is my text color not distinct? {#why-text-indistinct}
 
 Yazi's default theme uses base16 colors to match the user's terminal theme as closely as possible.
@@ -75,19 +84,6 @@ For instance, if you realize that you've used `unzip` on the wrong files, and yo
 However, with `orphan=true`, you can only return to the shell to terminate it.
 
 On the other hand, tasks with `orphan=false` are scheduled through the Yazi task system. It can limit the number of concurrent tasks (configurable by the user), to prevent system resource depletion, such as when you're extracting 100 files.
-
-## Why are the icons not displayed properly? {#icons-incorrect-display} 
-  
- If your terminal font does not support the required icon glyphs (for example, Nerd Font symbols or other patched characters), the icons will not render correctly. Instead, you may see empty squares, question marks, or other placeholder characters. 
-  
- You can try to: 
-  
- 1. Install a compatible font (for example, a Nerd Font). 
- 2. Configure your terminal to use that font. 
- 3. Restart your terminal. 
-  
- After switching to a font that includes the necessary glyphs, the icons should display correctly. 
-
 
 ## I don't like nerd‐fonts! {#dont-like-nerd-fonts}
 
