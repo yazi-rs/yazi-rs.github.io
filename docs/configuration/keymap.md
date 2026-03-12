@@ -233,6 +233,10 @@ desc = 'Cd to E:\Pictures'
 
 Check out the [resources page](/docs/resources) for a more comprehensive bookmark plugin.
 
+### `follow` {#mgr.follow}
+
+Follow the hovered file if it's a symbolic link.
+
 ### `reveal` {#mgr.reveal}
 
 Hover over the specified file.
