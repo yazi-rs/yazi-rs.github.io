@@ -279,9 +279,9 @@ Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest an
    - If you installed Git with Scoop, it would be `C:\Users\<Username>\scoop\apps\git\current\usr\bin\file.exe`.
 3. Restart your terminal.
 
-This is **the ONLY way we recommend**. We do not recommend install `file` via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
+This is **the ONLY way we recommend**. We do not recommend installing `file` via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
 
-Most users already have Git installed, and Yazi is also hosted via Git, so this usually isn't an issue. But if you really don't have/want to install it, the [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) plugin can help, which use a extension database instead of relying on the `file(1)` binary.
+Most users already have Git installed, and Yazi is also hosted via Git, so this usually isn't an issue. But if you really don't have/want to install it, the [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) plugin can help, as it uses an extension database instead of relying on the `file(1)` binary.
 
 ### Install with Scoop
 

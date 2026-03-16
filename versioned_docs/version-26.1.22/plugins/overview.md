@@ -341,7 +341,7 @@ ya.dbg(target_str) -- No error
 
 ## Debugging {#debugging}
 
-Please ensure that your `~/.config/yazi/init.lua` includes valid Lua code with the correct syntax, otherwise will result in Yazi being unable to parse and execute your `init.lua` to initialize.
+Please ensure that your `~/.config/yazi/init.lua` contains valid Lua code with correct syntax; otherwise, Yazi will be unable to parse and execute `init.lua` to initialize.
 
 We recommend installing a Lua plugin in your editor for syntax checking to avoid any syntax errors.
 For example, install the [Lua plugin](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) for VSCode, and for Neovim, use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) to configure your Lua LSP.

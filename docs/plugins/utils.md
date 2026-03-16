@@ -313,7 +313,7 @@ Run a function asynchronously on the main thread.
 local function entry()
 	local cwd = cx.active.current.cwd
 	ya.async(function ()
-		ya.dbg(cwd)    -- `cwd` is a Url, which is sendable
+		ya.dbg(cwd)    -- `cwd` is a Url and is sendable
 	end)
 end
 
@@ -1297,9 +1297,9 @@ local line, event = child:read_line_with {
 }
 ```
 
-It has a extra event:
+It has an extra event:
 
-- Timeout, if event is 3.
+- Timeout, if `event` is 3.
 
 | In/Out | Type                   |
 | ------ | ---------------------- |

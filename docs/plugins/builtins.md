@@ -46,9 +46,9 @@ Click <kbd>Z</kbd> to launch the interactive zoxide UI. Please ensure that:
 
 ### Options
 
-| Option             | Description                                                |
-| ------------------ | ---------------------------------------------------------- |
-| `update_db` (bool) | Add the path to zoxide database whenever you switches CWD. |
+| Option             | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| `update_db` (bool) | Add the path to zoxide database whenever you change CWD. |
 
 You can _optionally_ change certain options in your `init.lua` like this:
 

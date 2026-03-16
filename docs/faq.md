@@ -43,11 +43,11 @@ So, please [use a Yazi flavor](https://github.com/yazi-rs/flavors) that matches 
 
 The decision to separate `enter` and `open` actions was intentional.
 
-Yazi will be adding the ability to treat an archive as a directory in the future, allowing direct operations on the files inside.
+In the future, Yazi will support "archives as directories", allowing direct operations on the files inside.
 
-An archive is a file, so it's "openable", but it's also "enterable" as a directory; so the user can choose the action they want to do.
+An archive is a file, so it's "openable", but it's also "enterable" as a directory, allowing users to choose the action they want to take.
 
-This is true for a actual directory as well - a directory can be entered (in Yazi), or opened (in programs like VSCode or desktop file managers).
+This is also true for an actual directory: it can be entered in Yazi or opened in programs like VS Code or desktop file managers.
 
 If you truly don't need to distinguish between them, use this [smart-enter tip](/docs/tips#smart-enter).
 
@@ -55,9 +55,9 @@ If you truly don't need to distinguish between them, use this [smart-enter tip](
 
 TL;DR: Use a flavor for Yazi, https://github.com/yazi-rs/flavors
 
-This might be a bug in kitty (or feature? I don't know). In kitty, you have to add a style to file list items (like foreground color) to make the icons match the text size. However, Yazi's default theme can't add that color, because it can't predict whether the user's terminal has a white background with black text, or a black background with white text.
+This might be a bug in kitty (or feature? I don't know). In kitty, you have to add a style to file list items (such as a foreground color) to make the icons match the text size. However, Yazi's default theme can't add that color, because it can't predict whether the user's terminal has a white background with black text or a black background with white text.
 
-So it inherits the default terminal font color. This causes the icon size issue, and I've only found this problem in kitty - other terminals don't have it. Therefore, please use a Yazi flavor for the kitty terminal.
+So it inherits the default terminal font color. This causes the icon size issue, and this problem has only been observed in kitty. Therefore, please use a Yazi flavor with kitty.
 
 ## How to troubleshoot terminal response timeout errors? {#trt}
 

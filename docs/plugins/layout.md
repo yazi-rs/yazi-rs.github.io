@@ -438,7 +438,7 @@ Make a new style.
 ui.Span("foo")
 ```
 
-For convenience, `ui.Span` can also accept itself as a argument:
+For convenience, `ui.Span` can also accept another `ui.Span` as an argument:
 
 ```lua
 ui.Span(ui.Span("bar"))

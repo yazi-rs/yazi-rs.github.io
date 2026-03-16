@@ -55,7 +55,7 @@ Display directories first.
 
 ### `sort_translit` {#mgr.sort_translit}
 
-Transliterate filenames for sorting (i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.), only available if [`sort_by = "natural"`](#mgr.sort_by).
+Transliterate filenames for sorting (i.e. replace `Â` with `A`, `Æ` with `AE`, etc.), only available if [`sort_by = "natural"`](#mgr.sort_by).
 
 This is useful for files that contain Hungarian characters.
 
@@ -73,7 +73,7 @@ Line mode: display information associated with the file on the right side of the
 - `"permissions"`: Display the permissions of the file, only available on Unix-like systems.
 - `"owner"`: Display the owner of the file, only available on Unix-like systems.
 
-You can also specify any 1 to 20 characters, and extend it within a UI plugin, which means you can implement your own linemode through the plugin system like this:
+You can also specify any string from 1 to 20 characters and extend it with a UI plugin, which means you can implement your own linemode through the plugin system like this:
 
 ```toml
 # ~/.config/yazi/yazi.toml
@@ -107,7 +107,7 @@ Show hidden files.
 
 ### `show_symlink` {#mgr.show_symlink}
 
-Show the path of the symlink file point to, after the filename.
+Show the path that the symlink points to after the filename.
 
 - `true`: Show
 - `false`: Do not show
@@ -155,13 +155,13 @@ The width of a tab character (`\t`) in spaces.
 
 ### `max_width` {#preview.max_width}
 
-Maximum preview width for images. Do a `yazi --clear-cache` to take effect after changing this.
+Maximum preview width for images. Run `yazi --clear-cache` after changing this for it to take effect.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
 ### `max_height` {#preview.max_height}
 
-Maximum preview height for images. Do a `yazi --clear-cache` to take effect after changing this.
+Maximum preview height for images. Run `yazi --clear-cache` after changing this for it to take effect.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
@@ -175,7 +175,7 @@ If you want to make it more persistent, you can specify the cache directory manu
 
 Wait for at least the specified milliseconds before starting to send image preview data to the terminal.
 
-This is to alleviate lag caused by some terminal emulators struggling to render images Yazi sent in time, when users scroll through the file list quickly.
+This is to alleviate lag caused by some terminal emulators struggling to render images sent by Yazi in time when users scroll through the file list quickly.
 
 See https://github.com/sxyazi/yazi/pull/1512 for more information.
 
@@ -366,7 +366,7 @@ append_previewers = [
 
 If your `append_previewers` contains wildcard `url` rules (`"*"` or `"*/"`), they will always take precedence over the default wildcard rules as the fallback.
 
-Yazi comes with the these previewer plugins:
+Yazi comes with these previewer plugins:
 
 - folder: bridge between the Yazi filesystem and the preview
 - code: bridge between built-in code highlighting and the preview, providing async concurrent rendering
@@ -399,7 +399,7 @@ prepend_preloaders = [
 ]
 ```
 
-Yazi comes with the these preloader plugins:
+Yazi comes with these preloader plugins:
 
 - mime: preloads mime-type of files in chunks
 - noop: no operation
@@ -418,7 +418,7 @@ Control the cursor blinking.
 - `true`: Blink.
 - `false`: Do not blink.
 
-You can customize the title and position of each input. There are following inputs: `cd`, `create`, `rename`, `filter`, `find`, `search` and `shell`. To change their configuration use the underscore between the name and the option, like `cd_origin`.
+You can customize the title and position of each input. The following inputs are available: `cd`, `create`, `rename`, `filter`, `find`, `search` and `shell`. To change their configuration, use an underscore between the name and the option, like `cd_origin`.
 
 As for position, it consists of two parts: [Origin](#input.origin) and [Offset](#input.offset).
 The origin is the top-left corner of the input, and the offset is the increment from this origin. Together, they determine the area of the input on the screen.
@@ -497,7 +497,7 @@ Display candidates in reverse order.
 
 ### `sort_translit` {#which.sort_translit}
 
-Transliterate filenames for sorting, i.e. replaces `Â` as `A`, `Æ` as `AE`, etc.
+Transliterate filenames for sorting, i.e. replace `Â` with `A`, `Æ` with `AE`, etc.
 
 This is useful for files that contain Hungarian characters.
 
