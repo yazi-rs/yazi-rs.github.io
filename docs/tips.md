@@ -274,7 +274,7 @@ To make it work, make sure you've:
    ```
    in your `~/.config/mpv/mpv.conf`. See [the documentation of `--input-ipc-server`](https://mpv.io/manual/stable/#options-input-ipc-server) for more info.
 
-## Linux: Grid view with Rofi
+## Linux: Grid view with Rofi {#grid-view}
 
 This tip lets you preview thumbnails in the current directory using [Rofi](https://github.com/davatorium/rofi/), selecting an item reveals it in Yazi:
 
