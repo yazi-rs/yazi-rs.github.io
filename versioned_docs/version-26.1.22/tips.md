@@ -139,7 +139,7 @@ Then enable it in your `~/.config/yazi/init.lua`:
 require("folder-rules"):setup()
 ```
 
-Credits to [@tianze0926 for sharing it](https://github.com/sxyazi/yazi/issues/623#issuecomment-2096270843).
+Thanks to @tianze0926 for [sharing it](https://github.com/sxyazi/yazi/issues/623#issuecomment-2096270843).
 
 ## Folder-specific previewer and preloader {#folder-previewer}
 
@@ -233,7 +233,7 @@ on  = "y"
 run = [ "shell -- echo %s | xclip -i -selection clipboard -t text/uri-list", "yank" ]
 ```
 
-The above is available on X11, there is also a Wayland version (Thanks [@hurutparittya for sharing this](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in Yazi's discord server):
+The above is available on X11, there is also a Wayland version (Thanks to @hurutparittya for [sharing it](https://discord.com/channels/1136203602898194542/1136203604076802092/1188498323867455619) in the Discord server):
 
 ```toml
 [[mgr.prepend_keymap]]
@@ -249,7 +249,7 @@ on = [ "g", "r" ]
 run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
 ```
 
-Credits to [@aidanzhai for sharing it](https://t.me/yazi_rs/3325/15373) in Yazi's telegram group.
+Thanks to @aidanzhai for [sharing it](https://t.me/yazi_rs/3325/15373) in the Telegram group.
 
 ## Unix: Add subtitle to the running MPV {#mpv-subtitle}
 
@@ -273,6 +273,26 @@ To make it work, make sure you've:
    input-ipc-server=/tmp/mpv.sock
    ```
    in your `~/.config/mpv/mpv.conf`. See [the documentation of `--input-ipc-server`](https://mpv.io/manual/stable/#options-input-ipc-server) for more info.
+
+## Linux: Grid view with Rofi
+
+This tip lets you preview thumbnails in the current directory using [Rofi](https://github.com/davatorium/rofi/), selecting an item reveals it in Yazi:
+
+```toml
+# ~/.config/yazi/keymap.toml
+[[mgr.prepend_keymap]]
+on   = "<C-g>"
+run  = 'shell -- rofi -theme fullscreen-preview -show filebrowser -filebrowser-command "ya emit reveal" -filebrowser-directory "$(pwd)"'
+desc = "Grid view"
+```
+
+Rofi themes: https://davatorium.github.io/rofi/themes/themes
+
+<details>
+  <summary>Demonstrate grid view</summary>
+	<p>Original post on the Discord server: https://discord.com/channels/1136203602898194542/1136203604076802092/1312811541300772934</p>
+	<video src="https://github.com/user-attachments/assets/a79b13d3-612e-43a5-9ffb-9ddf1549766c" width="100%" controls muted></video>
+</details>
 
 ## Maximize preview pane {#max-preview}
 
@@ -378,7 +398,7 @@ on  = "q"
 run = "plugin confirm-quit"
 ```
 
-Credits to [@lpnh for sharing it](https://github.com/sxyazi/yazi/issues/2267#issuecomment-2624805134).
+Thanks to @lpnh for [sharing it](https://github.com/sxyazi/yazi/issues/2267#issuecomment-2624805134).
 
 ## No status bar {#no-status-bar}
 
@@ -448,7 +468,7 @@ on = "<C-p>"
 run = "shell -- qlmanage -p %s"
 ```
 
-Credits to [@UncleGravity for sharing it](https://discord.com/channels/1136203602898194542/1146658361740369960/1293471643959558156) in Yazi's discord server.
+Thanks to @UncleGravity for [sharing it](https://discord.com/channels/1136203602898194542/1146658361740369960/1293471643959558156) in the Discord server.
 
 ## Specify a different editor for bulk renaming {#bulk-editor}
 
