@@ -501,98 +501,30 @@ The `xdg-desktop-portal-termfilechooser` backend lets you replace the default fi
 
 For installation steps, refer to the [installation guide](https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser?tab=readme-ov-file#installation) and additional instructions available there.
 
-## File tree picker in Helix with Zellij {#helix-with-zellij}
+## File tree picker in Helix {#helix}
 
-Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a Zellij session).
-
-Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
+Yazi can be used as a file picker to browse and open file(s) in Helix with a keybind, e.g. <kbd>Ctrl</kbd> + <kbd>y</kbd>:
 
 ```toml
 # ~/.config/helix/config.toml
 [keys.normal]
-C-y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
+C-y = [
+	':sh rm -f /tmp/unique-ca1ea106',
+	':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106',
+	':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+	':open %sh{cat /tmp/unique-ca1ea106}',
+	':redraw',
+	':set mouse false',
+  ':set mouse true',
+]
 ```
 
-If you also want the ability to open files in split panes, you can define additional keybindings:
-
-```toml
-# ~/.config/helix/config.toml
-[keys.normal.C-y]
-# Open the file(s) in the current window
-y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh open %{buffer_name}"
-# Open the file(s) in a vertical split
-v = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh vsplit %{buffer_name}"
-# Open the file(s) in a horizontal split
-h = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.config/helix/yazi-picker.sh hsplit %{buffer_name}"
-```
-
-Then save the following script as `~/.config/helix/yazi-picker.sh`:
-
-```sh
-#!/usr/bin/env bash
-
-paths=$(yazi "$2" --chooser-file=/dev/stdout | while read -r; do printf "%q " "$REPLY"; done)
-
-if [[ -n "$paths" ]]; then
-	zellij action toggle-floating-panes
-	zellij action write 27 # send <Escape> key
-	zellij action write-chars ":$1 $paths"
-	zellij action write 13 # send <Enter> key
-else
-	zellij action toggle-floating-panes
-fi
-```
-
-Note: this uses a floating window, but you should also be able to open a new pane to the side, or in place. Review the Zellij documentation for more info.
-
-Original post: https://github.com/zellij-org/zellij/issues/3018#issuecomment-2086166900, credits to [@rockboynton](https://github.com/rockboynton), [@postsolar](https://github.com/postsolar), [@TheAwiteb](https://github.com/TheAwiteb) and [@Dreaming-Codes](https://github.com/Dreaming-Codes) for sharing and polishing it!
+Original post: https://github.com/sxyazi/yazi/pull/2461
 
 <details>
-  <summary>Demonstrate Helix+Zellij+Yazi workflow</summary>
-	<video src="https://github.com/helix-editor/helix/assets/17523360/a4dde9e0-96bf-42a4-b946-40cbee984e69" width="100%" controls muted></video>
+  <summary>Demonstrate Helix+Yazi workflow</summary>
+	<video src="https://github.com/user-attachments/assets/17a370d5-ee50-4cfa-8292-ed3159058ac6" width="100%" controls muted></video>
 </details>
-
-## File tree picker in Helix with tmux {#helix-with-tmux}
-
-Yazi can be used as a file picker to browse and open file(s) in your current Helix instance (running in a tmux session).
-
-Add a keymap to your Helix config, for example <kbd>Ctrl</kbd> + <kbd>y</kbd>:
-
-```toml
-# ~/.config/helix/config.toml
-[keys.normal]
-C-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
-```
-
-If you also want the ability to open files in split panes, you can define additional keybindings:
-
-```toml
-# ~/.config/helix/config.toml
-[keys.normal.C-y]
-# Open file(s) in the current window
-y = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh open'"
-# Open file(s) in a vertical split
-v = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh vsplit'"
-# Open file(s) in a horizontal split
-h = ":sh tmux new-window -n fx '~/.config/helix/yazi-picker.sh hsplit'"
-```
-
-Then save the following script as `~/.config/helix/yazi-picker.sh`:
-
-```sh
-#!/usr/bin/env bash
-
-paths=$(yazi --chooser-file=/dev/stdout)
-
-if [[ -n "$paths" ]]; then
-	tmux last-window
-	tmux send-keys Escape
-	tmux send-keys ":$1 $paths"
-	tmux send-keys Enter
-else
-	tmux kill-window -t fx
-fi
-```
 
 ## Email selected files
 
