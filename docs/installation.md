@@ -237,6 +237,7 @@ Then you can install Yazi (and the optional dependencies):
 
 ```sh
 brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
+brew link ffmpeg-full imagemagick-full -f --overwrite
 ```
 
 If you prefer to use the most recent code, use the `--HEAD` flag when installing Yazi.
