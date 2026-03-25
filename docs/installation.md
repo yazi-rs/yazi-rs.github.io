@@ -393,6 +393,18 @@ sudo oma install yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 x env use yazi ffmpeg 7zz jq fd rg fzf zoxide magick
 ```
 
+## Pypi {#pypi}
+
+You can install `yazi` and `ya` both by installing [yazi-bin](https://pypi.org/project/yazi-bin/) package from Pypi.
+
+```sh
+pipx install yazi-bin
+# OR
+uv tool install yazi-bin
+```
+
+Since Python is present in every machine by default today, this is a really easy way to install Yazi and use on your (remote) machines.
+
 ## Official binaries {#binaries}
 
 You can download the latest official binaries from GitHub Releases: https://github.com/sxyazi/yazi/releases
