@@ -381,6 +381,18 @@ alias yazi="flatpak run io.github.sxyazi.yazi"
 
 See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
 
+## PyPI {#pypi}
+
+:::info
+This uses an [unofficial PyPI package](https://github.com/Bing-su/pip-binary-factory) maintained by [Dowon](https://github.com/Bing-su).
+:::
+
+```sh
+pipx install yazi-bin
+# Or
+uv tool install yazi-bin
+```
+
 ## AOSC OS {#aosc}
 
 ```sh
@@ -392,18 +404,6 @@ sudo oma install yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 ```sh
 x env use yazi ffmpeg 7zz jq fd rg fzf zoxide magick
 ```
-
-## Pypi {#pypi}
-
-You can install `yazi` and `ya` both by installing [yazi-bin](https://pypi.org/project/yazi-bin/) package from Pypi.
-
-```sh
-pipx install yazi-bin
-# OR
-uv tool install yazi-bin
-```
-
-Since Python is present in every machine by default today, this is a really easy way to install Yazi and use on your (remote) machines.
 
 ## Official binaries {#binaries}
 
