@@ -381,6 +381,18 @@ alias yazi="flatpak run io.github.sxyazi.yazi"
 
 See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
 
+## PyPI {#pypi}
+
+:::info
+This uses an [unofficial PyPI package](https://github.com/Bing-su/pip-binary-factory) maintained by [Dowon](https://github.com/Bing-su).
+:::
+
+```sh
+pipx install yazi-bin
+# Or
+uv tool install yazi-bin
+```
+
 ## AOSC OS {#aosc}
 
 ```sh
