@@ -29,6 +29,10 @@ Archives:
 - [zless-preview.yazi](https://github.com/vmikk/zless-preview.yazi) - Preview compressed text files using `zless`.
 - [comicthumb.yazi](https://github.com/navysky12/comicthumb.yazi) - Preview for comicbook archive files using p7zip on Linux.
 
+Binaries:
+
+- [exiftool.yazi](https://github.com/AleMenon/exiftool.yazi) - Preview metadata from executable files using `exiftool`.
+
 Documents:
 
 - [djvu-view.yazi](https://github.com/Shallow-Seek/djvu-view.yazi) - Preview Djvu using `ddjvu` from [djvulibre](https://github.com/DjvuNet/DjVuLibre)
