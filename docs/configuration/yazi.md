@@ -222,7 +222,7 @@ edit = [
 	{ run = "%EDITOR% %s", block = true, for = "windows" },
 ]
 open = [
-	{ run = "xdg-open %s", desc = "Open" },
+	{ run = "xdg-open %s1", desc = "Open" },
 ]
 # ...
 ```
