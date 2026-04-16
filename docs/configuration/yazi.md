@@ -286,8 +286,8 @@ rules = [
 
 Available rule options are as follows:
 
-- `url`: Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
-- `mime`: Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `url`: Glob expression for file URL matching. Case-insensitive by default, prepend `\s` to make it sensitive.
+- `mime`: Glob expression for MIME-type matching. Case-insensitive by default, prepend `\s` to make it sensitive.
 - `use`: Opener name corresponding to the names in the [`[opener]` section](#opener).
 
 With that:
@@ -334,20 +334,20 @@ TODO
 You can prepend or append new fetchers to the default `fetchers` under `[plugin]` by `prepend_fetchers` and `append_fetchers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `id` (String): Fetcher's ID.
-- `url` (String): Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
-- `run` (String): The name of the Lua plugin to be run.
-- `if` (String): Execute the fetcher based on this condition.
-- `prio` (String): The priority of the task. One of `high`, `normal` or `low`.
+- `url`: Glob expression for file URL matching. Case-insensitive by default, prepend `\s` to make it sensitive.
+- `run`: Name of the Lua plugin to be run.
+- `if`: Run the fetcher only if the condition is met.
+- `prio`: Task scheduling priority. One of `high`, `normal` or `low`.
+- `group`: Group of the fetcher. Only the first matching fetcher in the same group will be run.
 
 ### previewers {#plugin.previewers}
 
 You can prepend or append new preview rules to the default `previewers` under `[plugin]` by `prepend_previewers` and `append_previewers`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `url` (String): Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
-- `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
-- `run` (String): The name of the Lua plugin to be run.
+- `url` (String): Glob expression for file URL matching. Case-insensitive by default, prepend `\s` to make it sensitive.
+- `mime` (String): Glob expression for MIME-type matching. Case-insensitive by default, prepend `\s` to make it sensitive.
+- `run` (String): Name of the Lua plugin to be run.
 
 ```toml
 [plugin]
@@ -384,11 +384,11 @@ If you want to create your own previewer, see [Previewer API](/docs/plugins/over
 You can prepend or append new preview rules to the default `preloaders` under `[plugin]` by `prepend_preloaders` and `append_preloaders`, see [Configuration mixing](/docs/configuration/overview#mixing) for details.
 Here are the available options for a single rule:
 
-- `url` (String): Glob expression for matching the file URL. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
-- `mime` (String): Glob expression for matching the mime-type. Case-insensitive by default, add `\s` to the beginning to make it sensitive.
+- `url` (String): Glob expression for file URL matching. Case-insensitive by default, prepend `\s` to make it sensitive.
+- `mime` (String): Glob expression for MIME-type matching. Case-insensitive by default, prepend `\s` to make it sensitive.
 - `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `url` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
   - `mime`: This file has a mime-type.
-- `run` (String): The name of the Lua plugin to be run.
+- `run` (String): Name of the Lua plugin to be run.
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
 
 ```toml
