@@ -127,7 +127,8 @@ if not exist "%tmpfile%" exit /b 0
 
 :: If the file exist, then read the content and change the directory
 set /p cwd=<"%tmpfile%"
-if not "%cwd%"=="" if exist "%cwd%\NUL" (
+if not "%cwd:~-1%"=="\" set "cwd=%cwd%\"
+if not "%cwd%"=="" if exist "%cwd%" (
 	cd /d "%cwd%"
 )
 del "%tmpfile%"
