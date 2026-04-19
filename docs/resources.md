@@ -96,6 +96,7 @@ File actions:
 - [lazygit.yazi](https://github.com/Lil-Dank/lazygit.yazi) - Manage Git directories with [lazygit](https://github.com/jesseduffield/lazygit) with a quick shortcut.
 - [open-git-remote.yazi](https://github.com/larry-oates/open-git-remote.yazi) - Shortcut to open a git remote's webpage for the current yazi directory
 - [sudo.yazi](https://github.com/TD-Sky/sudo.yazi) - Execute specific file operations with `sudo` privileges.
+- [replace.yazi](https://github.com/shuizhongyueming/replace.yazi) - Replace the currently hovered file/folder with previously yanked items.
 - [restore.yazi](https://github.com/boydaihungst/restore.yazi) - Restore/recover latest deleted files/folders using `trash-cli`.
 - [recycle-bin.yazi](https://github.com/uhs-robert/recycle-bin.yazi) - Manage your Trash from Yazi: browse contents, restore or delete selected items, empty by age, or empty completely using `trash-cli`.
 - [omni-trash.yazi](https://github.com/goon/omni-trash.yazi) - Manage your trash across all drives in a single unified interface using `trash-cli` to delete and restore selected items or empty every trash directory at once.
