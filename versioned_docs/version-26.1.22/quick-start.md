@@ -29,7 +29,7 @@ function y() {
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+	command rm -f -- "$tmp"
 }
 ```
 
@@ -43,7 +43,7 @@ function y
 	if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
 		builtin cd -- "$cwd"
 	end
-	rm -f -- "$tmp"
+	command rm -f -- "$tmp"
 end
 ```
 
@@ -70,7 +70,7 @@ y() {
 	set -- "$@" --cwd-file "$(mktemp -t yazi-cwd.XXXXXX)"
 	command yazi "$@"
 	shift $(($# - 1))
-	set -- "$(command cat < "$1"; printf .; rm -f -- "$1")"
+	set -- "$(command cat < "$1"; printf .; command rm -f -- "$1")"
 	set -- "${1%.}"
 	[ "$1" != "$PWD" ] && [ -d "$1" ] && command cd -- "$1"
 }
