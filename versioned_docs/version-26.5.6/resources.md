@@ -112,6 +112,7 @@ Clipboard:
 - [wl-clipboard.yazi](https://github.com/grappas/wl-clipboard.yazi) - Wayland implementation of a simple system clipboard.
 - [path-from-root.yazi](https://github.com/aresler/path-from-root.yazi) - Copy file path relative to git root
 - [clippy.yazi](https://github.com/gallardo994/clippy.yazi) - Copy files to clipboard with Clippy on macOS
+- [relative-path.yazi](https://github.com/qwjyh/relative-path.yazi) - Copy file path relative to current working directory.
 
 `filter` enhancements:
 
@@ -198,6 +199,7 @@ Vim:
 
 - [icons-brew.yazi](https://github.com/lpnh/icons-brew.yazi) - Make a hot `theme.toml` for your Yazi icons with your favorite color palette.
 - [lsColorsToToml](https://github.com/Mellbourn/lsColorsToToml) - Generate the color rules for the `[filetype]` section in `theme.toml` based on your `$LS_COLORS`.
+- [osc7.yazi](https://github.com/coder0x6675/osc7.yazi) - Synchronize the terminal's working directory to Yazi.
 
 ## 💖 Add yours {#add-yours}
 

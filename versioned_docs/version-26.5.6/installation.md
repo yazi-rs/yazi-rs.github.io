@@ -304,17 +304,18 @@ resvg is not yet on WinGet, install with Scoop or manually download from [resvg]
 
 ## Debian based Linux {#debian}
 
-In Debian/Ubuntu, you currently need to [manually build Yazi](/docs/installation#source) or [download our official binary release](/docs/installation#binaries).
-
-You can install the optional dependencies with:
+:::info
+This uses an [unofficial deb repository](https://github.com/dariogriffo/yazi-debian) maintained by [Dario Griffo](https://github.com/dariogriffo).
+:::
 
 ```sh
-apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep fzf zoxide imagemagick
+curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
+echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
+sudo apt update
+sudo apt install yazi
 ```
 
-Note that these dependencies are quite old on some Debian/Ubuntu versions and may cause Yazi to malfunction. In that case, you will need to manually build them from the latest source.
-
-If you know how to package Yazi for Debian/Ubuntu and would like to help us submit it, please [file an issue](https://github.com/sxyazi/yazi/issues/new/choose).
+This will install Yazi and its dependencies. Note that, some deps are pretty outdated and might cause Yazi to malfunction, in that case you'll need to build them from the latest source manually.
 
 ## Fedora/Centos Stream 9+/RHEL 9+ {#copr}
 
@@ -379,6 +380,18 @@ alias yazi="flatpak run io.github.sxyazi.yazi"
 ```
 
 See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
+
+## PyPI {#pypi}
+
+:::info
+This uses an [unofficial PyPI package](https://github.com/Bing-su/pip-binary-factory) maintained by [Dowon](https://github.com/Bing-su).
+:::
+
+```sh
+pipx install yazi-bin
+# Or
+uv tool install yazi-bin
+```
 
 ## AOSC OS {#aosc}
 
