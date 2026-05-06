@@ -305,7 +305,7 @@ Apply a foreground color.
 | ------- | ------------------------------------------- |
 | `self`  | `Self`                                      |
 | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
-| Return  | `self`                                      |
+| Return  | `Self`                                      |
 
 ### `bg(self, color)` {#style.bg}
 
@@ -315,7 +315,7 @@ Apply a background color.
 | ------- | ------------------------------------------- |
 | `self`  | `Self`                                      |
 | `color` | [`AsColor`](/docs/plugins/aliases#as-color) |
-| Return  | `self`                                      |
+| Return  | `Self`                                      |
 
 ### `bold(self)` {#style.bold}
 
@@ -324,7 +324,7 @@ Apply a bold style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `dim(self)` {#style.dim}
 
@@ -333,7 +333,7 @@ Apply a dim style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `italic(self)` {#style.italic}
 
@@ -342,7 +342,7 @@ Apply an italic style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `underline(self)` {#style.underline}
 
@@ -351,7 +351,7 @@ Apply an underline style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `blink(self)` {#style.blink}
 
@@ -362,18 +362,16 @@ Note that this style may not be supported by all terminals.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `blink_rapid(self)` {#style.blink_rapid}
 
-Apply a rapid blink style.
-
-Note that this style may not be supported by all terminals.
+Apply a rapid blink style. Not all terminals support this.
 
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `reverse(self)` {#style.reverse}
 
@@ -382,7 +380,7 @@ Apply a reverse style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `hidden(self)` {#style.hidden}
 
@@ -391,7 +389,7 @@ Apply a hidden style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `crossed(self)` {#style.crossed}
 
@@ -400,7 +398,7 @@ Apply a crossed style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `reset(self)` {#style.reset}
 
@@ -409,26 +407,26 @@ Apply a reset style.
 | In/Out | Type   |
 | ------ | ------ |
 | `self` | `Self` |
-| Return | `self` |
+| Return | `Self` |
 
 ### `patch(self, another)` {#style.patch}
 
-Patch the style with `another`.
+Patch the style with `other`.
 
-| In/Out    | Type                            |
-| --------- | ------------------------------- |
-| `self`    | `Self`                          |
-| `another` | `Self`                          |
-| Return    | `self`                          |
-| Private   | This method can't be inherited. |
+| In/Out  | Type                            |
+| ------- | ------------------------------- |
+| `self`  | `Self`                          |
+| `other` | `Self`                          |
+| Return  | `Self`                          |
+| Private | This method can't be inherited. |
 
 ### `__new()` {#style.\_\_new}
 
 Make a new style.
 
-| In/Out  | Type    |
-| ------- | ------- |
-| Return  | `Self`  |
+| In/Out | Type   |
+| ------ | ------ |
+| Return | `Self` |
 
 ## Span {#span}
 

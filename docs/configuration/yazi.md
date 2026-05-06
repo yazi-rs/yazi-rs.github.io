@@ -132,14 +132,6 @@ If the array is empty, disable the mouse.
 
 Usually, you don't need to change it, unless the plugin you're using requires enabling a certain event.
 
-### `title_format` {#mgr.title_format}
-
-The terminal title format, which is a string with the following placeholders available:
-
-- `{cwd}` - current working directory
-
-If you don't want Yazi to automatically update the title, set it to an empty string (`""`).
-
 ## [preview] {#preview}
 
 ### `wrap` {#preview.wrap}
@@ -297,13 +289,25 @@ With that:
 
 ## [tasks] {#tasks}
 
-### `micro_workers` {#tasks.micro_workers}
+### `file_workers` {#tasks.file_workers}
 
-Maximum number of concurrent micro-tasks.
+Max concurrent file operations, such as copy, cut, delete, etc.
 
-### `macro_workers` {#tasks.macro_workers}
+### `plugin_workers` {#tasks.plugin_workers}
 
-Maximum number of concurrent macro-tasks.
+Max concurrent functional-plugin tasks.
+
+### `fetch_workers` {#tasks.fetch_workers}
+
+Max concurrent fetch tasks.
+
+### `preload_workers` {#tasks.preload_workers}
+
+Max concurrent preload tasks.
+
+### `process_workers` {#tasks.process_workers}
+
+Max concurrent processes.
 
 ### `bizarre_retry` {#tasks.bizarre_retry}
 
