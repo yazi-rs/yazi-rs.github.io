@@ -390,8 +390,6 @@ Here are the available options for a single rule:
 
 - `url` (String): Glob expression for file URL matching. Case-insensitive by default, prepend `\s` to make it sensitive.
 - `mime` (String): Glob expression for MIME-type matching. Case-insensitive by default, prepend `\s` to make it sensitive.
-- `cond` (String): Conditional expression – Only rules that meet this condition and satisfy either the `url` or `mime` will be applied. For example, `A & B` means A and B, and `A | !B` means A or not B. Here are the available factors:
-  - `mime`: This file has a mime-type.
 - `run` (String): Name of the Lua plugin to be run.
 - `prio` (String): Preload priority, `low`, `normal` or `high`. The default is `normal` if not specified.
 
