@@ -123,7 +123,7 @@ Clipboard:
 - [smart-enter.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi) - `Open` files or `enter` directories all in one key!
 - [bypass.yazi](https://github.com/Rolv-Apneseth/bypass.yazi) - Yazi plugin for skipping directories with only a single sub-directory.
 - [fast-enter.yazi](https://github.com/ourongxing/fast-enter.yazi) - Auto-decompress archives and enter them, or enter the deepest directory until it's not the only subdirectory.
-- [wise-enter.yazi](https://github.com/jaam8/wise-enter.yazi) - Yazi plugin: enter the deepest subfolder, extract archives, open files - all in one key.
+- [wise-enter.yazi](https://github.com/jaam8/wise-enter.yazi) - Enter the deepest subfolder, extract archives, open files - all in one key.
 
 `shell` enhancements:
 
