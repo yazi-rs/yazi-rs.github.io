@@ -480,14 +480,14 @@ For bulk renaming, Yazi finds the first matching opener in your [`[open]`](/docs
 | `url`   | `"bulk-rename.txt"` |
 | `mime`  | `"text/plain"`      |
 
-to use as the editor for editing the file list.
+to use as the editor for editing the file list, and wait for the command to finish to know editing is finished.
 
 By default, this matches your editor used for opening normal text files, if you want to use an editor different from that:
 
 ```toml
 # ~/.config/yazi/yazi.toml
 [[opener.bulk-rename]]
-run   = "hx %s"
+run   = "code --wait %s"
 block = true
 
 [[open.prepend_rules]]
