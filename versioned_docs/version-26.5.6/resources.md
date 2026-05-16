@@ -99,6 +99,7 @@ File actions:
 - [restore.yazi](https://github.com/boydaihungst/restore.yazi) - Restore/recover latest deleted files/folders using `trash-cli`.
 - [recycle-bin.yazi](https://github.com/uhs-robert/recycle-bin.yazi) - Manage your Trash from Yazi: browse contents, restore or delete selected items, empty by age, or empty completely using `trash-cli`.
 - [omni-trash.yazi](https://github.com/goon/omni-trash.yazi) - Manage your trash across all drives in a single unified interface using `trash-cli` to delete and restore selected items or empty every trash directory at once.
+- [macos-trash.yazi](https://github.com/walavave/macos-trash.yazi) - **(macOS-only)** Manage your trash using [`trash-cli-macos`](https://github.com/walavave/trash-cli) to browse contents, select items to restore or delete, empty all, or empty by modification date.
 - [gvfs.yazi](https://github.com/boydaihungst/gvfs.yazi) - Mount and manage MTP, GPhoto2 (PTP) devices (Android, Cameras, etc), SMB, SFTP, NFS, FTP, Google Drive, DNS-SD, DAV (WebDAV), AFP, AFC (Linux only). List of [supported protocals](<https://wiki.gnome.org/Projects(2f)gvfs(2f)schemes.html>).
 - [kdeconnect-send.yazi](https://github.com/Deepak22903/kdeconnect-send.yazi) - Send selected files to your smartphone or other devices using KDE Connect.
 - [zoom.yazi](https://github.com/yazi-rs/plugins/tree/main/zoom.yazi) - Zoom in or out of the preview image.
