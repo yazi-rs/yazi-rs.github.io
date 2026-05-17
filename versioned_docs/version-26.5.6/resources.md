@@ -51,6 +51,7 @@ Jupyter notebooks:
 
 Misc:
 
+- [mdv-previewer.yazi](https://github.com/WhoSowSee/mdv-previewer.yazi) - A preview plugin for Text and Markdown files that uses [mdv](https://github.com/WhoSowSee/mdv) to render content
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 
 ## 🧩 Functional plugins {#functional}
@@ -73,7 +74,7 @@ Bookmarks:
 - [simple-tag.yazi](https://github.com/boydaihungst/simple-tag.yazi) - Tagging feature for Linux, macOS and Windows!
 - [yamb.yazi](https://github.com/h-hg/yamb.yazi) - Yet another bookmarks plugins. It supports persistence, jumping by a key, jumping by [fzf](https://github.com/junegunn/fzf).
 - [bunny.yazi](https://github.com/stelcodes/bunny.yazi) - Bookmarks menu with both persistent and ephemeral bookmarks, fuzzy searching, going back to previous directory, and changing to a directory open in another tab.
-- [whoosh.yazi](https://gitlab.com/WhoSowSee/whoosh.yazi) - Advanced bookmark manager with persistent/temporary bookmarks, directory history, fzf integration, path truncation, and cross-platform support. Jump between locations instantly with keys or fuzzy search.
+- [whoosh.yazi](https://github.com/WhoSowSee/whoosh.yazi) - Advanced bookmark manager with persistent/temporary bookmarks, directory history, fzf integration, path truncation, and cross-platform support. Jump between locations instantly with keys or fuzzy search.
 
 Tabs:
 
