@@ -159,6 +159,10 @@ UI enhancements:
 - [pref-by-location.yazi](https://github.com/boydaihungst/pref-by-location.yazi) - Save and restore linemode/sorting/hidden preferences based on directory location.
 - [linemode-plus.yazi](https://github.com/barbanevosa/linemode-plus.yazi) - Advanced linemode customization with configurable date format and combined size+mtime view.
 
+Diagnostics:
+
+- [chronos.yazi](https://github.com/WhoSowSee/chronos.yazi) - Benchmark yazi startup plugin load time with summary or detailed per-plugin reports.
+
 ## 🚀 Preloaders {#preloaders}
 
 Images:
