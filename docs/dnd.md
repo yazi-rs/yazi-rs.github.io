@@ -13,9 +13,10 @@ Yazi has built-in Drag and Drop support, which means you can drag files from Yaz
 
 For this feature to work, your terminal needs to support [The Drag and Drop protocol](https://sw.kovidgoyal.net/kitty/dnd-protocol/). It's a pretty new protocol, and right now only the following terminals support it:
 
-| Terminal                                                  | Note |
-| --------------------------------------------------------- | ---- |
-| [kitty](https://github.com/kovidgoyal/kitty) (>= v0.47.1) | -    |
+| Terminal                                                  | Support                                                                         |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [kitty](https://github.com/kovidgoyal/kitty) (>= v0.47.1) | ✅ Supported                                                                    |
+| Ghostty                                                   | [Accepted to support](https://github.com/ghostty-org/ghostty/discussions/12851) |
 
 I'm excited to see more terminals supporting it in the future!
 
