@@ -81,6 +81,22 @@ keymap = [
 ]
 ```
 
+## Per-OS keybinds {#per-os-keybinds}
+Yazi supports per-OS keybinds through the `for` option; if not specified, the keybind is available on all systems. Available values:
+  - `linux`: Linux
+  - `macos`: macOS
+  - `windows`: Windows
+  - `android`: Android (Termux)
+  - `unix`: Linux, macOS, and Android
+
+```toml
+[mgr]
+prepend_keymap = [
+    # this keymap only exists for Windows
+    { on = ["g", "a"], run = "cd ~/AppData/Roaming", desc = "Goto %APPDATA%", for = "windows" },
+]
+```
+
 ## Key notation {#notation}
 
 You can specify one or more keys in the `on` of each keybinding rule, and each key can be represented with the following notations:
