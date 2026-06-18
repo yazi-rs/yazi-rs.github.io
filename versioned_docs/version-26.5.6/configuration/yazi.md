@@ -234,7 +234,7 @@ Available options are as follows:
 - `block`: Open in a blocking manner. After setting this, Yazi will hide into a secondary screen and display the program on the main screen until it exits. During this time, it can receive I/O signals, which is useful for interactive programs.
 - `orphan`: Keep the process running even if Yazi has exited, once specified, the process will be detached from the task scheduling system.
 - `desc`: Description of the opener, display in interactive components, such as "Open with" and help menu.
-- `for`: The opener is only available on this system, similar to keybinds. See [per-OS keybinds](/docs/configuration/keymap#per-os-keybinds).
+- `for`: The opener is only available on this system, similar to [per-OS keybindings](/docs/configuration/keymap#per-os).
 
 ## [open] {#open}
 
