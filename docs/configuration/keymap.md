@@ -121,6 +121,26 @@ Note that:
 [CSI u]: https://sw.kovidgoyal.net/kitty/keyboard-protocol/
 [Control character]: https://en.wikipedia.org/wiki/Control_character
 
+## Per-OS keybindings {#per-os}
+
+You can use `for` to limit a keybinding to a specific OS; if not specified, the keybinding is available on all systems. Available values:
+
+- `"linux"`: Linux
+- `"macos"`: macOS
+- `"windows"`: Windows
+- `"android"`: Android (Termux)
+- `"unix"`: Linux, macOS, and Android
+
+For example:
+
+```toml
+[mgr]
+prepend_keymap = [
+	{ on = [ "g", "d" ], run = "cd ~/dev",  desc = "Go dev",    for = "unix" },
+	{ on = [ "g", "d" ], run = 'cd C:\dev', desc = 'Go C:\dev', for = "windows" },
+]
+```
+
 ## [mgr] {#mgr}
 
 ### `escape` {#mgr.escape}
