@@ -57,7 +57,7 @@ Misc:
 ## 🧩 Functional plugins {#functional}
 
 Jumping:
-
+- [view-mode.yazi](https://github.com/plentyofpaper654/view-mode.yazi/blob/main/README.md) - Change column aspect ratio to create different view modes such as list, 2 column, or full preview.
 - [relative-motions.yazi](https://github.com/dedukun/relative-motions.yazi) - A Yazi plugin based about vim motions.
 - [jump-to-char.yazi](https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi) - Vim-like `f<char>`, jump to the next file whose name starts with `<char>`.
 - [percent-jump.yazi](https://github.com/ownself/percent-jump.yazi) - Percent-based navigation for the file list - jump to any position by entering a percentage (0-100).
