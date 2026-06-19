@@ -727,6 +727,34 @@ Returns `(url, err)`:
 | Return    | `Url?, Error?`      |
 | Available | Async context only  |
 
+Under the hood:
+
+- if `type` is `"file"`, it uses `fs.access():write(true):create_new(true)` to create a new file
+- if `type` is `"dir"`, it uses `fs.create("dir", ..)` to create a new directory
+
+so you're able to implement your own custom `fs.unique()` in Lua for some more advanced use cases, for example:
+
+```lua
+local function my_unique(url)
+	local parent, stem, ext = url.parent, url.stem, url.ext and "." .. url.ext
+	assert(parent, "url must have a parent")
+
+	for i = 1, math.maxinteger do
+		local ok, err = fs.access():write(true):create_new(true):open(url)
+		if ok then
+			return url
+		elseif err.kind ~= "AlreadyExists" then
+			return nil, err
+		end
+		url = parent:join(string.format("%s-%d%s", stem, i, ext or ""))
+	end
+	return nil, Error("failed to create a unique file")
+end
+
+ya.dbg(my_unique(Url("/tmp/test.jpg")))  -- /tmp/test.jpg
+ya.dbg(my_unique(Url("/tmp/test.jpg")))  -- /tmp/test-1.jpg
+```
+
 ## ui {#ui}
 
 APIs related to the user interface.
