@@ -91,7 +91,7 @@ This is usually because the flavor or theme contains outdated color configuratio
    You can use a TOML linter like [taplo](https://taplo.tamasfe.dev) to check if your `theme.toml` or `flavor.toml` contains any invalid fields:
 
    ```sh
-   taplo check --schema https://yazi-rs.github.io/schemas/theme.json flavor.toml
+   taplo check --schema https://yazi-rs.github.io/schemas/theme.json -c flavor.toml
    ```
 
 2. **Includes fields for components you want to stylize**
