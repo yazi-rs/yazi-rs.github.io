@@ -53,6 +53,7 @@ Misc:
 
 - [mdv-previewer.yazi](https://github.com/WhoSowSee/mdv-previewer.yazi) - A preview plugin for Text and Markdown files that uses [mdv](https://github.com/WhoSowSee/mdv) to render content
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
+- [vscode-git-gutter.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/vscode-git-gutter.yazi) - Preview text and code with syntax highlighting, line numbers, and a VS Code style git change gutter.
 
 ## 🧩 Functional plugins {#functional}
 
@@ -158,6 +159,8 @@ UI enhancements:
 - [no-status.yazi](https://github.com/yazi-rs/plugins/tree/main/no-status.yazi) - Remove the status bar.
 - [pref-by-location.yazi](https://github.com/boydaihungst/pref-by-location.yazi) - Save and restore linemode/sorting/hidden preferences based on directory location.
 - [linemode-plus.yazi](https://github.com/barbanevosa/linemode-plus.yazi) - Advanced linemode customization with configurable date format and combined size+mtime view.
+- [vscode-git-colors.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/vscode-git-colors.yazi) - Color file names by their git status, VS Code style, with status letters for files and dot badges for directories in every column.
+- [mobile-auto-layout.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/mobile-auto-layout.yazi) - Adapt column widths to content and screen size, with a reading mode that widens the preview, built for phone-narrow terminals.
 
 Diagnostics:
 
