@@ -11,23 +11,22 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 If you want to fine-tune the default settings, the first step is to [create your own configuration file](/docs/configuration/overview).
 :::
 
-You can register any supported VFS provider in your `vfs.toml` as a service, for example:
+You can register any scheme in your `vfs.toml` as a VFS provider, for example:
 
 ```toml
-[services.my-server]
-type = "sftp"
+[sftp.my-server]
 host = "1.2.3.4"
 user = "root"
 port = 22
 ```
 
-The service here is `my-server`, you can use any other name you like in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case), up to 20 characters.
+Here, the scheme and domain are `sftp` and `my-server`, respectively. You can register any names you like, written in [kebab-case](https://developer.mozilla.org/en-US/docs/Glossary/Kebab_case), up to 20 characters.
 
-Different names are considered as different virtual filesystems, even if they are configured with the same provider and exactly the same parameters.
+Different scheme-and-domain combos are considered as different virtual filesystems, even if they are configured with exactly the same parameters.
 
 ## Usage
 
-Once registered, you can access them by the combination of provider type and name, for example, to start Yazi with the SFTP service `my-server` as the working directory:
+Once registered, you can access them by the combination of `scheme://domain`, for example, to start Yazi with the SFTP service `my-server` as the working directory:
 
 ```sh
 yazi sftp://my-server
@@ -51,15 +50,14 @@ run  = "reveal sftp://my-server//root/dog.jpg"
 desc = "Reveal dog.jpg on my-server"
 ```
 
-## SFTP Provider
+## SFTP Scheme
 
-Yazi has an SFTP VFS provider built-in, which means you can manage files on remote servers over SSH.
+Yazi has an `sftp` scheme built-in, which means you can manage files on remote servers over SSH.
 
 To register an SFTP VFS named `my-server`, add the following to your `vfs.toml`:
 
 ```toml
-[services.my-server]
-type = "sftp"
+[sftp.my-server]
 host = "1.2.3.4"
 user = "root"
 port = 22
@@ -72,8 +70,7 @@ On Unix-like systems the SSH agent is provided by `ssh-agent`. You can list the 
 If you don't want to use an agent and prefer to specify a private key file, add the `key_file` and `key_passphrase` options, for example:
 
 ```toml
-[services.my-server]
-type     = "sftp"
+[sftp.my-server]
 host     = "1.2.3.4"
 user     = "root"
 port     = 22
@@ -85,8 +82,7 @@ key_file = "~/.ssh/id_rsa"
 You can also authenticate with a password using the `password` option:
 
 ```toml
-[services.my-server]
-type     = "sftp"
+[sftp.my-server]
 host     = "1.2.3.4"
 user     = "root"
 port     = 22
@@ -96,8 +92,7 @@ password = "my_password"
 If you want to use an agent socket other than `$SSH_AUTH_SOCK`, for example, if you [manage SSH keys with 1Password](https://developer.1password.com/docs/ssh/manage-keys/), specify it with `identity_agent`:
 
 ```toml
-[services.my-server]
-type           = "sftp"
+[sftp.my-server]
 host           = "1.2.3.4"
 user           = "root"
 port           = 22
