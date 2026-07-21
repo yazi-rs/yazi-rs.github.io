@@ -11,7 +11,8 @@
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids",
 		"typecheck": "tsc",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"defaults": "node ./scripts/defaults.js"
 	},
 	"dependencies": {
 		"@docusaurus/core": "3.10.1",
@@ -19,13 +20,16 @@
 		"@mdx-js/react": "^3.1.0",
 		"clsx": "^1.2.1",
 		"prism-react-renderer": "^2.4.1",
+		"raw-loader": "^4.0.2",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"toml": "^5.0.0"
 	},
 	"devDependencies": {
 		"@docusaurus/module-type-aliases": "3.10.1",
 		"@docusaurus/tsconfig": "3.10.1",
 		"@docusaurus/types": "3.10.1",
+		"@types/react": "^19.2.17",
 		"prettier": "^3.5.3",
 		"typescript": "~5.2.2"
 	},
