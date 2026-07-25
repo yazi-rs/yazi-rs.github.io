@@ -152,6 +152,27 @@ aliases["y"] = _y
 ```
 
   </TabItem>
+  <TabItem value="schemesh" label="Schemesh">
+
+```scheme
+(sh-alias "y"
+  (lambda (args)
+    (let ((tmp (sh-run/string-rtrim-newlines {mktemp -t "yazi-cwd.XXXXXX"})))
+      (dynamic-wind
+        void
+        (lambda ()
+          (sh-run {command yazi (values args) (string-append "--cwd-file=" tmp)})
+          (let ((cwd (call-with-input-file tmp get-string-all)))
+            (if (and (not (eof-object? cwd))
+                     (not (string=? cwd (charspan->string (sh-cwd (sh-globals)))))
+                     (file-directory? cwd))
+                (sh-cd (sh-globals) cwd))))
+        (lambda ()
+          (file-delete tmp))))
+    (quote ())))
+```
+
+  </TabItem>
 </Tabs>
 
 To use it, copy the function into the configuration file of your respective shell.
