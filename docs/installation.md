@@ -252,6 +252,31 @@ brew install yazi --HEAD
 sudo port install yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide ImageMagick
 ```
 
+## Debian and Ubuntu {#apt}
+
+We provide Debian and Ubuntu users with an [official APT repository](https://github.com/yazi-rs/builds) that offers the latest stable and nightly `amd64` and `arm64` binary builds.
+
+<Tabs>
+  <TabItem value="stable" label="Stable" default>
+
+```sh
+curl -fsSL https://yazi-rs.github.io/builds/yazi-keyring.gpg | sudo tee /usr/share/keyrings/yazi-keyring.gpg >/dev/null
+echo 'deb [signed-by=/usr/share/keyrings/yazi-keyring.gpg] https://yazi-rs.github.io/builds/ stable main' | sudo tee /etc/apt/sources.list.d/yazi.list >/dev/null
+sudo apt update && sudo apt install yazi
+```
+
+  </TabItem>
+  <TabItem value="nightly" label="Nightly">
+
+```sh
+curl -fsSL https://yazi-rs.github.io/builds/yazi-keyring.gpg | sudo tee /usr/share/keyrings/yazi-keyring.gpg >/dev/null
+echo 'deb [signed-by=/usr/share/keyrings/yazi-keyring.gpg] https://yazi-rs.github.io/builds/ nightly main' | sudo tee /etc/apt/sources.list.d/yazi-nightly.list >/dev/null
+sudo apt update && sudo apt install -t nightly yazi
+```
+
+  </TabItem>
+</Tabs>
+
 ## Solus
 
 ```sh
