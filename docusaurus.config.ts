@@ -125,7 +125,7 @@ const config: Config = {
 		prism: {
 			theme: prismThemes.github,
 			darkTheme: prismThemes.dracula,
-			additionalLanguages: ["bash", "diff", "lua", "nix", "powershell", "toml"],
+			additionalLanguages: ["bash", "diff", "lua", "nix", "powershell", "toml", "scheme"],
 		},
 		algolia: {
 			appId: "MS4XF9Z1OE",
