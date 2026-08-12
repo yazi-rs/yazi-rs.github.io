@@ -25,10 +25,10 @@ We suggest using this `y` shell wrapper that provides the ability to change the 
 
 ```bash
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	command yazi "$@" --cwd-file="$tmp"
 	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
 	command rm -f -- "$tmp"
 }
 ```
@@ -72,7 +72,7 @@ y() {
 	shift $(($# - 1))
 	set -- "$(command cat < "$1"; printf .; command rm -f -- "$1")"
 	set -- "${1%.}"
-	[ "$1" != "$PWD" ] && [ -d "$1" ] && command cd -- "$1"
+	[ "$1" != "$PWD" ] && [ -d "$1" ] && command cd -- "$1" || command true
 }
 ```
 
