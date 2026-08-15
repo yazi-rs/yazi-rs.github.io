@@ -253,14 +253,14 @@ bulk,0,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
 `sub_remote()` callback body:
 
 ```lua
--- The `Iterator` implements `__pairs()`, so you can iterate over all URLs with `pairs()`
+-- The `Iterator` implements `__pairs()`, so you can iterate over all files with `pairs()`
 Iterator {
 	cut = false,
 	__len = function(self)
-		-- Returns the number of URLs yanked
+		-- Returns the number of files yanked
 	end,
 	__pairs = function(self)
-		-- Returns next URL
+		-- Returns the next File
 	end
 }
 ```
@@ -383,6 +383,26 @@ delete,1711957542289249,1711957542289249,{"urls":["/root/foo.txt"]}
 
 ```sh
 delete,0,1711957542289249,{"urls":["/root/foo.txt"]}
+```
+
+### `theme` - theme reloaded {#theme}
+
+`sub()` / `sub_remote()` callback body:
+
+```lua
+nil
+```
+
+`--local-events` stdout payload:
+
+```sh
+theme,1711957542289249,1711957542289249,{}
+```
+
+`--remote-events` stdout payload:
+
+```sh
+theme,0,1711957542289249,{}
 ```
 
 ### `hi` - client handshake {#hi}

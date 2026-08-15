@@ -183,13 +183,13 @@ TODO
 
 User's terminal emulator properties.
 
-### `light` {#rt-term.light}
+### `light()` {#rt-term.light}
 
-Whether the terminal is in light mode.
+Returns whether the terminal is in light mode, or `nil` if the terminal doesn't report a color scheme.
 
-|      |           |
-| ---- | --------- |
-| Type | `boolean` |
+|      |                   |
+| ---- | ----------------- |
+| Type | `fun(): boolean?` |
 
 ## rt::Plugin {#rt-plugin}
 

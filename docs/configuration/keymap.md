@@ -4,6 +4,7 @@ description: Learn how to configure keyboard shortcuts with Yazi.
 ---
 
 import KeymapArrow from './keymap-arrow.md'
+import KeymapGait from './keymap-gait.md'
 
 # keymap.toml
 
@@ -94,7 +95,7 @@ You can specify one or more keys in the `on` of each keybinding rule, and each k
 | `<Up>`           | Up arrow key      | `<Down>`      | Down arrow key    |
 | `<Home>`         | Home key          | `<End>`       | End key           |
 | `<PageUp>`       | PageUp key        | `<PageDown>`  | PageDown key      |
-| `<Tab>`          | Tab key           | `<BackTab>`   | Shift + Tab key   |
+| `<Tab>`          | Tab key           | `<S-Tab>`     | Shift + Tab key   |
 | `<Delete>`       | Delete key        | `<Insert>`    | Insert key        |
 | `<F1>` - `<F19>` | Function keys     | `<Esc>`       | Escape key        |
 
@@ -333,10 +334,11 @@ Paste the yanked files.
 
 Create a symbolic link to the yanked files. (This is a privileged action on Windows and must be run as an administrator.)
 
-| Argument/Option | Description                                  |
-| --------------- | -------------------------------------------- |
-| `--relative`    | Use a relative path for the symbolic link.   |
-| `--force`       | Overwrite the destination file if it exists. |
+| Argument/Option | Description                                                                  |
+| --------------- | ---------------------------------------------------------------------------- |
+| `--relative`    | Use a relative path for the symbolic link.                                   |
+| `--force`       | Overwrite the destination file if it exists.                                 |
+| `--follow`      | Link to the file pointed to by a symbolic link, rather than the link itself. |
 
 ### `hardlink` {#mgr.hardlink}
 
@@ -402,8 +404,10 @@ Copy the URL of files or directories that are selected or hovered on.
 
 | Value                | Description                             |
 | -------------------- | --------------------------------------- |
-| `"path"`             | URL of the file.                        |
-| `"dirname"`          | URL of the parent directory.            |
+| `"path"`             | Path of the file.                       |
+| `"url"`              | URL of the file.                        |
+| `"dirpath"`          | Path of the parent directory.           |
+| `"dirurl"`           | URL of the parent directory.            |
 | `"filename"`         | Name of the file.                       |
 | `"name_without_ext"` | Name of the file without the extension. |
 
@@ -433,6 +437,9 @@ You can use the following formatting parameters in `[template]`:
 - `%sN`: Path of the N-th selected file, e.g. `%s1`, `%s2`, etc.
 - `%d`: Dirnames of all selected files
 - `%dN`: Dirname of the N-th selected file, e.g. `%d1`, `%d2`, etc.
+- `%y`: Paths of all yanked files
+- `%yN`: Path of the N-th yanked file, e.g. `%y1`, `%y2`, etc.
+- `%tX`: Apply the `X` formatting parameter to files selected in the next tab, e.g. `%ts` or `%ts1`
 - `%%`: Escape form of the `%` character itself
 
 And their URL versions:
@@ -442,6 +449,9 @@ And their URL versions:
 - `%SN`: URL of the N-th selected file, e.g. `%S1`, `%S2`, etc.
 - `%D`: Dirnames of all selected files, as URLs
 - `%DN`: Dirname of the N-th selected file as URL, e.g. `%D1`, `%D2`, etc.
+- `%Y`: URLs of all yanked files
+- `%YN`: URL of the N-th yanked file, e.g. `%Y1`, `%Y2`, etc.
+- `%TX`: Apply the `X` formatting parameter to files selected in the previous tab, e.g. `%Ts` or `%Ts1`
 
 You can use an end-of-options marker (`--`) to avoid any escaping - everything following the `--` will be treated as a raw string:
 
@@ -735,13 +745,30 @@ Move the cursor left or right.
 
 Move back to the start of the current or previous word.
 
+| Argument/Option | Description                      |
+| --------------- | -------------------------------- |
+| `[gait]`        | `"fine"` \| `"lean"` \| `"wide"` |
+
+<KeymapGait />
+
 ### `forward` {#input.forward}
 
 Move forward to the start of the next word.
 
 | Argument/Option | Description                                          |
 | --------------- | ---------------------------------------------------- |
+| `[gait]`        | `"fine"` \| `"lean"` \| `"wide"`                     |
 | `--end-of-word` | Move forward to the end of the current or next word. |
+
+<KeymapGait />
+
+### `recall` {#input.recall}
+
+Recall a previous or next value from the current input's history.
+
+| Argument/Option | Description                                                                 |
+| --------------- | --------------------------------------------------------------------------- |
+| `[n]`           | Negative values recall older entries; positive values recall newer entries. |
 
 ### `insert` {#input.insert}
 
@@ -872,10 +899,6 @@ Clear the filter, or hide the help menu.
 ### `arrow` {#help.arrow}
 
 <KeymapArrow />
-
-### `filter` {#help.filter}
-
-Apply a filter for the help items.
 
 ### `plugin` {#help.plugin}
 

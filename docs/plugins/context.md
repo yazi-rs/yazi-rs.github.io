@@ -45,6 +45,14 @@ Yanked files.
 
 Visual mode status.
 
+### `is_normal` {#tab-mode.is_normal}
+
+Whether in normal mode.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
 ### `is_select` {#tab-mode.is_select}
 
 Whether in select mode.
@@ -56,14 +64,6 @@ Whether in select mode.
 ### `is_unset` {#tab-mode.is_unset}
 
 Whether in unset mode.
-
-|      |           |
-| ---- | --------- |
-| Type | `boolean` |
-
-### `is_visual` {#tab-mode.is_visual}
-
-Whether in select mode, or unset mode.
 
 |      |           |
 | ---- | --------- |
@@ -140,11 +140,11 @@ Show hidden files. See [`show_hidden`](/docs/configuration/yazi#mgr.show_hidden)
 
 ## tab::Selected {#tab-selected}
 
-[Url](#url)s of the selected files.
+[File](/docs/plugins/types#file)s of the selected files.
 
 ### `__len(self)` {#tab-selected.\_\_len}
 
-Returns the number of selected [Url](#url)s.
+Returns the number of selected [File](/docs/plugins/types#file)s.
 
 | In/Out | Type      |
 | ------ | --------- |
@@ -153,12 +153,12 @@ Returns the number of selected [Url](#url)s.
 
 ### `__pairs(self)` {#tab-selected.\_\_pairs}
 
-Iterate over the selected [Url](#url)s.
+Iterate over the selected [File](/docs/plugins/types#file)s.
 
-| In/Out | Type                                 |
-| ------ | ------------------------------------ |
-| `self` | `Self`                               |
-| Return | `fun(t: self, k: any): integer, Url` |
+| In/Out | Type                                  |
+| ------ | ------------------------------------- |
+| `self` | `Self`                                |
+| Return | `fun(t: self, k: any): integer, File` |
 
 ## tab::Preview {#tab-preview}
 
@@ -188,9 +188,9 @@ A folder.
 
 Current working directory.
 
-|      |               |
-| ---- | ------------- |
-| Type | [`Url`](#url) |
+|      |                                  |
+| ---- | -------------------------------- |
+| Type | [`Url`](/docs/plugins/types#url) |
 
 ### `offset` {#tab-folder.offset}
 
@@ -486,9 +486,9 @@ Returns the number of yanked files.
 
 ### `__pairs(self)` {#mgr-yanked.\_\_pairs}
 
-Iterate over the url of yanked files.
+Iterate over the yanked [File](/docs/plugins/types#file)s.
 
-| In/Out | Type                                 |
-| ------ | ------------------------------------ |
-| `self` | `Self`                               |
-| Return | `fun(t: self, k: any): integer, Url` |
+| In/Out | Type                                  |
+| ------ | ------------------------------------- |
+| `self` | `Self`                                |
+| Return | `fun(t: self, k: any): integer, File` |

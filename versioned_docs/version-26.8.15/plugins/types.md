@@ -59,39 +59,13 @@ Parent directory.
 | ---- | ------- |
 | Type | `Self?` |
 
-### `domain` {#url.domain}
+### `spec` {#url.spec}
 
-Domain of the URL.
+Specification of the URL.
 
-For the URL `sftp://my-server//root/dog.jpg`, the domain is `my-server`.
-
-|      |           |
-| ---- | --------- |
-| Type | `string?` |
-
-### `is_regular` {#url.is_regular}
-
-Whether the file represented by the URL is a regular file.
-
-|      |           |
-| ---- | --------- |
-| Type | `boolean` |
-
-### `is_search`
-
-Whether the file represented by the URL is from a search result.
-
-|      |           |
-| ---- | --------- |
-| Type | `boolean` |
-
-### `is_archive` {#url.is_archive}
-
-Whether the file represented by the URL is from an archive.
-
-|      |           |
-| ---- | --------- |
-| Type | `boolean` |
+|      |                 |
+| ---- | --------------- |
+| Type | [`Spec`](#spec) |
 
 ### `is_absolute`
 
@@ -301,6 +275,50 @@ Concatenate the path with `other`.
 | `self`  | `Self`   |
 | `other` | `string` |
 | Return  | `Self`   |
+
+## Spec {#spec}
+
+The specification of a [`Url`](#url). Use `url.spec` to inspect the URL's kind and provider information.
+
+### `kind` {#spec.kind}
+
+URL kind.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `scheme` {#spec.scheme}
+
+URL scheme.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `domain` {#spec.domain}
+
+Domain of the URL.
+
+|      |          |
+| ---- | -------- |
+| Type | `string` |
+
+### `is_regular` {#spec.is_regular}
+
+Whether the URL represents a regular file.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
+
+### `is_search` {#spec.is_search}
+
+Whether the URL is a search result.
+
+|      |           |
+| ---- | --------- |
+| Type | `boolean` |
 
 ## Cha {#cha}
 

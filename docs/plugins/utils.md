@@ -1026,7 +1026,7 @@ Returns `(fd, err)`:
 
 ## Fd {#fd}
 
-This object is created by [`Access:open()`](#access.open) and contains the methods for working with the opened file.
+This object is created by [`Access:open()`](#Access.open) and contains the methods for working with the opened file.
 
 ### `write_all(self, bytes)` {#Fd.write_all}
 

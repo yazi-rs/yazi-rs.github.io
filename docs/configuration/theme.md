@@ -423,6 +423,14 @@ Style of the progress bar when an error occurs.
 
 ## [which] {#which}
 
+### `border` {#which.border}
+
+Border style.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
 ### `cols` {#which.cols}
 
 Number of columns.
@@ -742,25 +750,25 @@ Hovered item style.
 
 ## [help] {#help}
 
-### `on` {#help.on}
+### `border` {#help.border}
 
-Key column style.
-
-|      |                         |
-| ---- | ----------------------- |
-| Type | [`Style`](#types.style) |
-
-### `run` {#help.run}
-
-Action column style.
+Border style.
 
 |      |                         |
 | ---- | ----------------------- |
 | Type | [`Style`](#types.style) |
 
-### `desc` {#help.desc}
+### `chord` {#help.chord}
 
-Description column style.
+Key chord style.
+
+|      |                         |
+| ---- | ----------------------- |
+| Type | [`Style`](#types.style) |
+
+### `action` {#help.action}
+
+Action or description style.
 
 |      |                         |
 | ---- | ----------------------- |
@@ -773,38 +781,6 @@ Hovered item style.
 |      |                         |
 | ---- | ----------------------- |
 | Type | [`Style`](#types.style) |
-
-### `footer` {#help.footer}
-
-Footer style.
-
-|      |                         |
-| ---- | ----------------------- |
-| Type | [`Style`](#types.style) |
-
-### `icon_info` {#help.icon_info}
-
-Info icon.
-
-|      |          |
-| ---- | -------- |
-| Type | `string` |
-
-### `icon_warn` {#help.icon_warn}
-
-Warning icon.
-
-|      |          |
-| ---- | -------- |
-| Type | `string` |
-
-### `icon_error` {#help.icon_error}
-
-Error icon.
-
-|      |          |
-| ---- | -------- |
-| Type | `string` |
 
 ## [filetype] {#filetype}
 

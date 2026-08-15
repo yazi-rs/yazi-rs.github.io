@@ -68,6 +68,7 @@ Jumping:
 - [fazif.yazi](https://github.com/Shallow-Seek/fazif.yazi) - Search over selected item with `fd`, `rg` `rga` and spawn any FZF configurations in Yazi.
 - [yafg.yazi](https://github.com/XYenon/yafg.yazi) - Fuzzy find and grep in Yazi with ripgrep and fzf, opening selected matches in your editor at the matched line.
 - [jumplist.yazi](https://github.com/0xHouss/jumplist.yazi) - Navigate back and forward through the directories you have visited, like Vim's jumplist.
+- [goto-sibling.yazi](https://github.com/FichteFoll/goto-sibling.yazi) - Directly navigate to the next or previous sibling folder.
 
 Bookmarks:
 

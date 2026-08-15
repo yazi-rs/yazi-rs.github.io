@@ -25,9 +25,9 @@ A value that can be sent across threads. See [Sendable value](/docs/plugins/over
 
 An element that can be rendered.
 
-|       |                                                                       |
-| ----- | --------------------------------------------------------------------- |
-| Alias | `Bar` \| `Border` \| `Clear` \| `Gauge` \| `Line` \| `List` \| `Text` |
+|       |                                                                                  |
+| ----- | -------------------------------------------------------------------------------- |
+| Alias | `Bar` \| `Border` \| `Clear` \| `Gauge` \| `Input` \| `Line` \| `List` \| `Text` |
 
 ## AsPos {#as-pos}
 

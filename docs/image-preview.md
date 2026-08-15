@@ -150,15 +150,15 @@ Adapter
 
 which indicates the image protocol detected and used by Yazi:
 
-| `Adapter.matches` | Protocol                               | Notes                                                                                                |
-| ----------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `Kgp`             | [Kitty unicode placeholders][kgp]      | Ensure your terminal is up-to-date to support it                                                     |
-| `KgpOld`          | [Kitty old protocol][kgp-old]          | Doesn't work under `tmux` due to the limitations of the protocol itself                              |
-| `Iip`             | [Inline images protocol][iip]          | -                                                                                                    |
-| `Sixel`           | [Sixel graphics format][sixel]         | See [tmux](#tmux) and [Zellij](#zellij) section if you're using either of them                       |
-| `X11`             | Window system protocol                 | [Überzug++][ueberzug] is required                                                                    |
-| `Wayland`         | Window system protocol                 | [Überzug++][ueberzug] is required and [_only_ supports Sway, Hyprland, and Wayfire][uberzug-wayland] |
-| `Chafa`           | [ASCII art (Unicode block)][ascii-art] | [Chafa][chafa] is required as the last fallback resort                                               |
+| `Adapter.matches` | Protocol                               | Notes                                                                                                      |
+| ----------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `Kgp`             | [Kitty unicode placeholders][kgp]      | Ensure your terminal is up-to-date to support it                                                           |
+| `KgpOld`          | [Kitty old protocol][kgp-old]          | Doesn't work under `tmux` due to the limitations of the protocol itself                                    |
+| `Iip`             | [Inline images protocol][iip]          | -                                                                                                          |
+| `Sixel`           | [Sixel graphics format][sixel]         | See [tmux](#tmux) and [Zellij](#zellij) section if you're using either of them                             |
+| `X11`             | Window system protocol                 | [Überzug++][ueberzug] is required                                                                          |
+| `Wayland`         | Window system protocol                 | [Überzug++][ueberzug] is required and [_only_ supports Hyprland, Sway, Niri, and Wayfire][uberzug-wayland] |
+| `Chafa`           | [ASCII art (Unicode block)][ascii-art] | [Chafa][chafa] is required as the last fallback resort                                                     |
 
 [uberzug-wayland]: https://github.com/jstkdng/ueberzugpp/blob/eea57daece774e152aedba9ac82a8113056fbab4/README.md?plain=1#L12
 

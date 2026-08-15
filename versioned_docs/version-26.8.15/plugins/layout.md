@@ -5,7 +5,7 @@ description: Learn how to use Yazi's Lua API.
 
 # Layout
 
-Line, Text, List, Bar, Border, and Gauge are renderable elements; others need to be placed within any of them.
+Line, Text, Input, List, Bar, Border, and Gauge are renderable elements; others need to be placed within any of them.
 
 ## Rect {#rect}
 
