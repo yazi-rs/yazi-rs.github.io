@@ -467,26 +467,11 @@ rustup update
 
 Clone the repository and build Yazi:
 
-<Tabs>
-  <TabItem value="non-windows" label="non-Windows" default>
-
 ```sh
 git clone https://github.com/sxyazi/yazi.git
 cd yazi
-cargo build --release --locked
+cargo xtask build
 ```
-
-  </TabItem>
-  <TabItem value="windows" label="Windows">
-
-```sh
-git clone https://github.com/sxyazi/yazi.git
-cd yazi
-cargo build --profile release-windows --locked
-```
-
-  </TabItem>
-</Tabs>
 
 Then, add `yazi` and `ya` to your `$PATH`:
 
