@@ -137,7 +137,7 @@ Hence, only `max_width` and `max_height` will be used in this case.
 
 ## How can I know what image protocol Yazi uses? {#protocol}
 
-Yazi provides a `yazi --debug` command that includes all your environment information, such as terminal emulator, image adapter, whether you're in SSH mode, etc.
+Yazi provides a `ya env` command that includes all your environment information, such as terminal emulator, image adapter, whether you're in SSH mode, etc.
 
 Run it in the terminal where you want to preview images, and you'll see output like:
 

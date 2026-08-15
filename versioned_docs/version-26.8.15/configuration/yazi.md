@@ -147,13 +147,13 @@ The width of a tab character (`\t`) in spaces.
 
 ### `max_width` {#preview.max_width}
 
-Maximum preview width for images. Run `yazi --clear-cache` after changing this for it to take effect.
+Maximum preview width for images. Run `ya cache clear` after changing this for it to take effect.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
 ### `max_height` {#preview.max_height}
 
-Maximum preview height for images. Run `yazi --clear-cache` after changing this for it to take effect.
+Maximum preview height for images. Run `ya cache clear` after changing this for it to take effect.
 
 This value is also used for preloading images; the larger it is, the larger the image cache generated, which consumes more CPU.
 
