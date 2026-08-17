@@ -328,13 +328,13 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | <kbd>}</kbd>                                  | Swap current tab with next tab     |
 | <kbd>Ctrl</kbd> + <kbd>c</kbd>                | Close the current tab              |
 
-### Tasks View
+### Task manager
 
-Background tasks such as file operations can be views in the Tasks view.
+View running background tasks or failed tasks in the task manager.
 
 | Key binding                                   | Action                             |
 | --------------------------------------------- | ---------------------------------- |
-| <kbd>w</kbd>                                  | Open the Tasks view                |
+| <kbd>w</kbd>                                  | Open the task manager              |
 
 ## Flavors
 
