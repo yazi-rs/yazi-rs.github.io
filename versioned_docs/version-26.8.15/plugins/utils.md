@@ -327,6 +327,31 @@ See [Async context](/docs/plugins/overview#async-context).
 | `fn`   | `fun(...: any): any` |
 | Return | `any`                |
 
+### `co(fn)` {#ya.co}
+
+:::warning
+This API is highly experimental at the moment, and its behavior may change in the future.
+:::
+
+Wrap `fn` in a coroutine. The returned function resumes `fn`. `fn` runs until it returns or calls `coroutine.yield()`. If `fn` calls another async API, the returned function waits for it.
+
+```lua
+local function fetch(_, job)
+	return ya.co(function()
+		for _, file in ipairs(job.files) do
+			coroutine.yield(file, { retry = true })
+		end
+	end)
+end
+```
+
+See [Async context](/docs/plugins/overview#async-context).
+
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `fn`   | `fun(...: any): any` |
+| Return | `fun(...: any): any` |
+
 ### `target_os()` {#ya.target_os}
 
 Returns a string describing the specific operating system in use.
