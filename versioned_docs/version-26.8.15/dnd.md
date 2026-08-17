@@ -5,10 +5,6 @@ description: How to use Drag and Drop in Yazi
 
 # Drag and Drop
 
-:::note
-This feature currently requires a [nightly build](https://github.com/sxyazi/yazi/releases/tag/nightly).
-:::
-
 Yazi has built-in Drag and Drop support, which means you can drag files from Yazi to other apps, or drop files from other apps into Yazi.
 
 For this feature to work, your terminal needs to support [The Drag and Drop protocol](https://sw.kovidgoyal.net/kitty/dnd-protocol/). It's a pretty new protocol, and right now only the following terminals support it:
