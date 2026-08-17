@@ -328,6 +328,14 @@ _Observation: <kbd>,</kbd> ⇒ <kbd>a</kbd> indicates pressing the <kbd>,</kbd> 
 | <kbd>}</kbd>                                  | Swap current tab with next tab     |
 | <kbd>Ctrl</kbd> + <kbd>c</kbd>                | Close the current tab              |
 
+### Task manager
+
+View running background tasks or failed tasks in the task manager.
+
+| Key binding                                   | Action                             |
+| --------------------------------------------- | ---------------------------------- |
+| <kbd>w</kbd>                                  | Open the task manager              |
+
 ## Flavors
 
 Pick a color scheme you like from our [flavors repository](https://github.com/yazi-rs/flavors), or [cook a flavor](/docs/flavors/overview#cooking)!
