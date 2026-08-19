@@ -42,10 +42,6 @@ Data Files:
 
 - [duckdb.yazi](https://github.com/wylie102/duckdb.yazi) - Preview CSV/TSV, JSON, and Parquet files using [duckdb](https://github.com/duckdb/duckdb). View the raw data, or a summarized view with data-types, min, max, avg etc. for all columns.
 
-BitTorrent:
-
-- [torrent-preview.yazi](https://github.com/kirasok/torrent-preview.yazi) - Preview "\*.torrent" files using [transmission-cli](https://github.com/transmission/transmission).
-
 Jupyter notebooks:
 
 - [nbpreview.yazi](https://github.com/AnirudhG07/nbpreview.yazi) - Preview jupyter notebooks(\*.ipynb) files using [nbpreview](https://github.com/paw-lu/nbpreview).
