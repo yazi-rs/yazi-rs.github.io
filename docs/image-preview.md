@@ -70,12 +70,15 @@ You can verify this through [tmux/tmux#4104](https://github.com/tmux/tmux/issues
 
 ## Zellij users {#zellij}
 
-Zellij currently only supports the Sixel graphics format, so you will need a terminal that also supports Sixel.
+Since Zellij 0.45 both [Sixel and the Kitty graphics protocol are supported](https://github.com/zellij-org/zellij/releases/tag/v0.45.0) out of the box. You should be able to use it with any terminal supporting one or the other and it will show the images.
 
-Note that, Zellij's Sixel implementation is quite buggy and has serious performance issues at the moment,
-causing noticeable lagginess when quickly switching between images, and sometimes even [image tearing](https://github.com/zellij-org/zellij/issues/2576#issuecomment-1707107473) or [not working at all](https://github.com/zellij-org/zellij/issues/2814#issuecomment-2318473921).
+### Older Zellij versions (< 0.44)
 
-This situation won't improve until Zellij enhances its Sixel implementation or [provides a passthrough mode](https://github.com/zellij-org/zellij/issues/775). If the image is a stronger need to you, consider running Yazi outside of Zellij or using Überzug++:
+Zellij only supported the Sixel graphics format, so you will need a terminal that also supports Sixel.
+
+Note that, Zellij's Sixel implementation was quite buggy (until version 0.44) and had serious performance issues at the time, causing noticeable lagginess when quickly switching between images, and sometimes even [image tearing](https://github.com/zellij-org/zellij/issues/2576#issuecomment-1707107473) or [not working at all](https://github.com/zellij-org/zellij/issues/2814#issuecomment-2318473921).
+
+If the image is a stronger need to you, consider upgrading Zellij to at least 0.45 or running Yazi outside of Zellij or using Überzug++:
 
 ```sh
 # Deceive Yazi into thinking you're running in kitty,
