@@ -105,6 +105,7 @@ File actions:
 - [kdeconnect-send.yazi](https://github.com/Deepak22903/kdeconnect-send.yazi) - Send selected files to your smartphone or other devices using KDE Connect.
 - [zoom.yazi](https://github.com/yazi-rs/plugins/tree/main/zoom.yazi) - Zoom in or out of the preview image.
 - [pandoc.yazi](https://github.com/lmnek/pandoc.yazi) - Convert markup files to different formats via Pandoc.
+- [quarto-render.yazi](https://github.com/songwupei/yazi-quarto) - One-key render `.typ`/`.md`/`.qmd` files to PDF, DOCX, HTML, PNG, and slides (PPTX + Beamer) via Typst and Quarto, with auto-detected GB/T 9704 government doc formatting.
 
 Clipboard:
 
