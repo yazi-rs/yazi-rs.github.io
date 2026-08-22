@@ -285,6 +285,40 @@ ya.preview_widget(opts, {
 | Return    | `unknown`                                                 |
 | Available | Async context only                                        |
 
+### `co(fn)` {#ya.co}
+
+Equivalent to [`coroutine.wrap()`](https://www.lua.org/manual/5.5/manual.html#pdf-coroutine.wrap), but you can call all the async APIs coming from Rust within `fn`:
+
+```lua
+function generator()
+  return ya.co(function()
+    coroutine.yield("start")
+    ya.sleep(0.3)
+    coroutine.yield("after 0.3s")
+    coroutine.yield("end")
+  end)
+end
+
+for s in generator() do
+  ya.dbg(s)
+end
+```
+
+which logs:
+
+```sh
+start
+after 0.3s
+end
+```
+
+Under the hood, it automatically propagates Rust's [`Poll::Pending`](https://doc.rust-lang.org/beta/std/task/enum.Poll.html) yielded in `fn` to the runtime.
+
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `fn`   | `fun(...: any): any` |
+| Return | `fun(...: any): any` |
+
 ### `sync(fn)` {#ya.sync}
 
 Make a function synchronous.
@@ -326,31 +360,6 @@ See [Async context](/docs/plugins/overview#async-context).
 | ------ | -------------------- |
 | `fn`   | `fun(...: any): any` |
 | Return | `any`                |
-
-### `co(fn)` {#ya.co}
-
-:::warning
-This API is highly experimental at the moment, and its behavior may change in the future.
-:::
-
-Wrap `fn` in a coroutine. The returned function resumes `fn`. `fn` runs until it returns or calls `coroutine.yield()`. If `fn` calls another async API, the returned function waits for it.
-
-```lua
-local function fetch(_, job)
-	return ya.co(function()
-		for _, file in ipairs(job.files) do
-			coroutine.yield(file, { retry = true })
-		end
-	end)
-end
-```
-
-See [Async context](/docs/plugins/overview#async-context).
-
-| In/Out | Type                 |
-| ------ | -------------------- |
-| `fn`   | `fun(...: any): any` |
-| Return | `fun(...: any): any` |
 
 ### `target_os()` {#ya.target_os}
 
