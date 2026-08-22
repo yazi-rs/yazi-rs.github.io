@@ -76,6 +76,7 @@ Bookmarks:
 - [yamb.yazi](https://github.com/h-hg/yamb.yazi) - Yet another bookmarks plugins. It supports persistence, jumping by a key, jumping by [fzf](https://github.com/junegunn/fzf).
 - [bunny.yazi](https://github.com/stelcodes/bunny.yazi) - Bookmarks menu with both persistent and ephemeral bookmarks, fuzzy searching, going back to previous directory, and changing to a directory open in another tab.
 - [whoosh.yazi](https://github.com/WhoSowSee/whoosh.yazi) - Advanced bookmark manager with persistent/temporary bookmarks, directory history, fzf integration, path truncation, and cross-platform support. Jump between locations instantly with keys or fuzzy search.
+- [fzf-marks.yazi](https://github.com/razimantv/fzf-marks.yazi) - Brings [fzf-marks](https://github.com/urbainvaes/fzf-marks) style bookmark jumping into yazi. Create a bookmark, fuzzy-find a saved bookmark and jump to it without leaving yazi.
 
 Tabs:
 
