@@ -48,6 +48,7 @@ Jupyter notebooks:
 
 Misc:
 
+- [dog.yazi](https://github.com/edden27/dog.yazi) - Use `dog` for text/code yazi previews with syntax highlighting powered by tree-sitter. Faster than bat, with better theming.
 - [mdv-previewer.yazi](https://github.com/WhoSowSee/mdv-previewer.yazi) - A preview plugin for Text and Markdown files that uses [mdv](https://github.com/WhoSowSee/mdv) to render content
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 - [vscode-git-gutter.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/vscode-git-gutter.yazi) - Preview text and code with syntax highlighting, line numbers, and a VS Code style git change gutter.
