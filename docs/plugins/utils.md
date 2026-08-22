@@ -285,6 +285,40 @@ ya.preview_widget(opts, {
 | Return    | `unknown`                                                 |
 | Available | Async context only                                        |
 
+### `co(fn)` {#ya.co}
+
+Equivalent to [`coroutine.wrap()`](https://www.lua.org/manual/5.5/manual.html#pdf-coroutine.wrap), but you can call all the async APIs coming from Rust within `fn`:
+
+```lua
+function generator()
+  return ya.co(function()
+    coroutine.yield("start")
+    ya.sleep(0.3)
+    coroutine.yield("after 0.3s")
+    coroutine.yield("end")
+  end)
+end
+
+for s in generator() do
+  ya.dbg(s)
+end
+```
+
+which logs:
+
+```sh
+start
+after 0.3s
+end
+```
+
+Under the hood, it automatically propagates Rust's [`Poll::Pending`](https://doc.rust-lang.org/beta/std/task/enum.Poll.html) yielded in `fn` to the runtime.
+
+| In/Out | Type                 |
+| ------ | -------------------- |
+| `fn`   | `fun(...: any): any` |
+| Return | `fun(...: any): any` |
+
 ### `sync(fn)` {#ya.sync}
 
 Make a function synchronous.
