@@ -139,7 +139,7 @@ Clipboard:
 - [modif.yazi](https://github.com/Shallow-Seek/modif.yazi) - Show recently modified.
 
 `paste` enhancements:
-
+- [merge-paste.yazi](https://github.com/PHONE1X/far-too-yazi/tree/main/plugins/merge-paste) - Conflict-aware paste (Overwrite/Merge/Skip/Rename) for name clashes yazi's built-in paste doesn't handle — addresses sxyazi/yazi#982. `ya pkg add PHONE1X/far-too-yazi:merge-paste`
 - [smart-paste.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-paste.yazi) - Paste files into the hovered directory or to the CWD if hovering over a file.
 
 General action enhancements:
