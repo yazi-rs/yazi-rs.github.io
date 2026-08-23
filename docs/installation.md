@@ -169,7 +169,7 @@ The upstream repository provides a flake so that Nix users can easily keep up wi
 				modules = [
 					({ pkgs, ... }: {
 						environment.systemPackages = [
-							(yazi.packages.${pkgs.system}.default.override {
+							(yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
 								_7zz = pkgs._7zz-rar;  # Support for RAR extraction
 							})
 						];
@@ -185,7 +185,7 @@ The upstream repository provides a flake so that Nix users can easily keep up wi
 				modules = [
 					({ pkgs, ... }: {
 						home.packages = [
-							(yazi.packages.${pkgs.system}.default.override {
+							(yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
 								_7zz = pkgs._7zz-rar;  # Support for RAR extraction
 							})
 						];
@@ -209,7 +209,7 @@ A module is also available for both NixOS and home-manager:
 programs.yazi = {
 	enable = true;
 	# You can omit this if you use overlays
-	package = yazi.packages.${pkgs.system}.default.override {
+	package = yazi.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
 		_7zz = pkgs._7zz-rar;  # Support for RAR extraction
 	};
 };

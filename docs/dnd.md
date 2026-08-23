@@ -12,6 +12,7 @@ For this feature to work, your terminal needs to support [The Drag and Drop prot
 | Terminal                                                  | Support                                                                         |
 | --------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [kitty](https://github.com/kovidgoyal/kitty) (>= v0.47.1) | ✅ Supported                                                                    |
+| [iTerm2](https://iterm2.com) (>= 3.7.0 beta10)            | ✅ [Landed on `master`](https://gitlab.com/gnachman/iterm2/-/work_items/12961)  |
 | Ghostty                                                   | [Accepted to support](https://github.com/ghostty-org/ghostty/discussions/12851) |
 
 I'm excited to see more terminals supporting it in the future!
