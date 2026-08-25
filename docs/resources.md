@@ -141,8 +141,9 @@ Clipboard:
 - [modif.yazi](https://github.com/Shallow-Seek/modif.yazi) - Show recently modified.
 
 `paste` enhancements:
-- [merge-paste.yazi](https://github.com/PHONE1X/far-too-yazi/tree/main/plugins/merge-paste) - Conflict-aware paste (Overwrite/Merge/Skip/Rename) for name clashes yazi's built-in paste doesn't handle — addresses sxyazi/yazi#982. `ya pkg add PHONE1X/far-too-yazi:merge-paste`
+
 - [smart-paste.yazi](https://github.com/yazi-rs/plugins/tree/main/smart-paste.yazi) - Paste files into the hovered directory or to the CWD if hovering over a file.
+- [merge-paste.yazi](https://github.com/PHONE1X/far-too-yazi/tree/main/plugins/merge-paste) - Conflict-aware paste (Overwrite/Merge/Skip/Rename) for name clashes.
 
 General action enhancements:
 
@@ -154,7 +155,6 @@ UI enhancements:
 - [toggle-pane.yazi](https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi) - Toggle the show, hide, and maximize states for different panes: parent, current, and preview.
 - [git.yazi](https://github.com/yazi-rs/plugins/tree/main/git.yazi) - Show the status of Git file changes as linemode in the file list.
 - [mount.yazi](https://github.com/yazi-rs/plugins/tree/main/mount.yazi) - A mount manager for Yazi, providing disk mount, unmount, and eject functionality.
-- [lsblk-mount.yazi](https://github.com/PHONE1X/lsblk-mount.yazi) - A fork of mount.yazi using lsblk's JSON device tree for more reliable discovery, plus a mountpoint column and error notifications.
 - [starship.yazi](https://github.com/Rolv-Apneseth/starship.yazi) - Starship prompt plugin for Yazi.
 - [omp.yazi](https://github.com/saumyajyoti/omp.yazi) - oh-my-posh prompt plugin for Yazi.
 - [yatline.yazi](https://github.com/imsi32/yatline.yazi) - Customize header-line and status-line with an easy configuration.
