@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[8947],{6600:s=>{s.exports=JSON.parse('{"authors":[{"name":"sxyazi","title":"Creator of Yazi","url":"https://github.com/sxyazi","imageURL":"https://github.com/sxyazi.png","key":"sxyazi","page":null,"count":1}]}')}}]);
