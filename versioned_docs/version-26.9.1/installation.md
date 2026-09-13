@@ -246,6 +246,22 @@ If you prefer to use the most recent code, use the `--HEAD` flag when installing
 brew install yazi --HEAD
 ```
 
+## Mise {#mise}
+
+You can install `yazi` using [Mise](https://mise.jdx.dev/).
+
+For the latest version:
+
+```sh
+mise use -g yazi
+```
+
+Or for a specific version, use `yazi@<version>`:
+
+```sh
+mise use -g yazi@26.8.15
+```
+
 ## MacPorts {#macports}
 
 ```bash
