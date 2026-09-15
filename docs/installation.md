@@ -246,22 +246,6 @@ If you prefer to use the most recent code, use the `--HEAD` flag when installing
 brew install yazi --HEAD
 ```
 
-## Mise {#mise}
-
-You can install `yazi` using [Mise](https://mise.jdx.dev/).
-
-For the latest version:
-
-```sh
-mise use -g yazi
-```
-
-Or for a specific version, use `yazi@<version>`:
-
-```sh
-mise use -g yazi@26.8.15
-```
-
 ## MacPorts {#macports}
 
 ```bash
@@ -406,6 +390,14 @@ alias yazi="flatpak run io.github.sxyazi.yazi"
 ```
 
 See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
+
+## Mise {#mise}
+
+To install Yazi with [Mise](https://mise.jdx.dev/):
+
+```sh
+mise use -g yazi
+```
 
 ## PyPI {#pypi}
 
