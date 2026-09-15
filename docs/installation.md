@@ -391,6 +391,14 @@ alias yazi="flatpak run io.github.sxyazi.yazi"
 
 See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
 
+## Mise {#mise}
+
+To install Yazi with [Mise](https://mise.jdx.dev/):
+
+```sh
+mise use -g yazi
+```
+
 ## PyPI {#pypi}
 
 :::info
