@@ -21,6 +21,7 @@ General:
 Media:
 
 - [exifaudio.yazi](https://github.com/Sonico98/exifaudio.yazi) - Preview audio metadata and cover using [exiftool](https://exiftool.org/).
+- [center-media.yazi](https://github.com/ENEmyr/center-media.yazi) - Center the image and its metadata in the preview pane.
 
 Archives:
 
