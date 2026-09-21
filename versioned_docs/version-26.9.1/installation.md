@@ -309,6 +309,14 @@ This is **the ONLY way we recommend**. We do not recommend installing `file` via
 
 Most users already have Git installed, and Yazi is also hosted via Git, so this usually isn't an issue. But if you really don't have/want to install it, the [`mime-ext.yazi`](https://github.com/yazi-rs/plugins/tree/main/mime-ext.yazi) plugin can help, as it uses an extension database instead of relying on the `file(1)` binary.
 
+### Install with MSYS2
+
+```sh
+pacman -S mingw-w64-ucrt-x86_64-yazi
+# Install the optional dependencies (recommended):
+pacman -S mingw-w64-ucrt-x86_64-{ffmpeg,7zip,jq,fd,ripgrep,fzf,poppler,zoxide,imagemagick}
+```
+
 ### Install with Scoop
 
 ```sh
@@ -325,7 +333,7 @@ winget install sxyazi.yazi
 winget install Gyan.FFmpeg 7zip.7zip jqlang.jq oschwartz10612.Poppler sharkdp.fd BurntSushi.ripgrep.MSVC junegunn.fzf ajeetdsouza.zoxide ImageMagick.ImageMagick
 ```
 
-resvg is not yet on WinGet, install with Scoop or manually download from [resvg](https://github.com/linebender/resvg/releases).
+resvg is not yet on MSYS2 and WinGet, install with Scoop or manually download from [resvg](https://github.com/linebender/resvg/releases).
 
 ## Fedora/Centos Stream 9+/RHEL 9+ {#copr}
 
