@@ -331,20 +331,57 @@ return { entry = entry }
 --- @sync entry
 local function entry(_, job)
 	local parent = cx.active.parent
-	if not parent then return end
 
 	local offset = tonumber(job.args[1])
-	if not offset then return ya.err(job.args[1], 'is not a number') end
+	if not offset or offset % 1 ~= 0 then
+		ya.notify({
+			title = "Switch sibling",
+			content = string.format("Invalid offset: %s (expect integer)", job.args[1] or "nil"),
+			level = "error",
+			timeout = 5,
+		})
+		return
+	end
 
-	local start = parent.cursor + 1 + offset
-	local end_ = offset < 0 and 1 or #parent.files
-	local step = offset < 0 and -1 or 1
-	for i = start, end_, step do
-		local target = parent.files[i]
-		if target and target.cha.is_dir then
-			return ya.emit("cd", { target.url })
+	-- `parent` is nil at the filesystem root, and at the root of a VFS scheme (e.g. `sftp://host/`)
+	local files = parent and parent.files or {}
+
+	-- Row to travel from: yazi keeps the parent cursor on the current directory ("parent should
+	-- always track CWD"); when that directory is not listed -- hidden by the hidden-file toggle,
+	-- filtered out, or the parent is still loading -- the cursor keeps its old index and is only
+	-- clamped to the last row, so the row may hold a file (e.g. right after `hidden hide`)
+	local row = (parent and parent.cursor or 0) + 1
+
+	-- Only directories, in display order (supports `sort_dir_first = false`): `before` is the
+	-- last one above the reference row, `after` the first one below it
+	local dirs, before, after = {}, 0, nil
+	for i, f in ipairs(files) do
+		if f.cha.is_dir then
+			dirs[#dirs + 1] = f
+			if i < row then
+				before = #dirs
+			elseif i > row and not after then
+				after = #dirs
+			end
 		end
 	end
+
+	if #dirs == 0 then
+		ya.notify({
+			title = "Switch sibling",
+			content = "No sibling directory",
+			level = "warn",
+			timeout = 5,
+		})
+		return
+	end
+
+	-- Start on the first directory in the travel direction, then step, wrapping around at either end
+	local start = offset > 0 and (after or 1) or (before > 0 and before or #dirs)
+	local step = offset > 0 and offset - 1 or offset + 1
+	local idx = ((start - 1 + step) % #dirs) + 1
+
+	ya.emit("cd", { dirs[idx].url })
 end
 
 return { entry = entry }
