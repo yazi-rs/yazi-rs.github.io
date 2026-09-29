@@ -391,6 +391,12 @@ alias yazi="flatpak run io.github.sxyazi.yazi"
 
 See the Flatpak edition's [README](https://github.com/flathub/io.github.sxyazi.yazi) for more information.
 
+## MSYS2 {#msys2}
+
+```sh
+pacman -S mingw-w64-ucrt-x86_64-{yazi,ffmpeg,7zip,jq,poppler,fd,ripgrep,fzf,zoxide,imagemagick}
+```
+
 ## Mise {#mise}
 
 To install Yazi with [Mise](https://mise.jdx.dev/):
