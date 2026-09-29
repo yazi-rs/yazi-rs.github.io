@@ -68,6 +68,7 @@ Jumping:
 - [jumplist.yazi](https://github.com/0xHouss/jumplist.yazi) - Navigate back and forward through the directories you have visited, like Vim's jumplist.
 - [goto-sibling.yazi](https://github.com/FichteFoll/goto-sibling.yazi) - Directly navigate to the next or previous sibling folder.
 - [search-leave.yazi](https://github.com/ownself/search-leave.yazi) - Leave search results while keeping the selected file hovered in its actual directory.
+- [gridview.yazi](https://github.com/skylightlim/gridview.yazi) - **(Wayland-only)** Browse the current folder's images as a thumbnail grid in [swayimg](https://github.com/artemsen/swayimg), then jump to the one you pick.
 
 Bookmarks:
 
@@ -104,6 +105,7 @@ File actions:
 - [kdeconnect-send.yazi](https://github.com/Deepak22903/kdeconnect-send.yazi) - Send selected files to your smartphone or other devices using KDE Connect.
 - [zoom.yazi](https://github.com/yazi-rs/plugins/tree/main/zoom.yazi) - Zoom in or out of the preview image.
 - [pandoc.yazi](https://github.com/lmnek/pandoc.yazi) - Convert markup files to different formats via Pandoc.
+- [omniconvert.yazi](https://github.com/skylightlim/omniconvert.yazi) - Convert files from a menu that offers only the formats they can actually become: images, audio, video, PDF and documents.
 
 Clipboard:
 
