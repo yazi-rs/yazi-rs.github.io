@@ -512,14 +512,16 @@ C-y = [
 	':sh rm -f /tmp/unique-ca1ea106',
 	':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106',
 	':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
-	':open %sh{cat /tmp/unique-ca1ea106}',
+	':open %sh{perl -pe "s|^.+?:/.+?/||" /tmp/unique-ca1ea106}',
 	':redraw',
 	':set mouse false',
   ':set mouse true',
 ]
 ```
 
-Original post: https://github.com/sxyazi/yazi/pull/2461
+Original posts:
+https://github.com/sxyazi/yazi/pull/2461
+https://github.com/mikavilpas/yazi.nvim/pull/1532
 
 <details>
   <summary>Demonstrate Helix+Yazi workflow</summary>
