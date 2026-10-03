@@ -84,13 +84,13 @@ linemode = "size_and_mtime"
 ```lua
 -- ~/.config/yazi/init.lua
 function Linemode:size_and_mtime()
-	local time = math.floor(self._file.cha.mtime or 0)
-	if time == 0 then
+	local time = self._file.cha.mtime
+	if not time then
 		time = ""
-	elseif os.date("%Y", time) == os.date("%Y") then
-		time = os.date("%b %d %H:%M", time)
+	elseif time.year == ya.time().year then
+		time = time:format("%b %d %H:%M")
 	else
-		time = os.date("%b %d  %Y", time)
+		time = time:format("%b %d  %Y")
 	end
 
 	local size = self._file:size()

@@ -426,25 +426,25 @@ If you want to get the size of a directory, use [`size()`](/docs/plugins/context
 
 Accessed time of the file in Unix timestamp.
 
-|      |            |
-| ---- | ---------- |
-| Type | `integer?` |
+|      |         |
+| ---- | ------- |
+| Type | `Time?` |
 
 ### `btime` {#cha.btime}
 
 Birth time of the file in Unix timestamp.
 
-|      |            |
-| ---- | ---------- |
-| Type | `integer?` |
+|      |         |
+| ---- | ------- |
+| Type | `Time?` |
 
 ### `mtime` {#cha.mtime}
 
 Modified time of the file in Unix timestamp.
 
-|      |            |
-| ---- | ---------- |
-| Type | `integer?` |
+|      |         |
+| ---- | ------- |
+| Type | `Time?` |
 
 ### `uid` {#cha.uid}
 
