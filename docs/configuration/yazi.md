@@ -84,7 +84,7 @@ linemode = "size_and_mtime"
 ```lua
 -- ~/.config/yazi/init.lua
 function Linemode:size_and_mtime()
-	local time = self._file.cha.mtime
+	local time = self._file.stat.mtime
 	if not time then
 		time = ""
 	elseif time.year == ya.time().year then

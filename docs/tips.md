@@ -68,7 +68,7 @@ Save these lines as `~/.config/yazi/plugins/smart-tab.yazi/main.lua`:
 return {
 	entry = function()
 		local h = cx.active.current.hovered
-		ya.emit("tab_create", h and h.cha.is_dir and { h.url } or { current = true })
+		ya.emit("tab_create", h and h.stat.is_dir and { h.url } or { current = true })
 	end,
 }
 ```
@@ -316,7 +316,7 @@ local function entry(_, job)
 	if not parent then return end
 
 	local target = parent.files[parent.cursor + 1 + job.args[1]]
-	if target and target.cha.is_dir then
+	if target and target.stat.is_dir then
 		ya.emit("cd", { target.url })
 	end
 end
@@ -341,7 +341,7 @@ local function entry(_, job)
 	local step = offset < 0 and -1 or 1
 	for i = start, end_, step do
 		local target = parent.files[i]
-		if target and target.cha.is_dir then
+		if target and target.stat.is_dir then
 			return ya.emit("cd", { target.url })
 		end
 	end
@@ -437,9 +437,9 @@ Status:children_add(function()
 	end
 
 	return ui.Line {
-		ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
+		ui.Span(ya.user_name(h.stat.uid) or tostring(h.stat.uid)):fg("magenta"),
 		":",
-		ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
+		ui.Span(ya.group_name(h.stat.gid) or tostring(h.stat.gid)):fg("magenta"),
 		" ",
 	}
 end, 500, Status.RIGHT)
