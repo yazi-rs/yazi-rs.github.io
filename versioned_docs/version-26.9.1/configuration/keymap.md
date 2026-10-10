@@ -642,7 +642,13 @@ press `q` to exit the inspect view.
 
 ### `cancel` {#tasks.cancel}
 
-Cancel the task.
+Cancel the task (if possible) and remove it from the task list.
+
+Yazi attempts to cancel tasks whenever possible, but success is not always guaranteed. For example:
+
+- A file copy that has already started may not be canceled, since the OS doesn't provide an API to cancel a copy midway
+  - If this file copy is still queued, it may be canceled
+- A directory copy containing 10 files with 3 already done, the remaining 7 files may be canceled
 
 ### `help` {#tasks.help}
 
