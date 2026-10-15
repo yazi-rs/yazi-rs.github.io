@@ -642,7 +642,7 @@ press `q` to exit the inspect view.
 
 ### `cancel` {#tasks.cancel}
 
-Cancel the task.
+Cancel the task (if possible) and remove it from the task list.
 
 ### `help` {#tasks.help}
 
