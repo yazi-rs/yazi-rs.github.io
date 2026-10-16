@@ -136,6 +136,7 @@ Clipboard:
 
 - [vcs-files.yazi](https://github.com/yazi-rs/plugins/tree/main/vcs-files.yazi) - Show Git file changes.
 - [git-files.yazi](https://github.com/ktunprasert/git-files.yazi) - Show Git file changes (with untracked, via `git status --porcelain`)
+- [whatchanged.yazi](https://github.com/WhoSowSee/whatchanged.yazi) - Browse Git changes with staged and unstaged diff previews.
 - [modif.yazi](https://github.com/Shallow-Seek/modif.yazi) - Show recently modified.
 
 `paste` enhancements:
