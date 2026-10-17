@@ -642,7 +642,12 @@ press `q` to exit the inspect view.
 
 ### `cancel` {#tasks.cancel}
 
-Cancel the task (if possible) and remove it from the task list.
+Cancel the task and remove it from the task list.
+
+Yazi attempts to cancel tasks whenever possible, but success is not always guaranteed. Note that:
+
+- Canceling a fetch task is treated as successful, so the fetched files won't be retried.
+- For data safety, canceling a copy task midway will not remove the partially copied file. This is to avoid a race condition, since the OS doesn't provide a way to delete via an already-open file handle (unlike copying), and the file might have been replaced by another in the meantime.
 
 ### `help` {#tasks.help}
 

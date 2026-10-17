@@ -48,6 +48,7 @@ Jupyter notebooks:
 
 Misc:
 
+- [bat.yazi](https://github.com/CColombus/bat.yazi) - Use `bat` or `batcat` for text/code previews with syntax highlighting and configurable theming options.
 - [dog.yazi](https://github.com/edden27/dog.yazi) - Use `dog` for text/code yazi previews with syntax highlighting powered by tree-sitter. Faster than bat, with better theming.
 - [mdv-previewer.yazi](https://github.com/WhoSowSee/mdv-previewer.yazi) - A preview plugin for Text and Markdown files that uses [mdv](https://github.com/WhoSowSee/mdv) to render content
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
