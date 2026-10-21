@@ -53,6 +53,7 @@ Misc:
 - [mdv-previewer.yazi](https://github.com/WhoSowSee/mdv-previewer.yazi) - A preview plugin for Text and Markdown files that uses [mdv](https://github.com/WhoSowSee/mdv) to render content
 - [rich-preview.yazi](https://github.com/AnirudhG07/rich-preview.yazi) - Preview Markdown, JSON, CSV, etc. using [rich-cli](https://github.com/textualize/rich-cli)
 - [vscode-git-gutter.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/vscode-git-gutter.yazi) - Preview text and code with syntax highlighting, line numbers, and a VS Code style git change gutter.
+- [yazi-plugin-restic](https://github.com/goldfix/yazi-plugin-restic) -Yazi plugin to browse and restore Restic snapshots without FUSE. Metadata preview, multi-select restore.
 
 ## 🧩 Functional plugins {#functional}
 
