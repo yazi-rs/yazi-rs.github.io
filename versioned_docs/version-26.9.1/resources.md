@@ -58,7 +58,7 @@ Misc:
 
 Jumping:
 
-- [relative-motions.yazi](https://github.com/dedukun/relative-motions.yazi) - A Yazi plugin based about vim motions.
+- [relative-motions.yazi](https://github.com/Jormala/relative-motions.yazi) - A Yazi plugin based about vim motions.
 - [jump-to-char.yazi](https://github.com/yazi-rs/plugins/tree/main/jump-to-char.yazi) - Vim-like `f<char>`, jump to the next file whose name starts with `<char>`.
 - [percent-jump.yazi](https://github.com/ownself/percent-jump.yazi) - Percent-based navigation for the file list - jump to any position by entering a percentage (0-100).
 - [time-travel.yazi](https://github.com/iynaix/time-travel.yazi) - Browse forwards and backwards in time via BTRFS / ZFS snapshots.
