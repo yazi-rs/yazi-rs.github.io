@@ -59,6 +59,17 @@ This might be a bug in kitty (or feature? I don't know). In kitty, you have to a
 
 So it inherits the default terminal font color. This causes the icon size issue, and this problem has only been observed in kitty. Therefore, please use a Yazi flavor with kitty.
 
+Solution in kitty:  
+Use fallback function provided by kitty.  
+1. Install Symbols Nerd Font.
+2. add following to ~/.config/kitty/kitty.conf  
+   ```
+   # Nerd Fonts v3.4.0
+   symbol_map U+e000-U+e00a,U+e0a0-U+e0a2,U+e0a3,U+e0b0-U+e0b3,U+e0b4-U+e0c8,U+e0ca,U+e0cc-U+e0d7,U+e200-U+e2a9,U+e300-U+e3e3,U+e5fa-U+e6b7,U+e700-U+e8ef,U+ea60-U+ec1e,U+ed00-U+efce,U+f000-U+f2ff,U+f300-U+f381,U+f400-U+f533,U+f0001-U+f1af0 Symbols Nerd Font Mono
+   ```
+   only unicodes fall into private use region will fall back to Symbols Nerd Font.  
+3. restart kitty.
+
 ## How to troubleshoot terminal response timeout errors? {#trt}
 
 Yazi sends [`DA1`](https://vt100.net/docs/vt510-rm/DA1.html) and [`DSR`](https://vt100.net/docs/vt510-rm/DSR.html)-based requests at startup to detect and enable some modern terminal features. This error means the terminal didn't respond within the timeout, which can happen because:
