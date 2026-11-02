@@ -213,7 +213,7 @@ rename,1711957878076791,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/
 rename,0,1711957878076791,{"tab":0,"from":"/root/foo.txt","to":"/root/bar.txt"}
 ```
 
-### `bulk` - bulk rename files {#bulk}
+### `bulk-rename` - bulk rename files {#bulk}
 
 `sub()` / `sub_remote()` callback body:
 
@@ -233,13 +233,13 @@ Iterator {
 `--local-events` stdout payload:
 
 ```sh
-bulk,1711957542289249,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
+bulk-rename,1711957542289249,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
 ```
 
 `--remote-events` stdout payload:
 
 ```sh
-bulk,0,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
+bulk-rename,0,1711957542289249,{"changes":{"/path/from.txt":"/path/to.txt"}}
 ```
 
 ### `@yank` - yank files {#@yank}
