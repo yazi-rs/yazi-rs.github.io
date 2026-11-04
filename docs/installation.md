@@ -303,6 +303,19 @@ Yazi relies on `file(1)` to detect the mime-type of the file, and the easiest an
 2. To allow Yazi to use `file(1)`, add `<Git_Installed_Directory>\usr\bin\file.exe` to your `YAZI_FILE_ONE` environment variable, which differs depending on how you installed Git:
    - If you installed Git with the installer, it would be `C:\Program Files\Git\usr\bin\file.exe`.
    - If you installed Git with Scoop, it would be `C:\Users\<Username>\scoop\apps\git\current\usr\bin\file.exe`.
+
+   **Persistent (recommended):**
+
+   ```powershell
+    setx YAZI_FILE_ONE "C:\Program Files\Git\usr\bin\file.exe"
+   ```
+
+   **Temporary (current session only):**
+
+   ```powershelln
+    $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
+   ```
+
 3. Restart your terminal.
 
 This is **the ONLY way we recommend**. We do not recommend installing `file` via Scoop or Chocolatey, since they cannot handle Unicode filenames (such as `oliver-sjöström.jpg`) properly and lack some required parameters.
