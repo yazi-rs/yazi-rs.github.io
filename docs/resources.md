@@ -94,6 +94,7 @@ File actions:
 - [lin-decompress.yazi](https://github.com/ZimCodes/lin-decompress.yazi) - **(Linux-only)** Extract each archive using a specified tool
 - [ouch.yazi](https://github.com/ndtoan96/ouch.yazi) - An [ouch](https://github.com/ouch-org/ouch) plugin for Yazi, supporting preview and compression.
 - [archivemount.yazi](https://github.com/AnirudhG07/archivemount.yazi) - Mounting and unmounting archives in yazi using [archivemount](https://github.com/cybernoid/archivemount).
+- [zippity.yazi](https://github.com/hawkff/zippity/tree/main/zippity.yazi) - Browse archives as folders, preview and extract selected files, and create or edit archives on Linux and macOS.
 - [reflink.yazi](https://github.com/Ape/reflink.yazi) - Create reflinks to files.
 - [rsync.yazi](https://github.com/GianniBYoung/rsync.yazi) - Simple rsync copying locally and to remote servers.
 - [rsync-paste.yazi](https://github.com/FelipeKerr/rsync-paste.yazi) - Incremental local copy/paste using rsync, with live transfer progress in the Yazi header.
