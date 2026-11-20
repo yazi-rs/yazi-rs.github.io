@@ -16,7 +16,7 @@ function Card(props: CardProps) {
 	return (
 		<li key={props.title} className="card shadow--md">
 			<div className={clsx("card__image")}>
-				<video src={props.video} width="100%" autoPlay controls loop muted></video>
+        <video src={`${props.video}#t=0.001`} width="100%" controls preload="metadata"></video>
 			</div>
 			<div className="card__body">
 				<Heading as="h4">{props.title}</Heading>
