@@ -165,6 +165,7 @@ UI enhancements:
 - [simple-status.yazi](https://github.com/Ape/simple-status.yazi) - Minimalistic status line with useful file attribute information.
 - [no-status.yazi](https://github.com/yazi-rs/plugins/tree/main/no-status.yazi) - Remove the status bar.
 - [linemode-plus.yazi](https://github.com/barbanevosa/linemode-plus.yazi) - Advanced linemode customization with configurable date format and combined size+mtime view.
+- [detailed.yazi](https://github.com/drekunia/detailed.yazi) - A customizable linemode showing file sizes, directory item counts, modification times, ownership, and permissions.
 - [vscode-git-colors.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/vscode-git-colors.yazi) - Color file names by their git status, VS Code style, with status letters for files and dot badges for directories in every column.
 - [mobile-auto-layout.yazi](https://github.com/ShikherVerma/yazi-plugins/tree/main/mobile-auto-layout.yazi) - Adapt column widths to content and screen size, with a reading mode that widens the preview, built for phone-narrow terminals.
 - [sduf.yazi](https://github.com/shafayetejaman/sduf.yazi) - A storage (disk) space meter for the status bar, showing used/total space.
