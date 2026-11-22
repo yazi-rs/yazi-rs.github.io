@@ -98,3 +98,7 @@ user           = "root"
 port           = 22
 identity_agent = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 ```
+
+### Limitations
+
+Interactive authorization is not supported as the VFS is designed to be usable unattended.
