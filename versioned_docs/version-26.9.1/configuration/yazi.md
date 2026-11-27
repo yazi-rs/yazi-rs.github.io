@@ -476,7 +476,7 @@ Candidate sorting method.
 
 - `"none"`: Don't sort.
 - `"key"`: Sort by key.
-- `"desc`: Sort by description.
+- `"desc"`: Sort by description.
 
 ### `sort_sensitive` {#which.sort_sensitive}
 
